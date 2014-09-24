@@ -31,6 +31,8 @@
   <strong>Country:</strong>
     <%= @supplier.country %>
 </p>
+<h3>Contact Person 1</h3>
+
 <p>
   <strong>Authorised Responder:</strong>
     <%= @supplier.authorised_responder %>
@@ -135,4 +137,4 @@
 </p>
 
 
-<%= link_to 'Edit', edit_admin_agent_path(@supplier), class: "btn btn-primary" if can? :edit, User %>
+<%= link_to 'Edit', edit_admin_supplier_path(@supplier), class: "btn btn-primary" if can? :edit, User %>

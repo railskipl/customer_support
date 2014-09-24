@@ -44,6 +44,7 @@
     <%= f.label :country %>
     <%= f.text_field :country ,required: true%>
   </div>
+  <h3>Contact Person 1</h3>
   <div class="field">
     <%= f.label :authorised_responder %>
     <%= f.select :authorised_responder, [ 'Billing', 'Main Manager', 'CS Authorised Responder'] %>
@@ -69,10 +70,69 @@
     <%= f.label :telephone_number %>
     <%= f.text_field :telephone_number ,required: true%>
   </div>
-  <div class="field">
+    <div class="field">
     <%= f.label :mobile_number %>
     <%= f.text_field :mobile_number ,required: true, :pattern => '[0-9]{10,10}'%>
   </div>
+  <h3>Contact Person 2</h3>
+    <div class="field">
+    <%= f.label :auth_resp2 %>
+    <%= f.select :auth_resp2, [ 'Billing', 'Main Manager', 'CS Authorised Responder'] %>
+  </div>
+  <div class="field">
+    <%= f.label :title2 %>
+    <%= f.text_field :title2 ,required: true%>
+  </div>
+  <div class="field">
+    <%= f.label :fname2 %>
+    <%= f.text_field :fname2 ,required: true%>
+  </div>
+  <div class="field">
+    <%= f.label :lname2 %>
+    <%= f.text_field :lname2 ,required: true%>
+  </div>
+  <div class="field">
+    <%= f.label :email2 %>
+    <%= f.email_field :email2 %>
+  </div>
+  <div class="field">
+    <%= f.label :tno2 %>
+    <%= f.text_field :tno2 ,required: true, :pattern => '[0-9]{10,10}'%>
+  </div>
+  <div class="field">
+    <%= f.label :mno2 %>
+    <%= f.text_field :mno2 ,required: true, :pattern => '[0-9]{10,10}'%>
+  </div>
+  <h3>Contact Person 3</h3>
+    <div class="field">
+    <%= f.label :auth_resp3 %>
+    <%= f.select :auth_resp3, [ 'Billing', 'Main Manager', 'CS Authorised Responder'] %>
+  </div>
+  <div class="field">
+    <%= f.label :title3 %>
+    <%= f.text_field :title3 ,required: true%>
+  </div>
+  <div class="field">
+    <%= f.label :fname3 %>
+    <%= f.text_field :fname3 ,required: true%>
+  </div>
+  <div class="field">
+    <%= f.label :lname3 %>
+    <%= f.text_field :lname3 ,required: true%>
+  </div>
+  <div class="field">
+    <%= f.label :email3 %>
+    <%= f.email_field :email3 %>
+  </div>
+  <div class="field">
+    <%= f.label :tno3 %>
+    <%= f.text_field :tno3 ,required: true, :pattern => '[0-9]{10,10}'%>
+  </div>
+  <div class="field">
+    <%= f.label :mno3 %>
+    <%= f.text_field :mno3 ,required: true, :pattern => '[0-9]{10,10}'%>
+  </div>
+
 	<%if current_user.is_admin?%>
   <div class="field">
     <%= f.label :subscription %>
@@ -86,6 +146,10 @@
     <%= f.label :end_date %>
     <%= f.date_select :end_date ,required: true%>
   </div>
+     <div class="field">
+      <%= f.label :notes %>
+      <%= f.text_area :notes %>
+    </div>
 	<%end%>
   <div class="actions">
     <%= f.submit class: "btn btn-primary"%>

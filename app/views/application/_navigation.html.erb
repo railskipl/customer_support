@@ -16,11 +16,17 @@
           	<%= link_to "My Account", profile_path, :class=>(@action == "my_account" ? "active":'')%>
           </li>
 
+         
+
 					<%if generate_path('About us') %>
           	<li>
           		<%= link_to "About Us", generate_path('About us') , :class=>(@action == "About us" ? "active":'') %>
           	</li>
          	<%end%>
+          
+           <li>
+            <%= link_to "Reviews", user_review_path, :class=>(@active_tab == "review" ? "active":'')%>
+          </li>
 
           <%if generate_path('csr')  %>
           	<li><%= link_to "CSR", generate_path('csr') , :class=>(@action == "csr" ? "active":'') %></li>

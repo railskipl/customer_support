@@ -1,6 +1,6 @@
 class CompaniesController < ApplicationController
 	before_filter :get_default_for_filter
-	before_action :default_action_tab, :only=>[:user_review, :conversions, :registered, :unregistered, :polls_bloopers]
+	before_action :default_action_tab, :only=>[:conversions, :registered, :unregistered, :polls_bloopers]
 
 	def default_action_tab
   	@action = "my_account"

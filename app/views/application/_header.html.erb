@@ -17,9 +17,9 @@
   		  </form>
 				  <ul class="mgt">
 		 				<li class="join_con"> Join US on</li>
-				    <li> <%= link_to image_tag('fbicon.png'),root_path%> </li>
-				  	<li> <%= link_to image_tag('g_icon.gif'),root_path%> </li>
-				    <li> <%= link_to image_tag('twicon.png'),root_path%> </li>
+				    <li> <%= link_to image_tag('fbicon.png'),"https://www.facebook.com/xemaxemaKenya", :target => "_blank" %> </li>
+				  	<li> <%= link_to image_tag('g_icon.gif'),"https://plus.google.com/u/0/+Xemaxema", :target => "_blank" %> </li>
+				    <li> <%= link_to image_tag('twicon.png'),"https://twitter.com/xemaxemaKenya",  :target => "_blank" %> </li>
 				  </ul>
 					<% if user_signed_in? %>
 						<p class="logout"><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'signin-link'  %></p>

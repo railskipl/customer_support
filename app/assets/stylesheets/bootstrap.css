@@ -4592,13 +4592,12 @@ background:#E1E1E1 url(/assets/nav_bg.png) center top repeat-x;
 }
 
 .navbar .nav > li > a {
- 	padding: 15px 35px;
+ 	padding: 17px 25px;
     display: block;
     color: #515151;
-    font-weight: bold;
-    font-size: 16px;
+    font:bold 14px arial;
     text-decoration: none;
-	margin:0 13px;
+	   margin:0 13px;
 	text-transform:uppercase;
 }
 

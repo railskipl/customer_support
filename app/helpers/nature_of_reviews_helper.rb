@@ -1,0 +1,2 @@
+module NatureOfReviewsHelper
+end

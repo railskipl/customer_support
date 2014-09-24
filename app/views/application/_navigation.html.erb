@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="navbar ">
+    <div class="navbar-inner">
+	    <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> 					<span class="icon-bar"></span>
+		    <span class="icon-bar"></span>
+		    <span class="icon-bar"></span>
+      </button>
+
+      <div class="nav-collapse collapse">
+        <ul class="nav">
+          <li>
+          	<%= link_to image_tag("home.png"), root_path, :class=>"homeIcon"%>
+        	</li>
+
+          <li>
+          	<%= link_to "My Account", profile_path, :class=>(@action == "my_account" ? "active":'')%>
+          </li>
+
+					<%if generate_path('About us') %>
+          	<li>
+          		<%= link_to "About Us", generate_path('About us') , :class=>(@action == "About us" ? "active":'') %>
+          	</li>
+         	<%end%>
+
+          <%if generate_path('csr')  %>
+          	<li><%= link_to "CSR", generate_path('csr') , :class=>(@action == "csr" ? "active":'') %></li>
+          <%end%>
+
+					<% if @resource_types%>
+          <li>
+          	<%= link_to "Resources", resource_path(@resource_types.first), :class=>(@action == "resources" ? "active":'')%>
+        	</li>
+        	<%end%>
+
+          <li><%= link_to "FAQ", faqs_url, :class=>(@action == "faqs" ? "active":'')%></li>
+					<li>
+						<%= link_to "Contact Us", contact_us_url, :class=>(@action == "contact_us" ? "active":'')%>  						</li>
+        </ul>
+      </div>
+      <!--/.nav-collapse -->
+    </div>
+  </div>
+</div>

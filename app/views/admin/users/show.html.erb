@@ -1,0 +1,54 @@
+<p>
+  <strong>First Name:</strong>
+    <%= @user.first_name %>
+</p>
+<p>
+  <strong>Last Name:</strong>
+    <%= @user.last_name %>
+</p>
+<p>
+  <strong>Preferred Alias:</strong>
+    <%= @user.preferred_alias %>
+</p>
+<p>
+  <strong>Age:</strong>
+    <%= @user.age %>
+</p>
+<p>
+  <strong>Email:</strong>
+    <%= @user.email %>
+</p>
+<p>
+  <strong>Gender:</strong>
+    <% if @user.gender == '1' %>
+    <%="Male"%>
+    <%else%>
+    <%="Female"%>
+    <%end%>
+</p>
+
+<p>
+  <strong>Address line 1:</strong>
+    <%= @user.address_line1 %>
+</p>
+<p>
+  <strong>Address line 2:</strong>
+    <%= @user.address_line2 %>
+</p>
+<p>
+  <strong>Town:</strong>
+    <%= @user.town %>
+</p>
+<p>
+  <strong>country:</strong>
+    <%= @user.country %>
+</p>
+<p>
+  <strong>Code:</strong>
+    <%= @user.postal_code %>
+</p>
+<div class="rgh">
+	<div class="image"><%=image_tag @user.avatar.url(:thumb) if @user.avatar.present? %>
+</div>
+
+<%= link_to 'Back', admin_index_path %>

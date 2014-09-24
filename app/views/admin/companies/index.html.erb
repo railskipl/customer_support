@@ -1,0 +1,30 @@
+<table id="companies">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Industry</th>
+      <th>Registration Status</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @companies.each do |company| %>
+      <tr>
+        <td><%= company.title %></td>
+        <td><%= company.industry.title %></td>
+        <% if company.is_registered %>
+          <td>Registered</td>
+        <% else %>
+          <td>Not Registered</td>
+        <% end %>
+        <td><%= link_to 'Edit', edit_admin_company_path(company) if can? :edit, Company%>
+        <%= link_to 'Destroy',[:admin, company], method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, Company%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Company', new_admin_company_path, class: "btn btn-primary" if can? :create, Company%>

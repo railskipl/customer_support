@@ -1,0 +1,24 @@
+<table id="nature_of_reviews">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Review type</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @nature_of_reviews.each do |nature_of_review| %>
+      <tr>
+        <td><%= nature_of_review.title %></td>
+        <td><%= nature_of_review.review_type %></td>
+        <td><%= link_to 'Edit', edit_admin_nature_of_review_path(nature_of_review)  if can? :edit, NatureOfReview%>
+         <%= link_to 'Destroy',  [:admin, nature_of_review], method: :delete, data: { confirm: 'Are you sure?' }  if can? :destroy, NatureOfReview %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Nature of review', new_admin_nature_of_review_path, class: "btn btn-primary"  if can? :edit, NatureOfReview%>

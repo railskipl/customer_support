@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+<p>
+  <strong>First Name:</strong>
+    <%= @agent.first_name %>
+</p>
+<p>
+  <strong>Last Name:</strong>
+    <%= @agent.last_name %>
+</p>
+<p>
+  <strong>Preffered Name:</strong>
+    <%= @agent.preferred_alias %>
+</p>
+<p>
+  <strong>Email:</strong>
+    <%= @agent.email %>
+</p>
+<%= link_to 'Edit', edit_admin_agent_path(@agent) ,class: "btn btn-primary"if can? :edit, User %>

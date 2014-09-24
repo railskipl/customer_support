@@ -1,0 +1,138 @@
+<p id="notice"><%= notice %></p>
+<p>
+  <strong>Supplier Company:</strong>
+    <%= @supplier.supplier_name %>
+</p>
+<p>
+  <strong>Supplier VAT Number:</strong>
+    <%= @supplier.supplier_vat_Number %>
+</p>
+<p>
+  <strong>Industry:</strong>
+    <%= @supplier.industry %>
+</p>
+<p>
+  <strong>Address line 1:</strong>
+    <%= @supplier.address_line1 %>
+</p>
+<p>
+  <strong>Address line 2:</strong>
+    <%= @supplier.address_line2 %>
+</p>
+<p>
+  <strong>Town:</strong>
+    <%= @supplier.town %>
+</p>
+<p>
+  <strong>City:</strong>
+    <%= @supplier.city %>
+</p>
+<p>
+  <strong>Country:</strong>
+    <%= @supplier.country %>
+</p>
+<p>
+  <strong>Authorised Responder:</strong>
+    <%= @supplier.authorised_responder %>
+</p>
+<p>
+  <strong>Title:</strong>
+    <%= @supplier.title %>
+</p>
+<p>
+  <strong>First Name:</strong>
+    <%= @supplier.first_name %>
+</p>
+<p>
+  <strong>Last Name:</strong>
+    <%= @supplier.last_name %>
+</p>
+<p>
+  <strong>Email:</strong>
+    <%= @supplier.email %>
+</p>
+<p>
+  <strong>Telephone Number:</strong>
+    <%= @supplier.telephone_number %>
+</p>
+<p>
+  <strong>Mobile Number:</strong>
+    <%= @supplier.mobile_number %>
+</p>
+<h3>Contact Person 2</h3>
+<p>
+  <strong>Authorised Responder:</strong>
+    <%= @supplier.auth_resp2 %>
+</p>
+<p>
+  <strong>Title:</strong>
+    <%= @supplier.title2 %>
+</p>
+<p>
+  <strong>First Name:</strong>
+    <%= @supplier.fname2 %>
+</p>
+<p>
+  <strong>Last Name:</strong>
+    <%= @supplier.lname2 %>
+</p>
+<p>
+  <strong>Email:</strong>
+    <%= @supplier.email2 %>
+</p>
+<p>
+  <strong>Telephone Number:</strong>
+    <%= @supplier.tno2 %>
+</p>
+<p>
+  <strong>Mobile Number:</strong>
+    <%= @supplier.mno2 %>
+</p>
+  <h3>Contact Person 3</h3>
+<p>
+  <strong>Authorised Responder:</strong>
+    <%= @supplier.auth_resp3 %>
+</p>
+<p>
+  <strong>Title:</strong>
+    <%= @supplier.title3 %>
+</p>
+<p>
+  <strong>First Name:</strong>
+    <%= @supplier.fname3 %>
+</p>
+<p>
+  <strong>Last Name:</strong>
+    <%= @supplier.lname3 %>
+</p>
+<p>
+  <strong>Email:</strong>
+    <%= @supplier.email3 %>
+</p>
+<p>
+  <strong>Telephone Number:</strong>
+    <%= @supplier.tno3 %>
+</p>
+<p>
+  <strong>Mobile Number:</strong>
+    <%= @supplier.mno3 %>
+</p>
+<p>
+  <strong>Subscription:</strong>
+    <%= @supplier.subscription %>
+</p>
+<p>
+  <strong>Start Date:</strong>
+    <%= @supplier.start_date %>
+</p>
+<p>
+  <strong>End Date:</strong>
+    <%= @supplier.end_date %>
+</p>
+<p>
+  <strong>Notes:</strong>
+    <%= @supplier.notes %>
+</p>
+
+
+<%= link_to 'Edit', edit_admin_agent_path(@supplier), class: "btn btn-primary" if can? :edit, User %>

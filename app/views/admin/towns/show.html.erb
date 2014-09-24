@@ -1,0 +1,8 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @town.title %>
+</p>
+
+<%= link_to 'Edit', edit_admin_town_path(@town) if can? :edit, Town%>

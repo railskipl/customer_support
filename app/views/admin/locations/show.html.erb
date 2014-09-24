@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @location.title %>
+</p>
+
+<p>
+  <strong>Town:</strong>
+  <%= @location.town.title %>
+</p>
+
+<%= link_to 'Edit', edit_admin_location_path(@location)  if can? :edit, Location%>
+<%= link_to 'New', new_admin_location_path  if can? :create, Location%>

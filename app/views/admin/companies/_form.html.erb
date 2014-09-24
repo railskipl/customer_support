@@ -1,0 +1,30 @@
+<%= form_for([:admin,@company]) do |f| %>
+  <% if @company.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@company.errors.count, "error") %> prohibited this company from being saved:</h2>
+
+      <ul>
+      <% @company.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title , required: true%>
+  </div>
+  <div class="field">
+    <%= f.label :industry_id %>
+    <%= f.select :industry_id , @industries.map{|industry| [industry.title,industry.id]}, required: true%>
+  </div>
+  <div class="field">
+    <%= f.label :is_registered, "Check here for Registered Company"  %>
+    <%= f.check_box :is_registered , {:style=>'opacity: 1;'} %>
+  </div>
+  <%= f.number_field :user_id ,:value=>current_user.id,:class=>"hidden"%>
+  <div class="actions">
+    <%= f.submit class: "btn btn-primary"%>
+  </div>
+<% end %>

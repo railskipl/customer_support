@@ -1,0 +1,35 @@
+<%content_for :left do%>
+	<span class="span3">
+		 <%=render :partial=> "application/my_account_left"%>
+	</span>
+<%end%>
+<span class="span6">
+    <div class="sectionMid">
+    	<%=render :partial=> "application/mid_tab"%>
+      <div class="date_outer">
+          <div class="date_inner">
+                <div class="box_1">Company</div>
+                <div class="box_2"><span class="red"></span></div>
+                <div class="box_3"><span class="green"></span></div>
+                <div class="box_4"><span class="red" style="float:left;"></span><sapn style="padding-right: 10px;">&xrarr;</span><span class="green" style="float:right;margin-top: -20px;"></span></div>
+          </div>
+          <div class="scroll-pane">
+				  	<%@rcompanies.each do |company|%>
+						    <div class="date_section">
+						        <div class="box_1_in"><%=company.title%></div>
+										<div class="box_2_in"><%=review_complaint_count(company)%></div>
+						        <div class="box_3_in"><%=review_compliment_count(company)%></div>
+										<div class="box_4_in"><%=change_complaint_count(company)%></div>
+
+						    </div>
+            <%end%>
+          </div>
+        </div>
+    </div>
+    </span>
+
+<%content_for :right do%>
+	<span class="span3">
+		 <%=render :partial=> "conversions_filter"%>
+	</span>
+<%end%>

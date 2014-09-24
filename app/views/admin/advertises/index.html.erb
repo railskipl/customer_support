@@ -1,0 +1,27 @@
+<h1>Advertisments</h1>
+
+<table id="advertises" >
+  <thead>
+    <tr>
+      <th>Image</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Position</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @advertises.each do |advertise| %>
+      <tr>
+        <td><%= image_tag (advertise.image.url) %></td>
+        <td><%= advertise.start_date %></td>
+        <td><%= advertise.end_date %></td>
+        <td><%= advertise.position %></td>
+        <td><%= link_to 'Edit', edit_admin_advertise_path(advertise) if can? :edit, Advertise%>
+        <%= link_to 'Destroy', admin_advertise_path(advertise), method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, Advertise%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<%= link_to 'New Adverisment', new_admin_advertise_path, class: "btn btn-primary" if can? :create, Advertise%>

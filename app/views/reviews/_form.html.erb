@@ -1,0 +1,128 @@
+<div class="review">
+<%= form_for(@review) do |f|%>
+  <% if @review.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
+
+      <ul>
+      <% @review.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+		<h3>
+			<%if  @review.review_type == 'complaint' || params[:review_type] == 'complaint'%>
+				 Please give details of your complaint <%=image_tag ("thumbsD.png")%>
+			<%else%>
+				 Please give details of your compliment <%=image_tag ("thumbsU.png")%>
+			<%end%>
+		</h3>
+
+		<div class="review_form">
+			<div class="name_lft">Title: *</div>
+			<%= f.text_field :title, required: true, "maxlength"=>"60", "min" => "1","max" => "60", :autofocus=>true%>
+		</div>
+
+		<div class="review_form">
+			<div class="name_lft">Industry: *</div>
+			<div class="small-input2">
+			  <%= f.collection_select :industry_id, Industry.order(:title),:id,:title, {:include_blank=>"Select Industry"},:rel => "/industry/companies_by_industry",  required: true%>
+			  <input type="text" id="txt_review_industry_id" name="txt_review_industry_id"><br/>
+			</div>
+
+		</div>
+
+		<div class="review_form">
+			<div class="name_lft">Company: *</div>
+			<div class="small-input2">
+			    <%= f.collection_select :company_id, @companies, :id, :title,  {:include_blank=>"Select Company"}, :rel => "/company/towns_by_company", required: true%>
+		    <input type="text" id="txt_review_company_id" name="txt_review_company_id"><br>
+
+			</div>
+		</div>
+
+		<div class="review_form">
+			<div class="name_lft">Town: *</div>
+			<div class="small-input2">
+			   <%= f.collection_select :town_id, @towns, :id, :title, {:include_blank=>"Select Town"}, :rel => "/town/locations_by_town_and_company",  required: true%>
+			   	<input type="text" id="txt_review_town_id" name="txt_review_town_id"><br>
+			</div>
+
+		</div>
+
+		<div class="review_form">
+			<div class="name_lft">Location: *</div>
+			<div class="small-input2">
+			   <%= f.collection_select :location_id, @locations ,:id ,:title, {:include_blank=>"Select Location"},  required: true%>
+			   	<input type="text" id="txt_review_location_id" name="txt_review_location_id"><br>
+			</div>
+		</div>
+
+
+		<div class="review_form">
+				<div class="name_lft">Person Responsible: </div>
+				<div class="small-input">
+						<%= f.text_field :personal_responsible, "maxlength"=>"60", "min" => "1","max" => "60"%>
+				</div>
+		</div>
+
+		<div class="review_form">
+			<div class="name_lft">Nature of review: </div>
+			<div>
+			  <%= f.select :nature_of_review, @nature_of_reviews.map { |nr| [nr.title]}, :include_blank=>true%>
+			</div>
+		</div>
+
+		<div class="review_form">
+			<div class="name_lft">Message </div>
+			<div>
+			  <%= f.text_area :message, "maxlength"=>"1200", "min" => "1","max" => "1200",:rows=>"5"%>
+			</div>
+		</div>
+
+		<div class="review_form">
+			<div class="name_lft">Account Details/reference no.</div>
+			<div class="small-input">
+			    <%= f.text_field :account_details ,"maxlength"=>"60", "min" => "1","max" => "60"%>
+			</div>
+		</div>
+
+		<div class="review_form">
+			<div class="form_lft">
+				<div class="name_lft">Type the following numbers</div>
+				<div>
+					<%#= show_simple_captcha(:object=>"review") %>
+				</div>
+			</div>
+		</div>
+
+		<div class="review_form">
+			<div class="">
+					<div class="name_lft">Date: *</div>
+					<div class="dob">
+						<%= f.date_select :date, required: true %>
+					</div>
+			</div>
+		</div>
+
+		<div class="review_form">
+			<div class="">
+				<div class="name_lft">Time:</div>
+				<div class="dob">
+				  <%= f.time_select :datetime%>
+				</div>
+			</div>
+		</div>
+
+		<div class="review_form">
+				<div class="name_lft">&nbsp;<%= f.hidden_field :review_type ,:value=>(params[:review_type] ? params[:review_type] : 'compliment' ) %>
+				</div>
+				<div>
+				<span class="butn btn-file-upload">Upload File<%= f.file_field :file %>
+				</div>
+				<%= f.submit "Xema Now"%>
+		</div>
+
+<%end%>
+</div>

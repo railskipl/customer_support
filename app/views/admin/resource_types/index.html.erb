@@ -1,0 +1,20 @@
+<table id="resource_types">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @resource_types.each do |resource_type| %>
+      <tr>
+        <td><%= resource_type.name%></td>
+        <td><%= link_to 'Edit', edit_admin_resource_type_path(resource_type) if can? :edit, ResourceType%>
+        <%= link_to 'Delete', admin_resource_type_path(resource_type) , method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, ResourceType%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<%=link_to "New Resource Type",new_admin_resource_type_path, class: "btn btn-primary" if can? :create, Resource%>

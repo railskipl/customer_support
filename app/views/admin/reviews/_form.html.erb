@@ -1,0 +1,74 @@
+<%= form_for([:admin,@review]) do |f| %>
+  <% if @review.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
+
+      <ul>
+      <% @review.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <strong> Ticket Number: </strong><%=@review.ticket_number%>
+  </div><br/>
+  <div class="field">
+     <strong>Review Type: </strong><%= @review.review_type %>
+  </div><br/>
+  <div class="field">
+		<strong>Title:</strong><%= @review.title %>
+  </div><br/>
+  <div class="field">
+		<strong>Review:</strong>
+    <p><%= @review.message %></p>
+  </div><br/>
+  <div class="field">
+  <strong>Industry:</strong>
+  <%= @review.industry.title %>
+</div><br/>
+
+<div class="field">
+  <strong>Company:</strong>
+  <%= @review.company.title %>
+</div><br/>
+
+<div class="field">
+  <strong>Town:</strong>
+  <%= @review.town.title %>
+</div><br/>
+
+<div class="field">
+  <strong>Location:</strong>
+  <%= @review.location.title %>
+</div><br/>
+
+
+<div class="field">
+  <strong>Personal Responsible:</strong>
+  <%= @review.personal_responsible %>
+</div><br/>
+
+<div class="field">
+  <strong>Nature of Review:</strong>
+  <%= @review.nature_of_review %>
+</div><br/>
+  <div>
+		<strong>Edit Review:</strong>
+		<input type="checkbox" name="review[is_modified]" id="review_is_modified" value="true" style="opacity:1;" checked="<%@review.is_modified ? 'checked' : '' %>">
+  </div>
+  <div id="agent_modified_review" class="field">
+		<strong>Modified Review:</strong><br/>
+    <%= f.text_area :modified_review , :value=>(@review.is_modified ? @review.modified_review : @review.message) ,:class=>"ckeditor"%>
+  </div>
+	<br/>
+  <div class="actions">
+    <%unless @review.ispublished || @review.archive%>
+      <%= f.submit 'Publish', class: "btn btn-primary"%>
+      <%= f.submit 'Archive', class: "btn"%>
+   <%else%>
+       <%= f.submit 'Update', class: "btn btn-primary"%>
+   <%end%>
+
+  </div>
+<% end %>

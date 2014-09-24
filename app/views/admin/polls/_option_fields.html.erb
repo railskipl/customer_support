@@ -1,0 +1,6 @@
+<p>
+<%= f.label :answer , "Choice" %>
+<%= f.text_field :answer %><br/>
+<%= f.hidden_field :poll_id,value: @poll.id%>
+<%#= f.link_to_remove "Remove this Answer" %>
+</p>

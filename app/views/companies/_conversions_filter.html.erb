@@ -1,0 +1,39 @@
+<div class="filter_bg">
+		<div class="filter_con">Filter</div>
+		<% @review = Review.new %>
+		<%= form_for(@review, :as => @review, :url => conversions_path(@review)) do |f|%>
+		<div class="industry_con">
+			Industry:<br>
+			  <%= f.collection_select :industry_id, Industry.order(:title),:id,:title, {:include_blank=>"Select Industry"},:rel => "/industry/companies_by_industry", "id"=>"review_industry_id"%>
+		</div>
+
+		<div class="industry_con">
+			Company:<br>
+	    <%= f.collection_select :company_id, @companies, :id, :title,  {:include_blank=>"Select Company"}, :rel => "/company/towns_by_company","id"=>"review_company_id"%>
+		</div>
+
+		<div class="industry_con">
+			Town:<br>
+		   <%= f.collection_select :town_id, @towns, :id, :title, {:include_blank=>"Select Town"}, :rel => "/town/locations_by_town_and_company", "id"=>"review_town_id"%>
+		</div>
+
+		<div class="industry_con">
+			Date:<br>
+			<div class="industry_con_in">
+				<div class="fom_con_new">From:</div>
+				<div class="fom_con2_new">
+				  <%= f.text_field :from_date, :id => "datepicker1",  :style => "width:100px;" %>
+			</div>
+			<div class="industry_con_in">
+				<div class="fom_con_new">To:</div>
+				<div class="fom_con2_new">
+					<%= f.text_field :to_date, :id => "datepicker2", :style => "width:100px;" %>
+				</div>
+			</div>
+		</div>
+
+		<div class="industry_con">
+		<%= f.submit "Search", :class => "serch_con"%>
+  <% end %>
+		</div>
+	</div>

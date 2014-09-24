@@ -1,0 +1,24 @@
+<div class="sectionLeft">
+  <ul class="sectionLeftTop">
+    <%if user_signed_in?%>
+		  <li><h3><a href="#" class="ribbon">My Account</a></h3></li>
+		  <li>
+		    <%=link_to "My Profile", profile_path, :class=>(@sub_action == "show_profile" ? "active":'') %>
+		  </li>
+		  <li>
+		    <%=link_to "Update Profile", edit_profile_path, :class=>(@sub_action == "update_profile" ? "active":'') %>
+		  </li>
+		  <li><%=link_to "My Reviews", reviews_path, :class=>(@sub_action == "my_reviews" ? "active":'') %></li>
+		  <li><%=link_to "Add Reviews", root_path , :class=>(@sub_action == "review" ? "active":'') %></li>
+	<%else%>
+		<li><h3><a href="#" class="ribbon">View Report</a></h3></li>
+		<li><%= link_to 'Review', user_review_path, :class=>(@active_tab == "review" ? "active":'') %></li>
+		<li><%= link_to 'Polls', polls_bloopers_path, :class=>(@sub_action == "polls-bloopers" ? "active":'') %></li>
+		<li><%= link_to 'Registered Companies', registered_path, :class=>(@active_tab == "registered" ? "active":'') %></li>
+		<li><%= link_to 'Unregistered Companies', unregistered_path , :class=>(@active_tab == "unregistered" ? "active":'') %></li>
+<%end%>
+  </ul>
+  <div class="sectionLeftBot">
+		Some stats e.g worst performing companies and best performing or quotes (flash or updated every week)
+  </div>
+</div>

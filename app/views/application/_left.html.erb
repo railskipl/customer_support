@@ -1,0 +1,12 @@
+<div class="sectionLeft">
+  <ul class="sectionLeftTop">
+    <li>
+      <h3><a href="#" class="ribbon">View Reports</a></h3>
+    </li>
+    <li><%= link_to 'Review', reviews_path  ,:class=>(@sub_action == "review" ? "active":'') %></li>
+    <li><%= link_to 'Polls', polls_bloopers_path  ,:class=>(@sub_action == "polls-bloopers" ? "active":'') %></li>
+	  <li><%= link_to 'Registered Companies', registered_path  ,:class=>(@sub_action == "registered" ? "active":'') %></li>
+	  <li><%= link_to 'Unregistered Companies', unregistered_path ,:class=>(@sub_action == "unregistered" ? "active":'')  %></li>
+  </ul>
+  <div class="sectionLeftBot"> Some stats e.g worst performing companies and best performing or quotes (flash or updated every week) </div>
+</div>

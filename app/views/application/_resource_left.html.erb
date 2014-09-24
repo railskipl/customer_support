@@ -1,0 +1,12 @@
+<div class="sectionLeft">
+  <ul class="sectionLeftTop">
+    <li>
+      <h3><a href="#" class="ribbon">Resources</a></h3>
+    </li>
+		<% @resource_types.each do |resource_type| %>
+	    <li>
+  		  <%= link_to resource_type.name.titlecase, resource_path(resource_type.slug) ,:class=>(@resource_type.slug == resource_type.slug ? "active":'')if resource_type.resources.count > 0%>
+  		</li>
+    <%end%>
+  </ul>
+</div>

@@ -1,0 +1,24 @@
+<h1>Towns</h1>
+
+<table id="towns" >
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @towns.each do |town| %>
+      <tr>
+        <td><%= town.title %></td>
+        <td><%= link_to 'Edit', edit_admin_town_path(town) if can? :edit, Town%>
+        <%= link_to 'Destroy', [:admin,town], method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, Town%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Town', new_admin_town_path, class: "btn btn-primary" if can? :create, Town%>

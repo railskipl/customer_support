@@ -1,0 +1,24 @@
+<span class="span3">
+  <%=link_to (image_tag @top_advertise.image.url ,:class=>"sectionRightAd") , @top_advertise.link if @top_advertise%>
+  <%=link_to (image_tag @bottom_advertise.image.url ,:class=>"sectionRightAd"), @bottom_advertise.link  if @bottom_advertise%>
+  <%if @poll.present?%>
+  <div class="sectionRightPoll">
+    <p>Poll</p>
+		   <%= form_for(@result) do |f| %>
+		    <span class="title"> <%= f.label @poll.title %></span>
+				<ul>
+	        <% @poll.options.each do |option| %>
+			      <li>
+				      <%= f.radio_button :option_id, option.id %>
+				      <%= option.answer %>
+				      <%= f.hidden_field :poll_id,value: option.poll_id%>
+			      </li>
+			    <% end %>
+				</ul>
+				<br/>
+		    <%= f.submit "Vote" ,:class=>"butn"%>
+		    <br/>
+		   <% end %>
+  </div>
+	<% end %>
+</span>

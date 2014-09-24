@@ -1,0 +1,24 @@
+<h1>Polls</h1>
+
+<table id="polls" >
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @polls.each do |poll| %>
+      <tr>
+        <td><%= poll.title %></td>
+        <td><%= link_to 'Edit', edit_admin_poll_path(poll) if can? :edit, Poll%>
+        <%= link_to 'Destroy', [:admin,poll], method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, Poll%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Polls', new_admin_poll_path, class: "btn btn-primary" if can? :create, Poll%>

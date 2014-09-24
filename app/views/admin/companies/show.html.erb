@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @company.title %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @company.user_id %>
+</p>
+
+<p>
+  <strong>Industry:</strong>
+  <%= @company.industry_id %>
+</p>
+<p>
+  <strong>Registration Status:</strong>
+  <% if @company.is_registered %>
+    Registered
+  <% else %>
+    Not Registered
+  <% end %>
+</p>

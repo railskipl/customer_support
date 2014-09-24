@@ -1,0 +1,19 @@
+<span class="span1">
+</span>
+<span class="span10 faqs">
+	<h3>List of FAQs</h3>
+		<ul id="expList">
+			<% @faqs.each do |faq| %>
+		    <li>
+			        <%=faq.displayable_question%>
+		        <ul>
+		            <li>
+		                <span><%=faq.answer%></span>
+		            </li>
+		        </ul>
+		    </li>
+		  <%end%>
+  </ul>
+
+</span>
+<%= javascript_include_tag "faqs.js" %>

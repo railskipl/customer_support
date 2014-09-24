@@ -1,0 +1,86 @@
+<%content_for :left do%>
+	<span class="span3">
+	</span>
+<%end%>
+
+<span class="span6">
+	<%= form_for(@contact_u) do |f| %>
+		<% if @contact_u.errors.any? %>
+		  <div id="error_explanation">
+		    <h2><%= pluralize(@contact_u.errors.count, "error") %> prohibited this contact from being send:</h2>
+
+		    <ul>
+		    <% @contact_u.errors.full_messages.each do |msg| %>
+		      <li><%= msg %></li>
+		    <% end %>
+		    </ul>
+		  </div>
+		<% end %>
+
+		<div class="fom_con">
+		  <div class="form_lft">
+		    <div class="name_lft">First Name: </div>
+		    <div>
+				<%= f.text_field :first_name, "maxlength"=>"35", "min" => "1","max" => "35" %>
+		    </div>
+		  </div>
+		  <div class="form_lft">
+		    <div class="name_lft">Last Name: </div>
+		    <div>
+		      <%= f.text_field :last_name, "maxlength"=>"35", "min" => "1","max" => "35"%>
+		    </div>
+		  </div>
+		</div>
+		<div class="fom_con">
+		  <div class="form_lft">
+		    <div class="name_lft">Email: *</div>
+		    <div>
+				<%= f.email_field :email, required: true, "maxlength"=>"35", "min" => "1","max" => "35" %>
+		    </div>
+		  </div>
+		  <div class="form_lft">
+		    <div class="name_lft">Telephone: </div>
+		    <div>
+		      <%= f.text_field :telephone, "maxlength"=>"35", "min" => "1","max" => "35"%>
+		    </div>
+		  </div>
+		</div>
+    <div class="contact_form">
+	    <div class="name_lft">Message Type: </div>
+			<div><%= f.select :message_type, [ ["How to improve our site", "How to improve our site"], [" Technical assistance", "Technical assistance"],["User registration" , "User registration"],["General enquiries", "General enquiries"],["Give us Feedback", "Give us Feedback"],["Other", "Other"] ], {},:onchange => 'CheckOther();'%>
+				<input type="text" id="other_type" name="other_type"></div>
+
+		</div>
+		<div class="fom_con">
+		  <div class="form_lft">
+		    <div class="name_lft">Message : </div>
+		  </div>
+	    <div class="contact-textarea">
+					<%= f.text_area :message, :rows=>"5",:class =>"wdh"%>
+			</div>
+		</div>
+		<div class="fom_con">
+				<div class="name_lft">Are you human?:</div> <%= show_simple_captcha(:object=>"contact_u") %>
+		</div>
+		<div class="contact_form pull-right">
+				<%=f.submit "xema"%>
+		</div>
+	<% end %>
+</div>
+
+<script type="text/javascript">
+$( document ).ready(function() {
+	$("#other_type").hide();
+});
+
+function CheckOther()
+{
+  if (document.getElementById("contact_u_message_type").value == "Other"){
+        $("#other_type").show();
+    }     
+    else{
+       $("#other_type").hide();
+    }     
+}
+
+</script>

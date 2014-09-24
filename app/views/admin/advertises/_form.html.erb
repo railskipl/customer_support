@@ -1,0 +1,42 @@
+<%= form_for [:admin,@advertise] ,:multipart=>true do |f| %>
+  <% if @advertise.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@advertise.errors.count, "error") %> prohibited this advertise from being saved:</h2>
+		<ul>
+      <% @advertise.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+    <%= image_tag @advertise.image.url(:thumb) if @advertise.image.present?%>
+  </div>
+	
+  <div class="field">
+    <%= f.label :link%>
+    <%= f.url_field :link %>
+  </div>
+
+  <div class="field">
+    <%= f.label :start_date %>
+    <%= f.date_select :start_date ,required: true%>
+  </div>
+	
+  <div class="field">
+    <%= f.label :end_date %>
+    <%= f.date_select :end_date ,required: true%>
+  </div>
+	
+  <div class="field">
+    <%= f.label :position %>
+    <%= f.select :position , [["Top",0],["Bottom",1]] %>
+  </div>
+	
+  <div class="actions">
+    <%= f.submit class: "btn btn-primary"%>
+  </div>
+<% end %>

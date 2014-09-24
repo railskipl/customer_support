@@ -1,0 +1,27 @@
+<h1>Locations</h1>
+
+<table id="locations" >
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Town</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @locations.each do |location| %>
+      <tr>
+        <td><%= location.title %></td>
+        <td><%= location.town.title %></td>
+
+        <td><%= link_to 'Edit', edit_admin_location_path(location)  if can? :edit, Location%>
+        <%= link_to 'Destroy', [:admin,location], method: :delete, data: { confirm: 'Are you sure?' }  if can? :destroy, Location%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Location', new_admin_location_path, class: "btn btn-primary"  if can? :create, Location%>

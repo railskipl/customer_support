@@ -1,0 +1,25 @@
+<table id="faqs">
+  <thead>
+    <tr>
+      <th>Question</th>
+      <th>Answer</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @faqs.each do |faq| %>
+      <tr>
+        <td><%= faq.question %></td>
+        <td><%= faq.answer %></td>
+        <td><%= link_to 'Show', admin_faq_url(faq) %>
+        		<%= link_to 'Edit', edit_admin_faq_path(faq)  if can? :edit, Faq%>
+        <%= link_to 'Destroy', admin_faq_url(faq), method: :delete, data: { confirm: 'Are you sure?' }  if can? :destroy, Faq%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New FAQ', new_admin_faq_path, class: "btn btn-primary"  if can? :create, Faq%>

@@ -1,0 +1,33 @@
+<div class="container mrg">
+  <div class="row">
+  	<span class="span3 lg">
+			<span class="span3 lg">
+				<%if current_user && (current_user.role == 'admin' || current_user.role == 'agent')%>
+					<%= link_to image_tag('logo.png'),root_path%>
+				<% else %>
+					<%= link_to image_tag('logo.png'),reviews_path%>
+				<%end%>
+		  </span>
+    </span>
+
+  	<span class="span9">
+		  <div class="headerRightTop">
+        <form action="/search" method="get">
+  		    <input type="text" class="searchBox" placeholder="search" name="search" id="search">
+  		  </form>
+				  <ul class="mgt">
+		 				<li class="join_con"> Join US on</li>
+				    <li> <%= link_to image_tag('fbicon.png'),root_path%> </li>
+				  	<li> <%= link_to image_tag('g_icon.gif'),root_path%> </li>
+				    <li> <%= link_to image_tag('twicon.png'),root_path%> </li>
+				  </ul>
+					<% if user_signed_in? %>
+						<p class="logout"><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'signin-link'  %></p>
+						<p>Hello <%= current_user.preferred_alias %></p>
+					<% else %>
+						<p class="logout"><%= link_to "Login", new_user_session_path %></p>
+					<% end %>
+		  </div>
+	  </span>
+  </div>
+</div>

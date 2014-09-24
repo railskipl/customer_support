@@ -1,0 +1,19 @@
+<%content_for :left do%>
+	<span class="span3">
+		 <%=render :partial=> "application/resource_left"%>
+	</span>
+<%end%>
+
+<!--Center page-->
+<span class="span7">
+<div class="sectionMidA">
+  <div class="sectionMidTop">
+		<% @resources.each do |resource| %>
+			<div class="sectionResource">
+				<h3><%=resource.title.titlecase%></h3>
+				<%=raw(resource.description)%>
+			</div>
+		<%end%>
+  </div>
+</div>
+</span>

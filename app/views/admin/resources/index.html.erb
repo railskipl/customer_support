@@ -1,0 +1,24 @@
+<table id="resources">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Resource Type</th>
+
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @resources.each do |resource| %>
+      <tr>
+        <td><%= resource.title%></td>
+        <td><%= raw(resource.description) %></td>
+        <td><%= resource.resource_type.try(:name) %></td>
+        <td><%= link_to 'Edit', edit_admin_resource_path(resource) if can? :edit, Resource%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<%=link_to "New Resource",new_admin_resource_path, class: "btn btn-primary" if can? :create, Resource%>

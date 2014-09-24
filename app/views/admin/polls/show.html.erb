@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @poll.title %>
+</p>
+<strong>Options</strong>
+<ul>
+  <%@poll.options.each do |option|%>
+    <li><%=option.answer%></li>
+  <%end%>
+</ul>
+
+<strong>Status:</strong> <%=@poll.published ? "Published" : "Not Published"%>
+<br/><br/>
+<%= link_to 'Edit', edit_admin_poll_path(@poll), class: "btn btn-primary" if can? :edit, Poll %>
+<%= link_to 'Destroy', [:admin, @poll], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary" if can? :destroy, Poll%>
+

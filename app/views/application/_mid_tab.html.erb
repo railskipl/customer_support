@@ -1,0 +1,10 @@
+<div class="tb">
+	<ul>
+		<li class="<%=(@active_tab == 'review') ? 'active' : ''%>"> <%= link_to 'Reviews', user_review_path  %></li>
+		<li class="<%=(@active_tab == 'conversions') ? 'active' : ''%>"> <%= link_to 'Conversions', conversions_path  %></li>
+	  <li class="<%=(@active_tab == 'registered') ? 'active' : ''%>">
+	   <%= link_to 'Registered<br>Companies'.html_safe, registered_path  %></li>
+	  <li class="<%=(@active_tab == 'unregistered') ? 'active' : ''%>"><%= link_to 'Companies not<br/>Registered'.html_safe, unregistered_path %></li>
+		<li class="<%=(@active_tab == 'polls-bloopers') ? 'active' : ''%>"><%= link_to 'Polls&amp;Bloopers'.html_safe, polls_bloopers_path %></li>
+	</ul>
+</div>

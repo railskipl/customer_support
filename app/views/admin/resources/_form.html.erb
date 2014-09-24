@@ -1,0 +1,31 @@
+<%= form_for([:admin,@resource]) do |f| %>
+  <% if @resource.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@resource.errors.count, "error") %> prohibited this resource from being saved:</h2>
+      <ul>
+      <% @resource.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title ,required: true%>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_area :description, :class => 'ckeditor'   %>
+  </div>
+<br/>
+  <div class="field">
+    <%= f.label :resource_type_id, "Resource Type" %>
+    <%= f.select :resource_type_id , ResourceType.all.map { |type| [type.name,type.id] }%>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit class: "btn btn-primary"%><br>
+  </div>
+ <%end%>

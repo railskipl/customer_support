@@ -1,0 +1,8 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @industry.title %>
+</p>
+
+<%= link_to 'Edit', edit_admin_industry_path(@industry)  if can? :edit, Industry%>

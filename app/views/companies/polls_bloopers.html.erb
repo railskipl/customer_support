@@ -1,0 +1,22 @@
+<%content_for :left do%>
+	<span class="span3">
+		 <%=render :partial=> "application/my_account_left"%>
+	</span>
+<%end%>
+<span class="span6">
+    <div class="sectionMid">
+    	<%=render :partial=> "application/mid_tab"%>
+      <div class="date_outer">
+          <div class="scroll-pane" style="margin-left:2px;">
+          	<%@polls.each do |poll|%>
+							<span class="span1 box"><%=link_to_modal poll.title , poll_path(poll), :remote => true%></span>
+						<%end%>
+					</div>
+      </div>
+    </div>
+</span>
+
+<%content_for :right do%>
+	<span class="span3">
+	</span>
+<%end%>

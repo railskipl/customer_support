@@ -1,0 +1,55 @@
+<div class="span3">&nbsp;</div>
+<div id="container" class="span6" style="width:500px;height:400px;"></div>
+<script>
+$(function () {
+        $('#container').highcharts({
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: '<%=@poll.title%>'
+            },
+            xAxis: {
+                type: 'category',
+                labels: {
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif'
+                    }
+                }
+            },
+            yAxis: {
+                allowDecimals:false,
+                min: 0,
+                title: {
+                    text: 'Polls'
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            series: [{
+                name: 'Polls',
+                data: [
+						   <%@poll.options.each do |option|%>
+						     ['<%=option.answer%>',<%= option.results.count %>]
+                 <%if @poll.options.last != option%>,<%end%>
+                <%end%>],
+                dataLabels: {
+                    enabled: true,
+                    rotation: -90,
+                    color: '#FFFFFF',
+                    align: 'right',
+                    x: 4,
+                    y: 10,
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif',
+                        textShadow: '0 0 3px black'
+                    }
+                }
+            }]
+        });
+    });
+    
+</script>

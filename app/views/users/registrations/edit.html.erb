@@ -1,0 +1,262 @@
+<%content_for :left do%>
+	<span class="span2">
+	</span>
+<%end%>
+
+<%= form_for(@user) do |f|%>
+		<span class="span6">
+			<div class="registerSectionForm">
+				<% if @user.present? && @user.errors.any? %>
+					<div class="fom_con" style="color:red;">
+						<h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+						<ul>
+						<% @user.errors.full_messages.each do |msg| %>
+							<li><%= msg %></li>
+						<% end %>
+						</ul>
+					</div>
+				<% end %>
+				<div class="fom_con">
+				  <div class="form_lft">
+				    <div class="name_lft">First Name: *</div>
+				    <div>
+						<%= f.text_field :first_name, required: true, "maxlength"=>"35", "min" => "1","max" => "35" %>
+				    </div>
+				  </div>
+				  <div class="form_lft">
+				    <div class="name_lft">Last Name: *</div>
+				    <div>
+				      <%= f.text_field :last_name, required: true, "maxlength"=>"35", "min" => "1","max" => "35"%>
+				    </div>
+				  </div>
+				</div>
+				<div class="fom_con">
+				  <div class="form_lft">
+				    <div class="name_lft">Preferred Alias: *</div>
+				    <div>
+				      <%= f.text_field :preferred_alias, required: true, "maxlength"=>"20", "min" => "1","max" => "20","id" =>"user_alias"%>
+				    </div>
+				  </div>
+				  <div class="form_lft">
+				    <div style="color:red;" id="alias_name_error"> </div>
+				  </div>
+
+				</div>
+				<div class="fom_con">
+				  <div class="form_lft">
+				    <div class="name_lft">Gender: *</div>
+				    <div>
+							<%= f.select :gender, [["Male", 1], ["Female", 2]] %>
+						</div>
+				  </div>
+				  <div class="form_lft">
+				    <div class="name_lft"> Age: *</div>
+				    <div>
+							<%= f.text_field :age ,:disabled=>true,:id=>"user_age"%>
+				    </div>
+				  </div>
+				</div>
+				<div class="fom_con">
+				  <div class="dob">
+				    <div class="name_lft">DOB:*</div>
+				    <div>
+				      <%= f.date_select :dob, :start_year =>  (Time.now.year - 100),:end_year=>(Time.now.year - 18), order: [:month,:day, :year], prompt: { day: 'Select day', month: 'Select month', year: 'Select year'},required: true%>
+				    </div>
+				  </div>
+				</div>
+				<div class="fom_con">
+				  <div class="form_lft"> &nbsp; </div>
+				  <div class="form_lft">
+				    <div class="name_lft"> Email: *</div>
+				    <div>
+				      <%= f.email_field :email, required: true , "maxlength"=>"70", "min" => "1","max" => "70", "autocomplete" => "off",:id=>"user_email",:value=>(params[:email] ? params[:email] : '')%>
+				    </div>
+				  </div>
+				</div>
+				<div class="fom_con">
+				  <div class="form_lft">
+				    <div class="name_lft">Address Line 1:</div>
+				    <div>
+				      <%= f.text_field :address_line1, "maxlength"=>"254", "min" => "1","max" => "254" %>
+				    </div>
+				  </div>
+				  <div class="form_lft">
+				    <div class="name_lft"> Confirm Email: *</div>
+				    <div>
+				      <input type="email" id='email_confirmation', maxlength="50" min = "1" max = "50" autocomplete="off" required=true>
+				    </div>
+				  </div>
+				</div>
+
+				<div class="fom_con">
+				  <div class="form_lft">
+				    <div class="name_lft">Address Line 2:</div>
+				    <div>
+				      <%= f.text_field :address_line2, "maxlength"=>"254", "min" => "1","max" => "254" %>
+				    </div>
+				  </div>
+				  <div class="form_lft">
+				    <div class="name_lft"> Password: *</div>
+				    <div>
+				      <%= f.password_field :password, required: true , "maxlength"=>"8", "min" => "4","max" => "8",:id=>"password1"%>
+				    </div>
+				  </div>
+				</div>
+
+
+			<div class="fom_con">
+				  <div class="form_lft">
+				    <div class="name_lft">Town:</div>
+				    <div>
+	            <%= f.text_field :town, "maxlength"=>"50", "min" => "1","max" => "50"%>
+				    </div>
+				  </div>
+				  <div class="form_lft">
+				    <div class="name_lft">Confirm Password: *</div>
+				    <div>
+				      <%= f.password_field :password_confirmation, required: true , "maxlength"=>"8", "min" => "4","max" => "8",:id=>"password2"%>
+				    </div>
+				  </div>
+
+				</div>
+
+				<div class="fom_con">
+				  <div class="form_lft">
+				    <div class="name_lft">Code:</div>
+				    <div>
+				      <%= f.text_field :postal_code , "maxlength"=>"50", "min" => "1","max" => "50"%>
+				    </div>
+				  </div>
+				  <div class="form_lft">
+				    <div class="name_lft">Secret Question: *</div>
+				    <div>
+							<select name="user[secret_question]" required = true>
+									<option value="What was your childhood nickname?">
+									  What was your childhood nickname?
+									</option>
+									<option value="In what city or town was your first job?">
+									  In what city or town was your first job?
+									</option>
+									<option value="What is your mother's maiden name?">
+									  What is your mother's maiden name?
+									</option>
+								</select>
+				    </div>
+				  </div>
+
+				</div>
+				<div class="fom_con">
+				  <div class="form_lft">
+				    <div class="name_lft">Country: *</div>
+				    <div>
+					    <%=country_select("user", "country",{ "Kenya" => "Kenya"})%>
+				    </div>
+				  </div>
+				  <div class="form_lft">
+				    <div class="name_lft"> Answer: *</div>
+				    <div>
+				      <%= f.text_field :answer, required: true, "maxlength"=>"50", "min" => "1","max" => "50"%>
+				    </div>
+				  </div>
+				</div>
+				<div class="fom_con">
+				  <div class="form_lft">
+				    <div class="name_lft">I Live: *</div>
+				    <div>
+							<select name="user[lives_in]" id="user_i_live">
+							<option selected="">Select</option>
+							<optgroup label="Nairobi">
+								<option>Arboretum</option>
+								<option>Buruburu</option>
+								<option>CBD</option>
+								<option>Dagoretti</option>
+								<option>Donholm</option>
+								<option>Eastleigh</option>
+								<option>Embakasi</option>
+								<option>Garden Estate</option>
+								<option>Gigiri</option>
+								<option>Highridge</option>
+								<option>Hurlingham</option>
+								<option>Industrial Area</option>
+								<option>Jamhuri</option>
+								<option>JKIA</option>
+								<option>Kahawa</option>
+								<option>Karen</option>
+								<option>Kasarani</option>
+								<option>Kiambu Road</option>
+								<option>Kileleshwa</option>
+								<option>Kilimani</option>
+								<option>Kitengela</option>
+								<option>Komarock</option>
+								<option>Langata</option>
+								<option>Lavington</option>
+								<option>Loresho</option>
+								<option>Lower Kabete</option>
+								<option>Madaraka</option>
+								<option>Milimani</option>
+								<option>Mombasa Road</option>
+								<option>Museum Hill</option>
+								<option>Muthiaga</option>
+								<option>Nairobi West</option>
+								<option>New Mathaiga</option>
+								<option>Ngara</option>
+								<option>Ngong Road</option>
+								<option>Ngumo</option>
+								<option>Parklands</option>
+								<option>Ridgeways</option>
+								<option>Riruta Satelite</option>
+								<option>Riverside</option>
+								<option>Rongal</option>
+								<option>Rosslyn</option>
+								<option>Roysambu</option>
+								<option>Ruaka</option>
+								<option>Runda</option>
+								<option>South B</option>
+								<option>South C</option>
+								<option>Spring Valley</option>
+								<option>State House Crescent</option>
+								<option>Thigiri</option>
+								<option>Thika Road</option>
+								<option>Umoja</option>
+								<option>Upper Hill</option>
+								<option>Valley Road</option>
+								<option>Westlands</option>
+							</optgroup>
+
+							<optgroup label="Coast">
+								<option>Bamburi</option>
+								<option>CBD</option>
+								<option>Diani</option>
+								<option>Kilifi</option>
+								<option>Lamu</option>
+								<option>Malindi</option>
+								<option>Mombasa</option>
+								<option>Nyali</option>
+								<option>Voi</option>
+								<option>Watamu</option>
+							</optgroup>
+							<optgroup label="Kisumu">
+							</select>
+				    </div>
+				  </div>
+				</div>
+			</div>
+			</span> <span class="span3">
+			<div class="rgh">
+				<div class="image btn-file" id="avatar_image"> Upload<br>
+				  Image <%=f.file_field :avatar,:id=>'user_avatar' ,:onchange=>"readImage( this )"%>
+				</div>
+				<div class="rgh_in">Type the following Number: *</div>
+				<div class="rgh_in">
+				  <%= show_simple_captcha(:object=>"user") %>
+				</div>
+				<div class="rgh_in">
+			   <%=f.check_box :accept_t_and_c , required: true, value: true%>
+			    <label for="field_terms"> <%=link_to "I accept the term and conditions. *", "/terms-of-use" %></label></div>
+				<div class="rgh_in">
+				  <input type="submit" value="SAVE">
+				</div>
+			</div>
+		</span>
+<%end%>
+<%= javascript_include_tag "registrations.js" %>

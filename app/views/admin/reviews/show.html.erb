@@ -1,0 +1,70 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Ticket Number:</strong>
+  <%= @review.ticket_number %>
+</p>
+<p>
+  <strong>Review Type:</strong>
+  <%= @review.review_type %>
+</p>
+<p>
+  <strong>Title:</strong>
+  <%= @review.title %>
+</p>
+<p>
+  <strong>Review:</strong>
+  <%= @review.message.html_safe %>
+</p>
+
+<p>
+  <strong>Industry:</strong>
+  <%= @review.industry.title %>
+</p>
+
+<p>
+  <strong>Company:</strong>
+  <%= @review.company.title %>
+</p>
+
+<p>
+  <strong>Town:</strong>
+  <%= @review.town.title %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @review.location.title %>
+</p>
+
+<p>
+  <strong>Personal Responsible:</strong>
+  <%= @review.personal_responsible %>
+</p>
+
+<p>
+  <strong>Nature of Review:</strong>
+  <%= @review.nature_of_review %>
+</p>
+
+<%if @review.is_modified%>
+<p>
+  <strong>Modified review:</strong>
+  <%= raw(@review.modified_review) %>
+</p>
+<%end%>
+
+<p>
+  <strong>Date:</strong>
+  <%= @review.published_date.strftime("%d-%m-%Y")if @review.ispublished %>
+</p>
+
+<%unless @review.ispublished || @review.archive %>
+	<%= link_to 'Edit', edit_admin_review_path(@review), class: "btn btn-primary" if can? :edit, Review %>
+<%end%>
+
+<h3>Comments</h3>
+<div id="comments">
+  <%= render @review.comments %>
+</div>
+<%= render :file => 'admin/comments/new' %>

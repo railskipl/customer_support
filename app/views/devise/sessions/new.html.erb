@@ -1,0 +1,78 @@
+<%content_for :left do%>
+	 <span class="span1"></span>
+<%end%>
+
+<%content_for :right do%>
+	 <span class="span1"></span>
+<%end%>
+
+<span class="span6">
+	<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+  <%= hidden_field_tag :guest_token ,params[:guest_token] if params[:guest_token]%>
+  <div class="registerSectionForm">
+    <div class="fom_con">
+			<h3>Login</h3>
+    </div>
+
+    <div class="fom_con">
+      <div>
+        <div class="name_lft"><%= f.label "Email:*" %></div>
+        <div>
+        	<%= f.email_field :email, :autofocus => true ,:required => true%>
+      	</div>
+      </div>
+    </div>
+
+    <div class="fom_con">
+	    <div>
+        <div class="name_lft"><%= f.label "Password:*"%></div>
+        <div>
+					<%= f.password_field :password  ,:required => true%>
+        </div>
+      </div>
+    </div>
+
+		<% if !devise_mapping.rememberable? -%>
+		  <div class="fom_con">
+		    <div>
+		      <div class="name_lft"><%= f.check_box :remember_me %> </div>
+		      <div>
+						<%= f.label :remember_me %>
+					</div>
+				</div>
+		  </div>
+		<% end -%>
+
+    <div class="fom_con">
+		  <div class="login_form_lft">
+        <div class="name_lft rgh_in">
+					<%= link_to "Forgot your password?", new_password_path(resource_name) %>
+			    <%= f.submit "Sign in" %>
+		    </div>
+      </div>
+    </div>
+	</div>
+<% end %>
+</span>
+
+<span class="span4">
+	<form action="/users/sign_up" method="get">
+  <div class="registerSectionForm">
+    <div class="fom_con">
+			<h3>New to XemaXema</h3>
+    </div>
+    <%= hidden_field_tag :guest_token ,params[:guest_token] if params[:guest_token]%>
+    <div class="fom_con">
+      <div class="name_lft"><%= label_tag "Email:*" %></div>
+      <div>
+      	<%= email_field_tag :email, nil, required: true%>
+    	</div>
+    </div>
+    <div class="fom_con">
+      <div class="name_lft rgh_in" style="float:right;">
+	    	<%= submit_tag "Xema" %>
+	  	</div>
+    </div>
+	</div>
+</span>
+</form>

@@ -1,0 +1,108 @@
+<%content_for :left do%>
+	<span class="span3">
+		 <%=render :partial=> "application/my_account_left"%>
+	</span>
+<%end%>
+<span class="span7">
+  <p id="notice"><%#= notice %></p>
+  <%= form_for(@review) do |f|%>
+    <div style="background-color:#FBAF3F;margin-bottom:2px;padding:5px;height:20px;color:white;"><%=@review.user.preferred_alias%>'s <%=@review.review_type%></div>
+			<div style="background-color:#E1E1E1;padding:5px;margin-bottom:10px;">    
+				<div>
+					<div class="form_lft">
+						<div class="name_lft">Company: </div>
+						<div>
+							<%=@review.company.title%>
+						</div>
+					</div>
+					<div class="form_lft">
+						<div class="name_lft">Industry: </div>
+						<div>
+							<%=@review.industry.title%>
+						</div>
+					</div>
+				</div>
+				<div>
+					<div class="form_lft">
+						<div class="name_lft">Town: </div>
+						<div>
+				    <%=@review.town.title%>
+						</div>
+					</div>
+					<div class="form_lft">
+						<div class="name_lft">Location: </div>
+						<div>
+					    <%=@review.location.title%>
+						</div>
+					</div>
+				</div>
+				<div>
+					<div class="form_lft">
+						<div class="name_lft">Date/Time: </div>
+						<div>
+				     <%=@review.updated_at.strftime("%d %b %Y" "%H:%M")%>
+						</div>
+					</div>
+					<div class="form_lft">
+						<div class="name_lft">Person Responsible: </div>
+						<div>
+				    <%= @review.personal_responsible%>
+						</div>
+					</div>
+				</div>
+
+				<div>
+					<div class="form_lft">
+						<div class="name_lft">Nature of Review: </div>
+						<div>
+						<%= @review.nature_of_review %>
+						</div>
+					</div>
+				    
+					<div class="form_lft">
+						<div class="name_lft">Incident Date: </div>
+						<div>
+							<%= @review.date.strftime("%d %b %Y")%> <%=@review.datetime.strftime("%H:%M")%>
+						</div>
+				</div>
+
+				<div>
+				  <div class="name_lft">Title: </div>
+				  <div>
+				  <%= @review.title%>
+				  </div>
+				</div>
+				
+			</div>
+  	</div>
+    <div>
+      <%= raw (@review.is_modified ? @review.modified_review : @review.message) %>
+    </div>
+  <%end%>
+  
+  <h3>Comments</h3>
+  <div>
+    <%= render @review.comments.published %>
+  </div>
+  
+  <%= render :file => 'comments/new' %>
+  
+  <%if current_user && current_user == @review.user && @review.comments.supplier_comments.count > 0%>
+  	Want to change your review?<br/>
+			<%=form_for(@review) do |f| %>
+			<%if @review.review_type == 'complaint' %>
+			  <%=f.hidden_field :review_type , :value=>'compliment'%>		
+			  <div class="rgh_in">
+	    		 <%= f.submit 'I am Happy'%>
+	    	</div>
+		  <%else%>
+			  <%=f.hidden_field :review_type , :value=>'complaint'%>		
+			  <div class="rgh_in">
+	    		 <%= f.submit 'I am Sad'%>
+	    	</div>
+		  <%end%>
+    <%end%>
+  <%end%>
+  <br/>
+	
+</span>

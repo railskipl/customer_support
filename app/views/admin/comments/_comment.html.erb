@@ -1,0 +1,14 @@
+<%= div_for comment do %>
+  <div class="sectionResource">
+  <h4>
+     <%= comment.supplier_id ? comment.supplier.first_name : comment.name %> :
+  </h4>
+  Posted On: <%= comment.updated_at.strftime("%Y-%m-%d") %> <br/>
+  Message: <%= raw(comment.title) %>
+  <% if comment.ispublished == false%>
+    <%= form_for([:admin, @review, comment]) do |f| %>
+      <%= f.submit 'Publish', class: "btn btn-primary"%>
+    <% end %>
+  <%end%>
+  </div>
+  <% end %>

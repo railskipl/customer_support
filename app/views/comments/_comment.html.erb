@@ -1,0 +1,18 @@
+<%= div_for comment do %>
+		<div style="background-color:#FBAF3F;border:1px solid grey;margin-bottom:10px;padding:5px;height:20px;color:white;">
+				<span class="pull-left">
+				<%if comment.user_id  && ['agent', 'admin'].include?(comment.user.role) %>
+				 <strong>Supplier's Response:</strong> <%= comment.supplier.supplier_name%>
+				<%elsif comment.user_id && comment.user_id == @review.user_id %>
+				 <strong>Customer's Response:</strong> <%= comment.name%>
+				<%else%>
+				 <strong>Guest's Response:</strong> <%= comment.name%>
+				<%end%>
+				</span>
+				<span class="pull-right">
+					<strong>Time and Date:</strong>
+			  	<%= comment.updated_at.strftime("%H:%M | %d %h %y") %>
+			  </span>
+	 	</div>
+	  <p><%= raw(comment.title)%></p>
+<% end %>

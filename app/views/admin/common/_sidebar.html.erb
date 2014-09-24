@@ -1,0 +1,132 @@
+<div id="sidebar">
+  <div id="sidebar-shortcuts">
+    <div id="sidebar-shortcuts-large">
+      <button class="btn btn-small btn-success">
+        <i class="icon-signal"></i>
+      </button>
+
+      <button class="btn btn-small btn-info">
+        <i class="icon-pencil"></i>
+      </button>
+
+      <button class="btn btn-small btn-warning">
+        <i class="icon-group"></i>
+      </button>
+
+      <a href="#"><button class="btn btn-small btn-danger">
+        <i class="icon-cogs"></i>
+      </button></a>
+    </div>
+
+    <div id="sidebar-shortcuts-mini">
+      <span class="btn btn-success"></span>
+
+      <span class="btn btn-info"></span>
+
+      <span class="btn btn-warning"></span>
+
+      <span class="btn btn-danger"></span>
+    </div>
+  </div><!--#sidebar-shortcuts-->
+
+  <ul class="nav nav-list">
+    <li class="<%=(@active_tab == 'dashboard') ? 'active' : ''%>">
+				<%=link_to raw(action_button_helper('Dashboard')), admin_index_path%>
+    </li>
+
+		<% if can? :read, Page%>
+		  <li class="<%=(@active_tab == 'pages') ? 'active' : ''%>">
+					<%=link_to raw(action_button_helper('Pages','icon-edit')),admin_pages_path%>
+		  </li>
+		<%end%>
+
+		<% if can? :read, Resource%>
+		  <li class="<%=(@active_tab == 'resources') ? 'active' : ''%>">
+					<%=link_to raw(action_button_helper('Resources','icon-desktop')),admin_resources_path%>
+		  </li>
+		<%end%>
+
+		<%  if can? :read, ResourceType%>
+		  <li class="<%=(@active_tab == 'resource_types') ? 'active' : ''%>">
+					<%=link_to raw(action_button_helper('Resource Types')),admin_resource_types_path%>
+		  </li>
+		<%end%>
+
+		<%  if can? :read, Industry%>
+		  <li class="<%=(@active_tab == 'industries') ? 'active' : ''%>">
+					<%=link_to raw(action_button_helper('Industries','icon-cogs')), admin_industries_path%>
+		  </li>
+    <%end%>
+
+		<%  if can? :read, Company %>
+		  <li class="<%=(@active_tab == 'companies') ? 'active' : ''%>">
+					<%=link_to raw(action_button_helper('Companies','icon-cog')), admin_companies_path%>
+		  </li>
+		<%end%>
+
+		<%if can? :read, Town%>
+		  <li class="<%=(@active_tab == 'towns') ? 'active' : ''%>">
+					<%=link_to raw(action_button_helper('Towns','icon-globe')),admin_towns_path %>
+		  </li>
+		<%end%>
+
+		<% if can? :read, Location%>
+		  <li class="<%=(@active_tab == 'locations') ? 'active' : ''%>">
+					<%=link_to raw(action_button_helper('Locations','icon-cloud')), admin_locations_path%>
+		  </li>
+		<%end%>
+
+		<% if can? :read, Address %>
+		  <li class="<%=(@active_tab == 'addresses') ? 'active' : ''%>">
+					<%=link_to raw(action_button_helper('Addresses', 'icon-home')), admin_addresses_path%>
+		  </li>
+		<%end%>
+		<%if can? :read, NatureOfReview %>
+		  <li class="<%=(@active_tab == 'nature_of_reviews') ? 'active' : ''%>">
+					<%=link_to raw(action_button_helper('Nature of Reviews')), admin_nature_of_reviews_path%>
+		  </li>
+		<%end%>
+
+		<% if can? :read, Review%>
+		  <li class="<%=(@active_tab == 'reviews') ? 'active' : ''%>">
+					<%=link_to raw(action_button_helper('Review', 'icon-eye-open')),admin_reviews_path%>
+		  </li>
+		<%end%>
+
+		<% if can? :read, Faq%>
+	    <li class="<%=(@active_tab == 'faqs') ? 'active' : ''%>">
+					<%=link_to raw(action_button_helper('FAQs','icon-edit')),admin_faqs_path%>
+  	  </li>
+  	<%end%>
+
+	<% if can? :read, Poll%>
+	    <li class="<%=(@active_tab == 'polls') ? 'active' : ''%>">
+					<%=link_to raw(action_button_helper('Polls','icon-list-alt')),admin_polls_path%>
+  	  </li>
+  	<%end%>
+
+  	<% if current_user.is_admin?%>
+	  <li class="<%=(@active_tab == 'agents') ? 'active' : ''%>">
+		<%=link_to raw(action_button_helper('Agents','icon-list-alt')),admin_agents_path%>
+  	  </li>
+  	<%end%>
+
+  	 <% if can? :manage, Supplier%>
+	    <li class="<%=(@active_tab == 'suppliers') ? 'active' : ''%>">
+					<%=link_to raw(action_button_helper('Suppliers','icon-list-alt')),admin_suppliers_path%>
+  	  </li>
+  	<%end%>
+
+  	 <% if can? :manage, Advertise%>
+	    <li class="<%=(@active_tab == 'advertises') ? 'active' : ''%>">
+					<%=link_to raw(action_button_helper('Advertises','icon-list-alt')),admin_advertises_path%>
+  	  </li>
+  	<%end%>
+
+
+  </ul><!--/.nav-list-->
+
+  <div id="sidebar-collapse">
+    <i class="icon-double-angle-left"></i>
+  </div>
+</div>

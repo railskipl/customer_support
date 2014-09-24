@@ -1,0 +1,1 @@
+$("#supplier_city").html('<%= raw("<option>Select Location</option>" +  options_for_select(@locations.map {|l| [l.title, l.id]}).gsub(/\n/, '') + "<option>Other</option>" ) %>');

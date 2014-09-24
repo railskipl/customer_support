@@ -1,0 +1,19 @@
+.table .center {
+	text-align:left;
+}
+.table .center [class*="span"] {
+	margin-top:5px;
+	margin-bottom:5px;
+	padding-top:2px;
+}
+
+#room_gallery{margin-bottom:10px;}
+#room_gallery img{margin-left:10px;float:left;}
+#room_gallery input{margin-left:10px;float:left;}
+
+a.icon-prices:link {
+    background: url("/assets/admin/add_people.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    height: 22px;
+    line-height: 22px;
+    text-indent: 30px;
+}

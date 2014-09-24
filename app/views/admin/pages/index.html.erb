@@ -1,0 +1,22 @@
+<table id="pages">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Subtitle</th>
+      <th>Description</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pages.each do |page| %>
+      <tr>
+        <td><%= page.try(:title) %></td>
+        <td><%= page.try(:subtitle) %></td>
+        <td><%= raw(page.try(:description)) %></td>
+        <td><%= link_to 'Edit', edit_admin_page_path(page)  if can? :edit, Page%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>

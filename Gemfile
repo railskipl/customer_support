@@ -27,3 +27,5 @@ gem 'devise'
 gem 'paperclip'
 gem "ckeditor"
 gem 'friendly_id'
+gem 'execjs'
+gem 'therubyracer'

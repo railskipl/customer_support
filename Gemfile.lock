@@ -93,6 +93,7 @@ GEM
     jquery-ui-rails (4.2.0)
       railties (>= 3.2.16)
     json (1.8.1)
+    libv8 (3.16.14.7)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -128,6 +129,7 @@ GEM
     rake (10.2.2)
     rdoc (4.1.1)
       json (~> 1.4)
+    ref (1.0.5)
     rmagick (2.13.2)
     sass (3.2.18)
     sass-rails (4.0.2)
@@ -149,6 +151,9 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
+    therubyracer (0.12.1)
+      libv8 (~> 3.16.14.0)
+      ref
     thor (0.19.1)
     thread_safe (0.3.1)
       atomic (>= 1.1.7, < 2)
@@ -182,6 +187,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   country_select
   devise
+  execjs
   friendly_id
   highcharts-rails (~> 3.0.0)
   jbuilder (~> 1.2)
@@ -198,6 +204,7 @@ DEPENDENCIES
   sass-rails (~> 4.0.0)
   sdoc
   simple_captcha2
+  therubyracer
   turbolinks
   twitter-bootstrap-rails
   uglifier (>= 1.3.0)

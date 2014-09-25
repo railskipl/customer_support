@@ -54,16 +54,15 @@
 				  <div class="form_lft">
 				    <div class="name_lft"> Age: *</div>
 				    <div>
-							<%= text_field_tag :age ,nil ,:disabled=>true,:class=>"user_age"%>
-							<%=f.hidden_field :age, :class=>"user_age" %>
+				    	<%= f.select :age, [["18-25", "18-25"],["26-35", "26-35"],["36-45", "36-45"],["46-55", "46-55"],["55+", "55+"]] %>
 				    </div>
 				  </div>
 				</div>
 				<div class="fom_con">
 				  <div class="dob">
-				    <div class="name_lft">DOB:*</div>
+				    <div class="name_lft">DOB:</div>
 				    <div>
-				      <%= f.date_select :dob, :start_year =>  (Time.now.year - 100),:end_year=>(Time.now.year - 18), order: [:month,:day, :year], prompt: { day: 'Select day', month: 'Select month', year: 'Select year'},required: true%>
+				      <%= f.date_select :dob, :start_year =>  (Time.now.year - 100),:end_year=>(Time.now.year - 18), order: [:month,:day, :year], prompt: { day: 'Select day', month: 'Select month', year: 'Select year'}%>
 				    </div>
 				  </div>
 				</div>
@@ -255,7 +254,7 @@
 			     <%=f.check_box :accept_t_and_c , id: "field_terms", required: true, value: true%>
 				  <label for="field_terms"> <%=link_to "I accept the term and conditions. *", "/terms-of-use" ,:target => "new" %></label></div>
 				<div class="rgh_in">
-				  <input type="submit" value="SAVE">
+				  <input type="submit" value="SAVE" id="save">
 				</div>
 			</div>
 		</span>

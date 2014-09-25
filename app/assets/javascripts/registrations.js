@@ -8,13 +8,17 @@ $(function() {
 			}
 		});
 
+		$("#user_first_name").bind( "change", function() {convertfname("user_first_name");});
+		
+		$("#user_last_name").bind( "change", function() {convertfname("user_last_name");});
+		
 		$("#password1").bind( "change", function() {validatePassword();});
 
 		$("#password2").bind( "change", function() {validatePassword();});
 
 		$("#user_email").bind( "change", function() {validateEmail();});
 		$("#email_confirmation").bind( "change", function() {validateEmail();});
-		$(".dob select").bind( "change", function() {calculateAge();});
+		$("#save").bind( "click", function() {calculateAge();});
 		$("#user_alias").bind( "blur", function() {
 			checkAvailiblity();
 		});
@@ -77,7 +81,50 @@ function calculateAge(){
   var user_birth_year = $(".dob select").last().val();
   var currentYear = (new Date).getFullYear();
   var age  = currentYear - user_birth_year;
-  if (age>100)
-  	age = '';
-	$(".user_age").val(age);
+  var data = document.getElementById("user_age").options[document.getElementById("user_age").selectedIndex].value;
+   if (user_birth_year){
+   	  check_range(age,data)
+
+	//   if (data == "18-25"){
+	//   	if (age < 18 || age > 25)
+	//   		alert("Age range and date of birth does not match")
+	//   }
+	//   else if (data == "26-35") {
+	// 	if (age < 26 || age > 35)
+	//   		alert("Age range and date of birth does not match")
+	//   }
+	//   else if (data == "36-45") {
+	// 	if (age < 36 || age > 45)
+	//   		alert("Age range and date of birth does not match")
+	//   }
+	//   else if (data == "46-55") {
+	// 	if (age < 46 || age > 55)
+	//   		alert("Age range and date of birth does not match")
+	//   }
+	//   else if (data == "55+") {
+	// 	if (age < 55)
+	//   		alert("Age range and date of birth does not match")
+	//   }
+	 }
 }
+
+
+function check_range(age,data){
+	var a = (data.split('-'));
+	  if (age < a[0] || age > a[1])
+	  	alert("Age range and date of birth does not match")
+	  else if (data == "55+") {
+	  	if (age < 55)
+	   		alert("Age range and date of birth does not match")
+	  	}
+
+
+}
+
+function convertfname(id){
+   var str = document.getElementById(id).value;
+   var res = str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+   var id = "#" + id
+   $(id).val (res);
+}
+

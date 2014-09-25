@@ -27,8 +27,8 @@
 		<div class="review_form">
 			<div class="name_lft">Industry: *</div>
 			<div class="small-input2">
-			  <%= f.collection_select :industry_id, Industry.order(:title),:id,:title, {:include_blank=>"Select Industry"},:rel => "/industry/companies_by_industry",  required: true%>
-			  <input type="text" id="txt_review_industry_id" name="txt_review_industry_id"><br/>
+			  <%= f.collection_select :industry_id, Industry.order(:title) + [Industry.new(:title => "Other")], :id,:title,{:include_blank=>"Select Industry"},:rel => "/industry/companies_by_industry",  required: true, onchange: 'CheckOther();'%>
+			  <input type="text" id="other_type" name="other_type"><br/>
 			</div>
 
 		</div>
@@ -126,3 +126,22 @@
 
 <%end%>
 </div>
+
+
+
+<script type="text/javascript">
+$( document ).ready(function() {
+	$("#other_type").hide();
+});
+
+function CheckOther()
+{
+  if (document.getElementById("review_industry_id").value == ""){
+        $("#other_type").show();
+    }     
+    else{
+       $("#other_type").hide();
+    }     
+}
+
+</script>

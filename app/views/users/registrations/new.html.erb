@@ -71,7 +71,7 @@
 				  <div class="form_lft">
 				    <div class="name_lft"> Email: *</div>
 				    <div>
-				      <%= f.email_field :email, required: true , "maxlength"=>"70", "min" => "1","max" => "70", "autocomplete" => "off",:id=>"user_email",:value=>(params[:email] ? params[:email] : '')%>
+				      <%= f.email_field :email, required: true , "maxlength"=>"70", "min" => "1","max" => "70", "autocomplete" => "off",:id=>"user_email",:value=>(params[:email] ? params[:email] : @user.email )%>
 				    </div>
 				  </div>
 				</div>
@@ -85,7 +85,7 @@
 				  <div class="form_lft">
 				    <div class="name_lft"> Confirm Email: *</div>
 				    <div>
-				      <input type="email" id='email_confirmation', maxlength="50" min = "1" max = "50" autocomplete="off" required=true>
+				      <input type="email" id='email_confirmation', maxlength="50" min = "1" max = "50" autocomplete="off" value="<%= @user.email %>" required=true>
 				    </div>
 				  </div>
 				</div>

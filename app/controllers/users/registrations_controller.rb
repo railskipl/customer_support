@@ -3,8 +3,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   helper_method :resource, :resource_name, :devise_mapping
 
   def create
-    @user = User.new(user_params)
 
+    @user = User.new(user_params)
+     if params["other_type"].present?
+        @user.lives_in = params["other_type"]    
+     end
     if @user.save
       flash[:notice] = "You have signed up successfully. A confirmation email is sent to your e-mail.\n Please verify your email address."
       if params[:guest_token].present?
@@ -26,6 +29,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :salt, :encrypted_password, :first_name, :last_name, :preferred_alias, :gender, :age, :dob, :country, :pobox, :postal_code, :town, :lives_in, :secret_question, :answer, :accpect_t_and_c,:address_line1,:address_line2,:avatar)
+    params.require(:user).permit(:email, :password, :salt, :other_type,:encrypted_password, :first_name, :last_name, :preferred_alias, :gender, :age, :dob, :country, :pobox, :postal_code, :town, :lives_in, :secret_question, :answer, :accpect_t_and_c,:address_line1,:address_line2,:avatar)
   end
 end

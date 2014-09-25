@@ -8,7 +8,7 @@ class Review < ActiveRecord::Base
   validate :valid_date?
   validate :industry_id, :company_id, :town_id, :location_id ,presence: true
 
-  scope :published, -> { where(ispublished: true) }
+  scope :published, -> { where(ispublished: true).order(date: :desc) }
   scope :archived, -> { where(archive: true) }
   scope :unarchived, -> { where(archive: false) }
   scope :unpublished, -> { where(ispublished: false) }

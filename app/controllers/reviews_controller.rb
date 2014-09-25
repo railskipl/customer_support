@@ -55,6 +55,14 @@ class ReviewsController < ApplicationController
   end
 
 	def create
+    # y =  params["review"]["date(1i)"]
+    # m =  params["review"]["date(2i)"]
+    # d =  params["review"]["date(3i)"]
+    # date = Date.new y.to_i, m.to_i, d.to_i
+    # m = params["review"]["datetime(4i)"]
+    # s = params["review"]["datetime(5i)"]
+    # t = Time.new(y.to_i, m.to_i, d.to_i, m.to_i, s.to_i,0)
+    # raise t.inspect
     industry = params[:txt_review_industry_id].to_s
     company  = params[:txt_review_company_id].to_s
     town     = params[:txt_review_town_id].to_s

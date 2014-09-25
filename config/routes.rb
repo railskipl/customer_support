@@ -6,6 +6,8 @@ Jmd::Application.routes.draw do
   root 'welcome#index'
 
   resources :admin, :only=>[:index]
+
+  match 'searches' => 'admin#searches', via: [:get]
   resources :reviews do
 	  resources :comments
   end

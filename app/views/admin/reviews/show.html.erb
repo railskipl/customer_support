@@ -53,6 +53,12 @@
   <%= raw(@review.modified_review) %>
 </p>
 <%end%>
+<%if @review.archive%>
+  <p>
+    <strong>Reason for Archive:</strong>
+    <%= raw(@review.notes) %>
+  </p>
+<%end%>
 
 <p>
   <strong>Date:</strong>

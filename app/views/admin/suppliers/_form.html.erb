@@ -17,7 +17,7 @@
     <%= f.text_field :supplier_name ,required: true%>
   </div>
   <div class="field">
-    <%= f.label :supplier_vat_Number %>
+    <%= f.label :supplier_Pin_Number %>
     <%= f.text_field :supplier_vat_Number ,required: true%>
   </div>
   <div class="field">
@@ -57,7 +57,7 @@
   </div>
   <div class="field">
     <%= f.label :title %>
-    <%= f.text_field :title ,required: true%>
+    <%= f.select :title, [ ["Mr"], [" Ms"],["Mrs"] ],required: true%>
   </div>
   <div class="field">
     <%= f.label :first_name %>
@@ -86,7 +86,7 @@
   </div>
   <div class="field">
     <%= f.label :title2 %>
-    <%= f.text_field :title2 ,required: true%>
+    <%= f.select :title2, [ ["Mr"], [" Ms"],["Mrs"] ],required: true%>
   </div>
   <div class="field">
     <%= f.label :fname2 %>
@@ -115,7 +115,7 @@
   </div>
   <div class="field">
     <%= f.label :title3 %>
-    <%= f.text_field :title3 ,required: true%>
+    <%= f.select :title3, [ ["Mr"], [" Ms"],["Mrs"] ],required: true%>
   </div>
   <div class="field">
     <%= f.label :fname3 %>

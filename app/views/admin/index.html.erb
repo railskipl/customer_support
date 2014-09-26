@@ -80,11 +80,11 @@
 			  <td><%=review.try(:user).try(:full_name)%></td>
         <td>
         <%= link_to 'Edit', edit_admin_review_path(review), class: "btn btn-primary" if can? :edit, Review%>
-        <%= link_to 'Destroy', admin_review_path(review), class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, Review%>
+        <%#= link_to 'Destroy', admin_review_path(review), class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, Review%>
         </td>
 	    </tr>
 	  <% end %>
-	</tbody>
+	</tbody>	
 </table>
 
 
@@ -116,7 +116,7 @@
 			   <% unless review.ispublished || review.archive%>
   			      <%= link_to 'Edit', edit_admin_review_path(review), class: "btn btn-primary" if can? :edit, Review%>
  			   <%end%>
-        <%= link_to 'Destroy', admin_review_path(review), class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+        <%#= link_to 'Destroy', admin_review_path(review), class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
         </td>
       </tr>
 	  <% end %>
@@ -148,7 +148,7 @@
 				<td><%=review.title%></td>
 			  <td><%=review.try(:user).try(:full_name)%></td>
 			  <td><%#= link_to 'Edit', edit_admin_review_path(review) if can? :edit, Review%>
-                          <%= link_to 'Destroy', admin_review_path(review), class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+                          <%#= link_to 'Destroy', admin_review_path(review), class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
 			  <%= link_to 'Comment', admin_review_path(review), class: "btn btn-primary" if can? :edit, Review%> </td>
 	    </tr>
 	  <% end %>
@@ -180,7 +180,8 @@
         <td><%=review.title%></td>
         <td><%=review.try(:user).try(:full_name)%></td>
         <td>
-        <%= link_to 'Destroy', admin_review_path(review), class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
+        <%= link_to 'Show', admin_review_path(review) , class: "btn btn-primary" if can? :show, Review%>
+        <%#= link_to 'Destroy', admin_review_path(review), class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
       </tr>
     <% end %>
   </tbody>

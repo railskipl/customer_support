@@ -16,7 +16,7 @@ class ReviewsController < ApplicationController
     elsif params[:supplier_id]
       supplier = Supplier.find(params[:supplier_id])
       @reviews = supplier.reviews if supplier 
-    elsif params[:location_id]
+    elsif params[:location_id] 
       location = Location.find params[:location_id]
       @reviews = location.reviews if location 
     elsif params[:company_id]
@@ -45,12 +45,17 @@ class ReviewsController < ApplicationController
 
   def update
     @review = Review.find(params[:id])
-   
-    if @review.update_attributes(review_params)
-      flash[:notice] = "Your Review Successfully changed."
-	    redirect_to @review
+    if verify_recaptcha
+      if @review.update_attributes(review_params)
+        flash[:notice] = "Your Review Successfully changed."
+  	    redirect_to @review
+      else
+      	render  :edit
+      end
     else
-    	render  :edit
+      flash.now[:alert] = "There was an error with the recaptcha code below. Please re-enter the code."      
+      flash.delete :recaptcha_error
+      redirect_to @review
     end
   end
 
@@ -68,7 +73,7 @@ class ReviewsController < ApplicationController
       industry_db = Industry.find_or_create_by(:title => industry)
       @review.industry_id = industry_db.id
     end
-
+    
     if (company.present?)
       company_db = Company.find_or_create_by(:title => company, :industry_id => @review.industry_id)
       @review.company_id = company_db.id
@@ -86,20 +91,27 @@ class ReviewsController < ApplicationController
 
     Address.find_or_create_by(:town_id=>@review.town_id, :location_id=>@review.location_id, :company_id=>@review.company_id )
 
-	  if @review.save
-			if current_user
-			  ReviewMailer.user_mail(@review).deliver!
-			  ReviewMailer.admin_mail(@review).deliver!
-			  ReviewMailer.agent_mail(@review).deliver!
-		    flash[:notice] = "Your Review Successfully submitted."
-	  	  redirect_to reviews_url
-	  	else
-		    flash[:notice] = "You need to login to submit your reviews."
-				redirect_to new_user_session_url(:guest_token => @review.guest_token)
-			end
-	  else
-	    render :new
-	  end
+	  if verify_recaptcha
+      if @review.save
+        if current_user
+          ReviewMailer.user_mail(@review).deliver!
+          ReviewMailer.admin_mail(@review).deliver!
+          ReviewMailer.agent_mail(@review).deliver!
+          flash[:notice] = "Your Review Successfully submitted."
+          redirect_to reviews_url
+        else
+          flash[:notice] = "You need to login to submit your reviews."
+          redirect_to new_user_session_url(:guest_token => @review.guest_token)
+        end
+      else
+        render :new
+      end
+    else
+      flash.now[:alert] = "There was an error with the recaptcha code below. Please re-enter the code."      
+      flash.delete :recaptcha_error
+      render :new
+    end
+
   end
 
   def companies_by_industry

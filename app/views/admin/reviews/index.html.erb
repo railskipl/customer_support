@@ -26,7 +26,7 @@
           <%unless review.ispublished || review.archive %>
             <%= link_to 'Edit', edit_admin_review_path(review) , class: "btn btn-primary" if can? :edit, Review%>
           <%end%>
-          <%= link_to 'Destroy', admin_review_path(review), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+          <%#= link_to 'Destroy', admin_review_path(review), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
           <%= link_to 'Comment', admin_review_path(review), class: "btn" if can? :edit, Review%> 
 		    </td>
       </tr>

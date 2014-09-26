@@ -23,16 +23,19 @@
 						<div class="box_3_in"><%=review.try(:company).try(:title)%></div>
 						<div class="box_4_in"><%=link_to review.title, review_path(review)%></div>
 						<div class="box_5_in">
-              <%if review.comments.published.count > 0 and review.comments.published.last.user.present? and ['admin','agent'].include? review.comments.published.last.user.role %>
-  							<%=link_to image_tag("supplier-response.png", :size=>"25x25"), review_path(review)%>
-							<%else%>
+                        <%if review.comments.published.count > 0 and review.comments.published.last.user.present? and ['admin','agent'].include? review.comments.published.last.user.role %>
+  							<%=link_to image_tag("supplier-response.png", :size=>"25x25"), review_path(review)%> 
+						<%else%>
   							<%=link_to image_tag("comment.png"), review_path(review)%>
   						<%end%>
 							<%=review.comments.published.count%>
+							<%if review.comments.published.count > 0 and review.comments.published.last.user.present? and ['admin','agent'].include? review.comments.published.last.user.role %>&nbsp;
+  							    <p style="font-size: 11px;">Supplier's response</p>
+  						    <%end%>
 						</div>
 					</div>
 				<%end%>
-          </div>
+           </div>
         </div>
     </div>
 </span>

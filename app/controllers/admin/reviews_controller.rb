@@ -64,7 +64,7 @@ class Admin::ReviewsController < AdminController
   end
 
   def review_params
-    params.require(:review).permit(:ispublished, :archive, :title, :industry_id, :company_id, :date, :town_id,:datetime, :location_id, :personal_responsible, :nature_of_review,:message,:account_details,:ticket_number,:user_id, :token_number,:review_type,:file,:is_modified, :modified_review)
+    params.require(:review).permit(:ispublished, :archive, :title, :industry_id, :company_id, :date, :town_id,:datetime, :location_id, :personal_responsible, :nature_of_review,:message,:account_details,:ticket_number,:user_id, :token_number,:review_type,:file,:is_modified, :modified_review,:notes)
   end
 
   def default_tab

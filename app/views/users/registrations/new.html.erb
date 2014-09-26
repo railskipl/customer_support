@@ -249,7 +249,9 @@
 				<div class="image btn-file" id="avatar_image"> Upload<br>
 				  Photo <%=f.file_field :avatar,:id=>'user_avatar' ,:onchange=>"readImage( this )"%>
 				</div>
-		
+		        <div class="rgh_in">
+				  <%= recaptcha_tags %>
+				</div>
 				<div class="rgh_in">
 			     <%=f.check_box :accept_t_and_c , id: "field_terms", required: true, value: true%>
 				  <label for="field_terms"> <%=link_to "I accept the term and conditions. *", "/terms-of-use" ,:target => "new" %></label></div>

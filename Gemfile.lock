@@ -129,6 +129,7 @@ GEM
     rake (10.2.2)
     rdoc (4.1.1)
       json (~> 1.4)
+    recaptcha (0.3.6)
     ref (1.0.5)
     rmagick (2.13.2)
     sass (3.2.18)
@@ -140,8 +141,6 @@ GEM
     sdoc (0.4.0)
       json (~> 1.8)
       rdoc (~> 4.0, < 5.0)
-    simple_captcha2 (0.2.1)
-      rails (>= 3.1)
     sprockets (2.11.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -200,10 +199,10 @@ DEPENDENCIES
   paperclip
   pg
   rails (= 4.0.1)
+  recaptcha
   rmagick
   sass-rails (~> 4.0.0)
   sdoc
-  simple_captcha2
   therubyracer
   turbolinks
   twitter-bootstrap-rails

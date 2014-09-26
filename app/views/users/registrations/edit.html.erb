@@ -248,7 +248,7 @@
 				</div>
 				<div class="rgh_in">Type the following Number: *</div>
 				<div class="rgh_in">
-				  <%= show_simple_captcha(:object=>"user") %>
+				   <%= recaptcha_tags %>
 				</div>
 				<div class="rgh_in">
 			   <%=f.check_box :accept_t_and_c , required: true, value: true%>

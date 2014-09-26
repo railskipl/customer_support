@@ -28,7 +28,24 @@
     <%= f.label :email %>
     <%= f.email_field :email %>
   </div>
+
+  <div class="field"> Password: *</div>
+    <%= f.password_field :password, required: true , "min" => "4","max" => "8",:id=>"password1"%>
+  </div>
+
+  <div class="field">Confirm Password: *</div>
+    <%= f.password_field :password_confirmation, required: true , "min" => "4","max" => "8",:id=>"password2",:oninput=>"check(this)"%>
+  </div>
   <div class="actions">
     <%= f.submit class: "btn btn-primary"%>
   </div>
 <% end %>
+<script>
+function check(input) {
+  if (input.value != document.getElementById('password1').value) {
+    input.setCustomValidity('Password should match confirm password.');
+  } else {
+  input.setCustomValidity('');
+ }
+}
+</script>

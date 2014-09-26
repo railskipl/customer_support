@@ -6,6 +6,8 @@ Jmd::Application.routes.draw do
   root 'welcome#index'
 
   resources :admin, :only=>[:index]
+
+  match 'searches' => 'admin#searches', via: [:get]
   resources :reviews do
 	  resources :comments
   end
@@ -34,6 +36,7 @@ Jmd::Application.routes.draw do
   resources :polls ,:only => [:show]
 
   namespace :admin do
+    get "/searches/reviews" => "reviews#search_reviews", as: :search_reviews
     get "change_password" => "users#change_password", as: :change_password
     put "update_password" => "users#update_password", as: :update_password
   	resources :users

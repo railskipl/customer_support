@@ -8,7 +8,7 @@ class Review < ActiveRecord::Base
   validate :valid_date?
   validate :industry_id, :company_id, :town_id, :location_id ,presence: true
 
-  scope :published, -> { where(ispublished: true) }
+  scope :published, -> { where(ispublished: true).order(date: :desc) }
   scope :archived, -> { where(archive: true) }
   scope :unarchived, -> { where(archive: false) }
   scope :unpublished, -> { where(ispublished: false) }
@@ -28,7 +28,7 @@ class Review < ActiveRecord::Base
 	
   def self.search(search)
     search_condition = "%" + search + "%"
-    find(:all, :conditions => ['title LIKE ? OR message LIKE ? OR review_type LIKE ?', search_condition, search_condition,search_condition])
+    find(:all, :conditions => ['title LIKE ? OR message LIKE ? OR review_type LIKE ? OR ticket_number LIKE ?', search_condition, search_condition,search_condition,search_condition])
   end
 
   def valid_date?

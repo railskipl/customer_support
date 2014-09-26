@@ -60,6 +60,13 @@ class ReviewsController < ApplicationController
   end
 
 	def create
+    year =  params["review"]["date(1i)"]
+    month =  params["review"]["date(2i)"]
+    day =  params["review"]["date(3i)"]
+    hr = params["review"]["datetime(4i)"]
+    min = params["review"]["datetime(5i)"]
+    t = DateTime.new(year.to_i, month.to_i, day.to_i, hr.to_i, min.to_i,0)
+    
     industry = params[:txt_review_industry_id].to_s
     company  = params[:txt_review_company_id].to_s
     town     = params[:txt_review_town_id].to_s
@@ -68,50 +75,55 @@ class ReviewsController < ApplicationController
     @review ||= Review.new(review_params)
     current_user.present? ? @review.user_id = current_user.id : @review.guest_token = generate_token
 
+    if t > Time.now
+      flash[:notice] = "Please select past date"
+      render :new
+    else
+      if (industry.present?)
+        industry_db = Industry.find_or_create_by(:title => industry)
+        @review.industry_id = industry_db.id
+      end
 
-    if (industry.present?)
-      industry_db = Industry.find_or_create_by(:title => industry)
-      @review.industry_id = industry_db.id
-    end
-    
-    if (company.present?)
-      company_db = Company.find_or_create_by(:title => company, :industry_id => @review.industry_id)
-      @review.company_id = company_db.id
-    end
+      if (company.present?)
+        company_db = Company.find_or_create_by(:title => company, :industry_id => @review.industry_id)
+        @review.company_id = company_db.id
+      end
 
-    if (town.present?)
-      town_db = Town.find_or_create_by(:title=>town)
-      @review.town_id = town_db.id
-    end
+      if (town.present?)
+        town_db = Town.find_or_create_by(:title=>town)
+        @review.town_id = town_db.id
+      end
 
-    if (location.present?)
-      location_db = Location.find_or_create_by(:title=>location, :town_id=>@review.town_id)
-      @review.location_id = location_db.id
-    end
+      if (location.present?)
+        location_db = Location.find_or_create_by(:title=>location, :town_id=>@review.town_id)
+        @review.location_id = location_db.id
+      end
 
-    Address.find_or_create_by(:town_id=>@review.town_id, :location_id=>@review.location_id, :company_id=>@review.company_id )
-
-	  if verify_recaptcha
-      if @review.save
-        if current_user
-          ReviewMailer.user_mail(@review).deliver!
-          ReviewMailer.admin_mail(@review).deliver!
-          ReviewMailer.agent_mail(@review).deliver!
-          flash[:notice] = "Your Review Successfully submitted."
-          redirect_to reviews_url
+      Address.find_or_create_by(:town_id=>@review.town_id, :location_id=>@review.location_id, :company_id=>@review.company_id )
+      if params["nature"].present?
+          @review.nature_of_review = params["nature"]
+      end
+  	  if verify_recaptcha
+        if @review.save
+          if current_user
+            ReviewMailer.user_mail(@review).deliver!
+            ReviewMailer.admin_mail(@review).deliver!
+            ReviewMailer.agent_mail(@review).deliver!
+            flash[:notice] = "Your Review Successfully submitted."
+            redirect_to reviews_url
+          else
+            flash[:notice] = "You need to login to submit your reviews."
+            redirect_to new_user_session_url(:guest_token => @review.guest_token)
+          end
         else
-          flash[:notice] = "You need to login to submit your reviews."
-          redirect_to new_user_session_url(:guest_token => @review.guest_token)
+          render :new
         end
       else
+        flash.now[:alert] = "There was an error with the recaptcha code below. Please re-enter the code."      
+        flash.delete :recaptcha_error
         render :new
       end
-    else
-      flash.now[:alert] = "There was an error with the recaptcha code below. Please re-enter the code."      
-      flash.delete :recaptcha_error
-      render :new
     end
-
   end
 
   def companies_by_industry
@@ -168,7 +180,7 @@ class ReviewsController < ApplicationController
 	end
 
 	def review_params
-      params.require(:review).permit(:title, :industry_id, :company_id, :date, :town_id,:datetime, :location_id, :personal_responsible, :nature_of_review,:message,:account_details,:ticket_number,:user_id, :token_number,:review_type,:file)
+      params.require(:review).permit(:title, :industry_id, :company_id, :date, :town_id,:datetime, :location_id, :personal_responsible, :nature_of_review,:message,:account_details,:ticket_number,:user_id, :token_number,:review_type,:file,:nature)
   end
 
 	def default_action_tab

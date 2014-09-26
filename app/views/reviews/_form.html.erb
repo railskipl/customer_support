@@ -69,8 +69,9 @@
 
 		<div class="review_form">
 			<div class="name_lft">Nature of review: </div>
-			<div>
-			  <%= f.select :nature_of_review, @nature_of_reviews.map { |nr| [nr.title]}, :include_blank=>true%>
+			<div class="small-input2">
+			  <%= f.select :nature_of_review, @nature_of_reviews.map { |nr| [nr.title]}, {},:include_blank=>false, onchange: "CheckOther2()" %>
+			  	<input type="text" id="nature" name="nature">
 			</div>
 		</div>
 
@@ -84,7 +85,7 @@
 		<div class="review_form">
 			<div class="name_lft">Account Details/reference no.</div>
 			<div class="small-input">
-			    <%= f.text_field :account_details ,"maxlength"=>"60", "min" => "1","max" => "60"%>
+			    <%= f.text_field :account_details ,"maxlength"=>"20", "min" => "1","max" => "20"%>
 			</div>
 		</div>
 
@@ -132,6 +133,7 @@
 <script type="text/javascript">
 $( document ).ready(function() {
 	$("#other_type").hide();
+	$("#nature").hide();
 });
 
 function CheckOther()
@@ -143,5 +145,18 @@ function CheckOther()
        $("#other_type").hide();
     }     
 }
+
+
+
+function CheckOther2()
+{
+  if (document.getElementById("review_nature_of_review").value == "Other"){
+        $("#nature").show();
+    }     
+    else{
+       $("#nature").hide();
+    }     
+}
+
 
 </script>

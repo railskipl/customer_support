@@ -62,6 +62,9 @@
 
         <div id="page-content" class="clearfix">
 					<%=render :partial=>"admin/common/page_header" %>
+					 <form action="/searches" method="get">
+    <input type="text" class="searchBox" placeholder="search" name="search" id="search">
+ </form>
           <% if flash[:alert].present? %>
           <div class="alert alert-error">
             <button data-dismiss="alert" class="close" type="button">

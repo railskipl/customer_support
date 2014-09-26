@@ -23,6 +23,16 @@ class AdminController < ActionController::Base
 		@archived_reviews ||= Review.archived.order("id desc")
 	end
 
+  def searches
+      @review_results = Review.search params[:search]
+      @comment_results = Comment.search params[:search]
+      @company_results = Company.search params[:search]
+      @town_results = Town.search params[:search]
+      @location_results = Location.search params[:search]
+      @supplier_results = Supplier.search params[:search]
+      @user_results = User.search params[:search]
+  end
+
   def set_current_user
     User.current = current_user
   end

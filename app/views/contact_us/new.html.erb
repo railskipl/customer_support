@@ -41,7 +41,7 @@
 		  <div class="form_lft">
 		    <div class="name_lft">Telephone: </div>
 		    <div>
-		      <%= f.text_field :telephone, "maxlength"=>"35", "min" => "1","max" => "35"%>
+		      <%= f.text_field :telephone, "maxlength"=>"10", "min" => "1","max" => "10"%>
 		    </div>
 		  </div>
 		</div>
@@ -56,7 +56,7 @@
 		    <div class="name_lft">Message : </div>
 		  </div>
 	    <div class="contact-textarea">
-					<%= f.text_area :message, :rows=>"5",:class =>"wdh"%>
+					<%= f.text_area :message, :rows=>"5",:class =>"wdh","maxlength"=>"1200"%>
 			</div>
 		</div>
 		<div class="fom_con">

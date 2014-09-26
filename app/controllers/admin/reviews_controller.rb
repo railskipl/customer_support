@@ -1,7 +1,7 @@
 class Admin::ReviewsController < AdminController
 	before_action :default_tab
 	before_action :get_review , :only => [:show, :edit, :update]
-	load_and_authorize_resource
+	load_and_authorize_resource :except => [:search_reviews]
   
 	def index
 		@reviews = Review.unarchived.order("id desc")
@@ -52,6 +52,24 @@ class Admin::ReviewsController < AdminController
       end
     end
 
+  end
+    def search_reviews
+    @reviews = []
+    if params[:town_id]
+      town = Town.find(params[:town_id])
+      @reviews = town.reviews if town 
+    elsif params[:supplier_id]
+      supplier = Supplier.find(params[:supplier_id])
+      @reviews = supplier.reviews if supplier 
+    elsif params[:location_id]
+      location = Location.find params[:location_id]
+      @reviews = location.reviews if location 
+    elsif params[:company_id]
+      company = Company.find params[:company_id]
+      @reviews = company.reviews if company
+    elsif params[:review_type]
+      @reviews = @reviews.where("review_type=?",params[:review_type])
+    end
   end
 
   def destroy

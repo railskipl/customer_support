@@ -12,7 +12,7 @@
     <% @companies.each do |company| %>
       <tr>
         <td><%= company.title %></td>
-        <td><%= company.industry.title rescue nil%></td>
+        <td><%= company.industry.title rescue nil %></td>
         <% if company.is_registered %>
           <td>Registered</td>
         <% else %>

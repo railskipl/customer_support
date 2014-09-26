@@ -9,6 +9,7 @@
     <ul>
       <% @review_results.each do |review| %>
         <li><%=link_to review.title.html_safe, admin_review_path(review)%></li>
+        <li><%=link_to review.title.html_safe, admin_search_reviews_path(review_id: review.id)%></li>
       <% end %>
       
       <% @comment_results.each do |comment| %>
@@ -17,14 +18,16 @@
       
       <% @company_results.each do |company| %>
         <li><%=link_to company.title.html_safe, admin_company_path(id: company.id)%></li>
+        <li><%=link_to company.title.html_safe, admin_search_reviews_path(company_id: company.id)%></li>
       <% end %>
 
       <% @town_results.each do |town| %>
-        <li><%=link_to town.title.html_safe, search_reviews_path(town_id: town.id)%></li>
+        <li><%=link_to town.title.html_safe, admin_town_path(id: town.id)%></li>
       <% end %>
 
       <% @location_results.each do |location| %>
-        <li><%=link_to location.title.html_safe, search_reviews_path(location_id: location.id)%></li>
+      <li><%=link_to location.title.html_safe, admin_search_reviews_path(location_id: location.id)%></li>
+        <li><%=link_to location.title.html_safe, admin_location_path(id: location.id)%></li>
       <% end %>
 
       <% @supplier_results.each do |supplier| %>

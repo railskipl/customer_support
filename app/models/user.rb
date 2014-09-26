@@ -29,6 +29,12 @@ class User < ActiveRecord::Base
     full_name += self.try(:last_name)
   end
 
+
+   def self.search(search)
+    search_condition = "%" + search + "%"
+    find(:all, :conditions => ['first_name LIKE ? OR last_name LIKE ? OR email LIKE ? ', search_condition,search_condition,search_condition])
+  end
+
   def is_admin?
   	self.role == 'admin'
   end

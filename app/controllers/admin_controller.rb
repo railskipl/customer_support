@@ -30,6 +30,7 @@ class AdminController < ActionController::Base
       @town_results = Town.search params[:search]
       @location_results = Location.search params[:search]
       @supplier_results = Supplier.search params[:search]
+      @user_results = User.search params[:search]
   end
 
   def set_current_user

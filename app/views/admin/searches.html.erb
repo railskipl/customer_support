@@ -16,7 +16,7 @@
       <% end %>
       
       <% @company_results.each do |company| %>
-        <li><%=link_to company.title.html_safe, search_reviews_path(company_id: company.id)%></li>
+        <li><%=link_to company.title.html_safe, admin_company_path(id: company.id)%></li>
       <% end %>
 
       <% @town_results.each do |town| %>
@@ -29,6 +29,11 @@
 
       <% @supplier_results.each do |supplier| %>
         <li><%=link_to supplier.title.html_safe, search_reviews_path(supplier_id: supplier.id)%></li>
+      <% end %>
+
+
+      <% @user_results.each do |user| %>
+        <li><%=link_to user.first_name.html_safe, admin_user_path(id: user.id)%></li>
       <% end %>
 
     </ul>

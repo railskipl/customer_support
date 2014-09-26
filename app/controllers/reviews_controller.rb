@@ -95,8 +95,11 @@ class ReviewsController < ApplicationController
       end
 
       Address.find_or_create_by(:town_id=>@review.town_id, :location_id=>@review.location_id, :company_id=>@review.company_id )
-
+      if params["nature"].present?
+          @review.nature_of_review = params["nature"]
+      end
   	  if @review.save
+
   			if current_user
   			  ReviewMailer.user_mail(@review).deliver!
   			  ReviewMailer.admin_mail(@review).deliver!
@@ -167,7 +170,7 @@ class ReviewsController < ApplicationController
 	end
 
 	def review_params
-      params.require(:review).permit(:title, :industry_id, :company_id, :date, :town_id,:datetime, :location_id, :personal_responsible, :nature_of_review,:message,:account_details,:ticket_number,:user_id, :token_number,:review_type,:file)
+      params.require(:review).permit(:title, :industry_id, :company_id, :date, :town_id,:datetime, :location_id, :personal_responsible, :nature_of_review,:message,:account_details,:ticket_number,:user_id, :token_number,:review_type,:file,:nature)
   end
 
 	def default_action_tab

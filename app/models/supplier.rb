@@ -9,7 +9,7 @@ class Supplier < ActiveRecord::Base
 
   def self.search(search)
     search_condition = "%" + search + "%"
-    find(:all, :conditions => ['first_name LIKE ? OR last_name LIKE? or supplier_name LIKE ?', search_condition, search_condition,search_condition])
+    find(:all, :conditions => ['first_name LIKE ? OR last_name LIKE? or supplier_name LIKE ? OR fname2 LIKE ? OR lname2 LIKE ? OR fname3 LIKE ? OR lname3 LIKE ?', search_condition, search_condition,search_condition,search_condition, search_condition,search_condition,search_condition])
   end
 
 end

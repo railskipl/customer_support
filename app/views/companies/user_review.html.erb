@@ -29,7 +29,11 @@
 							  <%else%>
     							<%=link_to image_tag("comment.png"), review_path(review)%>
     						<%end%>
-                <%=review.comments.published.count%></div>
+                <%=review.comments.published.count%>
+                <%if review.comments.published.count > 0 and review.comments.published.last.user.present? and ['admin','agent'].include? review.comments.published.last.user.role %>
+                  <span style="font-size: 11px;">Supplier's response</span>
+                <%end%>
+                </div>
             </div>
          	<%end%>
           </div>

@@ -28,7 +28,11 @@ class ReviewsController < ApplicationController
 	end
 
 	def new
-		@review = Review.new
+    if params[:id].present?
+     @review = Review.find(params[:id])
+    else
+		 @review = Review.new
+    end
 	end
 
 	def show
@@ -45,17 +49,35 @@ class ReviewsController < ApplicationController
 
   def update
     @review = Review.find(params[:id])
-    if verify_recaptcha
+    unless params[:review][:guest] == "guest_user"
       if @review.update_attributes(review_params)
-        flash[:notice] = "Your Review Successfully changed."
-  	    redirect_to @review
+          flash[:notice] = "Your Review Successfully changed."
+          redirect_to @review
       else
-      	render  :edit
+          render  :edit
       end
     else
-      flash.now[:alert] = "There was an error with the recaptcha code below. Please re-enter the code."      
-      flash.delete :recaptcha_error
-      redirect_to @review
+      if verify_recaptcha
+        if @review.update_attributes(review_params)
+          if current_user
+            ReviewMailer.user_mail(@review).deliver!
+            ReviewMailer.admin_mail(@review).deliver!
+            ReviewMailer.agent_mail(@review).deliver!
+            user = User.find(current_user.id) rescue nil
+            user.update_column(:guest_token, nil) rescue nil
+            flash[:notice] = "Your Review Successfully submitted."
+            redirect_to reviews_url
+          else
+            render :new
+          end
+        else
+          render  :new
+        end
+      else
+        flash[:alert] = "There was an error with the recaptcha code below. Please re-enter the code."      
+        flash.delete :recaptcha_error
+        redirect_to :back
+      end
     end
   end
 

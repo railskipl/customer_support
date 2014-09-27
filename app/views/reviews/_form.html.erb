@@ -1,3 +1,5 @@
+
+<%unless params[:id].present?%>
 <div class="review">
 <%= form_for(@review) do |f|%>
   <% if @review.errors.any? %>
@@ -160,3 +162,7 @@ function CheckOther2()
 
 
 </script>
+
+<%else%>
+ <%= render :partial => 'guest_review'%>
+<%end%>

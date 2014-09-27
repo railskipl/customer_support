@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140926063956) do
+ActiveRecord::Schema.define(version: 20140927074717) do
 
   create_table "addresses", force: true do |t|
     t.integer  "town_id"
@@ -286,6 +286,7 @@ ActiveRecord::Schema.define(version: 20140926063956) do
     t.string   "role",                   default: "user"
     t.string   "preferred_alias"
     t.boolean  "accept_t_and_c",         default: false
+    t.string   "guest_token"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

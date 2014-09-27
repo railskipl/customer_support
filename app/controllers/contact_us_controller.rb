@@ -14,14 +14,14 @@ class ContactUsController < ApplicationController
       if verify_recaptcha
         if @contact_u.save
           Notifier.contact(@contact_u).deliver!
-          format.html { redirect_to contact_us_url, notice: 'Your Contact info has been sent successfully.' }
+          redirect_to contact_us_url, notice: 'Your Contact info has been sent successfully.'
         else
-          format.html { render action: 'new' }
+          render action: 'new' 
         end
       else
         flash.now[:alert] = "There was an error with the recaptcha code below. Please re-enter the code."      
         flash.delete :recaptcha_error
-        format.html { render action: 'new' }
+        render action: 'new' 
       end
   end
 

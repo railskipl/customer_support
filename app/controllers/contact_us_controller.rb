@@ -11,14 +11,18 @@ class ContactUsController < ApplicationController
       @contact_u.message_type = params["other_type"]
     end
 
-    respond_to do |format|
-      if @contact_u.save
-        Notifier.contact(@contact_u).deliver!
-        format.html { redirect_to contact_us_url, notice: 'Your Contact info has been sent successfully.' }
+      if verify_recaptcha
+        if @contact_u.save
+          Notifier.contact(@contact_u).deliver!
+          format.html { redirect_to contact_us_url, notice: 'Your Contact info has been sent successfully.' }
+        else
+          format.html { render action: 'new' }
+        end
       else
+        flash.now[:alert] = "There was an error with the recaptcha code below. Please re-enter the code."      
+        flash.delete :recaptcha_error
         format.html { render action: 'new' }
       end
-    end
   end
 
 	private

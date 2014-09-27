@@ -47,7 +47,7 @@
 		</div>
     <div class="contact_form">
 	    <div class="name_lft">Message Type: </div>
-			<div><%= f.select :message_type, [ ["How to improve our site", "How to improve our site"], [" Technical assistance", "Technical assistance"],["User registration" , "User registration"],["General enquiries", "General enquiries"],["Give us Feedback", "Give us Feedback"]["Report inappropriate content","Report inappropriate content"],["Other", "Other"] ], {},:onchange => 'CheckOther();'%>
+			<div><%= f.select :message_type, [ ["How to improve our site", "How to improve our site"], [" Technical assistance", "Technical assistance"],["User registration" , "User registration"],["General enquiries", "General enquiries"],["Give us Feedback", "Give us Feedback"],["Report inappropriate content","Report inappropriate content"],["Other", "Other"] ], {},:onchange => 'CheckOther();'%>
 				<input type="text" id="other_type" name="other_type"></div>
 
 		</div>
@@ -60,7 +60,7 @@
 			</div>
 		</div>
 		<div class="fom_con">
-				<div class="name_lft">Are you human?:</div> <%#= show_simple_captcha(:object=>"contact_u") %>
+				<div class="name_lft">Are you human?:</div> <%= recaptcha_tags %>
 		</div>
 		<div class="contact_form pull-right">
 				<%=f.submit "xema"%>

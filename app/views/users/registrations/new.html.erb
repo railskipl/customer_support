@@ -22,13 +22,13 @@
 				  <div class="form_lft">
 				    <div class="name_lft">First Name: *</div>
 				    <div>
-						<%= f.text_field :first_name, required: true, "maxlength"=>"35", "min" => "1","max" => "35" %>
+						<%= f.text_field :first_name, required: true,:pattern => '[A-Za-z]+' ,"maxlength"=>"35", "min" => "1","max" => "35" %>
 				    </div>
 				  </div>
 				  <div class="form_lft">
 				    <div class="name_lft">Last Name: *</div>
 				    <div>
-				      <%= f.text_field :last_name, required: true, "maxlength"=>"35", "min" => "1","max" => "35"%>
+				      <%= f.text_field :last_name, required: true,:pattern => '[A-Za-z]+' ,"maxlength"=>"35", "min" => "1","max" => "35"%>
 				    </div>
 				  </div>
 				</div>

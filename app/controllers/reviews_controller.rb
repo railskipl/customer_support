@@ -15,7 +15,12 @@ class ReviewsController < ApplicationController
       @reviews = town.reviews if town 
     elsif params[:supplier_id]
       supplier = Supplier.find(params[:supplier_id])
-      @reviews = supplier.reviews if supplier 
+      comments = supplier.comments
+      @reviews = []
+      comments.each do |comment|
+        @reviews << comment.review  
+      end
+      # @reviews = supplier.reviews if supplier 
     elsif params[:location_id] 
       location = Location.find params[:location_id]
       @reviews = location.reviews if location 

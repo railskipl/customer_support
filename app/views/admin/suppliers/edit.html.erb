@@ -17,8 +17,8 @@
     <%= f.text_field :supplier_name ,required: true%>
   </div>
   <div class="field">
-    <%= f.label :supplier_vat_Number %>
-    <%= f.text_field :supplier_vat_Number ,required: true%>
+    <%= f.label :supplier_Pin_Number %>
+    <%= f.text_field :supplier_vat_Number ,required: true, "maxlength"=>"11", "min" => "1"%>
   </div>
   <div class="field">
     <%= f.label :industry %>
@@ -51,15 +51,15 @@
   </div>
   <div class="field">
     <%= f.label :title %>
-    <%= f.text_field :title ,required: true%>
+    <%= f.select :title, [ ["Mr"], [" Ms"],["Mrs"] ],required: true%>
   </div>
   <div class="field">
     <%= f.label :first_name %>
-    <%= f.text_field :first_name ,required: true%>
+    <%= f.text_field :first_name ,required: true, :pattern => '[A-Za-z]+' %>
   </div>
   <div class="field">
     <%= f.label :last_name %>
-    <%= f.text_field :last_name ,required: true%>
+    <%= f.text_field :last_name ,required: true, :pattern => '[A-Za-z]+' %>
   </div>
   <br/>
   <div class="field">
@@ -74,62 +74,62 @@
     <%= f.label :mobile_number %>
     <%= f.text_field :mobile_number ,required: true, :pattern => '[0-9]{10,10}'%>
   </div>
-  <h3>Contact Person 2</h3>
+<h3>Contact Person 2</h3>
     <div class="field">
-    <%= f.label :auth_resp2 %>
+    <%= f.label :auth_resp2 ,"Authorised Responder"%>
     <%= f.select :auth_resp2, [ 'Billing', 'Main Manager', 'CS Authorised Responder'] %>
   </div>
   <div class="field">
-    <%= f.label :title2 %>
-    <%= f.text_field :title2 ,required: true%>
+    <%= f.label :title2, "Title" %>
+    <%= f.select :title2, [ ["Mr"], [" Ms"],["Mrs"] ],required: true%>
   </div>
   <div class="field">
-    <%= f.label :fname2 %>
-    <%= f.text_field :fname2 ,required: true%>
+    <%= f.label :fname2, "First Name" %>
+    <%= f.text_field :fname2 ,required: true, :pattern => '[A-Za-z]+' %>
   </div>
   <div class="field">
-    <%= f.label :lname2 %>
-    <%= f.text_field :lname2 ,required: true%>
+    <%= f.label :lname2, "Last Name" %>
+    <%= f.text_field :lname2 ,required: true, :pattern => '[A-Za-z]+' %>
   </div>
   <div class="field">
-    <%= f.label :email2 %>
+    <%= f.label :email2, "Email" %>
     <%= f.email_field :email2 %>
   </div>
   <div class="field">
-    <%= f.label :tno2 %>
+    <%= f.label :tno2, "Telephone Number" %>
     <%= f.text_field :tno2 ,required: true, :pattern => '[0-9]{10,10}'%>
   </div>
   <div class="field">
-    <%= f.label :mno2 %>
+    <%= f.label :mno2, "Mobile Number" %>
     <%= f.text_field :mno2 ,required: true, :pattern => '[0-9]{10,10}'%>
   </div>
   <h3>Contact Person 3</h3>
     <div class="field">
-    <%= f.label :auth_resp3 %>
+    <%= f.label :auth_resp3, "" %>
     <%= f.select :auth_resp3, [ 'Billing', 'Main Manager', 'CS Authorised Responder'] %>
   </div>
   <div class="field">
-    <%= f.label :title3 %>
-    <%= f.text_field :title3 ,required: true%>
+    <%= f.label :title3, "" %>
+    <%= f.select :title3, [ ["Mr"], [" Ms"],["Mrs"] ],required: true%>
   </div>
   <div class="field">
-    <%= f.label :fname3 %>
-    <%= f.text_field :fname3 ,required: true%>
+    <%= f.label :fname3, "First Name" %>
+    <%= f.text_field :fname3 ,required: true, :pattern => '[A-Za-z]+' %>
   </div>
   <div class="field">
-    <%= f.label :lname3 %>
-    <%= f.text_field :lname3 ,required: true%>
+    <%= f.label :lname3, "Last Name" %>
+    <%= f.text_field :lname3 ,required: true, :pattern => '[A-Za-z]+' %>
   </div>
   <div class="field">
-    <%= f.label :email3 %>
+    <%= f.label :email3, "Email" %>
     <%= f.email_field :email3 %>
   </div>
   <div class="field">
-    <%= f.label :tno3 %>
-    <%= f.text_field :tno3 ,required: true, :pattern => '[0-9]{10,10}'%>
+    <%= f.label :tno3, "Telephone Number" %>
+    <%= f.text_field :tno3,required: true, :pattern => '[0-9]{10,10}'%>
   </div>
   <div class="field">
-    <%= f.label :mno3 %>
+    <%= f.label :mno3, "Mobile Number" %>
     <%= f.text_field :mno3 ,required: true, :pattern => '[0-9]{10,10}'%>
   </div>
 

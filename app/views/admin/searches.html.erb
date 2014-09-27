@@ -31,7 +31,7 @@
       <% end %>
 
       <% @supplier_results.each do |supplier| %>
-        <li><%=link_to supplier.title.html_safe, search_reviews_path(supplier_id: supplier.id)%></li>
+        <li><%=link_to supplier.title.html_safe, admin_search_reviews_path(supplier_id: supplier.id)%></li>
       <% end %>
 
 

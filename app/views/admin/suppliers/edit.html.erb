@@ -17,8 +17,8 @@
     <%= f.text_field :supplier_name ,required: true%>
   </div>
   <div class="field">
-    <%= f.label :supplier_vat_Number %>
-    <%= f.text_field :supplier_vat_Number ,required: true%>
+    <%= f.label :supplier_Pin_Number %>
+    <%= f.text_field :supplier_vat_Number ,required: true, "maxlength"=>"11", "min" => "1"%>
   </div>
   <div class="field">
     <%= f.label :industry %>
@@ -55,11 +55,11 @@
   </div>
   <div class="field">
     <%= f.label :first_name %>
-    <%= f.text_field :first_name ,required: true%>
+    <%= f.text_field :first_name ,required: true, :pattern => '[A-Za-z]+' %>
   </div>
   <div class="field">
     <%= f.label :last_name %>
-    <%= f.text_field :last_name ,required: true%>
+    <%= f.text_field :last_name ,required: true, :pattern => '[A-Za-z]+' %>
   </div>
   <br/>
   <div class="field">
@@ -85,11 +85,11 @@
   </div>
   <div class="field">
     <%= f.label :fname2, "First Name" %>
-    <%= f.text_field :fname2 ,required: true%>
+    <%= f.text_field :fname2 ,required: true, :pattern => '[A-Za-z]+' %>
   </div>
   <div class="field">
     <%= f.label :lname2, "Last Name" %>
-    <%= f.text_field :lname2 ,required: true%>
+    <%= f.text_field :lname2 ,required: true, :pattern => '[A-Za-z]+' %>
   </div>
   <div class="field">
     <%= f.label :email2, "Email" %>
@@ -114,11 +114,11 @@
   </div>
   <div class="field">
     <%= f.label :fname3, "First Name" %>
-    <%= f.text_field :fname3 ,required: true%>
+    <%= f.text_field :fname3 ,required: true, :pattern => '[A-Za-z]+' %>
   </div>
   <div class="field">
     <%= f.label :lname3, "Last Name" %>
-    <%= f.text_field :lname3 ,required: true%>
+    <%= f.text_field :lname3 ,required: true, :pattern => '[A-Za-z]+' %>
   </div>
   <div class="field">
     <%= f.label :email3, "Email" %>

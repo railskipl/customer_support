@@ -15,7 +15,12 @@ class ReviewsController < ApplicationController
       @reviews = town.reviews if town 
     elsif params[:supplier_id]
       supplier = Supplier.find(params[:supplier_id])
-      @reviews = supplier.reviews if supplier 
+      comments = supplier.comments
+      @reviews = []
+      comments.each do |comment|
+        @reviews << comment.review  
+      end
+      # @reviews = supplier.reviews if supplier 
     elsif params[:location_id] 
       location = Location.find params[:location_id]
       @reviews = location.reviews if location 
@@ -45,18 +50,18 @@ class ReviewsController < ApplicationController
 
   def update
     @review = Review.find(params[:id])
-    if verify_recaptcha
+    # if verify_recaptcha
       if @review.update_attributes(review_params)
         flash[:notice] = "Your Review Successfully changed."
   	    redirect_to @review
       else
       	render  :edit
       end
-    else
-      flash.now[:alert] = "There was an error with the recaptcha code below. Please re-enter the code."      
-      flash.delete :recaptcha_error
-      redirect_to @review
-    end
+    # else
+    #   flash.now[:alert] = "There was an error with the recaptcha code below. Please re-enter the code."      
+    #   flash.delete :recaptcha_error
+    #   redirect_to @review
+    # end
   end
 
 	def create

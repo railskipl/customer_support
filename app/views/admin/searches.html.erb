@@ -9,7 +9,7 @@
     <ul>
       <% @review_results.each do |review| %>
         <li><%=link_to review.title.html_safe, admin_review_path(review)%></li>
-        <li><%=link_to review.title.html_safe, admin_search_reviews_path(review_id: review.id)%></li>
+        <!-- <li><%#=link_to review.title.html_safe, admin_search_reviews_path(review_id: review.id)%></li> -->
       <% end %>
       
       <% @comment_results.each do |comment| %>

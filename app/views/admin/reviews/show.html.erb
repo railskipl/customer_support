@@ -19,22 +19,22 @@
 
 <p>
   <strong>Industry:</strong>
-  <%= @review.industry.title %>
+  <%= @review.industry.title rescue nil%>
 </p>
 
 <p>
   <strong>Company:</strong>
-  <%= @review.company.title %>
+  <%= @review.company.title rescue nil%>
 </p>
 
 <p>
   <strong>Town:</strong>
-  <%= @review.town.title %>
+  <%= @review.town.title rescue nil%>
 </p>
 
 <p>
   <strong>Location:</strong>
-  <%= @review.location.title %>
+  <%= @review.location.title rescue nil%>
 </p>
 
 <p>

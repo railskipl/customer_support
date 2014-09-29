@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  before_filter :new_poll, :get_defaults
+  before_filter :new_poll, :get_defaults, :meta_defaults
 
 	# Catch all CanCan errors and alert the user of the exception
   rescue_from CanCan::AccessDenied do | exception |
@@ -15,6 +15,16 @@ class ApplicationController < ActionController::Base
 	def get_defaults
   	@resource_types = ResourceType.all
 	end
+
+
+  def meta_defaults
+    seo = Seo.first
+    if seo.present?
+      @meta_title = seo.meta_title
+      @meta_keyword = seo.meta_keyword
+      @meta_description = seo.meta_description
+    end
+  end
 
   def permit!
     each_pair do |key, value|

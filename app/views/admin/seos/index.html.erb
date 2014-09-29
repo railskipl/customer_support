@@ -1,0 +1,26 @@
+<h4>Seo</h4>
+
+<table id="seos" >
+  <thead>
+    <tr>
+      <th width="10%">Meta Title</th>
+      <th width="15%">Meta Keywords</th>
+      <th width="10%">Review</th>
+      <th width="20%">Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @seos.each do |seo| %>
+      <tr>
+        <td><%= seo.meta_title rescue nil%></td>
+        <td><%= (seo.meta_description[0..50]).html_safe %></td>
+        <td><%= seo.meta_keyword.html_safe%></td>
+        
+        <td>
+        <%= link_to 'Edit', edit_admin_seo_path(seo) , class: "btn btn-primary" if can? :edit, Seo%>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,31 @@
+<%= form_for [:admin,@seo] do |f| %>
+  <% if @seo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@seo.errors.count, "error") %> prohibited this seo from being saved:</h2>
+		<ul>
+      <% @seo.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :meta_title%>
+    <%= f.text_field :meta_title, :requried => true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :meta_description%>
+    <%= f.text_area :meta_description, :requried => true ,:class=>"ckeditor"%>
+  </div>
+
+  <div class="field">
+    <%= f.label :meta_keyword %>
+    <%= f.text_area :meta_keyword, :requried => true ,:class=>"ckeditor"%>
+  </div>
+	
+  <div class="actions">
+    <%= f.submit class: "btn btn-primary"%>
+  </div>
+<% end %>

@@ -42,4 +42,6 @@ $(document).ready(function() {
 		$('#suppliers').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [8] }] } );
 		$('#advertises').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [4] }] } );
 
+		$('#seos').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [3] }] } );
+
 });

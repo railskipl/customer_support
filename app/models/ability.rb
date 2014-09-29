@@ -29,6 +29,7 @@ class Ability
       can :manage, Supplier
       can :manage, Advertise
       can :manage, Comment
+      can :manage, Seo
     elsif user.is? :agent
       cannot :manage, Resource
       cannot :manage, Page

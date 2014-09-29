@@ -57,5 +57,6 @@ Jmd::Application.routes.draw do
   	resources :advertises
   	resources :suppliers
   	resources :resource_types
+    resources :seos
   end
 end

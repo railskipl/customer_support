@@ -123,6 +123,12 @@
   	  </li>
   	<%end%>
 
+  	<% if can? :manage, Seo%>
+	    <li class="<%=(@active_tab == 'seos') ? 'active' : ''%>">
+					<%=link_to raw(action_button_helper('Seo','icon-list-alt')),admin_seos_path%>
+  	  </li>
+  	<%end%>
+
 
   </ul><!--/.nav-list-->
 

@@ -21,6 +21,7 @@ class AdminController < ActionController::Base
 		@recent_reviews ||= Review.unpublished.order("id desc")
 		@published_reviews ||= Review.published.order("id desc")
 		@archived_reviews ||= Review.archived.order("id desc")
+    @seos ||= Seo.all
 	end
 
   def searches

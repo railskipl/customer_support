@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140927074717) do
+ActiveRecord::Schema.define(version: 20140929093250) do
 
   create_table "addresses", force: true do |t|
     t.integer  "town_id"
@@ -194,6 +194,14 @@ ActiveRecord::Schema.define(version: 20140927074717) do
     t.text     "modified_review"
     t.boolean  "is_modified"
     t.text     "notes"
+  end
+
+  create_table "seos", force: true do |t|
+    t.string   "meta_title"
+    t.text     "meta_description"
+    t.text     "meta_keyword"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "simple_captcha_data", force: true do |t|

@@ -25,7 +25,7 @@ class AdminController < ActionController::Base
 	end
 
   def searches
-      @review_results = Review.search params[:search]
+      @review_results = Review.admin_search params[:search]
       @comment_results = Comment.search params[:search]
       @company_results = Company.search params[:search]
       @town_results = Town.search params[:search]

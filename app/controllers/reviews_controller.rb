@@ -23,12 +23,12 @@ class ReviewsController < ApplicationController
       # @reviews = supplier.reviews if supplier 
     elsif params[:location_id] 
       location = Location.find params[:location_id]
-      @reviews = location.reviews.where("ispublished  like true") if location 
+      @reviews = location.reviews.where("ispublished = ?", true) if location 
     elsif params[:company_id]
       company = Company.find params[:company_id]
-      @reviews = company.reviews.where("ispublished = true") if company
+      @reviews = company.reviews.where("ispublished = ?", true) if company
     elsif params[:review_type]
-    	@reviews = @reviews.where("review_type=? && ispublished like true",params[:review_type])
+    	@reviews = @reviews.where("review_type=? AND ispublished = ?",params[:review_type],true)
     end
 	end
 

@@ -173,11 +173,11 @@
   <tbody>
     <% @archived_reviews.each do |review| %>
       <tr>
-        	<td><%=review.date_time rescue nil ></td>
-				<td><%=review.ticket_number rescue nil %></td>
-				<td><%=review.review_type rescue nil %></td>
-				<td><%=review.company.title rescue nil %></td>
-				<td><%=review.title rescue nil %></td>
+        <td><%=review.date_time rescue nil %></td>
+		<td><%=review.ticket_number rescue nil %></td>
+		<td><%=review.review_type rescue nil %></td>
+		<td><%=review.company.title rescue nil %></td>
+		<td><%=review.title rescue nil %></td>
         <td><%=review.try(:user).try(:full_name)%></td>
         <td>
         <%= link_to 'Show', admin_review_path(review) , class: "btn btn-primary" if can? :show, Review%>

@@ -17,7 +17,6 @@ class AdminController < ActionController::Base
 		@users ||= User.all
 		@customers ||= User.all.customers
 		@reviews ||= Review.where('user_id != ?',"nil").order("created_at desc")
-    raise @reviews.inspect
 		@agents ||= User.all.agents
 		@recent_reviews ||= Review.unpublished.order("id desc")
 		@published_reviews ||= Review.published.order("id desc")

@@ -72,11 +72,11 @@
 	<tbody>
 	  <% @reviews.each do |review| %>
 	    <tr>
-				<td><%=review.date_time%></td>
-				<td><%=review.ticket_number%></td>
-				<td><%=review.review_type.titleize%></td>
-				<td><%=review.company.title.titleize%></td>
-				<td><%=review.title.titleize%></td>
+				<td><%=review.date_time rescue nil %></td>
+				<td><%=review.ticket_number rescue nil %></td>
+				<td><%=review.review_type.titleize rescue nil %></td>
+				<td><%=review.company.title.titleize rescue nil %></td>
+				<td><%=review.title.titleize rescue nil %></td>
 			  <td><%=review.try(:user).try(:full_name)%></td>
         <td>
         <%= link_to 'Edit', edit_admin_review_path(review), class: "btn btn-primary" if can? :edit, Review%>

@@ -73,4 +73,6 @@
 <div id="comments">
   <%= render @review.comments %>
 </div>
-<%= render :file => 'admin/comments/new' %>
+<%unless @review.archive == true%>
+  <%= render :file => 'admin/comments/new' %>
+<%end%>

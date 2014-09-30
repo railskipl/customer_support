@@ -29,7 +29,7 @@
 		<div class="review_form">
 			<div class="name_lft">Industry: *</div>
 			<div class="small-input2">
-			  <%= f.collection_select :industry_id, Industry.order(:title) + [Industry.new(:title => "Other")], :id,:title,{:include_blank=>"Select Industry"},:rel => "/industry/companies_by_industry",  required: true, onchange: 'CheckOther();'%>
+			  <%= f.collection_select :industry_id, Industry.order(:title) + [Industry.new(:id => Industry.last.id,:title => "Other")], :id,:title,{:include_blank=>"Select Industry"},:rel => "/industry/companies_by_industry",  required: true, onchange: 'CheckOther();'%>
 			  <input type="text" id="other_type" name="other_type"><br/>
 			</div>
 
@@ -140,7 +140,7 @@ $( document ).ready(function() {
 
 function CheckOther()
 {
-  if (document.getElementById("review_industry_id").value == ""){
+  if (document.getElementById("review_industry_id").value == <%= Industry.last.id %>){
         $("#other_type").show();
     }     
     else{

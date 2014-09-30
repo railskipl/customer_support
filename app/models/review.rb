@@ -28,7 +28,7 @@ class Review < ActiveRecord::Base
 	
   def self.search(search)
     search_condition = "%" + search + "%"
-    find(:all, :conditions => ['(title LIKE ? OR message LIKE ? OR review_type LIKE ? OR ticket_number LIKE ? ) AND ispublished = ?', search_condition, search_condition,search_condition,search_condition,true])
+    find(:all, :conditions => ['title LIKE ? OR message LIKE ? OR review_type LIKE ? OR ticket_number LIKE ? ', search_condition, search_condition,search_condition])
   end
 
   def valid_date?

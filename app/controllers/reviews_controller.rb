@@ -28,7 +28,7 @@ class ReviewsController < ApplicationController
       company = Company.find params[:company_id]
       @reviews = company.reviews.where("ispublished = ?", true) if company
     elsif params[:review_type]
-    	@reviews = @reviews.where("review_type=? && ispublished = ?",params[:review_type],true)
+    	@reviews = @reviews.where("review_type=? AND ispublished = ?",params[:review_type],true)
     end
 	end
 

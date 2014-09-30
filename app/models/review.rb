@@ -31,6 +31,11 @@ class Review < ActiveRecord::Base
     find(:all, :conditions => ['(title LIKE ? OR message LIKE ? OR review_type LIKE ? OR ticket_number LIKE ? ) and ispublished = ?', search_condition, search_condition,search_condition,search_condition,true])
   end
 
+  def self.admin_search(search)
+    search_condition = "%" + search + "%"
+    find(:all, :conditions => ['title LIKE ? OR message LIKE ? OR review_type LIKE ? OR ticket_number LIKE ? ', search_condition, search_condition,search_condition,search_condition])
+  end
+
   def valid_date?
     unless Chronic.parse(date)
       errors.add(:date, "is invalid!")

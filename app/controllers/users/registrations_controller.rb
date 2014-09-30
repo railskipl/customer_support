@@ -10,19 +10,23 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if params[:guest_token].present?
       @user.guest_token = params[:guest_token]
     end
-    if @user.save
-      flash[:notice] = "You have signed up successfully. A confirmation email is sent to your e-mail.\n Please verify your email address."
-      if params[:guest_token].present?
-				review = Review.find_by_guest_token(params[:guest_token])
-				if review.present?
-					review.user_id = @user.id
-					review.save
-					flash[:notice] = "You have signed up successfully.A confirmation email is sent to your e-mail.\n Please verify your email address.\nYour review has been saved."
-					redirect_to new_user_session_url(:guest_token => review.guest_token)
-					return
-				end
-			end
-      redirect_to new_user_session_url, :notice => "You have signed up successfully.A confirmation email is sent to your e-mail.\n Please verify your email address.\nYour review has been saved."
+    if verify_recaptcha
+      if @user.save
+        flash[:notice] = "You have signed up successfully. A confirmation email is sent to your e-mail.\n Please verify your email address."
+        if params[:guest_token].present?
+          review = Review.find_by_guest_token(params[:guest_token])
+          if review.present?
+            review.user_id = @user.id
+            review.save
+            flash[:notice] = "You have signed up successfully.A confirmation email is sent to your e-mail.\n Please verify your email address.\nYour review has been saved."
+            redirect_to new_user_session_url(:guest_token => review.guest_token)
+            return
+          end
+        end
+        redirect_to new_user_session_url, :notice => "You have signed up successfully.A confirmation email is sent to your e-mail.\n Please verify your email address.\nYour review has been saved."
+      else
+        render :action => :new
+      end
     else
       if params[:guest_token].present?
         flash[:alert] = "There was an error with the recaptcha code below. Please re-enter the code."      

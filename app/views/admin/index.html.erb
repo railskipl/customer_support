@@ -107,7 +107,7 @@
 	  <% @recent_reviews.each do |review| %>
 	    <tr>
 				<td><%=review.date_time rescue nil %></td>
-				<td><%=review.ticket_numbe rescue nil r%></td>
+				<td><%=review.ticket_number rescue nil %></td>
 				<td><%=review.review_type rescue nil %></td>
 				<td><%=review.company.title rescue nil %></td>
 				<td><%=review.title rescue nil %></td>
@@ -141,10 +141,10 @@
 	<tbody>
 	  <% @published_reviews.each do |review| %>
 	    <tr>
-				<td><%=review.date_timee rescue nil ></td>
-				<td><%=review.ticket_numbee rescue nil %></td>
-				<td><%=review.review_typee rescue nil ></td>
-				<td><%=review.company.titlee rescue nil ></td>
+				<td><%=review.date_time rescue nil %></td>
+				<td><%=review.ticket_number rescue nil %></td>
+				<td><%=review.review_type rescue nil %></td>
+				<td><%=review.company.title rescue nil %></td>
 				<td><%=review.title rescue nil %></td>
 			  <td><%=review.try(:user).try(:full_name)%></td>
 			  <td><%#= link_to 'Edit', edit_admin_review_path(review) if can? :edit, Review%>
@@ -173,10 +173,10 @@
   <tbody>
     <% @archived_reviews.each do |review| %>
       <tr>
-        	<td><%=review.date_timee rescue nil ></td>
-				<td><%=review.ticket_numbee rescue nil %></td>
-				<td><%=review.review_typee rescue nil ></td>
-				<td><%=review.company.titlee rescue nil ></td>
+        	<td><%=review.date_time rescue nil ></td>
+				<td><%=review.ticket_number rescue nil %></td>
+				<td><%=review.review_type rescue nil %></td>
+				<td><%=review.company.title rescue nil %></td>
 				<td><%=review.title rescue nil %></td>
         <td><%=review.try(:user).try(:full_name)%></td>
         <td>

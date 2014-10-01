@@ -124,7 +124,7 @@
 				<div>
 				<span class="butn btn-file-upload">Upload File<%= f.file_field :file %>
 				</div>
-				<%= f.submit "Xema Now"%>
+				<%= f.submit "Xema Now", :confirm => "Press cancel to review or ok to submit..?" %>
 		</div>
 
 <%end%>

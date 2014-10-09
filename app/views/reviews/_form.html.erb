@@ -47,7 +47,7 @@
 		<div class="review_form">
 			<div class="name_lft">Town: *</div>
 			<div class="small-input2">
-			   <%= f.collection_select :town_id, @towns, :id, :title, {:include_blank=>"Select Town"}, :rel => "/town/locations_by_town_and_company",  required: true%>
+			   <%= f.collection_select :town_id, @towns+ [Industry.new(:id => Town.last.id + 1,:title => "Other")], :id, :title, {:include_blank=>"Select Town"}, :rel => "/town/locations_by_town_and_company",  required: true%>
 			   	<input type="text" id="txt_review_town_id" name="txt_review_town_id"><br>
 			</div>
 
@@ -104,7 +104,7 @@
 			<div class="">
 					<div class="name_lft">Date: *</div>
 					<div class="dob">
-						<%= f.date_select :date, required: true %>
+						<%= f.date_select :date,  order: [:day, :month, :year],:end_year => Date.today.year, required: true %>
 					</div>
 			</div>
 		</div>
@@ -126,7 +126,7 @@
 				<div>
 				<span>Upload File<%= f.file_field :file %>
 				</div>
-				<%= f.submit "Xema Now", :onclick=> "ankit(this)" %>
+				<%= f.submit "Xema Now", :onclick=> "checkbox_checked(this)" %>
 		</div>
 
 <%end%>
@@ -136,7 +136,7 @@
 
 <script type="text/javascript">
 
-function ankit(thisa)
+function checkbox_checked(thisa)
 {
 if(!thisa.form.checkbox.checked)
  {
@@ -171,6 +171,16 @@ function CheckOther2()
     }     
     else{
        $("#nature").hide();
+    }     
+}
+
+function CheckOther_town()
+{
+  if (document.getElementById("review_town_id").value == <%= Towm.last.id + 1 %>){
+        $("#other_town").show();
+    }     
+    else{
+       $("#other_town").hide();
     }     
 }
 

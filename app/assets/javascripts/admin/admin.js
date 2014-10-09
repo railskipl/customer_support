@@ -43,5 +43,5 @@ $(document).ready(function() {
 		$('#advertises').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [4] }] } );
 
 		$('#seos').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [3] }] } );
-
+       $('#company_performances').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [5] }] } );
 });

@@ -33,6 +33,7 @@ class ReviewsController < ApplicationController
 	end
 
 	def new
+    @page = Page.find_by_slug("how-to-write-good-review")
     if params[:id].present?
      @review = Review.find(params[:id])
     else

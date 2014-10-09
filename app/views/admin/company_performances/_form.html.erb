@@ -1,0 +1,46 @@
+<%= form_for([:admin,@company_performance]) do |f| %>
+  <% if @company_performance.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@company_performance.errors.count, "error") %> prohibited this company_performance from being saved:</h2>
+      <ul>
+      <% @company_performance.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <strong>Image or Quotes:</strong><br>
+    <%= f.file_field :performance_img %>
+  </div><br>
+  <%unless @company_performance.performance_img.blank? %>
+    <div class="field">
+      <strong>Image:</strong><br>
+      <%= image_tag @company_performance.performance_img %>
+    </div><br>
+  <%end%>
+  <div class="field">
+    <strong>Best Performance Companies:</strong>
+    <%= f.text_area :best_performance,:class => 'ckeditor' %>
+  </div><br>
+
+  <div class="field">
+    <strong>Worst Performance Companies:</strong>
+    <%= f.text_area :worst_performance , :class => 'ckeditor' %>
+  </div><br>
+
+  <div class="field">
+    <strong>Start Date:</strong><br>
+    <%= f.date_select :start_date  %>
+  </div><br>
+
+  <div class="field">
+    <strong>End Date:</strong><br>
+    <%= f.date_select :end_date  %>
+  </div>
+
+  <div class="actions">
+     <%= f.submit class: "btn btn-primary"%><br>
+  </div>
+ <%end%>

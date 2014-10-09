@@ -38,7 +38,7 @@ class ApplicationController < ActionController::Base
   def new_poll
 		@top_advertise = Advertise.where('position=0 and start_date<=? and end_date>=?',Date.today,Date.today).sample
 		@bottom_advertise = Advertise.where('position=1 and start_date<=? and end_date>=?',Date.today,Date.today).sample
-		
+		@performance = CompanyPerformance.where('start_date <= ? and end_date >= ?', Date.today, Date.today).sample
     polls = Poll.all(:include=>'options',
     								  :conditions => ["start_date <= ? and end_date>=? and published=?", Date.today,Date.today,true])
     if polls.count > 0

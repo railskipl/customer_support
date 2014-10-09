@@ -1,6 +1,22 @@
 <span class="span3">
-  <%=link_to (image_tag @top_advertise.image.url ,:class=>"sectionRightAd") , @top_advertise.link if @top_advertise%>
-  <%=link_to (image_tag @bottom_advertise.image.url ,:class=>"sectionRightAd"), @bottom_advertise.link  if @bottom_advertise%>
+ <%unless @top_advertise.blank?%>
+  <%if @top_advertise.text_msg.present? %>
+    <div class="sectionRightAd" style="word-wrap: break-word; width: 300px;">
+      <%= @top_advertise.text_msg.html_safe rescue nil%>
+    </div>
+  <%else%>
+    <%=link_to (image_tag @top_advertise.image.url ,:class=>"sectionRightAd",:style=>"width: 300px;") , @top_advertise.link if @top_advertise%>
+  <%end%>
+ <%end%>
+ <%unless @bottom_advertise.blank?%>
+  <%if @bottom_advertise.text_msg.present?%>
+    <div class="sectionRightAd" style="word-wrap: break-word; width: 300px;" >
+      <%= @bottom_advertise.text_msg.html_safe rescue nil%>
+    </div>
+  <%else%>
+   <%=link_to (image_tag @bottom_advertise.image.url ,:class=>"sectionRightAd", :style=>"width: 300px;"), @bottom_advertise.link  if @bottom_advertise%>
+  <%end%>
+ <%end%>
   <%if @poll.present?%>
   <div class="sectionRightPoll">
     <p>Poll</p>

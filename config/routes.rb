@@ -58,5 +58,6 @@ Jmd::Application.routes.draw do
   	resources :suppliers
   	resources :resource_types
     resources :seos
+    resources :company_performances
   end
 end

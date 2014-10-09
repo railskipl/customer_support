@@ -15,5 +15,4 @@ class PagesController < ApplicationController
   def check_availiblity
 		render :text => User.find_by_preferred_alias(params[:name]).present?
   end
-
 end

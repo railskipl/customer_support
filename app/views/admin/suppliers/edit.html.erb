@@ -13,23 +13,23 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :supplier_name %>
+    <label>Supplier Name:</label>
     <%= f.text_field :supplier_name ,required: true%>
   </div>
   <div class="field">
-    <%= f.label :supplier_Pin_Number %>
+    <label>Supplier Pin Number</label>
     <%= f.text_field :supplier_vat_Number ,required: true, "maxlength"=>"11", "min" => "1"%>
   </div>
   <div class="field">
-    <%= f.label :industry %>
+    <label>Industry</label>
     <%= f.text_field :industry ,required: true%>
   </div>
   <div class="field">
-    <%= f.label :address_line1 %>
+    <label>Address Line1</label>
     <%= f.text_area :address_line1 %>
   </div>
   <div class="field">
-    <%= f.label :address_line2 %>
+    <label>Address Line2</label>
     <%= f.text_area :address_line2 ,required: true%>
   </div>
   <div class="field">
@@ -46,7 +46,7 @@
   </div>
   <h3>Contact Person 1</h3>
   <div class="field">
-    <%= f.label :authorised_responder %>
+    <label>Authorised Responder</label>
     <%= f.select :authorised_responder, [ 'Billing', 'Main Manager', 'CS Authorised Responder'] %>
   </div>
   <div class="field">
@@ -54,11 +54,11 @@
     <%= f.select :title, [ ["Mr"], [" Ms"],["Mrs"] ],required: true%>
   </div>
   <div class="field">
-    <%= f.label :first_name %>
+    <%= f.label :first_name,"First Name" %>
     <%= f.text_field :first_name ,required: true, :pattern => '[A-Za-z]+' %>
   </div>
   <div class="field">
-    <%= f.label :last_name %>
+    <%= f.label :last_name,"Last Name" %>
     <%= f.text_field :last_name ,required: true, :pattern => '[A-Za-z]+' %>
   </div>
   <br/>
@@ -67,11 +67,11 @@
     <%= f.email_field :email %>
   </div>
   <div class="field">
-    <%= f.label :telephone_number %>
+    <%= f.label :telephone_number, "Telephone Number"%>
     <%= f.text_field :telephone_number ,required: true%>
   </div>
     <div class="field">
-    <%= f.label :mobile_number %>
+    <%= f.label :mobile_number,"Mobile Number" %>
     <%= f.text_field :mobile_number ,required: true, :pattern => '[0-9]{10,10}'%>
   </div>
 <h3>Contact Person 2</h3>

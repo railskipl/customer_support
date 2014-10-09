@@ -8,7 +8,8 @@
 <%content_for :right do%>
 	<span class="span3">
 		<div class="sectionRightReview">
-		  How to write a good review:
+		  How to write a good review: <br>
+		  <%= @page.description.html_safe rescue nil%>
 		</div>
 	</span>
 <%end%>

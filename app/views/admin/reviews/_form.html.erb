@@ -80,6 +80,7 @@ $(document).ready(function(){
       <%= image_tag(@review.file) %>
     </div>
   </div><br/>
+  Attached File: <%= link_to image_tag(@review.file.url),@review.file.url %>
   <div>
 		<strong>Edit Review:</strong>
 		<input type="checkbox" name="review[is_modified]" id="review_is_modified" value="true" style="opacity:1;" checked="<%@review.is_modified ? 'checked' : '' %>">
@@ -89,7 +90,7 @@ $(document).ready(function(){
     <%= f.text_area :modified_review , :value=>(@review.is_modified ? @review.modified_review : @review.message) ,:class=>"ckeditor"%>
   </div>
   <br/>
-  <%if params[:type] == "archive"%>
+  <%if params[:type] == "archive" || params[:type] == "archive_attachment" %>
     <div id="agent_modified_review" class="field">
       <strong>Reason for archive:</strong><br/>
       <%= f.text_area :notes ,:class=>"ckeditor"%>
@@ -99,13 +100,18 @@ $(document).ready(function(){
 	<br/>
   <div class="actions">
     <%unless @review.ispublished || @review.archive%>
-      <%unless params[:type] == "archive"%>
+      <%unless params[:type] == "archive" || params[:type] == "archive_attachment"%>
         <%= f.submit 'Publish', class: "btn btn-primary"%>
       <%end%>
-      <%unless params[:type] == "archive"%>
-        <%= link_to 'Archive', edit_admin_review_path(params[:id],:type => "archive"), class: "btn" if can? :edit, Review%>
+      <%unless params[:type] == "archive" || params[:type] == "archive_attachment" %>
+        <%= link_to 'Archive', edit_admin_review_path(params[:id],:type => "archive"), class: "btn" ,style: "line-height: 18px;"if can? :edit, Review%>
+        <%= link_to 'Archive Attachment', edit_admin_review_path(params[:id],:type => "archive_attachment"), class: "btn",style: "line-height: 18px;" if can? :edit, Review%>
       <%else%>
+        <% if params[:type] == "archive" %>
         <%= f.submit 'Archive', class: "btn"%>
+        <% else %>
+          <%= f.submit 'Archive-Attachment', class: "btn"%>
+        <%end%>
       <%end%>
    <%else%>
        <%= f.submit 'Update', class: "btn btn-primary"%>

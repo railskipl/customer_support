@@ -224,7 +224,7 @@
 			</div>
 			</span> <span class="span3">
 			<div class="rgh">
-				<div class="image"><%=image_tag @user.avatar.url(:thumb) if @user.avatar.present? %>
+				<div class="image"><%=image_tag @user.avatar.url, :style =>"height:150px;width:120px;margin:-50px;" if @user.avatar.present? %>
 				</div>
 			</div>
 		</span>

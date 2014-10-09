@@ -16,7 +16,7 @@ class AdminController < ActionController::Base
 	def index
 		@users ||= User.all
 		@customers ||= User.all.customers
-		@reviews ||= Review.where('user_id != ?',"").order("created_at desc")
+		@reviews ||= Review.where('user_id is not null').order("created_at desc")
 		@agents ||= User.all.agents
 		@recent_reviews ||= Review.unpublished.order("id desc")
 		@published_reviews ||= Review.published.order("id desc")

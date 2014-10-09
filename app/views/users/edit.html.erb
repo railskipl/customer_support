@@ -238,10 +238,10 @@
 			</div>
 			</span> <span class="span3">
 			<div class="rgh">
-				<div class="image btn-file" id="avatar_image">
-					<%=image_tag @user.avatar.url(:thumb) if @user.avatar.present? %>Update<br>
-				   Image <%=f.file_field :avatar,:id=>'user_avatar' ,:onchange=>"readImage( this )"%>
-				</div>
+				<!-- <div class="image btn-file" id="avatar_image"> -->
+<!-- 					<%#=image_tag @user.avatar.url(:thumb) if @user.avatar.present? %>Update<br>
+ -->				   Image <%=f.file_field :avatar,:id=>'user_avatar' ,:onchange=>"readImage( this )"%>
+				<!-- </div> -->
 				<div class="rgh_in">Type the following Number: *</div>
 				<div class="rgh_in">
 				  <%= recaptcha_tags %>

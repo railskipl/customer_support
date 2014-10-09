@@ -194,7 +194,7 @@ ActiveRecord::Schema.define(version: 20141008063331) do
     t.text     "modified_review"
     t.boolean  "is_modified"
     t.text     "notes"
-    t.boolean  "archive_attachment"
+    t.boolean  "archive_attachment",   default: false
   end
 
   create_table "seos", force: true do |t|

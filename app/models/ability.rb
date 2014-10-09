@@ -6,6 +6,7 @@ class Ability
 
     # Define User abilities
     if user.is? :admin
+      can :manage, User
       can :manage, User, :id => user.id
       can :manage, Resource
       can :manage, Page

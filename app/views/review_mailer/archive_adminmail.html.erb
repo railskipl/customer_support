@@ -1,3 +1,9 @@
+<% if @review.archive_attachment && !@review.archive %>
+<h4>Hi, </h4>
+Agent <%= @agent.preferred_alias%> has putted review attachment title as "<%= @review.title %>" into archive.<br/>
+<%= link_to 'Click here to view Review', admin_review_url(@review)%>
+<% else %>
 <h4>Hi, </h4>
 Agent <%= @agent.preferred_alias%> has putted review title as "<%= @review.title %>" into archive.<br/>
 <%= link_to 'Click here to view Review', admin_review_url(@review)%>
+<% end %>

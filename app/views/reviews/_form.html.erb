@@ -117,14 +117,16 @@
 				</div>
 			</div>
 		</div>
-
+		<div class="rgh_in">
+ 				<input type="checkbox" name="checkbox" value="check"  />
+				  <label for="field_terms"> <%=link_to " I accept the term and conditions. *", "/terms-of-use" ,:target => "new" %></label></div>
 		<div class="review_form">
 				<div class="name_lft">&nbsp;<%= f.hidden_field :review_type ,:value=>(params[:review_type] ? params[:review_type] : 'compliment' ) %>
 				</div>
 				<div>
 				<span>Upload File<%= f.file_field :file %>
 				</div>
-				<%= f.submit "Xema Now", :confirm => "Press cancel to review or ok to submit..?" %>
+				<%= f.submit "Xema Now", :onclick=> "ankit(this)" %>
 		</div>
 
 <%end%>
@@ -133,6 +135,18 @@
 
 
 <script type="text/javascript">
+
+function ankit(thisa)
+{
+if(!thisa.form.checkbox.checked)
+ {
+	alert('You must agree to the terms first.');
+     return false
+ }
+ else
+   confirm("Please preview the changes before submitting?");
+}
+
 $( document ).ready(function() {
 	$("#other_type").hide();
 	$("#nature").hide();

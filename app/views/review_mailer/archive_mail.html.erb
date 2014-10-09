@@ -1,3 +1,9 @@
+<% if @review.archive_attachment && !@review.archive %>
+<h4>Hi <%= @review.user.preferred_alias%>, </h4>
+Your attached file has not been published, due to some inappropriate data. Our customer support executive will contact you soon.
+<p>Title of your review was <strong><%=@review.title%></strong></p>
+<% else %>
 <h4>Hi <%= @review.user.preferred_alias%>, </h4>
 Your review has not been published, due to some inappropriate data. Our customer support executive will contact you soon.
 <p>Title of your review was <strong><%=@review.title%></strong></p>
+<% end %>

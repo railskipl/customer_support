@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140929093250) do
+ActiveRecord::Schema.define(version: 20141008063331) do
 
   create_table "addresses", force: true do |t|
     t.integer  "town_id"
@@ -194,6 +194,7 @@ ActiveRecord::Schema.define(version: 20140929093250) do
     t.text     "modified_review"
     t.boolean  "is_modified"
     t.text     "notes"
+    t.boolean  "archive_attachment"
   end
 
   create_table "seos", force: true do |t|

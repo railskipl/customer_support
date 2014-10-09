@@ -66,13 +66,16 @@
 						</div>
 				</div>
 
-				<div>
+			
 				  <div class="name_lft">Title: </div>
 				  <div>
 				  <%= @review.title%>
 				  </div>
-				</div>
-				
+			
+				  <div class="name_lft">Attachment: </div>
+				  <div>
+				  <%= @review.archive_attachment? ? "No Attachment" : (link_to image_tag(@review.file.url),@review.file.url) %>
+				  </div>
 			</div>
   	</div>
     <div>

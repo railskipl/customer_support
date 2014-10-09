@@ -1,0 +1,42 @@
+<table id="company_performances">
+  <thead>
+    <tr>
+      <th>Best Performance</th>
+      <th>Worst Performance</th>
+      <th>Quotes</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @company_performances.each do |company| %>
+      <tr>
+        <td>
+            <% if company.best_performance.present? %>
+              NIL
+            <% else%>
+              <%= (company.best_performance[0..20]).html_safe rescue nil%>
+            <% end %>
+        </td>
+        <td>    
+            <% if company.worst_performance.present? %>
+              NIL
+            <% else%>
+              <%= (company.worst_performance[0..20]).html_safe rescue nil%>
+            <% end %>
+        </td>
+        <td><%= image_tag company.performance_img, :size => "60x50" rescue nil%></td>
+        <td><%= company.start_date rescue nil%></td>
+        <td><%= company.end_date rescue nil%></td>
+        <td><%= link_to 'Edit', edit_admin_company_performance_path(company) if can? :edit, CompanyPerformance%>
+        <%= link_to 'Destroy',[:admin, company], method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, CompanyPerformance%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New', new_admin_company_performance_path, class: "btn btn-primary" if can? :create, CompanyPerformance%>

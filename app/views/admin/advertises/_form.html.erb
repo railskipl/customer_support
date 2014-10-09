@@ -20,6 +20,13 @@
     <%= f.label :link%>
     <%= f.url_field :link %>
   </div>
+ <strong>
+         Please enter only one at a time. Example If you want Image advertisment then leave text message advertisment blank and vice versa.
+ </strong>
+  <div class="field">
+    <%= f.label :text_message %>
+    <%= f.text_area :text_msg, :class => "ckeditor" %>
+  </div>
 
   <div class="field">
     <%= f.label :start_date %>

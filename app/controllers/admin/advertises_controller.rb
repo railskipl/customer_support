@@ -39,7 +39,7 @@ class Admin::AdvertisesController < AdminController
   private
 
   def advertise_params
-    params.require(:advertise).permit(:image, :start_date, :end_date, :position,:link)
+    params.require(:advertise).permit(:image, :start_date, :end_date, :position,:link,:text_msg)
   end
 
   def get_advertise

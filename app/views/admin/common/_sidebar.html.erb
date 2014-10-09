@@ -116,6 +116,13 @@
 					<%=link_to raw(action_button_helper('Suppliers','icon-list-alt')),admin_suppliers_path%>
   	  </li>
   	<%end%>
+  	<% if can? :manage, CompanyPerformance%>
+	    
+	    <li class="<%=(@active_tab == 'company_performances') ? 'active' : ''%>">
+					<%=link_to raw(action_button_helper('Performances')), admin_company_performances_path%>
+  	    </li>
+  	<%end%>
+
 
   	 <% if can? :manage, Advertise%>
 	    <li class="<%=(@active_tab == 'advertises') ? 'active' : ''%>">
@@ -129,6 +136,7 @@
   	  </li>
   	<%end%>
 
+  	
 
   </ul><!--/.nav-list-->
 

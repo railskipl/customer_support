@@ -74,6 +74,11 @@ $(document).ready(function(){
       <strong>Nature of Review:</strong>
       <%= @review.nature_of_review %>
     </div>
+
+    <div class="field">
+      <strong>Image:</strong>
+      <%= image_tag(@review.file) %>
+    </div>
   </div><br/>
   <div>
 		<strong>Edit Review:</strong>

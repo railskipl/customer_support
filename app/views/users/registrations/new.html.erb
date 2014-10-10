@@ -62,7 +62,7 @@
 				  <div class="dob">
 				    <div class="name_lft">DOB:</div>
 				    <div>
-				      <%= f.date_select :dob, :start_year =>  (Time.now.year - 100),:end_year=>(Time.now.year - 18), order: [:month,:day, :year], prompt: { day: 'Select day', month: 'Select month', year: 'Select year'}%>
+				      <%= f.date_select :dob, :start_year =>  (Time.now.year - 100),:end_year=>(Time.now.year - 18), order: [:day,:month, :year], prompt: { day: 'Select Day', month: 'Select Month', year: 'Select Year'}%>
 				    </div>
 				  </div>
 				</div>
@@ -245,7 +245,7 @@
 							</optgroup>
 							<optgroup label="Kisumu">
 							</optgroup>
-							<option>Other</option>
+							<option style="font-weight:bold">Other</option>
 							</select>
 
 				

@@ -1,4 +1,30 @@
 <% if current_user.is_admin? %>
+  <%unless @supplier_registration.blank?%>
+	  <h4>List of Supplier Registrations Expired</h4>
+		<table id="supplier_registration">
+			<thead>
+			  <tr>
+			    <th width="15%">Supplier Company</th>
+			    <th width="15%">Mobile Number</th>
+			    <th width="15%">Supplier Email</th>
+			    <th width="15%">Start Date</th>
+			    <th width="15%">End Date</th>
+			  </tr>
+			</thead>
+
+			<tbody>
+			  <% @supplier_registration.each do |supplier| %>
+			    <tr>
+			      <td><%=supplier.supplier_name%></td>
+                  <td><%=supplier.mobile_number%></td>
+			      <td><a href="mailto:<%=supplier.email%>"><%=supplier.email%></a></td>
+			      <td><%=supplier.start_date.strftime("%d-%m-%Y")%></td>
+                  <td><%=supplier.end_date.strftime("%d-%m-%Y")%></td>
+			    </tr>
+			  <% end %>
+			</tbody>
+		</table>
+  <%end%>
   <h4>Customers</h4>
 	<table id="customers">
 		<thead>

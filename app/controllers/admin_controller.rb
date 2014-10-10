@@ -22,6 +22,15 @@ class AdminController < ActionController::Base
 		@published_reviews ||= Review.published.order("id desc")
 		@archived_reviews ||= Review.archived.order("id desc")
     @seos ||= Seo.all
+    #For Supplier registration expire notification
+    @supplier_registration = Supplier.select(:id,:supplier_name,:email,:industry,:mobile_number,:start_date, :end_date).where('start_date <= ? and end_date < ? and subscription = ? ', Date.today, Date.today,"Registered")
+    unless @supplier_registration.blank?
+      if @supplier_registration.count > 1
+       flash[:notice] = "There are several supplier registrations has been expired."
+     else
+       flash[:notice] = "Supplier registration has been expired."
+     end
+    end
 	end
 
   def searches

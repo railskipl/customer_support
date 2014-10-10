@@ -8,7 +8,7 @@
   <br/>
   <div class="field">
     <%= f.label :supplier_id, "on Behalf of" %>
-    <%= f.collection_select :supplier_id, Supplier.all, :id, :first_name, :required => true  %>
+    <%= f.collection_select :supplier_id, Supplier.where('subscription = ?',"Registered"), :id, :supplier_name, :required => true  %>
   </div>
   <div class="actions rgh_in">
       <%= f.submit 'Post Comment', class: "btn btn-primary" %><br/>

@@ -14,13 +14,13 @@ class AdminController < ActionController::Base
 	end
 
 	def index
-		@users ||= User.all
-		@customers ||= User.all.customers
-		@reviews ||= Review.where('user_id is not null').order("created_at desc")
-		@agents ||= User.all.agents
-		@recent_reviews ||= Review.unpublished.order("id desc")
-		@published_reviews ||= Review.published.order("id desc")
-		@archived_reviews ||= Review.archived.order("id desc")
+    @users ||= User.all
+    @customers ||= User.all.customers
+    @reviews ||= Review.where('user_id is not null').order("created_at desc")
+    @agents ||= User.all.agents
+    @recent_reviews ||= Review.unpublished.where('user_id is not null').order("created_at desc")
+    @published_reviews ||= Review.published.where('user_id is not null').order("created_at desc")
+    @archived_reviews ||= Review.archived.where('user_id is not null').order("created_at desc")
     @seos ||= Seo.all
     #For Supplier registration expire notification
     @supplier_registration = Supplier.select(:id,:supplier_name,:email,:industry,:mobile_number,:start_date, :end_date).where('start_date <= ? and end_date < ? and subscription = ? ', Date.today, Date.today,"Registered")
@@ -31,7 +31,7 @@ class AdminController < ActionController::Base
        flash[:notice] = "Supplier registration has been expired."
      end
     end
-	end
+  end
 
   def searches
       @review_results = Review.admin_search params[:search]

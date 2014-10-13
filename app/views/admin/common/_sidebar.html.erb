@@ -136,6 +136,12 @@
   	  </li>
   	<%end%>
 
+  	<% if can? :manage, AbuseReport%>
+	    <li class="<%=(@active_tab == 'abuse_report') ? 'active' : ''%>">
+					<%=link_to raw(action_button_helper('Abuse Reports','icon-list-alt')),admin_abuse_reports_path%>
+  	  </li>
+  	<%end%>
+
   	
 
   </ul><!--/.nav-list-->

@@ -76,4 +76,9 @@ class ReviewMailer < ActionMailer::Base
       mail(:to => emails,:subject => "New Review is Submitted")
     end
   end
+
+  def abuse_report_mail(abuse_report)
+    @abuse_report = abuse_report
+    mail(:to => @abuse_report.user_email, :subject => @abuse_report.subject)
+  end
 end

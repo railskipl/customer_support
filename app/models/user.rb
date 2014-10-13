@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   has_many :replies, :through => :reviews, :source => :comments
   has_many :comments
   has_many :seos
+  has_many :abuse_reports
 
   before_save :title_case_name
   validates :preferred_alias, uniqueness: true

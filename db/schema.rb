@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141008063331) do
+ActiveRecord::Schema.define(version: 20141013055123) do
+
+  create_table "abuse_reports", force: true do |t|
+    t.string   "user_email"
+    t.text     "message"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "subject"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "addresses", force: true do |t|
     t.integer  "town_id"

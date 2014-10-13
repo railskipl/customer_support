@@ -1,0 +1,84 @@
+<%content_for :left do%>
+  <span class="span3">
+  </span>
+<%end%>
+
+<span class="span6">
+  <%= form_for([:admin,@abuse_report]) do |f| %>
+    <% if @abuse_report.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@abuse_report.errors.count, "error") %> prohibited this contact from being send:</h2>
+
+        <ul>
+        <% @abuse_report.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="fom_con">
+      <div class="form_lft">
+        <div class="name_lft">First Name: </div>
+        <div>
+        <%if params[:user_id].present?%>
+          <%= f.text_field :first_name,:value => @user.first_name ,:readonly => true %>
+        <%elsif params[:comment_id].present?%>
+          <%= f.text_field :first_name, :value => @comment.name,:readonly=> true %>
+        <%else%>
+          <%= f.text_field :first_name %>
+        <%end%>
+        </div>
+      </div>
+      
+      <div class="form_lft">
+        <div class="name_lft">Last Name: </div>
+        <div>
+        <%if params[:user_id].present?%>
+          <%= f.text_field :last_name, :value =>@user.last_name, :readonly=> true%>
+        <%elsif params[:comment_id].present?%>
+        <%else%>
+          <%= f.text_field :last_name %>
+        <%end%>
+        </div>
+      </div>
+      
+    </div>
+    <div class="fom_con">
+      <div class="form_lft">
+        <div class="name_lft">Email: *</div>
+        <div>
+        <%if params[:user_id].present?%>
+          <%= f.email_field :user_email, :value => @user.email,:readonly=> true %>
+        <%elsif params[:comment_id].present?%>
+          <%= f.email_field :user_email, :value => @comment.email,:readonly=> true  %>
+        <%else%>
+          <%= f.email_field :user_email %>
+        <%end%>
+        </div>
+      </div>
+    </div>
+
+    <div class="form_lft">
+      <div class="name_lft">Subject: </div>
+        <%= f.text_field :subject%>
+      </div>
+    </div>
+    
+    <div class="fom_con">
+      <div class="form_lft">
+        <div class="name_lft">Message : </div>
+      </div>
+      <div class="contact-textarea">
+          <%= f.text_area :message,:style=>"height: 106px; width: 530px;","maxlength"=>"1200"%>
+      </div>
+    </div>
+    <div class="fom_con">
+        <div class="name_lft">Are you human?:</div> <%= recaptcha_tags %>
+    </div><br>
+    <div class="action">
+        <%=f.submit "Submit"%>
+    </div>
+  <% end %>
+</div>
+

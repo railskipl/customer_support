@@ -68,7 +68,7 @@ CKEDITOR.editorConfig = function( config )
 
     config.toolbar_Easy =
         [
-            ['Bold','Italic','Underline','Strike','Subscript','Superscript','-','RemoveFormat'],
+            ['Bold','Italic','Strike','Subscript','Superscript','-','RemoveFormat'],
             ['BulletedList','NumberedList','Blockquote'],
             ['JustifyLeft','JustifyCenter','JustifyRight'],
             ['Link','Unlink'],

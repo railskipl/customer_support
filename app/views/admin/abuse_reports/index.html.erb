@@ -1,0 +1,20 @@
+<h4>Abuse Report Email</h4>
+<table id="abuse_report">
+	<thead>
+		<tr>
+			<th>Email</th>
+			<th>Subject</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+
+	<tbody>
+	    <% @abuse_reports.each do |abuse_report|%>
+		<tr>
+			<td><%= abuse_report.user_email%></td>
+			<td><%= abuse_report.subject%></td>
+			<td><%= link_to 'Destroy', [:admin,abuse_report], method: :delete, data: { confirm: 'Are you sure?' } if can? :destory, AbuseReport%></td></td>
+		</tr>
+		<%end%>
+	</tbody>
+</table>

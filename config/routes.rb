@@ -59,5 +59,6 @@ Jmd::Application.routes.draw do
   	resources :resource_types
     resources :seos
     resources :company_performances
+    resources :abuse_reports
   end
 end

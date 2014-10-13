@@ -18,8 +18,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
           if review.present?
             review.user_id = @user.id
             review.save
-            flash[:notice] = 'You have signed up successfully.A confirmation email is sent to your e-mail.\n Please verify your email address.\nYour review has been saved.'
-            redirect_to new_user_session_url(:guest_token => review.guest_token)
+            redirect_to new_user_session_url(:guest_token => review.guest_token),:notice => 'You have signed up successfully.A confirmation email is sent to your e-mail.\n Please verify your email address.\n Your review has been saved.'
             return
           end
         end

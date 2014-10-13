@@ -14,6 +14,10 @@
     <strong>Image or Quotes:</strong><br>
     <%= f.file_field :performance_img %>
   </div><br>
+  <div class="field">
+    <strong>Link:</strong><br>
+    <%= f.url_field :worst_performance  %>
+  </div><br>
   <%unless @company_performance.performance_img.blank? %>
     <div class="field">
       <strong>Image:</strong><br>
@@ -21,13 +25,8 @@
     </div><br>
   <%end%>
   <div class="field">
-    <strong>Best Performance Companies:</strong>
+    <strong>Enter Text:</strong>
     <%= f.text_area :best_performance,:class => 'ckeditor' %>
-  </div><br>
-
-  <div class="field">
-    <strong>Worst Performance Companies:</strong>
-    <%= f.text_area :worst_performance , :class => 'ckeditor' %>
   </div><br>
 
   <div class="field">

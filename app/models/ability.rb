@@ -31,6 +31,7 @@ class Ability
       can :manage, Comment
       can :manage, Seo
       can :manage, CompanyPerformance
+      can :manage, AbuseReport
     elsif user.is? :agent
       cannot :manage, Resource
       cannot :manage, Page

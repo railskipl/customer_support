@@ -22,6 +22,7 @@ class AdminController < ActionController::Base
     @published_reviews ||= Review.published.where('user_id is not null').order("created_at desc")
     @archived_reviews ||= Review.archived.where('user_id is not null').order("created_at desc")
     @seos ||= Seo.all
+    @archived_attachments ||= Review.where('archive_attachment = ? and user_id is not null',true)
     #For Supplier registration expire notification
     @supplier_registration = Supplier.select(:id,:supplier_name,:email,:industry,:mobile_number,:start_date, :end_date).where('start_date <= ? and end_date < ? and subscription = ? ', Date.today, Date.today,"Registered")
     unless @supplier_registration.blank?

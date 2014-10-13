@@ -105,7 +105,9 @@ $(document).ready(function(){
       <%end%>
       <%unless params[:type] == "archive" || params[:type] == "archive_attachment" %>
         <%= link_to 'Archive', edit_admin_review_path(params[:id],:type => "archive"), class: "btn" ,style: "line-height: 18px;"if can? :edit, Review%>
+        <% unless @review.archive_attachment %>
         <%= link_to 'Archive Attachment', edit_admin_review_path(params[:id],:type => "archive_attachment"), class: "btn",style: "line-height: 18px;" if can? :edit, Review%>
+        <% end %>
       <%else%>
         <% if params[:type] == "archive" %>
         <%= f.submit 'Archive', class: "btn"%>

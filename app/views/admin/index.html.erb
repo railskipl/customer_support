@@ -254,7 +254,7 @@
   <tbody>
     <% @archived_attachments.each do |ar| %>
       <tr>
-        <td><%= link_to "Attachment ",ar.file.url  %>&nbsp;</td>
+        <td><%= link_to "Attachment",ar.file.url  %>&nbsp;</td>
         <td><%= ar.notes.html_safe %>&nbsp;</td>
       </tr>
     <% end %>

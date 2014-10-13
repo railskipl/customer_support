@@ -46,4 +46,6 @@ $(document).ready(function() {
        $('#company_performances').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [5] }] } );
        $('#supplier_registration').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [] }] } );
        $('#abuse_report').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [2] }] } );
+       $('#arfiles').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [] }] } );
+
 });

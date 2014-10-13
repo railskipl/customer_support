@@ -30,11 +30,12 @@ $(document).ready(function(){
       </ul>
     </div>
   <% end %>
-  <%= link_to "Report Abuse", new_admin_abuse_report_path(:user_id => @review.user_id)%>
+  
   <div class="field">
     <strong> Ticket Number: </strong><%=@review.ticket_number%>
   </div><br/>
   <div id="more_details">
+      <%= link_to "Report Abuse", new_admin_abuse_report_path(:user_id => @review.user_id),:class=> "btn"%><br>
       <div class="field">
          <strong>Review Type: </strong><%= @review.review_type %>
       </div><br/>

@@ -6,7 +6,7 @@
   <%if comment.user_id.present?%>
     <%= link_to "Report Abuse", new_admin_abuse_report_path(:user_id => comment.user_id),:class=> "btn btn-primary"%>
   <%else%>
-    <%= link_to "Report Abuse", new_admin_abuse_report_path(:comment_id => comment.id),:class=> "btn"%>
+    <%= link_to "Report Abuse", new_admin_abuse_report_path(:comment_id => comment.id),:class=> "btn btn-primary"%>
   <%end%><br>
   Posted On: <%= comment.updated_at.strftime("%Y-%m-%d") %> <br/>
   Message: <%= raw(comment.title) %>

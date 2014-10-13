@@ -26,7 +26,7 @@
         <%elsif params[:comment_id].present?%>
           <%= f.text_field :first_name, :value => @comment.name,:readonly=> true %>
         <%else%>
-          <%= f.text_field :first_name %>
+          <%= f.text_field :first_name,required: true %>
         <%end%>
         </div>
       </div>
@@ -38,7 +38,7 @@
           <%= f.text_field :last_name, :value =>@user.last_name, :readonly=> true%>
         <%elsif params[:comment_id].present?%>
         <%else%>
-          <%= f.text_field :last_name %>
+          <%= f.text_field :last_name,required: true %>
         <%end%>
         </div>
       </div>
@@ -53,7 +53,7 @@
         <%elsif params[:comment_id].present?%>
           <%= f.email_field :user_email, :value => @comment.email,:readonly=> true  %>
         <%else%>
-          <%= f.email_field :user_email %>
+          <%= f.email_field :user_email,required: true %>
         <%end%>
         </div>
       </div>
@@ -61,7 +61,7 @@
 
     <div class="form_lft">
       <div class="name_lft">Subject: </div>
-        <%= f.text_field :subject%>
+        <%= f.text_field :subject, required: true %>
       </div>
     </div>
     
@@ -70,12 +70,10 @@
         <div class="name_lft">Message : </div>
       </div>
       <div class="contact-textarea">
-          <%= f.text_area :message,:style=>"height: 106px; width: 530px;","maxlength"=>"1200"%>
+          <%= f.text_area :message,:style=>"height: 106px; width: 530px;","maxlength"=>"1200",required: true%>
       </div>
     </div>
-    <div class="fom_con">
-        <div class="name_lft">Are you human?:</div> <%= recaptcha_tags %>
-    </div><br>
+    
     <div class="action">
         <%=f.submit "Submit"%>
     </div>

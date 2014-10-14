@@ -40,30 +40,30 @@ $(document).ready(function(){
          <strong>Review Type: </strong><%= @review.review_type %>
       </div><br/>
       <div class="field">
-    		<strong>Title:</strong><%= @review.title %>
+    		<strong>Title:</strong><%= @review.title  rescue nil%>
       </div><br/>
       <div class="field">
     		<strong>Review:</strong>
-        <p><%= @review.message %></p>
+        <p><%= @review.message rescue nil %></p>
       </div><br/>
       <div class="field">
       <strong>Industry:</strong>
-      <%= @review.industry.title %>
+      <%= @review.industry.title  rescue nil%>
     </div><br/>
 
     <div class="field">
       <strong>Company:</strong>
-      <%= @review.company.title %>
+      <%= @review.company.title rescue nil %>
     </div><br/>
 
     <div class="field">
       <strong>Town:</strong>
-      <%= @review.town.title %>
+      <%= @review.town.title  rescue nil%>
     </div><br/>
 
     <div class="field">
       <strong>Location:</strong>
-      <%= @review.location.title %>
+      <%= @review.location.title  rescue nil%>
     </div><br/>
 
 

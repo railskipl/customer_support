@@ -36,6 +36,13 @@ class ReviewsController < ApplicationController
     @page = Page.find_by_slug("how-to-write-good-review")
     if params[:id].present?
      @review = Review.find(params[:id])
+     @companies = Industry.find(@review.industry_id).companies.order(:title)
+     @towns = Company.find(@review.company_id).towns.order(:title).uniq!
+
+     addresses = Address.find_all_by_town_id_and_company_id(@review.town_id,@review.company_id)
+     @locations = addresses.map {|a| a.location}
+     @locations.sort_by { |k| k["value"] }
+     @locations.uniq!
     else
 		 @review = Review.new
     end
@@ -66,6 +73,7 @@ class ReviewsController < ApplicationController
       if verify_recaptcha
         if @review.update_attributes(review_params)
           if current_user
+            raise "update method"
             ReviewMailer.user_mail(@review).deliver!
             ReviewMailer.admin_mail(@review).deliver!
             ReviewMailer.agent_mail(@review).deliver!
@@ -100,7 +108,7 @@ class ReviewsController < ApplicationController
     town     = params[:txt_review_town_id].to_s
     location = params[:txt_review_location_id].to_s
 
-    @review ||= Review.new(review_params)
+    @review ||= Review.new(review_params) 
     current_user.present? ? @review.user_id = current_user.id : @review.guest_token = generate_token
 
     if t > Time.now

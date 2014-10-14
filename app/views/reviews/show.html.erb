@@ -12,13 +12,13 @@
 					<div class="form_lft">
 						<div class="name_lft">Company: </div>
 						<div>
-							<%=@review.company.title%>
+							<%=@review.company.title  rescue nil %>
 						</div>
 					</div>
 					<div class="form_lft">
 						<div class="name_lft">Industry: </div>
 						<div>
-							<%=@review.industry.title%>
+							<%=@review.industry.title  rescue nil %>
 						</div>
 					</div>
 				</div>
@@ -26,13 +26,13 @@
 					<div class="form_lft">
 						<div class="name_lft">Town: </div>
 						<div>
-				    <%=@review.town.title%>
+				    <%=@review.town.title rescue nil %>
 						</div>
 					</div>
 					<div class="form_lft">
 						<div class="name_lft">Location: </div>
 						<div>
-					    <%=@review.location.title%>
+					    <%=@review.location.title rescue nil %>
 						</div>
 					</div>
 				</div>

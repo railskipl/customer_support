@@ -14,6 +14,13 @@ $(document).ready(function(){
     $("#show").hide();
     $("#hide").show();
   });
+
+  $("#hidden").click(function(){
+    $("#more_details").hide();
+    $("#show").show();
+    $("#hide").hide();
+
+  });
 });
 </script>
 
@@ -100,8 +107,8 @@ $(document).ready(function(){
   <div id="comments"> 
     <%= render @review.comments%>
   </div>
+  <input type="button" id="hidden" class="btn btn-primary" value="Hide Comments">
 </div>
-
 <%unless @review.archive == true%>
   <%= render :file => 'admin/comments/new' %>
 <%end%>

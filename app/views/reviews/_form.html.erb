@@ -119,7 +119,7 @@
 			</div>
 		</div>
 		<div class="rgh_in">
- 				<input type="checkbox" name="checkbox" value="check"  />
+ 				<input type="checkbox" name="checkbox" value="check" id="ab" />
 				  <label for="field_terms"> <%=link_to " I accept the term and conditions. *", "/terms-of-use" ,:target => "new" %></label></div>
 		<div class="review_form">
 				<div class="name_lft">&nbsp;<%= f.hidden_field :review_type ,:value=>(params[:review_type] ? params[:review_type] : 'compliment' ) %>
@@ -127,7 +127,7 @@
 				<div>
 				<span>Upload File<%= f.file_field :file %>
 				</div>
-				<%= f.submit "Xema Now", :onclick=> "checkbox_checked(this)" %>
+				<%= f.submit "Xema Now" ,:id => "check_checkbox"%>
 		</div>
 
 <%end%>
@@ -137,16 +137,21 @@
 
 <script type="text/javascript">
 
-function checkbox_checked(thisa)
-{
-if(!thisa.form.checkbox.checked)
- {
-	alert('You must agree to the terms first.');
-     return false
- }
- else
-   confirm("Please preview the changes before submitting?");
-}
+$('#check_checkbox').click(function (e) {
+	var a = document.getElementById("ab")
+	if (!a.checked){
+		alert("Select Checkbox");
+		return false;
+	}
+	else{
+	 var con = confirm("Press Ok to submit or Cancel to review it..");
+	 if (con == false){
+	 	 e.preventDefault();
+	 }
+
+	}
+
+});
 
 $( document ).ready(function() {
 	$("#other_type").hide();

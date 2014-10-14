@@ -82,7 +82,9 @@ $(document).ready(function(){
       <%= image_tag(@review.file) %>
     </div>
   </div><br/>
+  <% unless @review.file.file.nil? %>
   Attached File: <%= link_to image_tag(@review.file.url),@review.file.url %>
+  <% end %>
   <div>
 		<strong>Edit Review:</strong>
 		<input type="checkbox" name="review[is_modified]" id="review_is_modified" value="true" style="opacity:1;" checked="<%@review.is_modified ? 'checked' : '' %>">
@@ -108,12 +110,15 @@ $(document).ready(function(){
       <%unless params[:type] == "archive" || params[:type] == "archive_attachment" %>
         <%= link_to 'Archive', edit_admin_review_path(params[:id],:type => "archive"), class: "btn" ,style: "line-height: 18px;"if can? :edit, Review%>
         <% unless @review.archive_attachment %>
-        <%= link_to 'Archive Attachment', edit_admin_review_path(params[:id],:type => "archive_attachment"), class: "btn",style: "line-height: 18px;" if can? :edit, Review%>
+         <% unless  @review.file.file.nil? %>
+          <%= link_to 'Archive Attachment', edit_admin_review_path(params[:id],:type => "archive_attachment"), class: "btn",style: "line-height: 18px;" if can? :edit, Review%>
+        <% end %>
         <% end %>
       <%else%>
         <% if params[:type] == "archive" %>
         <%= f.submit 'Archive', class: "btn"%>
         <% else %>
+
           <%= f.submit 'Archive-Attachment', class: "btn"%>
         <%end%>
       <%end%>

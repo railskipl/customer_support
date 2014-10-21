@@ -63,6 +63,11 @@ class ReviewsController < ApplicationController
   def update
     @review = Review.find(params[:id])
     unless params[:review][:guest] == "guest_user"
+      if params[:sad]
+        @review.review_type = "complaint"
+      elsif params[:happy]
+        @review.review_type = "compliment"
+      end
       if @review.update_attributes(review_params)
           flash[:notice] = "Your Review Successfully changed."
           redirect_to @review

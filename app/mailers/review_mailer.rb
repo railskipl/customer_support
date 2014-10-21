@@ -81,4 +81,9 @@ class ReviewMailer < ActionMailer::Base
     @abuse_report = abuse_report
     mail(:to => @abuse_report.user_email, :subject => @abuse_report.subject)
   end
+
+  def ticket_closed_notification(review)
+    @review = review
+    mail(:to => @review.user.email, :subject => "Ticket Closed")
+  end
 end

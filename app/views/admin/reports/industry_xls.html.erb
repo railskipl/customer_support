@@ -1,0 +1,162 @@
+<br/>
+<% @industries.each do |industry|%>
+
+<% @industry = Industry.where('id = ?', industry).first%>
+<table>
+	<thead>
+		<tr>
+			<th>Industry <%= @industry.title %>: Total Reviews</th>
+		</tr>
+
+	</thead>
+
+	<tbody>
+		<tr>
+			<td>Compliments :
+			<%= @compliments = Review.where('created_at >= ? and created_at <= ? and user_id is not null and industry_id = ? and review_type = ?',1.year.ago, Date.today,@industry.id, 'compliment').count%></td>
+		
+			<td>Complaint :
+			<%= @complaints = Review.where('created_at >= ? and created_at <= ? and user_id is not null and industry_id = ? and review_type = ?',1.year.ago, Date.today,@industry.id, 'complaint').count%></td>
+		
+			<td><strong>Total</strong>
+			<%= @complaints + @compliments%></td>
+		</tr>
+
+	</tbody>
+</table>
+
+<br/>
+<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered">
+	<thead>
+		<tr>
+			<th>Industry <%= @industry.title %> : Nature of Compliment</th>
+		</tr>
+
+	</thead>
+
+	<tbody>
+		<tr>
+			<td>Billing/accounts</td>
+			<td><%= Review.where('created_at >= ? and created_at <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,  @industry.id ,'Billing/accounts', 'compliment').count%></td>
+		</tr>
+		<tr>
+			<td>Booking</td>
+			<td><%= Review.where('created_at >= ? and created_at <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@industry.id , 'Booking', 'compliment').count%></td>
+		
+		</tr>
+		<tr>
+			<td>Call centre efficiency</td>
+			<td><%= Review.where('created_at >= ? and created_at <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@industry.id,'Call centre efficiency', 'compliment').count%></td>
+		</tr>
+		<tr>
+		
+			<td>Contract</td>
+			<td><%= Review.where('created_at >= ? and created_at <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@industry.id,'Contract', 'compliment').count%></td>
+		</tr>
+		<tr>
+			<td>Delivery on time</td>
+			<td><%= Review.where('created_at >= ? and created_at <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@industry.id,'Delivery on time', 'compliment').count%></td>
+		</tr>
+		<tr>
+			<td>Feedback</td>
+			<td><%= Review.where('created_at >= ? and created_at <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@industry.id,'Feedback', 'compliment').count%></td>
+		</tr>
+		<tr>
+			<td>Going the extra mile</td>
+			<td><%= Review.where('created_at >= ? and created_at <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@industry.id,'Going the extra mile', 'compliment').count%></td>
+		</tr>
+		<tr>
+			<td>Great attitude</td>
+			<td><%= Review.where('created_at >= ? and created_at <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@industry.id,'Great attitude', 'compliment').count%></td>
+		</tr>
+		<tr>
+			<td>Pricing</td>
+			<td><%= Review.where('created_at >= ? and created_at <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@industry.id,'Pricing', 'compliment').count%></td>
+		</tr>
+		<tr>
+			<td>Refund</td>
+			<td><%= Review.where('created_at >= ? and created_at <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@industry.id,'Refund', 'compliment').count%></td>
+		</tr>
+		<tr>
+			<td>Repairs</td>
+			<td><%= Review.where('created_at >= ? and created_at <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@industry.id,'Repairs', 'compliment').count%></td>
+		</tr>
+		<tr>
+			<td>Stock</td>
+			<td><%= Review.where('created_at >= ? and created_at <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@industry.id,'Stock', 'compliment').count%></td>
+		</tr>
+		<tr>
+			<td>Other</td>
+			<td><%= Review.where('created_at >= ? and created_at <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@industry.id,'Other', 'compliment').count%></td>
+		</tr>
+
+	</tbody>
+</table>
+<br/>
+
+
+<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered">
+	<thead>
+		<tr>
+			<th>Industry <%= @industry.title %> : Nature of Complaints</th>
+		</tr>
+
+	</thead>
+
+	<tbody>
+		<tr>
+			<td>Billing/accounts</td>
+			<td><%= Review.where('created_at >= ? and created_at <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,  @industry.id ,'Billing/accounts', 'complaint').count%></td>
+		</tr>
+		<tr>
+			<td>Booking</td>
+			<td><%= Review.where('created_at >= ? and created_at <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@industry.id , 'Booking', 'complaint').count%></td>
+		</tr>
+		<tr>
+			<td>Call centre efficiency</td>
+			<td><%= Review.where('created_at >= ? and created_at <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@industry.id,'Call centre efficiency', 'complaint').count%></td>
+		</tr>
+		<tr>
+			<td>Contract</td>
+			<td><%= Review.where('created_at >= ? and created_at <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@industry.id,'Contract', 'complaint').count%></td>
+		</tr>
+		<tr>
+			<td>Delivery on time</td>
+			<td><%= Review.where('created_at >= ? and created_at <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@industry.id,'Delivery on time', 'complaint').count%></td>
+		</tr>
+		<tr>
+			<td>Feedback</td>
+			<td><%= Review.where('created_at >= ? and created_at <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@industry.id,'Feedback', 'complaint').count%></td>
+		</tr>
+		<tr>
+			<td>Going the extra mile</td>
+			<td><%= Review.where('created_at >= ? and created_at <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@industry.id,'Going the extra mile', 'complaint').count%></td>
+		</tr>
+		<tr>
+			<td>Great attitude</td>
+			<td><%= Review.where('created_at >= ? and created_at <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@industry.id,'Great attitude', 'complaint').count%></td>
+		</tr>
+		<tr>
+			<td>Pricing</td>
+			<td><%= Review.where('created_at >= ? and created_at <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@industry.id,'Pricing', 'complaint').count%></td>
+		</tr>
+		<tr>
+			<td>Refund</td>
+			<td><%= Review.where('created_at >= ? and created_at <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@industry.id,'Refund', 'complaint').count%></td>
+		</tr>
+		<tr>
+			<td>Repairs</td>
+			<td><%= Review.where('created_at >= ? and created_at <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@industry.id,'Repairs', 'complaint').count%></td>
+		</tr>
+		<tr>
+			<td>Stock</td>
+			<td><%= Review.where('created_at >= ? and created_at <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@industry.id,'Stock', 'complaint').count%></td>
+		</tr>
+		<tr>
+			<td>Other</td>
+			<td><%= Review.where('created_at >= ? and created_at <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@industry.id,'Other', 'complaint').count%></td>
+		</tr>
+
+	</tbody>
+</table>
+<%end%>

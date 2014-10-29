@@ -37,6 +37,7 @@ class Ability
       cannot :manage, Page
       cannot :manage, Resource
       cannot :manage, ResourceType
+      cannot :manage, Seo
       can :manage, User, :id=> user.id
       cannot :manage, Faq
       can    :read  , NatureOfReview

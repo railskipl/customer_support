@@ -1,0 +1,1 @@
+$("#report_company_id").html('<%= raw("<option></option>" +  options_for_select(@companies.map {|c| [c.title, c.id]}).gsub(/\n/, '') + "<option>Other</option>" ) %>');

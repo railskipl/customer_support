@@ -120,7 +120,8 @@
 				<div class="name_lft">&nbsp;<%= f.hidden_field :review_type ,:value=>(params[:review_type] ? params[:review_type] : 'compliment' ) %>
 				</div>
 				<div>
-				<span>Upload File<%= f.file_field :file %>
+				<span>Upload File<%= f.file_field :file%></span><br>
+				<span></span><%#= raise @review.file[:title].inspect %>
 				</div>
 				<%= f.submit "Xema Now"%>
 		</div>

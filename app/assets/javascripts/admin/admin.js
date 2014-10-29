@@ -47,5 +47,5 @@ $(document).ready(function() {
        $('#supplier_registration').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [] }] } );
        $('#abuse_report').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [2] }] } );
        $('#arfiles').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [] }] } );
-
+       $('#admin_review_xls').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [5] }] });
 });

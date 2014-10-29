@@ -1,0 +1,19 @@
+<h4>Industry Totals- 12 month period</h4>
+<table border="1">
+	<thead>
+      <tr>
+        <th>Industry</th>
+        <th>Link</th>
+      </tr>
+	</thead>
+		
+	<tbody>
+	  <%@industries.each do |industry|%>
+      <tr>
+      	<td><%= industry.title %></td>
+      	<td><%= link_to "View Review", industry_level_admin_reports_path(:industry => industry.id)%></td>
+      </tr>
+      <%end%>
+	</tbody>
+</table>
+<br/><br/>

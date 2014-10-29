@@ -35,10 +35,16 @@ Jmd::Application.routes.draw do
   match "/:slug" => "pages#index",via: [:get],as: :page
   resources :polls ,:only => [:show]
 
+  
   namespace :admin do
     get "/searches/reviews" => "reviews#search_reviews", as: :search_reviews
     get "change_password" => "users#change_password", as: :change_password
     put "update_password" => "users#update_password", as: :update_password
+
+    get '/industry/companies_by_industry' => "reports#companies_by_industry"
+    get '/company/towns_by_company' => "reports#towns_by_company"
+    get '/town/locations_by_town_and_company' => "reports#locations_by_town_and_company"
+        
   	resources :users
   	resources :locations
   	resources :towns
@@ -60,5 +66,24 @@ Jmd::Application.routes.draw do
     resources :seos
     resources :company_performances
     resources :abuse_reports
+    resources :reports do 
+      collection do
+        get :industry
+        get :company
+        get :user_profile
+        get :nature_of_complaints
+        get :industry_level
+        get :supplier_level
+        get :supplier_profiles
+        get :industry_xls
+        get :company_xls
+        get :total_xls
+        get :most_company_xls
+        get :registered_company_xls
+        get :unregistered_company_xls
+        get :archive_data
+        
+      end
+    end
   end
 end

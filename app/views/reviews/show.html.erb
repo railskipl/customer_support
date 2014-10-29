@@ -91,21 +91,47 @@
   <%= render :file => 'comments/new' %>
   
   <%if current_user && current_user == @review.user && @review.comments.supplier_comments.count > 0%>
-  	Want to change your review?<br/>
-			<%=form_for(@review) do |f| %>
-			<%if @review.review_type == 'complaint' %>
-			  <%=f.hidden_field :review_type , :value=>'compliment'%>		
+  		<% if !@review.is_ticket_open %>
+  		 	<%=form_for(@review) do |f| %>
+				<%if @review.review_type == 'complaint' %>
+				Want to change your review?<br/>
+			  	<%=f.hidden_field "e" , :value=>''%>		
+			  	<div class="rgh_in">
+    	   		  <%= f.submit "",  :name => "happy",:class => "happy"%>
+	    		  <%= f.submit "" , :name => "sad",:class => "sad"%>
+	    		</div>
+		  <%#else%>
+			 <!--  <%#=f.hidden_field :review_type , :value=>'complaint'%>		
 			  <div class="rgh_in">
-	    		 <%= f.submit 'I am Happy'%>
-	    	</div>
-		  <%else%>
-			  <%=f.hidden_field :review_type , :value=>'complaint'%>		
-			  <div class="rgh_in">
-	    		 <%= f.submit 'I am Sad'%>
-	    	</div>
-		  <%end%>
+	    		 <%#= f.submit "" ,:class => "sad"%>
+	    	</div> -->
+			  <%end%>
+			<%end%>
     <%end%>
   <%end%>
   <br/>
 	
 </span>
+
+<style type="text/css">
+.rgh_in{
+padding: 15px;	
+}
+.sad{
+    background-image:url("/assets/Not Satisfied_PNG.PNG");
+    font-size:0;
+    width:160px !important;
+    min-width: 155px;
+    height:150px !important;
+}​
+</style>
+<style type="text/css">
+
+.happy{
+    background-image:url("/assets/Satisfied_PNG.PNG");
+    font-size:0;
+    width:160px !important;
+    min-width: 153px;
+    height:150px !important;
+}​
+</style>

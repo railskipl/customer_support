@@ -8,7 +8,7 @@ class AdminController < ActionController::Base
   end
 
 	def require_admin!
-		unless ['admin' ,'agent'].include? current_user.role
+		unless ['admin' ,'agent','jagent'].include? current_user.role
 			redirect_to "/"
 		end
 	end
@@ -16,11 +16,19 @@ class AdminController < ActionController::Base
 	def index
     @users ||= User.all
     @customers ||= User.all.customers
-    @reviews ||= Review.where('user_id is not null').order("created_at desc")
+    if current_user.role == "jagent"
+      @reviews ||= Review.where('jagent_id = ? and user_id is not null',current_user.id).order("created_at desc")
+      @recent_reviews ||= Review.unpublished.where('jagent_id = ? and user_id is not null',current_user.id).order("created_at desc")
+      @published_reviews ||= Review.published.where('jagent_id = ? and user_id is not null',current_user.id).order("created_at desc")
+      @archived_reviews ||= Review.archived.where('jagent_id = ? and user_id is not null',current_user.id).order("created_at desc")
+    else
+      @reviews ||= Review.where('user_id is not null').order("created_at desc")
+      @recent_reviews ||= Review.unpublished.where('user_id is not null').order("created_at desc")
+      @published_reviews ||= Review.published.where('user_id is not null').order("created_at desc")
+      @archived_reviews ||= Review.archived.where('user_id is not null').order("created_at desc")
+    end
     @agents ||= User.all.agents
-    @recent_reviews ||= Review.unpublished.where('user_id is not null').order("created_at desc")
-    @published_reviews ||= Review.published.where('user_id is not null').order("created_at desc")
-    @archived_reviews ||= Review.archived.where('user_id is not null').order("created_at desc")
+
     @seos ||= Seo.all
     @archived_attachments ||= Review.where('archive_attachment = ? and user_id is not null',true)
     

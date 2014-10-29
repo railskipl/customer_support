@@ -37,6 +37,7 @@ Jmd::Application.routes.draw do
 
   
   namespace :admin do
+    put "/ticket_closed" => "reviews#ticket_closed"
     get "/searches/reviews" => "reviews#search_reviews", as: :search_reviews
     get "change_password" => "users#change_password", as: :change_password
     put "update_password" => "users#update_password", as: :update_password

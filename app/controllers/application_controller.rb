@@ -48,7 +48,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource_or_scope)
-  	if current_user.role == 'admin' ||  current_user.role == 'agent'
+  	if current_user.role == 'admin' ||  current_user.role == 'agent' || current_user.role == 'jagent'
   		admin_index_path
   	else
 	    reviews_path

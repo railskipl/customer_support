@@ -56,6 +56,27 @@ class Ability
       can    :manage, Comment
       can    :destroy, Review
       can    :manage, Supplier
+    elsif user.is? :jagent
+      cannot :manage, Resource
+      cannot :manage, Page
+      cannot :manage, Resource
+      cannot :manage, ResourceType
+      cannot :manage, Faq
+      can    :read  , NatureOfReview
+      can    :read  , Industry
+      can    :read  , Company
+      can    :read  , Town
+      can    :read  , Location
+      can    :read  , Address
+      can    :read,   Review, :jagent_id => user.id
+      can    :edit,   Review, :published_date => nil, :jagent_id => user.id
+      can    :update, Review, :published_date => nil, :jagent_id => user.id
+      can    :read,   User, :id => user.id
+      can    :edit,   User, :id => user.id
+      can    :update, User, :id => user.id
+      can    :manage, Comment
+      can    :destroy, Review, :jagent_id => user.id
+      can    :manage, Supplier
     else
       can    :read,   User, :id => user.id
       can    :edit,   User, :id => user.id

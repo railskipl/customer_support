@@ -1,7 +1,7 @@
 class Admin::ReviewsController < AdminController
 	before_action :default_tab
 	before_action :get_review , :only => [:show, :edit, :update]
-	load_and_authorize_resource :except => [:search_reviews]
+	load_and_authorize_resource :except => [:search_reviews,:ticket_closed]
   
 	def index
 		@reviews = Review.unarchived.order("id desc")
@@ -13,6 +13,14 @@ class Admin::ReviewsController < AdminController
 
   def edit
     
+  end
+
+  def ticket_closed
+    review = Review.find(params["review_id"])
+    review.is_ticket_open = false
+    review.save
+    ReviewMailer.ticket_closed_notification(review).deliver
+    redirect_to :back, :notice => "Ticket closed successfully"
   end
 
   def update

@@ -1,0 +1,75 @@
+<table border="1">
+	<thead>
+		<tr>
+			<th colspan="2">Customer: Total Reviews -over a 12 month period</th>
+		</tr>
+
+	</thead>
+
+	<tbody>
+		<tr>
+			<td>Compliments</td>
+			<td><%= @user_compliment%></td>
+		</tr>
+		<tr>
+			<td>Complaint</td>
+			<td><%= @user_complaint%></td>
+		</tr>
+		<tr>
+			<td><strong>Total</strong></td>
+			<td><%= @user_compliment + @user_complaint%></td>
+		</tr>
+
+	</tbody>
+</table>
+
+<h4>Customers</h4>
+	<table id="customers">
+		<thead>
+		  <tr>
+		    <th width="15%">First Name</th>
+		    <th width="15%">Last Name</th>
+		    <th width="30%">Email</th>
+		    <th width="20%">Email Confirmation</th>
+		    <th width="20%">Action</th>
+		  </tr>
+		</thead>
+
+		<tbody>
+		  <% @customers.each do |user| %>
+		    <tr>
+		      <td><%=user.first_name%></td>
+		      <td><%=user.last_name%></td>
+		      <td><%=user.email%></td>
+		      <td><%=user.confirmed_at.present? ? 'Confirmed' : 'Pending'%></td>
+		      <td>
+		        <%= link_to 'Show', admin_user_path(user), class: "btn btn-primary" if can? :show, User, :role => 'user' %>
+  				</td>
+		    </tr>
+		  <% end %>
+		</tbody>
+	</table>
+<br/><br/>
+<h4>Active customers (6 months)</h4><br/>
+	<table  border="1">
+		<thead>
+		  <tr>
+		    <th width="15%">First Name</th>
+		    <th width="15%">Last Name</th>
+		    <th width="30%">Email</th>
+		    <th width="20%">Email Confirmation</th>
+		  </tr>
+		</thead>
+
+		<tbody>
+		  <% @users.each do |user| %>
+		    <% @user = User.find(user)%>
+		    <tr>
+		      <td><%=@user.first_name%></td>
+		      <td><%=@user.last_name%></td>
+		      <td><%=@user.email%></td>
+		      <td><%=@user.confirmed_at.present? ? 'Confirmed' : 'Pending'%></td>
+		    </tr>
+		  <% end %>
+		</tbody>
+	</table>

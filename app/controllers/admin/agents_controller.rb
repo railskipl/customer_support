@@ -25,13 +25,13 @@ class Admin::AgentsController < AdminController
 
   def create
     @agent = User.new(agent_params)
-      @agent.role = 'agent'
-      @agent.password = rand(36**10).to_s(36)
-      if @agent.save
-         AgentMailer.agent_mail(@agent).deliver!
-         redirect_to admin_agent_path(@agent), notice: 'agent was successfully created.'
-      else
-         render :new
+    @agent.role = 'agent'
+    @agent.password = rand(36**10).to_s(36)
+    if @agent.save
+       AgentMailer.agent_mail(@agent).deliver!
+       redirect_to admin_agent_path(@agent), notice: 'Agent was successfully created.'
+    else
+       render :new
     end
   end
 
@@ -56,12 +56,10 @@ class Admin::AgentsController < AdminController
   private
 
   def agent_params
-    params.require(:agent).permit(:first_name, :last_name, :preferred_alias, :email, :password)
+    params.require(:agent).permit(:first_name, :last_name, :preferred_alias, :email, :password, :role)
   end
 
   def default_tab
 	  @active_tab = "agents"
   end
-
-
 end

@@ -1,0 +1,51 @@
+<h2>Suppliers that get most complaints/compliments</h2><br/>
+
+<table >
+  <thead>
+     
+        <th width="50%">Most Compliments</th>
+     
+  </thead>
+    
+  <tbody>
+     
+      <tr>
+        <%unless @value_compliments.blank?%>
+          <td width="50%"><strong><%= Company.find(@value_compliments).title rescue nil%></strong></td>
+        <%else%>
+          <td width="50%"><strong>NIL</strong></td>
+        <%end%>
+        <%unless @max_compliment.blank?%>
+          <td width="50%"><strong><%= @max_compliment%></strong></td>
+        <%else%>
+          <td width="50%"><strong>NIL</strong></td>
+        <%end%>
+      </tr>
+   
+  </tbody>
+</table>
+<br/><br/>
+<table >
+  <thead>
+      <tr>
+        <th >Most Complaint</th>
+      </tr>
+  </thead>
+    
+  <tbody>
+
+      <tr>
+        <%unless @value_complaints.blank?%>
+          <td width="50%"><strong><%= Company.find(@value_complaints).title rescue nil%></strong></td>
+        <%else%>
+          <td width="50%"><strong>NIL</strong></td>
+        <%end%>
+        <%unless @max_complaint.blank?%>
+          <td width="50%"><strong><%= @max_complaint%></strong></td>
+        <%else%>
+          <td width="50%"><strong>NIL</strong></td>
+        <%end%>
+      </tr>
+   
+  </tbody>
+</table>

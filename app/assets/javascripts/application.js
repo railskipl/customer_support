@@ -26,6 +26,7 @@
 //= require highcharts/highcharts-more
 //= require highcharts/modules/exporting
 
+
  $(document).ready(function(ev){
       $('#datepicker1').datepicker();
       $('#datepicker2').datepicker();

@@ -78,7 +78,6 @@ class ReviewsController < ApplicationController
       if verify_recaptcha
         if @review.update_attributes(review_params)
           if current_user
-            raise "update method"
             ReviewMailer.user_mail(@review).deliver!
             ReviewMailer.admin_mail(@review).deliver!
             ReviewMailer.agent_mail(@review).deliver!
@@ -187,7 +186,7 @@ class ReviewsController < ApplicationController
     respond_to do |format|
       format.js
     end
-  end
+  end 
 
   def locations_by_town_and_company
     if params[:id].present? and params[:company_id].present?

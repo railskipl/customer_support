@@ -1,0 +1,133 @@
+<h2>Suppliers that get most complaints/compliments</h2><br/>
+
+<table border="1">
+  <thead>
+     
+        <th colspan="2">Most Compliments</th>
+     
+  </thead>
+    
+  <tbody>
+     
+      <tr>
+        <td width="50%"><strong><%= Company.find(@value_compliments).title rescue nil%></strong></td>
+        <td width="50%"><strong><%= @max_compliment%></strong></td>
+      </tr>
+   
+  </tbody>
+</table>
+<br/><br/>
+<table border="1">
+  <thead>
+      <tr>
+        <th colspan="2">Most Complaint</th>
+      </tr>
+  </thead>
+    
+  <tbody>
+
+      <tr>
+        <td width="50%"><strong><%= Company.find(@value_complaints).title rescue nil%></strong></td>
+        <td width="50%"><strong><%= @max_complaint%></strong></td>
+      </tr>
+   
+  </tbody>
+</table>
+<br/><br/>
+
+<h2>Total number of reviews for each company/supplier</h2><br/>
+<table border="1">
+	<thead>
+      <tr>
+        <th>Company</th>
+        <th>Link</th>
+      </tr>
+	</thead>
+		
+	<tbody>
+	  <%@companies.each do |company|%>
+      <tr>
+      	<td><%= company.title %></td>
+      	<td><%= link_to "View reviews", supplier_level_admin_reports_path(:company => company.id)%></td>
+      </tr>
+      <%end%>
+	</tbody>
+</table>
+<br/><br/>
+
+<h2>Supplier Profiles</h2>
+
+<table border="1">
+  <thead>
+      <tr>
+        <th>Supplier</th>
+        <th>Link</th>
+      </tr>
+  </thead>
+    
+  <tbody>
+    <%@suppliers.each do |supplier|%>
+      <tr>
+        <td><%= supplier.supplier_name %></td>
+        <td><%= link_to "View Profile", supplier_profiles_admin_reports_path(:supplier => supplier.id)%></td>
+      </tr>
+      <%end%>
+  </tbody>
+</table>
+<br/><br/>
+
+
+<h1>Total number of Registered Companies</h1>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th width="10%">Supplier Company</th>
+      <th width="10%">Industry</th>
+      <th width="10%">Subscription</th>
+      <th width="10%">Start Date</th>
+      <th width="10%">End Date</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @supplier_registered.each do |supplier| %>
+      <tr>
+        <td><%= supplier.supplier_name %></td>
+        <td><%= supplier.industry %></td>
+        <td><%= supplier.subscription %></td>
+        <td><%= supplier.start_date%></td>
+        <td><%= supplier.end_date%></td>
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br/><br/>
+
+<h1>Total number of Un-registered Companies</h1>
+<table border="1">
+  <thead>
+    <tr>
+      <th width="10%">Supplier Company</th>
+      <th width="10%">Industry</th>
+      <th width="10%">Subscription</th>
+      <th width="10%">Start Date</th>
+      <th width="10%">End Date</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @supplier_unregistered.each do |supplier| %>
+      <tr>
+        <td><%= supplier.supplier_name %></td>
+        <td><%= supplier.industry %></td>
+        <td><%= supplier.subscription %></td>
+        <td><%= supplier.start_date%></td>
+        <td><%= supplier.end_date%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+

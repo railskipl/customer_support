@@ -1,0 +1,116 @@
+ 	<script src="/assets/jquery.js"></script>
+    <%= stylesheet_link_tag "jquery.ui.datepicker" %>
+<script>
+  jQuery.noConflict();
+  jQuery(document).ready(function() {
+
+  jQuery(function() {
+  jQuery('#report_start_date').datepicker( 
+    { altField  : '#report_start_date',  // selector of the hidden input field you want sent to the server
+      dateFormat: 'yy-mm-dd',
+      altFormat : 'yy-mm-dd' } );
+    });
+
+    jQuery(function() {
+  jQuery('#report_end_date').datepicker( 
+    { altField  : '#report_end_date',  // selector of the hidden input field you want sent to the server
+      dateFormat: 'yy-mm-dd',
+      altFormat : 'yy-mm-dd' } );
+    });
+
+});
+
+</script>
+
+<table>
+<%= form_for :report, :url=> archive_data_admin_reports_path, :method => :get do |f| %>
+  <tr>
+    <td>From Date </td>
+    <td><span >
+      <%= f.text_field :start_date, :required => :true%>
+    </span></td>
+    <td>To Date </td>
+    <td><span >
+      <%= f.text_field :end_date,:required => :true %>
+       </span>
+    </td>
+  </tr>
+  <tr>
+    <td>Industry</td>
+    <td><span class="controls">
+      <%= f.select :industry_name_eq, Industry.find(:all).map{|s| [s.title, s.id]}, {:prompt => "Select Industry"}%>
+      </span>
+    </td>
+    <td>Comapny</td>
+    <td><span class="controls">
+      <%= f.select :company_name_eq, Company.find(:all).map{|s| [s.title, s.id]}, {:prompt => "Select Company"}%>
+      </span>
+    </td>
+  </tr>
+  <tr>
+    <td>Town</td>
+    <td><span class="controls">
+      <%= f.select :town_name_eq, Town.find(:all).map{|s| [s.title, s.id]}, {:prompt => "Select Town"}%>
+      </span>
+    </td>
+    <td>Location</td>
+    <td><span class="controls">
+      <%= f.select :location_name_eq, Location.find(:all).map{|s| [s.title, s.id]}, {:prompt => "Select Location"}%>
+      </span>
+    </td>
+    
+   </tr>
+   <tr>
+     <td>Review Type</td>
+   	 <td><%= f.select :review_type, (options_for_select([['Select Review Type', ''],['Compliment', 'compliment'], ['Complaint', 'complaint']],selected: :review_type))%></td>
+   </tr>
+
+   <td><strong>Choose Nature Of Review <br/> according to Review Type</strong></td>
+   <tr>
+     <td>Nature of Review <br/>(Compliment)</td>
+     <td><%= f.select :nature_of_review_eq, NatureOfReview.where('review_type = ?', 'compliment').map{|s| [s.title, s.title]}, {:prompt => "Select Nature Of Review"}%></td>
+
+     <td>Nature of Review<br/>(Complaint)</td>
+     <td><%= f.select :nature_of_review_eq, NatureOfReview.where('review_type = ?', 'complaint').map{|s| [s.title, s.title]}, {:prompt => "Select Nature Of Review"}%></td>
+
+   </tr>
+   <td><%= button_tag  :submit ,name:"subaction",value: "update",:class => "btn btn btn-primary" %></td>
+   
+<%end%>
+</table>
+<br/>
+
+
+<%if params[:subaction] == "update"%>
+<strong>Displaying data for year <%= params[:report][:start_date]%> to <%= params[:report][:end_date]%></strong><br/><br/>
+<%unless @reviews.blank?%>
+  <%= link_to "Download Archive Data", archive_data_admin_reports_path(params.merge(format: "xls")), :method=> :get, :class=>"btn btn-secondary" %>
+<%end%>
+<h4>Reviews</h4>
+
+<table id="admin_review_xls" >
+	<thead>
+	  <tr>
+			<th width="10%">Date</th>
+			<th width="15%">Ticket Number</th>
+			<th width="10%">Review</th>
+			<th width="15%">Company</th>
+			<th width="15%">Title</th>
+	        <th width="15%">Customer Name</th>
+	  </tr>
+	</thead>
+
+	<tbody>
+	  <% @reviews.each do |review| %>
+	    <tr>
+				<td><%=review.date_time rescue nil %></td>
+				<td><%=review.ticket_number rescue nil %></td>
+				<td><%=review.review_type.titleize rescue nil %></td>
+				<td><%=review.company.title.titleize rescue nil %></td>
+				<td><%=review.title.titleize rescue nil %></td>
+			    <td><%=review.try(:user).try(:full_name)%></td>
+	    </tr>
+	  <% end %>
+	</tbody>	
+</table>
+<%end%>

@@ -1,0 +1,314 @@
+<%= link_to "Customer details", user_profile_admin_reports_path%><br/>
+<%= link_to "Industry Level Totals", industry_admin_reports_path%><br/>
+<%= link_to "Company/Supplier Level Totals", company_admin_reports_path%><br/>
+
+<%= link_to "Download Industry xls", industry_xls_admin_reports_path%><br/>
+<%= link_to "Download Company/Supplier xls", company_xls_admin_reports_path%><br/>
+<%= link_to "Download Total reviews xls", total_xls_admin_reports_path%><br/>
+<%= link_to "Download Most complaints/compliments xls",most_company_xls_admin_reports_path%><br/>
+<%= link_to "Download List Of Registered Suppliers xls", registered_company_xls_admin_reports_path%><br/>
+<%= link_to "Download List Of Unregistered Suppliers xls",unregistered_company_xls_admin_reports_path%><br/>
+
+<%= link_to "Archive Data",archive_data_admin_reports_path%><br/>
+<br/><br/>
+
+
+<table>
+<%= form_for :report, :url=> admin_reports_path, :method => :get do |f| %>
+  <h2>Filter Data</h2>
+    <tr>
+    <div class="review_form">
+			<div class="name_lft">Industry: *</div>
+			<div class="small-input2">
+			  <%= f.collection_select :industry_id, Industry.order(:title) + [Industry.new(:id => Industry.last.id,:title => "Other")], :id,:title,{:include_blank=>"Select Industry"},:rel => "/admin/industry/companies_by_industry",  required: true, onchange: 'CheckOther();'%>
+			  <input type="text" id="other_type" name="other_type"><br/>
+			</div>
+
+		</div>
+
+		<div class="review_form">
+			<div class="name_lft">Company: *</div>
+			<div class="small-input2">
+			    <%= f.collection_select :company_id, @companies, :id, :title,  {:include_blank=>"Select Company"}, :rel => "/admin/company/towns_by_company"%>
+		    <input type="text" id="txt_report_company_id" name="txt_report_company_id"><br>
+
+			</div>
+		</div>
+
+		<div class="review_form">
+			<div class="name_lft">Town: *</div>
+			<div class="small-input2">
+			   <%= f.collection_select :town_id, @towns+ [Industry.new(:id => Town.last.id + 1,:title => "Other")], :id, :title, {:include_blank=>"Select Town"}, :rel => "/admin/town/locations_by_town_and_company"%>
+			   <!-- <input type="text" id="txt_review_town_id" name="txt_review_town_id"><br> -->
+			   	<input type="text" id="other_town" name="txt_report_town_id"><br>
+			</div>
+
+		</div>
+
+		<div class="review_form">
+			<div class="name_lft">Location: *</div>
+			<div class="small-input2">
+			   <%= f.collection_select :location_id, @locations ,:id ,:title, {:include_blank=>"Select Location"}%>
+			   	<input type="text" id="txt_report_location_id" name="txt_report_location_id"><br>
+			</div>
+		</div>
+
+   <tr>
+     <td>Review Type</td>
+   	 <td><%= f.select :review_type, (options_for_select([['Select Review Type', ''],['Compliment', 'compliment'], ['Complaint', 'complaint']],selected: :review_type))%></td>
+   </tr>
+   <tr><strong>Choose Nature Of Review according to Review Type</strong></tr>
+   <tr>
+   	 <td>Nature of Review (Compliment)</td>
+   	 <td><%= f.select :nature_of_review_eq, NatureOfReview.where('review_type = ?', 'compliment').map{|s| [s.title, s.title]}, {:prompt => "Select Location"}%></td>
+
+     <td>Nature of Review (Complaint)</td>
+   	 <td><%= f.select :nature_of_review_eq, NatureOfReview.where('review_type = ?', 'complaint').map{|s| [s.title, s.title]}, {:prompt => "Select Location"}%></td>
+
+   </tr>
+   <td><%= button_tag  :submit ,name:"subaction",value: "update",:class => "btn btn btn-primary" %></td>
+   
+<%end%>
+</table>
+<br/><br/>
+
+<%if params[:subaction] == "update"%>
+
+<%unless @reviews.blank?%>
+   <%= link_to "Download Filter Data", admin_reports_path(params.merge(format: "xls")), :method=> :get, :class=>"btn btn-secondary" %>
+<%end%>
+<h4>Reviews</h4>
+
+<table id="admin_review_xls" >
+	<thead>
+	  <tr>
+			<th width="10%">Date</th>
+			<th width="15%">Ticket Number</th>
+			<th width="10%">Review</th>
+			<th width="15%">Company</th>
+			<th width="15%">Title</th>
+	        <th width="15%">Customer Name</th>
+	  </tr>
+	</thead>
+
+	<tbody>
+	  <% @reviews.each do |review| %>
+	    <tr>
+				<td><%=review.date_time rescue nil %></td>
+				<td><%=review.ticket_number rescue nil %></td>
+				<td><%=review.review_type.titleize rescue nil %></td>
+				<td><%=review.company.title.titleize rescue nil %></td>
+				<td><%=review.title.titleize rescue nil %></td>
+			    <td><%=review.try(:user).try(:full_name)%></td>
+	    </tr>
+	  <% end %>
+	</tbody>	
+</table>
+<%end%>
+
+
+
+<h1>Totals – over a 12 month period</h1>
+<table border="1">
+	<thead>
+		<tr>
+			<th>Total Reviews</th>
+		</tr>
+
+	</thead>
+
+	<tbody>
+		<tr>
+			<td>Compliments</td>
+			<td><%= @compliments%></td>
+		</tr>
+		<tr>
+			<td>Complaint</td>
+			<td><%= @complaints%></td>
+		</tr>
+		<tr>
+			<td><strong>Total</strong></td>
+			<td><%= @complaints + @compliments%></td>
+		</tr>
+
+	</tbody>
+</table>
+
+<br/><br/>
+<table border="1">
+	<thead>
+		<tr>
+			<th>Nature of Compliment</th>
+		</tr>
+
+	</thead>
+
+	<tbody>
+		<tr>
+			<td>Billing/accounts</td>
+			<td><%= @billing%></td>
+		</tr>
+		<tr>
+			<td>Booking</td>
+			<td><%= @booking%></td>
+		</tr>
+		<tr>
+			<td>Call centre efficiency</td>
+			<td><%= @call_center%></td>
+		</tr>
+		<tr>
+			<td>Contract</td>
+			<td><%= @contract%></td>
+		</tr>
+		<tr>
+			<td>Delivery on time</td>
+			<td><%= @delivery%></td>
+		</tr>
+		<tr>
+			<td>Feedback</td>
+			<td><%= @feedback%></td>
+		</tr>
+		<tr>
+			<td>Going the extra mile</td>
+			<td><%= @going_extra%></td>
+		</tr>
+		<tr>
+			<td>Great attitude</td>
+			<td><%= @great_attitude%></td>
+		</tr>
+		<tr>
+			<td>Pricing</td>
+			<td><%= @pricing%></td>
+		</tr>
+		<tr>
+			<td>Refund</td>
+			<td><%= @refund%></td>
+		</tr>
+		<tr>
+			<td>Repairs</td>
+			<td><%= @repairs%></td>
+		</tr>
+		<tr>
+			<td>Stock</td>
+			<td><%= @stock%></td>
+		</tr>
+		<tr>
+			<td>Other</td>
+			<td><%= @others%></td>
+		</tr>
+
+	</tbody>
+</table>
+<br/><br/>
+
+
+<table border="1">
+	<thead>
+		<tr>
+			<th>Nature of Complaints</th>
+		</tr>
+
+	</thead>
+
+	<tbody>
+		<tr>
+			<td>Billing/accounts</td>
+			<td><%= @billing_c%></td>
+		</tr>
+		<tr>
+			<td>Booking</td>
+			<td><%= @booking_c%></td>
+		</tr>
+		<tr>
+			<td>Call centre efficiency</td>
+			<td><%= @call_center_c%></td>
+		</tr>
+		<tr>
+			<td>Contract</td>
+			<td><%= @contract_c%></td>
+		</tr>
+		<tr>
+			<td>Delivery on time</td>
+			<td><%= @delivery_c%></td>
+		</tr>
+		<tr>
+			<td>Feedback</td>
+			<td><%= @feedback_c%></td>
+		</tr>
+		<tr>
+			<td>Going the extra mile</td>
+			<td><%= @going_extra_c%></td>
+		</tr>
+		<tr>
+			<td>Great attitude</td>
+			<td><%= @great_attitude_c%></td>
+		</tr>
+		<tr>
+			<td>Pricing</td>
+			<td><%= @pricing_c%></td>
+		</tr>
+		<tr>
+			<td>Refund</td>
+			<td><%= @refund_c%></td>
+		</tr>
+		<tr>
+			<td>Repairs</td>
+			<td><%= @repairs_c%></td>
+		</tr>
+		<tr>
+			<td>Stock</td>
+			<td><%= @stock_c%></td>
+		</tr>
+		<tr>
+			<td>Other</td>
+			<td><%= @others_c%></td>
+		</tr>
+
+	</tbody>
+</table>
+
+
+ <% content_for :script do %>
+  <%= javascript_include_tag "reports" %>
+
+<script>
+  $( document ).ready(function() {
+	$("#other_type").hide();
+	$("#nature").hide();
+	$("#other_town").hide();
+});
+
+
+function CheckOther()
+{
+  if (document.getElementById("report_industry_id").value == <%= Industry.last.id %>){
+        $("#other_type").show();
+    }     
+    else{
+       $("#other_type").hide();
+    }     
+}
+
+
+
+function CheckOther2()
+{
+  if (document.getElementById("report_nature_of_review").value == "Other"){
+        $("#nature").show();
+    }     
+    else{
+       $("#nature").hide();
+    }     
+}
+
+function CheckOther_town()
+{
+  if (document.getElementById("report_town_id").value == <%= Town.last.id + 1 %>){
+        $("#other_town").show();
+    }     
+    else{
+       $("#other_town").hide();
+    }     
+}
+</script>
+<% end %>

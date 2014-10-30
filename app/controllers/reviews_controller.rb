@@ -33,18 +33,22 @@ class ReviewsController < ApplicationController
 	end
 
 	def new
-    @page = Page.find_by_slug("how-to-write-good-review")
-    if params[:id].present?
-     @review = Review.find(params[:id])
-     @companies = Industry.find(@review.industry_id).companies.order(:title)
-     @towns = Company.find(@review.company_id).towns.order(:title).uniq!
-
-     addresses = Address.find_all_by_town_id_and_company_id(@review.town_id,@review.company_id)
-     @locations = addresses.map {|a| a.location}
-     @locations.sort_by { |k| k["value"] }
-     @locations.uniq!
+    if current_user.try(:role) == "admin" ||  current_user.try(:role) == 'agent' || current_user.try(:role) == 'jagent' 
+      redirect_to admin_index_path
     else
-		 @review = Review.new
+      @page = Page.find_by_slug("how-to-write-good-review")
+      if params[:id].present?
+       @review = Review.find(params[:id])
+       @companies = Industry.find(@review.industry_id).companies.order(:title)
+       @towns = Company.find(@review.company_id).towns.order(:title).uniq!
+
+       addresses = Address.find_all_by_town_id_and_company_id(@review.town_id,@review.company_id)
+       @locations = addresses.map {|a| a.location}
+       @locations.sort_by { |k| k["value"] }
+       @locations.uniq!
+      else
+  		 @review = Review.new
+      end
     end
 	end
 

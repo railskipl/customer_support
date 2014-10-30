@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141029064118) do
+ActiveRecord::Schema.define(version: 20141030125040) do
 
   create_table "abuse_reports", force: true do |t|
     t.string   "user_email"
@@ -234,6 +234,7 @@ ActiveRecord::Schema.define(version: 20141029064118) do
     t.boolean  "archive_attachment",   default: false
     t.boolean  "is_ticket_open",       default: true
     t.integer  "jagent_id"
+    t.integer  "agent_id"
   end
 
   create_table "seos", force: true do |t|

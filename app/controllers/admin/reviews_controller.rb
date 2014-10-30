@@ -1,14 +1,35 @@
 class Admin::ReviewsController < AdminController
 	before_action :default_tab
 	before_action :get_review , :only => [:show, :edit, :update]
-	load_and_authorize_resource :except => [:search_reviews,:ticket_closed]
+	load_and_authorize_resource :except => [:search_reviews,:ticket_closed,:assign_reviews]
   
 	def index
+    if current_user.is? :admin
+      @users = User.where("role = ? || role = ?","jagent","agent")
+    else
+      @users = User.where("role = ?","jagent")
+    end
 		@reviews = Review.unarchived.order("id desc")
+    @areviews = Review.where("published_date is null and jagent_id is null")
 	end
 
   def show
 
+  end
+
+  def assign_reviews
+    if params["review_ids"].nil?
+      redirect_to admin_reviews_url, :notice => "Please select atleast one review"
+    else
+      reviews = params["review_ids"]
+      reviews.each do |r|
+        a = Review.find(r)
+        a.jagent_id = params[:user_id]
+        a.agent_id = params[:agent_id]
+        a.save
+      end
+      redirect_to admin_reviews_url
+    end
   end
 
   def edit

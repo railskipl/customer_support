@@ -1,9 +1,10 @@
 <h2>Suppliers that get most complaints/compliments</h2><br/>
 
-<table border="1">
+<table id="total_compliment">
   <thead>
      
-        <th colspan="2">Most Compliments</th>
+        <th>Most Compliments</th>
+        <th>Total Count</th>
      
   </thead>
     
@@ -17,10 +18,11 @@
   </tbody>
 </table>
 <br/><br/>
-<table border="1">
+<table id="most_complaints">
   <thead>
       <tr>
-        <th colspan="2">Most Complaint</th>
+        <th>Most Complaints</th>
+        <th>Total</th>
       </tr>
   </thead>
     
@@ -36,7 +38,7 @@
 <br/><br/>
 
 <h2>Total number of reviews for each company/supplier</h2><br/>
-<table border="1">
+<table id="company_supplier">
 	<thead>
       <tr>
         <th>Company</th>
@@ -56,8 +58,7 @@
 <br/><br/>
 
 <h2>Supplier Profiles</h2>
-
-<table border="1">
+<table id="supplierprofile">
   <thead>
       <tr>
         <th>Supplier</th>
@@ -79,7 +80,7 @@
 
 <h1>Total number of Registered Companies</h1>
 
-<table border="1">
+<table id="registered_supplier">
   <thead>
     <tr>
       <th width="10%">Supplier Company</th>
@@ -106,7 +107,7 @@
 <br/><br/>
 
 <h1>Total number of Un-registered Companies</h1>
-<table border="1">
+<table id="unregistered_supplier">
   <thead>
     <tr>
       <th width="10%">Supplier Company</th>
@@ -129,5 +130,69 @@
     <% end %>
   </tbody>
 </table>
+
+<h2>Conversions – Industry conversion stats</h2>
+<table id="admin_review_xls" >
+  <thead>
+    <tr>
+      <th width="10%">Date</th>
+      <th width="15%">Ticket Number</th>
+      <th width="15%">Industry</th>
+      <th width="15%">Nature of Review</th>
+      <th width="15%">Title</th>
+      <th width="15%">Customer Name</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @compliments.each do |review| %>
+      <tr>
+        <td><%=review.date_time rescue nil %></td>
+        <td><%=review.ticket_number rescue nil %></td>
+        <td><%=review.industry.title.titleize rescue nil %></td>
+        <td><%=review.nature_of_review rescue nil %></td>
+        <td><%=review.title.titleize rescue nil %></td>
+        <td><%=review.try(:user).try(:full_name)%></td>
+      </tr>
+    <% end %>
+  </tbody>  
+</table>
+<br/><br/>
+<h2>Conversions – Industry conversion stats (12 Months)</h2>
+   
+<table id="industry_conversion">
+  <thead>
+    <tr>
+      <th>Company</th>
+      <th>Total Complaints Count</th>
+      <th>Complaint --> Compliment</th>
+      <th>Conversion Percentage</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @companies.each do |company| %>
+    <% @compliment = Review.where('created_at >= ? and created_at <= ? and industry_id = ? and user_id is not null', 1.year.ago, Date.today, company.id)%>
+    
+    <% @complaint_conversion = @compliment.where('review_type = ?', 'complaint').count%>
+      
+    <% @compliments = @compliment.where('change_date is not null').count%> 
+      <tr>
+        <td><%=company.title rescue nil %></td>
+        <td><%=@complaint_conversion + @compliments rescue nil %></td>
+        <td><%=@compliments rescue nil %></td>
+        <% @a = @complaint_conversion + @compliments %>
+        <% @percentage =  @compliments / @a * 100 rescue nil%>
+        <%unless @percentage.present?%>
+          <td>0</td>
+        <%else%>
+          <td><%= @percentage rescue nil%>%</td>
+        <%end%>
+      </tr>
+    <%end%>
+  </tbody>  
+</table>
+
+<br/><br/>
 
 

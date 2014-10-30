@@ -83,7 +83,14 @@ Jmd::Application.routes.draw do
         get :registered_company_xls
         get :unregistered_company_xls
         get :archive_data
-        
+        get :registered_suppliers
+        get :unregistered_suppliers
+        get :suppliers_profiles
+        get :all_customers
+        get :active_customers
+        get :conversion_industry
+        get :conversion_company
+        get :customer_record
       end
     end
   end

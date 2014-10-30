@@ -1,0 +1,36 @@
+<h2>Conversions – Industry conversion stats (12 Months)</h2>
+   
+<table id="industry_conversion">
+  <thead>
+    <tr>
+      <th>Company</th>
+      <th>Total Complaints Count</th>
+      <th>Complaint --> Compliment</th>
+      <th>Conversion Percentage</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @companies.each do |company| %>
+    <% @compliment = Review.where('created_at >= ? and created_at <= ? and industry_id = ? and user_id is not null', 1.year.ago, Date.today, company.id)%>
+    
+    <% @complaint_conversion = @compliment.where('review_type = ?', 'complaint').count%>
+      
+    <% @compliments = @compliment.where('change_date is not null').count%> 
+      <tr>
+        <td><%=company.title rescue nil %></td>
+        <td><%=@complaint_conversion + @compliments rescue nil %></td>
+        <td><%=@compliments rescue nil %></td>
+        <% @a = @complaint_conversion + @compliments %>
+        <% @percentage =  @compliments / @a * 100 rescue nil%>
+        <%unless @percentage.present?%>
+          <td>0</td>
+        <%else%>
+          <td><%= @percentage rescue nil%>%</td>
+        <%end%>
+      </tr>
+    <%end%>
+  </tbody>  
+</table>
+
+<br/><br/>

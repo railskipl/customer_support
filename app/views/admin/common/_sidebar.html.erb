@@ -142,6 +142,11 @@
   	  </li>
   	<%end%>
 
+  	<% if current_user.is_admin?%>
+	    <li class="<%=(@active_tab == 'reports') ? 'active' : ''%>">
+					<%=link_to raw(action_button_helper('Reports','icon-list-alt')),admin_reports_path%>
+  	  </li>
+    <%end%>
   	
 
   </ul><!--/.nav-list-->

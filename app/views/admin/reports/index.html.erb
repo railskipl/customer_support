@@ -2,12 +2,19 @@
 <%= link_to "Industry Level Totals", industry_admin_reports_path%><br/>
 <%= link_to "Company/Supplier Level Totals", company_admin_reports_path%><br/>
 
+<%= link_to "Download Summary of reviews made by the customer xls", customer_record_admin_reports_path%><br/>
+<%= link_to "Industry conversion stats xls", conversion_industry_admin_reports_path(params.merge(format: "xls")), :method=> :get%><br/>
+<%= link_to "Supplier conversion stats xls", conversion_company_admin_reports_path(params.merge(format: "xls")), :method=> :get%><br/>
+<%= link_to "Download Customer Details xls", all_customers_admin_reports_path(params.merge(format: "xls")), :method=> :get%><br/>
+<%= link_to "Download Active Customers xls", active_customers_admin_reports_path(params.merge(format: "xls")), :method=> :get%><br/>
+<%= link_to "Download Suppliers Profiles xls", suppliers_profiles_admin_reports_path(params.merge(format: "xls")), :method=> :get%><br/>
 <%= link_to "Download Industry xls", industry_xls_admin_reports_path%><br/>
 <%= link_to "Download Company/Supplier xls", company_xls_admin_reports_path%><br/>
 <%= link_to "Download Total reviews xls", total_xls_admin_reports_path%><br/>
 <%= link_to "Download Most complaints/compliments xls",most_company_xls_admin_reports_path%><br/>
-<%= link_to "Download List Of Registered Suppliers xls", registered_company_xls_admin_reports_path%><br/>
-<%= link_to "Download List Of Unregistered Suppliers xls",unregistered_company_xls_admin_reports_path%><br/>
+<%= link_to "Download List Of Registered Suppliers xls", registered_suppliers_admin_reports_path(params.merge(format: "xls")), :method=> :get %><br/>
+<%= link_to "Download List Of Unregistered Suppliers xls", unregistered_suppliers_admin_reports_path(params.merge(format: "xls")), :method=> :get %>
+<br/>
 
 <%= link_to "Archive Data",archive_data_admin_reports_path%><br/>
 <br/><br/>
@@ -60,10 +67,10 @@
    <tr><strong>Choose Nature Of Review according to Review Type</strong></tr>
    <tr>
    	 <td>Nature of Review (Compliment)</td>
-   	 <td><%= f.select :nature_of_review_eq, NatureOfReview.where('review_type = ?', 'compliment').map{|s| [s.title, s.title]}, {:prompt => "Select Location"}%></td>
+   	 <td><%= f.select :nature_of_review_eq, NatureOfReview.where('review_type = ?', 'compliment').map{|s| [s.title, s.title]}, {:prompt => "Select Nature Of Review"}%></td>
 
      <td>Nature of Review (Complaint)</td>
-   	 <td><%= f.select :nature_of_review_eq, NatureOfReview.where('review_type = ?', 'complaint').map{|s| [s.title, s.title]}, {:prompt => "Select Location"}%></td>
+   	 <td><%= f.select :nature_of_review_eq, NatureOfReview.where('review_type = ?', 'complaint').map{|s| [s.title, s.title]}, {:prompt => "Select Nature Of Review"}%></td>
 
    </tr>
    <td><%= button_tag  :submit ,name:"subaction",value: "update",:class => "btn btn btn-primary" %></td>
@@ -109,10 +116,12 @@
 
 
 <h1>Totals – over a 12 month period</h1>
-<table border="1">
+<table id="total_compliment">
+
 	<thead>
 		<tr>
 			<th>Total Reviews</th>
+			<th>Total Count</th>
 		</tr>
 
 	</thead>
@@ -135,10 +144,12 @@
 </table>
 
 <br/><br/>
-<table border="1">
+<div>
+<table id="compliments">
 	<thead>
 		<tr>
 			<th>Nature of Compliment</th>
+			<th>Total</th>
 		</tr>
 
 	</thead>
@@ -146,127 +157,136 @@
 	<tbody>
 		<tr>
 			<td>Billing/accounts</td>
-			<td><%= @billing%></td>
+			<td><%= @billing.count%></td>
 		</tr>
 		<tr>
 			<td>Booking</td>
-			<td><%= @booking%></td>
+			<td><%= @booking.count%></td>
 		</tr>
 		<tr>
 			<td>Call centre efficiency</td>
-			<td><%= @call_center%></td>
+			<td><%= @call_center.count%></td>
 		</tr>
 		<tr>
 			<td>Contract</td>
-			<td><%= @contract%></td>
+			<td><%= @contract.count%></td>
 		</tr>
 		<tr>
 			<td>Delivery on time</td>
-			<td><%= @delivery%></td>
+			<td><%= @delivery.count%></td>
 		</tr>
 		<tr>
 			<td>Feedback</td>
-			<td><%= @feedback%></td>
+			<td><%= @feedback.count%></td>
 		</tr>
 		<tr>
 			<td>Going the extra mile</td>
-			<td><%= @going_extra%></td>
+			<td><%= @going_extra.count%></td>
 		</tr>
 		<tr>
 			<td>Great attitude</td>
-			<td><%= @great_attitude%></td>
+			<td><%= @great_attitude.count%></td>
 		</tr>
 		<tr>
 			<td>Pricing</td>
-			<td><%= @pricing%></td>
+			<td><%= @pricing.count%></td>
 		</tr>
 		<tr>
 			<td>Refund</td>
-			<td><%= @refund%></td>
+			<td><%= @refund.count%></td>
 		</tr>
 		<tr>
 			<td>Repairs</td>
-			<td><%= @repairs%></td>
+			<td><%= @repairs.count%></td>
 		</tr>
 		<tr>
 			<td>Stock</td>
-			<td><%= @stock%></td>
+			<td><%= @stock.count%></td>
 		</tr>
 		<tr>
 			<td>Other</td>
-			<td><%= @others%></td>
+			<td><%= @others.count%></td>
 		</tr>
 
 	</tbody>
 </table>
+</div>
 <br/><br/>
-
-
-<table border="1">
+<div>
+<table id="complaints">
 	<thead>
 		<tr>
 			<th>Nature of Complaints</th>
+			<th>Total</th>
 		</tr>
 
 	</thead>
 
 	<tbody>
 		<tr>
-			<td>Billing/accounts</td>
-			<td><%= @billing_c%></td>
+			<td>Bad attitude</td>
+			<td><%= @bad_attitude.count%></td>
 		</tr>
 		<tr>
-			<td>Booking</td>
-			<td><%= @booking_c%></td>
+			<td>Billing/Accounts</td>
+			<td><%= @billing_account.count %></td>
 		</tr>
 		<tr>
-			<td>Call centre efficiency</td>
-			<td><%= @call_center_c%></td>
+			<td>Booking query</td>
+			<td><%= @booking_query.count%></td>
 		</tr>
 		<tr>
-			<td>Contract</td>
-			<td><%= @contract_c%></td>
+			<td>Breach of contract</td>
+			<td><%= @breach_of_contract.count%></td>
 		</tr>
 		<tr>
-			<td>Delivery on time</td>
-			<td><%= @delivery_c%></td>
+			<td>Call centre</td>
+			<td><%= @call_centre_c.count%></td>
 		</tr>
 		<tr>
-			<td>Feedback</td>
-			<td><%= @feedback_c%></td>
+			<td>Damaged goods</td>
+			<td><%= @damaged_goods.count%></td>
 		</tr>
 		<tr>
-			<td>Going the extra mile</td>
-			<td><%= @going_extra_c%></td>
+			<td>Expiry date</td>
+			<td><%= @expiry.count%></td>
 		</tr>
 		<tr>
-			<td>Great attitude</td>
-			<td><%= @great_attitude_c%></td>
+			<td>Feedback/response</td>
+			<td><%= @feedback_response.count%></td>
 		</tr>
 		<tr>
-			<td>Pricing</td>
-			<td><%= @pricing_c%></td>
+			<td>Hygiene</td>
+			<td><%= @hygiene.count%></td>
 		</tr>
 		<tr>
-			<td>Refund</td>
-			<td><%= @refund_c%></td>
+			<td>Late/no delivery</td>
+			<td><%= @Late_no_delivery.count%></td>
 		</tr>
 		<tr>
-			<td>Repairs</td>
-			<td><%= @repairs_c%></td>
+			<td>Out of stock</td>
+			<td><%= @out_of_stock.count%></td>
 		</tr>
 		<tr>
-			<td>Stock</td>
-			<td><%= @stock_c%></td>
+			<td>Pricing/bar codes</td>
+			<td><%= @pricing_bar_codes.count%></td>
+		</tr>
+		<tr>
+			<td>Repairs/servicing</td>
+			<td><%= @repairs_servicing.count%></td>
+		</tr>
+		<tr>
+			<td>Spam</td>
+			<td><%= @spam.count%></td>
 		</tr>
 		<tr>
 			<td>Other</td>
-			<td><%= @others_c%></td>
+			<td><%= @repairs_servicing.count%></td>
 		</tr>
 
 	</tbody>
 </table>
-
+</div>
 
  <% content_for :script do %>
   <%= javascript_include_tag "reports" %>

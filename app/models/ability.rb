@@ -48,20 +48,22 @@ class Ability
       can    :read  , Location
       can    :read  , Address
       can    :read,   Review
-      can    :edit,   Review, :published_date => nil
-      can    :update, Review, :published_date => nil
+      can    :edit,   Review
+      can    :update, Review
       can    :read,   User, :id => user.id
       can    :edit,   User, :id => user.id
       can    :update, User, :id => user.id
       can    :manage, Comment
       can    :destroy, Review
       can    :manage, Supplier
+      cannot :destroy, Supplier
     elsif user.is? :jagent
       cannot :manage, Resource
       cannot :manage, Page
       cannot :manage, Resource
       cannot :manage, ResourceType
       cannot :manage, Faq
+      cannot :manage, Seo
       can    :read  , NatureOfReview
       can    :read  , Industry
       can    :read  , Company
@@ -76,11 +78,13 @@ class Ability
       can    :update, User, :id => user.id
       can    :manage, Comment
       can    :destroy, Review, :jagent_id => user.id
-      can    :manage, Supplier
+      can    :read, Supplier
+      cannot :edit,Supplier
+      cannot :destroy, Supplier
     else
       can    :read,   User, :id => user.id
       can    :edit,   User, :id => user.id
-			can    :update, User, :id => user.id
+	can    :update, User, :id => user.id
       can    :manage, Review,:user_id => user.id
       can    :manage, Comment
 	  end

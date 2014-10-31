@@ -5,11 +5,15 @@ class Admin::ReviewsController < AdminController
   
 	def index
     if current_user.is? :admin
-      @users = User.where("role = ? || role = ?","jagent","agent")
+      @users = User.where("role = ? or role = ?","jagent","agent")
     else
       @users = User.where("role = ?","jagent")
     end
-		@reviews = Review.where("jagent_id = ?",current_user.id).unarchived.order("id desc")
+    if current_user.is? :jagent
+		  @reviews = Review.where("jagent_id = ?",current_user.id).unarchived.order("id desc")
+    else
+      @reviews = Review.unarchived.order("id desc")
+    end
     @areviews = Review.where("published_date is null and jagent_id is null")
 	end
 

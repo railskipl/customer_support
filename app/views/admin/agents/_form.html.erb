@@ -26,7 +26,11 @@
   </div>
   <div class="field">
     <%= f.label :role %>
+    <% if current_user.is? :agent %>
+     <%= f.select :role, [ ["Junior Agent", "jagent"]] %>
+     <% else %>
     <%= f.select :role, [ ["Senior Agent", "agent"], ["Junior Agent", "jagent"]]%>
+    <% end %>
   </div>
   <div class="field">
     <%= f.label :email %>

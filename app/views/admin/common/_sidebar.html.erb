@@ -105,13 +105,13 @@
   	  </li>
   	<%end%>
 
-  	<% if current_user.is_admin?%>
+  	<% if current_user.is_admin? || (current_user.is? :agent)%>
 	  <li class="<%=(@active_tab == 'agents') ? 'active' : ''%>">
 		<%=link_to raw(action_button_helper('Agents','icon-list-alt')),admin_agents_path%>
   	  </li>
   	<%end%>
 
-  	 <% if can? :manage, Supplier%>
+  	 <% if can? :read, Supplier%>
 	    <li class="<%=(@active_tab == 'suppliers') ? 'active' : ''%>">
 					<%=link_to raw(action_button_helper('Suppliers','icon-list-alt')),admin_suppliers_path%>
   	  </li>

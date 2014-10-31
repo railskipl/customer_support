@@ -1,7 +1,8 @@
 class Admin::ReportsController < ApplicationController
+layout "admin", :except => :industry_xls
 before_filter :get_default_for_reviews
 before_action :default_tab
-layout "admin"
+layout :custom_layout
 	def index
    	    total_reviews
    	    nature_of_complaints
@@ -274,7 +275,7 @@ layout "admin"
    end
 
    def industry_xls
-   	 @industries = Industry.all
+   	 @industries = Industry.all rescue nil
    	 send_data(render_to_string(:template=>"admin/reports/industry_xls.html.erb" ) , :type=>"text/xls",:filename => "industries.xls")
    end
 
@@ -346,7 +347,7 @@ layout "admin"
     respond_to do |format|
         format.html # index.html.erb
         format.xls
-      end
+    end
   end
 
   def unregistered_suppliers
@@ -358,7 +359,7 @@ layout "admin"
   end
 
   def suppliers_profiles
-  	@suppliers = Supplier.where('created_at >= ? and created_at <= ? and subscription = ?', 1.year.ago, Date.today).order("created_at desc") 
+  	@suppliers = Supplier.where('created_at >= ? and created_at <= ? ', 1.year.ago, Date.today).order("created_at desc") 
   	respond_to do |format|
         format.html # index.html.erb
         format.xls
@@ -395,5 +396,23 @@ layout "admin"
 	def default_tab
 	  	@active_tab = 'reports'
 	end
+
+	#method for allowing to user to use differnt layout to individual page.
+      def custom_layout
+        case action_name
+         when "industry_xls"
+            "no_layout"
+         when "total_xls"
+         	 "no_layout"
+         when "company_xls"
+         	"no_layout"
+         when "customer_record"
+         	"no_layout"
+         when "most_company_xls"
+         	"no_layout"
+         else
+          "admin"
+        end
+    end
 
 end

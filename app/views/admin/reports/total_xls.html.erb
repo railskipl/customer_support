@@ -104,56 +104,64 @@
 
 	<tbody>
 		<tr>
-			<td>Billing/accounts</td>
-			<td><%= @billing_c.count%></td>
+			<td>Bad attitude</td>
+			<td><%= @bad_attitude.count%></td>
 		</tr>
 		<tr>
-			<td>Booking</td>
-			<td><%= @booking_c.count%></td>
+			<td>Billing/Accounts</td>
+			<td><%= @billing_account.count %></td>
 		</tr>
 		<tr>
-			<td>Call centre efficiency</td>
-			<td><%= @call_center_c.count%></td>
+			<td>Booking query</td>
+			<td><%= @booking_query.count%></td>
 		</tr>
 		<tr>
-			<td>Contract</td>
-			<td><%= @contract_c.count%></td>
+			<td>Breach of contract</td>
+			<td><%= @breach_of_contract.count%></td>
 		</tr>
 		<tr>
-			<td>Delivery on time</td>
-			<td><%= @delivery_c.count%></td>
+			<td>Call centre</td>
+			<td><%= @call_centre_c.count%></td>
 		</tr>
 		<tr>
-			<td>Feedback</td>
-			<td><%= @feedback_c.count%></td>
+			<td>Damaged goods</td>
+			<td><%= @damaged_goods.count%></td>
 		</tr>
 		<tr>
-			<td>Going the extra mile</td>
-			<td><%= @going_extra_c.count%></td>
+			<td>Expiry date</td>
+			<td><%= @expiry.count%></td>
 		</tr>
 		<tr>
-			<td>Great attitude</td>
-			<td><%= @great_attitude_c.count%></td>
+			<td>Feedback/response</td>
+			<td><%= @feedback_response.count%></td>
 		</tr>
 		<tr>
-			<td>Pricing</td>
-			<td><%= @pricing_c.count%></td>
+			<td>Hygiene</td>
+			<td><%= @hygiene.count%></td>
 		</tr>
 		<tr>
-			<td>Refund</td>
-			<td><%= @refund_c.count%></td>
+			<td>Late/no delivery</td>
+			<td><%= @Late_no_delivery.count%></td>
 		</tr>
 		<tr>
-			<td>Repairs</td>
-			<td><%= @repairs_c.count%></td>
+			<td>Out of stock</td>
+			<td><%= @out_of_stock.count%></td>
 		</tr>
 		<tr>
-			<td>Stock</td>
-			<td><%= @stock_c.count%></td>
+			<td>Pricing/bar codes</td>
+			<td><%= @pricing_bar_codes.count%></td>
+		</tr>
+		<tr>
+			<td>Repairs/servicing</td>
+			<td><%= @repairs_servicing.count%></td>
+		</tr>
+		<tr>
+			<td>Spam</td>
+			<td><%= @spam.count%></td>
 		</tr>
 		<tr>
 			<td>Other</td>
-			<td><%= @others_c.count%></td>
+			<td><%= @repairs_servicing.count%></td>
 		</tr>
 
 	</tbody>
@@ -689,15 +697,14 @@
 </table>
 
 <h2>Total : Nature of Complaints(12 Months)</h2></br>
-<h2>Billing/accounts</h2>
+<h4>Bad attitude</h4>
 <table id="admin_review_xls" >
 	<thead>
 	  <tr>
 			<th width="10%">Date</th>
 			<th width="15%">Ticket Number</th>
 			<th width="10%">Review</th>
-			<th width="15%">Industry</th>
-			<th width="15%">Company</th>
+			
 			<th width="15%">Town</th>
 			<th width="15%">Location</th>
 			<th width="15%">Personal Responsible</th>
@@ -709,53 +716,12 @@
 	</thead>
 
 	<tbody>
-	  <% @billing_c.each do |review| %>
+	  <% @bad_attitude.each do |review| %>
 	    <tr>
 				<td><%=review.date_time rescue nil %></td>
 				<td><%=review.ticket_number rescue nil %></td>
 				<td><%=review.review_type.titleize rescue nil %></td>
-				<td><%=review.industry.title.titleize rescue nil %></td>
-				<td><%=review.company.title.titleize rescue nil %></td>
-				<td><%=review.town.title.titleize rescue nil %></td>
-				<td><%=review.location.title.titleize rescue nil %></td>
-				<td><%=review.personal_responsible rescue nil %></td>
-				<td><%=review.nature_of_review rescue nil %></td>
-				<td><%=review.message rescue nil %></td>
-				<td><%=review.title.titleize rescue nil %></td>
-			    <td><%=review.try(:user).try(:full_name)%></td>
-
-	    </tr>
-	  <% end %>
-	</tbody>	
-</table>
-<br/><br/>
-<h2>Booking</h2>
-<table id="admin_review_xls" >
-	<thead>
-	  <tr>
-			<th width="10%">Date</th>
-			<th width="15%">Ticket Number</th>
-			<th width="10%">Review</th>
-			<th width="15%">Industry</th>
-			<th width="15%">Company</th>
-			<th width="15%">Town</th>
-			<th width="15%">Location</th>
-			<th width="15%">Personal Responsible</th>
-			<th width="15%">Nature of Review</th>
-			<th width="15%">Message</th>
-			<th width="15%">Title</th>
-	        <th width="15%">Customer Name</th>
-	  </tr>
-	</thead>
-
-	<tbody>
-	  <% @booking_c.each do |review| %>
-	    <tr>
-				<td><%=review.date_time rescue nil %></td>
-				<td><%=review.ticket_number rescue nil %></td>
-				<td><%=review.review_type.titleize rescue nil %></td>
-				<td><%=review.industry.title.titleize rescue nil %></td>
-				<td><%=review.company.title.titleize rescue nil %></td>
+				
 				<td><%=review.town.title.titleize rescue nil %></td>
 				<td><%=review.location.title.titleize rescue nil %></td>
 				<td><%=review.personal_responsible rescue nil %></td>
@@ -770,14 +736,14 @@
 </table>
 <br/><br/>
 
-<h2>Call centre efficiency</h2>
+<h2>Billing/Accounts</h2>
 <table id="admin_review_xls" >
 	<thead>
 	  <tr>
 			<th width="10%">Date</th>
 			<th width="15%">Ticket Number</th>
 			<th width="10%">Review</th>
-			<th width="15%">Industry</th>
+			
 			<th width="15%">Company</th>
 			<th width="15%">Town</th>
 			<th width="15%">Location</th>
@@ -790,12 +756,12 @@
 	</thead>
 
 	<tbody>
-	  <% @call_center_c.each do |review| %>
+	  <% @billing_account.each do |review| %>
 	    <tr>
 				<td><%=review.date_time rescue nil %></td>
 				<td><%=review.ticket_number rescue nil %></td>
 				<td><%=review.review_type.titleize rescue nil %></td>
-				<td><%=review.industry.title.titleize rescue nil %></td>
+				
 				<td><%=review.company.title.titleize rescue nil %></td>
 				<td><%=review.town.title.titleize rescue nil %></td>
 				<td><%=review.location.title.titleize rescue nil %></td>
@@ -811,14 +777,14 @@
 </table>
 <br/><br/>
 
-<h2>Contract</h2>
+<h2>Booking query</h2>
 <table id="admin_review_xls" >
 	<thead>
 	  <tr>
 			<th width="10%">Date</th>
 			<th width="15%">Ticket Number</th>
 			<th width="10%">Review</th>
-			<th width="15%">Industry</th>
+			
 			<th width="15%">Company</th>
 			<th width="15%">Town</th>
 			<th width="15%">Location</th>
@@ -831,12 +797,12 @@
 	</thead>
 
 	<tbody>
-	  <% @contract_c.each do |review| %>
+	  <% @booking_query.each do |review| %>
 	    <tr>
 				<td><%=review.date_time rescue nil %></td>
 				<td><%=review.ticket_number rescue nil %></td>
 				<td><%=review.review_type.titleize rescue nil %></td>
-				<td><%=review.industry.title.titleize rescue nil %></td>
+				
 				<td><%=review.company.title.titleize rescue nil %></td>
 				<td><%=review.town.title.titleize rescue nil %></td>
 				<td><%=review.location.title.titleize rescue nil %></td>
@@ -852,14 +818,14 @@
 </table>
 <br/><br/>
 
-<h2>Delivery on time</h2>
+<h2>Breach of contract</h2>
 <table id="admin_review_xls" >
 	<thead>
 	  <tr>
 			<th width="10%">Date</th>
 			<th width="15%">Ticket Number</th>
 			<th width="10%">Review</th>
-			<th width="15%">Industry</th>
+			
 			<th width="15%">Company</th>
 			<th width="15%">Town</th>
 			<th width="15%">Location</th>
@@ -872,12 +838,12 @@
 	</thead>
 
 	<tbody>
-	  <% @delivery_c.each do |review| %>
+	  <% @breach_of_contract.each do |review| %>
 	    <tr>
 				<td><%=review.date_time rescue nil %></td>
 				<td><%=review.ticket_number rescue nil %></td>
 				<td><%=review.review_type.titleize rescue nil %></td>
-				<td><%=review.industry.title.titleize rescue nil %></td>
+				
 				<td><%=review.company.title.titleize rescue nil %></td>
 				<td><%=review.town.title.titleize rescue nil %></td>
 				<td><%=review.location.title.titleize rescue nil %></td>
@@ -893,14 +859,14 @@
 </table>
 <br/><br/>
 
-<h2>Feedback</h2>
+<h2>Call centre</h2>
 <table id="admin_review_xls" >
 	<thead>
 	  <tr>
 			<th width="10%">Date</th>
 			<th width="15%">Ticket Number</th>
 			<th width="10%">Review</th>
-			<th width="15%">Industry</th>
+			
 			<th width="15%">Company</th>
 			<th width="15%">Town</th>
 			<th width="15%">Location</th>
@@ -913,52 +879,12 @@
 	</thead>
 
 	<tbody>
-	  <% @feedback_c.each do |review| %>
+	  <% @call_centre_c.each do |review| %>
 	    <tr>
 				<td><%=review.date_time rescue nil %></td>
 				<td><%=review.ticket_number rescue nil %></td>
 				<td><%=review.review_type.titleize rescue nil %></td>
-				<td><%=review.industry.title.titleize rescue nil %></td>
-				<td><%=review.company.title.titleize rescue nil %></td>
-				<td><%=review.town.title.titleize rescue nil %></td>
-				<td><%=review.location.title.titleize rescue nil %></td>
-				<td><%=review.personal_responsible rescue nil %></td>
-				<td><%=review.nature_of_review rescue nil %></td>
-				<td><%=review.message rescue nil %></td>
-				<td><%=review.title.titleize rescue nil %></td>
-			    <td><%=review.try(:user).try(:full_name)%></td>
-
-	    </tr>
-	  <% end %>
-	</tbody>	
-</table>
-<br/><br/>
-<h2>Going the extra mile</h2>
-<table id="admin_review_xls" >
-	<thead>
-	  <tr>
-			<th width="10%">Date</th>
-			<th width="15%">Ticket Number</th>
-			<th width="10%">Review</th>
-			<th width="15%">Industry</th>
-			<th width="15%">Company</th>
-			<th width="15%">Town</th>
-			<th width="15%">Location</th>
-			<th width="15%">Personal Responsible</th>
-			<th width="15%">Nature of Review</th>
-			<th width="15%">Message</th>
-			<th width="15%">Title</th>
-	        <th width="15%">Customer Name</th>
-	  </tr>
-	</thead>
-
-	<tbody>
-	  <% @going_extra_c.each do |review| %>
-	    <tr>
-				<td><%=review.date_time rescue nil %></td>
-				<td><%=review.ticket_number rescue nil %></td>
-				<td><%=review.review_type.titleize rescue nil %></td>
-				<td><%=review.industry.title.titleize rescue nil %></td>
+				
 				<td><%=review.company.title.titleize rescue nil %></td>
 				<td><%=review.town.title.titleize rescue nil %></td>
 				<td><%=review.location.title.titleize rescue nil %></td>
@@ -974,14 +900,14 @@
 </table>
 <br/><br/>
 
-<h2>Great attitude</h2>
+<h2>Damaged goods</h2>
 <table id="admin_review_xls" >
 	<thead>
 	  <tr>
 			<th width="10%">Date</th>
 			<th width="15%">Ticket Number</th>
 			<th width="10%">Review</th>
-			<th width="15%">Industry</th>
+			
 			<th width="15%">Company</th>
 			<th width="15%">Town</th>
 			<th width="15%">Location</th>
@@ -994,12 +920,52 @@
 	</thead>
 
 	<tbody>
-	  <% @great_attitude_c.each do |review| %>
+	  <% @damaged_goods.each do |review| %>
 	    <tr>
 				<td><%=review.date_time rescue nil %></td>
 				<td><%=review.ticket_number rescue nil %></td>
 				<td><%=review.review_type.titleize rescue nil %></td>
-				<td><%=review.industry.title.titleize rescue nil %></td>
+				
+				<td><%=review.company.title.titleize rescue nil %></td>
+				<td><%=review.town.title.titleize rescue nil %></td>
+				<td><%=review.location.title.titleize rescue nil %></td>
+				<td><%=review.personal_responsible rescue nil %></td>
+				<td><%=review.nature_of_review rescue nil %></td>
+				<td><%=review.message rescue nil %></td>
+				<td><%=review.title.titleize rescue nil %></td>
+			    <td><%=review.try(:user).try(:full_name)%></td>
+
+	    </tr>
+	  <% end %>
+	</tbody>	
+</table>
+<br/><br/>
+<h2>Expiry date</h2>
+<table id="admin_review_xls" >
+	<thead>
+	  <tr>
+			<th width="10%">Date</th>
+			<th width="15%">Ticket Number</th>
+			<th width="10%">Review</th>
+			
+			<th width="15%">Company</th>
+			<th width="15%">Town</th>
+			<th width="15%">Location</th>
+			<th width="15%">Personal Responsible</th>
+			<th width="15%">Nature of Review</th>
+			<th width="15%">Message</th>
+			<th width="15%">Title</th>
+	        <th width="15%">Customer Name</th>
+	  </tr>
+	</thead>
+
+	<tbody>
+	  <% @expiry.each do |review| %>
+	    <tr>
+				<td><%=review.date_time rescue nil %></td>
+				<td><%=review.ticket_number rescue nil %></td>
+				<td><%=review.review_type.titleize rescue nil %></td>
+				
 				<td><%=review.company.title.titleize rescue nil %></td>
 				<td><%=review.town.title.titleize rescue nil %></td>
 				<td><%=review.location.title.titleize rescue nil %></td>
@@ -1015,14 +981,14 @@
 </table>
 <br/><br/>
 
-<h2>Pricing</h2>
+<h2>Feedback/response</h2>
 <table id="admin_review_xls" >
 	<thead>
 	  <tr>
 			<th width="10%">Date</th>
 			<th width="15%">Ticket Number</th>
 			<th width="10%">Review</th>
-			<th width="15%">Industry</th>
+			
 			<th width="15%">Company</th>
 			<th width="15%">Town</th>
 			<th width="15%">Location</th>
@@ -1035,12 +1001,12 @@
 	</thead>
 
 	<tbody>
-	  <% @pricing_c.each do |review| %>
+	  <% @feedback_response.each do |review| %>
 	    <tr>
 				<td><%=review.date_time rescue nil %></td>
 				<td><%=review.ticket_number rescue nil %></td>
 				<td><%=review.review_type.titleize rescue nil %></td>
-				<td><%=review.industry.title.titleize rescue nil %></td>
+				
 				<td><%=review.company.title.titleize rescue nil %></td>
 				<td><%=review.town.title.titleize rescue nil %></td>
 				<td><%=review.location.title.titleize rescue nil %></td>
@@ -1056,14 +1022,14 @@
 </table>
 <br/><br/>
 
-<h2>Refund</h2>
+<h2>Hygiene</h2>
 <table id="admin_review_xls" >
 	<thead>
 	  <tr>
 			<th width="10%">Date</th>
 			<th width="15%">Ticket Number</th>
 			<th width="10%">Review</th>
-			<th width="15%">Industry</th>
+			
 			<th width="15%">Company</th>
 			<th width="15%">Town</th>
 			<th width="15%">Location</th>
@@ -1076,52 +1042,12 @@
 	</thead>
 
 	<tbody>
-	  <% @refund_c.each do |review| %>
+	  <% @hygiene.each do |review| %>
 	    <tr>
 				<td><%=review.date_time rescue nil %></td>
 				<td><%=review.ticket_number rescue nil %></td>
 				<td><%=review.review_type.titleize rescue nil %></td>
-				<td><%=review.industry.title.titleize rescue nil %></td>
-				<td><%=review.company.title.titleize rescue nil %></td>
-				<td><%=review.town.title.titleize rescue nil %></td>
-				<td><%=review.location.title.titleize rescue nil %></td>
-				<td><%=review.personal_responsible rescue nil %></td>
-				<td><%=review.nature_of_review rescue nil %></td>
-				<td><%=review.message rescue nil %></td>
-				<td><%=review.title.titleize rescue nil %></td>
-			    <td><%=review.try(:user).try(:full_name)%></td>
-
-	    </tr>
-	  <% end %>
-	</tbody>	
-</table>
-<br/><br/>
-<h2>Repairs</h2>
-<table id="admin_review_xls" >
-	<thead>
-	  <tr>
-			<th width="10%">Date</th>
-			<th width="15%">Ticket Number</th>
-			<th width="10%">Review</th>
-			<th width="15%">Industry</th>
-			<th width="15%">Company</th>
-			<th width="15%">Town</th>
-			<th width="15%">Location</th>
-			<th width="15%">Personal Responsible</th>
-			<th width="15%">Nature of Review</th>
-			<th width="15%">Message</th>
-			<th width="15%">Title</th>
-	        <th width="15%">Customer Name</th>
-	  </tr>
-	</thead>
-
-	<tbody>
-	  <% @repairs_c.each do |review| %>
-	    <tr>
-				<td><%=review.date_time rescue nil %></td>
-				<td><%=review.ticket_number rescue nil %></td>
-				<td><%=review.review_type.titleize rescue nil %></td>
-				<td><%=review.industry.title.titleize rescue nil %></td>
+				
 				<td><%=review.company.title.titleize rescue nil %></td>
 				<td><%=review.town.title.titleize rescue nil %></td>
 				<td><%=review.location.title.titleize rescue nil %></td>
@@ -1137,14 +1063,14 @@
 </table>
 <br/><br/>
 
-<h2>Stock</h2>
+<h2>Late/no delivery</h2>
 <table id="admin_review_xls" >
 	<thead>
 	  <tr>
 			<th width="10%">Date</th>
 			<th width="15%">Ticket Number</th>
 			<th width="10%">Review</th>
-			<th width="15%">Industry</th>
+			
 			<th width="15%">Company</th>
 			<th width="15%">Town</th>
 			<th width="15%">Location</th>
@@ -1157,12 +1083,12 @@
 	</thead>
 
 	<tbody>
-	  <% @stock_c.each do |review| %>
+	  <% @Late_no_delivery.each do |review| %>
 	    <tr>
 				<td><%=review.date_time rescue nil %></td>
 				<td><%=review.ticket_number rescue nil %></td>
 				<td><%=review.review_type.titleize rescue nil %></td>
-				<td><%=review.industry.title.titleize rescue nil %></td>
+				
 				<td><%=review.company.title.titleize rescue nil %></td>
 				<td><%=review.town.title.titleize rescue nil %></td>
 				<td><%=review.location.title.titleize rescue nil %></td>
@@ -1176,6 +1102,169 @@
 	  <% end %>
 	</tbody>	
 </table>
+<br/><br/>
+<h2>Out of stock</h2>
+<table id="admin_review_xls" >
+	<thead>
+	  <tr>
+			<th width="10%">Date</th>
+			<th width="15%">Ticket Number</th>
+			<th width="10%">Review</th>
+			
+			<th width="15%">Company</th>
+			<th width="15%">Town</th>
+			<th width="15%">Location</th>
+			<th width="15%">Personal Responsible</th>
+			<th width="15%">Nature of Review</th>
+			<th width="15%">Message</th>
+			<th width="15%">Title</th>
+	        <th width="15%">Customer Name</th>
+	  </tr>
+	</thead>
+
+	<tbody>
+	  <% @out_of_stock.each do |review| %>
+	    <tr>
+				<td><%=review.date_time rescue nil %></td>
+				<td><%=review.ticket_number rescue nil %></td>
+				<td><%=review.review_type.titleize rescue nil %></td>
+				
+				<td><%=review.company.title.titleize rescue nil %></td>
+				<td><%=review.town.title.titleize rescue nil %></td>
+				<td><%=review.location.title.titleize rescue nil %></td>
+				<td><%=review.personal_responsible rescue nil %></td>
+				<td><%=review.nature_of_review rescue nil %></td>
+				<td><%=review.message rescue nil %></td>
+				<td><%=review.title.titleize rescue nil %></td>
+			    <td><%=review.try(:user).try(:full_name)%></td>
+
+	    </tr>
+	  <% end %>
+	</tbody>	
+</table>
+<br/><br/>
+
+<h2>Pricing/bar codes</h2>
+<table id="admin_review_xls" >
+	<thead>
+	  <tr>
+			<th width="10%">Date</th>
+			<th width="15%">Ticket Number</th>
+			<th width="10%">Review</th>
+			
+			<th width="15%">Company</th>
+			<th width="15%">Town</th>
+			<th width="15%">Location</th>
+			<th width="15%">Personal Responsible</th>
+			<th width="15%">Nature of Review</th>
+			<th width="15%">Message</th>
+			<th width="15%">Title</th>
+	        <th width="15%">Customer Name</th>
+	  </tr>
+	</thead>
+
+	<tbody>
+	  <% @pricing_bar_codes.each do |review| %>
+	    <tr>
+				<td><%=review.date_time rescue nil %></td>
+				<td><%=review.ticket_number rescue nil %></td>
+				<td><%=review.review_type.titleize rescue nil %></td>
+				
+				<td><%=review.company.title.titleize rescue nil %></td>
+				<td><%=review.town.title.titleize rescue nil %></td>
+				<td><%=review.location.title.titleize rescue nil %></td>
+				<td><%=review.personal_responsible rescue nil %></td>
+				<td><%=review.nature_of_review rescue nil %></td>
+				<td><%=review.message rescue nil %></td>
+				<td><%=review.title.titleize rescue nil %></td>
+			    <td><%=review.try(:user).try(:full_name)%></td>
+
+	    </tr>
+	  <% end %>
+	</tbody>	
+</table>
+<br/><br/>
+<h2>Repairs/servicing</h2>
+<table id="admin_review_xls" >
+	<thead>
+	  <tr>
+			<th width="10%">Date</th>
+			<th width="15%">Ticket Number</th>
+			<th width="10%">Review</th>
+			
+			<th width="15%">Company</th>
+			<th width="15%">Town</th>
+			<th width="15%">Location</th>
+			<th width="15%">Personal Responsible</th>
+			<th width="15%">Nature of Review</th>
+			<th width="15%">Message</th>
+			<th width="15%">Title</th>
+	        <th width="15%">Customer Name</th>
+	  </tr>
+	</thead>
+
+	<tbody>
+	  <% @repairs_servicing.each do |review| %>
+	    <tr>
+				<td><%=review.date_time rescue nil %></td>
+				<td><%=review.ticket_number rescue nil %></td>
+				<td><%=review.review_type.titleize rescue nil %></td>
+				
+				<td><%=review.company.title.titleize rescue nil %></td>
+				<td><%=review.town.title.titleize rescue nil %></td>
+				<td><%=review.location.title.titleize rescue nil %></td>
+				<td><%=review.personal_responsible rescue nil %></td>
+				<td><%=review.nature_of_review rescue nil %></td>
+				<td><%=review.message rescue nil %></td>
+				<td><%=review.title.titleize rescue nil %></td>
+			    <td><%=review.try(:user).try(:full_name)%></td>
+
+	    </tr>
+	  <% end %>
+	</tbody>	
+</table>
+
+<br/><br/>
+<h2>Spam</h2>
+<table id="admin_review_xls" >
+	<thead>
+	  <tr>
+			<th width="10%">Date</th>
+			<th width="15%">Ticket Number</th>
+			<th width="10%">Review</th>
+			
+			<th width="15%">Company</th>
+			<th width="15%">Town</th>
+			<th width="15%">Location</th>
+			<th width="15%">Personal Responsible</th>
+			<th width="15%">Nature of Review</th>
+			<th width="15%">Message</th>
+			<th width="15%">Title</th>
+	        <th width="15%">Customer Name</th>
+	  </tr>
+	</thead>
+
+	<tbody>
+	  <% @spam.each do |review| %>
+	    <tr>
+				<td><%=review.date_time rescue nil %></td>
+				<td><%=review.ticket_number rescue nil %></td>
+				<td><%=review.review_type.titleize rescue nil %></td>
+				
+				<td><%=review.company.title.titleize rescue nil %></td>
+				<td><%=review.town.title.titleize rescue nil %></td>
+				<td><%=review.location.title.titleize rescue nil %></td>
+				<td><%=review.personal_responsible rescue nil %></td>
+				<td><%=review.nature_of_review rescue nil %></td>
+				<td><%=review.message rescue nil %></td>
+				<td><%=review.title.titleize rescue nil %></td>
+			    <td><%=review.try(:user).try(:full_name)%></td>
+
+	    </tr>
+	  <% end %>
+	</tbody>	
+</table>
+
 <br/><br/>
 <h2>Other</h2>
 <table id="admin_review_xls" >
@@ -1184,7 +1273,7 @@
 			<th width="10%">Date</th>
 			<th width="15%">Ticket Number</th>
 			<th width="10%">Review</th>
-			<th width="15%">Industry</th>
+			
 			<th width="15%">Company</th>
 			<th width="15%">Town</th>
 			<th width="15%">Location</th>
@@ -1202,7 +1291,7 @@
 				<td><%=review.date_time rescue nil %></td>
 				<td><%=review.ticket_number rescue nil %></td>
 				<td><%=review.review_type.titleize rescue nil %></td>
-				<td><%=review.industry.title.titleize rescue nil %></td>
+				
 				<td><%=review.company.title.titleize rescue nil %></td>
 				<td><%=review.town.title.titleize rescue nil %></td>
 				<td><%=review.location.title.titleize rescue nil %></td>

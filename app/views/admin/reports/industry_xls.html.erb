@@ -116,78 +116,78 @@
 	<tbody>
 		<tr>
 			<td>Bad attitude</td>
-			<% @bad_attitude = Review.where('created_at >= ? and created_at <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,  @company.id ,'Bad attitude', 'compliment')%>
+			<% @bad_attitude = Review.where('created_at >= ? and created_at <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,  @industry.id ,'Bad attitude', 'complaint')%>
 			<td><%= @bad_attitude.count %></td>
 		</tr>
 		<tr>
 			<td>Billing/Accounts</td>
-			<% @billing_account = Review.where('created_at >= ? and created_at <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id , 'Billing/Accounts', 'compliment')%>
-		    <td><%= @billing_account.count%></td>
+			<% @billing_account = Review.where('created_at >= ? and created_at <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@industry.id , 'Billing/Accounts', 'complaint')%>
+		    <td><%= @billing_account.count %></td>
 		</tr>
 		<tr>
 			<td>Booking query</td>
-			<% @booking_query = Review.where('created_at >= ? and created_at <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id,'Booking query', 'compliment')%>
+			<% @booking_query = Review.where('created_at >= ? and created_at <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@industry.id,'Booking query', 'complaint')%>
 			<td><%= @booking_query.count%></td>
 		</tr>
 		<tr>
 		
 			<td>Breach of contract</td>
-			<%@breach_of_contract = Review.where('created_at >= ? and created_at <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id,'Breach of contract', 'compliment')%>
+			<%@breach_of_contract = Review.where('created_at >= ? and created_at <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@industry.id,'Breach of contract', 'complaint')%>
 			<td><%= @breach_of_contract.count%></td>
 		</tr>
 		<tr>
 			<td>Call centre</td>
-			<% @call_centre_c = Review.where('created_at >= ? and created_at <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id,'Call centre', 'compliment')%>
+			<% @call_centre_c = Review.where('created_at >= ? and created_at <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@industry.id,'Call centre', 'complaint')%>
 			<td><%= @call_centre_c.count%></td>
 		</tr>
 		<tr>
 			<td>Damaged goods</td>
-			<%@damaged_goods =  Review.where('created_at >= ? and created_at <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id,'Damaged goods', 'compliment')%>
+			<%@damaged_goods =  Review.where('created_at >= ? and created_at <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@industry.id,'Damaged goods', 'complaint')%>
 			<td><%= @damaged_goods.count%></td>
 		</tr>
 		<tr>
 			<td>Expiry date</td>
-			<% @expiry = Review.where('created_at >= ? and created_at <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id,'Expiry date', 'compliment')%>
+			<% @expiry = Review.where('created_at >= ? and created_at <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@industry.id,'Expiry date', 'complaint')%>
 			<td><%= @expiry.count%></td>
 		</tr>
 		<tr>
 			<td>Feedback/response</td>
-			<% @feedback_response = Review.where('created_at >= ? and created_at <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id,'Feedback/response', 'compliment')%>
+			<% @feedback_response = Review.where('created_at >= ? and created_at <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@industry.id,'Feedback/response', 'complaint')%>
 			<td><%= @feedback_response.count%></td>
 		</tr>
 		<tr>
 			<td>Hygiene</td>
-			<% @hygiene = Review.where('created_at >= ? and created_at <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id,'Hygiene', 'compliment')%>
+			<% @hygiene = Review.where('created_at >= ? and created_at <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@industry.id,'Hygiene', 'complaint')%>
 			<td><%= @hygiene.count%></td>
 		</tr>
 		<tr>
 			<td>Late/no delivery</td>
-			<% @Late_no_delivery = Review.where('created_at >= ? and created_at <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id,'Late/no delivery', 'compliment')%>
+			<% @Late_no_delivery = Review.where('created_at >= ? and created_at <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@industry.id,'Late/no delivery', 'complaint')%>
 			<td><%= @Late_no_delivery.count%></td>
 		</tr>
 		<tr>
 			<td>Out of stock</td>
-			<% @out_of_stock = Review.where('created_at >= ? and created_at <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id,'Out of stock', 'compliment')%>
+			<% @out_of_stock = Review.where('created_at >= ? and created_at <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@industry.id,'Out of stock', 'complaint')%>
 			<td><%= @out_of_stock.count%></td>
 		</tr>
 		<tr>
 			<td>Pricing/bar codes</td>
-			<% @pricing_bar_codes = Review.where('created_at >= ? and created_at <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id,'Pricing/bar codes', 'compliment')%>
+			<% @pricing_bar_codes = Review.where('created_at >= ? and created_at <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@industry.id,'Pricing/bar codes', 'complaint')%>
 			<td><%= @pricing_bar_codes.count%></td>
 		</tr>
 		<tr>
 			<td>Repairs/servicing</td>
-			<% @repairs_servicing = Review.where('created_at >= ? and created_at <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id,'Repairs/servicing', 'compliment')%>
+			<% @repairs_servicing = Review.where('created_at >= ? and created_at <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@industry.id,'Repairs/servicing', 'complaint')%>
 			<td><%= @repairs_servicing.count%></td>
 		</tr>
 		<tr>
 			<td>Spam</td>
-			<% @spam = Review.where('created_at >= ? and created_at <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id,'Spam', 'compliment')%>
+			<% @spam = Review.where('created_at >= ? and created_at <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@industry.id,'Spam', 'complaint')%>
 			<td><%= @spam.count%></td>
 		</tr>
 		<tr>
 			<td>Other</td>
-			<% @others_c = Review.where('created_at >= ? and created_at <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id,'Other', 'compliment')%>
+			<% @others_c = Review.where('created_at >= ? and created_at <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@industry.id,'Other', 'complaint')%>
 			<td><%= @others.count%></td>
 		</tr>
 
@@ -198,14 +198,15 @@
 <br/><br/>
 
 <h2>Total : Nature of Complaint(12 Months)</h2></br>
-<h2>Billing/accounts</h2>
+<%if @billing.present?%>
+<h4>Billing/accounts</h4>
 <table id="admin_review_xls" >
 	<thead>
 	  <tr>
 			<th width="10%">Date</th>
 			<th width="15%">Ticket Number</th>
 			<th width="10%">Review</th>
-			<th width="15%">Industry</th>
+			
 			<th width="15%">Company</th>
 			<th width="15%">Town</th>
 			<th width="15%">Location</th>
@@ -223,7 +224,7 @@
 				<td><%=review.date_time rescue nil %></td>
 				<td><%=review.ticket_number rescue nil %></td>
 				<td><%=review.review_type.titleize rescue nil %></td>
-				<td><%=review.industry.title.titleize rescue nil %></td>
+				
 				<td><%=review.company.title.titleize rescue nil %></td>
 				<td><%=review.town.title.titleize rescue nil %></td>
 				<td><%=review.location.title.titleize rescue nil %></td>
@@ -238,14 +239,16 @@
 	</tbody>	
 </table>
 <br/><br/>
-<h2>Booking</h2>
+<%end%>
+<%if @booking.present?%>
+<h4>Booking</h4>
 <table id="admin_review_xls" >
 	<thead>
 	  <tr>
 			<th width="10%">Date</th>
 			<th width="15%">Ticket Number</th>
 			<th width="10%">Review</th>
-			<th width="15%">Industry</th>
+			
 			<th width="15%">Company</th>
 			<th width="15%">Town</th>
 			<th width="15%">Location</th>
@@ -263,7 +266,7 @@
 				<td><%=review.date_time rescue nil %></td>
 				<td><%=review.ticket_number rescue nil %></td>
 				<td><%=review.review_type.titleize rescue nil %></td>
-				<td><%=review.industry.title.titleize rescue nil %></td>
+				
 				<td><%=review.company.title.titleize rescue nil %></td>
 				<td><%=review.town.title.titleize rescue nil %></td>
 				<td><%=review.location.title.titleize rescue nil %></td>
@@ -278,15 +281,16 @@
 	</tbody>	
 </table>
 <br/><br/>
-
-<h2>Call centre efficiency</h2>
+<%end%>
+<%if @call_center.present?%>
+<h4>Call centre efficiency</h4>
 <table id="admin_review_xls" >
 	<thead>
 	  <tr>
 			<th width="10%">Date</th>
 			<th width="15%">Ticket Number</th>
 			<th width="10%">Review</th>
-			<th width="15%">Industry</th>
+			
 			<th width="15%">Company</th>
 			<th width="15%">Town</th>
 			<th width="15%">Location</th>
@@ -304,7 +308,7 @@
 				<td><%=review.date_time rescue nil %></td>
 				<td><%=review.ticket_number rescue nil %></td>
 				<td><%=review.review_type.titleize rescue nil %></td>
-				<td><%=review.industry.title.titleize rescue nil %></td>
+				
 				<td><%=review.company.title.titleize rescue nil %></td>
 				<td><%=review.town.title.titleize rescue nil %></td>
 				<td><%=review.location.title.titleize rescue nil %></td>
@@ -319,15 +323,16 @@
 	</tbody>	
 </table>
 <br/><br/>
-
-<h2>Contract</h2>
+<%end%>
+<%if @contract.present?%>
+<h4>Contract</h4>
 <table id="admin_review_xls" >
 	<thead>
 	  <tr>
 			<th width="10%">Date</th>
 			<th width="15%">Ticket Number</th>
 			<th width="10%">Review</th>
-			<th width="15%">Industry</th>
+			
 			<th width="15%">Company</th>
 			<th width="15%">Town</th>
 			<th width="15%">Location</th>
@@ -345,7 +350,7 @@
 				<td><%=review.date_time rescue nil %></td>
 				<td><%=review.ticket_number rescue nil %></td>
 				<td><%=review.review_type.titleize rescue nil %></td>
-				<td><%=review.industry.title.titleize rescue nil %></td>
+				
 				<td><%=review.company.title.titleize rescue nil %></td>
 				<td><%=review.town.title.titleize rescue nil %></td>
 				<td><%=review.location.title.titleize rescue nil %></td>
@@ -360,15 +365,16 @@
 	</tbody>	
 </table>
 <br/><br/>
-
-<h2>Delivery on time</h2>
+<%end%>
+<%if @delivery.present?%>
+<h4>Delivery on time</h4>
 <table id="admin_review_xls" >
 	<thead>
 	  <tr>
 			<th width="10%">Date</th>
 			<th width="15%">Ticket Number</th>
 			<th width="10%">Review</th>
-			<th width="15%">Industry</th>
+			
 			<th width="15%">Company</th>
 			<th width="15%">Town</th>
 			<th width="15%">Location</th>
@@ -386,7 +392,7 @@
 				<td><%=review.date_time rescue nil %></td>
 				<td><%=review.ticket_number rescue nil %></td>
 				<td><%=review.review_type.titleize rescue nil %></td>
-				<td><%=review.industry.title.titleize rescue nil %></td>
+				
 				<td><%=review.company.title.titleize rescue nil %></td>
 				<td><%=review.town.title.titleize rescue nil %></td>
 				<td><%=review.location.title.titleize rescue nil %></td>
@@ -401,15 +407,16 @@
 	</tbody>	
 </table>
 <br/><br/>
-
-<h2>Feedback</h2>
+<%end%>
+<%if @feedback.present?%>
+<h4>Feedback</h4>
 <table id="admin_review_xls" >
 	<thead>
 	  <tr>
 			<th width="10%">Date</th>
 			<th width="15%">Ticket Number</th>
 			<th width="10%">Review</th>
-			<th width="15%">Industry</th>
+			
 			<th width="15%">Company</th>
 			<th width="15%">Town</th>
 			<th width="15%">Location</th>
@@ -427,7 +434,7 @@
 				<td><%=review.date_time rescue nil %></td>
 				<td><%=review.ticket_number rescue nil %></td>
 				<td><%=review.review_type.titleize rescue nil %></td>
-				<td><%=review.industry.title.titleize rescue nil %></td>
+				
 				<td><%=review.company.title.titleize rescue nil %></td>
 				<td><%=review.town.title.titleize rescue nil %></td>
 				<td><%=review.location.title.titleize rescue nil %></td>
@@ -442,14 +449,16 @@
 	</tbody>	
 </table>
 <br/><br/>
-<h2>Going the extra mile</h2>
+<%end%>
+<%if @going_extra.present?%>
+<h4>Going the extra mile</h4>
 <table id="admin_review_xls" >
 	<thead>
 	  <tr>
 			<th width="10%">Date</th>
 			<th width="15%">Ticket Number</th>
 			<th width="10%">Review</th>
-			<th width="15%">Industry</th>
+			
 			<th width="15%">Company</th>
 			<th width="15%">Town</th>
 			<th width="15%">Location</th>
@@ -467,7 +476,7 @@
 				<td><%=review.date_time rescue nil %></td>
 				<td><%=review.ticket_number rescue nil %></td>
 				<td><%=review.review_type.titleize rescue nil %></td>
-				<td><%=review.industry.title.titleize rescue nil %></td>
+				
 				<td><%=review.company.title.titleize rescue nil %></td>
 				<td><%=review.town.title.titleize rescue nil %></td>
 				<td><%=review.location.title.titleize rescue nil %></td>
@@ -482,15 +491,16 @@
 	</tbody>	
 </table>
 <br/><br/>
-
-<h2>Great attitude</h2>
+<%end%>
+<%if @great_attitude.present?%>
+<h4>Great attitude</h4>
 <table id="admin_review_xls" >
 	<thead>
 	  <tr>
 			<th width="10%">Date</th>
 			<th width="15%">Ticket Number</th>
 			<th width="10%">Review</th>
-			<th width="15%">Industry</th>
+			
 			<th width="15%">Company</th>
 			<th width="15%">Town</th>
 			<th width="15%">Location</th>
@@ -508,7 +518,7 @@
 				<td><%=review.date_time rescue nil %></td>
 				<td><%=review.ticket_number rescue nil %></td>
 				<td><%=review.review_type.titleize rescue nil %></td>
-				<td><%=review.industry.title.titleize rescue nil %></td>
+				
 				<td><%=review.company.title.titleize rescue nil %></td>
 				<td><%=review.town.title.titleize rescue nil %></td>
 				<td><%=review.location.title.titleize rescue nil %></td>
@@ -523,15 +533,16 @@
 	</tbody>	
 </table>
 <br/><br/>
-
-<h2>Pricing</h2>
+<%end%>
+<%if @pricing.present?%>
+<h4>Pricing</h4>
 <table id="admin_review_xls" >
 	<thead>
 	  <tr>
 			<th width="10%">Date</th>
 			<th width="15%">Ticket Number</th>
 			<th width="10%">Review</th>
-			<th width="15%">Industry</th>
+			
 			<th width="15%">Company</th>
 			<th width="15%">Town</th>
 			<th width="15%">Location</th>
@@ -549,7 +560,7 @@
 				<td><%=review.date_time rescue nil %></td>
 				<td><%=review.ticket_number rescue nil %></td>
 				<td><%=review.review_type.titleize rescue nil %></td>
-				<td><%=review.industry.title.titleize rescue nil %></td>
+				
 				<td><%=review.company.title.titleize rescue nil %></td>
 				<td><%=review.town.title.titleize rescue nil %></td>
 				<td><%=review.location.title.titleize rescue nil %></td>
@@ -564,15 +575,16 @@
 	</tbody>	
 </table>
 <br/><br/>
-
-<h2>Refund</h2>
+<%end%>
+<%if @refund.present?%>
+<h4>Refund</h4>
 <table id="admin_review_xls" >
 	<thead>
 	  <tr>
 			<th width="10%">Date</th>
 			<th width="15%">Ticket Number</th>
 			<th width="10%">Review</th>
-			<th width="15%">Industry</th>
+			
 			<th width="15%">Company</th>
 			<th width="15%">Town</th>
 			<th width="15%">Location</th>
@@ -590,7 +602,7 @@
 				<td><%=review.date_time rescue nil %></td>
 				<td><%=review.ticket_number rescue nil %></td>
 				<td><%=review.review_type.titleize rescue nil %></td>
-				<td><%=review.industry.title.titleize rescue nil %></td>
+				
 				<td><%=review.company.title.titleize rescue nil %></td>
 				<td><%=review.town.title.titleize rescue nil %></td>
 				<td><%=review.location.title.titleize rescue nil %></td>
@@ -605,14 +617,16 @@
 	</tbody>	
 </table>
 <br/><br/>
-<h2>Repairs</h2>
+<%end%>
+<%if @repairs.present?%>
+<h4>Repairs</h4>
 <table id="admin_review_xls" >
 	<thead>
 	  <tr>
 			<th width="10%">Date</th>
 			<th width="15%">Ticket Number</th>
 			<th width="10%">Review</th>
-			<th width="15%">Industry</th>
+			
 			<th width="15%">Company</th>
 			<th width="15%">Town</th>
 			<th width="15%">Location</th>
@@ -630,7 +644,7 @@
 				<td><%=review.date_time rescue nil %></td>
 				<td><%=review.ticket_number rescue nil %></td>
 				<td><%=review.review_type.titleize rescue nil %></td>
-				<td><%=review.industry.title.titleize rescue nil %></td>
+				
 				<td><%=review.company.title.titleize rescue nil %></td>
 				<td><%=review.town.title.titleize rescue nil %></td>
 				<td><%=review.location.title.titleize rescue nil %></td>
@@ -645,15 +659,16 @@
 	</tbody>	
 </table>
 <br/><br/>
-
-<h2>Stock</h2>
+<%end%>
+<%if @stock.present?%>
+<h4>Stock</h4>
 <table id="admin_review_xls" >
 	<thead>
 	  <tr>
 			<th width="10%">Date</th>
 			<th width="15%">Ticket Number</th>
 			<th width="10%">Review</th>
-			<th width="15%">Industry</th>
+			
 			<th width="15%">Company</th>
 			<th width="15%">Town</th>
 			<th width="15%">Location</th>
@@ -671,7 +686,7 @@
 				<td><%=review.date_time rescue nil %></td>
 				<td><%=review.ticket_number rescue nil %></td>
 				<td><%=review.review_type.titleize rescue nil %></td>
-				<td><%=review.industry.title.titleize rescue nil %></td>
+				
 				<td><%=review.company.title.titleize rescue nil %></td>
 				<td><%=review.town.title.titleize rescue nil %></td>
 				<td><%=review.location.title.titleize rescue nil %></td>
@@ -686,14 +701,16 @@
 	</tbody>	
 </table>
 <br/><br/>
-<h2>Other</h2>
+<%end%>
+<%if @others.present?%>
+<h4>Other</h4>
 <table id="admin_review_xls" >
 	<thead>
 	  <tr>
 			<th width="10%">Date</th>
 			<th width="15%">Ticket Number</th>
 			<th width="10%">Review</th>
-			<th width="15%">Industry</th>
+			
 			<th width="15%">Company</th>
 			<th width="15%">Town</th>
 			<th width="15%">Location</th>
@@ -711,7 +728,7 @@
 				<td><%=review.date_time rescue nil %></td>
 				<td><%=review.ticket_number rescue nil %></td>
 				<td><%=review.review_type.titleize rescue nil %></td>
-				<td><%=review.industry.title.titleize rescue nil %></td>
+				
 				<td><%=review.company.title.titleize rescue nil %></td>
 				<td><%=review.town.title.titleize rescue nil %></td>
 				<td><%=review.location.title.titleize rescue nil %></td>
@@ -725,8 +742,12 @@
 	  <% end %>
 	</tbody>	
 </table>
+<%end%>
+<br/>
 
-<h2>Total : Nature of Complaints(12 Months)</h2></br>
+
+<h4>Industry <%= @industry.title%> : Complaints</h4></br>
+<%if @bad_attitude.present?%>
 <h4>Bad attitude</h4>
 <table id="admin_review_xls" >
 	<thead>
@@ -764,9 +785,10 @@
 	  <% end %>
 	</tbody>	
 </table>
+<%end%>
 <br/><br/>
-
-<h2>Billing/Accounts</h2>
+<%if @billing_account.present?%>
+<h4>Billing/Accounts</h4>
 <table id="admin_review_xls" >
 	<thead>
 	  <tr>
@@ -806,8 +828,9 @@
 	</tbody>	
 </table>
 <br/><br/>
-
-<h2>Booking query</h2>
+<%end%>
+<%if @booking_query.present?%>
+<h4>Booking query</h4>
 <table id="admin_review_xls" >
 	<thead>
 	  <tr>
@@ -847,8 +870,9 @@
 	</tbody>	
 </table>
 <br/><br/>
-
-<h2>Breach of contract</h2>
+<%end%>
+<%if @breach_of_contract.present?%>
+<h4>Breach of contract</h4>
 <table id="admin_review_xls" >
 	<thead>
 	  <tr>
@@ -888,8 +912,9 @@
 	</tbody>	
 </table>
 <br/><br/>
-
-<h2>Call centre</h2>
+<%end%>
+<%if @call_centre_c.present?%>
+<h4>Call centre</h4>
 <table id="admin_review_xls" >
 	<thead>
 	  <tr>
@@ -929,8 +954,9 @@
 	</tbody>	
 </table>
 <br/><br/>
-
-<h2>Damaged goods</h2>
+<%end%>
+<%if @damaged_goods.present?%>
+<h4>Damaged goods</h4>
 <table id="admin_review_xls" >
 	<thead>
 	  <tr>
@@ -970,7 +996,9 @@
 	</tbody>	
 </table>
 <br/><br/>
-<h2>Expiry date</h2>
+<%end%>
+<%if @expiry.present?%>
+<h4>Expiry date</h4>
 <table id="admin_review_xls" >
 	<thead>
 	  <tr>
@@ -1010,8 +1038,9 @@
 	</tbody>	
 </table>
 <br/><br/>
-
-<h2>Feedback/response</h2>
+<%end%>
+<%if @feedback_response.present?%>
+<h4>Feedback/response</h4>
 <table id="admin_review_xls" >
 	<thead>
 	  <tr>
@@ -1051,8 +1080,9 @@
 	</tbody>	
 </table>
 <br/><br/>
-
-<h2>Hygiene</h2>
+<%end%>
+<%if @hygiene.present?%>
+<h4>Hygiene</h4>
 <table id="admin_review_xls" >
 	<thead>
 	  <tr>
@@ -1092,8 +1122,9 @@
 	</tbody>	
 </table>
 <br/><br/>
-
-<h2>Late/no delivery</h2>
+<%end%>
+<%if @Late_no_delivery.present?%>
+<h4>Late/no delivery</h4>
 <table id="admin_review_xls" >
 	<thead>
 	  <tr>
@@ -1133,7 +1164,9 @@
 	</tbody>	
 </table>
 <br/><br/>
-<h2>Out of stock</h2>
+<%end%>
+<%if @out_of_stock.present?%>
+<h4>Out of stock</h4>
 <table id="admin_review_xls" >
 	<thead>
 	  <tr>
@@ -1173,8 +1206,9 @@
 	</tbody>	
 </table>
 <br/><br/>
-
-<h2>Pricing/bar codes</h2>
+<%end%>
+<%if @pricing_bar_codes.present?%>
+<h4>Pricing/bar codes</h4>
 <table id="admin_review_xls" >
 	<thead>
 	  <tr>
@@ -1214,7 +1248,9 @@
 	</tbody>	
 </table>
 <br/><br/>
-<h2>Repairs/servicing</h2>
+<%end%>
+<%if @repairs_servicing.present?%>
+<h4>Repairs/servicing</h4>
 <table id="admin_review_xls" >
 	<thead>
 	  <tr>
@@ -1253,9 +1289,10 @@
 	  <% end %>
 	</tbody>	
 </table>
-
 <br/><br/>
-<h2>Spam</h2>
+<%end%>
+<%if @spam.present?%>
+<h4>Spam</h4>
 <table id="admin_review_xls" >
 	<thead>
 	  <tr>
@@ -1294,9 +1331,10 @@
 	  <% end %>
 	</tbody>	
 </table>
-
 <br/><br/>
-<h2>Other</h2>
+<%end%>
+<%if @others_c.present?%>
+<h4>Other</h4>
 <table id="admin_review_xls" >
 	<thead>
 	  <tr>
@@ -1334,5 +1372,6 @@
 	    </tr>
 	  <% end %>
 	</tbody>	
-</table>
+  </table>
+  <%end%>
 <%end%>

@@ -105,7 +105,11 @@ $(document).ready(function(){
   <div class="actions">
     <%unless @review.ispublished || @review.archive%>
       <%unless params[:type] == "archive" || params[:type] == "archive_attachment"%>
-        <%= f.submit 'Publish', class: "btn btn-primary"%>
+        <% if current_user.is? :jagent %>
+          <%= f.submit 'Save', class: "btn btn-primary"%>
+        <% else %>
+          <%= f.submit 'Publish', class: "btn btn-primary"%>
+        <% end %>
       <%end%>
       <%unless params[:type] == "archive" || params[:type] == "archive_attachment" %>
         <%= link_to 'Archive', edit_admin_review_path(params[:id],:type => "archive"), class: "btn" ,style: "line-height: 18px;"if can? :edit, Review%>

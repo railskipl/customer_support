@@ -1,11 +1,11 @@
-<h1>Reviews</h1>
-
-<table id="reviews" >
+<% if (current_user.is? :admin) || (current_user.is? :agent) %>
+<h1>Assign Reviews</h1>
+    <%= form_tag admin_assign_reviews_path ,:method => :put do %>
+<table id="reviews1" >
   <thead>
     <tr>
-		  <th>Date</th>
+      <th></th>
 		  <th>Ticket Number</th>
-		  <th>Review</th>
 		  <th>Company</th>
 		  <th>Title</th>
       <th>Customer Name</th>
@@ -14,11 +14,11 @@
   </thead>
 
   <tbody>
-    <% @reviews.each do |review| %>
+
+    <% @areviews.each do |review| %>
       <tr>
-				<td><%=review.date_time rescue nil %></td>
+        <td><%= check_box_tag "review_ids[]", review.id, false,:style => "opacity:0.67" %></td>
 				<td><%=review.ticket_number rescue nil %></td>
-				<td><%=review.review_type rescue nil %></td>
 				<td><%=review.company.title rescue nil %></td>
 				<td><%=review.title rescue nil %></td>
 		    <td><%=review.try(:user).try(:full_name)%></td>
@@ -31,7 +31,71 @@
 		    </td>
       </tr>
     <% end %>
+ 
   </tbody>
 </table>
-
+    <%= hidden_field_tag 'agent_id', current_user.id %>
+    <%= select_tag 'user_id', options_for_select(@users.collect{ |u| [u.preferred_alias, u.id] }) %><br/>
+   <%= submit_tag "Assign Reviews" %>
+    <% end %>
 <br>
+
+
+<h1>Assigned Reviews</h1>
+
+<table >
+  <thead>
+    <tr>
+      <th>Ticket Number</th>
+      <th>Review Assigned</th>
+       <th>Assignee</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reviews.each do |review| %>
+      <tr>
+        <td><%=review.ticket_number rescue nil %></td>
+        <td><%=review.jagent.preferred_alias rescue nil %></td>
+        <td><%=review.agent.preferred_alias rescue nil %></td>
+       </tr>
+    <% end %>
+  </tbody>
+</table>
+<br/>
+<% end %>
+<h1>Reviews</h1>
+
+<table id="reviews" >
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Ticket Number</th>
+      <th>Review</th>
+      <th>Company</th>
+      <th>Title</th>
+      <th>Customer Name</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reviews.each do |review| %>
+      <tr>
+        <td><%=review.date_time rescue nil %></td>
+        <td><%=review.ticket_number rescue nil %></td>
+        <td><%=review.review_type rescue nil %></td>
+        <td><%=review.company.title rescue nil %></td>
+        <td><%=review.title rescue nil %></td>
+        <td><%=review.try(:user).try(:full_name)%></td>
+        <td>
+          <%unless review.ispublished || review.archive %>
+            <%= link_to 'Edit', edit_admin_review_path(review) , class: "btn btn-primary" if can? :edit, Review%>
+          <%end%>
+          <%#= link_to 'Destroy', admin_review_path(review), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+          <%= link_to 'Comment', admin_review_path(review), class: "btn" if can? :edit, Review%> 
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

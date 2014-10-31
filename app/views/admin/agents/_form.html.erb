@@ -25,6 +25,10 @@
     <%= f.text_field :preferred_alias ,required: true%>
   </div>
   <div class="field">
+    <%= f.label :role %>
+    <%= f.select :role, [ ["Senior Agent", "agent"], ["Junior Agent", "jagent"]]%>
+  </div>
+  <div class="field">
     <%= f.label :email %>
     <%= f.email_field :email %>
   </div>

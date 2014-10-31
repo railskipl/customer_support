@@ -4,6 +4,8 @@ class Review < ActiveRecord::Base
   belongs_to :location
   belongs_to :town
   belongs_to :user
+  belongs_to :jagent, :class_name => "User"
+  belongs_to :agent, :class_name => "User"
   has_many   :comments
   validate :valid_date?
   validate :industry_id, :company_id, :town_id, :location_id ,presence: true

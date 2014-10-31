@@ -114,16 +114,17 @@
 </table>
 
 
-<h4>Recently Added Reviews</h4>
+<h4>Unpublished Reviews</h4>
 
 <table id="recently_added_review" >
 	<thead>
 	  <tr>
 			<th width="10%">Date</th>
-			<th width="15%">Ticket Number</th>
+			<th width="13%">Ticket Number</th>
 			<th width="10%">Review</th>
-			<th width="15%">Company</th>
-			<th width="15%">Title</th>
+			<th width="13%">Company</th>
+			<th width="14%">Title</th>
+			<th width="5%">Modified</th>
 	    <th width="15%">Customer Name</th>
 	    <th width="20%">Action</th>
 	  </tr>
@@ -137,6 +138,7 @@
 				<td><%=review.review_type rescue nil %></td>
 				<td><%=review.company.title rescue nil %></td>
 				<td><%=review.title rescue nil %></td>
+				<td><%=review.is_modified rescue nil %></td>
 			  <td><%=review.try(:user).try(:full_name)%></td>
 			  <td>
 			   <% unless review.ispublished || review.archive%>

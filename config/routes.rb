@@ -92,6 +92,9 @@ Jmd::Application.routes.draw do
         get :conversion_industry
         get :conversion_company
         get :customer_record
+        get :sagent
+        get :jagent
+      
       end
     end
   end

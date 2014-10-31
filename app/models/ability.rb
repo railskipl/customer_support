@@ -48,8 +48,8 @@ class Ability
       can    :read  , Location
       can    :read  , Address
       can    :read,   Review
-      can    :edit,   Review, :published_date => nil
-      can    :update, Review, :published_date => nil
+      can    :edit,   Review
+      can    :update, Review
       can    :read,   User, :id => user.id
       can    :edit,   User, :id => user.id
       can    :update, User, :id => user.id

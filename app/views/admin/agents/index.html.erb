@@ -7,6 +7,7 @@
       <th>Last Name</th>
       <th>Preffered Name</th>
       <th>Email</th>
+      <th>Agent</th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -18,8 +19,12 @@
         <td><%= agent.last_name %></td>
         <td><%= agent.preferred_alias %></td>
         <td><%= agent.email %></td>
+        <td><%= agent.role == "jagent" ? "Junior Agent" : "Senior Agent" %></td>
         <td><%= link_to 'Edit', edit_admin_agent_path(agent) if can? :edit, User%>
-        <%= link_to 'Destroy', admin_agent_path(agent), method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, User%></td>
+         <% if current_user.is? :admin %> 
+        <%= link_to 'Destroy', admin_agent_path(agent), method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, User%>
+        <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
@@ -27,4 +32,4 @@
 
 <br>
 
-<%= link_to 'New Agents', new_admin_agent_path, class: "btn btn-primary" if can? :create, User%>
+<%= link_to 'New Agent', new_admin_agent_path, class: "btn btn-primary" if can? :create, User%>

@@ -8,7 +8,11 @@ class Admin::AgentsController < AdminController
   end
 
   def index
-    @agents = User.all.agents
+    if current_user.is? :admin
+      @agents = User.all.agents
+    else
+      @agents = User.where("role = ?","jagent")
+    end
   end
 
   def show

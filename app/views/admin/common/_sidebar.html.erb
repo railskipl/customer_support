@@ -111,7 +111,7 @@
   	  </li>
   	<%end%>
 
-  	 <% if can? :manage, Supplier%>
+  	 <% if can? :read, Supplier%>
 	    <li class="<%=(@active_tab == 'suppliers') ? 'active' : ''%>">
 					<%=link_to raw(action_button_helper('Suppliers','icon-list-alt')),admin_suppliers_path%>
   	  </li>

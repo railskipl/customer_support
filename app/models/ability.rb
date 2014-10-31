@@ -56,6 +56,7 @@ class Ability
       can    :manage, Comment
       can    :destroy, Review
       can    :manage, Supplier
+      cannot :destroy, Supplier
     elsif user.is? :jagent
       cannot :manage, Resource
       cannot :manage, Page
@@ -76,11 +77,13 @@ class Ability
       can    :update, User, :id => user.id
       can    :manage, Comment
       can    :destroy, Review, :jagent_id => user.id
-      can    :manage, Supplier
+      can    :read, Supplier
+      cannot :edit,Supplier
+      cannot :destroy, Supplier
     else
       can    :read,   User, :id => user.id
       can    :edit,   User, :id => user.id
-			can    :update, User, :id => user.id
+	can    :update, User, :id => user.id
       can    :manage, Review,:user_id => user.id
       can    :manage, Comment
 	  end

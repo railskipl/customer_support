@@ -63,6 +63,7 @@ class Ability
       cannot :manage, Resource
       cannot :manage, ResourceType
       cannot :manage, Faq
+      cannot :manage, Seo
       can    :read  , NatureOfReview
       can    :read  , Industry
       can    :read  , Company

@@ -5,7 +5,7 @@ class Admin::ReviewsController < AdminController
   
 	def index
     if current_user.is? :admin
-      @users = User.where("role = ? || role = ?","jagent","agent")
+      @users = User.where("role = ? or role = ?","jagent","agent")
     else
       @users = User.where("role = ?","jagent")
     end

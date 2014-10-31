@@ -214,7 +214,7 @@
     <% end %>
   </tbody>
 </table>
-
+  	 <% if can? :manage, Seo %>
 <h4>Seo</h4>
 
 <table id="seos" >
@@ -241,7 +241,7 @@
     <% end %>
   </tbody>
 </table>
-
+<% end %>
 
 <h4>Archived Files</h4>
 

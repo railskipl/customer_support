@@ -8,7 +8,7 @@ class Admin::AgentsController < AdminController
   end
 
   def index
-    @agents = User.all.agents
+    @agents = User.where("role = ? || role = ?","jagent","agent")
   end
 
   def show

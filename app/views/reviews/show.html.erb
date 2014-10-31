@@ -91,6 +91,7 @@
   <%= render :file => 'comments/new' %>
   
   <%if current_user && current_user == @review.user && @review.comments.supplier_comments.count > 0%>
+  	hiiiii
   		<% if !@review.is_ticket_open %>
   		 	<%=form_for(@review) do |f| %>
 				<%if @review.review_type == 'complaint' %>

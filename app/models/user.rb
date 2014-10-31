@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
 
 
   scope :customers, -> { where(role: 'user') }
-  scope :agents, -> { where("role = ? || role = ?","agent","jagent") }
+  scope :agents, -> { where("role like ? || role like ?","agent","jagent") }
   scope :admins, -> { where(role: 'admin') }
 
   def full_name

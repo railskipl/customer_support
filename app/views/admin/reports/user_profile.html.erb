@@ -1,3 +1,61 @@
+<script src="/assets/jquery.js"></script>
+    <%= stylesheet_link_tag "jquery.ui.datepicker" %>
+<script>
+  jQuery.noConflict();
+  jQuery(document).ready(function() {
+
+  jQuery(function() {
+  jQuery('#report_start_date').datepicker( 
+    { altField  : '#report_start_date',  // selector of the hidden input field you want sent to the server
+      dateFormat: 'yy-mm-dd',
+      altFormat : 'yy-mm-dd' } );
+    });
+
+    jQuery(function() {
+  jQuery('#report_end_date').datepicker( 
+    { altField  : '#report_end_date',  // selector of the hidden input field you want sent to the server
+      dateFormat: 'yy-mm-dd',
+      altFormat : 'yy-mm-dd' } );
+    });
+
+});
+
+  jQuery(document).ready(function() {
+
+  jQuery(function() {
+  jQuery('#report1_start_date').datepicker( 
+    { altField  : '#report_start_date',  // selector of the hidden input field you want sent to the server
+      dateFormat: 'yy-mm-dd',
+      altFormat : 'yy-mm-dd' } );
+    });
+
+    jQuery(function() {
+  jQuery('#report1_end_date').datepicker( 
+    { altField  : '#report_end_date',  // selector of the hidden input field you want sent to the server
+      dateFormat: 'yy-mm-dd',
+      altFormat : 'yy-mm-dd' } );
+    });
+
+});
+
+</script>
+<style>
+.button{
+  color: #bbbbbb;
+  width: 169px;
+  height: 49px;
+  /*add any other properties you want to style*/
+}        
+</style>
+<script>
+jQuery(document).ready(function(){
+  jQuery("#empty_data").click(function(){
+   alert("No data available to export.");
+  });
+});
+</script>
+
+
 <div>
 <table id="total_customer_reviews">
 	<thead>
@@ -25,7 +83,32 @@
 	</tbody>
 </table>
 </div>
-<h4>Customers</h4>
+<br/>
+
+<h4>Customers</h4> 
+        <table>
+			<%= form_for :report, :url=> user_profile_admin_reports_path, :method => :get do |f| %>
+			  <h4>Filter Customers Data</h4>
+			  <tr>
+			    <td>From Date </td>
+			    <td><span >
+			      <%= f.text_field :start_date, :required => :true%>
+			    </span></td>
+			    <td>To Date </td>
+			    <td><span >
+			      <%= f.text_field :end_date,:required => :true %>
+			       </span>
+			    </td>
+			  </tr>
+			  <td><%= button_tag  :submit ,name:"subaction",value: "customer",:class => "btn btn btn-primary" %></td>
+			   
+			<%end%>
+		</table>
+    <%if params[:subaction] == "customer"%>
+        <%unless @customers.blank?%>
+		   <%= link_to "Download Filter Data", user_profile_admin_reports_path(params.merge(format: "xls")), :method=> :get, :class=>"btn btn-secondary" %>
+		<%end%>
+    <%end%>
 	<table id="customers">
 		<thead>
 		  <tr>
@@ -53,6 +136,30 @@
 	</table>
 <br/><br/>
 <h4>Active customers (6 months)</h4><br/>
+    <table>
+		<%= form_for :report1, :url=> user_profile_admin_reports_path, :method => :get do |f| %>
+		  <h4>Filter Customers Data</h4>
+		  <tr>
+		    <td>From Date </td>
+		    <td><span >
+		      <%= f.text_field :start_date, :required => :true%>
+		    </span></td>
+		    <td>To Date </td>
+		    <td><span >
+		      <%= f.text_field :end_date,:required => :true %>
+		       </span>
+		    </td>
+		  </tr>
+		  <td><%= button_tag  :submit ,name:"subaction",value: "active_customer",:class => "btn btn btn-primary" %></td>
+		<%end%>
+	</table>
+    <%if params[:subaction] == "active_customer"%>
+        <%if @users.present?%>
+		   <%= link_to "Download Filter Data", user_profile_admin_reports_path(params.merge(format: "xls")), :method=> :get, :class=>"btn btn-secondary" %>
+		<%else%>
+		  <a href="#" class="btn btn-secondary" id="empty_data">Download Filter Data</a>
+		<%end%>
+    <%end%>
 	<table id="active_customer">
 		<thead>
 		  <tr>

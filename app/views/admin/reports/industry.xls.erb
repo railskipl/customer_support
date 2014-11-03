@@ -1,0 +1,37 @@
+<h4>Industry wise conversions from complaints to compliments</h4>
+
+<%if params[:subaction] == "industry_stat_record" %>
+<strong>Displaying data for duration <%= @start_from%> to <%= @start_to%>
+<%else%>
+  <strong>Displaying data for 12 Months</strong>
+<%end%>
+<table id="admin_review_xls" >
+  <thead>
+    <tr>
+      <th width="10%">Date</th>
+      <th width="15%">Ticket Number</th>
+      <th width="15%">Industry</th>
+      <th width="15%">Nature of Review</th>
+      <th width="15%">Title</th>
+      <th width="15%">Customer Name</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @industries.each do |industry| %>
+    <% @compliment = Review.where('created_at >= ? and Date(created_at) <= ? and company_id = ? and user_id is not null', @start_from, @start_to, industry.id) %>
+     
+    <% @compliments = @compliment.where('change_date is not null') %> 
+      <% @compliments.each do |compliment|%>
+        <tr>
+          <td><%= compliment.date_time  %></td>
+          <td><%= compliment.ticket_number  %></td>
+          <td><%= compliment.industry.title.titleize  %></td>
+          <td><%= compliment.nature_of_review  %></td>
+          <td><%= compliment.title.titleize  %></td>
+          <td><%= compliment.try(:user).try(:full_name)%></td>
+        </tr>
+      <%end%>
+    <% end %>
+  </tbody>  
+</table>

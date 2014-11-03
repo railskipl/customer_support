@@ -64,4 +64,5 @@ $(document).ready(function() {
        $('#supplier_level_compliment').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [1] }] } );
        $('#supplier_level_complaint').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [1] }] } );
        $('#industry_conversion').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [2] }] } );
+       $('#poll_id').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [4] }] } );
 });

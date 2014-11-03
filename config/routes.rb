@@ -94,6 +94,7 @@ Jmd::Application.routes.draw do
         get :customer_record
         get :sagent
         get :jagent
+        get :polls
       
       end
     end

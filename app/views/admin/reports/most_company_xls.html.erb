@@ -1,5 +1,9 @@
-<h2>Suppliers that get most complaints/compliments</h2><br/>
-
+<h4>Suppliers that get most complaints/compliments</h4>
+<%if params[:subaction] == "most_company" %>
+  <strong>Displaying data for duration <%= params[:report5][:start_date]%> to <%= params[:report5][:end_date]%>
+<%else%>
+  <strong>Displaying data for 12 Months
+<%end%>
 <table >
   <thead>
      

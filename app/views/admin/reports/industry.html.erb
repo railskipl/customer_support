@@ -1,3 +1,82 @@
+<script src="/assets/jquery.js"></script>
+<%= stylesheet_link_tag "jquery.ui.datepicker" %>
+<script>
+  jQuery.noConflict();
+  jQuery(document).ready(function() {
+
+  jQuery(function() {
+  jQuery('#report_start_date').datepicker( 
+    { altField  : '#report_start_date',  // selector of the hidden input field you want sent to the server
+      dateFormat: 'yy-mm-dd',
+      altFormat : 'yy-mm-dd' } );
+    });
+
+    jQuery(function() {
+  jQuery('#report_end_date').datepicker( 
+    { altField  : '#report_end_date',  // selector of the hidden input field you want sent to the server
+      dateFormat: 'yy-mm-dd',
+      altFormat : 'yy-mm-dd' } );
+    });
+
+});
+
+  jQuery(document).ready(function() {
+
+  jQuery(function() {
+  jQuery('#report1_start_date').datepicker( 
+    { altField  : '#report_start_date',  // selector of the hidden input field you want sent to the server
+      dateFormat: 'yy-mm-dd',
+      altFormat : 'yy-mm-dd' } );
+    });
+
+    jQuery(function() {
+  jQuery('#report1_end_date').datepicker( 
+    { altField  : '#report_end_date',  // selector of the hidden input field you want sent to the server
+      dateFormat: 'yy-mm-dd',
+      altFormat : 'yy-mm-dd' } );
+    });
+
+});
+
+  jQuery(document).ready(function() {
+
+  jQuery(function() {
+  jQuery('#report3_start_date').datepicker( 
+    { altField  : '#report_start_date',  // selector of the hidden input field you want sent to the server
+      dateFormat: 'yy-mm-dd',
+      altFormat : 'yy-mm-dd' } );
+    });
+
+    jQuery(function() {
+  jQuery('#report3_end_date').datepicker( 
+    { altField  : '#report_end_date',  // selector of the hidden input field you want sent to the server
+      dateFormat: 'yy-mm-dd',
+      altFormat : 'yy-mm-dd' } );
+    });
+
+});
+
+
+</script>
+
+<table>
+      <%= form_for :report, :url=> industry_xls_admin_reports_path, :method => :get do |f| %>
+        <h4>Filter Industry Data</h4>
+        <tr>
+          <td>From Date </td>
+          <td><span >
+            <%= f.text_field :start_date, :required => :true%>
+          </span></td>
+          <td>To Date </td>
+          <td><span >
+            <%= f.text_field :end_date,:required => :true %>
+             </span>
+          </td>
+        </tr>
+        <td><%= button_tag  :submit ,name:"subaction",value: "industry_total",:class => "btn btn btn-primary" %></td>    
+      <%end%>
+</table>
+
 <h4>Industry Totals- 12 month period</h4>
 <table id="industry_xls">
 	<thead>
@@ -19,6 +98,28 @@
 <br/><br/>
 
 <h2>Conversions – Industry conversion stats</h2>
+<table>
+  <%= form_for :report3, :url=> industry_admin_reports_path, :method => :get do |f| %>
+    <h4>Filter Company conversion Records</h4>
+    <tr>
+      <td>From Date </td>
+      <td><span >
+        <%= f.text_field :start_date, :required => :true%>
+      </span></td>
+      <td>To Date </td>
+      <td><span >
+        <%= f.text_field :end_date,:required => :true %>
+         </span>
+      </td>
+    </tr>
+    <td><%= button_tag  :submit ,name:"subaction",value: "industry_stat_record",:class => "btn btn btn-primary" %></td>    
+  <%end%>
+</table>
+<%if params[:subaction] == "industry_stat_record" %>
+   <%= link_to image_tag('/assets/excel.png', :border=>"0", :align=>"absmiddle") + "Download Industry Conversions", industry_admin_reports_path(params.merge(format: "xls")), :method=> :get %><br/>
+<%else%>
+  <%= link_to image_tag('/assets/excel.png', :border=>"0", :align=>"absmiddle") + "Download Industry Conversions(12 months)", industry_admin_reports_path(params.merge(format: "xls")), :method=> :get %><br/>
+<%end%>
 <table id="admin_review_xls" >
   <thead>
     <tr>
@@ -32,21 +133,42 @@
   </thead>
 
   <tbody>
-    <% @compliments.each do |review| %>
-      <tr>
-        <td><%=review.date_time rescue nil %></td>
-        <td><%=review.ticket_number rescue nil %></td>
-        <td><%=review.industry.title.titleize rescue nil %></td>
-        <td><%=review.nature_of_review rescue nil %></td>
-        <td><%=review.title.titleize rescue nil %></td>
-        <td><%=review.try(:user).try(:full_name)%></td>
-      </tr>
+    <% @industries.each do |industry| %>
+    <% @compliment = Review.where('created_at >= ? and Date(created_at) <= ? and company_id = ? and user_id is not null', @start_from, @start_to, industry.id) %>
+     
+    <% @compliments = @compliment.where('change_date is not null') %> 
+      <% @compliments.each do |compliment|%>
+        <tr>
+          <td><%= compliment.date_time  %></td>
+          <td><%= compliment.ticket_number  %></td>
+          <td><%= compliment.industry.title.titleize  %></td>
+          <td><%= compliment.nature_of_review  %></td>
+          <td><%= compliment.title.titleize  %></td>
+          <td><%= compliment.try(:user).try(:full_name)%></td>
+        </tr>
+      <%end%>
     <% end %>
   </tbody>  
 </table>
 <br/><br/>
 <h2>Conversions – Industry conversion stats (12 Months)</h2>
-   
+ <table>
+      <%= form_for :report1, :url=> conversion_industry_admin_reports_path, :method => :get do |f| %>
+        <h4>Filter Industry conversion Data</h4>
+        <tr>
+          <td>From Date </td>
+          <td><span >
+            <%= f.text_field :start_date, :required => :true%>
+          </span></td>
+          <td>To Date </td>
+          <td><span >
+            <%= f.text_field :end_date,:required => :true %>
+             </span>
+          </td>
+        </tr>
+        <td><%= button_tag  :submit ,name:"subaction",value: "conversion_industry",:class => "btn btn btn-primary" %></td>    
+      <%end%>
+</table>
 <table id="industry_conversion">
   <thead>
     <tr>

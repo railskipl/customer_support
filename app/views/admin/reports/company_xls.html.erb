@@ -1,7 +1,16 @@
 <br/>
+<%if params[:subaction] == "company_total" %>
+  <strong>Displaying data for duration <%= params[:report][:start_date]%> to <%= params[:report][:end_date]%>
+<%else%>
+  <strong>Displaying data for 12 Months
+<%end%>
 <%@companies.each do |company|%>
 
     <% @company = Company.where('id = ?', company).first%>
+    <% @compliments = Review.where('created_at >= ? and created_at <= ? and user_id is not null and company_id = ? and review_type = ?',@start_from,@start_to,@company.id, 'compliment')%>
+    <% @complaints = Review.where('created_at >= ? and created_at <= ? and user_id is not null and company_id = ? and review_type = ?',@start_from,@start_to,@company.id, 'complaint')%>
+	
+  <%if @compliments.present? or  @complaints.present? %>
 	<table>
 		<thead>
 			<tr>
@@ -12,15 +21,15 @@
 
 		<tbody>
 			<tr>
-				<td>Compliments :
-				<%= @compliments = Review.where('created_at >= ? and created_at <= ? and user_id is not null and company_id = ? and review_type = ?',1.year.ago, Date.today,@company.id, 'compliment').count%></td>
-			
-				<td>Complaint :
-				<%= @complaints = Review.where('created_at >= ? and created_at <= ? and user_id is not null and company_id = ? and review_type = ?',1.year.ago, Date.today,@company.id, 'complaint').count%></td>
-			
-				<td><strong>Total</strong>
-				<%= @complaints + @compliments%></td>
-			</tr>
+			<td>Compliments :
+			<%= @compliments.count%></td>
+		
+			<td>Complaint :
+			<%= @complaints.count%></td>
+		
+			<td><strong>Total</strong>
+			<%= @total = @complaints.count + @compliments.count%></td>
+		</tr>
 
 		</tbody>
 	</table>
@@ -195,7 +204,7 @@
 
     <br/><br/>
 
-<h4>Supplier <%= @company.title%> :Compliments</h4></br>
+<h4>Supplier <%= @company.title%> :Compliments</h4>
 <%if @billing.present?%>
 <h4>Billing/accounts</h4>
 <table id="admin_review_xls" >
@@ -1372,4 +1381,5 @@
 	</tbody>	
   </table>
   <%end%>
+<%end%>
 <%end%>

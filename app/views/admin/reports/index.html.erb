@@ -1,7 +1,13 @@
-<%= link_to "Customer details", user_profile_admin_reports_path%><br/>
-<%= link_to "Industry Level Totals", industry_admin_reports_path%><br/>
-<%= link_to "Company/Supplier Level Totals", company_admin_reports_path%><br/>
-
+<table>
+<tr>
+  <td><%= link_to "Customer details", user_profile_admin_reports_path,:class=> "btn"%><br/></td>
+<td><%= link_to "Industry Level Totals", industry_admin_reports_path,:class=> "btn"%><br/></td>
+<td><%= link_to "Company/Supplier Level Totals", company_admin_reports_path,:class=> "btn"%><br/></td>
+<td><%= link_to "Download Archive Data",archive_data_admin_reports_path,:class=> "btn"%><br/></td>
+<td><%= link_to "Download Polls Data",polls_admin_reports_path,:class=> "btn"%><br/></td>
+</tr>
+</table></br>
+<strong>Download Data for 12 Months period</strong></br></br>
 <%= link_to image_tag('/assets/excel.png', :border=>"0", :align=>"absmiddle") + "Summary of reviews Excel", customer_record_admin_reports_path%><br/>
 <%= link_to image_tag('/assets/excel.png', :border=>"0", :align=>"absmiddle") + "Industry conversion stats", conversion_industry_admin_reports_path(params.merge(format: "xls")), :method=> :get%><br/>
 <%= link_to image_tag('/assets/excel.png', :border=>"0", :align=>"absmiddle") + "Supplier conversion stats", conversion_company_admin_reports_path(params.merge(format: "xls")), :method=> :get%><br/>
@@ -17,8 +23,9 @@
 <%= link_to image_tag('/assets/excel.png', :border=>"0", :align=>"absmiddle") + "List Of Registered Suppliers", registered_suppliers_admin_reports_path(params.merge(format: "xls")), :method=> :get %><br/>
 <%= link_to image_tag('/assets/excel.png', :border=>"0", :align=>"absmiddle") + "List Of Unregistered Suppliers", unregistered_suppliers_admin_reports_path(params.merge(format: "xls")), :method=> :get %>
 <br/>
+<%= link_to image_tag('/assets/excel.png', :border=>"0", :align=>"absmiddle") + "Download Poll Results(12 months)", polls_admin_reports_path(params.merge(format: "xls")), :method=> :get %>
+<br/>
 
-<%= link_to "Archive Data",archive_data_admin_reports_path%><br/>
 <br/><br/>
 
 

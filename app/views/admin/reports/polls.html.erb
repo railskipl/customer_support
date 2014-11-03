@@ -1,0 +1,70 @@
+<script src="/assets/jquery.js"></script>
+<%= stylesheet_link_tag "jquery.ui.datepicker" %>
+<script>
+  jQuery.noConflict();
+  jQuery(document).ready(function() {
+
+  jQuery(function() {
+  jQuery('#report_start_date').datepicker( 
+    { altField  : '#report_start_date',  // selector of the hidden input field you want sent to the server
+      dateFormat: 'yy-mm-dd',
+      altFormat : 'yy-mm-dd' } );
+    });
+
+    jQuery(function() {
+  jQuery('#report_end_date').datepicker( 
+    { altField  : '#report_end_date',  // selector of the hidden input field you want sent to the server
+      dateFormat: 'yy-mm-dd',
+      altFormat : 'yy-mm-dd' } );
+    });
+
+});
+
+</script>
+<table>
+  <%= form_for :report, :url=> polls_admin_reports_path, :method => :get do |f| %>
+    <h4>Filter Poll Results</h4>
+    <tr>
+      <td>From Date </td>
+      <td><span >
+        <%= f.text_field :start_date, :required => :true%>
+      </span></td>
+      <td>To Date </td>
+      <td><span >
+        <%= f.text_field :end_date,:required => :true %>
+         </span>
+      </td>
+    </tr>
+    <td><%= button_tag  :submit ,name:"subaction",value: "poll_vote",:class => "btn btn btn-primary" %></td>    
+  <%end%>
+</table>
+<%if params[:subaction] == "poll_vote" %>
+   <%= link_to image_tag('/assets/excel.png', :border=>"0", :align=>"absmiddle") + "Download Poll Results", polls_admin_reports_path(params.merge(format: "xls")), :method=> :get %><br/>
+<%else%>
+  <%= link_to image_tag('/assets/excel.png', :border=>"0", :align=>"absmiddle") + "Download Poll Results(12 months)", polls_admin_reports_path, :method=> :get %><br/>
+<%end%>
+<h4>Poll Results</h4>
+<table id="poll_id" >
+	<thead>
+	  <tr>
+			<th width="10%">Title</th>
+			<th width="15%">Option 1</th>
+			<th width="10%">Option 2</th>
+			<th width="15%">Option 3</th>
+			<th width="15%">Option 4</th>
+			
+	  </tr>
+	</thead>
+
+	<tbody>
+	  <% @polls.each do |poll| %>
+	     
+	     <td><%=poll.title rescue nil %></td>
+	     <% poll.options.each do |option| %>
+		  <td><%=option.answer rescue nil %>
+		     <%@result = Result.where('option_id = ?',option.id).count%>
+		     :&nbsp;<%= @result%>&nbsp;vote 
+	     <% end %></td>
+	  <% end %>
+	</tbody>	
+</table>

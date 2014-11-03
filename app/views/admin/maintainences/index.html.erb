@@ -1,0 +1,5 @@
+<% if @maintainence.status %>
+Click <%= link_to "OFF"  ,admin_maintainence_toggle_status_path(@maintainence.id,:s => "false") ,:method => :put%> for keeping system OFF for maintaince mode!
+<% else %>
+Click <%= link_to "ON" ,admin_maintainence_toggle_status_path(@maintainence.id,:s => "true") ,:method => :put%> for keeping system ON for maintaince mode!
+<% end %>

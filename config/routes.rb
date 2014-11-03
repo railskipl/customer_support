@@ -37,6 +37,10 @@ Jmd::Application.routes.draw do
 
   
   namespace :admin do
+    resources :maintainences ,:only => [:index] do
+      put "/toggle_status" => "maintainences#toggle_status"
+    end
+
     put "/ticket_closed" => "reviews#ticket_closed"
     get "/searches/reviews" => "reviews#search_reviews", as: :search_reviews
     put '/assign_reviews'=> 'reviews#assign_reviews'
@@ -46,7 +50,8 @@ Jmd::Application.routes.draw do
     get '/industry/companies_by_industry' => "reports#companies_by_industry"
     get '/company/towns_by_company' => "reports#towns_by_company"
     get '/town/locations_by_town_and_company' => "reports#locations_by_town_and_company"
-        
+
+    resources :monitor_jagents ,:only => [:index]
   	resources :users
   	resources :locations
   	resources :towns

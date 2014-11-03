@@ -2531,9 +2531,9 @@
 # page.save(:validates=>false)
 
 
-page = Page.new(:name=>"How to write a good review:", :title=> "How to write a good review",
-            :description => "",:slug=>"how-to-write-good-review")
-page.save(:validates=>false)
+# page = Page.new(:name=>"How to write a good review:", :title=> "How to write a good review",
+#             :description => "",:slug=>"how-to-write-good-review")
+# page.save(:validates=>false)
 
 # page = Page.new(:name=>"csr",  :title=>"CSR", :slug=>"csr",:template_name=>'csr')
 # page.save(:validates=>false)
@@ -2551,3 +2551,4 @@ page.save(:validates=>false)
 
 # Kenya does not have a forum like this, leaving companies not accountable and paying less attention on customer service. We would like to challenge and change this. {Name} is the platform that will give the customer in Kenya the chance to give ratings, Kudos and also challenge those that do not deliver. Customers are therefore encouraged … Come all let's give a ranking. We deserve better!", 
 # 	:meta_keyword => "Customer support, xema, xemasupport")
+puts Maintainence.first_or_create

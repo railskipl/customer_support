@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141030125040) do
+ActiveRecord::Schema.define(version: 20141103074416) do
 
   create_table "abuse_reports", force: true do |t|
     t.string   "user_email"
@@ -144,6 +144,24 @@ ActiveRecord::Schema.define(version: 20141030125040) do
     t.datetime "updated_at"
   end
 
+  create_table "maintainences", force: true do |t|
+    t.boolean  "status",     default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "monitor_jagents", force: true do |t|
+    t.integer  "review_id"
+    t.boolean  "ticked_closed_by_jagent"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "archive"
+    t.boolean  "modified_review"
+    t.boolean  "s_comment"
+    t.boolean  "c_comment"
+    t.boolean  "archive_att"
+  end
+
   create_table "nature_of_reviews", force: true do |t|
     t.string   "title"
     t.string   "user_id"
@@ -224,17 +242,19 @@ ActiveRecord::Schema.define(version: 20141030125040) do
     t.integer  "user_id"
     t.string   "guest_token"
     t.string   "file"
-    t.boolean  "archive",              default: false
-    t.boolean  "ispublished",          default: false
+    t.boolean  "archive",                 default: false
+    t.boolean  "ispublished",             default: false
     t.datetime "published_date"
     t.datetime "change_date"
     t.text     "modified_review"
     t.boolean  "is_modified"
     t.text     "notes"
-    t.boolean  "archive_attachment",   default: false
-    t.boolean  "is_ticket_open",       default: true
+    t.boolean  "archive_attachment",      default: false
+    t.boolean  "is_ticket_open",          default: true
     t.integer  "jagent_id"
     t.integer  "agent_id"
+    t.integer  "old_jagent_id"
+    t.integer  "last_published_agent_id"
   end
 
   create_table "seos", force: true do |t|

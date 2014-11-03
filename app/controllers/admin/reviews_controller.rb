@@ -10,11 +10,12 @@ class Admin::ReviewsController < AdminController
       @users = User.where("role = ?","jagent")
     end
     if current_user.is? :jagent
-		  @reviews = Review.where("jagent_id = ?",current_user.id).unarchived.order("id desc")
+		  @reviews = Review.where("jagent_id = ? || old_jagent_id = ?",current_user.id,current_user.id).unarchived.order("id desc")
     else
       @reviews = Review.unarchived.order("id desc")
     end
     @areviews = Review.where("published_date is null and jagent_id is null")
+    @reareviews = Review.where("published_date is null and jagent_id is not null")
 	end
 
   def show
@@ -25,12 +26,23 @@ class Admin::ReviewsController < AdminController
     if params["review_ids"].nil?
       redirect_to admin_reviews_url, :notice => "Please select atleast one review"
     else
-      reviews = params["review_ids"]
-      reviews.each do |r|
-        a = Review.find(r)
-        a.jagent_id = params[:user_id]
-        a.agent_id = params[:agent_id]
-        a.save
+      if params["reassign"] == "yes"
+        reviews = params["review_ids"]
+        reviews.each do |r|
+          a = Review.find(r)
+          a.old_jagent_id = a.jagent_id
+          a.jagent_id = params[:user_id]
+          a.agent_id = params[:agent_id]
+          a.save
+        end
+      else
+        reviews = params["review_ids"]
+        reviews.each do |r|
+          a = Review.find(r)
+          a.jagent_id = params[:user_id]
+          a.agent_id = params[:agent_id]
+          a.save
+        end
       end
       redirect_to admin_reviews_url
     end
@@ -42,10 +54,17 @@ class Admin::ReviewsController < AdminController
 
   def ticket_closed
     review = Review.find(params["review_id"])
-    review.is_ticket_open = false
-    review.save
-    ReviewMailer.ticket_closed_notification(review).deliver
-    redirect_to :back, :notice => "Ticket closed successfully"
+    m = MonitorJagent.find_or_create_by_review_id(review.id)
+    m.ticked_closed_by_jagent = true
+    m.save
+    if current_user.role == "admin" || current_user.role == "agent"
+      review.is_ticket_open = false
+      review.save
+      ReviewMailer.ticket_closed_notification(review).deliver
+      redirect_to :back, :notice => "Ticket closed successfully"
+    else
+      redirect_to :back, :notice => "Send Ticket For Review"
+    end
   end
 
   def update
@@ -54,6 +73,8 @@ class Admin::ReviewsController < AdminController
       @review.ispublished = true
       @review.published_date = DateTime.now
       @review.archive = false
+      @review.last_published_agent_id = @review.agent_id
+      @review.agent_id = current_user.id
       respond_to do |format|
         if @review.update(review_params)
           ReviewMailer.publish_mail(@review).deliver!
@@ -89,6 +110,9 @@ class Admin::ReviewsController < AdminController
     else
       respond_to do |format|
         if @review.update(review_params)
+          m = MonitorJagent.find_or_create_by_review_id(@review.id)
+          m.modified_review = true
+          m.save
           format.html { redirect_to [:admin,@review], notice: 'Review successfully updated.'}
         else
           format.html { render action: 'edit' }

@@ -35,6 +35,8 @@ $(document).ready(function() {
 	  $('#addresses').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [3] }] } );
 	  $('#reviews').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [6] }] });
 	  $('#reviews1').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [5] }] });
+    $('#reviews2').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [5] }] });
+
 	  $('#faqs').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [2] }] } );
  	  $('#pages').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [3] }] } );
 		$('#resources').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [3] }] } );

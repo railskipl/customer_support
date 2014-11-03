@@ -94,7 +94,7 @@ $(document).ready(function(){
 <%unless @review.ispublished || @review.archive %>
 	<%= link_to 'Edit', edit_admin_review_path(@review), class: "btn btn-primary" if can? :edit, Review %>
 <%end%>
-<% if @review.is_ticket_open %>
+<% if @review.is_ticket_open &&  @review.comments.supplier_comments.count > 0 %>
 <%= link_to 'Close Ticket', admin_ticket_closed_path(:review_id => @review.id) , :confirm => "Are you sure, you want to close this ticket..?",method: :put %>
 <% end %>
 <h3>Comments</h3>
@@ -111,6 +111,8 @@ $(document).ready(function(){
   </div>
   <input type="button" id="hidden" class="btn btn-primary" value="Hide Comments">
 </div>
-<%unless @review.archive == true%>
-  <%= render :file => 'admin/comments/new' %>
+<% if @review.ispublished %>
+  <%unless @review.archive == true%>
+    <%= render :file => 'admin/comments/new' %>
+  <%end%>
 <%end%>

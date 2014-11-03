@@ -26,7 +26,7 @@ class Admin::AgentsController < AdminController
   def edit
     @agent = User.find(params[:id])
   end
-
+  
   def create
     @agent = User.new(agent_params)
     @agent.role = agent_params["role"]

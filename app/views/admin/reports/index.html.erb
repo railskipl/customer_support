@@ -2,18 +2,20 @@
 <%= link_to "Industry Level Totals", industry_admin_reports_path%><br/>
 <%= link_to "Company/Supplier Level Totals", company_admin_reports_path%><br/>
 
-<%= link_to "Download Summary of reviews made by the customer xls", customer_record_admin_reports_path%><br/>
-<%= link_to "Industry conversion stats xls", conversion_industry_admin_reports_path(params.merge(format: "xls")), :method=> :get%><br/>
-<%= link_to "Supplier conversion stats xls", conversion_company_admin_reports_path(params.merge(format: "xls")), :method=> :get%><br/>
-<%= link_to "Download Customer Details xls", all_customers_admin_reports_path(params.merge(format: "xls")), :method=> :get%><br/>
-<%= link_to "Download Active Customers xls", active_customers_admin_reports_path(params.merge(format: "xls")), :method=> :get%><br/>
-<%= link_to "Download Suppliers Profiles xls", suppliers_profiles_admin_reports_path(params.merge(format: "xls")), :method=> :get%><br/>
-<%= link_to "Download Industry xls", industry_xls_admin_reports_path(params.merge(format: "xls")), :method=> :get%><br/>
-<%= link_to "Download Company/Supplier xls", company_xls_admin_reports_path%><br/>
-<%= link_to "Download Total reviews xls", total_xls_admin_reports_path%><br/>
-<%= link_to "Download Most complaints/compliments xls",most_company_xls_admin_reports_path%><br/>
-<%= link_to "Download List Of Registered Suppliers xls", registered_suppliers_admin_reports_path(params.merge(format: "xls")), :method=> :get %><br/>
-<%= link_to "Download List Of Unregistered Suppliers xls", unregistered_suppliers_admin_reports_path(params.merge(format: "xls")), :method=> :get %>
+<%= link_to image_tag('/assets/excel.png', :border=>"0", :align=>"absmiddle") + "Summary of reviews Excel", customer_record_admin_reports_path%><br/>
+<%= link_to image_tag('/assets/excel.png', :border=>"0", :align=>"absmiddle") + "Industry conversion stats", conversion_industry_admin_reports_path(params.merge(format: "xls")), :method=> :get%><br/>
+<%= link_to image_tag('/assets/excel.png', :border=>"0", :align=>"absmiddle") + "Supplier conversion stats", conversion_company_admin_reports_path(params.merge(format: "xls")), :method=> :get%><br/>
+<%= link_to image_tag('/assets/excel.png', :border=>"0", :align=>"absmiddle") + "Customer Details", all_customers_admin_reports_path(params.merge(format: "xls")), :method=> :get%><br/>
+<%= link_to image_tag('/assets/excel.png', :border=>"0", :align=>"absmiddle") + "Junior Agents", jagent_admin_reports_path(params.merge(format: "xls")), :method=> :get%><br/>
+<%= link_to image_tag('/assets/excel.png', :border=>"0", :align=>"absmiddle") + "Senior Agents", sagent_admin_reports_path(params.merge(format: "xls")), :method=> :get%><br/>
+<%= link_to image_tag('/assets/excel.png', :border=>"0", :align=>"absmiddle") + "Active Customers", active_customers_admin_reports_path(params.merge(format: "xls")), :method=> :get%><br/>
+<%= link_to image_tag('/assets/excel.png', :border=>"0", :align=>"absmiddle") + "Suppliers Profiles", suppliers_profiles_admin_reports_path(params.merge(format: "xls")), :method=> :get%><br/>
+<%= link_to image_tag('/assets/excel.png', :border=>"0", :align=>"absmiddle") + "Industry xls", industry_xls_admin_reports_path(params.merge(format: "xls")), :method=> :get%><br/>
+<%= link_to image_tag('/assets/excel.png', :border=>"0", :align=>"absmiddle") + "Company/Supplier xls", company_xls_admin_reports_path%><br/>
+<%= link_to image_tag('/assets/excel.png', :border=>"0", :align=>"absmiddle") + "Total reviews", total_xls_admin_reports_path%><br/>
+<%= link_to image_tag('/assets/excel.png', :border=>"0", :align=>"absmiddle") + "Most complaints/compliments",most_company_xls_admin_reports_path%><br/>
+<%= link_to image_tag('/assets/excel.png', :border=>"0", :align=>"absmiddle") + "List Of Registered Suppliers", registered_suppliers_admin_reports_path(params.merge(format: "xls")), :method=> :get %><br/>
+<%= link_to image_tag('/assets/excel.png', :border=>"0", :align=>"absmiddle") + "List Of Unregistered Suppliers", unregistered_suppliers_admin_reports_path(params.merge(format: "xls")), :method=> :get %>
 <br/>
 
 <%= link_to "Archive Data",archive_data_admin_reports_path%><br/>

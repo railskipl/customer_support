@@ -8,6 +8,7 @@ class Ability
     if user.is? :admin
       can :manage, User
       can :manage, Maintainence
+      can :read, MonitorJagent
       can :manage, User, :id => user.id
       can :manage, Resource
       can :manage, Page
@@ -35,6 +36,7 @@ class Ability
       can :manage, AbuseReport
     elsif user.is? :agent
       cannot :manage, Resource
+      can :read, MonitorJagent
       cannot :manage, Maintainence
       cannot :manage, Page
       cannot :manage, Resource
@@ -72,6 +74,7 @@ class Ability
       can    :manage, Supplier
       cannot :destroy, Supplier
     elsif user.is? :jagent
+      cannot :read, MonitorJagent
       cannot :manage, Resource
       cannot :manage, Maintainence
       cannot :manage, Page

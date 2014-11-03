@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141101112213) do
+ActiveRecord::Schema.define(version: 20141103074416) do
 
   create_table "abuse_reports", force: true do |t|
     t.string   "user_email"
@@ -150,6 +150,18 @@ ActiveRecord::Schema.define(version: 20141101112213) do
     t.datetime "updated_at"
   end
 
+  create_table "monitor_jagents", force: true do |t|
+    t.integer  "review_id"
+    t.boolean  "ticked_closed_by_jagent"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "archive"
+    t.boolean  "modified_review"
+    t.boolean  "s_comment"
+    t.boolean  "c_comment"
+    t.boolean  "archive_att"
+  end
+
   create_table "nature_of_reviews", force: true do |t|
     t.string   "title"
     t.string   "user_id"
@@ -241,6 +253,8 @@ ActiveRecord::Schema.define(version: 20141101112213) do
     t.boolean  "is_ticket_open",       default: true
     t.integer  "jagent_id"
     t.integer  "agent_id"
+    t.integer  "old_jagent_id"
+    t.integer  "old_agent_id"
   end
 
   create_table "seos", force: true do |t|

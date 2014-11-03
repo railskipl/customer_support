@@ -50,7 +50,8 @@ Jmd::Application.routes.draw do
     get '/industry/companies_by_industry' => "reports#companies_by_industry"
     get '/company/towns_by_company' => "reports#towns_by_company"
     get '/town/locations_by_town_and_company' => "reports#locations_by_town_and_company"
-        
+
+    resources :monitor_jagents ,:only => [:index]
   	resources :users
   	resources :locations
   	resources :towns

@@ -56,6 +56,13 @@
 		  </li>
 		<%end%>
 
+		<%  if can? :read, MonitorJagent %>
+		  <li class="<%=(@active_tab == 'Monitor Agents') ? 'active' : ''%>">
+					<%=link_to raw(action_button_helper('Monitor Agents','icon-cogs')), admin_monitor_jagents_path%>
+		  </li>
+    	<%end%>
+
+
 		<%  if can? :read, Industry%>
 		  <li class="<%=(@active_tab == 'industries') ? 'active' : ''%>">
 					<%=link_to raw(action_button_helper('Industries','icon-cogs')), admin_industries_path%>

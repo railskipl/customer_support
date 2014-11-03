@@ -242,19 +242,19 @@ ActiveRecord::Schema.define(version: 20141103074416) do
     t.integer  "user_id"
     t.string   "guest_token"
     t.string   "file"
-    t.boolean  "archive",              default: false
-    t.boolean  "ispublished",          default: false
+    t.boolean  "archive",                 default: false
+    t.boolean  "ispublished",             default: false
     t.datetime "published_date"
     t.datetime "change_date"
     t.text     "modified_review"
     t.boolean  "is_modified"
     t.text     "notes"
-    t.boolean  "archive_attachment",   default: false
-    t.boolean  "is_ticket_open",       default: true
+    t.boolean  "archive_attachment",      default: false
+    t.boolean  "is_ticket_open",          default: true
     t.integer  "jagent_id"
     t.integer  "agent_id"
     t.integer  "old_jagent_id"
-    t.integer  "old_agent_id"
+    t.integer  "last_published_agent_id"
   end
 
   create_table "seos", force: true do |t|

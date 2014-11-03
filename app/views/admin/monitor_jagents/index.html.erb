@@ -9,7 +9,7 @@
 	</tr>
 	<% @monitors.each do |mon| %>
 	<tr>
-		<td><%= link_to mon.review.title ,admin_review_path(mon.review.id) rescue nil%></td>
+		<td><%= link_to mon.review.ticket_number ,admin_review_path(mon.review.id) rescue nil%></td>
 		<td><%= mon.review.jagent.preferred_alias rescue nil%></td>
 		<td><%= mon.review.agent == current_user ? "You" : mon.review.agent.preferred_alias %></td>
 		<td><%= mon.ticked_closed_by_jagent? ? "Yes" : "No" rescue nil%></td>

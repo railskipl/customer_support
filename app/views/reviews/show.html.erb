@@ -94,7 +94,7 @@
 
   		<% if @review.is_ticket_open == false %>
   		 	<%=form_for(@review) do |f| %>
-				<%if @review.review_type == 'complaint' %>
+				<% if @review.review_type == 'complaint' %>
 				Want to change your review?<br/>
 			  	<%=f.hidden_field "e" , :value=>''%>		
 			  	<div class="rgh_in">

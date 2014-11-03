@@ -37,6 +37,10 @@ Jmd::Application.routes.draw do
 
   
   namespace :admin do
+    resources :maintainences ,:only => [:index] do
+      put "/toggle_status" => "maintainences#toggle_status"
+    end
+
     put "/ticket_closed" => "reviews#ticket_closed"
     get "/searches/reviews" => "reviews#search_reviews", as: :search_reviews
     put '/assign_reviews'=> 'reviews#assign_reviews'

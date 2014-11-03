@@ -7,6 +7,7 @@ class Ability
     # Define User abilities
     if user.is? :admin
       can :manage, User
+      can :manage, Maintainence
       can :manage, User, :id => user.id
       can :manage, Resource
       can :manage, Page
@@ -34,6 +35,7 @@ class Ability
       can :manage, AbuseReport
     elsif user.is? :agent
       cannot :manage, Resource
+      cannot :manage, Maintainence
       cannot :manage, Page
       cannot :manage, Resource
       cannot :manage, ResourceType
@@ -47,6 +49,18 @@ class Ability
       can    :read  , Town
       can    :read  , Location
       can    :read  , Address
+    if Maintainence.first.status 
+      can    :edit  , Industry
+      can    :edit  , Company
+      can    :edit  , Town
+      can    :edit  , Location
+      can    :edit  , Address
+      can    :update  , Industry
+      can    :update  , Company
+      can    :update  , Town
+      can    :update  , Location
+      can    :update  , Address
+    end
       can    :read,   Review
       can    :edit,   Review
       can    :update, Review
@@ -59,6 +73,7 @@ class Ability
       cannot :destroy, Supplier
     elsif user.is? :jagent
       cannot :manage, Resource
+      cannot :manage, Maintainence
       cannot :manage, Page
       cannot :manage, Resource
       cannot :manage, ResourceType
@@ -69,7 +84,18 @@ class Ability
       can    :read  , Company
       can    :read  , Town
       can    :read  , Location
-      can    :read  , Address
+      if Maintainence.first.status 
+       can    :edit  , Industry
+       can    :edit  , Company
+       can    :edit  , Town
+       can    :edit  , Location
+       can    :edit  , Address
+       can    :update  , Industry
+       can    :update  , Company
+       can    :update  , Town
+       can    :update  , Location
+       can    :update  , Address
+      end 
       can    :read,   Review, :jagent_id => user.id
       can    :edit,   Review, :published_date => nil, :jagent_id => user.id
       can    :update, Review, :published_date => nil, :jagent_id => user.id

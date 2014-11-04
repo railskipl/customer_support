@@ -167,13 +167,13 @@ module Admin::ReportsHelper
           flash[:notice] = "Start date cannot be greater than End date."
         else
           @industries = Industry.all rescue nil
-          send_data(render_to_string(:template=>"admin/reports/industry_xls.html.erb" ) , :type=>"text/xlsx",:filename => "industries.xls")
+          send_data(render_to_string(:template=>"admin/reports/industry_xls.html.erb" ) , :type=>"text/xls",:filename => "industries.xls")
         end
       else
       	  @start_from = 1.year.ago 
    	  	  @start_to =  Date.today 
       	  @industries = Industry.all rescue nil
-      	  send_data(render_to_string(:template=>"admin/reports/industry_xls.html.erb" ) , :type=>"text/xlsx",:filename => "industries.xls")
+      	  send_data(render_to_string(:template=>"admin/reports/industry_xls.html.erb" ) , :type=>"text/xls",:filename => "industries.xls")
       end
    end
 

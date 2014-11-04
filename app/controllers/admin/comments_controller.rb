@@ -6,7 +6,7 @@ class Admin::CommentsController < ApplicationController
       @comment = @review.comments.new(comment_params)
       @comment.user_id = current_user.id
       @comment.ispublished = true
-      if @comment.save
+      if @comment.save && !params["comment"]["supplier_id"].nil?
         ReviewMailer.comment_mail(@review,@comment).deliver!
         redirect_to [:admin, @review], :notice => 'Thanks for your comment'
       else

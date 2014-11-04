@@ -23,8 +23,8 @@ class Admin::ReviewsController < AdminController
   end
 
   def assign_reviews
-    if params["review_ids"].nil?
-      redirect_to admin_reviews_url, :notice => "Please select atleast one review"
+    if params["review_ids"].nil? || params["user_id"].nil?
+      redirect_to admin_reviews_url, :notice => "Unable to assign"
     else
       if params["reassign"] == "yes"
         reviews = params["review_ids"]

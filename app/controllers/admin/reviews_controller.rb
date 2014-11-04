@@ -73,8 +73,7 @@ class Admin::ReviewsController < AdminController
       @review.ispublished = true
       @review.published_date = DateTime.now
       @review.archive = false
-      @review.last_published_agent_id = @review.agent_id
-      @review.agent_id = current_user.id
+      @review.last_published_agent_id = current_user.id
       respond_to do |format|
         if @review.update(review_params)
           ReviewMailer.publish_mail(@review).deliver!

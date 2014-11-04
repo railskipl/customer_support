@@ -4,14 +4,14 @@
 <%else%>
   <strong>Displaying data for 12 Months
 <%end%>
-<%raise @start_from.inspect%>
+
 <% @industries.each do |industry|%>
 
 <% @industry = Industry.where('id = ?', industry).first%>
 <% @compliments = Review.where('created_at >= ? and created_at <= ? and user_id is not null and industry_id = ? and review_type = ?',@start_from,@start_to,@industry.id, 'compliment')%>
 
 <%  @complaints = Review.where('created_at >= ? and created_at <= ? and user_id is not null and industry_id = ? and review_type = ?',@start_from,@start_to,@industry.id, 'complaint')%>
-
+<%raise @complaints.inspect%>
 <%if @compliments.present? or  @complaints.present? %>
 
 <table>

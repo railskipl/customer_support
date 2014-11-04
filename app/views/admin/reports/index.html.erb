@@ -299,6 +299,7 @@
 </div>
 
  <% content_for :script do %>
+ 
   <%= javascript_include_tag "reports" %>
 
 <script>
@@ -306,10 +307,8 @@
 	$("#other_type").hide();
 	$("#nature").hide();
 	$("#other_town").hide();
-});
 
-
-function CheckOther()
+    function CheckOther()
 {
   if (document.getElementById("report_industry_id").value == <%= Industry.last.id %>){
         $("#other_type").show();
@@ -340,5 +339,8 @@ function CheckOther_town()
        $("#other_town").hide();
     }     
 }
+});
+
+
 </script>
 <% end %>

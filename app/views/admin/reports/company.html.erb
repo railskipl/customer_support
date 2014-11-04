@@ -1,6 +1,7 @@
 
 <script>
-  jQuery.noConflict();
+  $.noConflict();
+  
   jQuery(document).ready(function() {
 
   jQuery(function() {
@@ -11,7 +12,7 @@
     });
 
     jQuery(function() {
-  jQuery('#report_end_date').datepicker( 
+    jQuery('#report_end_date').datepicker( 
     { altField  : '#report_end_date',  // selector of the hidden input field you want sent to the server
       dateFormat: 'yy-mm-dd',
       altFormat : 'yy-mm-dd' } );
@@ -37,6 +38,7 @@
 
 });
 
+    jQuery.noConflict();
   jQuery(document).ready(function() {
 
   jQuery(function() {

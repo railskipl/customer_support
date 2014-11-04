@@ -5,7 +5,7 @@
 		<th>Assignee</th>
 		<th>Ticket Closed By Junior Agent</th>
 		<th>Modified Review By Junior Agent</th>
-		<th>Archive By Junior Agent</th>
+		<th>Publised By</th>
 	</tr>
 	<% @monitors.each do |mon| %>
 	<tr>
@@ -14,7 +14,7 @@
 		<td><%= mon.review.agent == current_user ? "You" : mon.review.agent.preferred_alias %></td>
 		<td><%= mon.ticked_closed_by_jagent? ? "Yes" : "No" rescue nil%></td>
 		<td><%= mon.modified_review? ? "Yes" : "No" rescue nil%></td>
-		<td><%= mon.archive? ? "Yes" : "No" rescue nil%></td>
+		<td><%= mon.review.ispublished? ? mon.review.last_published_agent.preferred_alias : "No" rescue nil%></td>
 	</tr>
 	<% end %>
 </table>

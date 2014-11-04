@@ -169,9 +169,9 @@ module Admin::ReportsHelper
           send_data(render_to_string(:template=>"admin/reports/industry_xls.html.erb" ) , :type=>"text/xls",:filename => "industries.xls")
         end
       else
-      	  @industries = Industry.all rescue nil
       	  @start_from = 1.year.ago 
    	  	  @start_to =  Date.today 
+      	  @industries = Industry.all rescue nil
       	  send_data(render_to_string(:template=>"admin/reports/industry_xls.html.erb" ) , :type=>"text/xls",:filename => "industries.xls")
       end
    end

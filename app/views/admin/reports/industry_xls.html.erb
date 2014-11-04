@@ -4,6 +4,7 @@
 <%else%>
   <strong>Displaying data for 12 Months
 <%end%>
+<%raise @start_from.inspect%>
 <% @industries.each do |industry|%>
 
 <% @industry = Industry.where('id = ?', industry).first%>

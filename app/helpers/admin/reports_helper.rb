@@ -138,7 +138,7 @@ module Admin::ReportsHelper
    end
 
    def all_customers
-   	  @customers = User.where('Date(created_at) >= ? and Date(created_at) <= ?',1.year.ago, Date.today).customers rescue nil
+   	  @customers ||= User.where('Date(created_at) >= ? and Date(created_at) <= ?',1.year.ago, Date.today).customers rescue nil
       respond_to do |format|
         format.html # index.html.erb
         format.xls

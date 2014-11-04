@@ -36,12 +36,12 @@ layout :custom_layout
    	  	@review_type = params[:report][:review_type] rescue ""
    	  	@nature_of_review = params[:report][:nature_of_review_eq] rescue ""
        
-        @reviews = Review.where('created_at >= ? and Date(created_at) <= ? and industry_id = ? and user_id is not null ',1.year.ago, Date.today,@industry)  if @industry.present? rescue nil
-        @reviews = Review.where('created_at >= ? and created_at <= ? and company_id = ? and user_id is not null ',1.year.ago, Date.today,@company)  if @company.present? rescue nil
-        @reviews = Review.where('created_at >= ? and created_at <= ? and town_id = ? and user_id is not null ',1.year.ago, Date.today,@town)  if @town.present? rescue nil
-        @reviews = Review.where('created_at >= ? and created_at <= ? and location_id = ? and user_id is not null ',1.year.ago, Date.today,@location)  if @location.present? rescue nil
-        @reviews = Review.where('created_at >= ? and created_at <= ? and review_type = ? and user_id is not null ',1.year.ago, Date.today,@review_type) if @review_type.present? rescue nil
-        @reviews = Review.where('created_at >= ? and created_at <= ? and nature_of_review = ? and user_id is not null ',1.year.ago, Date.today,@nature_of_review)  if @nature_of_review.present? rescue nil
+        @reviews = Review.where('Date(created_at) >= ? and Date(Date(created_at)) <= ? and industry_id = ? and user_id is not null ',1.year.ago, Date.today,@industry)  if @industry.present? rescue nil
+        @reviews = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and company_id = ? and user_id is not null ',1.year.ago, Date.today,@company)  if @company.present? rescue nil
+        @reviews = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and town_id = ? and user_id is not null ',1.year.ago, Date.today,@town)  if @town.present? rescue nil
+        @reviews = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and location_id = ? and user_id is not null ',1.year.ago, Date.today,@location)  if @location.present? rescue nil
+        @reviews = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and review_type = ? and user_id is not null ',1.year.ago, Date.today,@review_type) if @review_type.present? rescue nil
+        @reviews = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and nature_of_review = ? and user_id is not null ',1.year.ago, Date.today,@nature_of_review)  if @nature_of_review.present? rescue nil
          #raise @reviews.inspect   
       else
 
@@ -109,10 +109,10 @@ layout :custom_layout
         if start_from > start_to
         	flash[:notice] = "Start date cannot be greater than End date."
         else
-          @customers ||= User.where('created_at >= ? and Date(created_at) <= ?',start_from, start_to).customers rescue nil 
+          @customers ||= User.where('Date(created_at) >= ? and Date(Date(created_at)) <= ?',start_from, start_to).customers rescue nil 
         end
       else
-          @customers ||= User.where('created_at >= ? and Date(created_at) <= ?',1.year.ago, Date.today).customers rescue nil 
+          @customers ||= User.where('Date(created_at) >= ? and Date(Date(created_at)) <= ?',1.year.ago, Date.today).customers rescue nil 
       end
 
       if params[:subaction] == "active_customer"
@@ -122,16 +122,16 @@ layout :custom_layout
         if start_from > start_to
         	flash[:notice] = "Start date cannot be greater than End date."
         else
-          @users = Review.select(:id,:user_id).where('created_at >= ? and created_at <= ? and user_id is not null', start_from, start_to).map(&:user_id).uniq rescue nil
+          @users = Review.select(:id,:user_id).where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null', start_from, start_to).map(&:user_id).uniq rescue nil
         end
       else
-          @users = Review.select(:id,:user_id).where('created_at >= ? and created_at <= ? and user_id is not null', 6.months.ago, Date.today).map(&:user_id).uniq rescue nil
+          @users = Review.select(:id,:user_id).where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null', 6.months.ago, Date.today).map(&:user_id).uniq rescue nil
       end
     
-   	  @user_compliment = Review.where('created_at >= ? and created_at <= ? and review_type = ?  and user_id is not null ',1.year.ago, Date.today,'compliment').count rescue nil
-      @user_complaint = Review.where('created_at >= ? and created_at <= ? and review_type = ?  and user_id is not null',1.year.ago, Date.today,'complaint').count rescue nil
+   	  @user_compliment = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and review_type = ?  and user_id is not null ',1.year.ago, Date.today,'compliment').count rescue nil
+      @user_complaint = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and review_type = ?  and user_id is not null',1.year.ago, Date.today,'complaint').count rescue nil
    	  
-   	  #@customers ||= User.where('created_at >= ? and created_at <= ?',1.year.ago, Date.today).customers rescue nil
+   	  #@customers ||= User.where('Date(created_at) >= ? and Date(created_at) <= ?',1.year.ago, Date.today).customers rescue nil
       respond_to do |format|
         format.html # index.html.erb
         format.xls
@@ -154,13 +154,13 @@ layout :custom_layout
         if start_from > start_to
         	flash[:notice] = "Start date cannot be greater than End date."
         else
-           @reviews = Review.where('created_at >= ? and Date(created_at) <= ? and user_id is not null ',start_from, start_to) rescue nil
-           @reviews = Review.where('created_at >= ? and Date(created_at) <= ? and industry_id = ? and user_id is not null ',start_from, start_to,@industry)  if @industry.present? rescue nil
-           @reviews = Review.where('created_at >= ? and Date(created_at) <= ? and company_id = ? and user_id is not null ',start_from, start_to,@company)  if @company.present?  rescue nil
-           @reviews = Review.where('created_at >= ? and Date(created_at) <= ? and town_id = ? and user_id is not null ',start_from, start_to,@town)  if @town.present? rescue nil
-           @reviews = Review.where('created_at >= ? and Date(created_at) <= ? and location_id = ? and user_id is not null ',start_from, start_to,@location)  if @location.present? rescue nil
-           @reviews = Review.where('created_at >= ? and Date(created_at) <= ? and review_type = ? and user_id is not null ',start_from, start_to,@review_type) if @review_type.present? rescue nil
-           @reviews = Review.where('created_at >= ? and Date(created_at) <= ? and nature_of_review = ? and user_id is not null ',start_from, start_to,@nature_of_review)  if @nature_of_review.present? rescue nil
+           @reviews = Review.where('Date(created_at) >= ? and Date(Date(created_at)) <= ? and user_id is not null ',start_from, start_to) rescue nil
+           @reviews = Review.where('Date(created_at) >= ? and Date(Date(created_at)) <= ? and industry_id = ? and user_id is not null ',start_from, start_to,@industry)  if @industry.present? rescue nil
+           @reviews = Review.where('Date(created_at) >= ? and Date(Date(created_at)) <= ? and company_id = ? and user_id is not null ',start_from, start_to,@company)  if @company.present?  rescue nil
+           @reviews = Review.where('Date(created_at) >= ? and Date(Date(created_at)) <= ? and town_id = ? and user_id is not null ',start_from, start_to,@town)  if @town.present? rescue nil
+           @reviews = Review.where('Date(created_at) >= ? and Date(Date(created_at)) <= ? and location_id = ? and user_id is not null ',start_from, start_to,@location)  if @location.present? rescue nil
+           @reviews = Review.where('Date(created_at) >= ? and Date(Date(created_at)) <= ? and review_type = ? and user_id is not null ',start_from, start_to,@review_type) if @review_type.present? rescue nil
+           @reviews = Review.where('Date(created_at) >= ? and Date(Date(created_at)) <= ? and nature_of_review = ? and user_id is not null ',start_from, start_to,@nature_of_review)  if @nature_of_review.present? rescue nil
         end
         #send_data(render_to_string(:template=>"admin/reports/archive_xls.html.erb" ) , :type=>"text/xls",:filename => "archive_data.xls")
       else
@@ -215,13 +215,13 @@ layout :custom_layout
         if @start_from > @start_to
           flash[:notice] = "Start date cannot be greater than End date."
         else
-          @supplier_registered = Supplier.where('created_at >= ? and created_at <= ? and subscription = ?', @start_from, @start_to,'Registered').order("created_at desc")  rescue nil
+          @supplier_registered = Supplier.where('Date(created_at) >= ? and Date(created_at) <= ? and subscription = ?', @start_from, @start_to,'Registered').order("Date(created_at) desc")  rescue nil
           send_data(render_to_string(:template=>"admin/reports/registered_suppliers.html.erb" ) , :type=>"text/xls",:filename => "registered_suppliers.xls")
         end
       else
       	  @start_from = 1.year.ago 
    	  	  @start_to =  Date.today 
-   	  	  @supplier_registered = Supplier.where('created_at >= ? and created_at <= ? and subscription = ?', @start_from, @start_to,'Registered').order("created_at desc")  rescue nil
+   	  	  @supplier_registered = Supplier.where('Date(created_at) >= ? and Date(created_at) <= ? and subscription = ?', @start_from, @start_to,'Registered').order("Date(created_at) desc")  rescue nil
    	  	  send_data(render_to_string(:template=>"admin/reports/registered_suppliers.html.erb" ) , :type=>"text/xls",:filename => "registered_suppliers.xls")
       end
   end
@@ -233,13 +233,13 @@ layout :custom_layout
         if @start_from > @start_to
           flash[:notice] = "Start date cannot be greater than End date."
         else
-          @supplier_unregistered = Supplier.where('created_at >= ? and created_at <= ? and subscription = ?', @start_from, @start_to,'Not Registered').order("created_at desc") rescue nil
+          @supplier_unregistered = Supplier.where('Date(created_at) >= ? and Date(created_at) <= ? and subscription = ?', @start_from, @start_to,'Not Registered').order("Date(created_at) desc") rescue nil
           send_data(render_to_string(:template=>"admin/reports/unregistered_suppliers.html.erb" ) , :type=>"text/xls",:filename => "unregistered_suppliers.xls")
         end
     else
       	 @start_from = 1.year.ago 
    	  	 @start_to =  Date.today 
-   	  	 @supplier_unregistered = Supplier.where('created_at >= ? and created_at <= ? and subscription = ?', @start_from, @start_to,'Not Registered').order("created_at desc") rescue nil
+   	  	 @supplier_unregistered = Supplier.where('Date(created_at) >= ? and Date(created_at) <= ? and subscription = ?', @start_from, @start_to,'Not Registered').order("Date(created_at) desc") rescue nil
    	  	 send_data(render_to_string(:template=>"admin/reports/unregistered_suppliers.html.erb" ) , :type=>"text/xls",:filename => "unregistered_suppliers.xls")
     end
   end
@@ -251,13 +251,13 @@ layout :custom_layout
         if @start_from > @start_to
           flash[:notice] = "Start date cannot be greater than End date."
         else
-          @suppliers = Supplier.where('created_at >= ? and created_at <= ? ', @start_from, @start_to).order("created_at desc") rescue nil
+          @suppliers = Supplier.where('Date(created_at) >= ? and Date(created_at) <= ? ', @start_from, @start_to).order("Date(created_at) desc") rescue nil
           send_data(render_to_string(:template=>"admin/reports/suppliers_profiles.html.erb" ) , :type=>"text/xls",:filename => "supplier_profiles.xls")
         end
       else
       	  @start_from = 1.year.ago 
    	  	  @start_to =  Date.today 
-   	  	  @suppliers = Supplier.where('created_at >= ? and created_at <= ? ', @start_from,@start_to).order("created_at desc") rescue nil
+   	  	  @suppliers = Supplier.where('Date(created_at) >= ? and Date(created_at) <= ? ', @start_from,@start_to).order("Date(created_at) desc") rescue nil
    	  	  send_data(render_to_string(:template=>"admin/reports/suppliers_profiles.html.erb" ) , :type=>"text/xls",:filename => "supplier_profiles.xls")
       end
   end
@@ -276,7 +276,7 @@ layout :custom_layout
       	  @start_from = 1.year.ago 
    	  	  @start_to =  Date.today 
       end
-  	    @polls = Poll.where('created_at >= ? and created_at <= ? ', @start_from,@start_to)
+  	    @polls = Poll.where('Date(created_at) >= ? and Date(created_at) <= ? ', @start_from,@start_to)
   end
 
   private

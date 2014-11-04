@@ -1,4 +1,5 @@
-<table cellpadding=10>
+<table id="monitora" cellpadding=10>
+	<thead>
 	<tr>
 		<th>Review</th> 
 		<th>Junior Agent</th> 
@@ -7,6 +8,8 @@
 		<th>Modified Review By Junior Agent</th>
 		<th>Published By</th>
 	</tr>
+	</thead>
+	<tbody>
 	<% @monitors.each do |mon| %>
 	<tr>
 		<td><%= link_to mon.review.ticket_number ,admin_review_path(mon.review.id) rescue nil%></td>
@@ -17,4 +20,5 @@
 		<td><%= mon.review.ispublished? ? mon.review.last_published_agent.preferred_alias : "No" rescue nil%></td>
 	</tr>
 	<% end %>
+</tbody>
 </table>

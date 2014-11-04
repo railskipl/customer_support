@@ -1,4 +1,4 @@
-class Admin::CommentsController < ApplicationController
+class Admin::CommentsController < AdminController
   before_filter :load_review
 	#load_and_authorize_resource
 
@@ -14,11 +14,20 @@ class Admin::CommentsController < ApplicationController
       end
   end
 
+  def edit
+    @comment = Comment.find(params[:id])
+  end
+
  def update
     @comment =  @review.comments.find(params[:id])
-    @comment.ispublished = true
+    # if current_user.role == "jagent"
+    #   m = MonitorJagent.find_or_create_by_review_id(@review.id)
+    #   m.c_comment = true
+    # else 
+      @comment.ispublished = true
+    # end
     if @comment.save
-      redirect_to [:admin,@review], :notice => 'Comment has sucessfully Published.'
+      redirect_to [:admin,@review], :notice => 'Comment has sucessfully Saved.'
     else
       redirect_to [:admin,@review], :alert => 'Error in Comment publishing .'
     end

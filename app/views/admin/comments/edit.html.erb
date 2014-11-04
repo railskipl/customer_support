@@ -1,0 +1,16 @@
+<h3>Edit Comment<h3/>
+<%=form_for([:admin, @review, @comment]) do |f| %>
+  Customer Comment: <%= @comment.title.html_safe %>
+  <div class="field">
+    <%= f.label :modified_comment, 'Modified Comment' %>
+    <%= f.text_area  :modified_comment, :required => true  , :class => 'ckeditor' %>
+  </div>
+  <br/>
+  <div class="field">
+    <%= f.label :supplier_id, "on Behalf of" %>
+    <%= f.collection_select :supplier_id, Supplier.where('subscription = ?',"Registered"), :id, :supplier_name, :required => true  %>
+  </div>
+  <div class="actions rgh_in">
+      <%= f.submit 'Post Comment', class: "btn btn-primary" %><br/>
+  </div>
+<%end%>

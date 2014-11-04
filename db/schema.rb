@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141103074416) do
+ActiveRecord::Schema.define(version: 20141104120227) do
 
   create_table "abuse_reports", force: true do |t|
     t.string   "user_email"
@@ -70,9 +70,10 @@ ActiveRecord::Schema.define(version: 20141103074416) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "ispublished", default: false
+    t.boolean  "ispublished",      default: false
     t.string   "name"
     t.string   "email"
+    t.text     "modified_comment"
   end
 
   create_table "companies", force: true do |t|

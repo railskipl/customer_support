@@ -10,7 +10,7 @@ class Admin::ReviewsController < AdminController
       @users = User.where("role = ?","jagent")
     end
     if current_user.is? :jagent
-		  @reviews = Review.where("jagent_id = ? || old_jagent_id = ?",current_user.id,current_user.id).unarchived.order("id desc")
+		  @reviews = Review.where("jagent_id = ? or old_jagent_id = ?",current_user.id,current_user.id).unarchived.order("id desc")
     else
       @reviews = Review.unarchived.order("id desc")
     end

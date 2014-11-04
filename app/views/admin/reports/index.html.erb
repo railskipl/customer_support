@@ -1,3 +1,4 @@
+
 <table>
 <tr>
   <td><%= link_to "Customer details", user_profile_admin_reports_path,:class=> "btn"%><br/></td>
@@ -138,15 +139,15 @@
 	<tbody>
 		<tr>
 			<td>Compliments</td>
-			<td><%= @compliments%></td>
+			<td><%= @compliments.count%></td>
 		</tr>
 		<tr>
 			<td>Complaint</td>
-			<td><%= @complaints%></td>
+			<td><%= @complaints.count%></td>
 		</tr>
 		<tr>
 			<td><strong>Total</strong></td>
-			<td><%= @complaints + @compliments%></td>
+			<td><%= @complaints.count + @compliments.count%></td>
 		</tr>
 
 	</tbody>

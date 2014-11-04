@@ -12,20 +12,20 @@
 	<tbody>
 		<tr>
 			<td>Compliments</td>
-			<td><%= @compliments%></td>
+			<td><%= @compliments.count%></td>
 		</tr>
 		<tr>
-			<td>Complaint</td>
-			<td><%= @complaints%></td>
+			<td>Complaint</td> 
+			<td><%= @complaints.count%></td>
 		</tr>
 		<tr>
 			<td><strong>Total</strong></td>
-			<td><%= @complaints + @compliments%></td>
+			<td><%= @compliments.count + @complaints.count%></td>
 		</tr>
 
 	</tbody>
 </table>
-
+<%if @compliments.present? or @complaints.present?%>
 <br/><br/>
 <table >
 	<thead>
@@ -166,16 +166,60 @@
 
 	</tbody>
 </table>
-<br/><br/>
-<h2>Total : Nature of Complaint(12 Months)</h2></br>
-<h2>Billing/accounts</h2>
+<br/>
+<%if @total_converted.present?%>
+<h4>Total Conversion from Complaints to Compliments</h4>
 <table id="admin_review_xls" >
 	<thead>
 	  <tr>
 			<th width="10%">Date</th>
 			<th width="15%">Ticket Number</th>
 			<th width="10%">Review</th>
-			<th width="15%">Industry</th>
+			
+			<th width="15%">Company</th>
+			<th width="15%">Town</th>
+			<th width="15%">Location</th>
+			<th width="15%">Personal Responsible</th>
+			<th width="15%">Nature of Review</th>
+			<th width="15%">Message</th>
+			<th width="15%">Title</th>
+	        <th width="15%">Customer Name</th>
+	  </tr>
+	</thead>
+
+	<tbody>
+	  <% @total_converted.each do |review| %>
+	    <tr>
+				<td><%=review.date_time rescue nil %></td>
+				<td><%=review.ticket_number rescue nil %></td>
+				<td><%=review.review_type.titleize rescue nil %></td>
+				
+				<td><%=review.company.title.titleize rescue nil %></td>
+				<td><%=review.town.title.titleize rescue nil %></td>
+				<td><%=review.location.title.titleize rescue nil %></td>
+				<td><%=review.personal_responsible rescue nil %></td>
+				<td><%=review.nature_of_review rescue nil %></td>
+				<td><%=review.message rescue nil %></td>
+				<td><%=review.title.titleize rescue nil %></td>
+			    <td><%=review.try(:user).try(:full_name)%></td>
+
+	    </tr>
+	  <% end %>
+	</tbody>	
+</table>
+<br/><br/>
+<%end%>
+<br/>
+<h4>Total : Nature of Complaint(12 Months)</h4></br>
+<%if @billing.present?%>
+<h4>Billing/accounts</h4>
+<table id="admin_review_xls" >
+	<thead>
+	  <tr>
+			<th width="10%">Date</th>
+			<th width="15%">Ticket Number</th>
+			<th width="10%">Review</th>
+			
 			<th width="15%">Company</th>
 			<th width="15%">Town</th>
 			<th width="15%">Location</th>
@@ -193,7 +237,7 @@
 				<td><%=review.date_time rescue nil %></td>
 				<td><%=review.ticket_number rescue nil %></td>
 				<td><%=review.review_type.titleize rescue nil %></td>
-				<td><%=review.industry.title.titleize rescue nil %></td>
+				
 				<td><%=review.company.title.titleize rescue nil %></td>
 				<td><%=review.town.title.titleize rescue nil %></td>
 				<td><%=review.location.title.titleize rescue nil %></td>
@@ -208,14 +252,16 @@
 	</tbody>	
 </table>
 <br/><br/>
-<h2>Booking</h2>
+<%end%>
+<%if @booking.present?%>
+<h4>Booking</h4>
 <table id="admin_review_xls" >
 	<thead>
 	  <tr>
 			<th width="10%">Date</th>
 			<th width="15%">Ticket Number</th>
 			<th width="10%">Review</th>
-			<th width="15%">Industry</th>
+			
 			<th width="15%">Company</th>
 			<th width="15%">Town</th>
 			<th width="15%">Location</th>
@@ -233,7 +279,7 @@
 				<td><%=review.date_time rescue nil %></td>
 				<td><%=review.ticket_number rescue nil %></td>
 				<td><%=review.review_type.titleize rescue nil %></td>
-				<td><%=review.industry.title.titleize rescue nil %></td>
+				
 				<td><%=review.company.title.titleize rescue nil %></td>
 				<td><%=review.town.title.titleize rescue nil %></td>
 				<td><%=review.location.title.titleize rescue nil %></td>
@@ -248,15 +294,16 @@
 	</tbody>	
 </table>
 <br/><br/>
-
-<h2>Call centre efficiency</h2>
+<%end%>
+<%if @call_center.present?%>
+<h4>Call centre efficiency</h4>
 <table id="admin_review_xls" >
 	<thead>
 	  <tr>
 			<th width="10%">Date</th>
 			<th width="15%">Ticket Number</th>
 			<th width="10%">Review</th>
-			<th width="15%">Industry</th>
+			
 			<th width="15%">Company</th>
 			<th width="15%">Town</th>
 			<th width="15%">Location</th>
@@ -274,7 +321,7 @@
 				<td><%=review.date_time rescue nil %></td>
 				<td><%=review.ticket_number rescue nil %></td>
 				<td><%=review.review_type.titleize rescue nil %></td>
-				<td><%=review.industry.title.titleize rescue nil %></td>
+				
 				<td><%=review.company.title.titleize rescue nil %></td>
 				<td><%=review.town.title.titleize rescue nil %></td>
 				<td><%=review.location.title.titleize rescue nil %></td>
@@ -289,15 +336,16 @@
 	</tbody>	
 </table>
 <br/><br/>
-
-<h2>Contract</h2>
+<%end%>
+<%if @contract.present?%>
+<h4>Contract</h4>
 <table id="admin_review_xls" >
 	<thead>
 	  <tr>
 			<th width="10%">Date</th>
 			<th width="15%">Ticket Number</th>
 			<th width="10%">Review</th>
-			<th width="15%">Industry</th>
+			
 			<th width="15%">Company</th>
 			<th width="15%">Town</th>
 			<th width="15%">Location</th>
@@ -315,7 +363,7 @@
 				<td><%=review.date_time rescue nil %></td>
 				<td><%=review.ticket_number rescue nil %></td>
 				<td><%=review.review_type.titleize rescue nil %></td>
-				<td><%=review.industry.title.titleize rescue nil %></td>
+				
 				<td><%=review.company.title.titleize rescue nil %></td>
 				<td><%=review.town.title.titleize rescue nil %></td>
 				<td><%=review.location.title.titleize rescue nil %></td>
@@ -330,15 +378,16 @@
 	</tbody>	
 </table>
 <br/><br/>
-
-<h2>Delivery on time</h2>
+<%end%>
+<%if @delivery.present?%>
+<h4>Delivery on time</h4>
 <table id="admin_review_xls" >
 	<thead>
 	  <tr>
 			<th width="10%">Date</th>
 			<th width="15%">Ticket Number</th>
 			<th width="10%">Review</th>
-			<th width="15%">Industry</th>
+			
 			<th width="15%">Company</th>
 			<th width="15%">Town</th>
 			<th width="15%">Location</th>
@@ -356,7 +405,7 @@
 				<td><%=review.date_time rescue nil %></td>
 				<td><%=review.ticket_number rescue nil %></td>
 				<td><%=review.review_type.titleize rescue nil %></td>
-				<td><%=review.industry.title.titleize rescue nil %></td>
+				
 				<td><%=review.company.title.titleize rescue nil %></td>
 				<td><%=review.town.title.titleize rescue nil %></td>
 				<td><%=review.location.title.titleize rescue nil %></td>
@@ -371,15 +420,16 @@
 	</tbody>	
 </table>
 <br/><br/>
-
-<h2>Feedback</h2>
+<%end%>
+<%if @feedback.present?%>
+<h4>Feedback</h4>
 <table id="admin_review_xls" >
 	<thead>
 	  <tr>
 			<th width="10%">Date</th>
 			<th width="15%">Ticket Number</th>
 			<th width="10%">Review</th>
-			<th width="15%">Industry</th>
+			
 			<th width="15%">Company</th>
 			<th width="15%">Town</th>
 			<th width="15%">Location</th>
@@ -397,7 +447,7 @@
 				<td><%=review.date_time rescue nil %></td>
 				<td><%=review.ticket_number rescue nil %></td>
 				<td><%=review.review_type.titleize rescue nil %></td>
-				<td><%=review.industry.title.titleize rescue nil %></td>
+				
 				<td><%=review.company.title.titleize rescue nil %></td>
 				<td><%=review.town.title.titleize rescue nil %></td>
 				<td><%=review.location.title.titleize rescue nil %></td>
@@ -412,14 +462,16 @@
 	</tbody>	
 </table>
 <br/><br/>
-<h2>Going the extra mile</h2>
+<%end%>
+<%if @going_extra.present?%>
+<h4>Going the extra mile</h4>
 <table id="admin_review_xls" >
 	<thead>
 	  <tr>
 			<th width="10%">Date</th>
 			<th width="15%">Ticket Number</th>
 			<th width="10%">Review</th>
-			<th width="15%">Industry</th>
+			
 			<th width="15%">Company</th>
 			<th width="15%">Town</th>
 			<th width="15%">Location</th>
@@ -437,7 +489,7 @@
 				<td><%=review.date_time rescue nil %></td>
 				<td><%=review.ticket_number rescue nil %></td>
 				<td><%=review.review_type.titleize rescue nil %></td>
-				<td><%=review.industry.title.titleize rescue nil %></td>
+				
 				<td><%=review.company.title.titleize rescue nil %></td>
 				<td><%=review.town.title.titleize rescue nil %></td>
 				<td><%=review.location.title.titleize rescue nil %></td>
@@ -452,15 +504,16 @@
 	</tbody>	
 </table>
 <br/><br/>
-
-<h2>Great attitude</h2>
+<%end%>
+<%if @great_attitude.present?%>
+<h4>Great attitude</h4>
 <table id="admin_review_xls" >
 	<thead>
 	  <tr>
 			<th width="10%">Date</th>
 			<th width="15%">Ticket Number</th>
 			<th width="10%">Review</th>
-			<th width="15%">Industry</th>
+			
 			<th width="15%">Company</th>
 			<th width="15%">Town</th>
 			<th width="15%">Location</th>
@@ -478,7 +531,7 @@
 				<td><%=review.date_time rescue nil %></td>
 				<td><%=review.ticket_number rescue nil %></td>
 				<td><%=review.review_type.titleize rescue nil %></td>
-				<td><%=review.industry.title.titleize rescue nil %></td>
+				
 				<td><%=review.company.title.titleize rescue nil %></td>
 				<td><%=review.town.title.titleize rescue nil %></td>
 				<td><%=review.location.title.titleize rescue nil %></td>
@@ -493,15 +546,16 @@
 	</tbody>	
 </table>
 <br/><br/>
-
-<h2>Pricing</h2>
+<%end%>
+<%if @pricing.present?%>
+<h4>Pricing</h4>
 <table id="admin_review_xls" >
 	<thead>
 	  <tr>
 			<th width="10%">Date</th>
 			<th width="15%">Ticket Number</th>
 			<th width="10%">Review</th>
-			<th width="15%">Industry</th>
+			
 			<th width="15%">Company</th>
 			<th width="15%">Town</th>
 			<th width="15%">Location</th>
@@ -519,7 +573,7 @@
 				<td><%=review.date_time rescue nil %></td>
 				<td><%=review.ticket_number rescue nil %></td>
 				<td><%=review.review_type.titleize rescue nil %></td>
-				<td><%=review.industry.title.titleize rescue nil %></td>
+				
 				<td><%=review.company.title.titleize rescue nil %></td>
 				<td><%=review.town.title.titleize rescue nil %></td>
 				<td><%=review.location.title.titleize rescue nil %></td>
@@ -534,15 +588,16 @@
 	</tbody>	
 </table>
 <br/><br/>
-
-<h2>Refund</h2>
+<%end%>
+<%if @refund.present?%>
+<h4>Refund</h4>
 <table id="admin_review_xls" >
 	<thead>
 	  <tr>
 			<th width="10%">Date</th>
 			<th width="15%">Ticket Number</th>
 			<th width="10%">Review</th>
-			<th width="15%">Industry</th>
+			
 			<th width="15%">Company</th>
 			<th width="15%">Town</th>
 			<th width="15%">Location</th>
@@ -560,7 +615,7 @@
 				<td><%=review.date_time rescue nil %></td>
 				<td><%=review.ticket_number rescue nil %></td>
 				<td><%=review.review_type.titleize rescue nil %></td>
-				<td><%=review.industry.title.titleize rescue nil %></td>
+				
 				<td><%=review.company.title.titleize rescue nil %></td>
 				<td><%=review.town.title.titleize rescue nil %></td>
 				<td><%=review.location.title.titleize rescue nil %></td>
@@ -575,14 +630,16 @@
 	</tbody>	
 </table>
 <br/><br/>
-<h2>Repairs</h2>
+<%end%>
+<%if @repairs.present?%>
+<h4>Repairs</h4>
 <table id="admin_review_xls" >
 	<thead>
 	  <tr>
 			<th width="10%">Date</th>
 			<th width="15%">Ticket Number</th>
 			<th width="10%">Review</th>
-			<th width="15%">Industry</th>
+			
 			<th width="15%">Company</th>
 			<th width="15%">Town</th>
 			<th width="15%">Location</th>
@@ -600,7 +657,7 @@
 				<td><%=review.date_time rescue nil %></td>
 				<td><%=review.ticket_number rescue nil %></td>
 				<td><%=review.review_type.titleize rescue nil %></td>
-				<td><%=review.industry.title.titleize rescue nil %></td>
+				
 				<td><%=review.company.title.titleize rescue nil %></td>
 				<td><%=review.town.title.titleize rescue nil %></td>
 				<td><%=review.location.title.titleize rescue nil %></td>
@@ -615,15 +672,16 @@
 	</tbody>	
 </table>
 <br/><br/>
-
-<h2>Stock</h2>
+<%end%>
+<%if @stock.present?%>
+<h4>Stock</h4>
 <table id="admin_review_xls" >
 	<thead>
 	  <tr>
 			<th width="10%">Date</th>
 			<th width="15%">Ticket Number</th>
 			<th width="10%">Review</th>
-			<th width="15%">Industry</th>
+			
 			<th width="15%">Company</th>
 			<th width="15%">Town</th>
 			<th width="15%">Location</th>
@@ -641,7 +699,7 @@
 				<td><%=review.date_time rescue nil %></td>
 				<td><%=review.ticket_number rescue nil %></td>
 				<td><%=review.review_type.titleize rescue nil %></td>
-				<td><%=review.industry.title.titleize rescue nil %></td>
+				
 				<td><%=review.company.title.titleize rescue nil %></td>
 				<td><%=review.town.title.titleize rescue nil %></td>
 				<td><%=review.location.title.titleize rescue nil %></td>
@@ -656,14 +714,16 @@
 	</tbody>	
 </table>
 <br/><br/>
-<h2>Other</h2>
+<%end%>
+<%if @others.present?%>
+<h4>Other</h4>
 <table id="admin_review_xls" >
 	<thead>
 	  <tr>
 			<th width="10%">Date</th>
 			<th width="15%">Ticket Number</th>
 			<th width="10%">Review</th>
-			<th width="15%">Industry</th>
+			
 			<th width="15%">Company</th>
 			<th width="15%">Town</th>
 			<th width="15%">Location</th>
@@ -681,7 +741,7 @@
 				<td><%=review.date_time rescue nil %></td>
 				<td><%=review.ticket_number rescue nil %></td>
 				<td><%=review.review_type.titleize rescue nil %></td>
-				<td><%=review.industry.title.titleize rescue nil %></td>
+				
 				<td><%=review.company.title.titleize rescue nil %></td>
 				<td><%=review.town.title.titleize rescue nil %></td>
 				<td><%=review.location.title.titleize rescue nil %></td>
@@ -695,8 +755,12 @@
 	  <% end %>
 	</tbody>	
 </table>
+<%end%>
+<br/>
 
-<h2>Total : Nature of Complaints(12 Months)</h2></br>
+
+<h4>Total : Nature of Complaints (12 Months)</h4></br>
+<%if @bad_attitude.present?%>
 <h4>Bad attitude</h4>
 <table id="admin_review_xls" >
 	<thead>
@@ -734,9 +798,10 @@
 	  <% end %>
 	</tbody>	
 </table>
+<%end%>
 <br/><br/>
-
-<h2>Billing/Accounts</h2>
+<%if @billing_account.present?%>
+<h4>Billing/Accounts</h4>
 <table id="admin_review_xls" >
 	<thead>
 	  <tr>
@@ -776,8 +841,9 @@
 	</tbody>	
 </table>
 <br/><br/>
-
-<h2>Booking query</h2>
+<%end%>
+<%if @booking_query.present?%>
+<h4>Booking query</h4>
 <table id="admin_review_xls" >
 	<thead>
 	  <tr>
@@ -817,8 +883,9 @@
 	</tbody>	
 </table>
 <br/><br/>
-
-<h2>Breach of contract</h2>
+<%end%>
+<%if @breach_of_contract.present?%>
+<h4>Breach of contract</h4>
 <table id="admin_review_xls" >
 	<thead>
 	  <tr>
@@ -858,8 +925,9 @@
 	</tbody>	
 </table>
 <br/><br/>
-
-<h2>Call centre</h2>
+<%end%>
+<%if @call_centre_c.present?%>
+<h4>Call centre</h4>
 <table id="admin_review_xls" >
 	<thead>
 	  <tr>
@@ -899,8 +967,9 @@
 	</tbody>	
 </table>
 <br/><br/>
-
-<h2>Damaged goods</h2>
+<%end%>
+<%if @damaged_goods.present?%>
+<h4>Damaged goods</h4>
 <table id="admin_review_xls" >
 	<thead>
 	  <tr>
@@ -940,7 +1009,9 @@
 	</tbody>	
 </table>
 <br/><br/>
-<h2>Expiry date</h2>
+<%end%>
+<%if @expiry.present?%>
+<h4>Expiry date</h4>
 <table id="admin_review_xls" >
 	<thead>
 	  <tr>
@@ -980,8 +1051,9 @@
 	</tbody>	
 </table>
 <br/><br/>
-
-<h2>Feedback/response</h2>
+<%end%>
+<%if @feedback_response.present?%>
+<h4>Feedback/response</h4>
 <table id="admin_review_xls" >
 	<thead>
 	  <tr>
@@ -1021,8 +1093,9 @@
 	</tbody>	
 </table>
 <br/><br/>
-
-<h2>Hygiene</h2>
+<%end%>
+<%if @hygiene.present?%>
+<h4>Hygiene</h4>
 <table id="admin_review_xls" >
 	<thead>
 	  <tr>
@@ -1062,8 +1135,9 @@
 	</tbody>	
 </table>
 <br/><br/>
-
-<h2>Late/no delivery</h2>
+<%end%>
+<%if @Late_no_delivery.present?%>
+<h4>Late/no delivery</h4>
 <table id="admin_review_xls" >
 	<thead>
 	  <tr>
@@ -1103,7 +1177,9 @@
 	</tbody>	
 </table>
 <br/><br/>
-<h2>Out of stock</h2>
+<%end%>
+<%if @out_of_stock.present?%>
+<h4>Out of stock</h4>
 <table id="admin_review_xls" >
 	<thead>
 	  <tr>
@@ -1143,8 +1219,9 @@
 	</tbody>	
 </table>
 <br/><br/>
-
-<h2>Pricing/bar codes</h2>
+<%end%>
+<%if @pricing_bar_codes.present?%>
+<h4>Pricing/bar codes</h4>
 <table id="admin_review_xls" >
 	<thead>
 	  <tr>
@@ -1184,7 +1261,9 @@
 	</tbody>	
 </table>
 <br/><br/>
-<h2>Repairs/servicing</h2>
+<%end%>
+<%if @repairs_servicing.present?%>
+<h4>Repairs/servicing</h4>
 <table id="admin_review_xls" >
 	<thead>
 	  <tr>
@@ -1223,9 +1302,10 @@
 	  <% end %>
 	</tbody>	
 </table>
-
 <br/><br/>
-<h2>Spam</h2>
+<%end%>
+<%if @spam.present?%>
+<h4>Spam</h4>
 <table id="admin_review_xls" >
 	<thead>
 	  <tr>
@@ -1264,9 +1344,10 @@
 	  <% end %>
 	</tbody>	
 </table>
-
 <br/><br/>
-<h2>Other</h2>
+<%end%>
+<%if @others_c.present?%>
+<h4>Other</h4>
 <table id="admin_review_xls" >
 	<thead>
 	  <tr>
@@ -1304,4 +1385,6 @@
 	    </tr>
 	  <% end %>
 	</tbody>	
-</table>
+  </table>
+  <%end%>
+  <%end%>

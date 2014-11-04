@@ -12,8 +12,7 @@
 <%= link_to image_tag('/assets/excel.png', :border=>"0", :align=>"absmiddle") + "Summary of reviews Excel", customer_record_admin_reports_path%><br/>
 <%= link_to image_tag('/assets/excel.png', :border=>"0", :align=>"absmiddle") + "Industry conversion stats", conversion_industry_admin_reports_path(params.merge(format: "xls")), :method=> :get%><br/>
 <%= link_to image_tag('/assets/excel.png', :border=>"0", :align=>"absmiddle") + "Supplier conversion stats", conversion_company_admin_reports_path(params.merge(format: "xls")), :method=> :get%><br/>
-
-<%= link_to image_tag('/assets/excel.png', :border=>"0", :align=>"absmiddle") + "Customer Details", all_customers_admin_reports_path%><br/>
+<%= link_to image_tag('/assets/excel.png', :border=>"0", :align=>"absmiddle") + "Customer Details", all_customers_admin_reports_path(params.merge(format: "xls")), :method=> :get%><br/>
 
 <%= link_to image_tag('/assets/excel.png', :border=>"0", :align=>"absmiddle") + "Junior Agents", jagent_admin_reports_path(params.merge(format: "xls")), :method=> :get%><br/>
 <%= link_to image_tag('/assets/excel.png', :border=>"0", :align=>"absmiddle") + "Senior Agents", sagent_admin_reports_path(params.merge(format: "xls")), :method=> :get%><br/>

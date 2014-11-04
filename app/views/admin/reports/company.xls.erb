@@ -18,7 +18,7 @@
 
   <tbody>
     <% @companies.each do |company| %>
-    <% @compliment = Review.where('created_at >= ? and Date(created_at) <= ? and company_id = ? and user_id is not null', @start_from, @start_to, company.id) %>
+    <% @compliment = Review.where('Date(created_at) >= ? and Date(Date(created_at)) <= ? and company_id = ? and user_id is not null', @start_from, @start_to, company.id) %>
      
     <% @compliments = @compliment.where('change_date is not null') %> 
       <% @compliments.each do |compliment|%>

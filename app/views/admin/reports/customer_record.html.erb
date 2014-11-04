@@ -45,9 +45,9 @@
 		 
 		</tbody>
 	</table>
-	<%@user_compliment = Review.where('created_at >= ? and created_at <= ? and review_type = ?  and user_id = ? ',1.year.ago, Date.today,'compliment',@user.id)%>
+	<%@user_compliment = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and review_type = ?  and user_id = ? ',1.year.ago, Date.today,'compliment',@user.id)%>
 
-	<%@user_complaint = Review.where('created_at >= ? and created_at <= ? and review_type = ?  and user_id = ? ',1.year.ago, Date.today,'complaint',@user.id) %>
+	<%@user_complaint = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and review_type = ?  and user_id = ? ',1.year.ago, Date.today,'complaint',@user.id) %>
     <br/>
 
     <%unless @user_compliment.blank?%>

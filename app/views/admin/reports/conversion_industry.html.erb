@@ -12,7 +12,7 @@
 
   <tbody>
     <% @industries.each do |industry| %>
-    <% @compliment = Review.where('created_at >= ? and created_at <= ? and industry_id = ? and user_id is not null', @start_from, @start_to, industry.id)%>
+    <% @compliment = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and industry_id = ? and user_id is not null', @start_from, @start_to, industry.id)%>
     
     <% @complaint_conversion = @compliment.where('review_type = ?', 'complaint').count%>
       

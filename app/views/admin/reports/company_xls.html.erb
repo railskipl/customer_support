@@ -7,8 +7,8 @@
 <%@companies.each do |company|%>
 
     <% @company = Company.where('id = ?', company).first%>
-    <% @compliments = Review.where('created_at >= ? and created_at <= ? and user_id is not null and company_id = ? and review_type = ?',@start_from,@start_to,@company.id, 'compliment')%>
-    <% @complaints = Review.where('created_at >= ? and created_at <= ? and user_id is not null and company_id = ? and review_type = ?',@start_from,@start_to,@company.id, 'complaint')%>
+    <% @compliments = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and company_id = ? and review_type = ?',@start_from,@start_to,@company.id, 'compliment')%>
+    <% @complaints = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and company_id = ? and review_type = ?',@start_from,@start_to,@company.id, 'complaint')%>
 	
   <%if @compliments.present? or  @complaints.present? %>
 	<table>
@@ -46,68 +46,68 @@
 		<tbody>
 			<tr>
 				<td>Billing/accounts</td>
-				<% @billing = Review.where('created_at >= ? and created_at <= ? and user_id is not null and company_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,  @company.id ,'Billing/accounts', 'compliment')%>
+				<% @billing = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and company_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,  @company.id ,'Billing/accounts', 'compliment')%>
 				<td><%= @billing.count %></td>
 			</tr>
 			<tr>
 				<td>Booking</td>
-				<% @booking = Review.where('created_at >= ? and created_at <= ? and user_id is not null and company_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id , 'Booking', 'compliment')%>
+				<% @booking = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and company_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id , 'Booking', 'compliment')%>
 			    <td><%= @booking.count%></td>
 			</tr>
 			<tr>
 				<td>Call centre efficiency</td>
-				<% @call_center = Review.where('created_at >= ? and created_at <= ? and user_id is not null and company_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id,'Call centre efficiency', 'compliment')%>
+				<% @call_center = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and company_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id,'Call centre efficiency', 'compliment')%>
 				<td><%= @call_center.count%></td>
 			</tr>
 			<tr>
 			
 				<td>Contract</td>
-				<%@contract = Review.where('created_at >= ? and created_at <= ? and user_id is not null and company_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id,'Contract', 'compliment')%>
+				<%@contract = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and company_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id,'Contract', 'compliment')%>
 				<td><%= @contract.count%></td>
 			</tr>
 			<tr>
 				<td>Delivery on time</td>
-				<% @delivery = Review.where('created_at >= ? and created_at <= ? and user_id is not null and company_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id,'Delivery on time', 'compliment')%>
+				<% @delivery = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and company_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id,'Delivery on time', 'compliment')%>
 				<td><%= @delivery.count%></td>
 			</tr>
 			<tr>
 				<td>Feedback</td>
-				<%@feedback =  Review.where('created_at >= ? and created_at <= ? and user_id is not null and company_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id,'Feedback', 'compliment')%>
+				<%@feedback =  Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and company_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id,'Feedback', 'compliment')%>
 				<td><%= @feedback.count%></td>
 			</tr>
 			<tr>
 				<td>Going the extra mile</td>
-				<% @going_extra = Review.where('created_at >= ? and created_at <= ? and user_id is not null and company_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id,'Going the extra mile', 'compliment')%>
+				<% @going_extra = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and company_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id,'Going the extra mile', 'compliment')%>
 				<td><%= @going_extra.count%></td>
 			</tr>
 			<tr>
 				<td>Great attitude</td>
-				<% @great_attitude = Review.where('created_at >= ? and created_at <= ? and user_id is not null and company_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id,'Great attitude', 'compliment')%>
+				<% @great_attitude = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and company_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id,'Great attitude', 'compliment')%>
 				<td><%= @great_attitude.count%></td>
 			</tr>
 			<tr>
 				<td>Pricing</td>
-				<% @pricing = Review.where('created_at >= ? and created_at <= ? and user_id is not null and company_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id,'Pricing', 'compliment')%>
+				<% @pricing = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and company_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id,'Pricing', 'compliment')%>
 				<td><%= @pricing.count%></td>
 			</tr>
 			<tr>
 				<td>Refund</td>
-				<% @refund = Review.where('created_at >= ? and created_at <= ? and user_id is not null and company_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id,'Refund', 'compliment')%>
+				<% @refund = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and company_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id,'Refund', 'compliment')%>
 				<td><%= @refund.count%></td>
 			</tr>
 			<tr>
 				<td>Repairs</td>
-				<% @repairs = Review.where('created_at >= ? and created_at <= ? and user_id is not null and company_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id,'Repairs', 'compliment')%>
+				<% @repairs = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and company_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id,'Repairs', 'compliment')%>
 				<td><%= @repairs.count%></td>
 			</tr>
 			<tr>
 				<td>Stock</td>
-				<% @stock = Review.where('created_at >= ? and created_at <= ? and user_id is not null and company_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id,'Stock', 'compliment')%>
+				<% @stock = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and company_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id,'Stock', 'compliment')%>
 				<td><%= @stock.count%></td>
 			</tr>
 			<tr>
 				<td>Other</td>
-				<% @others = Review.where('created_at >= ? and created_at <= ? and user_id is not null and company_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id,'Other', 'compliment')%>
+				<% @others = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and company_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id,'Other', 'compliment')%>
 				<td><%= @others.count%></td>
 			</tr>
 
@@ -125,78 +125,78 @@
 		<tbody>
 			<tr>
 				<td>Bad attitude</td>
-				<% @bad_attitude = Review.where('created_at >= ? and created_at <= ? and user_id is not null and company_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,  @company.id ,'Bad attitude', 'complaint')%>
+				<% @bad_attitude = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and company_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,  @company.id ,'Bad attitude', 'complaint')%>
 				<td><%= @bad_attitude.count %></td>
 			</tr>
 			<tr>
 				<td>Billing/Accounts</td>
-				<% @billing_account = Review.where('created_at >= ? and created_at <= ? and user_id is not null and company_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id , 'Billing/Accounts', 'complaint')%>
+				<% @billing_account = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and company_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id , 'Billing/Accounts', 'complaint')%>
 			    <td><%= @billing_account.count%></td>
 			</tr>
 			<tr>
 				<td>Booking query</td>
-				<% @booking_query = Review.where('created_at >= ? and created_at <= ? and user_id is not null and company_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id,'Booking query', 'complaint')%>
+				<% @booking_query = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and company_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id,'Booking query', 'complaint')%>
 				<td><%= @booking_query.count%></td>
 			</tr>
 			<tr>
 			
 				<td>Breach of contract</td>
-				<%@breach_of_contract = Review.where('created_at >= ? and created_at <= ? and user_id is not null and company_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id,'Breach of contract', 'complaint')%>
+				<%@breach_of_contract = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and company_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id,'Breach of contract', 'complaint')%>
 				<td><%= @breach_of_contract.count %></td>
 			</tr>
 			<tr>
 				<td>Call centre</td>
-				<% @call_centre_c = Review.where('created_at >= ? and created_at <= ? and user_id is not null and company_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id,'Call centre', 'complaint')%>
+				<% @call_centre_c = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and company_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id,'Call centre', 'complaint')%>
 				<td><%= @call_centre_c.count%></td>
 			</tr>
 			<tr>
 				<td>Damaged goods</td>
-				<%@damaged_goods =  Review.where('created_at >= ? and created_at <= ? and user_id is not null and company_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id,'Damaged goods', 'complaint')%>
+				<%@damaged_goods =  Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and company_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id,'Damaged goods', 'complaint')%>
 				<td><%= @damaged_goods.count%></td>
 			</tr>
 			<tr>
 				<td>Expiry date</td>
-				<% @expiry = Review.where('created_at >= ? and created_at <= ? and user_id is not null and company_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id,'Expiry date', 'complaint')%>
+				<% @expiry = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and company_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id,'Expiry date', 'complaint')%>
 				<td><%= @expiry.count%></td>
 			</tr>
 			<tr>
 				<td>Feedback/response</td>
-				<% @feedback_response = Review.where('created_at >= ? and created_at <= ? and user_id is not null and company_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id,'Feedback/response', 'complaint')%>
+				<% @feedback_response = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and company_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id,'Feedback/response', 'complaint')%>
 				<td><%= @feedback_response.count%></td>
 			</tr>
 			<tr>
 				<td>Hygiene</td>
-				<% @hygiene = Review.where('created_at >= ? and created_at <= ? and user_id is not null and company_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id,'Hygiene', 'compliment')%>
+				<% @hygiene = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and company_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id,'Hygiene', 'compliment')%>
 				<td><%= @hygiene.count%></td>
 			</tr>
 			<tr>
 				<td>Late/no delivery</td>
-				<% @Late_no_delivery = Review.where('created_at >= ? and created_at <= ? and user_id is not null and company_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id,'Late/no delivery', 'complaint')%>
+				<% @Late_no_delivery = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and company_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id,'Late/no delivery', 'complaint')%>
 				<td><%= @Late_no_delivery.count%></td>
 			</tr>
 			<tr>
 				<td>Out of stock</td>
-				<% @out_of_stock = Review.where('created_at >= ? and created_at <= ? and user_id is not null and company_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id,'Out of stock', 'complaint')%>
+				<% @out_of_stock = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and company_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id,'Out of stock', 'complaint')%>
 				<td><%= @out_of_stock.count%></td>
 			</tr>
 			<tr>
 				<td>Pricing/bar codes</td>
-				<% @pricing_bar_codes = Review.where('created_at >= ? and created_at <= ? and user_id is not null and company_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id,'Pricing/bar codes', 'complaint')%>
+				<% @pricing_bar_codes = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and company_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id,'Pricing/bar codes', 'complaint')%>
 				<td><%= @pricing_bar_codes.count%></td>
 			</tr>
 			<tr>
 				<td>Repairs/servicing</td>
-				<% @repairs_servicing = Review.where('created_at >= ? and created_at <= ? and user_id is not null and company_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id,'Repairs/servicing', 'complaint')%>
+				<% @repairs_servicing = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and company_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id,'Repairs/servicing', 'complaint')%>
 				<td><%= @repairs_servicing.count%></td>
 			</tr>
 			<tr>
 				<td>Spam</td>
-				<% @spam = Review.where('created_at >= ? and created_at <= ? and user_id is not null and company_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id,'Spam', 'complaint')%>
+				<% @spam = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and company_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id,'Spam', 'complaint')%>
 				<td><%= @spam.count%></td>
 			</tr>
 			<tr>
 				<td>Other</td>
-				<% @others_c = Review.where('created_at >= ? and created_at <= ? and user_id is not null and company_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id,'Other', 'complaint')%>
+				<% @others_c = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and company_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id,'Other', 'complaint')%>
 				<td><%= @others_c.count%></td>
 			</tr>
 		</tbody>

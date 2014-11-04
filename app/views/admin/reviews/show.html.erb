@@ -95,7 +95,7 @@ $(document).ready(function(){
 	<%= link_to 'Edit', edit_admin_review_path(@review), class: "btn btn-primary" if can? :edit, Review %>
 <%end%>
 <% if @review.is_ticket_open &&  @review.comments.supplier_comments.count > 0  %>
-  <% if current_user.role =="jagent" && @review.monitor_jagent.ticked_closed_by_jagent %>
+  <% if current_user.role =="jagent" && @review.monitor_jagent.try(:ticked_closed_by_jagent) %>
   <% else %>
     <%= link_to 'Close Ticket', admin_ticket_closed_path(:review_id => @review.id) , :confirm => "Are you sure, you want to close this ticket..?",method: :put %>
   <% end %>

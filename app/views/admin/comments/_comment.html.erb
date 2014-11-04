@@ -12,7 +12,11 @@
   Message: <%= raw(comment.title) %>
   <% if comment.ispublished == false%>
     <%= form_for([:admin, @review, comment]) do |f| %>
-      <%= f.submit 'Publish', class: "btn btn-primary"%>
+      <%# if current_user.role == "jagent" %>
+        <%#= link_to "Modify Comment" ,edit_admin_review_comment_path(:review_id => @review.id, :id => comment.id ) %>
+      <%# else %>
+        <%= f.submit 'Publish', class: "btn btn-primary" %>
+      <%# end %>
     <% end %>
   <%end%>
   </div>

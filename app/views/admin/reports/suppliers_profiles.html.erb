@@ -1,6 +1,8 @@
 <h2>Supplier Profiles</h2>
  <%if params[:subaction] == "supplier_profiles" %>
   <strong>Displaying data for duration <%= params[:report2][:start_date]%> to <%= params[:report2][:end_date]%>
+<%elsif params[:id] == "data_dump"%>
+
 <%else%>
   <strong>Displaying data for 12 Months
 <%end%>

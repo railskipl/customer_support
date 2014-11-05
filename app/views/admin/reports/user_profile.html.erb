@@ -36,6 +36,24 @@
 
 });
 
+  jQuery(document).ready(function() {
+
+  jQuery(function() {
+  jQuery('#report2_start_date').datepicker( 
+    { altField  : '#report_start_date',  // selector of the hidden input field you want sent to the server
+      dateFormat: 'yy-mm-dd',
+      altFormat : 'yy-mm-dd' } );
+    });
+
+    jQuery(function() {
+  jQuery('#report2_end_date').datepicker( 
+    { altField  : '#report_end_date',  // selector of the hidden input field you want sent to the server
+      dateFormat: 'yy-mm-dd',
+      altFormat : 'yy-mm-dd' } );
+    });
+
+});
+
 </script>
 <style>
 .button{
@@ -82,6 +100,26 @@ jQuery(document).ready(function(){
 </table>
 </div>
 <br/>
+
+<h4>Summary of all reviews made by the customer</h4> <br/>
+        <table>
+			<%= form_for :report2, :url=> customer_record_admin_reports_path, :method => :get do |f| %>
+			  <h4>Filter Summary of all reviews made by the customer</h4>
+			  <tr>
+			    <td>From Date </td>
+			    <td><span >
+			      <%= f.text_field :start_date, :required => :true%>
+			    </span></td>
+			    <td>To Date </td>
+			    <td><span >
+			      <%= f.text_field :end_date,:required => :true %>
+			       </span>
+			    </td>
+			  </tr>
+			  <td><%= button_tag  :submit ,name:"subaction",value: "customer_record",:class => "btn btn btn-primary" %></td>
+			   
+			<%end%>
+		</table><br/>
 
 <h4>Customers</h4> 
         <table>

@@ -218,6 +218,9 @@ layout :custom_layout
           @supplier_registered = Supplier.where('Date(created_at) >= ? and Date(created_at) <= ? and subscription = ?', @start_from, @start_to,'Registered').order("Date(created_at) desc")  rescue nil
           send_data(render_to_string(:template=>"admin/reports/registered_suppliers.html.erb" ) , :type=>"text/xls",:filename => "registered_suppliers.xls")
         end
+      elsif params[:id] == "data_dump"
+      	@supplier_registered = Supplier.where('subscription = ?', 'Registered').order("Date(created_at) desc")  rescue nil
+        send_data(render_to_string(:template=>"admin/reports/registered_suppliers.html.erb" ) , :type=>"text/xls",:filename => "registered_suppliers.xls")
       else
       	  @start_from = 1.year.ago 
    	  	  @start_to =  Date.today 
@@ -236,6 +239,9 @@ layout :custom_layout
           @supplier_unregistered = Supplier.where('Date(created_at) >= ? and Date(created_at) <= ? and subscription = ?', @start_from, @start_to,'Not Registered').order("Date(created_at) desc") rescue nil
           send_data(render_to_string(:template=>"admin/reports/unregistered_suppliers.html.erb" ) , :type=>"text/xls",:filename => "unregistered_suppliers.xls")
         end
+    elsif params[:id] == "data_dump"
+      	@supplier_unregistered = Supplier.where('subscription = ?', 'Not Registered').order("Date(created_at) desc")  rescue nil
+        send_data(render_to_string(:template=>"admin/reports/unregistered_suppliers.html.erb" ) , :type=>"text/xls",:filename => "unregistered_suppliers.xls")
     else
       	 @start_from = 1.year.ago 
    	  	 @start_to =  Date.today 
@@ -254,6 +260,9 @@ layout :custom_layout
           @suppliers = Supplier.where('Date(created_at) >= ? and Date(created_at) <= ? ', @start_from, @start_to).order("Date(created_at) desc") rescue nil
           send_data(render_to_string(:template=>"admin/reports/suppliers_profiles.html.erb" ) , :type=>"text/xls",:filename => "supplier_profiles.xls")
         end
+      elsif params[:id] == "data_dump"
+      	  @suppliers = Supplier.order("Date(created_at) desc") rescue nil
+   	  	  send_data(render_to_string(:template=>"admin/reports/suppliers_profiles.html.erb" ) , :type=>"text/xls",:filename => "supplier_profiles.xls")
       else
       	  @start_from = 1.year.ago 
    	  	  @start_to =  Date.today 
@@ -277,6 +286,11 @@ layout :custom_layout
    	  	  @start_to =  Date.today 
       end
   	    @polls = Poll.where('Date(created_at) >= ? and Date(created_at) <= ? ', @start_from,@start_to)
+  end
+
+  def poll
+  	@polls = Poll.all
+  	send_data(render_to_string(:template=>"admin/reports/poll.html.erb" ) , :type=>"text/xls",:filename => "polls.xls")
   end
 
   private
@@ -318,7 +332,15 @@ layout :custom_layout
          when "registered_suppliers"
          	"no_layout"
          when "unregistered_suppliers"
-         	"no_layout"			
+         	"no_layout"
+         when "all_customers"
+         	"no_layout"
+         when "jagent"
+         	"no_layout"
+         when "sagent"
+         	"no_layout"
+         when "poll"
+            "no_layout"																								
          else
           "admin"
         end

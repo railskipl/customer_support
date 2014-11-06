@@ -419,4 +419,14 @@ module Admin::ReportsHelper
 	  end
   end
 
+  def industry_conversion
+  	@industries = Industry.all rescue nil
+  	send_data(render_to_string(:template=>"admin/reports/industry_conversion.html.erb" ) , :type=>"text/xls",:filename => "industries_conversion_data.xls")
+  end
+
+  def company_conversion
+  	@companies = Company.all rescue nil
+  	send_data(render_to_string(:template=>"admin/reports/company_conversion.html.erb" ) , :type=>"text/xls",:filename => "companies_conversion_data.xls")
+  end
+
 end

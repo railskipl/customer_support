@@ -379,7 +379,7 @@
     <tr>
       <th width="10%">Date</th>
       <th width="15%">Ticket Number</th>
-      <th width="15%">Industry</th>
+      <th width="15%">Company</th>
       <th width="15%">Nature of Review</th>
       <th width="15%">Title</th>
       <th width="15%">Customer Name</th>
@@ -395,7 +395,7 @@
         <tr>
           <td><%= compliment.date_time  %></td>
           <td><%= compliment.ticket_number  %></td>
-          <td><%= compliment.industry.title.titleize  %></td>
+          <td><%= compliment.company.title.titleize  %></td>
           <td><%= compliment.nature_of_review  %></td>
           <td><%= compliment.title.titleize  %></td>
           <td><%= compliment.try(:user).try(:full_name)%></td>

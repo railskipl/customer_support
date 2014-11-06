@@ -1,4 +1,5 @@
 class Admin::ReportsController < ApplicationController
+before_filter :authenticate_user!
 include Admin::ReportsHelper
 layout "admin", :except => :industry_xls
 before_filter :get_default_for_reviews
@@ -93,7 +94,7 @@ layout :custom_layout
         @supplier_unregistered = Supplier.select(:id, :supplier_name,:industry,:subscription,:start_date,:end_date).where('subscription = ?', 'Not Registered') rescue nil
 		# Most compliments for supplier
 		most_compliments
-	end
+	end 
 
 	
 
@@ -340,7 +341,11 @@ layout :custom_layout
          when "sagent"
          	"no_layout"
          when "poll"
-            "no_layout"																								
+            "no_layout"	
+         when "industry_conversion"
+           "no_layout"	
+         when "company_conversion"		
+           "no_layout"																				
          else
           "admin"
         end

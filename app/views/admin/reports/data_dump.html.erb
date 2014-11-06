@@ -1,4 +1,4 @@
-<h2>Download Entire Data</h2>
+<h2>Download Entire Data (Excel Format)</h2>
 
 <%= link_to "Summary of all reviews made by the customer", customer_record_admin_reports_path(:id => "data_dump"),:class=> "btn"%><br/><br/>
 
@@ -27,5 +27,11 @@
 <%= link_to "List Of Unregistered Suppliers", unregistered_suppliers_admin_reports_path(:id => "data_dump"),:class=> "btn"%><br/><br/>
 
 <%= link_to "Download Poll Results", poll_admin_reports_path(:id => "data_dump"),:class=> "btn" %>
+<br/><br/>
+
+<%= link_to "Download Company Conversion Review Data", company_conversion_admin_reports_path,:class=> "btn" %>
+<br/><br/>
+
+<%= link_to "Download Industry Conversion Review Data", industry_conversion_admin_reports_path,:class=> "btn" %>
 <br/><br/>
 

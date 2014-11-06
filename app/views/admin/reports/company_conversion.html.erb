@@ -1,9 +1,4 @@
-<h4>Company wise conversions from complaints to compliments</h4>
-<%if params[:subaction] == "company_stat_record" %>
-<strong>Displaying data for duration <%= @start_from%> to <%= @start_to%>
-<%else%>
-  <strong>Displaying data for 12 Months</strong>
-<%end%>
+<h4>Company Conversion Review Data</h4>  
 <table id="admin_review_xls" >
   <thead>
     <tr>
@@ -18,7 +13,7 @@
 
   <tbody>
     <% @companies.each do |company| %>
-    <% @compliment = Review.where('Date(created_at) >= ? and Date(Date(created_at)) <= ? and company_id = ? and user_id is not null', @start_from, @start_to, company.id) %>
+    <% @compliment = Review.where('company_id = ? and user_id is not null',company.id) %>
      
     <% @compliments = @compliment.where('change_date is not null') %> 
       <% @compliments.each do |compliment|%>

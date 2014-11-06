@@ -1,0 +1,192 @@
+<table>
+	<thead>
+		<tr>
+			<th>Industry <%= @industry.title %>: Total Reviews</th>
+		</tr>
+
+	</thead>
+
+	<tbody>
+		<tr>
+			<td>Compliments :
+			<%= @compliments.count%></td>
+		
+			<td>Complaint :
+			<%= @complaints.count%></td>
+		
+			<td><strong>Total</strong>
+			<%= @total = @complaints.count + @compliments.count%></td>
+		</tr>
+
+	</tbody>
+</table>
+
+<br/>
+
+<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered">
+	<thead>
+		<tr>
+			<th>Industry <%= @industry.title %> : Nature of Compliment</th>
+		</tr>
+
+	</thead>
+
+	<tbody>
+		<tr>
+			<td>Billing/accounts</td>
+			<% @billing = Review.where('user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',@industry.id,'Billing/accounts', 'compliment')%>
+			<td><%= @billing.count %></td>
+		</tr>
+		<tr>
+			<td>Booking</td>
+			<% @booking = Review.where('user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',@industry.id,'Booking', 'compliment')%>
+		    <td><%= @booking.count%></td>
+		</tr>
+		<tr>
+			<td>Call centre efficiency</td>
+			<% @call_center = Review.where('user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',@industry.id,'Call centre efficiency', 'compliment')%>
+			<td><%= @call_center.count%></td>
+		</tr>
+		<tr>
+		
+			<td>Contract</td>
+			<%@contract = Review.where('user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',@industry.id,'Contract', 'compliment')%>
+			<td><%= @contract.count%></td>
+		</tr>
+		<tr>
+			<td>Delivery on time</td>
+			<% @delivery = Review.where('user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',@industry.id,'Delivery on time', 'compliment')%>
+			<td><%= @delivery.count%></td>
+		</tr>
+		<tr>
+			<td>Feedback</td>
+			<%@feedback =  Review.where('user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',@industry.id,'Feedback', 'compliment')%>
+			<td><%= @feedback.count%></td>
+		</tr>
+		<tr>
+			<td>Going the extra mile</td>
+			<% @going_extra = Review.where('user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',@industry.id,'Going the extra mile', 'compliment')%>
+			<td><%= @going_extra.count%></td>
+		</tr>
+		<tr>
+			<td>Great attitude</td>
+			<% @great_attitude = Review.where('user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',@industry.id,'Great attitude', 'compliment')%>
+			<td><%= @great_attitude.count%></td>
+		</tr>
+		<tr>
+			<td>Pricing</td>
+			<% @pricing = Review.where('user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',@industry.id,'Pricing', 'compliment')%>
+			<td><%= @pricing.count%></td>
+		</tr>
+		<tr>
+			<td>Refund</td>
+			<% @refund = Review.where('user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',@industry.id,'Refund', 'compliment')%>
+			<td><%= @refund.count%></td>
+		</tr>
+		<tr>
+			<td>Repairs</td>
+			<% @repairs = Review.where('user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',@industry.id,'Repairs', 'compliment')%>
+			<td><%= @repairs.count%></td>
+		</tr>
+		<tr>
+			<td>Stock</td>
+			<% @stock = Review.where('user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',@industry.id,'Stock', 'compliment')%>
+			<td><%= @stock.count%></td>
+		</tr>
+		<tr>
+			<td>Other</td>
+			<% @others = Review.where('user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',@industry.id,'Other', 'compliment')%>
+			<td><%= @others.count%></td>
+		</tr>
+
+	</tbody>
+</table>
+<br/>
+<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered">
+	<thead>
+		<tr>
+			<th>Industry <%= @industry.title %> : Nature of Complaints</th>
+		</tr>
+
+	</thead>
+
+	<tbody>
+		<tr>
+			<td>Bad attitude</td>
+			<% @bad_attitude = Review.where('user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',@industry.id,'Bad attitude', 'complaint')%>
+			<td><%= @bad_attitude.count %></td>
+		</tr>
+		<tr>
+			<td>Billing/Accounts</td>
+			<% @billing_account = Review.where('user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',@industry.id , 'Billing/Accounts', 'complaint')%>
+		    <td><%= @billing_account.count %></td>
+		</tr>
+		<tr>
+			<td>Booking query</td>
+			<% @booking_query = Review.where('user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',@industry.id,'Booking query', 'complaint')%>
+			<td><%= @booking_query.count%></td>
+		</tr>
+		<tr>
+		
+			<td>Breach of contract</td>
+			<%@breach_of_contract = Review.where('user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',@industry.id,'Breach of contract', 'complaint')%>
+			<td><%= @breach_of_contract.count%></td>
+		</tr>
+		<tr>
+			<td>Call centre</td>
+			<% @call_centre_c = Review.where('user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',@industry.id,'Call centre', 'complaint')%>
+			<td><%= @call_centre_c.count%></td>
+		</tr>
+		<tr>
+			<td>Damaged goods</td>
+			<%@damaged_goods =  Review.where('user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',@industry.id,'Damaged goods', 'complaint')%>
+			<td><%= @damaged_goods.count%></td>
+		</tr>
+		<tr>
+			<td>Expiry date</td>
+			<% @expiry = Review.where('user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',@industry.id,'Expiry date', 'complaint')%>
+			<td><%= @expiry.count%></td>
+		</tr>
+		<tr>
+			<td>Feedback/response</td>
+			<% @feedback_response = Review.where('user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',@industry.id,'Feedback/response', 'complaint')%>
+			<td><%= @feedback_response.count%></td>
+		</tr>
+		<tr>
+			<td>Hygiene</td>
+			<% @hygiene = Review.where('user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',@industry.id,'Hygiene', 'complaint')%>
+			<td><%= @hygiene.count%></td>
+		</tr>
+		<tr>
+			<td>Late/no delivery</td>
+			<% @Late_no_delivery = Review.where('user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',@industry.id,'Late/no delivery', 'complaint')%>
+			<td><%= @Late_no_delivery.count%></td>
+		</tr>
+		<tr>
+			<td>Out of stock</td>
+			<% @out_of_stock = Review.where('user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',@industry.id,'Out of stock', 'complaint')%>
+			<td><%= @out_of_stock.count%></td>
+		</tr>
+		<tr>
+			<td>Pricing/bar codes</td>
+			<% @pricing_bar_codes = Review.where('user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',@industry.id,'Pricing/bar codes', 'complaint')%>
+			<td><%= @pricing_bar_codes.count%></td>
+		</tr>
+		<tr>
+			<td>Repairs/servicing</td>
+			<% @repairs_servicing = Review.where('user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',@industry.id,'Repairs/servicing', 'complaint')%>
+			<td><%= @repairs_servicing.count%></td>
+		</tr>
+		<tr>
+			<td>Spam</td>
+			<% @spam = Review.where('user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',@industry.id,'Spam', 'complaint')%>
+			<td><%= @spam.count%></td>
+		</tr>
+		<tr>
+			<td>Other</td>
+			<% @others_c = Review.where('user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',@industry.id,'Other', 'complaint')%>
+			<td><%= @others.count%></td>
+		</tr>
+
+	</tbody>
+</table>

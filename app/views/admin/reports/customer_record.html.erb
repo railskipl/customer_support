@@ -1,4 +1,11 @@
-<h4>All Customers (12 Months)</h4>
+<h4>Summary of all reviews made by the customer</h4>
+<%if params[:subaction] == "customer_record" %>
+<strong>Displaying data for duration <%= @start_from%> to <%= @start_to%>
+<%elsif params[:id] == "data_dump"%>
+  
+<%else%>
+  <strong>Displaying data for 12 Months</strong>
+<%end%>
 <% @users.each do |user| %>
     <% @user = User.find(user)%>
 	<table id="customers">
@@ -45,11 +52,18 @@
 		 
 		</tbody>
 	</table>
-	<%@user_compliment = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and review_type = ?  and user_id = ? ',1.year.ago, Date.today,'compliment',@user.id)%>
+	<%if params[:id] == "data_dump"%>
 
-	<%@user_complaint = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and review_type = ?  and user_id = ? ',1.year.ago, Date.today,'complaint',@user.id) %>
+	  <% @user_compliment = Review.where('review_type = ? and user_id = ? ','compliment',@user.id)%>
+
+	  <% @user_complaint = Review.where('review_type = ? and user_id = ? ','complaint',@user.id) %>
+	<%else%>
+	  <%@user_compliment = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and review_type = ?  and user_id = ? ',1.year.ago, Date.today,'compliment',@user.id)%>
+
+	  <%@user_complaint = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and review_type = ?  and user_id = ? ',1.year.ago, Date.today,'complaint',@user.id) %>
+	<%end%>
     <br/>
-
+    
     <%unless @user_compliment.blank?%>
     <h4>Compliments Review By <%=@user.first_name%> <%=@user.last_name%></h4>
 	<table id="admin_review_xls" >

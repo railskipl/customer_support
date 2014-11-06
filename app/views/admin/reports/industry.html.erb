@@ -99,7 +99,7 @@
 <h2>Conversions – Industry conversion stats</h2>
 <table>
   <%= form_for :report3, :url=> industry_admin_reports_path, :method => :get do |f| %>
-    <h4>Filter Company conversion Records</h4>
+    <h4>Filter Industry conversion Records</h4>
     <tr>
       <td>From Date </td>
       <td><span >
@@ -133,7 +133,7 @@
 
   <tbody>
     <% @industries.each do |industry| %>
-    <% @compliment = Review.where('Date(created_at) >= ? and Date(Date(created_at)) <= ? and company_id = ? and user_id is not null', @start_from, @start_to, industry.id) %>
+    <% @compliment = Review.where('Date(created_at) >= ? and Date(Date(created_at)) <= ? and industry_id = ? and user_id is not null', @start_from, @start_to, industry.id) %>
      
     <% @compliments = @compliment.where('change_date is not null') %> 
       <% @compliments.each do |compliment|%>

@@ -1,5 +1,12 @@
-<h2>Conversions – Industry conversion stats (12 Months)</h2>
-   
+ <%if params[:subaction] == "company_stat_record" %>
+    <h4>Industry conversion stats</h4>
+    <strong>Displaying data for duration <%= @start_from%> to <%= @start_to%>
+ <%elsif params[:id] == "data_dump"%>
+     <h4>Industry conversion stats</h4>
+ <%else%>
+  <h4>Industry conversion stats</h4>
+  <strong>Conversions : Industry conversion stats (12 Months)</strong>
+ <%end%>  
 <table id="industry_conversion">
   <thead>
     <tr>
@@ -12,17 +19,22 @@
 
   <tbody>
     <% @industries.each do |industry| %>
-    <% @compliment = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and industry_id = ? and user_id is not null', @start_from, @start_to, industry.id)%>
+    <%if params[:id] == "data_dump"%>
+     <% @compliment = Review.where('industry_id = ? and user_id is not null', industry.id)%>
+    <%else%>
+     <% @compliment = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and industry_id = ? and user_id is not null', @start_from, @start_to, industry.id)%>
+    <%end%>
     
-    <% @complaint_conversion = @compliment.where('review_type = ?', 'complaint').count%>
+    <% @complaint_conversion = @compliment.where('review_type = ?', 'complaint')%>
       
-    <% @compliments = @compliment.where('change_date is not null').count%> 
+    <% @compliments = @compliment.where('change_date is not null')%> 
+      <%if @complaint_conversion.present? or @compliments.present?%> 
       <tr>
         <td><%=industry.title rescue nil %></td>
-        <td><%=@complaint_conversion + @compliments rescue nil %></td>
-        <td><%=@compliments rescue nil %></td>
-        <% @a = @complaint_conversion + @compliments %>
-        <% @percentage =  @compliments / @a * 100 rescue nil%>
+        <td><%=@complaint_conversion.count + @compliments.count rescue nil %></td>
+        <td><%=@compliments.count rescue nil %></td>
+        <% @a = @complaint_conversion.count + @compliments.count %>
+        <% @percentage =  @compliments.count / @a * 100 rescue nil%>
         <%unless @percentage.present?%>
           <td>0</td>
         <%else%>
@@ -30,6 +42,8 @@
         <%end%>
       </tr>
     <%end%>
+    <%end%>
+    
   </tbody>  
 </table>
 

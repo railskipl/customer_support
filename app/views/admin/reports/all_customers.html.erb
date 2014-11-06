@@ -1,0 +1,46 @@
+<h4>All Customers</h4>
+	<table id="customers">
+		<thead>
+		  <tr>
+		    <th width="15%">First Name</th>
+		    <th width="15%">Last Name</th>
+		    <th width="30%">Email</th>
+		    <th width="20%">Email Confirmation</th>
+		    <th width="20%">Preferred Alias</th>
+		    <th width="20%">Age</th>
+		    <th width="20%">Gender</th>
+		    <th width="20%">Address line 1</th>
+		    <th width="20%">Address line 2</th>
+		    <th width="20%">Town</th>
+		    <th width="20%">country</th>
+		    <th width="20%">Lives in</th>
+		    <th width="20%">Code</th>
+		  </tr>
+		</thead>
+
+		<tbody>
+		  <% @customers.each do |user| %>
+		    <tr>
+		      <td><%=user.first_name%></td>
+		      <td><%=user.last_name%></td>
+		      <td><%=user.email%></td>
+		      <td><%=user.confirmed_at.present? ? 'Confirmed' : 'Pending'%></td>
+		      <td><%=user.preferred_alias%></td>
+		      <td><%=user.age%></td>
+		      <td><% if user.gender == '1' %>
+				    <%="Male"%>
+				    <%else%>
+				    <%="Female"%>
+				    <%end%>
+			  </td>
+		      <td><%=user.address_line1%></td>
+		      <td><%=user.address_line2%></td>
+		      <td><%=user.town%></td>
+		      <td><%=user.country%></td>
+		      <td><%=user.lives_in%></td>
+		      <td><%=user.postal_code%></td>
+		    </tr>
+		  <% end %>
+		</tbody>
+	</table>
+<br/><br/>

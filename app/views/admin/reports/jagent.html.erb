@@ -1,0 +1,28 @@
+<h4>All Junior Agents</h4>
+	<table id="customers">
+		<thead>
+		  <tr>
+		    <th width="15%">First Name</th>
+		    <th width="15%">Last Name</th>
+		    <th width="30%">Email</th>
+		    <th width="20%">Email Confirmation</th>
+		    <th width="20%">Preferred Alias</th>
+		    <th width="20%">Role</th>
+		  </tr>
+		</thead>
+
+		<tbody>
+		  <% @jagents.each do |user| %>
+		    <tr>
+		      <td><%=user.first_name%></td>
+		      <td><%=user.last_name%></td>
+		      <td><%=user.email%></td>
+		      <td><%=user.confirmed_at.present? ? 'Confirmed' : 'Pending'%></td>
+		      <td><%=user.preferred_alias%></td>
+		    
+		      <td><%=user.role%></td>
+		    </tr>
+		  <% end %>
+		</tbody>
+	</table>
+<br/><br/>

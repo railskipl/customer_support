@@ -100,6 +100,10 @@ Jmd::Application.routes.draw do
         get :sagent
         get :jagent
         get :polls
+        get :data_dump
+        get :poll
+        get :industry_conversion
+        get :company_conversion
       
       end
     end

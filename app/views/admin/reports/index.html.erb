@@ -1,4 +1,3 @@
-
 <table>
 <tr>
   <td><%= link_to "Customer details", user_profile_admin_reports_path,:class=> "btn"%><br/></td>
@@ -6,6 +5,7 @@
 <td><%= link_to "Company/Supplier Level Totals", company_admin_reports_path,:class=> "btn"%><br/></td>
 <td><%= link_to "Download Archive Data",archive_data_admin_reports_path,:class=> "btn"%><br/></td>
 <td><%= link_to "Download Polls Data",polls_admin_reports_path,:class=> "btn"%><br/></td>
+<td><%= link_to "Data Dump",data_dump_admin_reports_path,:class=> "btn"%><br/></td>
 </tr>
 </table></br>
 <strong>Download Data for 12 Months period</strong></br></br>
@@ -16,7 +16,7 @@
 
 <%= link_to image_tag('/assets/excel.png', :border=>"0", :align=>"absmiddle") + "Junior Agents", jagent_admin_reports_path(params.merge(format: "xls")), :method=> :get%><br/>
 <%= link_to image_tag('/assets/excel.png', :border=>"0", :align=>"absmiddle") + "Senior Agents", sagent_admin_reports_path(params.merge(format: "xls")), :method=> :get%><br/>
-<%= link_to image_tag('/assets/excel.png', :border=>"0", :align=>"absmiddle") + "Active Customers", active_customers_admin_reports_path(params.merge(format: "xls")), :method=> :get%><br/>
+<%= link_to image_tag('/assets/excel.png', :border=>"0", :align=>"absmiddle") + "Active Customers (6 Months)", active_customers_admin_reports_path(params.merge(format: "xls")), :method=> :get%><br/>
 <%= link_to image_tag('/assets/excel.png', :border=>"0", :align=>"absmiddle") + "Suppliers Profiles", suppliers_profiles_admin_reports_path(params.merge(format: "xls")), :method=> :get%><br/>
 <%= link_to image_tag('/assets/excel.png', :border=>"0", :align=>"absmiddle") + "Industry xls", industry_xls_admin_reports_path%><br/>
 <%= link_to image_tag('/assets/excel.png', :border=>"0", :align=>"absmiddle") + "Company/Supplier xls", company_xls_admin_reports_path(params.merge(format: "xls")), :method=> :get%><br/>

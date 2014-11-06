@@ -9,14 +9,16 @@
     <%= link_to "Report Abuse", new_admin_abuse_report_path(:comment_id => comment.id),:class=> "btn"%>
   <%end%><br>
   Posted On: <%= comment.updated_at.strftime("%Y-%m-%d") %> <br/>
-  Message: <%= raw(comment.title) %>
+  Customer Message: <%= raw(comment.title) %>
+  Modified Message: <%= comment.modified_comment.present? ? raw(comment.modified_comment) : "Not Modified" %>
   <% if comment.ispublished == false%>
     <%= form_for([:admin, @review, comment]) do |f| %>
-      <%# if current_user.role == "jagent" %>
-        <%#= link_to "Modify Comment" ,edit_admin_review_comment_path(:review_id => @review.id, :id => comment.id ) %>
-      <%# else %>
+      <% if current_user.role == "jagent" %>
+        <%= link_to "Modify Comment" ,edit_admin_review_comment_path(:review_id => @review.id, :id => comment.id ) %>
+      <% else %>
+      <%= link_to "Modify Comment" ,edit_admin_review_comment_path(:review_id => @review.id, :id => comment.id ) %>
         <%= f.submit 'Publish', class: "btn btn-primary" %>
-      <%# end %>
+      <% end %>
     <% end %>
   <%end%>
   </div>

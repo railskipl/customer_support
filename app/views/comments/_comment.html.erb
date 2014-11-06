@@ -14,5 +14,6 @@
 			  	<%= comment.updated_at.strftime("%H:%M | %d %h %y") %>
 			  </span>
 	 	</div>
-	  <p><%= raw(comment.title)%></p>
+	  <p><%= raw (comment.modified_comment ? comment.modified_comment : comment.title) %>
+</p>
 <% end %>

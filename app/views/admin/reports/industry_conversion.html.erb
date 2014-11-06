@@ -19,26 +19,23 @@
 
   <tbody>
     <% @industries.each do |industry| %>
-    <% @compliment = Review.where('industry_id = ? and user_id is not null',industry.id) %>
-     
-    <% @compliments = @compliment.where('change_date is not null') %> 
-    <% @compliments.each do |review| %>
-      <tr>
-        <td><%=review.date_time rescue nil %></td>
-        <td><%=review.ticket_number rescue nil %></td>
-        <td><%=review.review_type.titleize rescue nil %></td>
-        <td><%=review.industry.title.titleize rescue nil %></td>
-        <td><%=review.town.title.titleize rescue nil %></td>
-        <td><%=review.location.title.titleize rescue nil %></td>
-        <td><%=review.personal_responsible rescue nil %></td>
-        <td><%=review.nature_of_review rescue nil %></td>
-        <td><%=review.message rescue nil %></td>
-        <td><%=review.title.titleize rescue nil %></td>
+      <% @compliment = Review.where('industry_id = ? and user_id is not null',industry.id) %>
+      <% @compliments = @compliment.where('change_date is not null') %> 
+      <% @compliments.each do |review| %>
+        <tr>
+          <td><%=review.date_time rescue nil %></td>
+          <td><%=review.ticket_number rescue nil %></td>
+          <td><%=review.review_type.titleize rescue nil %></td>
+          <td><%=review.industry.title.titleize rescue nil %></td>
+          <td><%=review.town.title.titleize rescue nil %></td>
+          <td><%=review.location.title.titleize rescue nil %></td>
+          <td><%=review.personal_responsible rescue nil %></td>
+          <td><%=review.nature_of_review rescue nil %></td>
+          <td><%=review.message rescue nil %></td>
+          <td><%=review.title.titleize rescue nil %></td>
           <td><%=review.try(:user).try(:full_name)%></td>
-
-      </tr>
-    <% end %>
-      <%end%>
-    <% end %>
+        </tr>
+      <% end %>
+    <%end%>
   </tbody>  
 </table>

@@ -10,6 +10,7 @@
 <table id="industry_conversion">
   <thead>
     <tr>
+      <th>Sr. No. </th>
       <th>Industry</th>
       <th>Total Complaints Count</th>
       <th>Complaint --> Compliment</th>
@@ -18,7 +19,7 @@
   </thead>
 
   <tbody>
-    <% @industries.each do |industry| %>
+    <% @industries.each_with_index.each do |industry,i| %>
     <%if params[:id] == "data_dump"%>
      <% @compliment = Review.where('industry_id = ? and user_id is not null', industry.id)%>
     <%else%>
@@ -30,6 +31,7 @@
     <% @compliments = @compliment.where('change_date is not null')%> 
       <%if @complaint_conversion.present? or @compliments.present?%> 
       <tr>
+        <td><%= i+1%></td>
         <td><%=industry.title rescue nil %></td>
         <td><%=@complaint_conversion.count + @compliments.count rescue nil %></td>
         <td><%=@compliments.count rescue nil %></td>

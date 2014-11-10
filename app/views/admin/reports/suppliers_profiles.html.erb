@@ -9,6 +9,7 @@
 <table>
   <thead>
       <tr>
+        <th>Sr. No. </th>
         <th>Supplier</th>
         <th>Supplier Pin Number</th>
         <th>Industry</th>
@@ -49,8 +50,9 @@
   </thead>
     
   <tbody>
-    <%@suppliers.each do |supplier|%>
+    <%@suppliers.each_with_index.each do |supplier,i|%>
       <tr>
+        <td><%= i+1%></td>
         <td><%= supplier.supplier_name %></td>
         <td><%= supplier.supplier_vat_Number%></td>
         <td><%= supplier.industry%></td>

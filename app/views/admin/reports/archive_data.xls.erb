@@ -2,6 +2,7 @@
 <table id="admin_review_xls" >
 	<thead>
 	  <tr>
+	        <th>Sr. No. </th>
 			<th width="10%">Date</th>
 			<th width="15%">Ticket Number</th>
 			<th width="10%">Review</th>
@@ -18,8 +19,9 @@
 	</thead>
 
 	<tbody>
-	  <% @reviews.each do |review| %>
+	  <% @reviews.each_with_index.each.each do |review,i| %>
 	    <tr>
+	            <td><%= i+1 %></td>
 				<td><%=review.date_time rescue nil %></td>
 				<td><%=review.ticket_number rescue nil %></td>
 				<td><%=review.review_type.titleize rescue nil %></td>

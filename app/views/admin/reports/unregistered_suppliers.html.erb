@@ -7,6 +7,7 @@
 <table>
   <thead>
     <tr>
+      <th>Sr. No</th>
       <th width="10%">Supplier Company</th>
       <th width="10%">Industry</th>
       <th width="10%">Subscription</th>
@@ -16,8 +17,9 @@
   </thead>
 
   <tbody>
-    <% @supplier_unregistered.each do |supplier| %>
+    <% @supplier_unregistered.each_with_index.each do |supplier,i| %>
       <tr>
+        <td><%= i+1%></td>
         <td><%= supplier.supplier_name %></td>
         <td><%= supplier.industry %></td>
         <td><%= supplier.subscription %></td>

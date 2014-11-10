@@ -1,5 +1,5 @@
 <h4>Hi <%= @review.user.preferred_alias%>, </h4>
-Customer Supprt Comment on Your Review Tital as: <%= @review.title %>
-Comment: <% @comment.title %>
+Customer Support Comment on Your Review Title as: <%= @review.title %>
+Comment: <%= @comment.title %>
 
 <%= link_to 'Click here to review', review_url(@review)%>

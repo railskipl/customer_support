@@ -86,4 +86,17 @@ class ReviewMailer < ActionMailer::Base
     @review = review
     mail(:to => @review.user.email, :subject => "Ticket Closed")
   end
+
+  def assignee_mail(review, comment)
+    @review = review
+    @comment = comment
+    mail(:to => @review.agent.email, :subject => "Junior Agent Has Commented Onbehalf Of Supplier")
+  end
+
+  def review_comment_mail(jagent, agent, ticket_number)
+    @jagent = jagent
+    @agent = agent
+    @ticket_number = ticket_number
+    mail(:to => @agent.email, :subject => "Junior Agent Has Modifide Comment")
+  end
 end

@@ -1,0 +1,4 @@
+<h4>Hi <%= @review.agent.preferred_alias%>, </h4>
+Junior Agent <%= @review.jagent.preferred_alias%> has Commented on Review Title as: <%= @review.ticket_number %> & Ticket Number <%= @review.title %> On behalf of  <%= Supplier.find(@comment.supplier_id).supplier_name.inspect %> .
+
+Comment: <%= @comment.title %>

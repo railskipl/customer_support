@@ -4,6 +4,7 @@
 	<table id="customers">
 		<thead>
 		  <tr>
+		    <th>Sr. No</th>
 		    <th width="15%">First Name</th>
 		    <th width="15%">Last Name</th>
 		    <th width="30%">Email</th>
@@ -21,8 +22,9 @@
 		</thead>
 
 		<tbody>
-		  <% @customers.each do |user| %>
+		  <% @customers.each_with_index.each do |user,i| %>
 		    <tr>
+		      <td><%= i+1%></td>
 		      <td><%=user.first_name%></td>
 		      <td><%=user.last_name%></td>
 		      <td><%=user.email%></td>

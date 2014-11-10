@@ -7,10 +7,11 @@ class Admin::CommentsController < AdminController
       @comment.user_id = current_user.id
       if current_user.role == "jagent"
         m = MonitorJagent.find_or_create_by_review_id(@review.id)
+        ReviewMailer.assignee_mail(@review,@comment).deliver!
         m.s_comment = true
       else
         @comment.ispublished = true
-      end
+      end 
     
       if @comment.save && !params["comment"]["supplier_id"].nil?
         unless current_user.role == "jagent"
@@ -30,6 +31,7 @@ class Admin::CommentsController < AdminController
     @comment =  @review.comments.find(params[:id])
     if current_user.role == "jagent"
       m = MonitorJagent.find_or_create_by_review_id(@review.id)
+      ReviewMailer.review_comment_mail(@review.jagent, @review.agent, @review.ticket_number).deliver!
       m.c_comment = true
       m.save
       @comment.modified_comment = params["comment"]["modified_comment"]

@@ -8,6 +8,7 @@
 <table id="admin_review_xls" >
   <thead>
     <tr>
+      <th>Sr. No. </th>
       <th width="10%">Date</th>
       <th width="15%">Ticket Number</th>
       <th width="15%">Industry</th>
@@ -22,8 +23,9 @@
     <% @compliment = Review.where('Date(created_at) >= ? and Date(Date(created_at)) <= ? and company_id = ? and user_id is not null', @start_from, @start_to, industry.id) %>
      
     <% @compliments = @compliment.where('change_date is not null') %> 
-      <% @compliments.each do |compliment|%>
+      <% @compliments.each_with_index.each do |compliment,i|%>
         <tr>
+          <td><%= i+1%></td>
           <td><%= compliment.date_time  %></td>
           <td><%= compliment.ticket_number  %></td>
           <td><%= compliment.industry.title.titleize  %></td>

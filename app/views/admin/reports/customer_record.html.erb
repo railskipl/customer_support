@@ -6,11 +6,12 @@
 <%else%>
   <strong>Displaying data for 12 Months</strong>
 <%end%>
-<% @users.each do |user| %>
+<% @users.each_with_index.each do |user,i| %>
     <% @user = User.find(user)%>
 	<table id="customers">
 		<thead>
 		  <tr>
+		    <th>Sr. No. </th>
 		    <th width="15%">First Name</th>
 		    <th width="15%">Last Name</th>
 		    <th width="30%">Email</th>
@@ -30,6 +31,7 @@
 		<tbody>
 		  
 		    <tr>
+		      <td><%= i+1%></td>
 		      <td><%=@user.first_name%></td>
 		      <td><%=@user.last_name%></td>
 		      <td><%=@user.email%></td>
@@ -69,6 +71,7 @@
 	<table id="admin_review_xls" >
 		<thead>
 		  <tr>
+		        <th>Sr. No</th>
 				<th width="10%">Date</th>
 				<th width="15%">Ticket Number</th>
 				<th width="10%">Review</th>
@@ -85,8 +88,9 @@
 		</thead>
 
 		<tbody>
-		  <% @user_compliment.each do |review| %>
+		  <% @user_compliment.each_with_index.each do |review,i| %>
 		    <tr>
+		    <td><%= i+1%></td>
 					<td><%=review.date_time rescue nil %></td>
 					<td><%=review.ticket_number rescue nil %></td>
 					<td><%=review.review_type.titleize rescue nil %></td>
@@ -112,6 +116,7 @@
     <table id="admin_review_xls" >
 		<thead>
 		  <tr>
+		    <th>Sr. No</th>
 				<th width="10%">Date</th>
 				<th width="15%">Ticket Number</th>
 				<th width="10%">Review</th>
@@ -128,8 +133,9 @@
 		</thead>
 
 		<tbody>
-		  <% @user_complaint.each do |review| %>
+		  <% @user_complaint.each_with_index.each do |review,i| %>
 		    <tr>
+		    <td><%= i+1%></td>
 					<td><%=review.date_time rescue nil %></td>
 					<td><%=review.ticket_number rescue nil %></td>
 					<td><%=review.review_type.titleize rescue nil %></td>

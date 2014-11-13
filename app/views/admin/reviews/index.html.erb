@@ -6,6 +6,7 @@
   jQuery(function() {
   jQuery('#date').datepicker( 
     { altField  : '#date',  // selector of the hidden input field you want sent to the server
+      minDate: 0,
       dateFormat: 'yy-mm-dd',
       altFormat : 'yy-mm-dd' } );
     });
@@ -16,6 +17,7 @@ jQuery(document).ready(function() {
   jQuery(function() {
   jQuery('#date1').datepicker( 
     { altField  : '#date',  // selector of the hidden input field you want sent to the server
+      minDate: 0,
       dateFormat: 'yy-mm-dd',
       altFormat : 'yy-mm-dd' } );
     });

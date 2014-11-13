@@ -31,8 +31,12 @@ class Admin::ReviewsController < AdminController
         reviews.each do |r|
           a = Review.find(r)
           a.old_jagent_id = a.jagent_id
-          @track_time = TrackTime.find(r)
-          @track_time.update(:review_id => r,:date_proposed => params[:date1], :user_id => params[:user_id],:date_complete => nil)
+          @track_time = TrackTime.where('review_id = ?',r).first
+          if @track_time.present?
+            @track_time.update(:review_id => r,:date_proposed => params[:date1], :user_id => params[:user_id],:date_complete => nil)
+          else
+            TrackTime.find_or_create_by_review_id(:review_id => r,:date_proposed => params[:date1], :user_id => params[:user_id])
+          end
           a.jagent_id = params[:user_id]
           a.agent_id = params[:agent_id]
           a.save

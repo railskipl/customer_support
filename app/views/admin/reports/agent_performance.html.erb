@@ -1,0 +1,60 @@
+<%if params[:subaction] == "agent_performance" %>
+  <h4>Agents performance: how many queries they action in a given time</h4>
+  <strong>Displaying data for duration <%= params[:report2][:start_date]%> to <%= params[:report2][:end_date]%>
+<%elsif params[:id] == "data_dump"%>
+    <strong> Agents performance: how many queries they action in a given time</strong>
+<%else%>
+  Agents performance: how many queries they action in a given time
+<%end%>
+
+<table id="agent_performance">
+	<thead>
+		<tr>
+		    <th>Sr. No</th>
+			<th>Agent Name</th>
+			<th>Preferred Alias</th>
+			<th>Total Reviews Alloted</th>
+			<th>Reviews Processed On Time</th>
+			<th>Late Processed</th>
+			<th>Not Processed</th>
+		</tr>
+	</thead>
+
+	<tbody>
+	    <% @track_times.each_with_index.each do |track,i|%>
+	    <%@user = User.find(track) rescue nil%>
+	    <%if params[:id] == "data_dump"%>
+	        <%@tracks = @user.track_times rescue nil %>
+	        
+	    <%else%>
+	      <%@tracks = @user.track_times.where('Date(created_at) >= ? and Date(Date(created_at)) <= ?',@start_from, @start_to) rescue nil%>
+	    <%end%>
+	  
+	    <%@tracks.each do |tt|%>
+	      <%@a ||= [] #on time%> 
+	      <%@b ||= [] #out of time%>
+	      <%@c ||= [] #not processed%>
+	      <%unless tt.date_complete.blank?%>
+		      <%if tt.date_proposed >= tt.date_complete%>
+	             <%@a << tt.id%>
+	          <%else%>
+	             <%@b << tt.id%>
+		      <%end%>
+	      <%else%>
+              <%@c << tt.id%>
+	      <%end%>
+	    <%end%>
+	    
+		<tr>
+		  <td><%= i+1%></td>
+		  <td><%= @user.first_name rescue nil%> <%= @user.last_name rescue nil%></td>
+		  <td><%= @user.preferred_alias rescue nil%></td>
+		  <td><%= @tracks.count%></td>
+		  <td><%= @a.count%></td>
+		  <td><%= @b.count%></td>
+		  <td><%= @c.count%></td>
+		</tr>
+		<%end%>
+		
+	</tbody>
+</table>

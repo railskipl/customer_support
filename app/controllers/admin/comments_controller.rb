@@ -35,7 +35,13 @@ class Admin::CommentsController < AdminController
       m.c_comment = true
       m.save
       @comment.modified_comment = params["comment"]["modified_comment"]
-    else 
+    else
+      @jagent = User.select(:id,:role).where('id = ?', @comment.user_id).first
+      if @jagent.role == "jagent"
+        unless @comment.modified_comment == params["comment"]["modified_comment"]
+          @comment.admin_sagent_comment = true
+        end
+      end
       @comment.modified_comment = params["comment"]["modified_comment"] if params["comment"]
       @comment.ispublished = true if params[:commit] == "Publish"
     end

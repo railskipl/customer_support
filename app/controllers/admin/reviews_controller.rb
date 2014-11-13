@@ -10,12 +10,12 @@ class Admin::ReviewsController < AdminController
       @users = User.where("role = ?","jagent")
     end
     if current_user.is? :jagent
-		  @reviews = Review.where("jagent_id = ? or old_jagent_id = ?",current_user.id,current_user.id).unarchived.order("id desc")
+		  @reviews = Review.where("jagent_id = ? or old_jagent_id = ?",current_user.id,current_user.id).unarchived.where("user_id is not null").order("id desc")
     else
-      @reviews = Review.unarchived.order("id desc")
+      @reviews = Review.unarchived.where("user_id is not null").order("id desc")
     end
-    @areviews = Review.where("published_date is null and jagent_id is null")
-    @reareviews = Review.where("published_date is null and jagent_id is not null")
+    @areviews = Review.where("published_date is null and jagent_id is null and user_id is not null")
+    @reareviews = Review.where("published_date is null and jagent_id is not null and user_id is not null")
 	end
 
   def show
@@ -31,6 +31,7 @@ class Admin::ReviewsController < AdminController
         reviews.each do |r|
           a = Review.find(r)
           a.old_jagent_id = a.jagent_id
+          TrackTime.update(:review_id => r,:date_proposed => params[:date1], :user_id => params[:user_id],:date_complete => nil)
           a.jagent_id = params[:user_id]
           a.agent_id = params[:agent_id]
           a.save
@@ -39,6 +40,7 @@ class Admin::ReviewsController < AdminController
         reviews = params["review_ids"]
         reviews.each do |r|
           a = Review.find(r)
+          TrackTime.find_or_create_by_review_id(:review_id => r,:date_proposed => params[:date], :user_id => params[:user_id])
           a.jagent_id = params[:user_id]
           a.agent_id = params[:agent_id]
           a.save
@@ -68,12 +70,21 @@ class Admin::ReviewsController < AdminController
   end
 
   def update
-    
     if params[:commit] == 'Publish'
       @review.ispublished = true
       @review.published_date = DateTime.now
       @review.archive = false
       @review.last_published_agent_id = current_user.id
+      if @review.jagent_id.present?
+        unless @review.modified_review == params[:review][:modified_review]
+          @review.admin_sagent_modified = true
+        end
+
+        if @review.modified_review.blank? and params[:review][:modified_review].present?
+          @review.admin_sagent_modified = true
+        end
+      end
+
       respond_to do |format|
         if @review.update(review_params)
           ReviewMailer.publish_mail(@review).deliver!
@@ -109,6 +120,8 @@ class Admin::ReviewsController < AdminController
     else
       respond_to do |format|
         if @review.update(review_params)
+          @track_time = TrackTime.find(@review.track_times.first.id)
+          @track_time.update(:date_complete => Date.today)
           m = MonitorJagent.find_or_create_by_review_id(@review.id)
           m.modified_review = true
           m.save

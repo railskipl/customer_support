@@ -1,0 +1,228 @@
+<script type="text/javascript">
+	$.noConflict();
+  
+  jQuery(document).ready(function() {
+
+  jQuery(function() {
+  jQuery('#report_start_date').datepicker( 
+    { altField  : '#report_start_date',  // selector of the hidden input field you want sent to the server
+      dateFormat: 'yy-mm-dd',
+      altFormat : 'yy-mm-dd' } );
+    });
+
+    jQuery(function() {
+    jQuery('#report_end_date').datepicker( 
+    { altField  : '#report_end_date',  // selector of the hidden input field you want sent to the server
+      dateFormat: 'yy-mm-dd',
+      altFormat : 'yy-mm-dd' } );
+    });
+
+});
+
+  jQuery(document).ready(function() {
+
+  jQuery(function() {
+  jQuery('#report1_start_date').datepicker( 
+    { altField  : '#report_start_date',  // selector of the hidden input field you want sent to the server
+      dateFormat: 'yy-mm-dd',
+      altFormat : 'yy-mm-dd' } );
+    });
+
+    jQuery(function() {
+    jQuery('#report1_end_date').datepicker( 
+    { altField  : '#report_end_date',  // selector of the hidden input field you want sent to the server
+      dateFormat: 'yy-mm-dd',
+      altFormat : 'yy-mm-dd' } );
+    });
+
+});
+
+
+  jQuery(document).ready(function() {
+
+  jQuery(function() {
+  jQuery('#report2_start_date').datepicker( 
+    { altField  : '#report_start_date',  // selector of the hidden input field you want sent to the server
+      dateFormat: 'yy-mm-dd',
+      altFormat : 'yy-mm-dd' } );
+    });
+
+    jQuery(function() {
+    jQuery('#report2_end_date').datepicker( 
+    { altField  : '#report_end_date',  // selector of the hidden input field you want sent to the server
+      dateFormat: 'yy-mm-dd',
+      altFormat : 'yy-mm-dd' } );
+    });
+
+});
+</script>
+<table>
+  <%= form_for :report, :url=> reviews_processed_admin_reports_path, :method => :get do |f| %>
+    <h4>Filter Result - Number of reviews processed by each agent</h4>
+    <tr>
+      <td>From Date </td>
+      <td><span >
+        <%= f.text_field :start_date, :required => :true%>
+      </span></td>
+      <td>To Date </td>
+      <td><span >
+        <%= f.text_field :end_date,:required => :true %>
+         </span>
+      </td>
+    </tr>
+    <td><%= button_tag  :submit ,name:"subaction",value: "reviews_processed",:class => "btn btn btn-primary" %></td>    
+  <%end%>
+</table>
+
+<h4>Quantity – Number of reviews processed by each agent (12 months)</h4>
+
+<table id="reviews_processed">
+	<thead>
+		<tr>
+			<th>Sr. No</th>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Preferred Alias</th>
+			<th>Reviews Alloted</th>
+            <th>Reviews Processed</th>
+		</tr>
+	</thead>
+
+	<tbody>
+	    <% @track_times.each_with_index.each do |jagent,i|%>
+	      <%@user = User.find(jagent) rescue nil%>
+	      <%@tracks = @user.track_times.where('Date(created_at) >= ? and Date(Date(created_at)) <= ?',@start_from, @start_to)%>
+	      <%@processed = @tracks.where('date_complete is not null').count%>
+		<tr>
+			<td><%= i+1%></td>
+			<td><%= @user.first_name rescue nil%></td>
+			<td><%= @user.last_name rescue nil%></td>
+			<td><%= @user.preferred_alias rescue nil%></td>
+			<td><%= @tracks.count rescue nil%></td>
+			<td><%= @processed%></td>
+		</tr>
+		<%end%>
+	</tbody>
+</table>
+<br/>
+<table>
+  <%= form_for :report1, :url=> agent_output_admin_reports_path, :method => :get do |f| %>
+    <h4>Filter Result - Accuracy of Agents Output On The Basis Of Reviews</h4>
+    <tr>
+      <td>From Date </td>
+      <td><span >
+        <%= f.text_field :start_date, :required => :true%>
+      </span></td>
+      <td>To Date </td>
+      <td><span >
+        <%= f.text_field :end_date,:required => :true %>
+         </span>
+      </td>
+    </tr>
+    <td><%= button_tag  :submit ,name:"subaction",value: "agent_output",:class => "btn btn btn-primary" %></td>    
+  <%end%>
+</table>
+<h4>Accuracy of Agents Output On The Basis Of Reviews (12 months)</h4>
+<table id="agent_output">
+	<thead>
+		<tr>
+		    <th>Sr. No</th>
+			<th>Agent Name</th>
+			<th>Preferred Alias</th>
+			<th>Total Reviews Processed</th>
+			<th>Accurate Reviews</th>
+			<th>Correction</th>
+			<th>Total Comments Processed</th>
+			<th>Accurate Comments</th>
+			<th>Correction</th>
+		</tr>
+	</thead>
+
+	<tbody>
+	  <% @jagentid_reviews.each_with_index.each do |jagent,i|%>
+	    <%@user = User.find(jagent) rescue nil%>
+	    <%@reviews = Review.select(:id,:admin_sagent_modified).where('Date(created_at) >= ? and Date(Date(created_at)) <= ? and jagent_id = ? and user_id is not null',@start_from, @start_to,jagent) %>
+	    <%@correction_review = @reviews.where('admin_sagent_modified = ?', true).count%>
+	    <%@accurate_review = @reviews.where('admin_sagent_modified = ?', false).count%>
+	    <%@comments =  @user.comments.where('Date(created_at) >= ? and Date(Date(created_at)) <= ?',@start_from, @start_to) rescue nil%>
+	    <%@accurate_comment = @comments.where('admin_sagent_comment = ?', false).count rescue nil%>
+	    <%@correction_comment = @comments.where('admin_sagent_comment = ?', true).count rescue nil%>
+	    
+        <tr>
+        	<td><%= i+1%></td>
+        	<td><%= @user.first_name rescue nil%> <%= @user.last_name rescue nil%></td>
+        	<td><%= @user.preferred_alias rescue nil%></td>
+        	<td><%= @reviews.count rescue nil%></td>
+        	<td><%= @accurate_review rescue nil%></td>
+        	<td><%= @correction_review rescue nil%></td>
+        	<td><%= @comments.count rescue nil%></td>
+        	<td><%= @accurate_comment rescue nil%></td>
+        	<td><%= @correction_comment rescue nil%></td>
+        </tr>
+	  <%end%>
+	</tbody>
+</table>
+<br/>
+<table>
+  <%= form_for :report2, :url=> agent_performance_admin_reports_path, :method => :get do |f| %>
+    <h4>Filter Result - Agents performance</h4>
+    <tr>
+      <td>From Date </td>
+      <td><span >
+        <%= f.text_field :start_date, :required => :true%>
+      </span></td>
+      <td>To Date </td>
+      <td><span >
+        <%= f.text_field :end_date,:required => :true %>
+         </span>
+      </td>
+    </tr>
+    <td><%= button_tag  :submit ,name:"subaction",value: "agent_performance",:class => "btn btn btn-primary" %></td>    
+  <%end%>
+</table>
+<h4>Agents performance – how many queries they action in a given time (12 months)</h4>
+<table id="agent_performance">
+	<thead>
+		<tr>
+		    <th>Sr. No</th>
+			<th>Agent Name</th>
+			<th>Preferred Alias</th>
+			<th>Total Reviews Alloted</th>
+			<th>Reviews Processed On Time</th>
+			<th>Late Processed</th>
+			<th>Not Processed</th>
+		</tr>
+	</thead>
+
+	<tbody>
+	    <% @track_times.each_with_index.each do |track,i|%>
+	    <%@user = User.find(track) rescue nil%>
+	    <%@tracks = @user.track_times.where('Date(created_at) >= ? and Date(Date(created_at)) <= ?',@start_from, @start_to) rescue nil%>
+	    <%@tracks.each do |tt|%>
+	      <%@a ||= [] #on time%> 
+	      <%@b ||= [] #out of time%>
+	      <%@c ||= [] #not processed%>
+	      <%unless tt.date_complete.blank?%>
+		      <%if tt.date_proposed >= tt.date_complete%>
+	             <%@a << tt.id%>
+	          <%else%>
+	             <%@b << tt.id%>
+		      <%end%>
+	      <%else%>
+              <%@c << tt.id%>
+	      <%end%>
+	    <%end%>
+	    
+		<tr>
+		  <td><%= i+1%></td>
+		  <td><%= @user.first_name rescue nil%> <%= @user.last_name rescue nil%></td>
+		  <td><%= @user.preferred_alias rescue nil%></td>
+		  <td><%= @tracks.count%></td>
+		  <td><%= @a.count%></td>
+		  <td><%= @b.count%></td>
+		  <td><%= @c.count%></td>
+		</tr>
+		<%end%>
+		
+	</tbody>
+</table>

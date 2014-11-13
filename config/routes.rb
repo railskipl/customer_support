@@ -104,6 +104,10 @@ Jmd::Application.routes.draw do
         get :poll
         get :industry_conversion
         get :company_conversion
+        get :agent
+        get :reviews_processed
+        get :agent_output
+        get :agent_performance
       
       end
     end

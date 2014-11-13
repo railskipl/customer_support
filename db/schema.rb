@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141104120227) do
+ActiveRecord::Schema.define(version: 20141112120902) do
 
   create_table "abuse_reports", force: true do |t|
     t.string   "user_email"
@@ -70,10 +70,11 @@ ActiveRecord::Schema.define(version: 20141104120227) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "ispublished",      default: false
+    t.boolean  "ispublished",          default: false
     t.string   "name"
     t.string   "email"
     t.text     "modified_comment"
+    t.boolean  "admin_sagent_comment", default: false
   end
 
   create_table "companies", force: true do |t|
@@ -256,6 +257,7 @@ ActiveRecord::Schema.define(version: 20141104120227) do
     t.integer  "agent_id"
     t.integer  "old_jagent_id"
     t.integer  "last_published_agent_id"
+    t.boolean  "admin_sagent_modified",   default: false
   end
 
   create_table "seos", force: true do |t|
@@ -315,6 +317,15 @@ ActiveRecord::Schema.define(version: 20141104120227) do
 
   create_table "towns", force: true do |t|
     t.string   "title"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "track_times", force: true do |t|
+    t.integer  "review_id"
+    t.date     "date_proposed"
+    t.date     "date_complete"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"

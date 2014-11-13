@@ -1,6 +1,30 @@
+<script type="text/javascript">
+  $.noConflict();
+  
+  jQuery(document).ready(function() {
+
+  jQuery(function() {
+  jQuery('#date').datepicker( 
+    { altField  : '#date',  // selector of the hidden input field you want sent to the server
+      dateFormat: 'yy-mm-dd',
+      altFormat : 'yy-mm-dd' } );
+    });
+});
+
+jQuery(document).ready(function() {
+
+  jQuery(function() {
+  jQuery('#date1').datepicker( 
+    { altField  : '#date',  // selector of the hidden input field you want sent to the server
+      dateFormat: 'yy-mm-dd',
+      altFormat : 'yy-mm-dd' } );
+    });
+});
+
+</script>
 <% if (current_user.is? :admin) || (current_user.is? :agent) %>
 <h1>Assign Reviews</h1>
-    <%= form_tag admin_assign_reviews_path ,:method => :put do %>
+    <%= form_tag admin_assign_reviews_path ,:method => :put do |f|%>
 <table id="reviews1" >
   <thead>
     <tr>
@@ -31,12 +55,14 @@
 		    </td>
       </tr>
     <% end %>
- 
+    
   </tbody>
-</table>
+</table><br/>
+    <label>Enter date, till what date reviews should be processed</label>
+    <%= text_field_tag :date,nil,:placeholder => "Enter Date"%><br/>
     <%= hidden_field_tag 'agent_id', current_user.id %>
     <%= select_tag 'user_id', options_for_select(@users.collect{ |u| [u.preferred_alias, u.id] }) %><br/>
-   <%= submit_tag "Assign Reviews" %>
+   <%= submit_tag "Assign Reviews", :confirm => "Please check and confirm to assign reviews and proposed date to finish." %>
     <% end %>
 <br>
 
@@ -97,11 +123,13 @@
     <% end %>
  
   </tbody>
-</table>
+</table><br/ >
+   <label>Enter date, till what date reviews should be processed</label>
+    <%= text_field_tag :date1,nil,:placeholder => "Enter Date"%><br/>
    <%= hidden_field_tag 'reassign', "yes"%>
     <%= hidden_field_tag 'agent_id', current_user.id %>
     <%= select_tag 'user_id', options_for_select(@users.collect{ |u| [u.preferred_alias, u.id] }) %><br/>
-   <%= submit_tag "Assign Reviews" %>
+   <%= submit_tag "Assign Reviews", :confirm => "Please check and confirm to assign reviews and proposed date to finish." %>
     <% end %>
 <br>
 

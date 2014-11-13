@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :seos
   has_many :abuse_reports
+  has_many :track_times
 
   before_save :title_case_name
   validates :preferred_alias, uniqueness: true

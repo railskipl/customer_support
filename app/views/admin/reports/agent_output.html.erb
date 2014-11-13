@@ -1,0 +1,56 @@
+<%if params[:subaction] == "agent_output" %>
+  <h4> Quality: accuracy of agents output</h4>
+  <strong>Displaying data for duration <%= params[:report1][:start_date]%> to <%= params[:report1][:end_date]%>
+<%elsif params[:id] == "data_dump"%>
+    <strong> Quality: accuracy of agents output</strong>
+<%else%>
+   Quality: accuracy of agents output
+<%end%>
+<table id="agent_output">
+	<thead>
+		<tr>
+		    <th>Sr. No</th>
+			<th>Agent Name</th>
+			<th>Preferred Alias</th>
+			<th>Total Reviews Processed</th>
+			<th>Accurate Reviews</th>
+			<th>Correction</th>
+			<th>Total Comments Processed</th>
+			<th>Accurate Comments</th>
+			<th>Correction</th>
+		</tr>
+	</thead>
+
+	<tbody>
+	  <% @jagentid_reviews.each_with_index.each do |jagent,i|%>
+	    <%@user = User.find(jagent) rescue nil%>
+
+	    <%if params[:id] == "data_dump"%>
+	      <%@reviews = Review.select(:id,:admin_sagent_modified).where('jagent_id = ? and user_id is not null',jagent)  %>
+	      <%@comments =  @user.comments rescue nil%>
+	    <%else%>
+	      <%@reviews = Review.select(:id,:admin_sagent_modified).where('Date(created_at) >= ? and Date(Date(created_at)) <= ? and jagent_id = ? and user_id is not null',@start_from, @start_to,jagent) %>
+	      <%@comments =  @user.comments.where('Date(created_at) >= ? and Date(Date(created_at)) <= ?',@start_from, @start_to) rescue nil%>
+	    <%end%>
+	    
+
+	    <%@correction_review = @reviews.where('admin_sagent_modified = ?', true).count%>
+	    <%@accurate_review = @reviews.where('admin_sagent_modified = ?', false).count%>
+	    
+	    <%@accurate_comment = @comments.where('admin_sagent_comment = ?', false).count rescue nil%>
+	    <%@correction_comment = @comments.where('admin_sagent_comment = ?', true).count rescue nil%>
+	    
+        <tr>
+        	<td><%= i+1%></td>
+        	<td><%= @user.first_name rescue nil%> <%= @user.last_name rescue nil%></td>
+        	<td><%= @user.preferred_alias rescue nil%></td>
+        	<td><%= @reviews.count rescue nil%></td>
+        	<td><%= @accurate_review rescue nil%></td>
+        	<td><%= @correction_review rescue nil%></td>
+        	<td><%= @comments.count rescue nil%></td>
+        	<td><%= @accurate_comment rescue nil%></td>
+        	<td><%= @correction_comment rescue nil%></td>
+        </tr>
+	  <%end%>
+	</tbody>
+</table>

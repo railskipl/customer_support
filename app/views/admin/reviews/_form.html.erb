@@ -30,7 +30,9 @@ $(document).ready(function(){
       </ul>
     </div>
   <% end %>
-  
+  <%if @review.track_times.present?%>
+    <strong>Review should be processed on or before <%= (@review.track_times.first.date_proposed).strftime("%d-%m-%y")%></strong><br/>
+  <%end%>
   <div class="field">
     <strong> Ticket Number: </strong><%=@review.ticket_number%>
   </div><br/>

@@ -1,13 +1,15 @@
 <table>
-<tr>
-  <td><%= link_to "Customer details", user_profile_admin_reports_path,:class=> "btn"%><br/></td>
-<td><%= link_to "Industry Level Totals", industry_admin_reports_path,:class=> "btn"%><br/></td>
-<td><%= link_to "Company/Supplier Level Totals", company_admin_reports_path,:class=> "btn"%><br/></td>
-<td><%= link_to "Download Archive Data",archive_data_admin_reports_path,:class=> "btn"%><br/></td>
-<td><%= link_to "Download Polls Data",polls_admin_reports_path,:class=> "btn"%><br/></td>
-<td><%= link_to "Data Dump",data_dump_admin_reports_path,:class=> "btn"%><br/></td>
-</tr>
-</table></br>
+	<tr>
+		<td><%= link_to "Customer details", user_profile_admin_reports_path,:class=> "btn", :style=>"padding: 0 7px 1px;"%></td>
+		<td><%= link_to "Industry Level Totals", industry_admin_reports_path,:class=> "btn",:style=>"padding: 0 7px 1px;"%></td>
+		<td><%= link_to "Company/Supplier Level Totals", company_admin_reports_path,:class=> "btn",:style=>"padding: 0 7px 1px;"%></td>
+		<td><%= link_to "Download Archive Data",archive_data_admin_reports_path,:class=> "btn",:style=>"padding: 0 7px 1px;"%></td>
+		<td><%= link_to "Download Polls Data",polls_admin_reports_path,:class=> "btn",:style=>"padding: 0 7px 1px;"%></td>
+		<td><%= link_to "Data Dump",data_dump_admin_reports_path,:class=> "btn",:style=>"padding: 0 7px 1px;"%></td>
+		<td><%= link_to "Agents",agent_admin_reports_path,:class=> "btn",:style=>"padding: 0 7px 1px;"%></td>
+	</tr>
+</table>
+</br>
 <strong>Download Data for 12 Months period</strong></br></br>
 <%= link_to image_tag('/assets/excel.png', :border=>"0", :align=>"absmiddle") + "Summary of reviews Excel", customer_record_admin_reports_path%><br/>
 <%= link_to image_tag('/assets/excel.png', :border=>"0", :align=>"absmiddle") + "Industry conversion stats", conversion_industry_admin_reports_path(params.merge(format: "xls")), :method=> :get%><br/>
@@ -26,6 +28,12 @@
 <%= link_to image_tag('/assets/excel.png', :border=>"0", :align=>"absmiddle") + "List Of Unregistered Suppliers", unregistered_suppliers_admin_reports_path(params.merge(format: "xls")), :method=> :get %>
 <br/>
 <%= link_to image_tag('/assets/excel.png', :border=>"0", :align=>"absmiddle") + "Download Poll Results(12 months)", polls_admin_reports_path(params.merge(format: "xls")), :method=> :get %>
+<br/>
+<%= link_to image_tag('/assets/excel.png', :border=>"0", :align=>"absmiddle") + "Download reviews processed by each agent (12 months)", reviews_processed_admin_reports_path(params.merge(format: "xls")), :method=> :get %>
+<br/>
+<%= link_to image_tag('/assets/excel.png', :border=>"0", :align=>"absmiddle") + "Download accuracy of agents output (12 months)", agent_output_admin_reports_path(params.merge(format: "xls")), :method=> :get %>
+<br/>
+<%= link_to image_tag('/assets/excel.png', :border=>"0", :align=>"absmiddle") + "Download Agents performance (12 months)", agent_performance_admin_reports_path(params.merge(format: "xls")), :method=> :get %>
 <br/>
 
 <br/><br/>

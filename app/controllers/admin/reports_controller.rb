@@ -294,6 +294,82 @@ layout :custom_layout
   	send_data(render_to_string(:template=>"admin/reports/poll.html.erb" ) , :type=>"text/xls",:filename => "polls.xls")
   end
 
+  def agent  
+    @start_from = 1.year.ago 
+    @start_to =  Date.today 
+    @jagentid_reviews = Review.select(:id,:jagent_id).where('Date(created_at) >= ? and Date(Date(created_at)) <= ? and user_id is not null and jagent_id is not null ',@start_from, @start_to).pluck(:jagent_id).uniq rescue nil #Quantity 
+    @track_times = TrackTime.select(:id,:user_id).where('Date(created_at) >= ? and Date(Date(created_at)) <= ? and user_id is not null ',@start_from, @start_to).pluck(:user_id).uniq rescue nil
+  end
+
+ def reviews_processed
+    if params[:subaction] == "reviews_processed"
+      @start_from = params[:report][:start_date] rescue ""
+      @start_to = params[:report][:end_date] rescue ""
+      if @start_from > @start_to
+        flash[:notice] = "Start date cannot be greater than End date."
+      else
+        @start_from
+        @start_to
+      end
+    elsif params[:id] == "data_dump"
+       @track_times = TrackTime.select(:id,:user_id).pluck(:user_id).uniq rescue nil 
+       send_data(render_to_string(:template=>"admin/reports/reviews_processed.html.erb" ) , :type=>"text/xls",:filename => "total_reviews_processed.xls")
+    else
+      @start_from = 1.year.ago 
+      @start_to =  Date.today 
+    end
+    unless params[:id] == "data_dump" 
+    @track_times = TrackTime.select(:id,:user_id).where('Date(created_at) >= ? and Date(Date(created_at)) <= ? and user_id is not null ',@start_from, @start_to).pluck(:user_id).uniq rescue nil
+    send_data(render_to_string(:template=>"admin/reports/reviews_processed.html.erb" ) , :type=>"text/xls",:filename => "total_reviews_processed.xls")
+    end
+ end
+
+ def agent_output
+   if params[:subaction] == "agent_output"
+      @start_from = params[:report1][:start_date] rescue ""
+      @start_to = params[:report1][:end_date] rescue ""
+      if @start_from > @start_to
+        flash[:notice] = "Start date cannot be greater than End date."
+      else
+        @start_from
+        @start_to
+      end
+    elsif params[:id] == "data_dump"
+      @jagentid_reviews = Review.select(:id,:jagent_id).where('user_id is not null and jagent_id is not null ').pluck(:jagent_id).uniq rescue nil #Quantity 
+      send_data(render_to_string(:template=>"admin/reports/agent_output.html.erb" ) , :type=>"text/xls",:filename => "agent_output.xls")
+    else
+      @start_from = 1.year.ago 
+      @start_to =  Date.today 
+    end
+    unless params[:id] == "data_dump" 
+    @jagentid_reviews = Review.select(:id,:jagent_id).where('Date(created_at) >= ? and Date(Date(created_at)) <= ? and user_id is not null and jagent_id is not null ',@start_from, @start_to).pluck(:jagent_id).uniq rescue nil #Quantity 
+    send_data(render_to_string(:template=>"admin/reports/agent_output.html.erb" ) , :type=>"text/xls",:filename => "agent_output.xls")
+    end
+ end
+
+ def agent_performance
+   if params[:subaction] == "agent_performance"
+      @start_from = params[:report2][:start_date] rescue ""
+      @start_to = params[:report2][:end_date] rescue ""
+      if @start_from > @start_to
+        flash[:notice] = "Start date cannot be greater than End date."
+      else
+        @start_from
+        @start_to
+      end
+    elsif params[:id] == "data_dump"
+      @track_times = TrackTime.select(:id,:user_id).pluck(:user_id).uniq rescue nil
+      send_data(render_to_string(:template=>"admin/reports/agent_performance.html.erb" ) , :type=>"text/xls",:filename => "agent_performance.xls")
+    else
+      @start_from = 1.year.ago 
+      @start_to =  Date.today 
+    end
+    unless params[:id] == "data_dump"    
+    @track_times = TrackTime.select(:id,:user_id).where('Date(created_at) >= ? and Date(Date(created_at)) <= ? and user_id is not null ',@start_from, @start_to).pluck(:user_id).uniq rescue nil
+    send_data(render_to_string(:template=>"admin/reports/agent_performance.html.erb" ) , :type=>"text/xls",:filename => "agent_performance.xls")
+    end
+ end
+
   private
 
 	def get_default_for_reviews
@@ -345,7 +421,14 @@ layout :custom_layout
          when "industry_conversion"
            "no_layout"	
          when "company_conversion"		
-           "no_layout"																				
+           "no_layout"
+         when "reviews_processed"
+           "no_layout"
+         when "agent_output"
+           "no_layout"
+         when "agent_performance"
+           "no_layout"
+                                                                                                                                                                                                            																				
          else
           "admin"
         end

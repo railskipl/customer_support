@@ -68,4 +68,7 @@ $(document).ready(function() {
        $('#supplier_level_complaint').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [1] }] } );
        $('#industry_conversion').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [2] }] } );
        $('#poll_id').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [4] }] } );
+       $('#reviews_processed').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [4] }] } );
+       $('#agent_output').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [8] }] } );
+       $('#agent_performance').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [6] }] } );
 });

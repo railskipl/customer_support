@@ -24,3 +24,31 @@
 	<% end %>
 </tbody>
 </table>
+<br/>
+<h2>Reviews</h2>
+<table id="monitor2" cellpadding=10>
+	<thead>
+	<tr>
+		<th>Review</th> 
+		<th>Junior Agent</th> 
+		<th>Assignee</th>
+		<th>Ticket Closed By Junior Agent</th>
+		<th>Modified Review By Junior Agent</th>
+		<th>Published By</th>
+		<th>Status</th>
+	</tr>
+	</thead>
+	<tbody>
+	<% @reviews.each do |review| %>
+	<tr>
+		<td><%= link_to review.ticket_number ,admin_review_path(review.id) rescue nil%></td>
+		<td><%= review.jagent.preferred_alias rescue nil%></td>
+		<td><%= review.agent == current_user ? "You" : mon.review.agent.preferred_alias %></td>
+		<td><%= review.monitor_jagent.ticked_closed_by_jagent? ? "Yes" : "No" rescue nil%></td>
+		<td><%= review.monitor_jagent.modified_review? ? "Yes" : "No" rescue nil%></td>
+		<td><%= review.ispublished? ? mon.review.last_published_agent.preferred_alias : "No" rescue nil%></td>
+		<td><%= review.monitor_jagent.status %></td>
+	</tr>
+	<% end %>
+</tbody>
+</table>

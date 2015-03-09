@@ -7,6 +7,7 @@
 		<th>Ticket Closed By Junior Agent</th>
 		<th>Modified Review By Junior Agent</th>
 		<th>Published By</th>
+		<th>Status</th>
 	</tr>
 	</thead>
 	<tbody>
@@ -18,6 +19,7 @@
 		<td><%= mon.ticked_closed_by_jagent? ? "Yes" : "No" rescue nil%></td>
 		<td><%= mon.modified_review? ? "Yes" : "No" rescue nil%></td>
 		<td><%= mon.review.ispublished? ? mon.review.last_published_agent.preferred_alias : "No" rescue nil%></td>
+		<td><%= mon.status %></td>
 	</tr>
 	<% end %>
 </tbody>

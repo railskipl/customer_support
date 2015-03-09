@@ -25,7 +25,7 @@ jQuery(document).ready(function() {
 
 </script>
 <% if (current_user.is? :admin) || (current_user.is? :agent) %>
-<h1>Assign Reviews</h1>
+<h1>Assign reviews to agents (Reviews which are not yet assigned)</h1>
     <%= form_tag admin_assign_reviews_path ,:method => :put do |f|%>
 <table id="reviews1" >
   <thead>
@@ -69,7 +69,7 @@ jQuery(document).ready(function() {
 <br>
 
 
-<h1>Assigned Reviews</h1>
+<h1>Assigned Reviews (Reviews which are assigned)</h1>
 
 <table id="reviews3"  >
   <thead>

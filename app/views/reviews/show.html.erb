@@ -71,6 +71,15 @@
 				  <div>
 				  <%= @review.title%>
 				  </div>
+
+				  <div class="name_lft">Conversion: </div>
+				  <div>
+				  <% if @review.change_date %>
+				  	Yes
+				  <% else %>
+				  No
+				  <% end %>
+				  </div>
 			
 				  <div class="name_lft">Attachment: </div>
 				  <div>

@@ -86,15 +86,15 @@
   </div>
   <div class="field">
     <%= f.label :title2, "Title" %>
-    <%= f.select :title2, [ ["Mr"], [" Ms"],["Mrs"] ],required: true%>
+    <%= f.select :title2, [ ["Mr"], [" Ms"],["Mrs"] ] %>
   </div>
   <div class="field">
     <%= f.label :fname2, "First Name" %>
-    <%= f.text_field :fname2 ,required: true, :pattern => '[A-Za-z]+' %>
+    <%= f.text_field :fname2 , :pattern => '[A-Za-z]+' %>
   </div>
   <div class="field">
     <%= f.label :lname2, "Last Name" %>
-    <%= f.text_field :lname2 ,required: true, :pattern => '[A-Za-z]+' %>
+    <%= f.text_field :lname2 , :pattern => '[A-Za-z]+' %>
   </div>
   <div class="field">
     <%= f.label :email2, "Email" %>
@@ -102,11 +102,11 @@
   </div>
   <div class="field">
     <%= f.label :tno2, "Telephone Number" %>
-    <%= f.text_field :tno2 ,required: true, :pattern => '[0-9]{10,10}'%>
+    <%= f.text_field :tno2 , :pattern => '[0-9]{10,10}'%>
   </div>
   <div class="field">
     <%= f.label :mno2, "Mobile Number" %>
-    <%= f.text_field :mno2 ,required: true, :pattern => '[0-9]{10,10}'%>
+    <%= f.text_field :mno2 , :pattern => '[0-9]{10,10}'%>
   </div>
   <h3>Contact Person 3</h3>
     <div class="field">
@@ -115,15 +115,15 @@
   </div>
   <div class="field">
     <%= f.label :title3, "" %>
-    <%= f.select :title3, [ ["Mr"], [" Ms"],["Mrs"] ],required: true%>
+    <%= f.select :title3, [ ["Mr"], [" Ms"],["Mrs"] ]%>
   </div>
   <div class="field">
     <%= f.label :fname3, "First Name" %>
-    <%= f.text_field :fname3 ,required: true, :pattern => '[A-Za-z]+' %>
+    <%= f.text_field :fname3 , :pattern => '[A-Za-z]+' %>
   </div>
   <div class="field">
     <%= f.label :lname3, "Last Name" %>
-    <%= f.text_field :lname3 ,required: true, :pattern => '[A-Za-z]+' %>
+    <%= f.text_field :lname3 , :pattern => '[A-Za-z]+' %>
   </div>
   <div class="field">
     <%= f.label :email3, "Email" %>
@@ -131,11 +131,11 @@
   </div>
   <div class="field">
     <%= f.label :tno3, "Telephone Number" %>
-    <%= f.text_field :tno3,required: true, :pattern => '[0-9]{10,10}'%>
+    <%= f.text_field :tno3, :pattern => '[0-9]{10,10}'%>
   </div>
   <div class="field">
     <%= f.label :mno3, "Mobile Number" %>
-    <%= f.text_field :mno3 ,required: true, :pattern => '[0-9]{10,10}'%>
+    <%= f.text_field :mno3 , :pattern => '[0-9]{10,10}'%>
   </div>
   <%if current_user.role == "admin"%>
 		<div class="field">

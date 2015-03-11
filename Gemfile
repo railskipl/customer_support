@@ -20,7 +20,7 @@ gem 'jquery-ui-rails'
 gem 'jquery-modal-rails'
 gem 'recaptcha', :require => 'recaptcha/rails'
 gem 'twitter-bootstrap-rails'
-gem 'jquery-datatables-rails', github: 'rweng/jquery-datatables-rails'
+gem 'jquery-datatables-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'sdoc', require: false

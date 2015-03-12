@@ -81,15 +81,15 @@ Jmd::Application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.default_url_options = { :host => 'http://customer-support-demo.herokuapp.com/' }
-	config.action_mailer.smtp_settings = {
-		:address              => "smtp.sendgrid.net",
-		:port                 => 25,
-		:domain               => 'rorfactory.com',
-		:user_name            => 'rorfact',
-		:password             => 'Shell@123',
-		:authentication      	=> 'plain',
-		:enable_starttls_auto => true
-	}
+      config.action_mailer.smtp_settings = {
+            :enable_starttls_auto => true,
+            :address => "smtp.gmail.com",
+            :port => 587,
+            :domain => "imap.gmail.com",
+            :authentication => :login,
+            :user_name => "atishkunalinfotech@gmail.com",
+            :password => "kunalinfotech"
+        }
   config.action_mailer.raise_delivery_errors = true
 end
 #http://69.25.137.192/

@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   has_many :seos
   has_many :abuse_reports
   has_many :track_times
+  has_many :notifications, :class_name => "ReceiverAagent"
 
   before_save :title_case_name
   validates :preferred_alias, uniqueness: true

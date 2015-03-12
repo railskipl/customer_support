@@ -52,6 +52,7 @@ Jmd::Application.routes.draw do
     get '/town/locations_by_town_and_company' => "reports#locations_by_town_and_company"
 
     resources :monitor_jagents ,:only => [:index]
+    resources :notifications ,:only => [:index]
   	resources :users
   	resources :locations
   	resources :towns

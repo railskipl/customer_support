@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150309095212) do
+ActiveRecord::Schema.define(version: 20150311060040) do
 
   create_table "abuse_reports", force: true do |t|
     t.string   "user_email"
@@ -169,6 +169,16 @@ ActiveRecord::Schema.define(version: 20150309095212) do
     t.string   "title"
     t.string   "user_id"
     t.string   "review_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "notifications", force: true do |t|
+    t.string   "notification_type"
+    t.integer  "notifiable_id"
+    t.boolean  "is_read",            default: false
+    t.integer  "receiver_agent_id"
+    t.integer  "receiver_jagent_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -40,7 +40,7 @@ class AdminController < ActionController::Base
         if @supplier_registration.count > 1
          flash[:notice] = "There are several supplier registrations has been expired."
        else
-         flash[:notice] = "Supplier registration has been expired."
+         flash.now[:notice] = "Supplier registration has been expired."
        end
       end
     end

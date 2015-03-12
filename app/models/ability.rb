@@ -36,6 +36,7 @@ class Ability
       can :manage, AbuseReport
     elsif user.is? :agent
       cannot :manage, Resource
+      can :manage, Notification
       can :read, MonitorJagent
       cannot :manage, Maintainence
       cannot :manage, Page
@@ -75,6 +76,7 @@ class Ability
       cannot :destroy, Supplier
     elsif user.is? :jagent
       cannot :read, MonitorJagent
+      can :manage, Notification
       cannot :manage, Resource
       cannot :manage, Maintainence
       cannot :manage, Page

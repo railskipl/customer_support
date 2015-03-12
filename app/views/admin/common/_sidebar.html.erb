@@ -62,6 +62,12 @@
 		  </li>
     	<%end%>
 
+    	<%  if can? :read, Notification %>
+		  <li class="<%=(@active_tab == 'Notification Comments') ? 'active' : ''%>">
+					<%=link_to 'Notification Comments', admin_notifications_path%>
+		  </li>
+    	<%end%>
+
 
 		<%  if can? :read, Industry%>
 		  <li class="<%=(@active_tab == 'industries') ? 'active' : ''%>">

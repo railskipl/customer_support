@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 # ruby '2.1.2'
 gem 'rails', '4.0.1'
 gem 'cancan'
-#gem 'pg'
+gem 'pg'
 gem 'mysql2'
 gem 'chronic'
 gem "nested_form"

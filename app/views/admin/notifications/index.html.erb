@@ -9,7 +9,7 @@
 	<tbody>
 	<% @notifications.each do |notification| %>
 	<tr>
-		<td><%= notification.comment.review.ticket_number %></td>
+		<td><%= link_to notification.comment.review.ticket_number,admin_review_path(notification.comment.review.id) %></td>
 		<td>A new comment is made on this review</td>
 	</tr>
 	<% end %>

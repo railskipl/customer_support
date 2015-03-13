@@ -8,6 +8,7 @@
 		<th>Modified Review By Junior Agent</th>
 		<th>Published By</th>
 		<th>Status</th>
+		<th>Comment Status</th>
 	</tr>
 	</thead>
 	<tbody>
@@ -20,6 +21,7 @@
 		<td><%= mon.modified_review? ? "Yes" : "No" rescue nil%></td>
 		<td><%= mon.review.ispublished? ? mon.review.last_published_agent.preferred_alias : "No" rescue nil%></td>
 		<td><%= mon.status %></td>
+		<td><%= mon.comment_status %></td>
 	</tr>
 	<% end %>
 </tbody>

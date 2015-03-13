@@ -9,6 +9,8 @@ class ReviewsController < ApplicationController
 	end
 	
 	def search_reviews
+    @action = "review"
+    @active_tab = "review"
     @reviews = []
     if params[:town_id]
       town = Town.find(params[:town_id])
@@ -25,8 +27,8 @@ class ReviewsController < ApplicationController
       location = Location.find params[:location_id]
       @reviews = location.reviews.where("ispublished = ?", true) if location 
     elsif params[:company_id]
-      company = Company.find params[:company_id]
-      @reviews = company.reviews.where("ispublished = ?", true) if company
+      company = Company.includes(:reviews).find(params[:company_id])
+      @reviews = company.reviews.where("ispublished = ?", true).order("date DESC") if company
     elsif params[:review_type]
     	@reviews = @reviews.where("review_type=? AND ispublished = ?",params[:review_type],true)
     end

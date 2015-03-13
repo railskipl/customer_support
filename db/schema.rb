@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150311060040) do
+ActiveRecord::Schema.define(version: 20150313072939) do
 
   create_table "abuse_reports", force: true do |t|
     t.string   "user_email"
@@ -163,6 +163,7 @@ ActiveRecord::Schema.define(version: 20150311060040) do
     t.boolean  "c_comment"
     t.boolean  "archive_att"
     t.string   "status"
+    t.string   "comment_status"
   end
 
   create_table "nature_of_reviews", force: true do |t|

@@ -49,7 +49,7 @@
 		<td><%= review.monitor_jagent.ticked_closed_by_jagent? ? "Yes" : "No" rescue nil%></td>
 		<td><%= review.monitor_jagent.modified_review? ? "Yes" : "No" rescue nil%></td>
 		<td><%= review.ispublished? ? mon.review.last_published_agent.preferred_alias : "No" rescue nil%></td>
-		<td><%= review.monitor_jagent.status %></td>
+		<td><%= review.monitor_jagent.try(:status) %></td>
 	</tr>
 	<% end %>
 </tbody>

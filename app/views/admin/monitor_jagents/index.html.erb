@@ -16,7 +16,7 @@
 	<tr>
 		<td><%= link_to mon.review.ticket_number ,admin_review_path(mon.review.id) rescue nil%></td>
 		<td><%= mon.review.jagent.preferred_alias rescue nil%></td>
-		<td><%= mon.review.agent == current_user ? "You" : mon.review.agent.preferred_alias %></td>
+		<td><%= mon.review.agent == current_user ? "You" : mon.review.agent.try(:preferred_alias) %></td>
 		<td><%= mon.ticked_closed_by_jagent? ? "Yes" : "No" rescue nil%></td>
 		<td><%= mon.modified_review? ? "Yes" : "No" rescue nil%></td>
 		<td><%= mon.review.ispublished? ? mon.review.last_published_agent.preferred_alias : "No" rescue nil%></td>

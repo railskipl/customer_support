@@ -2,6 +2,7 @@ class Comment < ActiveRecord::Base
   belongs_to :review
   belongs_to :user
   belongs_to :supplier
+  has_many :notifications
   validates :title, presence: true
   scope :published, -> { where(ispublished: true) }
   scope :supplier_comments, -> { where("supplier_id is NOT NULL") }

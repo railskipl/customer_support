@@ -1,4 +1,3 @@
-<% if current_user.is_admin? %>
   <%unless @supplier_registration.blank?%>
 	  <h4>List of Supplier Registrations Expired</h4>
 		<table id="supplier_registration">
@@ -24,7 +23,7 @@
 			  <% end %>
 			</tbody>
 		</table>
-  <%end%>
+
   <h4>Customers</h4>
 	<table id="customers">
 		<thead>
@@ -80,7 +79,7 @@
 	</table>
 <%end%>
 
-<h4>Reviews</h4>
+<h4>All Reviews</h4>
 
 <table id="admin_review" >
 	<thead>
@@ -114,7 +113,7 @@
 </table>
 
 
-<h4>Unpublished Reviews</h4>
+<h4>Reviews To Action</h4>
 
 <table id="recently_added_review" >
 	<thead>

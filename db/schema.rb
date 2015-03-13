@@ -174,8 +174,7 @@ ActiveRecord::Schema.define(version: 20150311060040) do
   end
 
   create_table "notifications", force: true do |t|
-    t.string   "notification_type"
-    t.integer  "notifiable_id"
+    t.integer  "comment_id"
     t.boolean  "is_read",            default: false
     t.integer  "receiver_agent_id"
     t.integer  "receiver_jagent_id"

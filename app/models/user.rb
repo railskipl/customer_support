@@ -11,8 +11,10 @@ class User < ActiveRecord::Base
   has_many :seos
   has_many :abuse_reports
   has_many :track_times
-  has_many :notifications, :class_name => "ReceiverAagent"
-
+  
+  has_many :agent_notifications, :class_name => "Notification", :foreign_key => 'receiver_agent_id'
+  has_many :jagent_notifications, :class_name => "Notification", :foreign_key => 'receiver_agent_id'
+  
   before_save :title_case_name
   validates :preferred_alias, uniqueness: true
   validates :password, confirmation: true

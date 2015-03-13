@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
     @comment = @review.comments.new(comment_params)
     r = @comment.review
     if @comment.save
-      Notification.create(:notification_type => "Comment", :notifiable_id => @comment.id,:receiver_agent_id => r.agent_id, :receiver_jagent_id => r.jagent_id )
+      Notification.create(:comment_id => @comment.id,:receiver_agent_id => r.agent_id, :receiver_jagent_id => r.jagent_id )
       ReviewMailer.comment_agent_mail(@review,@comment,current_user).deliver!
       redirect_to [@review], :notice => 'Thanks for your comment, will be will reviewed by our customer support soon'
     else

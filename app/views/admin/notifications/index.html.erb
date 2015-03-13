@@ -1,0 +1,18 @@
+<b>My Comment Notifications</b>
+<table id="notification" cellpadding=10>
+	<thead>
+	<tr>
+		<th>Ticket Number</th>
+		<th>Description</th>
+	</tr>
+	</thead>
+	<tbody>
+	<% @notifications.each do |notification| %>
+	<tr>
+		<td><%= notification.comment.review.ticket_number %></td>
+		<td>A new comment is made on this review</td>
+	</tr>
+	<% end %>
+</tbody>
+</table>
+<br/>

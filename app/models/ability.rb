@@ -72,7 +72,7 @@ class Ability
       can    :update, User, :id => user.id
       can    :manage, Comment
       can    :destroy, Review
-      can    :manage, Supplier
+      can    :read , Supplier
       cannot :destroy, Supplier
     elsif user.is? :jagent
       cannot :read, MonitorJagent

@@ -14,9 +14,9 @@
   <% if comment.ispublished == false%>
     <%= form_for([:admin, @review, comment]) do |f| %>
       <% if current_user.role == "jagent" %>
-        <%= link_to "Modify Comment" ,edit_admin_review_comment_path(:review_id => @review.id, :id => comment.id ) %>
+        <%= link_to "Modify Comment" ,edit_admin_review_comment_path(:review_id => @review.id, :id => comment.id ) , :class => "btn btn-primary" %>
       <% else %>
-      <%= link_to "Modify Comment" ,edit_admin_review_comment_path(:review_id => @review.id, :id => comment.id ) %>
+      <%= link_to "Modify Comment" ,edit_admin_review_comment_path(:review_id => @review.id, :id => comment.id )  , :class => "btn btn-primary"%>
         <%= f.submit 'Publish', class: "btn btn-primary" %>
       <% end %>
     <% end %>

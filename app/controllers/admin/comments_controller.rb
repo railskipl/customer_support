@@ -36,8 +36,13 @@ class Admin::CommentsController < AdminController
       m.save
       @comment.modified_comment = params["comment"]["modified_comment"]
     else
-      @jagent = User.select(:id,:role).where('id = ?', @comment.user_id).first
-      if @jagent.role == "jagent"
+      if @comment.user_id
+        uid = @comment.user_id
+      else
+        uid = current_user.id
+      end
+      @jagent = User.select(:id,:role).where('id = ?', uid).first
+      if @jagent.role == "jagent" || @jagent.role == "agent"
         # unless @comment.modified_comment == params["comment"]["modified_comment"]
           @comment.admin_sagent_comment = true
         # end

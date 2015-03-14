@@ -83,7 +83,7 @@ Jmd::Application.configure do
   config.action_mailer.smtp_settings = {
             :enable_starttls_auto => true,
             :address => "kun.kunalinfotech.net",
-            :port => 23,
+            :port => 25,
             :domain => "kun.kunalinfotech.net",
             :authentication => :login,
             :user_name => "ankit@kunalinfotech.net",

@@ -28,7 +28,7 @@ Jmd::Application.configure do
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = true
-  # config.assets.precompile =  ['*.js', '*.css', '*.css.erb'] 
+  #config.assets.precompile =  ['*.js', '*.css', '*.css.erb'] 
 
   # Generate digests for assets URLs.
   config.assets.digest = true
@@ -80,16 +80,18 @@ Jmd::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { :host => 'http://customer-support-demo.herokuapp.com/' }
-      config.action_mailer.smtp_settings = {
+  config.action_mailer.smtp_settings = {
             :enable_starttls_auto => true,
             :address => "smtp.gmail.com",
             :port => 587,
             :domain => "imap.gmail.com",
             :authentication => :login,
-            :user_name => "atishkunalinfotech@gmail.com",
-            :password => "kunalinfotech"
-        }
+            :user_name => "rubyrails9@gmail.com",
+            :password => "utmeter!@#02"
+  }
+
+ config.action_mailer.default_url_options = { :host => 'http://www.xemaxema.com/' }
+
   config.action_mailer.raise_delivery_errors = true
 end
 #http://69.25.137.192/

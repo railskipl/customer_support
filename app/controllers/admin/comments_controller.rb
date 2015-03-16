@@ -74,3 +74,4 @@ class Admin::CommentsController < AdminController
     params.require(:comment).permit(:title, :user_id, :review_id, :supplier_id,:modified_comment)
   end
 end
+

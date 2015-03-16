@@ -24,6 +24,46 @@ jQuery(document).ready(function() {
 });
 
 </script>
+<h1>All Reviews</h1>
+
+<table id="reviews" >
+  <thead>
+    <tr>
+      <th>Sr. No.</th>
+      <th>Ticket Number</th>
+      <th>Review</th>
+      <th>Company</th>
+      <th>Title</th>
+      <th>Date</th>
+      <th>Customer Name</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reviews.each.with_index(1) do |review,index| %>
+      <tr>
+        <td><%= index %></td>
+        <td><%=review.ticket_number rescue nil %></td>
+        <td><%=review.review_type rescue nil %></td>
+        <td><%=review.company.title rescue nil %></td>
+        <td><%=review.title rescue nil %></td>
+        <td><%=review.created_at.strftime("%d %b %y %H:%M") rescue nil %></td>
+        <td><%=review.try(:user).try(:full_name)%></td>
+        <td>
+          <%unless review.ispublished || review.archive %>
+            <%= link_to 'Edit', edit_admin_review_path(review) , class: "btn btn-primary" if can? :edit, Review%>
+          <%end%>
+          <%#= link_to 'Destroy', admin_review_path(review), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+          <%= link_to 'Comment', admin_review_path(review), class: "btn" if can? :edit, Review%> 
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
 <% if (current_user.is? :admin) || (current_user.is? :agent) %>
 <h1>Assign reviews to agents (Reviews which are not yet assigned)</h1>
     <%= form_tag admin_assign_reviews_path ,:method => :put do |f|%>
@@ -106,40 +146,3 @@ jQuery(document).ready(function() {
 
 
 <% end %>
-<h1>All Reviews</h1>
-
-<table id="reviews" >
-  <thead>
-    <tr>
-      <th></th>
-      <th>Ticket Number</th>
-      <th>Review</th>
-      <th>Company</th>
-      <th>Title</th>
-      <th>Date</th>
-      <th>Customer Name</th>
-      <th>Action</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @reviews.each do |review| %>
-      <tr>
-        <td></td>
-        <td><%=review.ticket_number rescue nil %></td>
-        <td><%=review.review_type rescue nil %></td>
-        <td><%=review.company.title rescue nil %></td>
-        <td><%=review.title rescue nil %></td>
-        <td><%=review.created_at.strftime("%d %b %y %H:%M") rescue nil %></td>
-        <td><%=review.try(:user).try(:full_name)%></td>
-        <td>
-          <%unless review.ispublished || review.archive %>
-            <%= link_to 'Edit', edit_admin_review_path(review) , class: "btn btn-primary" if can? :edit, Review%>
-          <%end%>
-          <%#= link_to 'Destroy', admin_review_path(review), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
-          <%= link_to 'Comment', admin_review_path(review), class: "btn" if can? :edit, Review%> 
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>

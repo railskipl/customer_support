@@ -18,7 +18,7 @@
         <td><%= address.try(:location).try(:title) rescue nil %></td>
 
         <td><%= link_to 'Edit', edit_admin_address_path(address) if can? :edit, Address%>
-        <%= link_to 'Destroy', [:admin,address], method: :delete, data: { confirm: 'Are you sure?' } if can? :destory, Address%></td>
+        <%= link_to 'Destroy', [:admin,address], method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, Address%></td>
       </tr>
     <% end %>
   </tbody>

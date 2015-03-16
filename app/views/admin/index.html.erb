@@ -23,7 +23,8 @@
 			  <% end %>
 			</tbody>
 		</table>
-
+<%end%>
+<% if current_user.role == "admin" %>
   <h4>Customers</h4>
 	<table id="customers">
 		<thead>
@@ -77,8 +78,8 @@
 		  <% end %>
 		</tbody>
 	</table>
-<%end%>
 
+<% end %>
 <h4>All Reviews</h4>
 
 <table id="admin_review" >

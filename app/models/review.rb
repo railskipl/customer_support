@@ -14,10 +14,10 @@ class Review < ActiveRecord::Base
   validate :valid_date?
   validate :industry_id, :company_id, :town_id, :location_id ,presence: true
 
-  scope :published, -> { where(ispublished: true).order(date: :desc) }
+  scope :published, -> { where(ispublished: true).order(id: :desc) }
   scope :archived, -> { where(archive: true) }
-  scope :unarchived, -> { where(archive: false) }
-  scope :unpublished, -> { where(ispublished: false) }
+  scope :unarchived, -> { where(archive: false).order(id: :desc) }
+  scope :unpublished, -> { where(ispublished: false).order(id: :desc) }
   scope :within_range, -> (start_date, end_date) { where("created_at >= ? AND created_at <= ?", start_date, end_date) unless start_date.blank? and end_date.blank? }
   scope :by_industry, -> (industry_id) { where("industry_id = ?", industry_id)  unless industry_id.blank? }
   scope :by_town, -> (town_id) { where("town_id = ?", town_id) unless town_id.blank? }

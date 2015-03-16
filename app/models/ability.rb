@@ -53,16 +53,16 @@ class Ability
       can    :read  , Location
       can    :read  , Address
       if Maintainence.first.status 
-        can    :edit  , Industry
-        can    :edit  , Company
-        can    :edit  , Town
-        can    :edit  , Location
-        can    :edit  , Address
-        can    :update  , Industry
-        can    :update  , Company
-        can    :update  , Town
-        can    :update  , Location
-        can    :update  , Address
+        can    :manage  , Industry
+        can    :manage  , Company
+        can    :manage  , Town
+        can    :manage  , Location
+        can    :manage  , Address
+        cannot    :destroy  , Industry
+        cannot    :destroy  , Company
+        cannot    :destroy  , Town
+        cannot    :destroy  , Location
+        cannot    :destroy  , Address
       end
       can    :read,   Review
       can    :edit,   Review
@@ -89,17 +89,18 @@ class Ability
       can    :read  , Company
       can    :read  , Town
       can    :read  , Location
+      can    :read  , Address
       if Maintainence.first.status 
-         can    :edit  , Industry
-         can    :edit  , Company
-         can    :edit  , Town
-         can    :edit  , Location
-         can    :edit  , Address
-         can    :update  , Industry
-         can    :update  , Company
-         can    :update  , Town
-         can    :update  , Location
-         can    :update  , Address
+         can    :manage  , Industry
+         can    :manage  , Company
+         can    :manage  , Town
+         can    :manage  , Location
+         can    :manage  , Address
+         cannot    :destroy  , Industry
+         cannot    :destroy  , Company
+         cannot    :destroy  , Town
+         cannot    :destroy  , Location
+         cannot    :destroy  , Address
       end 
       can :manage, User, :id=> user.id
       can    :read,   Review, :jagent_id => user.id

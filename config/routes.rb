@@ -53,6 +53,7 @@ Jmd::Application.routes.draw do
 
     resources :monitor_jagents ,:only => [:index]
     resources :notifications ,:only => [:index]
+    resources :customers ,:only => [:index]
   	resources :users
   	resources :locations
   	resources :towns

@@ -1,0 +1,28 @@
+  <h4>Customers</h4>
+	<table id="customers">
+		<thead>
+		  <tr>
+		    <th width="15%">First Name</th>
+		    <th width="15%">Last Name</th>
+		    <th width="30%">Email</th>
+		    <th width="20%">Email Confirmation</th>
+		    <th width="20%">Action</th>
+		  </tr>
+		</thead>
+
+		<tbody>
+			<%= request.remote_ip %>
+		  <% @customers.each do |user| %>
+		    <tr>
+		      <td><%=user.first_name%></td>
+		      <td><%=user.last_name%></td>
+		      <td><%=user.email%></td>
+		      <td><%=user.confirmed_at.present? ? 'Confirmed' : 'Pending'%></td>
+		      <td>
+		        <%= link_to 'Show', admin_user_path(user), class: "btn btn-primary" if can? :show, User, :role => 'user' %>
+        		<%= link_to 'Destroy', admin_user_path(user), class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, User%>
+  				</td>
+		    </tr>
+		  <% end %>
+		</tbody>
+	</table>

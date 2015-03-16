@@ -39,7 +39,8 @@ $(document).ready(function() {
     $('#reviews3').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [] }] });
     $('#notification').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [4] }] });
     $('#allnotification').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [4] }] });
-    $('#monitora').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [5] }] });
+    $('#monitor').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [5] }] });
+    $('#monitor2').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [5] }] });
 	  $('#faqs').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [2] }] } );
  	  $('#pages').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [3] }] } );
 		$('#resources').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [3] }] } );

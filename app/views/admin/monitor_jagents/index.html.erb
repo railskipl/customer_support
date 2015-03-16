@@ -1,6 +1,8 @@
-<table id="monitora" cellpadding=10>
+<h2>All Reviews</h2>
+<table id="monitor" cellpadding=10>
 	<thead>
 	<tr>
+		<th>Sr. No.</th>
 		<th>Review</th> 
 		<th>Junior Agent</th> 
 		<th>Assignee</th>
@@ -12,8 +14,9 @@
 	</tr>
 	</thead>
 	<tbody>
-	<% @monitors.each do |mon| %>
+	<% @monitors.each.with_index(1) do |mon,index| %>
 	<tr>
+		<td><%= index %></td>
 		<td><%= link_to mon.review.ticket_number ,admin_review_path(mon.review.id) rescue nil%></td>
 		<td><%= mon.review.jagent.preferred_alias rescue nil%></td>
 		<td><%= mon.review.agent == current_user ? "You" : mon.review.agent.try(:preferred_alias) %></td>
@@ -31,6 +34,7 @@
 <table id="monitor2" cellpadding=10>
 	<thead>
 	<tr>
+		<th>Sr. No.</th>
 		<th>Review</th> 
 		<th>Junior Agent</th> 
 		<th>Assignee</th>
@@ -41,8 +45,9 @@
 	</tr>
 	</thead>
 	<tbody>
-	<% @reviews.each do |review| %>
+	<% @reviews.each.with_index(1) do |review,index| %>
 	<tr>
+		<td><%= index %></td>
 		<td><%= link_to review.ticket_number ,admin_review_path(review.id) rescue nil%></td>
 		<td><%= review.jagent.preferred_alias rescue nil%></td>
 		<td><%= review.agent == current_user ? "You" : mon.review.agent.try(:preferred_alias) %></td>

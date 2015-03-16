@@ -6,7 +6,7 @@
 				<%elsif comment.user_id && comment.user_id == @review.user_id %>
 				 <strong>Customer's Response:</strong> <%= comment.name%>
 				<%else%>
-				 <strong>Guest's Response:</strong> <%= comment.name%>
+				 <strong><%= comment.name%></strong>
 				<%end%>
 				</span>
 				<span class="pull-right">

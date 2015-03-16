@@ -16,7 +16,7 @@
 		<td><%= link_to notification.comment.review.ticket_number,admin_review_path(notification.comment.review.id) %></td>
 		<td><%= notification.comment.review.title %></td>
 		<td><%= notification.comment.title.html_safe %></td>
-		<td><%= notification.comment.review.created_at %></td>
+		<td><%= notification.comment.review.created_at.strftime("%d %b %y %H:%M") %></td>
 	</tr>
 	<% end %>
 </tbody>
@@ -42,7 +42,7 @@
 		<td><%= link_to notification.comment.review.ticket_number,admin_review_path(notification.comment.review.id) %></td>
 		<td><%= notification.comment.review.title %></td>
 		<td><%= notification.comment.title.html_safe %></td>
-		<td><%= notification.comment.review.created_at %></td>
+		<td><%= notification.comment.review.created_at.strftime("%d %b %y %H:%M") %></td>
 	</tr>
 	<% end %>
 </tbody>

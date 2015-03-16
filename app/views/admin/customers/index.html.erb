@@ -2,22 +2,27 @@
 	<table id="customers">
 		<thead>
 		  <tr>
-		    <th width="15%">First Name</th>
-		    <th width="15%">Last Name</th>
-		    <th width="30%">Email</th>
-		    <th width="20%">Email Confirmation</th>
-		    <th width="20%">Action</th>
+		    <th>First Name</th>
+		    <th>Last Name</th>
+		    <th>Email</th>
+		    <th>Email Confirmation</th>
+		    <th>Last Sign In Time</th>
+		    <th>Current Sign In IP</th>
+		    <th>Last Sign In IP</th>
+		    <th>Action</th>
 		  </tr>
 		</thead>
 
 		<tbody>
-			<%= request.remote_ip %>
 		  <% @customers.each do |user| %>
 		    <tr>
-		      <td><%=user.first_name%></td>
-		      <td><%=user.last_name%></td>
-		      <td><%=user.email%></td>
-		      <td><%=user.confirmed_at.present? ? 'Confirmed' : 'Pending'%></td>
+		      <td><%= user.first_name%></td>
+		      <td><%= user.last_name%></td>
+		      <td><%= user.email%></td>
+		      <td><%= user.confirmed_at.present? ? 'Confirmed' : 'Pending'%></td>
+		      <td><%= user.last_sign_in_at.strftime("%d %b %y %H:%M") rescue nil %></td>
+		      <td><%= user.current_sign_in_ip %></td>
+		      <td><%= user.last_sign_in_ip %></td>
 		      <td>
 		        <%= link_to 'Show', admin_user_path(user), class: "btn btn-primary" if can? :show, User, :role => 'user' %>
         		<%= link_to 'Destroy', admin_user_path(user), class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, User%>

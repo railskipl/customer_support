@@ -12,10 +12,10 @@ class Admin::ReviewsController < AdminController
     if current_user.is? :jagent
 		  @reviews = Review.where("jagent_id = ? or old_jagent_id = ?",current_user.id,current_user.id).unarchived.where("user_id is not null").order("id desc")
     else
-      @reviews = Review.unarchived.where("user_id is not null").order("id desc")
+      @reviews = Review.unarchived.where("agent_id is not null and user_id is not null").order("id desc")
     end
-    @areviews = Review.where("published_date is null and jagent_id is null and user_id is not null")
-    @reareviews = Review.where("published_date is null and jagent_id is not null and user_id is not null")
+    @areviews = Review.where("published_date is null and jagent_id is null and user_id is not null").order("id desc")
+    @reareviews = Review.where("published_date is null and jagent_id is not null and user_id is not null").order("id desc")
 	end
 
   def show
@@ -49,6 +49,9 @@ class Admin::ReviewsController < AdminController
           a.jagent_id = params[:user_id]
           a.agent_id = params[:agent_id]
           a.save
+          m = MonitorJagent.find_or_create_by_review_id(a.id)
+          m.status = "Pending"
+          m.save
         end
       end
       redirect_to admin_reviews_url
@@ -81,6 +84,9 @@ class Admin::ReviewsController < AdminController
       @review.archive = false
       @review.last_published_agent_id = current_user.id
       if @review.jagent_id.present?
+         m = MonitorJagent.find_by_review_id(@review.id)
+         m.status = "Published"
+         m.save
         unless @review.modified_review == params[:review][:modified_review]
           @review.admin_sagent_modified = true
         end
@@ -127,8 +133,9 @@ class Admin::ReviewsController < AdminController
         if @review.update(review_params)
           @track_time = TrackTime.find(@review.track_times.first.id)
           @track_time.update(:date_complete => Date.today)
-          m = MonitorJagent.find_or_create_by_review_id(@review.id)
+          m = MonitorJagent.find_by_review_id(@review.id)
           m.modified_review = true
+          m.status = "Waiting for approval"
           m.save
           format.html { redirect_to [:admin,@review], notice: 'Review successfully updated.'}
         else

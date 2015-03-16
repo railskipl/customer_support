@@ -2,11 +2,7 @@
   <div class="row">
   	<span class="span3 lg">
 			<span class="span3 lg">
-				<%if current_user && (current_user.role == 'admin' || current_user.role == 'agent')%>
-					<%= link_to image_tag('logo.png'),root_path%>
-				<% else %>
-					<%= link_to image_tag('logo.png'),reviews_path%>
-				<%end%>
+				<%= link_to image_tag('logo.png'),root_path%>
 		  </span>
     </span>
 

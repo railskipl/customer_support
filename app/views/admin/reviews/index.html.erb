@@ -7,8 +7,8 @@
   jQuery('#date').datepicker( 
     { altField  : '#date',  // selector of the hidden input field you want sent to the server
       minDate: 0,
-      dateFormat: 'yy-mm-dd',
-      altFormat : 'yy-mm-dd' } );
+      dateFormat: 'dd-mm-yy',
+      altFormat : 'dd-mm-yy' } );
     });
 });
 
@@ -18,14 +18,54 @@ jQuery(document).ready(function() {
   jQuery('#date1').datepicker( 
     { altField  : '#date',  // selector of the hidden input field you want sent to the server
       minDate: 0,
-      dateFormat: 'yy-mm-dd',
-      altFormat : 'yy-mm-dd' } );
+      dateFormat: 'dd-mm-yy',
+      altFormat : 'dd-mm-yy' } );
     });
 });
 
 </script>
+<h1>All Reviews</h1>
+
+<table id="reviews" >
+  <thead>
+    <tr>
+      <th>Sr. No.</th>
+      <th>Ticket Number</th>
+      <th>Review</th>
+      <th>Company</th>
+      <th>Title</th>
+      <th>Date</th>
+      <th>Customer Name</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reviews.each.with_index(1) do |review,index| %>
+      <tr>
+        <td><%= index %></td>
+        <td><%=review.ticket_number rescue nil %></td>
+        <td><%=review.review_type rescue nil %></td>
+        <td><%=review.company.title rescue nil %></td>
+        <td><%=review.title rescue nil %></td>
+        <td><%=review.created_at.strftime("%d %b %y %H:%M") rescue nil %></td>
+        <td><%=review.try(:user).try(:full_name)%></td>
+        <td>
+          <%unless review.ispublished || review.archive %>
+            <%= link_to 'Edit', edit_admin_review_path(review) , class: "btn btn-primary" if can? :edit, Review%>
+          <%end%>
+          <%#= link_to 'Destroy', admin_review_path(review), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+          <%= link_to 'Comment', admin_review_path(review), class: "btn" if can? :edit, Review%> 
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
 <% if (current_user.is? :admin) || (current_user.is? :agent) %>
-<h1>Assign Reviews</h1>
+<h1>Assign reviews to agents (Reviews which are not yet assigned)</h1>
     <%= form_tag admin_assign_reviews_path ,:method => :put do |f|%>
 <table id="reviews1" >
   <thead>
@@ -69,105 +109,40 @@ jQuery(document).ready(function() {
 <br>
 
 
-<h1>Assigned Reviews</h1>
+<h1>Assigned Reviews (Reviews which are assigned)</h1>
 
 <table id="reviews3"  >
   <thead>
     <tr>
+      <th></th>
       <th>Ticket Number</th>
       <th>Review Assigned</th>
-       <th>Assignee</th>
+      <th>Assignee</th>
+      <th>Date</th>
+      <th>Action</th>
     </tr>
   </thead>
 
   <tbody>
     <% @reviews.each do |review| %>
       <tr>
+        <td><%= check_box_tag "review_ids[]", review.id, false,:style => "opacity:0.67" %></td>
         <td><%=review.ticket_number rescue nil %></td>
         <td><%=review.jagent.preferred_alias rescue nil %></td>
         <td><%=review.agent.preferred_alias rescue nil %></td>
+        <td><%= review.created_at.strftime("%d %b %y %H:%M") %></td>
+        <td>
+          <%unless review.ispublished || review.archive %>
+            <%= link_to 'Edit', edit_admin_review_path(review) , class: "btn btn-primary" if can? :edit, Review%>
+          <%end%>
+          <%#= link_to 'Destroy', admin_review_path(review), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+          <%= link_to 'Comment', admin_review_path(review), class: "btn" if can? :edit, Review%> 
+        </td>
        </tr>
     <% end %>
   </tbody>
 </table>
 <br/>
-<h1>ReAssign Reviews</h1>
-    <%= form_tag admin_assign_reviews_path ,:method => :put do %>
-<table id="reviews2" >
-  <thead>
-    <tr>
-      <th></th>
-      <th>Ticket Number</th>
-      <th>Company</th>
-      <th>Title</th>
-      <th>Customer Name</th>
-      <th>Action</th>
-    </tr>
-  </thead>
 
-  <tbody>
-
-    <% @reareviews.each do |review| %>
-      <tr>
-        <td><%= check_box_tag "review_ids[]", review.id, false,:style => "opacity:0.67" %></td>
-        <td><%=review.ticket_number rescue nil %></td>
-        <td><%=review.company.title rescue nil %></td>
-        <td><%=review.title rescue nil %></td>
-        <td><%=review.try(:user).try(:full_name)%></td>
-        <td>
-          <%unless review.ispublished || review.archive %>
-            <%= link_to 'Edit', edit_admin_review_path(review) , class: "btn btn-primary" if can? :edit, Review%>
-          <%end%>
-          <%#= link_to 'Destroy', admin_review_path(review), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
-          <%= link_to 'Comment', admin_review_path(review), class: "btn" if can? :edit, Review%> 
-        </td>
-      </tr>
-    <% end %>
- 
-  </tbody>
-</table><br/ >
-   <label>Enter date, till what date reviews should be processed</label>
-    <%= text_field_tag :date1,nil,:placeholder => "Enter Date"%><br/>
-   <%= hidden_field_tag 'reassign', "yes"%>
-    <%= hidden_field_tag 'agent_id', current_user.id %>
-    <%= select_tag 'user_id', options_for_select(@users.collect{ |u| [u.preferred_alias, u.id] }) %><br/>
-   <%= submit_tag "Assign Reviews", :confirm => "Please check and confirm to assign reviews and proposed date to finish." %>
-    <% end %>
-<br>
 
 <% end %>
-<h1>Reviews</h1>
-
-<table id="reviews" >
-  <thead>
-    <tr>
-      <th>Date</th>
-      <th>Ticket Number</th>
-      <th>Review</th>
-      <th>Company</th>
-      <th>Title</th>
-      <th>Customer Name</th>
-      <th>Action</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @reviews.each do |review| %>
-      <tr>
-        <td><%=review.date_time rescue nil %></td>
-        <td><%=review.ticket_number rescue nil %></td>
-        <td><%=review.review_type rescue nil %></td>
-        <td><%=review.company.title rescue nil %></td>
-        <td><%=review.title rescue nil %></td>
-        <td><%=review.try(:user).try(:full_name)%></td>
-        <td>
-          <%unless review.ispublished || review.archive %>
-            <%= link_to 'Edit', edit_admin_review_path(review) , class: "btn btn-primary" if can? :edit, Review%>
-          <%end%>
-          <%#= link_to 'Destroy', admin_review_path(review), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
-          <%= link_to 'Comment', admin_review_path(review), class: "btn" if can? :edit, Review%> 
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>

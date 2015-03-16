@@ -32,7 +32,7 @@ class AdminController < ActionController::Base
     @seos ||= Seo.all
     @archived_attachments ||= Review.where('archive_attachment = ? and user_id is not null',true)
     
-    if current_user.role == "admin"
+    #if current_user.role == "admin"
       #For Supplier registration expire notification
       @supplier_registration = Supplier.select(:id,:supplier_name,:email,:industry,:mobile_number,:start_date, :end_date).where('start_date <= ? and end_date < ? and subscription = ? ', Date.today, Date.today,"Registered")
      
@@ -40,10 +40,10 @@ class AdminController < ActionController::Base
         if @supplier_registration.count > 1
          flash[:notice] = "There are several supplier registrations has been expired."
        else
-         flash[:notice] = "Supplier registration has been expired."
+         flash.now[:notice] = "Supplier registration has been expired."
        end
       end
-    end
+    #end
   end
 
   def searches

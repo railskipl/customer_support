@@ -1,0 +1,52 @@
+<b>My Comment Notifications</b>
+<table id="notification" cellpadding=10>
+	<thead>
+    <tr>
+      <th>Sr. No.</th>
+      <th>Ticket Number</th>
+      <th>Review Title</th>
+      <th>Comment</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+	<tbody>
+	<% @notifications.each.with_index(1) do |notification,index| %>
+	<tr>
+		<td><%= index %></td>
+		<td><%= link_to notification.comment.review.ticket_number,admin_review_path(notification.comment.review.id) %></td>
+		<td><%= notification.comment.review.title %></td>
+		<td><%= notification.comment.title.html_safe %></td>
+		<td><%= notification.comment.review.created_at.strftime("%d %b %y %H:%M") %></td>
+	</tr>
+	<% end %>
+</tbody>
+</table>
+<br/>
+
+<% if !@all_notifications.nil? %>
+<b>All Comment Notifications</b>
+<table id="allnotification" cellpadding=10>
+	<thead>
+    <tr>
+      <th>Sr. No.</th>
+      <th>Ticket Number</th>
+      <th>Review Title</th>
+      <th>Comment</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+	<tbody>
+	<% @all_notifications.each.with_index(1) do |notification,index| %>
+	<tr>
+		<td><%= index %></td>
+		<td><%= link_to notification.comment.review.ticket_number,admin_review_path(notification.comment.review.id) %></td>
+		<td><%= notification.comment.review.title %></td>
+		<td><%= notification.comment.title.html_safe %></td>
+		<td><%= notification.comment.review.created_at.strftime("%d %b %y %H:%M") %></td>
+	</tr>
+	<% end %>
+</tbody>
+</table>
+<br/>
+<% end %>
+

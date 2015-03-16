@@ -25,7 +25,7 @@ class ResultsController < ApplicationController
 
 		  if @result.save
 		      cookies["#{poll_title}"] = true
-		      redirect_to root_path, notice: 'Your vote have successfully Submitted.'
+		      redirect_to poll_path(@result.poll_id), notice: 'Your vote have successfully Submitted.'
 		      return
 		  else
 		      redirect_to root_path, notice: 'Please select any option for survery.'

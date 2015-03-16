@@ -21,13 +21,13 @@
 		  <div class="form_lft">
 		    <div class="name_lft">First Name: </div>
 		    <div>
-				<%= f.text_field :first_name, :pattern => '[A-Za-z]+',"maxlength"=>"35", "min" => "1","max" => "35" %>
+				<%= f.text_field :first_name, :value => "#{current_user.try(:first_name)}" ,:pattern => '[A-Za-z]+',"maxlength"=>"35", "min" => "1","max" => "35" %>
 		    </div>
 		  </div>
 		  <div class="form_lft">
 		    <div class="name_lft">Last Name: </div>
 		    <div>
-		      <%= f.text_field :last_name, :pattern => '[A-Za-z]+',"maxlength"=>"35", "min" => "1","max" => "35"%>
+		      <%= f.text_field :last_name, :value => "#{current_user.try(:last_name)}",:pattern => '[A-Za-z]+',"maxlength"=>"35", "min" => "1","max" => "35"%>
 		    </div>
 		  </div>
 		</div>
@@ -35,7 +35,7 @@
 		  <div class="form_lft">
 		    <div class="name_lft">Email: *</div>
 		    <div>
-				<%= f.email_field :email, required: true, "maxlength"=>"35", "min" => "1","max" => "35" %>
+				<%= f.email_field :email, :value => "#{current_user.try(:email)}",required: true, "maxlength"=>"35", "min" => "1","max" => "35" %>
 		    </div>
 		  </div>
 		  <div class="form_lft">

@@ -56,9 +56,21 @@
 		  </li>
 		<%end%>
 
+		<% if current_user.is? :admin  %>
+		  <li class="<%=(@active_tab == 'pages') ? 'active' : ''%>">
+					<%=link_to raw(action_button_helper('Customers','icon-edit')),admin_customers_path%>
+		  </li>
+		<%end%>
+
 		<%  if can? :read, MonitorJagent %>
 		  <li class="<%=(@active_tab == 'Monitor Agents') ? 'active' : ''%>">
 					<%=link_to raw(action_button_helper('Monitor Agents','icon-cogs')), admin_monitor_jagents_path%>
+		  </li>
+    	<%end%>
+
+    	<%  if can? :read, Notification %>
+		  <li class="<%=(@active_tab == 'Notification Comments') ? 'active' : ''%>">
+					<%=link_to 'Notification Comments', admin_notifications_path%>
 		  </li>
     	<%end%>
 
@@ -130,14 +142,14 @@
   	<% if can? :manage, CompanyPerformance%>
 	    
 	    <li class="<%=(@active_tab == 'company_performances') ? 'active' : ''%>">
-					<%=link_to raw(action_button_helper('Performances')), admin_company_performances_path%>
+					<%=link_to raw(action_button_helper('Static Boxes')), admin_company_performances_path%>
   	    </li>
   	<%end%>
 
 
   	 <% if can? :manage, Advertise%>
 	    <li class="<%=(@active_tab == 'advertises') ? 'active' : ''%>">
-					<%=link_to raw(action_button_helper('Advertises','icon-list-alt')),admin_advertises_path%>
+					<%=link_to raw(action_button_helper('Advertising','icon-list-alt')),admin_advertises_path%>
   	  </li>
   	<%end%>
 

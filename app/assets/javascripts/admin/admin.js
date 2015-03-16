@@ -37,7 +37,10 @@ $(document).ready(function() {
 	  $('#reviews1').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [5] }] });
     $('#reviews2').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [5] }] });
     $('#reviews3').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [] }] });
-    $('#monitora').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [5] }] });
+    $('#notification').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [4] }] });
+    $('#allnotification').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [4] }] });
+    $('#monitor').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [5] }] });
+    $('#monitor2').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [5] }] });
 	  $('#faqs').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [2] }] } );
  	  $('#pages').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [3] }] } );
 		$('#resources').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [3] }] } );

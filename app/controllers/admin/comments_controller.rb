@@ -33,15 +33,24 @@ class Admin::CommentsController < AdminController
       m = MonitorJagent.find_or_create_by_review_id(@review.id)
       ReviewMailer.review_comment_mail(@review.jagent, @review.agent, @review.ticket_number).deliver!
       m.c_comment = true
+      m.comment_status = "Waiting for approval"
       m.save
       @comment.modified_comment = params["comment"]["modified_comment"]
     else
-      @jagent = User.select(:id,:role).where('id = ?', @comment.user_id).first
-      if @jagent.role == "jagent"
-        unless @comment.modified_comment == params["comment"]["modified_comment"]
-          @comment.admin_sagent_comment = true
-        end
+      if @comment.user_id
+        uid = @comment.user_id
+      else
+        uid = current_user.id
       end
+      @jagent = User.select(:id,:role).where('id = ?', uid).first
+      if @jagent.role == "jagent" || @jagent.role == "agent"
+        # unless @comment.modified_comment == params["comment"]["modified_comment"]
+          @comment.admin_sagent_comment = true
+        # end
+      end
+      m = @review.monitor_jagent
+      m.comment_status = "Published"
+      m.save
       @comment.modified_comment = params["comment"]["modified_comment"] if params["comment"]
       @comment.ispublished = true if params[:commit] == "Publish"
     end
@@ -65,3 +74,4 @@ class Admin::CommentsController < AdminController
     params.require(:comment).permit(:title, :user_id, :review_id, :supplier_id,:modified_comment)
   end
 end
+

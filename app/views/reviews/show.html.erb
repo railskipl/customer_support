@@ -43,12 +43,6 @@
 				     <%=@review.updated_at.strftime("%d %b %Y" " %H:%M")%>
 						</div>
 					</div>
-					<div class="form_lft">
-						<div class="name_lft">Person Responsible: </div>
-						<div>
-				    <%= @review.personal_responsible%>
-						</div>
-					</div>
 				</div>
 
 				<div>
@@ -62,7 +56,7 @@
 					<div class="form_lft">
 						<div class="name_lft">Incident Date: </div>
 						<div>
-							<%= @review.date.strftime("%d %b %Y")%> <%=@review.datetime.strftime("%H:%M")%>
+							<%= @review.created_at.strftime("%d %b %Y")%> <%=@review.created_at.strftime("%H:%M")%>
 						</div>
 				</div>
 
@@ -70,6 +64,15 @@
 				  <div class="name_lft">Title: </div>
 				  <div>
 				  <%= @review.title%>
+				  </div>
+
+				  <div class="name_lft">Conversion: </div>
+				  <div>
+				  <% if @review.change_date %>
+				  	Yes
+				  <% else %>
+				  No
+				  <% end %>
 				  </div>
 			
 				  <div class="name_lft">Attachment: </div>

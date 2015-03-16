@@ -4,7 +4,13 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @review.comments.new(comment_params)
+    r = @comment.review
     if @comment.save
+      Notification.create(:comment_id => @comment.id,:receiver_agent_id => r.agent_id, :receiver_jagent_id => r.jagent_id )
+      if @review.monitor_jagent
+        @review.monitor_jagent.comment_status = "Pending"
+        @review.monitor_jagent.save
+      end
       ReviewMailer.comment_agent_mail(@review,@comment,current_user).deliver!
       redirect_to [@review], :notice => 'Thanks for your comment, will be will reviewed by our customer support soon'
     else

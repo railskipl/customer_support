@@ -28,10 +28,10 @@
 
 
  $(document).ready(function(ev){
-      $('#datepicker1').datepicker();
-      $('#datepicker2').datepicker();
-      $('#datepicker3').datepicker();
-      $('#datepicker4').datepicker();
+      $('#datepicker1').datepicker({dateFormat: 'dd-mm-yy'});
+      $('#datepicker2').datepicker({dateFormat: 'dd-mm-yy'});
+      $('#datepicker3').datepicker({dateFormat: 'dd-mm-yy'});
+      $('#datepicker4').datepicker({dateFormat: 'dd-mm-yy'});
 
       if ($("#review_is_modified").is(":checked"))
 	     	$("#agent_modified_review").show();

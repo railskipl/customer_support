@@ -1,22 +1,18 @@
 <%= div_for comment do %>
-  <div class="sectionResource">
+  <div class="sectionResource" style="color:#000">
   <h4>
      <%= comment.supplier_id ? comment.supplier.supplier_name : comment.name %> :
   </h4>
-  <%if comment.user_id.present?%>
-    <%= link_to "Report Abuse", new_admin_abuse_report_path(:user_id => comment.user_id),:class=> "btn"%>
-  <%else%>
-    <%= link_to "Report Abuse", new_admin_abuse_report_path(:comment_id => comment.id),:class=> "btn"%>
-  <%end%><br>
+  Email: <%= comment.email %><br/>
   Posted On: <%= comment.updated_at.strftime("%Y-%m-%d") %> <br/>
   Customer Message: <%= raw(comment.title) %>
   Modified Message: <%= comment.modified_comment.present? ? raw(comment.modified_comment) : "Not Modified" %>
   <% if comment.ispublished == false%>
     <%= form_for([:admin, @review, comment]) do |f| %>
       <% if current_user.role == "jagent" %>
-        <%= link_to "Modify Comment" ,edit_admin_review_comment_path(:review_id => @review.id, :id => comment.id ) %>
+        <%= link_to "Modify Comment" ,edit_admin_review_comment_path(:review_id => @review.id, :id => comment.id ) , :class => "btn btn-primary" %>
       <% else %>
-      <%= link_to "Modify Comment" ,edit_admin_review_comment_path(:review_id => @review.id, :id => comment.id ) %>
+      <%= link_to "Modify Comment" ,edit_admin_review_comment_path(:review_id => @review.id, :id => comment.id )  , :class => "btn btn-primary"%>
         <%= f.submit 'Publish', class: "btn btn-primary" %>
       <% end %>
     <% end %>

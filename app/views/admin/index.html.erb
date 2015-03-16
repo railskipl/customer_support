@@ -24,7 +24,7 @@
 			</tbody>
 		</table>
 <%end%>
-<% if current_user.role == "admin" %>
+<% if current_user.is? :admin %> 
   <h4>Customers</h4>
 	<table id="customers">
 		<thead>

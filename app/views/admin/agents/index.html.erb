@@ -20,9 +20,10 @@
         <td><%= agent.preferred_alias %></td>
         <td><%= agent.email %></td>
         <td><%= agent.role == "jagent" ? "Junior Agent" : "Senior Agent" %></td>
-        <td><%= link_to 'Edit', edit_admin_agent_path(agent) if can? :edit, User%>
-         <% if current_user.is? :admin %> 
-        <%= link_to 'Destroy', admin_agent_path(agent), method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, User%>
+        <td>
+        <% if current_user.is? :admin %> 
+          <%= link_to 'Edit', edit_admin_agent_path(agent) if can? :edit, User%>
+          <%= link_to 'Destroy', admin_agent_path(agent), method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, User%>
         <% end %>
         </td>
       </tr>
@@ -31,5 +32,6 @@
 </table>
 
 <br>
-
+<% if current_user.is? :admin %> 
 <%= link_to 'New Agent', new_admin_agent_path, class: "btn btn-primary" if can? :create, User%>
+<% end %>

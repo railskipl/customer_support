@@ -37,6 +37,8 @@ $(document).ready(function() {
 	  $('#reviews1').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [5] }] });
     $('#reviews2').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [5] }] });
     $('#reviews3').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [] }] });
+    $('#notification').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [4] }] });
+    $('#allnotification').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [4] }] });
     $('#monitora').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [5] }] });
 	  $('#faqs').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [2] }] } );
  	  $('#pages').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [3] }] } );

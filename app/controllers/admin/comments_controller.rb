@@ -33,6 +33,7 @@ class Admin::CommentsController < AdminController
       m = MonitorJagent.find_or_create_by_review_id(@review.id)
       ReviewMailer.review_comment_mail(@review.jagent, @review.agent, @review.ticket_number).deliver!
       m.c_comment = true
+      m.comment_status = "Waiting for approval"
       m.save
       @comment.modified_comment = params["comment"]["modified_comment"]
     else
@@ -47,6 +48,9 @@ class Admin::CommentsController < AdminController
           @comment.admin_sagent_comment = true
         # end
       end
+      m = @review.monitor_jagent
+      m.comment_status = "Published"
+      m.save
       @comment.modified_comment = params["comment"]["modified_comment"] if params["comment"]
       @comment.ispublished = true if params[:commit] == "Publish"
     end

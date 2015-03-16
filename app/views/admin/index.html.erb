@@ -97,7 +97,7 @@
 	<tbody>
 	  <% @reviews.each do |review| %>
 	    <tr>
-				<td><%=review.date_time rescue nil %></td>
+				<td><%=review.created_at.strftime("%d %b %y %H:%M") rescue nil %></td>
 				<td><%=review.ticket_number rescue nil %></td>
 				<td><%=review.review_type.titleize rescue nil %></td>
 				<td><%=review.company.title.titleize rescue nil %></td>
@@ -132,7 +132,7 @@
 	<tbody>
 	  <% @recent_reviews.each do |review| %>
 	    <tr>
-				<td><%=review.date_time rescue nil %></td>
+				<td><%=review.created_at.strftime("%d %b %y %H:%M") rescue nil %></td>
 				<td><%=review.ticket_number rescue nil %></td>
 				<td><%=review.review_type rescue nil %></td>
 				<td><%=review.company.title rescue nil %></td>
@@ -168,7 +168,7 @@
 	<tbody>
 	  <% @published_reviews.each do |review| %>
 	    <tr>
-				<td><%=review.date_time rescue nil %></td>
+				<td><%=review.created_at.strftime("%d %b %y %H:%M") rescue nil %></td>
 				<td><%=review.ticket_number rescue nil %></td>
 				<td><%=review.review_type rescue nil %></td>
 				<td><%=review.company.title rescue nil %></td>
@@ -200,7 +200,7 @@
   <tbody>
     <% @archived_reviews.each do |review| %>
       <tr>
-        <td><%=review.date_time rescue nil %></td>
+        <td><%=review.created_at.strftime("%d %b %y %H:%M") rescue nil %></td>
 		<td><%=review.ticket_number rescue nil %></td>
 		<td><%=review.review_type rescue nil %></td>
 		<td><%=review.company.title rescue nil %></td>

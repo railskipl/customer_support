@@ -18,11 +18,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
           if review.present?
             review.user_id = @user.id
             review.save
-            redirect_to new_user_session_url(:guest_token => review.guest_token),:notice => 'You have signed up successfully.A confirmation email is sent to your e-mail.\n Please verify your email address.\n Your review has been saved.'
+            redirect_to root_url(:guest_token => review.guest_token),:notice => 'You have signed up successfully.A confirmation email is sent to your e-mail.\n Please verify your email address.\n Your review has been saved.'
             return
           end
         end
-        redirect_to new_user_session_path,:notice => 'You have signed up successfully.A confirmation email is sent to your e-mail.\n Please verify your email address.'
+        redirect_to root_url,:notice => 'You have signed up successfully.A confirmation email is sent to your e-mail.\n Please verify your email address.'
       else
         render :action => :new
       end

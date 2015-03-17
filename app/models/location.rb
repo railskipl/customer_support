@@ -1,6 +1,6 @@
 class Location < ActiveRecord::Base
 	validates :title, :town_id, presence: true
-	validates :title, uniqueness: true
+	validates :title, :uniqueness => { :scope => :town_id }
 
 	has_many :addresses
 	belongs_to :town

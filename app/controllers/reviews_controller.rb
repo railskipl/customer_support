@@ -106,11 +106,11 @@ class ReviewsController < ApplicationController
   end 
 
 	def create
-    
+    dt = Date.parse(params[:review][:date])
     hr = params["review"]["datetime(4i)"]
     min = params["review"]["datetime(5i)"]
-    raise params.inspect
-    t = DateTime.new(year.to_i, month.to_i, day.to_i, hr.to_i, min.to_i,0)
+    
+    t = DateTime.new(dt.year, dt.month, dt.day, hr.to_i, min.to_i,0)
     kenyan_time = Time.now.utc + 3.hour
     industry = params[:txt_review_industry_id].to_s
     company  = params[:txt_review_company_id].to_s

@@ -14,7 +14,7 @@ class Admin::CompaniesController < AdminController
   # GET /companies
   # GET /companies.json
   def index
-    @companies = Company.all
+    @companies = Company.includes(:industry)
   end
 
   # GET /companies/1

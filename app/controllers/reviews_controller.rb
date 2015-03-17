@@ -106,13 +106,12 @@ class ReviewsController < ApplicationController
   end 
 
 	def create
-    year =  params["review"]["date(1i)"]
-    month =  params["review"]["date(2i)"]
-    day =  params["review"]["date(3i)"]
+    
     hr = params["review"]["datetime(4i)"]
     min = params["review"]["datetime(5i)"]
+    raise params.inspect
     t = DateTime.new(year.to_i, month.to_i, day.to_i, hr.to_i, min.to_i,0)
-    
+    kenyan_time = Time.now.utc + 3.hour
     industry = params[:txt_review_industry_id].to_s
     company  = params[:txt_review_company_id].to_s
     town     = params[:txt_review_town_id].to_s
@@ -121,7 +120,7 @@ class ReviewsController < ApplicationController
     @review ||= Review.new(review_params) 
     current_user.present? ? @review.user_id = current_user.id : @review.guest_token = generate_token
 
-    if t > Time.now
+    if t > kenyan_time
       flash[:notice] = "Please select past date"
       render :new
     else

@@ -225,7 +225,10 @@ class ReviewsController < ApplicationController
 	end
 
 	def review_params
-      params.require(:review).permit(:title, :industry_id, :company_id, :date, :town_id,:datetime, :location_id, :personal_responsible, :nature_of_review,:message,:account_details,:ticket_number,:user_id, :token_number,:review_type,:file,:nature)
+      params.require(:review).permit(:title, :industry_id, :company_id, :date, :town_id,:datetime, 
+                                     :location_id, :personal_responsible, :nature_of_review,:message,
+                                     :account_details,:ticket_number,:user_id, :token_number,:review_type,
+                                     :file,:nature,:desired_outcome)
   end
 
 	def default_action_tab

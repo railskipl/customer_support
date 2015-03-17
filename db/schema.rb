@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150314114146) do
+ActiveRecord::Schema.define(version: 20150317122842) do
 
   create_table "abuse_reports", force: true do |t|
     t.string   "user_email"
@@ -270,6 +270,7 @@ ActiveRecord::Schema.define(version: 20150314114146) do
     t.integer  "old_jagent_id"
     t.integer  "last_published_agent_id"
     t.boolean  "admin_sagent_modified",   default: false
+    t.string   "desired_outcome"
   end
 
   create_table "seos", force: true do |t|

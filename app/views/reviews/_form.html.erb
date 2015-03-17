@@ -84,6 +84,14 @@
 			  <%= f.text_area :message, "maxlength"=>"1200", "min" => "1","max" => "300",:rows=>"5"%>
 			</div>
 		</div>
+		<% if params[:review_type] == "complaint" %>
+		<div class="review_form">
+			<div class="name_lft">Desired Outcome </div>
+			<div>
+			  <%= f.text_area :desired_outcome, "maxlength"=>"1200", "min" => "1","max" => "200",:rows=>"5"%>
+			</div>
+		</div>
+		<% end %>
 
 		<div class="review_form">
 			<div class="name_lft">Account Details/reference no.</div>

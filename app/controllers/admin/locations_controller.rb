@@ -13,7 +13,7 @@ class Admin::LocationsController < AdminController
   # GET /locations
   # GET /locations.json
   def index
-    @locations = Location.all
+    @locations = Location.includes(:town)
   end
 
   # GET /locations/1

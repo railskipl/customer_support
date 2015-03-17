@@ -10,7 +10,7 @@ class Admin::AddressesController < AdminController
   end
 
   def index
-    @addresses = Address.all
+    @addresses = Address.includes(:company,:town,:location)
   end
 
   def new

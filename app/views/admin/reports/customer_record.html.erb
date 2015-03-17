@@ -1,13 +1,13 @@
 <h4>Summary of all reviews made by the customer</h4>
 <%if params[:subaction] == "customer_record" %>
-<strong>Displaying data for duration <%= @start_from%> to <%= @start_to%>
+<strong>Displaying data for duration <%= @start_from rescue nil%> to <%= @start_to rescue nil%>
 <%elsif params[:id] == "data_dump"%>
   
 <%else%>
   <strong>Displaying data for 12 Months</strong>
 <%end%>
 <% @users.each_with_index.each do |user,i| %>
-    <% @user = User.find(user)%>
+    <% @user = User.find(user) rescue nil%>
 	<table id="customers">
 		<thead>
 		  <tr>
@@ -55,19 +55,19 @@
 		</tbody>
 	</table>
 	<%if params[:id] == "data_dump"%>
+      
+	  <% @user_compliment = Review.where('review_type = ? and user_id = ? ','compliment',@user.id) rescue nil%>
 
-	  <% @user_compliment = Review.where('review_type = ? and user_id = ? ','compliment',@user.id)%>
-
-	  <% @user_complaint = Review.where('review_type = ? and user_id = ? ','complaint',@user.id) %>
+	  <% @user_complaint = Review.where('review_type = ? and user_id = ? ','complaint',@user.id) rescue nil%>
 	<%else%>
-	  <%@user_compliment = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and review_type = ?  and user_id = ? ',1.year.ago, Date.today,'compliment',@user.id)%>
+	  <%@user_compliment = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and review_type = ?  and user_id = ? ',1.year.ago, Date.today,'compliment',@user.id) rescue nil%>
 
-	  <%@user_complaint = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and review_type = ?  and user_id = ? ',1.year.ago, Date.today,'complaint',@user.id) %>
+	  <%@user_complaint = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and review_type = ?  and user_id = ? ',1.year.ago, Date.today,'complaint',@user.id) rescue nil %>
 	<%end%>
     <br/>
     
     <%unless @user_compliment.blank?%>
-    <h4>Compliments Review By <%=@user.first_name%> <%=@user.last_name%></h4>
+    <h4>Compliments Review By <%=@user.first_name rescue nil%> <%=@user.last_name rescue nil%></h4>
 	<table id="admin_review_xls" >
 		<thead>
 		  <tr>

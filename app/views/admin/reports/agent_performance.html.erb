@@ -49,10 +49,10 @@
 		  <td><%= i+1%></td>
 		  <td><%= @user.first_name rescue nil%> <%= @user.last_name rescue nil%></td>
 		  <td><%= @user.preferred_alias rescue nil%></td>
-		  <td><%= @tracks.count%></td>
-		  <td><%= @a.count%></td>
-		  <td><%= @b.count%></td>
-		  <td><%= @c.count%></td>
+		  <td><%= @tracks.count rescue nil	%></td>
+		  <td><%= @a.count rescue nil%></td>
+		  <td><%= @b.count rescue nil%></td>
+		  <td><%= @c.count rescue nil%></td>
 		</tr>
 		<%end%>
 		

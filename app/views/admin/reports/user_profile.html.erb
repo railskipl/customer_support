@@ -85,11 +85,11 @@ jQuery(document).ready(function(){
 	<tbody>
 		<tr>
 			<td>Compliments</td>
-			<td><%= @user_compliment%></td>
+			<td><%= @user_compliment rescue nil%></td>
 		</tr>
 		<tr>
 			<td>Complaint</td>
-			<td><%= @user_complaint%></td>
+			<td><%= @user_complaint rescue nil%></td>
 		</tr>
 		<tr>
 			<td><strong>Total</strong></td>
@@ -159,9 +159,9 @@ jQuery(document).ready(function(){
 		<tbody>
 		  <% @customers.each do |user| %>
 		    <tr>
-		      <td><%=user.first_name%></td>
-		      <td><%=user.last_name%></td>
-		      <td><%=user.email%></td>
+		      <td><%=user.first_name rescue nil%></td>
+		      <td><%=user.last_name rescue nil%></td>
+		      <td><%=user.email rescue nil%></td>
 		      <td><%=user.confirmed_at.present? ? 'Confirmed' : 'Pending'%></td>
 		      <td>
 		        <%= link_to 'Show', admin_user_path(user), class: "btn btn-primary" if can? :show, User, :role => 'user' %>
@@ -208,11 +208,11 @@ jQuery(document).ready(function(){
 
 		<tbody>
 		  <% @users.each do |user| %>
-		    <% @user = User.find(user)%>
+		    <% @user = User.find(user) rescue nil%>
 		    <tr>
-		      <td><%=@user.first_name%></td>
-		      <td><%=@user.last_name%></td>
-		      <td><%=@user.email%></td>
+		      <td><%=@user.first_name rescue nil%></td>
+		      <td><%=@user.last_name rescue nil%></td>
+		      <td><%=@user.email rescue nil%></td>
 		      <td><%=@user.confirmed_at.present? ? 'Confirmed' : 'Pending'%></td>
 		    </tr>
 		  <% end %>

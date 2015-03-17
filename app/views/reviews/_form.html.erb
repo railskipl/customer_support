@@ -105,7 +105,7 @@
 			<div class="">
 					<div class="name_lft">Date: *</div>
 					<div class="dob">
-						<%= f.date_select :date,  order: [:day, :month, :year],:end_year => Date.today.year, required: true %>
+						<%= f.text_field :date , :id => "datepicker1",  :style => "width:100px;",required: true %>
 					</div>
 			</div>
 		</div>

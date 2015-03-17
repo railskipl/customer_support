@@ -106,7 +106,7 @@
 				<td><%=review.review_type.titleize rescue nil %></td>
 				<td><%=review.company.title.titleize rescue nil %></td>
 				<td><%=review.title.titleize rescue nil %></td>
-			    <td><%=review.try(:user).try(:full_name)%></td>
+			    <td><%=review.try(:user).try(:full_name) rescue nil%></td>
 	    </tr>
 	  <% end %>
 	</tbody>	

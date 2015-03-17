@@ -133,17 +133,17 @@
 
   <tbody>
     <% @industries.each do |industry| %>
-    <% @compliment = Review.where('Date(created_at) >= ? and Date(Date(created_at)) <= ? and industry_id = ? and user_id is not null', @start_from, @start_to, industry.id) %>
+    <% @compliment = Review.where('Date(created_at) >= ? and Date(Date(created_at)) <= ? and industry_id = ? and user_id is not null', @start_from, @start_to, industry.id) rescue nil%>
      
     <% @compliments = @compliment.where('change_date is not null') %> 
       <% @compliments.each do |compliment|%>
         <tr>
-          <td><%= compliment.date_time  %></td>
-          <td><%= compliment.ticket_number  %></td>
-          <td><%= compliment.industry.title.titleize  %></td>
-          <td><%= compliment.nature_of_review  %></td>
-          <td><%= compliment.title.titleize  %></td>
-          <td><%= compliment.try(:user).try(:full_name)%></td>
+          <td><%= compliment.date_time  rescue nil%></td>
+          <td><%= compliment.ticket_number  rescue nil%></td>
+          <td><%= compliment.industry.title.titleize  rescue nil%></td>
+          <td><%= compliment.nature_of_review  rescue nil%></td>
+          <td><%= compliment.title.titleize  rescue nil%></td>
+          <td><%= compliment.try(:user).try(:full_name) rescue nil%></td>
         </tr>
       <%end%>
     <% end %>
@@ -180,11 +180,11 @@
 
   <tbody>
     <% @industries.each do |industry| %>
-    <% @compliment = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and industry_id = ? and user_id is not null', 1.year.ago, Date.today, industry.id)%>
+    <% @compliment = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and industry_id = ? and user_id is not null', 1.year.ago, Date.today, industry.id) rescue nil%>
     
-    <% @complaint_conversion = @compliment.where('review_type = ?', 'complaint').count%>
+    <% @complaint_conversion = @compliment.where('review_type = ?', 'complaint').count rescue nil%>
       
-    <% @compliments = @compliment.where('change_date is not null').count%> 
+    <% @compliments = @compliment.where('change_date is not null').count rescue nil%> 
       <tr>
         <td><%=industry.title rescue nil %></td>
         <td><%=@complaint_conversion + @compliments rescue nil %></td>

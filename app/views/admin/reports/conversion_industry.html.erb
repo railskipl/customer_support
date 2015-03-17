@@ -1,6 +1,6 @@
  <%if params[:subaction] == "company_stat_record" %>
     <h4>Industry conversion stats</h4>
-    <strong>Displaying data for duration <%= @start_from%> to <%= @start_to%>
+    <strong>Displaying data for duration <%= @start_from rescue nil%> to <%= @start_to rescue nil%>
  <%elsif params[:id] == "data_dump"%>
      <h4>Industry conversion stats</h4>
  <%else%>
@@ -21,12 +21,12 @@
   <tbody>
     <% @industries.each_with_index.each do |industry,i| %>
     <%if params[:id] == "data_dump"%>
-     <% @compliment = Review.where('industry_id = ? and user_id is not null', industry.id)%>
+     <% @compliment = Review.where('industry_id = ? and user_id is not null', industry.id) rescue nil%>
     <%else%>
-     <% @compliment = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and industry_id = ? and user_id is not null', @start_from, @start_to, industry.id)%>
+     <% @compliment = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and industry_id = ? and user_id is not null', @start_from, @start_to, industry.id) rescue nil%>
     <%end%>
     
-    <% @complaint_conversion = @compliment.where('review_type = ?', 'complaint')%>
+    <% @complaint_conversion = @compliment.where('review_type = ?', 'complaint') rescue nil%>
       
     <% @compliments = @compliment.where('change_date is not null')%> 
       <%if @complaint_conversion.present? or @compliments.present?%> 

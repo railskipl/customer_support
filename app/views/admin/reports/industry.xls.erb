@@ -1,7 +1,7 @@
 <h4>Industry wise conversions from complaints to compliments</h4>
 
 <%if params[:subaction] == "industry_stat_record" %>
-<strong>Displaying data for duration <%= @start_from%> to <%= @start_to%>
+<strong>Displaying data for duration <%= @start_from rescue nil%> to <%= @start_to rescue nil%>
 <%else%>
   <strong>Displaying data for 12 Months</strong>
 <%end%>
@@ -20,18 +20,18 @@
 
   <tbody>
     <% @industries.each do |industry| %>
-    <% @compliment = Review.where('Date(created_at) >= ? and Date(Date(created_at)) <= ? and company_id = ? and user_id is not null', @start_from, @start_to, industry.id) %>
+    <% @compliment = Review.where('Date(created_at) >= ? and Date(Date(created_at)) <= ? and company_id = ? and user_id is not null', @start_from, @start_to, industry.id) rescue nil%>
      
     <% @compliments = @compliment.where('change_date is not null') %> 
       <% @compliments.each_with_index.each do |compliment,i|%>
         <tr>
           <td><%= i+1%></td>
-          <td><%= compliment.date_time  %></td>
-          <td><%= compliment.ticket_number  %></td>
-          <td><%= compliment.industry.title.titleize  %></td>
-          <td><%= compliment.nature_of_review  %></td>
-          <td><%= compliment.title.titleize  %></td>
-          <td><%= compliment.try(:user).try(:full_name)%></td>
+          <td><%= compliment.date_time  rescue nil%></td>
+          <td><%= compliment.ticket_number  rescue nil%></td>
+          <td><%= compliment.industry.title.titleize  rescue nil%></td>
+          <td><%= compliment.nature_of_review  rescue nil%></td>
+          <td><%= compliment.title.titleize  rescue nil%></td>
+          <td><%= compliment.try(:user).try(:full_name) rescue nil%></td>
         </tr>
       <%end%>
     <% end %>

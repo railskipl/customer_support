@@ -20,9 +20,9 @@
 
   <tbody>
     <% @companies.each do |company| %>
-    <% @compliment = Review.where('company_id = ? and user_id is not null',company.id) %>
+    <% @compliment = Review.where('company_id = ? and user_id is not null',company.id) rescue nil%>
      
-    <% @compliments = @compliment.where('change_date is not null') %> 
+    <% @compliments = @compliment.where('change_date is not null') rescue nil%> 
       <% @compliments.each_with_index.each do |review,i|%>
         <tr>
           <td><%= i+1 %></td>
@@ -36,7 +36,7 @@
           <td><%=review.nature_of_review rescue nil %></td>
           <td><%=review.message rescue nil %></td>
           <td><%=review.title.titleize rescue nil %></td>
-          <td><%=review.try(:user).try(:full_name)%></td>
+          <td><%=review.try(:user).try(:full_name) rescue nil%></td>
         </tr>
       <%end%>
     <% end %>

@@ -1,6 +1,6 @@
 <h4>Poll Results</h4>
 <%if params[:subaction] == "poll_vote" %>
-  <strong>Displaying data for duration <%= params[:report][:start_date]%> to <%= params[:report][:end_date]%>
+  <strong>Displaying data for duration <%= params[:report][:start_date] rescue nil%> to <%= params[:report][:end_date] rescue nil%>
 <%else%>
   <strong>Displaying data for 12 Months
 <%end%>
@@ -23,8 +23,8 @@
 	     <td><%=poll.title rescue nil %></td>
 	     <% poll.options.each do |option| %>
 		  <td><%=option.answer rescue nil %>
-		     <%@result = Result.where('option_id = ?',option.id).count%>
-		     :&nbsp;<%= @result%>&nbsp;vote 
+		     <%@result = Result.where('option_id = ?',option.id).count rescue nil%>
+		     :&nbsp;<%= @result rescue nil%>&nbsp;vote 
 	     <% end %></td>
 	  <% end %>
 	</tbody>	

@@ -1,6 +1,6 @@
 <h2>Total number of Registered Companies</h2>
 <%if params[:subaction] == "registered_suppliers" %>
-  <strong>Displaying data for duration <%= params[:report3][:start_date]%> to <%= params[:report3][:end_date]%>
+  <strong>Displaying data for duration <%= params[:report3][:start_date] rescue nil%> to <%= params[:report3][:end_date] rescue nil%>
 <%else%>
   <strong>Displaying data for 12 Months
 <%end%>
@@ -20,11 +20,11 @@
     <% @supplier_registered.each_with_index.each do |supplier,i| %>
       <tr>
         <td><%= i+1%></td>
-        <td><%= supplier.supplier_name %></td>
-        <td><%= supplier.industry %></td>
-        <td><%= supplier.subscription %></td>
-        <td><%= supplier.start_date.strftime("%d-%m-%Y")%></td>
-        <td><%= supplier.end_date.strftime("%d-%m-%Y")%></td>
+        <td><%= supplier.supplier_name rescue nil%></td>
+        <td><%= supplier.industry rescue nil%></td>
+        <td><%= supplier.subscription rescue nil%></td>
+        <td><%= supplier.start_date.strftime("%d-%m-%Y") rescue nil%></td>
+        <td><%= supplier.end_date.strftime("%d-%m-%Y") rescue nil%></td>
         
       </tr>
     <% end %>

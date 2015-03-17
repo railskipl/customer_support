@@ -20,8 +20,8 @@
 
   <tbody>
     <% @industries.each do |industry| %>
-      <% @compliment = Review.where('industry_id = ? and user_id is not null',industry.id) %>
-      <% @compliments = @compliment.where('change_date is not null') %> 
+      <% @compliment = Review.where('industry_id = ? and user_id is not null',industry.id) rescue nil%>
+      <% @compliments = @compliment.where('change_date is not null') rescue nil%> 
       <% @compliments.each_with_index.each do |review,i| %>
         <tr>
           <td><%= i+1%></td>
@@ -35,7 +35,7 @@
           <td><%=review.nature_of_review rescue nil %></td>
           <td><%=review.message rescue nil %></td>
           <td><%=review.title.titleize rescue nil %></td>
-          <td><%=review.try(:user).try(:full_name)%></td>
+          <td><%=review.try(:user).try(:full_name) rescue nil%></td>
         </tr>
       <% end %>
     <%end%>

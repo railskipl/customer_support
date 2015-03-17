@@ -91,8 +91,8 @@
 	<tbody>
 	    <% @track_times.each_with_index.each do |jagent,i|%>
 	      <%@user = User.find(jagent) rescue nil%>
-	      <%@tracks = @user.track_times.where('Date(created_at) >= ? and Date(Date(created_at)) <= ?',@start_from, @start_to)%>
-	      <%@processed = @tracks.where('date_complete is not null').count%>
+	      <%@tracks = @user.track_times.where('Date(created_at) >= ? and Date(Date(created_at)) <= ?',@start_from, @start_to) rescue nil%>
+	      <%@processed = @tracks.where('date_complete is not null').count rescue nil%>
 		<tr>
 			<td><%= i+1%></td>
 			<td><%= @user.first_name rescue nil%></td>
@@ -141,9 +141,9 @@
 	<tbody>
 	  <% @jagentid_reviews.each_with_index.each do |jagent,i|%>
 	    <%@user = User.find(jagent) rescue nil%>
-	    <%@reviews = Review.select(:id,:admin_sagent_modified).where('Date(created_at) >= ? and Date(Date(created_at)) <= ? and jagent_id = ? and user_id is not null',@start_from, @start_to,jagent) %>
-	    <%@correction_review = @reviews.where('admin_sagent_modified = ?', true).count%>
-	    <%@accurate_review = @reviews.where('admin_sagent_modified = ?', false).count%>
+	    <%@reviews = Review.select(:id,:admin_sagent_modified).where('Date(created_at) >= ? and Date(Date(created_at)) <= ? and jagent_id = ? and user_id is not null',@start_from, @start_to,jagent) rescue nil %>
+	    <%@correction_review = @reviews.where('admin_sagent_modified = ?', true).count rescue nil%>
+	    <%@accurate_review = @reviews.where('admin_sagent_modified = ?', false).count rescue nil%>
 	    <%@comments =  @user.comments.where('Date(created_at) >= ? and Date(Date(created_at)) <= ?',@start_from, @start_to) rescue nil%>
 	    <%@accurate_comment = @comments.where('admin_sagent_comment = ?', false).count rescue nil%>
 	    <%@correction_comment = @comments.where('admin_sagent_comment = ?', true).count rescue nil%>
@@ -195,10 +195,11 @@
 	</thead>
 
 	<tbody>
-	    <% @track_times.each_with_index.each do |track,i|%>
-	    <%@user = User.find(track) rescue nil%>
-	    <%@tracks = @user.track_times.where('Date(created_at) >= ? and Date(Date(created_at)) <= ?',@start_from, @start_to) rescue nil%>
-	    <%@tracks.each do |tt|%>
+    <% @track_times.each_with_index.each do |track,i|%>
+      <%@user = User.find(track) rescue nil%>
+      <%@tracks = @user.track_times.where('Date(created_at) >= ? and Date(Date(created_at)) <= ?',@start_from, @start_to) rescue nil%>
+    
+      <%@tracks.each do |tt|%>
 	      <%@a ||= [] #on time%> 
 	      <%@b ||= [] #out of time%>
 	      <%@c ||= [] #not processed%>
@@ -212,17 +213,16 @@
               <%@c << tt.id%>
 	      <%end%>
 	    <%end%>
-	    
-		<tr>
-		  <td><%= i+1%></td>
-		  <td><%= @user.first_name rescue nil%> <%= @user.last_name rescue nil%></td>
-		  <td><%= @user.preferred_alias rescue nil%></td>
-		  <td><%= @tracks.count%></td>
-		  <td><%= @a.count%></td>
-		  <td><%= @b.count%></td>
-		  <td><%= @c.count%></td>
-		</tr>
-		<%end%>
-		
+    
+  		<tr>
+  		  <td><%= i+1%></td>
+  		  <td><%= @user.first_name rescue nil%> <%= @user.last_name rescue nil%></td>
+  		  <td><%= @user.preferred_alias rescue nil%></td>
+  		  <td><%= @tracks.count%></td>
+  		  <td><%= @a.count rescue nil%></td>
+  		  <td><%= @b.count rescue nil%></td>
+  		  <td><%= @c.count rescue nil%></td>
+  		</tr>
+	  <%end%>
 	</tbody>
 </table>

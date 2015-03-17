@@ -33,7 +33,7 @@
 				<td><%=review.nature_of_review rescue nil %></td>
 				<td><%=review.message rescue nil %></td>
 				<td><%=review.title.titleize rescue nil %></td>
-			    <td><%=review.try(:user).try(:full_name)%></td>
+			    <td><%=review.try(:user).try(:full_name) rescue nil%></td>
 
 	    </tr>
 	  <% end %>

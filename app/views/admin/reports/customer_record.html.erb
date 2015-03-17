@@ -32,24 +32,24 @@
 		  
 		    <tr>
 		      <td><%= i+1%></td>
-		      <td><%=@user.first_name%></td>
-		      <td><%=@user.last_name%></td>
-		      <td><%=@user.email%></td>
+		      <td><%=@user.first_name rescue nil%></td>
+		      <td><%=@user.last_name rescue nil%></td>
+		      <td><%=@user.email rescue nil%></td>
 		      <td><%=@user.confirmed_at.present? ? 'Confirmed' : 'Pending'%></td>
-		      <td><%=@user.preferred_alias%></td>
-		      <td><%=@user.age%></td>
+		      <td><%=@user.preferred_alias rescue nil%></td>
+		      <td><%=@user.age rescue nil%></td>
 		      <td><% if @user.gender == '1' %>
 				    <%="Male"%>
 				    <%else%>
 				    <%="Female"%>
 				    <%end%>
 			  </td>
-		      <td><%=@user.address_line1%></td>
-		      <td><%=@user.address_line2%></td>
-		      <td><%=@user.town%></td>
-		      <td><%=@user.country%></td>
-		      <td><%=@user.lives_in%></td>
-		      <td><%=@user.postal_code%></td>
+		      <td><%=@user.address_line1 rescue nil%></td>
+		      <td><%=@user.address_line2 rescue nil%></td>
+		      <td><%=@user.town rescue nil%></td>
+		      <td><%=@user.country rescue nil%></td>
+		      <td><%=@user.lives_in rescue nil%></td>
+		      <td><%=@user.postal_code rescue nil%></td>
 		    </tr>
 		 
 		</tbody>
@@ -102,7 +102,7 @@
 					<td><%=review.nature_of_review rescue nil %></td>
 					<td><%=review.message rescue nil %></td>
 					<td><%=review.title.titleize rescue nil %></td>
-				    <td><%=review.try(:user).try(:full_name)%></td>
+				    <td><%=review.try(:user).try(:full_name) rescue nil%></td>
 
 		    </tr>
 		  <% end %>
@@ -112,7 +112,7 @@
     <%end%>
     <br/>
     <%unless @user_complaint.blank?%>
-    <h4>Complaints Review By <%=@user.first_name%> <%=@user.last_name%></h4>
+    <h4>Complaints Review By <%=@user.first_name rescue nil%> <%=@user.last_name rescue nil%></h4>
     <table id="admin_review_xls" >
 		<thead>
 		  <tr>
@@ -147,7 +147,7 @@
 					<td><%=review.nature_of_review rescue nil %></td>
 					<td><%=review.message rescue nil %></td>
 					<td><%=review.title.titleize rescue nil %></td>
-				    <td><%=review.try(:user).try(:full_name)%></td>
+				    <td><%=review.try(:user).try(:full_name) rescue nil%></td>
 
 		    </tr>
 		  <% end %>

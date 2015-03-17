@@ -60,8 +60,8 @@
 	     <td><%=poll.title rescue nil %></td>
 	     <% poll.options.each do |option| %>
 		  <td><%=option.answer rescue nil %>
-		     <%@result = Result.where('option_id = ?',option.id).count%>
-		     :&nbsp;<%= @result%>&nbsp;vote 
+		     <%@result = Result.where('option_id = ?',option.id).count rescue nil%>
+		     :&nbsp;<%= @result rescue nil%>&nbsp;vote 
 	     <% end %></td>
 	  <% end %>
 	</tbody>	

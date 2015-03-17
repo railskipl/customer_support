@@ -1,6 +1,6 @@
 <%if params[:subaction] == "reviews_processed" %>
   <h4>Quantity:number of reviews processed by each agent</h4>
-  <strong>Displaying data for duration <%= params[:report][:start_date]%> to <%= params[:report][:end_date]%>
+  <strong>Displaying data for duration <%= params[:report][:start_date] rescue nil%> to <%= params[:report][:end_date] rescue nil%>
 <%elsif params[:id] == "data_dump"%>
     <strong>Quantity: number of reviews processed by each agent</strong>
 <%else%>
@@ -23,11 +23,11 @@
 	    <% @track_times.each_with_index.each do |jagent,i|%>
 	      <%@user = User.find(jagent) rescue nil%>
 	      <%if params[:id] == "data_dump"%>
-	         <%@tracks = @user.track_times%>
+	         <%@tracks = @user.track_times rescue nil%>
 	      <%else%>
-	        <%@tracks = @user.track_times.where('Date(created_at) >= ? and Date(Date(created_at)) <= ?',@start_from, @start_to)%>
+	        <%@tracks = @user.track_times.where('Date(created_at) >= ? and Date(Date(created_at)) <= ?',@start_from, @start_to) rescue nil%>
 	      <%end%>
-	      <%@processed = @tracks.where('date_complete is not null').count%>
+	      <%@processed = @tracks.where('date_complete is not null').count rescue nil%>
 		<tr>
 			<td><%= i+1%></td>
 			<td><%= @user.first_name rescue nil%></td>

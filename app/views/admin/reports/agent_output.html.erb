@@ -26,16 +26,16 @@
 	    <%@user = User.find(jagent) rescue nil%>
 
 	    <%if params[:id] == "data_dump"%>
-	      <%@reviews = Review.select(:id,:admin_sagent_modified).where('jagent_id = ? and user_id is not null',jagent)  %>
+	      <%@reviews = Review.select(:id,:admin_sagent_modified).where('jagent_id = ? and user_id is not null',jagent)  rescue nil%>
 	      <%@comments =  @user.comments rescue nil%>
 	    <%else%>
-	      <%@reviews = Review.select(:id,:admin_sagent_modified).where('Date(created_at) >= ? and Date(Date(created_at)) <= ? and jagent_id = ? and user_id is not null',@start_from, @start_to,jagent) %>
+	      <%@reviews = Review.select(:id,:admin_sagent_modified).where('Date(created_at) >= ? and Date(Date(created_at)) <= ? and jagent_id = ? and user_id is not null',@start_from, @start_to,jagent) rescue nil%>
 	      <%@comments =  @user.comments.where('Date(created_at) >= ? and Date(Date(created_at)) <= ?',@start_from, @start_to) rescue nil%>
 	    <%end%>
 	    
 
-	    <%@correction_review = @reviews.where('admin_sagent_modified = ?', true).count%>
-	    <%@accurate_review = @reviews.where('admin_sagent_modified = ?', false).count%>
+	    <%@correction_review = @reviews.where('admin_sagent_modified = ?', true).count rescue nil%>
+	    <%@accurate_review = @reviews.where('admin_sagent_modified = ?', false).count rescue nil%>
 	    
 	    <%@accurate_comment = @comments.where('admin_sagent_comment = ?', false).count rescue nil%>
 	    <%@correction_comment = @comments.where('admin_sagent_comment = ?', true).count rescue nil%>

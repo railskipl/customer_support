@@ -1,6 +1,6 @@
 <h2>Supplier Profiles</h2>
  <%if params[:subaction] == "supplier_profiles" %>
-  <strong>Displaying data for duration <%= params[:report2][:start_date]%> to <%= params[:report2][:end_date]%>
+  <strong>Displaying data for duration <%= params[:report2][:start_date] rescue nil%> to <%= params[:report2][:end_date] rescue nil%>
 <%elsif params[:id] == "data_dump"%>
 
 <%else%>
@@ -53,42 +53,42 @@
     <%@suppliers.each_with_index.each do |supplier,i|%>
       <tr>
         <td><%= i+1%></td>
-        <td><%= supplier.supplier_name %></td>
-        <td><%= supplier.supplier_vat_Number%></td>
-        <td><%= supplier.industry%></td>
-        <td><%= supplier.address_line1%></td>
-        <td><%= supplier.address_line2%></td>
-        <td><%= supplier.town%></td>
-        <td><%= supplier.city%></td>
-        <td><%= supplier.country%></td>
+        <td><%= supplier.supplier_name rescue nil%></td>
+        <td><%= supplier.supplier_vat_Number rescue nil%></td>
+        <td><%= supplier.industry rescue nil%></td>
+        <td><%= supplier.address_line1 rescue nil%></td>
+        <td><%= supplier.address_line2 rescue nil%></td>
+        <td><%= supplier.town rescue nil%></td>
+        <td><%= supplier.city rescue nil%></td>
+        <td><%= supplier.country rescue nil%></td>
         <td></td>
-        <td><%= supplier.authorised_responder%></td>
-        <td><%= supplier.title%></td>
-        <td><%= supplier.first_name%></td>
-        <td><%= supplier.last_name%></td>
-        <td><%= supplier.email%></td>
-        <td><%= supplier.telephone_number%></td>
-        <td><%= supplier.mobile_number%></td>
+        <td><%= supplier.authorised_responder rescue nil%></td>
+        <td><%= supplier.title rescue nil%></td>
+        <td><%= supplier.first_name rescue nil%></td>
+        <td><%= supplier.last_name rescue nil%></td>
+        <td><%= supplier.email rescue nil%></td>
+        <td><%= supplier.telephone_number rescue nil%></td>
+        <td><%= supplier.mobile_number rescue nil%></td>
         <td></td>
-        <td><%= supplier.auth_resp2%></td>
-        <td><%= supplier.title2%></td>
-        <td><%= supplier.fname2%></td>
-        <td><%= supplier.lname2%></td>
-        <td><%= supplier.email2%></td>
-        <td><%= supplier.tno2%></td>
-        <td><%= supplier.mno2%></td>
+        <td><%= supplier.auth_resp2 rescue nil%></td>
+        <td><%= supplier.title2 rescue nil%></td>
+        <td><%= supplier.fname2 rescue nil%></td>
+        <td><%= supplier.lname2 rescue nil%></td>
+        <td><%= supplier.email2 rescue nil%></td>
+        <td><%= supplier.tno2 rescue nil%></td>
+        <td><%= supplier.mno2 rescue nil%></td>
         <td></td>
-        <td><%= supplier.auth_resp3%></td>
-        <td><%= supplier.title3%></td>
-        <td><%= supplier.fname3%></td>
-        <td><%= supplier.lname3%></td>
-        <td><%= supplier.email3%></td>
-        <td><%= supplier.tno3%></td>
-        <td><%= supplier.mno3%></td>
-        <td><%= supplier.subscription%></td>
-        <td><%= supplier.start_date%></td>
-        <td><%= supplier.end_date%></td>
-        <td><%= supplier.notes%></td>
+        <td><%= supplier.auth_resp3 rescue nil%></td>
+        <td><%= supplier.title3 rescue nil%></td>
+        <td><%= supplier.fname3 rescue nil%></td>
+        <td><%= supplier.lname3 rescue nil%></td>
+        <td><%= supplier.email3 rescue nil%></td>
+        <td><%= supplier.tno3 rescue nil%></td>
+        <td><%= supplier.mno3 rescue nil%></td>
+        <td><%= supplier.subscription rescue nil%></td>
+        <td><%= supplier.start_date rescue nil%></td>
+        <td><%= supplier.end_date rescue nil%></td>
+        <td><%= supplier.notes rescue nil%></td>
       </tr>
       <%end%>
   </tbody>

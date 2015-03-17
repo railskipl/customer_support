@@ -14,13 +14,13 @@
 		<tbody>
 		  <% @sagents.each do |user| %>
 		    <tr>
-		      <td><%=user.first_name%></td>
-		      <td><%=user.last_name%></td>
-		      <td><%=user.email%></td>
-		      <td><%=user.confirmed_at.present? ? 'Confirmed' : 'Pending'%></td>
-		      <td><%=user.preferred_alias%></td>
+		      <td><%=user.first_name rescue nil%></td>
+		      <td><%=user.last_name rescue nil%></td>
+		      <td><%=user.email rescue nil%></td>
+		      <td><%=user.confirmed_at.present? ? 'Confirmed' : 'Pending' rescue nil%></td>
+		      <td><%=user.preferred_alias rescue nil%></td>
 		    
-		      <td><%=user.role%></td>
+		      <td><%=user.role rescue nil%></td>
 		    </tr>
 		  <% end %>
 		</tbody>

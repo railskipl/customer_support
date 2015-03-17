@@ -162,7 +162,7 @@ jQuery(document).ready(function(){
 		      <td><%=user.first_name rescue nil%></td>
 		      <td><%=user.last_name rescue nil%></td>
 		      <td><%=user.email rescue nil%></td>
-		      <td><%=user.confirmed_at.present? ? 'Confirmed' : 'Pending'%></td>
+		      <td><%=user.confirmed_at.present? ? 'Confirmed' : 'Pending' rescue nil%></td>
 		      <td>
 		        <%= link_to 'Show', admin_user_path(user), class: "btn btn-primary" if can? :show, User, :role => 'user' %>
   				</td>
@@ -213,7 +213,7 @@ jQuery(document).ready(function(){
 		      <td><%=@user.first_name rescue nil%></td>
 		      <td><%=@user.last_name rescue nil%></td>
 		      <td><%=@user.email rescue nil%></td>
-		      <td><%=@user.confirmed_at.present? ? 'Confirmed' : 'Pending'%></td>
+		      <td><%=@user.confirmed_at.present? ? 'Confirmed' : 'Pending' rescue nil%></td>
 		    </tr>
 		  <% end %>
 		</tbody>

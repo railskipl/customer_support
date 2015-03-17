@@ -1,6 +1,6 @@
 <br/>
 <%if params[:subaction] == "company_total" %>
-  <strong>Displaying data for duration <%= params[:report][:start_date]%> to <%= params[:report][:end_date]%>
+  <strong>Displaying data for duration <%= params[:report][:start_date] rescue nil%> to <%= params[:report][:end_date] rescue nil%>
 <%elsif params[:id] == "data_dump"%>
     <strong>All Company Data</strong>
 <%else%>
@@ -10,11 +10,11 @@
 
     <% @company = Company.where('id = ?', company).first%>
       <%if params[:id] == "data_dump"%>
-       <% @compliments = Review.where('user_id is not null and company_id = ? and review_type = ?',@company.id, 'compliment')%>
-       <% @complaints = Review.where('user_id is not null and company_id = ? and review_type = ?',@company.id, 'complaint')%>
+       <% @compliments = Review.where('user_id is not null and company_id = ? and review_type = ?',@company.id, 'compliment') rescue nil%>
+       <% @complaints = Review.where('user_id is not null and company_id = ? and review_type = ?',@company.id, 'complaint') rescue nil%>
 	 <%else%>
-       <% @compliments = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and company_id = ? and review_type = ?',@start_from,@start_to,@company.id, 'compliment')%>
-       <% @complaints = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and company_id = ? and review_type = ?',@start_from,@start_to,@company.id, 'complaint')%>
+       <% @compliments = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and company_id = ? and review_type = ?',@start_from,@start_to,@company.id, 'compliment') rescue nil%>
+       <% @complaints = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and company_id = ? and review_type = ?',@start_from,@start_to,@company.id, 'complaint') rescue nil%>
 	 <%end%>
     
 	

@@ -62,7 +62,7 @@ class CompaniesController < ApplicationController
 		@active_tab = "registered"
 		review = Review.new(review_params)
     @review_filter = review
-    @rcompanies ||= Company.registered
+    @rcompanies ||= Supplier.registered
 
     if review.industry_id  && review.industry_id !=0
     	@rcompanies = @rcompanies.by_industry(review.industry_id)
@@ -85,7 +85,7 @@ class CompaniesController < ApplicationController
 		@active_tab = "unregistered"
     review = Review.new(review_params)
     @review_filter = review
-    @rcompanies ||= Company.un_registered
+    @rcompanies ||= Supplier.un_registered
 
     if review.industry_id && review.industry_id !=0
     	@rcompanies = @rcompanies.by_industry(review.industry_id)

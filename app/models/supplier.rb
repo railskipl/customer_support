@@ -1,6 +1,9 @@
 class Supplier < ActiveRecord::Base
 	has_many :comments
 
+   scope :registered, -> { where(subscription: "Registered") }
+   scope :un_registered, -> { where(subscription: "Not Registered") }
+
   def full_name
     full_name = self.first_name ? self.first_name : ''
     full_name += " " if self.first_name

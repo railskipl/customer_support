@@ -5,8 +5,8 @@ class Company < ActiveRecord::Base
 	has_many :towns, through: :addresses
 	has_many :reviews
 
-  scope :registered, -> { where(is_registered: true) }
-  scope :un_registered, -> { where(is_registered: false) }
+  # scope :registered, -> { where(is_registered: true) }
+  # scope :un_registered, -> { where(is_registered: false) }
 
   scope :within_range , -> (start_date, end_date) { where("created_at >= ? AND created_at <= ?", start_date, end_date) unless start_date.blank? and end_date.blank? }
   scope :by_industry, -> (industry_id) { where("industry_id = ?", industry_id)  unless industry_id.blank? }

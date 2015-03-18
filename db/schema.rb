@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150317122842) do
+ActiveRecord::Schema.define(version: 20150318074326) do
 
   create_table "abuse_reports", force: true do |t|
     t.string   "user_email"
@@ -381,6 +381,7 @@ ActiveRecord::Schema.define(version: 20150317122842) do
     t.string   "preferred_alias"
     t.boolean  "accept_t_and_c",         default: false
     t.string   "guest_token"
+    t.boolean  "is_subscribe"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

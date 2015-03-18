@@ -265,6 +265,10 @@
 				<div class="rgh_in">
 			     <%=f.check_box :accept_t_and_c , id: "field_terms", required: true, value: true%>
 				  <label for="field_terms"> <%=link_to "I accept the term and conditions. *", "/terms-of-use" ,:target => "new" %></label></div>
+				 <div class="rgh_in"> 
+				   <%=f.check_box :is_subscribe %>
+				   Subscribe to receive promotional materials from our partners
+				</div>
 				<div class="rgh_in">
 				  <input type="submit" value="SAVE" id="save">
 				</div>

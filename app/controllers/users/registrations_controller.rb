@@ -42,6 +42,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :salt, :other_type,:encrypted_password, :first_name, :last_name, :preferred_alias, :gender, :age, :dob, :country, :pobox, :postal_code, :town, :lives_in, :secret_question, :answer, :accpect_t_and_c,:address_line1,:address_line2,:avatar,:guest_token)
+    params.require(:user).permit(:email, :password, :salt, :other_type,:encrypted_password, :first_name, :last_name, :preferred_alias, :gender, :age, :dob, :country, :pobox, :postal_code, :town, :lives_in, :secret_question, :answer, :accpect_t_and_c,:address_line1,:address_line2,:avatar,:guest_token,:is_subscribe)
   end
 end

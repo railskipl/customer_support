@@ -1,7 +1,8 @@
 module CompaniesHelper
 
   def review_count(company)
-    company.reviews.count
+    c = Company.includes(:reviews).find_by_title(company.supplier_name)
+    c.reviews.count
   end
 
   def is_user_compliment(review)
@@ -14,15 +15,18 @@ module CompaniesHelper
   end
 
   def review_complaint_count(company)
-    company.reviews.by_review_type(:complaint).count
+    c = Company.includes(:reviews).find_by_title(company.supplier_name)
+    c.reviews.by_review_type(:complaint).count
   end
 
   def review_compliment_count(company)
-    company.reviews.by_review_type(:compliment).count
+    c = Company.includes(:reviews).find_by_title(company.supplier_name)
+    c.reviews.by_review_type(:compliment).count
   end
 
   def change_complaint_count(company)
-   company.reviews.by_review_type(:compliment).where("change_date IS NOT NULL").count
+   c = Company.includes(:reviews).find_by_title(company.supplier_name)
+   c.reviews.by_review_type(:compliment).where("change_date IS NOT NULL").count
   end
 
   def pure_ratio_count(company)

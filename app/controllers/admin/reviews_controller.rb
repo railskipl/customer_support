@@ -86,6 +86,7 @@ class Admin::ReviewsController < AdminController
       if @review.jagent_id.present?
          m = MonitorJagent.find_by_review_id(@review.id)
          m.status = "Published"
+         m.modified_review = (m.modified_review.nil? ? true : m.modified_review)
          m.save
         unless @review.modified_review == params[:review][:modified_review]
           @review.admin_sagent_modified = true

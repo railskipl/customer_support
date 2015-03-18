@@ -91,7 +91,7 @@ $(document).ready(function(){
   <%= @review.published_date.strftime("%d %b %Y %H:%M") if @review.ispublished %>
 </p>
 
-<%unless @review.ispublished || @review.archive %>
+<%unless @review.ispublished || @review.archive || @review.is_modified %>
 	<%= link_to 'Edit', edit_admin_review_path(@review), class: "btn btn-primary" if can? :edit, Review %>
 <%end%>
 <% if @review.is_ticket_open &&  @review.comments.supplier_comments.count > 0  %>

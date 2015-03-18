@@ -7,6 +7,7 @@
       <th>Review Title</th>
       <th>Comment</th>
       <th>Date</th>
+      <th>Status</th>
     </tr>
   </thead>
 	<tbody>
@@ -16,7 +17,8 @@
 		<td><%= link_to notification.comment.review.ticket_number,admin_review_path(notification.comment.review.id) %></td>
 		<td><%= notification.comment.review.title %></td>
 		<td><%= notification.comment.title.html_safe %></td>
-		<td><%= notification.comment.review.created_at.strftime("%d %b %y %H:%M") %></td>
+		<td><%= notification.comment.review.created_at.strftime("%d-%m-%Y | %H:%M") %></td>
+		<td><%= notification.comment_status %></td>
 	</tr>
 	<% end %>
 </tbody>
@@ -33,6 +35,7 @@
       <th>Review Title</th>
       <th>Comment</th>
       <th>Date</th>
+      <th>Status</th>
     </tr>
   </thead>
 	<tbody>
@@ -43,6 +46,7 @@
 		<td><%= notification.comment.review.title %></td>
 		<td><%= notification.comment.title.html_safe %></td>
 		<td><%= notification.comment.review.created_at.strftime("%d %b %y %H:%M") %></td>
+		<td><%= notification.comment_status %></td>	
 	</tr>
 	<% end %>
 </tbody>

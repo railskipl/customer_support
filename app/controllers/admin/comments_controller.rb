@@ -35,6 +35,9 @@ class Admin::CommentsController < AdminController
       m.c_comment = true
       m.comment_status = "Waiting for approval"
       m.save
+      n = @comment.notification
+      n.comment_status = "Waiting for approval"
+      n.save
       @comment.modified_comment = params["comment"]["modified_comment"]
     else
       if @comment.user_id
@@ -48,11 +51,17 @@ class Admin::CommentsController < AdminController
           @comment.admin_sagent_comment = true
         # end
       end
-      m = @review.monitor_jagent
-      m.comment_status = "Published"
-      m.save
       @comment.modified_comment = params["comment"]["modified_comment"] if params["comment"]
-      @comment.ispublished = true if params[:commit] == "Publish"
+      
+      if params[:commit] == "Publish"
+        @comment.ispublished = true 
+        m = @review.monitor_jagent
+        m.comment_status = "Published"
+        m.save
+        n = @comment.notification
+        n.comment_status = "Published"
+        n.save
+      end
     end
     if @comment.save
        unless current_user.role == "jagent"

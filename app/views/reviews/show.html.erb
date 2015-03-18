@@ -6,7 +6,7 @@
 <span class="span7">
   <p id="notice"><%#= notice %></p>
   <%= form_for(@review) do |f|%>
-    <div style="background-color:#FBAF3F;margin-bottom:2px;padding:5px;height:20px;color:white;"><%=@review.user.first_name rescue nil %>'s <%=@review.review_type%> &nbsp;Ticket No: <%=@review.ticket_number %></div>
+    <div style="background-color:#FBAF3F;margin-bottom:2px;padding:5px;height:20px;color:white;"><%=@review.user.preferred_alias rescue nil %>'s <%=@review.review_type%> &nbsp;Ticket No: <%=@review.ticket_number %></div>
 			<div style="background-color:#E1E1E1;padding:5px;margin-bottom:10px;">    
 				<div>
 					<div class="form_lft">

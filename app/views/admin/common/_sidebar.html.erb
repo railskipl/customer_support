@@ -70,7 +70,8 @@
 
     	<%  if can? :read, Notification %>
 		  <li class="<%=(@active_tab == 'Notification Comments') ? 'active' : ''%>">
-					<%=link_to 'Notification Comments', admin_notifications_path%>
+		  	<%=link_to raw(action_button_helper('Comments','icon-cogs')), admin_notifications_path %>
+					
 		  </li>
     	<%end%>
 

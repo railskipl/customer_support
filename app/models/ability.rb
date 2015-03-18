@@ -8,6 +8,7 @@ class Ability
     if user.is? :admin
       can :manage, User
       can :manage, Maintainence
+      can :manage, Notification
       can :read, MonitorJagent
       can :manage, User, :id => user.id
       can :manage, Resource

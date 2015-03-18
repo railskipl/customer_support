@@ -3,7 +3,9 @@
   <h4>
      <%= comment.supplier_id ? comment.supplier.supplier_name : comment.name %> :
   </h4>
+  <% if current_user.is_agent? || current_user.is_admin? %>
   Email: <%= comment.email %><br/>
+  <% end %>
   Posted On: <%= comment.updated_at.strftime("%Y-%m-%d") %> <br/>
   Customer Message: <%= raw(comment.title) %>
   Modified Message: <%= comment.modified_comment.present? ? raw(comment.modified_comment) : "Not Modified" %>

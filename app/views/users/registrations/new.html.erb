@@ -85,7 +85,7 @@
 				  <div class="form_lft">
 				    <div class="name_lft"> Confirm Email: *</div>
 				    <div>
-				      <input type="email" id='email_confirmation', maxlength="50" min = "1" max = "50" autocomplete="off" value="<%= @user.email %>" required=true>
+				      <input type="email" id='email_confirmation', maxlength="50" min = "1" max = "50" autocomplete="off" value="<%= @user.email %>" required=true oncopy="return false" oncut="return false" onpaste="return false">
 				    </div>
 				  </div>
 				</div>

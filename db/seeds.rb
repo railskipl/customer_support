@@ -445,6 +445,29 @@
 # 		Company.create(:title=>company,:industry_id=> broadcast_id)
 # 	end
 
+#create university list
+# ["Adventist University of Africa",
+# "Africa International",
+# "Africa Nazarene",
+# "Catholic University",
+# "Daystar",
+# "Inoorero University",
+# "JKUAT",
+# "KCA University",
+# "Kenyatta University",
+# "Kiriri Women's University",
+# "Management University",
+# "Multimedia University",
+# "Pan Africa Christian",
+# "Strathmore",
+# "Technical University",
+# "The East African University",
+# "USIU",
+# "University of Nairobi"
+# ].each do |company|
+# 	institution = Industry.find_by_title("University")
+# 	Company.create(:title=>company,:industry_id=> institution.id )
+# end
 
 
 #    [ "Zuku Tv",

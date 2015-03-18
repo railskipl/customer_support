@@ -37,10 +37,18 @@ $(document).ready(function(){
     <strong> Ticket Number: </strong><%=@review.ticket_number%>
   </div><br/>
   <div id="more_details">
-      <%= link_to "Report Abuse", new_admin_abuse_report_path(:user_id => @review.user_id),:class=> "btn"%><br>
+
       <div class="field">
          <strong>Review Type: </strong><%= @review.review_type %>
       </div><br/>
+      <% unless current_user.is_jagent? %>
+      <div class="field">
+         <strong>Customer Name: </strong><%= @review.user.preferred_alias %>
+      </div><br/>
+      <div class="field">
+         <strong>Customer Email: </strong><%= @review.user.email %>
+      </div><br/>
+      <% end %>
       <div class="field">
     		<strong>Title:</strong><%= @review.title  rescue nil%>
       </div><br/>

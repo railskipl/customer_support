@@ -49,6 +49,10 @@ class User < ActiveRecord::Base
   	self.role == 'agent'
   end
 
+  def is_jagent?
+    self.role == 'jagent'
+  end
+
   def is_customer?
   	!is_admin? && !is_agent?
   end

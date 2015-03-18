@@ -113,7 +113,7 @@
 
 		<% if can? :read, Review%>
 		  <li class="<%=(@active_tab == 'reviews') ? 'active' : ''%>">
-					<%=link_to raw(action_button_helper('Review', 'icon-eye-open')),admin_reviews_path%>
+					<%=link_to raw(action_button_helper('Assign Reviews', 'icon-eye-open')),admin_reviews_path%>
 		  </li>
 		<%end%>
 

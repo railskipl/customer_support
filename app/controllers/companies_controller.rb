@@ -40,11 +40,11 @@ class CompaniesController < ApplicationController
     @rcompanies ||= Supplier.all
 
     if review.industry_id  && review.industry_id !=0
-    	@rcompanies = @rcompanies.by_industry(review.industry_id)
+    	@rcompanies = @rcompanies.by_industry(review.industry.title)
     end
 
     if review.company_id  && review.company_id !=0
-    	@rcompanies = @rcompanies.by_company(review.company_id)
+    	@rcompanies = @rcompanies.by_company(review.company.title)
     end
     
 #    if review.town_id && review.town_id !=0
@@ -65,11 +65,11 @@ class CompaniesController < ApplicationController
     @rcompanies ||= Supplier.registered
 
     if review.industry_id  && review.industry_id !=0
-    	@rcompanies = @rcompanies.by_industry(review.industry_id)
+    	@rcompanies = @rcompanies.by_industry(review.industry.title)
     end
     
     if review.company_id && review.company_id !=0
-    	@rcompanies = @rcompanies.by_company(review.company_id)
+    	@rcompanies = @rcompanies.by_company(review.company.title)
     end
     
 #    if review.town_id && review.town_id !=0
@@ -88,11 +88,11 @@ class CompaniesController < ApplicationController
     @rcompanies ||= Supplier.un_registered
 
     if review.industry_id && review.industry_id !=0
-    	@rcompanies = @rcompanies.by_industry(review.industry_id)
+    	@rcompanies = @rcompanies.by_industry(review.industry.title)
     end
     
     if review.company_id && review.company_id !=0
-    	@rcompanies = @rcompanies.by_company(review.company_id)
+    	@rcompanies = @rcompanies.by_company(review.company.title)
     end
     
 #    if review.town_id && review.town_id !=0

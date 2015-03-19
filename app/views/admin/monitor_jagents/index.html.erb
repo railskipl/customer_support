@@ -11,6 +11,7 @@
 		<th>Published By</th>
 		<th>Status</th>
 		<th>Comment Status</th>
+		<th>Date</th>
 	</tr>
 	</thead>
 	<tbody>
@@ -25,6 +26,8 @@
 		<td><%= mon.review.ispublished? ? mon.review.last_published_agent.preferred_alias : "No" rescue nil%></td>
 		<td><%= mon.status %></td>
 		<td><%= mon.comment_status %></td>
+		<td><%= mon.review.created_at.strftime("%d-%m-%Y | %H:%M") %></td>
+
 	</tr>
 	<% end %>
 </tbody>
@@ -38,8 +41,8 @@
 		<th>Review</th> 
 		<th>Junior Agent</th> 
 		<th>Assignee</th>
-		<th>Ticket Closed By Junior Agent</th>
-		<th>Modified Review By Junior Agent</th>
+		<th>Ticket Closed By Agent</th>
+		<th>Modified Review By Agent</th>
 		<th>Published By</th>
 		<th>Status</th>
 	</tr>

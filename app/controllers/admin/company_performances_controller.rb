@@ -40,7 +40,7 @@ class Admin::CompanyPerformancesController < ApplicationController
 	private
 
 	 def company_params
-	 	params.require(:company_performance).permit(:best_performance, :worst_performance, :start_date, :end_date, :performance_img)
+	 	params.require(:company_performance).permit(:best_performance, :worst_performance, :start_date, :end_date, :performance_img,:box_type)
 	 end
 
 	 def get_params

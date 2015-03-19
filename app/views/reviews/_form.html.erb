@@ -47,7 +47,7 @@
 		<div class="review_form">
 			<div class="name_lft">Town: *</div>
 			<div class="small-input2">
-			   <%= f.collection_select :town_id, @towns+ [Industry.new(:id => Town.last.id + 1,:title => "Other")], :id, :title, {:include_blank=>"Select Town"}, :rel => "/town/locations_by_town_and_company",  required: true,:onchange=> "CheckOther_town()"%>
+			   <%= f.collection_select :town_id, @towns+ [Town.new(:id => Town.last.id + 1,:title => "Others")], :id, :title, {:include_blank=>"Select Town"}, :rel => "/town/locations_by_town_and_company",  required: true,:onchange=> "CheckOther_town()"%>
 			   <!-- <input type="text" id="txt_review_town_id" name="txt_review_town_id"><br> -->
 			   	<input type="text" id="other_town" name="txt_review_town_id"><br>
 			</div>
@@ -191,6 +191,7 @@ function CheckOther2()
 
 function CheckOther_town()
 {
+	alert(document.getElementById("review_town_id").value)
   if (document.getElementById("review_town_id").value == <%= Town.last.id + 1 %>){
         $("#other_town").show();
     }     

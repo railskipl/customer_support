@@ -1,5 +1,23 @@
 <%content_for :left do%>
-	<span class="span1">
+	<span class="span3">
+		  <%unless @performance.blank?%>
+      <%unless @performance.performance_img.blank?%>
+	      <div class="sectionLeftBot">
+			 <%= link_to (image_tag @performance.performance_img),@performance.worst_performance  rescue nil%>
+		  </div>
+      <%end%>
+      <%unless @performance.best_performance.blank?%>
+		  <div class="sectionLeftBot">
+		   
+			 <%=@performance.best_performance.html_safe rescue nil%>
+		  </div>
+	  <%end%>
+	  
+  <%else%>
+    <div class="sectionLeftBot">
+		Some stats e.g worst performing companies and best performing or quotes (flash or updated every week)
+	</div>
+  <%end%>
 	</span>
 <%end%>
 

@@ -37,7 +37,7 @@ class CompaniesController < ApplicationController
 		@active_tab = "conversions"
     review = Review.new(review_params)
     @review_filter = review
-    @rcompanies ||= Company.all
+    @rcompanies ||= Supplier.all
 
     if review.industry_id  && review.industry_id !=0
     	@rcompanies = @rcompanies.by_industry(review.industry_id)

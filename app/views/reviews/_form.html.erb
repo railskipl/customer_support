@@ -191,7 +191,6 @@ function CheckOther2()
 
 function CheckOther_town()
 {
-	alert(document.getElementById("review_town_id").value)
   if (document.getElementById("review_town_id").value == <%= Town.last.id + 1 %>){
         $("#other_town").show();
     }     

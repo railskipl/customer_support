@@ -8,6 +8,7 @@
       <th>Preffered Name</th>
       <th>Email</th>
       <th>Agent</th>
+      <th>Ip Address</th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -20,6 +21,7 @@
         <td><%= agent.preferred_alias %></td>
         <td><%= agent.email %></td>
         <td><%= agent.role == "jagent" ? "Junior Agent" : "Senior Agent" %></td>
+        <td><%= agent.last_sign_in_ip %></td>
         <td>
         <% if current_user.is? :admin %> 
           <%= link_to 'Edit', edit_admin_agent_path(agent) if can? :edit, User%>

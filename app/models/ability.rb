@@ -24,6 +24,7 @@ class Ability
       can :manage, Faq
       can :manage, Poll
       can :manage, Option
+      can :manage, Review
       can :read,   Review
       can :edit,   Review
       can :update, Review
@@ -36,6 +37,8 @@ class Ability
       can :manage, CompanyPerformance
       can :manage, AbuseReport
     elsif user.is? :agent
+      can :unpublished, Review
+      can :archive_reviews, Review
       cannot :manage, Resource
       can :manage, Notification
       can :read, MonitorJagent

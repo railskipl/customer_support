@@ -26,7 +26,7 @@
 		<td><%= mon.review.ispublished? ? mon.review.last_published_agent.preferred_alias : "No" rescue nil%></td>
 		<td><%= mon.status %></td>
 		<td><%= mon.comment_status %></td>
-		<td><%= mon.review.created_at.strftime("%d-%m-%Y | %H:%M") %></td>
+		<td><%= mon.review.created_at.strftime("%d/%m/%Y | %H:%M") %></td>
 
 	</tr>
 	<% end %>
@@ -51,7 +51,7 @@
 	<% @reviews.each.with_index(1) do |review,index| %>
 	<tr>
 		<td><%= index %></td>
-		<td><%= link_to review.ticket_number ,admin_review_path(review.id) rescue nil%></td>
+		<td><%= link_to review.ticket_number ,edit_admin_review_path(review.id) rescue nil%></td>
 		<td><%= review.jagent.preferred_alias rescue nil%></td>
 		<td><%= review.agent == current_user ? "You" : mon.review.agent.try(:preferred_alias) %></td>
 		<td><%= review.monitor_jagent.ticked_closed_by_jagent? ? "Yes" : "No" rescue nil%></td>

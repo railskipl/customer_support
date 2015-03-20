@@ -73,6 +73,13 @@ class Admin::CommentsController < AdminController
     end
   end
 
+  def unpublished
+    comment = Comment.find(params[:comment_id])
+    comment.ispublished = false
+    comment.save
+    redirect_to :back
+  end
+
 
   private
   def load_review

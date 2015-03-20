@@ -16,7 +16,7 @@
 						</ul>
 					</div>
 				<% end %>
-		 	 <%= hidden_field_tag :guest_token ,params[:guest_token] if params[:guest_token]%>
+		 	 <%= hidden_field_tag :guest_token ,params[:guest_token].present? ? params[:guest_token] : @user.guest_token %>
 
 				<div class="fom_con">
 				  <div class="form_lft">

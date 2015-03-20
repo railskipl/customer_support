@@ -22,6 +22,11 @@ class Admin::ReviewsController < AdminController
 
   end
 
+  def archive_reviews
+    @archived_reviews = Review.archived.where('user_id is not null').order("created_at desc")
+    @archived_attachments ||= Review.where('archive_attachment = ? and user_id is not null',true)
+  end
+
   def assign_reviews
     if params["review_ids"].nil? || params["user_id"].nil?
       redirect_to admin_reviews_url, :notice => "Unable to assign"
@@ -110,7 +115,6 @@ class Admin::ReviewsController < AdminController
       @review.archive_attachment = true
       respond_to do |format|
         if @review.update(review_params)
-          ReviewMailer.archive_mail(@review).deliver! 
           ReviewMailer.archive_adminmail(@review, current_user).deliver!  
           format.html { redirect_to edit_admin_review_path(@review.id), notice: 'Attachment was successfully Archived.' }
         else
@@ -167,6 +171,14 @@ class Admin::ReviewsController < AdminController
     elsif params[:review_type]
       @reviews = @reviews.where("review_type=?",params[:review_type])
     end
+  end
+
+  def unpublished
+    @review = Review.find(params[:review_id])
+    @review.ispublished = false
+    @review.archive = true
+    @review.save
+    redirect_to :back
   end
 
   def destroy

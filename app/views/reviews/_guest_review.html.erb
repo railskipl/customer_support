@@ -110,7 +110,7 @@
 			<div class="">
 					<div class="name_lft">Date: *</div>
 					<div class="dob">
-						<%= f.date_select :date, order: [:day, :month, :year],:end_year => Date.today.year, required: true %>
+					<%= f.text_field :date , :id => "datepicker1",  :style => "width:100px;",required: true %>
 					</div>
 			</div>
 		</div>
@@ -125,7 +125,7 @@
 		</div>
         
 		<div class="review_form">
-				<div class="name_lft">&nbsp;<%= f.hidden_field :review_type ,:value=>(params[:review_type] ? params[:review_type] : 'compliment' ) %>
+				<div class="name_lft">&nbsp;<%= f.hidden_field :review_type ,:value=>(params[:review_type] ? params[:review_type] : @review.review_type ) %>
 				</div>
 				<div>
 				<span>Upload File<%= f.file_field :file%></span><br>

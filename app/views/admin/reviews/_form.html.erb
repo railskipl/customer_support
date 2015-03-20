@@ -37,7 +37,12 @@ $(document).ready(function(){
     <strong> Ticket Number: </strong><%=@review.ticket_number%>
   </div><br/>
   <div id="more_details">
-
+      <% if @review.change_date %>
+<p>
+  <strong>Converted:</strong>
+  Yes
+</p>
+<% end %>
       <div class="field">
          <strong>Review Type: </strong><%= @review.review_type %>
       </div><br/>
@@ -48,6 +53,11 @@ $(document).ready(function(){
       <div class="field">
          <strong>Customer Email: </strong><%= @review.user.email %>
       </div><br/>
+      <% if @review.review_type == "complaint" %>
+        <div class="field">
+           <strong>Desired Outcome: </strong><%= @review.desired_outcome %>
+        </div><br/>
+      <% end %>
       <% end %>
       <div class="field">
     		<strong>Title:</strong><%= @review.title  rescue nil%>
@@ -113,6 +123,9 @@ $(document).ready(function(){
 
 	<br/>
   <div class="actions">
+    <% if @review.ispublished && !(current_user.is? :jagent) %>
+      <%= link_to 'Unpublish',  admin_review_unpublished_path(@review.id) , :confirm => "This review will be removed from front end and will be send to archive" ,:method => :put ,:class => "btn btn-primary"%>
+    <% end %>
     <%unless @review.ispublished || @review.archive%>
       <%unless params[:type] == "archive" || params[:type] == "archive_attachment"%>
         <% if current_user.is? :jagent %>

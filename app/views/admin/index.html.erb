@@ -102,12 +102,20 @@
 	    <tr>
 			<td><%= index %></td>
 			<td><%= review.created_at.strftime("%d/%m/%Y | %H:%M") rescue nil %></td>
-			<td><%= review.ticket_number rescue nil %></td>
+			<td><%= link_to review.ticket_number, edit_admin_review_path(review) rescue nil %></td>
 			<td><%= review.review_type.titleize rescue nil %></td>
 			<td><%= review.company.title.titleize rescue nil %></td>
 			<td><%= review.title.titleize rescue nil %></td>
 			<td><%= review.try(:user).try(:full_name) %></td>
-			<td><%= review.archive? ? "Yes" : "No" %></td>
+			<td>
+				<% if review.archive?  %>
+				 Archived
+				<% elsif review.notes %>
+				 <%= review.notes.html_safe %>
+				<% else %>
+				  No
+				<% end %>
+			</td>
 			<td><%= current_user.is_admin? ? review.user.try(:last_sign_in_ip) : "-"  %></td>
 	    </tr>
 	  <% end %>

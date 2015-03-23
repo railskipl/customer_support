@@ -84,7 +84,7 @@ $(document).ready(function(){
   <%= raw(@review.modified_review) %>
 </p>
 <%end%>
-<%if @review.archive%>
+<%if @review.archive || @review.notes %>
   <p>
     <strong>Reason for Archive:</strong>
     <%= raw(@review.notes) %>

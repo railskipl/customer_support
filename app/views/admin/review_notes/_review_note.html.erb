@@ -1,0 +1,7 @@
+<%= form_for [:admin,@review, @review_note] do |f| %>
+  Name: <%= f.text_field :name , :value => current_user.preferred_alias ,:readonly => true %><br/>
+  Note: <%= f.text_area :note %></br>
+  <%= f.hidden_field :review_id ,:value => @review.id%>
+  <%= f.submit "Save Note", :class => "btn btn-primary"%>
+<% end %>
+</div>

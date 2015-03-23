@@ -61,6 +61,7 @@ Jmd::Application.routes.draw do
   	resources :industries
   	resources :nature_of_reviews
   	resources :reviews do
+      resources :review_notes
       collection do 
         get :archive_reviews
       end

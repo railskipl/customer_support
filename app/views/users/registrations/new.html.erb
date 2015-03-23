@@ -171,84 +171,66 @@
 				  <div class="form_lft">
 				    <div class="name_lft">I Live: *</div>
 				    <div>
-							<select name="user[lives_in]" id="user_i_live" onchange = 'CheckOther();'>
-							<option selected="">Select</option>
-							<optgroup label="Nairobi">
-								<option>Arboretum</option>
-								<option>Buruburu</option>
-								<option>CBD</option>
-								<option>Dagoretti</option>
-								<option>Donholm</option>
-								<option>Eastleigh</option>
-								<option>Embakasi</option>
-								<option>Garden Estate</option>
-								<option>Gigiri</option>
-								<option>Highridge</option>
-								<option>Hurlingham</option>
-								<option>Industrial Area</option>
-								<option>Jamhuri</option>
-								<option>JKIA</option>
-								<option>Kahawa</option>
-								<option>Karen</option>
-								<option>Kasarani</option>
-								<option>Kiambu Road</option>
-								<option>Kileleshwa</option>
-								<option>Kilimani</option>
-								<option>Kitengela</option>
-								<option>Komarock</option>
-								<option>Langata</option>
-								<option>Lavington</option>
-								<option>Loresho</option>
-								<option>Lower Kabete</option>
-								<option>Madaraka</option>
-								<option>Milimani</option>
-								<option>Mombasa Road</option>
-								<option>Museum Hill</option>
-								<option>Muthiaga</option>
-								<option>Nairobi West</option>
-								<option>New Mathaiga</option>
-								<option>Ngara</option>
-								<option>Ngong Road</option>
-								<option>Ngumo</option>
-								<option>Parklands</option>
-								<option>Ridgeways</option>
-								<option>Riruta Satelite</option>
-								<option>Riverside</option>
-								<option>Rongal</option>
-								<option>Rosslyn</option>
-								<option>Roysambu</option>
-								<option>Ruaka</option>
-								<option>Runda</option>
-								<option>South B</option>
-								<option>South C</option>
-								<option>Spring Valley</option>
-								<option>State House Crescent</option>
-								<option>Thigiri</option>
-								<option>Thika Road</option>
-								<option>Umoja</option>
-								<option>Upper Hill</option>
-								<option>Valley Road</option>
-								<option>Westlands</option>
-							</optgroup>
+				    	<% @city_group =
+                 [
+                 ["Nairobi", [["Arboretum","Arboretum"],["Buruburu","Buruburu"],
+                                                                ["CBD","CBD"],
+                                                                ["Dagoretti","Dagoretti"],
+                                                                ["Donholm","Donholm"],
+                                                                ["Eastleigh","Eastleigh"],
+                                                                ["Embakasi","Embakasi"],
+                                                                ["Garden Estate","Garden Estate"],
+                                                                ["Gigiri","Gigiri"],
+                                                                ["Highridge","Highridge"],
+                                                                ["Hurlingham","Hurlingham"],
+                                                                ["Industrial Area","Industrial Area"],
+                                                                ["Jamhuri","Jamhuri"],
+                                                                ["JKIA","JKIA"],
+                                                                ["Kahawa","Kahawa"],
+                                                                ["Karen","Karen"],
+                                                                ["Kasarani","Kasarani"],
+                                                                ["Kiambu Road","Kiambu Road"],
+                                                                ["Kileleshwa","Kileleshwa"],
+                                                                ["Kilimani","Kilimani"],
+                                                                ["Kitengela","Kitengela"],
+                                                                ["Komarock","Komarock"],
+                                                                ["Langata","Langata"],
+                                                                ["Lavington","Lavington"],
+                                                                ["Loresho","Loresho"],
+                                                                ["Lower Kabete","Lower Kabete"],
+                                                                ["Madaraka","Madaraka"],
+                                                                ["Milimani","Milimani"],
+                                                                ["Mombasa Road","Mombasa Road"],
+                                                                ["Museum Hill","Museum Hill"],
+                                                                ["Muthiaga","Muthiaga"],
+                                                                ["Nairobi West","Nairobi West"],
+                                                                ["New Mathaiga","New Mathaiga"],
+                                                                ["Ngara","Ngara"],
+                                                                ["Ngong Road","Ngong Road"],
+                                                                ["Ngumo","Ngumo"],
+                                                                ["Parklands","Parklands"],
+                                                                ["Ridgeways","Ridgeways"],
+                                                                ["Riruta Satelite","Riruta Satelite"],
+                                                                ["Riverside","Riverside"],
+                                                                ["Rongal","Rongal"],
+                                                                ["Rosslyn","Rosslyn"],
+                                                                ["Roysambu","Roysambu"],
+                                                                ["Ruaka","Ruaka"],
+                                                                ["Runda","Runda"],
+                                                                ["South B","South B"],
+                                                                ["South C","South C"],
+                                                                ["Spring Valley","Spring Valley"],
+                                                                ["State House Crescent","State House Crescent"],
+                                                                ["Thigiri","Thigiri"],
+                                                                ["Thika Road","Thika Road"],
+                                                                ["Umoja","Umoja"],
+                                                                ["Upper Hill","Upper Hill"],
+                                                                ["Valley Road","Valley Road"],
+                                                                ["Westlands","Westlands"]]],
+                 ["Coast", [["Bamburi","Bamburi"],["CBD","CBD"],["Diani","Diani"],["Kilifi","Kilifi"],["Lamu","Lamu"],["Malindi","Malindi"],["Mombasa","Mombasa"],["Nyali","Nyali"],["Voi","Voi"],["Watamu","Watamu"]]],
+                 ["Kisumu", [["Kisumu", "Kisumu"]]],["Other",[["Other","Other"]]],]%>
+				    	<%= select_tag("user[lives_in]", grouped_options_for_select(@city_group, selected_key = @user.lives_in, prompt = nil), :id=> 'user_i_live' ,:onchange => 'CheckOther();') %>
 
-							<optgroup label="Coast">
-								<option>Bamburi</option>
-								<option>CBD</option>
-								<option>Diani</option>
-								<option>Kilifi</option>
-								<option>Lamu</option>
-								<option>Malindi</option>
-								<option>Mombasa</option>
-								<option>Nyali</option>
-								<option>Voi</option>
-								<option>Watamu</option>
-							</optgroup>
-							<optgroup label="Kisumu">
-							</optgroup>
-							<option style="font-weight:bold">Other</option>
-							</select>
-
-				
 				    </div>
 				  </div>
 				</div>

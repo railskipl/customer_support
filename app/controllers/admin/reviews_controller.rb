@@ -19,7 +19,8 @@ class Admin::ReviewsController < AdminController
 	end
 
   def show
-
+    @review_note = ReviewNote.new
+    @review_notes = @review.review_notes
   end
 
   def archive_reviews

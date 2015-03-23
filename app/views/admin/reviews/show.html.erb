@@ -105,6 +105,15 @@ $(document).ready(function(){
     <%= link_to 'Close Ticket', admin_ticket_closed_path(:review_id => @review.id) , :confirm => "Are you sure, you want to close this ticket..?",method: :put, :class => "btn btn-primary" %>
   <% end %>
 <% end %>
+<h3>Notes</h3>
+<div>
+  <%= render 'review_notes' %>
+</div>
+<div>
+  <%= render 'admin/review_notes/review_note' %>
+</div>
+
+
 <h3>Comments</h3>
 <div id="comments"> 
   <%= render @review.comments.order("id desc").limit(2) %>

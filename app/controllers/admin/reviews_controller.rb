@@ -24,6 +24,7 @@ class Admin::ReviewsController < AdminController
   end
 
   def archive_reviews
+    @active_tab = "archive_reviews"
     @archived_reviews = Review.archived.where('user_id is not null').order("created_at desc")
     @archived_attachments ||= Review.where('archive_attachment = ? and user_id is not null',true)
   end

@@ -19,7 +19,7 @@ class Admin::PagesController < AdminController
   private
     # Never trust parameters from the scary internet, only allow the white list through.
     def page_params
-      params.require(:page).permit(:title, :subtitle ,:description, :slug, :image)
+      params.require(:page).permit(:title, :subtitle ,:description, :slug, :image,:quote)
     end
 
 		def default_tab

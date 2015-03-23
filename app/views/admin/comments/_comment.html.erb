@@ -3,18 +3,26 @@
   <h4>
      <%= comment.supplier_id ? comment.supplier.supplier_name : comment.name %> :
   </h4>
+  <% if current_user.is_agent? || current_user.is_admin? %>
   Email: <%= comment.email %><br/>
+  <% end %>
   Posted On: <%= comment.updated_at.strftime("%Y-%m-%d") %> <br/>
   Customer Message: <%= raw(comment.title) %>
   Modified Message: <%= comment.modified_comment.present? ? raw(comment.modified_comment) : "Not Modified" %>
   <% if comment.ispublished == false%>
     <%= form_for([:admin, @review, comment]) do |f| %>
       <% if current_user.role == "jagent" %>
-        <%= link_to "Modify Comment" ,edit_admin_review_comment_path(:review_id => @review.id, :id => comment.id ) , :class => "btn btn-primary" %>
+        <% unless comment.modified_comment %>      
+          <%= link_to "Modify Comment" ,edit_admin_review_comment_path(:review_id => @review.id, :id => comment.id ) , :class => "btn btn-primary" %>
+        <% end %>
       <% else %>
       <%= link_to "Modify Comment" ,edit_admin_review_comment_path(:review_id => @review.id, :id => comment.id )  , :class => "btn btn-primary"%>
         <%= f.submit 'Publish', class: "btn btn-primary" %>
       <% end %>
+    <% end %>
+  <% else %>
+     <% unless current_user.is? :jagent %>
+      <%= link_to 'Unpublish',   admin_review_comment_unpublished_comment_path(@review.id,comment.id) , :confirm => "This review will be removed from front end" ,:method => :put ,:class => "btn btn-primary"%>
     <% end %>
   <%end%>
   </div>

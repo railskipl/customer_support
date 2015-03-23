@@ -16,20 +16,20 @@
           <div class="scroll-pane">
 				<%@reviews.each do |review|%>
 					<div class="date_section">
-						<div class="box_1_in"><%=review.created_at.strftime("%d %b")%></div>
+						<div class="box_1_in"><%=review.created_at.strftime("%d %b %Y")%></div>
 						<div class="box_2_in">
 							<span class="<%=review.review_type == 'compliment' ? 'green' : 'red'%>"></span>
 						</div>
 						<div class="box_3_in"><%= link_to review.try(:company).try(:title), search_reviews_path(company_id: review.company_id) %></div>
 						<div class="box_4_in"><%=link_to review.title, review_path(review)%></div>
 						<div class="box_5_in">
-                        <%#if review.comments.published.count > 0 and review.comments.published.last.user.present? and ['admin','agent'].include? review.comments.published.last.user.role %>
+                        <%if review.comments.where("ispublished = ? and supplier_id is not null",true).present? %>
   							<%=link_to image_tag("supplier-response.png", :size=>"25x25"), review_path(review)%> 
-						<%#else%>
+						<%else%>
   							<%=link_to image_tag("comment.png"), review_path(review)%>
-  						<%#end%>
+  						<%end%>
 							<%=review.comments.published.count%>
-							<%if review.comments.published.count > 0 and review.comments.published.last.user.present? and ['admin','agent'].include? review.comments.published.last.user.role %>&nbsp;
+							<%if review.comments.where("ispublished = ? and supplier_id is not null",true).present? %>&nbsp;
   							    <span style="font-size: 11px;">Supplier's response</span>
   						    <%end%>
 						</div>

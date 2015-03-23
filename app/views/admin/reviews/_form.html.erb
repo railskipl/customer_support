@@ -37,10 +37,28 @@ $(document).ready(function(){
     <strong> Ticket Number: </strong><%=@review.ticket_number%>
   </div><br/>
   <div id="more_details">
-      <%= link_to "Report Abuse", new_admin_abuse_report_path(:user_id => @review.user_id),:class=> "btn"%><br>
+      <% if @review.change_date %>
+<p>
+  <strong>Converted:</strong>
+  Yes
+</p>
+<% end %>
       <div class="field">
          <strong>Review Type: </strong><%= @review.review_type %>
       </div><br/>
+      <% unless current_user.is_jagent? %>
+      <div class="field">
+         <strong>Customer Name: </strong><%= @review.user.preferred_alias %>
+      </div><br/>
+      <div class="field">
+         <strong>Customer Email: </strong><%= @review.user.email %>
+      </div><br/>
+      <% if @review.review_type == "complaint" %>
+        <div class="field">
+           <strong>Desired Outcome: </strong><%= @review.desired_outcome %>
+        </div><br/>
+      <% end %>
+      <% end %>
       <div class="field">
     		<strong>Title:</strong><%= @review.title  rescue nil%>
       </div><br/>
@@ -105,6 +123,9 @@ $(document).ready(function(){
 
 	<br/>
   <div class="actions">
+    <% if @review.ispublished && !(current_user.is? :jagent) %>
+      <%= link_to 'Unpublish',  admin_review_unpublished_path(@review.id) , :confirm => "This review will be removed from front end and will be send to archive" ,:method => :put ,:class => "btn btn-primary"%>
+    <% end %>
     <%unless @review.ispublished || @review.archive%>
       <%unless params[:type] == "archive" || params[:type] == "archive_attachment"%>
         <% if current_user.is? :jagent %>

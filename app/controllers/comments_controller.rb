@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
     @comment = @review.comments.new(comment_params)
     r = @comment.review
     if @comment.save
-      Notification.create(:comment_id => @comment.id,:receiver_agent_id => r.agent_id, :receiver_jagent_id => r.jagent_id )
+      Notification.create(:comment_id => @comment.id,:receiver_agent_id => r.agent_id, :receiver_jagent_id => r.jagent_id,:comment_status => "Pending" )
       if @review.monitor_jagent
         @review.monitor_jagent.comment_status = "Pending"
         @review.monitor_jagent.save

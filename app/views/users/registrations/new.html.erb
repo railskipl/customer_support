@@ -16,7 +16,7 @@
 						</ul>
 					</div>
 				<% end %>
-		 	 <%= hidden_field_tag :guest_token ,params[:guest_token] if params[:guest_token]%>
+		 	 <%= hidden_field_tag :guest_token ,params[:guest_token].present? ? params[:guest_token] : @user.guest_token %>
 
 				<div class="fom_con">
 				  <div class="form_lft">
@@ -85,7 +85,7 @@
 				  <div class="form_lft">
 				    <div class="name_lft"> Confirm Email: *</div>
 				    <div>
-				      <input type="email" id='email_confirmation', maxlength="50" min = "1" max = "50" autocomplete="off" value="<%= @user.email %>" required=true>
+				      <input type="email" id='email_confirmation', maxlength="50" min = "1" max = "50" autocomplete="off" value="<%= @user.email %>" required=true oncopy="return false" oncut="return false" onpaste="return false">
 				    </div>
 				  </div>
 				</div>
@@ -265,6 +265,10 @@
 				<div class="rgh_in">
 			     <%=f.check_box :accept_t_and_c , id: "field_terms", required: true, value: true%>
 				  <label for="field_terms"> <%=link_to "I accept the term and conditions. *", "/terms-of-use" ,:target => "new" %></label></div>
+				 <div class="rgh_in"> 
+				   <%=f.check_box :is_subscribe %>
+				   Subscribe to receive promotional materials from our partners
+				</div>
 				<div class="rgh_in">
 				  <input type="submit" value="SAVE" id="save">
 				</div>

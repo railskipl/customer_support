@@ -85,29 +85,30 @@
 <table id="admin_review" >
 	<thead>
 	  <tr>
-			<th width="10%">Date</th>
-			<th width="15%">Ticket Number</th>
-			<th width="10%">Review</th>
-			<th width="15%">Company</th>
-			<th width="15%">Title</th>
-	    <th width="15%">Customer Name</th>
-	    <th width="20%">Action</th>
+	  	<th>Sr. No.</th>
+		<th>Date</th>
+		<th>Ticket Number</th>
+		<th>Review</th>
+		<th>Company</th>
+		<th>Title</th>
+	    <th>Customer Name</th>
+	    <th>Archive</th>
+	    <th>IP Address</th>
 	  </tr>
 	</thead>
 
 	<tbody>
-	  <% @reviews.each do |review| %>
+	  <% @reviews.each.with_index(1) do |review,index| %>
 	    <tr>
-				<td><%=review.created_at.strftime("%d %b %y %H:%M") rescue nil %></td>
-				<td><%=review.ticket_number rescue nil %></td>
-				<td><%=review.review_type.titleize rescue nil %></td>
-				<td><%=review.company.title.titleize rescue nil %></td>
-				<td><%=review.title.titleize rescue nil %></td>
-			  <td><%=review.try(:user).try(:full_name)%></td>
-        <td>
-        <%= link_to 'Edit', edit_admin_review_path(review), class: "btn btn-primary" if can? :edit, Review%>
-        <%#= link_to 'Destroy', admin_review_path(review), class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, Review%>
-        </td>
+			<td><%= index %></td>
+			<td><%= review.created_at.strftime("%d/%m/%Y | %H:%M") rescue nil %></td>
+			<td><%= review.ticket_number rescue nil %></td>
+			<td><%= review.review_type.titleize rescue nil %></td>
+			<td><%= review.company.title.titleize rescue nil %></td>
+			<td><%= review.title.titleize rescue nil %></td>
+			<td><%= review.try(:user).try(:full_name) %></td>
+			<td><%= review.archive? ? "Yes" : "No" %></td>
+			<td><%= current_user.is_admin? ? review.user.try(:last_sign_in_ip) : "-"  %></td>
 	    </tr>
 	  <% end %>
 	</tbody>	
@@ -119,33 +120,26 @@
 <table id="recently_added_review" >
 	<thead>
 	  <tr>
-			<th width="10%">Date</th>
-			<th width="13%">Ticket Number</th>
-			<th width="10%">Review</th>
-			<th width="13%">Company</th>
-			<th width="14%">Title</th>
-			<th width="5%">Modified</th>
-	    <th width="15%">Customer Name</th>
-	    <th width="20%">Action</th>
+	  	<th>Sr. No.</th>
+		<th>Date</th>
+		<th>Ticket Number</th>
+		<th>Review</th>
+		<th>Company</th>
+		<th>Title</th>
+		<th>Customer Name</th>
 	  </tr>
 	</thead>
 
 	<tbody>
-	  <% @recent_reviews.each do |review| %>
+	  <% @recent_reviews.each.with_index(1) do |review,index| %>
 	    <tr>
-				<td><%=review.created_at.strftime("%d %b %y %H:%M") rescue nil %></td>
-				<td><%=review.ticket_number rescue nil %></td>
-				<td><%=review.review_type rescue nil %></td>
-				<td><%=review.company.title rescue nil %></td>
-				<td><%=review.title rescue nil %></td>
-				<td><%=review.is_modified rescue nil %></td>
-			  <td><%=review.try(:user).try(:full_name)%></td>
-			  <td>
-			   <% unless review.ispublished || review.archive%>
-  			      <%= link_to 'Edit', edit_admin_review_path(review), class: "btn btn-primary" if can? :edit, Review%>
- 			   <%end%>
-        <%#= link_to 'Destroy', admin_review_path(review), class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
-        </td>
+	    	<td><%= index %></td>
+			<td><%=review.created_at.strftime("%d/%m/%Y | %H:%M") rescue nil %></td>
+			<td><%=review.ticket_number rescue nil %></td>
+			<td><%=review.review_type rescue nil %></td>
+			<td><%=review.company.title rescue nil %></td>
+			<td><%=review.title rescue nil %></td>
+			<td><%=review.try(:user).try(:full_name)%></td>
       </tr>
 	  <% end %>
 	</tbody>
@@ -156,29 +150,28 @@
 <table id="published_review" >
 	<thead>
 	  <tr>
-			<th width="10%">Date</th>
-			<th width="15%">Ticket Number</th>
-			<th width="10%">Review</th>
-			<th width="15%">Company</th>
-			<th width="15%">Title</th>
-	    <th width="15%">Customer Name</th>
-	    <th width="20%">Action</th>
+	  	<th>Sr. No.</th>
+		<th>Date</th>
+		<th>Ticket Number</th>
+		<th>Review</th>
+		<th>Company</th>
+		<th>Title</th>
+	    <th>Customer Name</th>
+	    
 	  </tr>
 	</thead>
 
 	<tbody>
-	  <% @published_reviews.each do |review| %>
+	  <% @published_reviews.each.with_index(1) do |review,index| %>
 	    <tr>
-				<td><%=review.created_at.strftime("%d %b %y %H:%M") rescue nil %></td>
-				<td><%=review.ticket_number rescue nil %></td>
-				<td><%=review.review_type rescue nil %></td>
-				<td><%=review.company.title rescue nil %></td>
-				<td><%=review.title rescue nil %></td>
-			  <td><%=review.try(:user).try(:full_name)%></td>
-			  <td><%#= link_to 'Edit', edit_admin_review_path(review) if can? :edit, Review%>
-                          <%#= link_to 'Destroy', admin_review_path(review), class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>
-			  <%= link_to 'Comment', admin_review_path(review), class: "btn btn-primary" if can? :edit, Review%> </td>
-	    </tr>
+	    	<td><%= index %></td>
+			<td><%=review.created_at.strftime("%d/%m/%Y | %H:%M") rescue nil %></td>
+			<td><%=review.ticket_number rescue nil %></td>
+			<td><%=review.review_type rescue nil %></td>
+			<td><%=review.company.title rescue nil %></td>
+			<td><%=review.title rescue nil %></td>
+			<td><%=review.try(:user).try(:full_name)%></td>
+		</tr>
 	  <% end %>
 	</tbody>
 </table>
@@ -201,7 +194,7 @@
   <tbody>
     <% @archived_reviews.each do |review| %>
       <tr>
-        <td><%=review.created_at.strftime("%d %b %y %H:%M") rescue nil %></td>
+        <td><%=review.created_at.strftime("%d/%m/%Y | %H:%M") rescue nil %></td>
 		<td><%=review.ticket_number rescue nil %></td>
 		<td><%=review.review_type rescue nil %></td>
 		<td><%=review.company.title rescue nil %></td>
@@ -248,14 +241,20 @@
 <table id="arfiles" >
   <thead>
     <tr>
+       <th>Sr. No.</th>
+       <th>Ticket No</th>
+       <th>Date</th>
        <th>File Name</th>
        <th>Reason</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @archived_attachments.each do |ar| %>
+    <% @archived_attachments.each.with_index(1) do |ar,index| %>
       <tr>
+      	<td><%= index %></td>
+      	<td><%= ar.ticket_number %></td>
+      	<td><%= ar.created_at.strftime("%d/%m/%Y | %H:%M") rescue nil %></td>
         <td><%= link_to "Attachment",ar.file.url  %>&nbsp;</td>
         <td><%= ar.notes.html_safe %>&nbsp;</td>
       </tr>

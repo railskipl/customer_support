@@ -13,6 +13,14 @@ module ApplicationHelper
 	  end
   end
 
+  def account_link
+    if user_signed_in?
+      link_to "My Account", profile_path, :class=>(@action == "my_account" ? "active":'')
+    else
+      link_to "My Account", new_user_session_path, :class=>(@action == "my_account" ? "active":'')
+    end
+  end
+
   def resource_name
     :user
   end

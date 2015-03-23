@@ -12,7 +12,7 @@ class Admin::ReviewsController < AdminController
     if current_user.is? :jagent
 		  @reviews = Review.where("jagent_id = ? or old_jagent_id = ?",current_user.id,current_user.id).unarchived.where("user_id is not null").order("id desc")
     else
-      @reviews = Review.unarchived.where("agent_id is not null and user_id is not null").order("id desc")
+      @reviews = []
     end
     @areviews = Review.where("published_date is null and jagent_id is null and user_id is not null").order("id desc")
     @reareviews = Review.where("published_date is null and jagent_id is not null and user_id is not null").order("id desc")
@@ -20,6 +20,11 @@ class Admin::ReviewsController < AdminController
 
   def show
 
+  end
+
+  def archive_reviews
+    @archived_reviews = Review.archived.where('user_id is not null').order("created_at desc")
+    @archived_attachments ||= Review.where('archive_attachment = ? and user_id is not null',true)
   end
 
   def assign_reviews
@@ -86,6 +91,7 @@ class Admin::ReviewsController < AdminController
       if @review.jagent_id.present?
          m = MonitorJagent.find_by_review_id(@review.id)
          m.status = "Published"
+         m.modified_review = (m.modified_review.nil? ? true : m.modified_review)
          m.save
         unless @review.modified_review == params[:review][:modified_review]
           @review.admin_sagent_modified = true
@@ -109,7 +115,6 @@ class Admin::ReviewsController < AdminController
       @review.archive_attachment = true
       respond_to do |format|
         if @review.update(review_params)
-          ReviewMailer.archive_mail(@review).deliver! 
           ReviewMailer.archive_adminmail(@review, current_user).deliver!  
           format.html { redirect_to edit_admin_review_path(@review.id), notice: 'Attachment was successfully Archived.' }
         else
@@ -166,6 +171,14 @@ class Admin::ReviewsController < AdminController
     elsif params[:review_type]
       @reviews = @reviews.where("review_type=?",params[:review_type])
     end
+  end
+
+  def unpublished
+    @review = Review.find(params[:review_id])
+    @review.ispublished = false
+    @review.archive = true
+    @review.save
+    redirect_to :back
   end
 
   def destroy

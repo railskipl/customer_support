@@ -19,10 +19,10 @@
     <%= f.label :industry_id %>
     <%= f.select :industry_id , @industries.map{|industry| [industry.title,industry.id]}, required: true%>
   </div>
-  <div class="field">
-    <%= f.label :is_registered, "Check here for Registered Company"  %>
-    <%= f.check_box :is_registered , {:style=>'opacity: 1;'} %>
-  </div>
+ <!--  <div class="field">
+    <%#= f.label :is_registered, "Check here for Registered Company"  %>
+    <%#= f.check_box :is_registered , {:style=>'opacity: 1;'} %>
+  </div> -->
   <%= f.number_field :user_id ,:value=>current_user.id,:class=>"hidden"%>
   <div class="actions">
     <%= f.submit class: "btn btn-primary"%>

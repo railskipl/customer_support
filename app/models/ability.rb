@@ -8,6 +8,7 @@ class Ability
     if user.is? :admin
       can :manage, User
       can :manage, Maintainence
+      can :manage, Notification
       can :read, MonitorJagent
       can :manage, User, :id => user.id
       can :manage, Resource
@@ -23,6 +24,7 @@ class Ability
       can :manage, Faq
       can :manage, Poll
       can :manage, Option
+      can :manage, Review
       can :read,   Review
       can :edit,   Review
       can :update, Review
@@ -35,6 +37,8 @@ class Ability
       can :manage, CompanyPerformance
       can :manage, AbuseReport
     elsif user.is? :agent
+      can :unpublished, Review
+      can :archive_reviews, Review
       cannot :manage, Resource
       can :manage, Notification
       can :read, MonitorJagent

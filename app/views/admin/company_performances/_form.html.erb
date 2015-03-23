@@ -25,10 +25,13 @@
     </div><br>
   <%end%>
   <div class="field">
-    <strong>Enter Text:</strong>
-    <%= f.text_area :best_performance,:class => 'ckeditor' %>
+    <strong>Add another image:</strong>
+    <%= f.file_field :best_performance %>
   </div><br>
-
+  <div class="field">
+    Page: 
+    <%= f.select :box_type, [ ["Reviews", "user_review"], ["Home", "index"],["Profile" , "show"],["Resources" , "jobs"],["CSR" , "csr"],["About Us", "importance-of-feedback"]   ]%>
+  </div>
   <div class="field">
     <strong>Start Date:</strong><br>
     <%= f.date_select :start_date  %>

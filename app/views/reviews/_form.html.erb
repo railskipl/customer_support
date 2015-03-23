@@ -47,7 +47,7 @@
 		<div class="review_form">
 			<div class="name_lft">Town: *</div>
 			<div class="small-input2">
-			   <%= f.collection_select :town_id, @towns+ [Industry.new(:id => Town.last.id + 1,:title => "Other")], :id, :title, {:include_blank=>"Select Town"}, :rel => "/town/locations_by_town_and_company",  required: true,:onchange=> "CheckOther_town()"%>
+			   <%= f.collection_select :town_id, @towns+ [Town.new(:id => Town.last.id + 1,:title => "Others")], :id, :title, {:include_blank=>"Select Town"}, :rel => "/town/locations_by_town_and_company",  required: true,:onchange=> "CheckOther_town()"%>
 			   <!-- <input type="text" id="txt_review_town_id" name="txt_review_town_id"><br> -->
 			   	<input type="text" id="other_town" name="txt_review_town_id"><br>
 			</div>
@@ -81,9 +81,17 @@
 		<div class="review_form">
 			<div class="name_lft">Message </div>
 			<div>
-			  <%= f.text_area :message, "maxlength"=>"1200", "min" => "1","max" => "1200",:rows=>"5"%>
+			  <%= f.text_area :message, "maxlength"=>"1200", "min" => "1","max" => "300",:rows=>"5"%>
 			</div>
 		</div>
+		<% if params[:review_type] == "complaint" %>
+		<div class="review_form">
+			<div class="name_lft">Desired Outcome </div>
+			<div>
+			  <%= f.text_area :desired_outcome, "maxlength"=>"1200", "min" => "1","max" => "200",:rows=>"5"%>
+			</div>
+		</div>
+		<% end %>
 
 		<div class="review_form">
 			<div class="name_lft">Account Details/reference no.</div>
@@ -122,7 +130,7 @@
  				<input type="checkbox" name="checkbox" value="check" id="ab" />
 				  <label for="field_terms"> <%=link_to " I accept the term and conditions. *", "/terms-of-use" ,:target => "new" %></label></div>
 		<div class="review_form">
-				<div class="name_lft">&nbsp;<%= f.hidden_field :review_type ,:value=>(params[:review_type] ? params[:review_type] : 'compliment' ) %>
+				<div class="name_lft">&nbsp;<%= f.hidden_field :review_type ,:value=>(params[:review_type] ? params[:review_type] :  @review.review_type ) %>
 				</div>
 				<div>
 				<span>Upload File<%= f.file_field :file %>

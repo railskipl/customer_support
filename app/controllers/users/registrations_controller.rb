@@ -30,7 +30,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
       if params[:guest_token].present?
         flash[:alert] = "There was an error with the recaptcha code below. Please re-enter the code."      
         flash.delete :recaptcha_error
-        redirect_to new_user_session_url(:guest_token => params[:guest_token])
+        render :new
+        # redirect_to new_user_session_url(:guest_token => params[:guest_token])
       else
         flash.now[:alert] = "There was an error with the recaptcha code below. Please re-enter the code."      
         flash.delete :recaptcha_error
@@ -42,6 +43,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :salt, :other_type,:encrypted_password, :first_name, :last_name, :preferred_alias, :gender, :age, :dob, :country, :pobox, :postal_code, :town, :lives_in, :secret_question, :answer, :accpect_t_and_c,:address_line1,:address_line2,:avatar,:guest_token)
+    params.require(:user).permit(:email, :password, :salt, :other_type,:encrypted_password, :first_name, :last_name, :preferred_alias, :gender, :age, :dob, :country, :pobox, :postal_code, :town, :lives_in, :secret_question, :answer, :accpect_t_and_c,:address_line1,:address_line2,:avatar,:guest_token,:is_subscribe)
   end
 end

@@ -106,11 +106,11 @@ class ReviewsController < ApplicationController
   end 
 
 	def create
-    
+    dt = Date.parse(params[:review][:date])
     hr = params["review"]["datetime(4i)"]
     min = params["review"]["datetime(5i)"]
-    raise params.inspect
-    t = DateTime.new(year.to_i, month.to_i, day.to_i, hr.to_i, min.to_i,0)
+    
+    t = DateTime.new(dt.year, dt.month, dt.day, hr.to_i, min.to_i,0)
     kenyan_time = Time.now.utc + 3.hour
     industry = params[:txt_review_industry_id].to_s
     company  = params[:txt_review_company_id].to_s
@@ -225,7 +225,10 @@ class ReviewsController < ApplicationController
 	end
 
 	def review_params
-      params.require(:review).permit(:title, :industry_id, :company_id, :date, :town_id,:datetime, :location_id, :personal_responsible, :nature_of_review,:message,:account_details,:ticket_number,:user_id, :token_number,:review_type,:file,:nature)
+      params.require(:review).permit(:title, :industry_id, :company_id, :date, :town_id,:datetime, 
+                                     :location_id, :personal_responsible, :nature_of_review,:message,
+                                     :account_details,:ticket_number,:user_id, :token_number,:review_type,
+                                     :file,:nature,:desired_outcome)
   end
 
 	def default_action_tab

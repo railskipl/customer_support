@@ -16,7 +16,7 @@
           <div class="scroll-pane">
 				  	<%@rcompanies.each do |company|%>
 						    <div class="date_section">
-						        <div class="box_1_in"><%=company.title%></div>
+						        <div class="box_1_in"><%=company.supplier_name%></div>
 										<div class="box_2_in"><%=review_complaint_count(company)%></div>
 						        <div class="box_3_in"><%=review_compliment_count(company)%></div>
 										<div class="box_4_in"><%=change_complaint_count(company)%></div>

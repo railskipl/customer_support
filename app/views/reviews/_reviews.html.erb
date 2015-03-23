@@ -7,7 +7,7 @@
   </div>
 	<%@reviews.each do |review|%>
     <div class="date_section">
-      <div class="box_1_in"><%=review.date.strftime("%d %b")%></div>
+      <div class="box_1_in"><%=review.created_at.strftime("%d %b %Y")%></div>
       <div class="box_2_in">
        	<span class="<%=review.review_type == 'compliment' ? 'green' : 'red'%>"></span>
       </div>

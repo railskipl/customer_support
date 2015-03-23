@@ -1,7 +1,7 @@
 class Admin::MonitorJagentsController <  AdminController
 
 	def index
-		@monitors = MonitorJagent.order('id desc')
-		@reviews = Review.where("agent_id = ?", current_user.id).order('id desc')
+		@monitors = MonitorJagent.includes(:review).where("reviews.archive = ?",false).order('reviews.id desc')
+		@reviews = Review.where("agent_id = ? and archive = ? and ispublished = ?", current_user.id,false,false).order('id desc')
 	end
 end

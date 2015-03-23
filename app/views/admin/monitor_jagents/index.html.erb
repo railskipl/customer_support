@@ -4,27 +4,30 @@
 	<tr>
 		<th>Sr. No.</th>
 		<th>Review</th> 
-		<th>Junior Agent</th> 
 		<th>Assignee</th>
-		<th>Ticket Closed By Junior Agent</th>
-		<th>Modified Review By Junior Agent</th>
+		<th>Ticket assigned to</th> 
+		<th>Ticket Closed By Agent</th>
+		<th>Modified Review By Agent</th>
 		<th>Published By</th>
 		<th>Status</th>
 		<th>Comment Status</th>
+		<th>Date</th>
 	</tr>
 	</thead>
 	<tbody>
 	<% @monitors.each.with_index(1) do |mon,index| %>
 	<tr>
 		<td><%= index %></td>
-		<td><%= link_to mon.review.ticket_number ,admin_review_path(mon.review.id) rescue nil%></td>
-		<td><%= mon.review.jagent.preferred_alias rescue nil%></td>
-		<td><%= mon.review.agent == current_user ? "You" : mon.review.agent.try(:preferred_alias) %></td>
+		<td><%= link_to mon.review.ticket_number ,edit_admin_review_path(mon.review.id) rescue nil%></td>
+		<td><%= mon.review.agent.try(:preferred_alias) %></td>
+		<td><%= mon.review.jagent.try(:preferred_alias) %></td>
 		<td><%= mon.ticked_closed_by_jagent? ? "Yes" : "No" rescue nil%></td>
 		<td><%= mon.modified_review? ? "Yes" : "No" rescue nil%></td>
 		<td><%= mon.review.ispublished? ? mon.review.last_published_agent.preferred_alias : "No" rescue nil%></td>
 		<td><%= mon.status %></td>
 		<td><%= mon.comment_status %></td>
+		<td><%= mon.review.created_at.strftime("%d/%m/%Y | %H:%M") %></td>
+
 	</tr>
 	<% end %>
 </tbody>
@@ -38,8 +41,8 @@
 		<th>Review</th> 
 		<th>Junior Agent</th> 
 		<th>Assignee</th>
-		<th>Ticket Closed By Junior Agent</th>
-		<th>Modified Review By Junior Agent</th>
+		<th>Ticket Closed By Agent</th>
+		<th>Modified Review By Agent</th>
 		<th>Published By</th>
 		<th>Status</th>
 	</tr>
@@ -48,7 +51,7 @@
 	<% @reviews.each.with_index(1) do |review,index| %>
 	<tr>
 		<td><%= index %></td>
-		<td><%= link_to review.ticket_number ,admin_review_path(review.id) rescue nil%></td>
+		<td><%= link_to review.ticket_number ,edit_admin_review_path(review.id) rescue nil%></td>
 		<td><%= review.jagent.preferred_alias rescue nil%></td>
 		<td><%= review.agent == current_user ? "You" : mon.review.agent.try(:preferred_alias) %></td>
 		<td><%= review.monitor_jagent.ticked_closed_by_jagent? ? "Yes" : "No" rescue nil%></td>

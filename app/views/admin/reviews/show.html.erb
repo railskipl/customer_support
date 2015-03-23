@@ -25,7 +25,12 @@ $(document).ready(function(){
 </script>
 
 <p id="notice"><%= notice %></p>
-
+<% if @review.change_date %>
+<p>
+  <strong>Converted:</strong>
+  Yes
+</p>
+<% end %>
 <p>
   <strong>Ticket Number:</strong>
   <%= @review.ticket_number %>
@@ -91,11 +96,11 @@ $(document).ready(function(){
   <%= @review.published_date.strftime("%d %b %Y %H:%M") if @review.ispublished %>
 </p>
 
-<%unless @review.ispublished || @review.archive %>
+<%unless @review.ispublished || @review.archive || @review.is_modified %>
 	<%= link_to 'Edit', edit_admin_review_path(@review), class: "btn btn-primary" if can? :edit, Review %>
 <%end%>
 <% if @review.is_ticket_open &&  @review.comments.supplier_comments.count > 0  %>
-  <% if current_user.role =="jagent" && @review.monitor_jagent.try(:ticked_closed_by_jagent) %>
+  <% if current_user.role =="jagent" %>
   <% else %>
     <%= link_to 'Close Ticket', admin_ticket_closed_path(:review_id => @review.id) , :confirm => "Are you sure, you want to close this ticket..?",method: :put, :class => "btn btn-primary" %>
   <% end %>

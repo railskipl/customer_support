@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150314114146) do
+ActiveRecord::Schema.define(version: 20150319103321) do
 
   create_table "abuse_reports", force: true do |t|
     t.string   "user_email"
@@ -94,6 +94,7 @@ ActiveRecord::Schema.define(version: 20150314114146) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "performance_img"
+    t.string   "box_type"
   end
 
   create_table "contact_us", force: true do |t|
@@ -182,6 +183,7 @@ ActiveRecord::Schema.define(version: 20150314114146) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "comment_status"
+    t.boolean  "admin_status",       default: false
   end
 
   create_table "options", force: true do |t|
@@ -270,6 +272,7 @@ ActiveRecord::Schema.define(version: 20150314114146) do
     t.integer  "old_jagent_id"
     t.integer  "last_published_agent_id"
     t.boolean  "admin_sagent_modified",   default: false
+    t.string   "desired_outcome"
   end
 
   create_table "seos", force: true do |t|
@@ -380,6 +383,7 @@ ActiveRecord::Schema.define(version: 20150314114146) do
     t.string   "preferred_alias"
     t.boolean  "accept_t_and_c",         default: false
     t.string   "guest_token"
+    t.boolean  "is_subscribe"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

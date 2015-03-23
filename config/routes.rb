@@ -61,7 +61,13 @@ Jmd::Application.routes.draw do
   	resources :industries
   	resources :nature_of_reviews
   	resources :reviews do
-  	  resources :comments
+      collection do 
+        get :archive_reviews
+      end
+      put 'unpublished' => "reviews#unpublished"
+  	  resources :comments do
+        put 'unpublished_comment' => "comments#unpublished"
+      end
   	end
   	resources :addresses
   	resources :polls

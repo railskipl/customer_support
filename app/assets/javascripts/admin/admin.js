@@ -29,7 +29,7 @@ $(document).ready(function() {
     $('#customers').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [4] }] });
     $('#nature_of_reviews').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [2] }] } );
 	  $('#industries').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [1]}] } );
-	  $('#companies').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [3] }] } );
+	  $('#companies').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [2] }] } );
 	  $('#locations').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [2] }] } );
 	  $('#towns').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [1] }] } );
 	  $('#addresses').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [3] }] } );

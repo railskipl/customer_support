@@ -7,7 +7,7 @@ if Rails.env == "development"
 elsif Rails.env == "production"
 	Recaptcha.configure do |config|
 	  config.public_key  = '6LdeoAMTAAAAAD6RFowAvp9Ok89MfdOlhlLdlBPx'
-	  config.private_key = '6LeOngMTAAAAAFeSBUm1znvdX0Snb7Tn8-7UzHL6'
+	  config.private_key = '6LdeoAMTAAAAAF3MxT2JPO3lsG1NtkCPEDgRDkbZ'
 	  #config.proxy = 'http://0.0.0.0.3000'
 	end
 else

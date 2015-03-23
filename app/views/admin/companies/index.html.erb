@@ -3,8 +3,8 @@
     <tr>
       <th>Title</th>
       <th>Industry</th>
-      <th>Registration Status</th>
-      <th>Actions</th>
+<!--       <th>Registration Status</th>
+ -->      <th>Actions</th>
     </tr>
   </thead>
 
@@ -13,11 +13,11 @@
       <tr>
         <td><%= company.title %></td>
         <td><%= company.industry.title rescue nil %></td>
-        <% if company.is_registered %>
+    <!--     <%# if company.is_registered %>
           <td>Registered</td>
-        <% else %>
+        <%# else %>
           <td>Not Registered</td>
-        <% end %>
+        <%# end %> -->
         <td><%= link_to 'Edit', edit_admin_company_path(company) if can? :edit, Company%>
         <%= link_to 'Destroy',[:admin, company], method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, Company%></td>
       </tr>

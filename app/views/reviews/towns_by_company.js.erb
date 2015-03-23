@@ -1,1 +1,1 @@
-$("#review_town_id").html('<%= raw("<option>Select Town</option>" +  options_for_select(@towns.map {|c| [c.title, c.id]}).gsub(/\n/, '') + "<option>Other</option>" ) %>');
+$("#review_town_id").html('<%= raw("<option>Select Town</option>" +  options_for_select(@towns.map {|c| [c.title, c.id]}).gsub(/\n/, '') + "<option value=#{Town.last.id + 1}>Other</option>" ) %>');

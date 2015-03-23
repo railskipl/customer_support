@@ -223,6 +223,7 @@ module Admin::ReportsHelper
       	  @start_from = 1.year.ago 
    	  	  @start_to =  Date.today 
       end
+      @start_date
       unless params[:id] == "data_dump"
    	    @users = Review.select(:id,:user_id).where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null', @start_from, @start_to).map(&:user_id).uniq rescue nil
         send_data(render_to_string(:template=>"admin/reports/customer_record.html.erb" ) , :type=>"text/xls",:filename => "customer_summary.xls")

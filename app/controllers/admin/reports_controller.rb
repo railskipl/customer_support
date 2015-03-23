@@ -1,5 +1,6 @@
 class Admin::ReportsController < ApplicationController
 before_filter :authenticate_user!
+before_filter :correct_user
 include Admin::ReportsHelper
 layout "admin", :except => :industry_xls
 before_filter :get_default_for_reviews
@@ -384,6 +385,14 @@ layout :custom_layout
 	def default_tab
 	  	@active_tab = 'reports'
 	end
+
+  def correct_user
+    user = current_user.is? :admin
+    unless user
+        flash[:notice] = "Access denied, there is no such page available."
+        redirect_to admin_index_path
+    end
+  end
 
 	#method for allowing to user to use differnt layout to individual page.
       def custom_layout

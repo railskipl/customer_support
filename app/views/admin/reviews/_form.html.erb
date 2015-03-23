@@ -18,6 +18,7 @@ $(document).ready(function(){
 </script>
 <input type="button" id="hide" class="btn btn-primary" value="Hide Details">
 <input type="button" id="show" class="btn btn-primary" value="Show Details">
+<%= link_to "Details", admin_review_path(@review) ,:class => "btn btn-primary" %>
 <%= form_for([:admin,@review]) do |f| %>
   <% if @review.errors.any? %>
     <div id="error_explanation">

@@ -49,13 +49,13 @@ Jmd::Application.configure do
 
         config.action_mailer.smtp_settings = {
             :enable_starttls_auto => true,
-            :address => "smtp.gmail.com",
-            :port => 587,
-            :domain => "imap.gmail.com",
+            :address => "smtp.mandrillapp.com",
+            :port => 25,
+            :domain => "xemaxema.com",
             :authentication => :login,
-            :user_name => "atishkunalinfotech@gmail.com",
-            :password => "kunalinfotech"
-        }
+            :user_name => "xemaxema.kenya@gmail.com",
+            :password => "aHXRe3yUpI44ANqH9B8ekg"
+  }
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 
  #  config.action_mailer.delivery_method = :smtp

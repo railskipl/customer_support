@@ -53,7 +53,9 @@ function readImage(input) {
     if ( input.files && input.files[0] ) {
         var FR= new FileReader();
         FR.onload = function(e) {
-           $('#avatar_image').css('background', 'url(' + e.target.result + ') no-repeat');
+           $('#avatar_image').css({'background' : 'url(' + e.target.result + ') no-repeat',
+           	'background-size': '120px 150px'
+       });
         };
         FR.readAsDataURL( input.files[0] );
     }

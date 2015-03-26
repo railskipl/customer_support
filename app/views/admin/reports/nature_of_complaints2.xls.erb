@@ -1,0 +1,74 @@
+<table id="complaints">
+	<thead>
+		<tr>
+			<th>Nature of Complaints</th>
+			<th>Total</th>
+		</tr>
+
+	</thead>
+
+	<tbody>
+		<tr>
+			<td>Bad attitude</td>
+			<td><%= @bad_attitude.count rescue nil%></td>
+		</tr>
+		<tr>
+			<td>Billing/Accounts</td>
+			<td><%= @billing_account.count rescue nil%></td>
+		</tr>
+		<tr>
+			<td>Booking query</td>
+			<td><%= @booking_query.count rescue nil%></td>
+		</tr>
+		<tr>
+			<td>Breach of contract</td>
+			<td><%= @breach_of_contract.count rescue nil%></td>
+		</tr>
+		<tr>
+			<td>Call centre</td>
+			<td><%= @call_centre_c.count rescue nil%></td>
+		</tr>
+		<tr>
+			<td>Damaged goods</td>
+			<td><%= @damaged_goods.count rescue nil%></td>
+		</tr>
+		<tr>
+			<td>Expiry date</td>
+			<td><%= @expiry.count rescue nil%></td>
+		</tr>
+		<tr>
+			<td>Feedback/response</td>
+			<td><%= @feedback_response.count rescue nil%></td>
+		</tr>
+		<tr>
+			<td>Hygiene</td>
+			<td><%= @hygiene.count rescue nil%></td>
+		</tr>
+		<tr>
+			<td>Late/no delivery</td>
+			<td><%= @Late_no_delivery.count rescue nil%></td>
+		</tr>
+		<tr>
+			<td>Out of stock</td>
+			<td><%= @out_of_stock.count rescue nil%></td>
+		</tr>
+		<tr>
+			<td>Pricing/bar codes</td>
+			<td><%= @pricing_bar_codes.count rescue nil%></td>
+		</tr>
+		<tr>
+			<td>Repairs/servicing</td>
+			<td><%= @repairs_servicing.count rescue nil%></td>
+		</tr>
+		<tr>
+			<td>Spam</td>
+			<td><%= @spam.count rescue nil%></td>
+		</tr>
+		<tr>
+			<td>Other</td>
+			<td><%= @repairs_servicing.count rescue nil%></td>
+		</tr>
+
+	</tbody>
+</table>
+</div>

@@ -5,7 +5,21 @@ layout "admin", :except => :industry_xls
 before_filter :get_default_for_reviews
 before_action :default_tab
 layout :custom_layout
-	def index
+	
+  def totalreviews
+    total_reviews
+  end
+
+  def nature_of_complaints2
+    nature_of_complaints
+  end
+
+
+  def nature_of_compliments
+    nature_of_complaints
+  end
+
+  def index
    	    total_reviews
    	    nature_of_complaints
    	    

@@ -1,0 +1,26 @@
+<table id="total_compliment">
+
+	<thead>
+		<tr>
+			<th>Total Reviews</th>
+			<th>Total Count</th>
+		</tr>
+
+	</thead>
+
+	<tbody>
+		<tr>
+			<td>Compliments</td>
+			<td><%= @compliments.count rescue nil%></td>
+		</tr>
+		<tr>
+			<td>Complaint</td>
+			<td><%= @complaints.count rescue nil%></td>
+		</tr>
+		<tr>
+			<td><strong>Total</strong></td>
+			<td><%= @complaints.count + @compliments.count%></td>
+		</tr>
+
+	</tbody>
+</table>

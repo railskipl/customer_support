@@ -142,7 +142,7 @@
     <% @compliments = @compliment.where('change_date is not null') %> 
       <% @compliments.each do |compliment|%>
         <tr>
-          <td><%= compliment.date_time  rescue nil%></td>
+          <td><%= compliment.created_at.strftime("%d/%m/%y | %H:%M")  rescue nil%></td>
           <td><%= compliment.ticket_number  rescue nil%></td>
           <td><%= compliment.industry.title.titleize  rescue nil%></td>
           <td><%= compliment.nature_of_review  rescue nil%></td>

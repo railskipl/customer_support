@@ -8,24 +8,24 @@
 <%end%>
 
 <% @industries.each do |industry|%>
-    <% @industry = Industry.where('id = ?', industry).first rescue nil%>
+   
 	<%if params[:id] == "data_dump"%>
-	  <% @compliments = Review.where('user_id is not null and industry_id = ? and review_type = ?',@industry.id, 'compliment') rescue nil%>
+	  <% @compliments = Review.where('user_id is not null and industry_id = ? and review_type = ?',industry.id, 'compliment') rescue nil%>
 
-	  <%  @complaints = Review.where('user_id is not null and industry_id = ? and review_type = ?',@industry.id, 'complaint') rescue nil%>
+	  <%  @complaints = Review.where('user_id is not null and industry_id = ? and review_type = ?',industry.id, 'complaint') rescue nil%>
 	<%else%>
-	  <% @compliments = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and industry_id = ? and review_type = ?',@start_from,@start_to,@industry.id, 'compliment') rescue nil%>
+	  <% @compliments = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and industry_id = ? and review_type = ?',@start_from,@start_to,industry.id, 'compliment') rescue nil%>
 
-	  <%  @complaints = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and industry_id = ? and review_type = ?',@start_from,@start_to,@industry.id, 'complaint') rescue nil%>
+	  <%  @complaints = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and industry_id = ? and review_type = ?',@start_from,@start_to,industry.id, 'complaint') rescue nil%>
 	<%end%>
 
 	<%if @compliments.present? or  @complaints.present? %>
 
 		<%if params[:id] == "data_dump"%>
 	     
-		  <%= render :partial=>'industry_xls1'%>
+		  <%= render 'industry_xls1',:industry => industry %>
 		<%else%>
-		  <%= render :partial=>"industry_xls"%>
+		  <%= render "industry_xls", :industry => industry%>
 		<%end%>
 
 
@@ -34,7 +34,7 @@
 	<h4>Total : Nature of Complaint</h4></br>
 	<%= render :partial=>"common_compliment_reviews_type"%>
 
-	<h4>Industry <%= @industry.title%> : Complaints</h4></br>
+	<h4>Industry <%= industry.title%> : Complaints</h4></br>
 	<%= render :partial=>"common_complaint_reviews_type"%>
 	<%end%> 
 <%end%>

@@ -227,7 +227,8 @@ module Admin::ReportsHelper
       end
       unless params[:id] == "data_dump"
    	    if user.nil?
-   	      redirect_to :back, :notice => "Customer Not Present"
+   	      @users = Review.select(:id,:user_id).where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null', @start_from, @start_to).map(&:user_id).uniq rescue nil
+          send_data(render_to_string(:template=>"admin/reports/customer_record.html.erb" ) , :type=>"text/xls",:filename => "customer_summary.xls")
    	    else
    	      @users = Review.select(:id,:user_id).where('Date(created_at) >= ? and Date(created_at) <= ? and user_id = ?', @start_from, @start_to,user.id).map(&:user_id).uniq rescue nil
           send_data(render_to_string(:template=>"admin/reports/customer_record.html.erb" ) , :type=>"text/xls",:filename => "customer_summary.xls")

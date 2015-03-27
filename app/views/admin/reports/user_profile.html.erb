@@ -72,40 +72,16 @@ jQuery(document).ready(function(){
 </script>
 
 
-<div>
-<table id="total_customer_reviews">
-	<thead>
-		<tr>
-			<th>Customer: Total Reviews -over a 12 month period</th>
-			<th>Total Reviews</th>
-		</tr>
-
-	</thead>
-
-	<tbody>
-		<tr>
-			<td>Compliments</td>
-			<td><%= @user_compliment rescue nil%></td>
-		</tr>
-		<tr>
-			<td>Complaint</td>
-			<td><%= @user_complaint rescue nil%></td>
-		</tr>
-		<tr>
-			<td><strong>Total</strong></td>
-			<td><%= @user_compliment + @user_complaint%></td>
-		</tr>
-
-	</tbody>
-</table>
-</div>
-<br/>
 
 <h4>Summary of all reviews made by the customer</h4> <br/>
         <table>
 			<%= form_for :report2, :url=> customer_record_admin_reports_path, :method => :get do |f| %>
 			  <h4>Filter Summary of all reviews made by the customer</h4>
 			  <tr>
+			  	<td>Custmer</td>
+			    <td><span >
+			      <%= f.text_field :customer, :required => :true%>
+			    </span></td>
 			    <td>From Date </td>
 			    <td><span >
 			      <%= f.text_field :start_date, :required => :true%>

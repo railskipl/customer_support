@@ -4,48 +4,69 @@
 	<table id="customers">
 		<thead>
 		  <tr>
-		    <th>Sr. No</th>
+		    <th>Sr. No. </th>
 		    <th width="15%">First Name</th>
 		    <th width="15%">Last Name</th>
+		    <th width="20%">Preferred Alias</th>
+			<th width="20%">Gender</th>
+		    <th width="20%">Age</th>
+		    <th width="20%">DOB</th>
 		    <th width="30%">Email</th>
 		    <th width="20%">Email Confirmation</th>
-		    <th width="20%">Preferred Alias</th>
-		    <th width="20%">Age</th>
-		    <th width="20%">Gender</th>
 		    <th width="20%">Address line 1</th>
 		    <th width="20%">Address line 2</th>
 		    <th width="20%">Town</th>
+		    <th width="20%">Code</th>
 		    <th width="20%">country</th>
 		    <th width="20%">Lives in</th>
-		    <th width="20%">Code</th>
+		    <th width="20%">Secret Question</th>
+		    <th width="20%">Answer</th>
+		    <th width="20%">Image</th>
+		    <th width="20%">Subscribed</th>
+		    <th width="20%">Last Sign In Time</th>
+		    <th width="20%">Current Sign In IP</th>
+		    <th width="20%">Last Sign In IP</th>
+		    <th width="20%">Date of Registeration</th>
+		    <th width="20%">Total Reviews</th>
+		    <th width="20%">Total Comments</th>
 		  </tr>
 		</thead>
 
 		<tbody>
-		  <% @customers.each_with_index.each do |user,i| %>
+		    <% @customers.each_with_index.each do |user,i| %>
 		    <tr>
 		      <td><%= i+1%></td>
-		      <td><%=user.first_name%></td>
-		      <td><%=user.last_name%></td>
-		      <td><%=user.email%></td>
-		      <td><%=user.confirmed_at.present? ? 'Confirmed' : 'Pending'%></td>
-		      <td><%=user.preferred_alias%></td>
-		      <td><%=user.age%></td>
-		      <td><% if user.gender == '1' %>
-				    <%="Male"%>
-				    <%elsif user.gender == '0'%>
-				    <%="Female"%>
+		      <td><%=user.first_name rescue nil%></td>
+		      <td><%=user.last_name rescue nil%></td>
+		      <td><%=user.preferred_alias rescue nil%></td>
+		        <td><% if user.gender == '1' %>
+				      Male
 				    <%else%>
+				     Female
 				    <%end%>
 			  </td>
-		      <td><%=user.address_line1%></td>
-		      <td><%=user.address_line2%></td>
-		      <td><%=user.town%></td>
-		      <td><%=user.country%></td>
-		      <td><%=user.lives_in%></td>
-		      <td><%=user.postal_code%></td>
+			  <td><%= user.age %></td>
+			  <td><%= user.dob %></td>
+		      <td><%=user.email rescue nil%></td>
+		      <td><%=user.confirmed_at.present? ? 'Confirmed' : 'Pending'%></td>
+		      <td><%=user.address_line1 rescue nil%></td>
+		      <td><%=user.address_line2 rescue nil%></td>
+		      <td><%=user.town rescue nil%></td>
+		      <td><%=user.postal_code rescue nil%></td>
+		      <td><%=user.country rescue nil%></td>
+		      <td><%=user.lives_in rescue nil%></td>
+		      <td><%=user.secret_question rescue nil%></td>
+		      <td><%=user.answer rescue nil%></td>
+		      <td><%=user.avatar.blank? ? "No" : "Yes" rescue nil%></td>
+		      <td><%=user.is_subscribe rescue nil%></td>
+		      <td><%=user.last_sign_in_at rescue nil%></td>
+		      <td><%=user.current_sign_in_ip rescue nil%></td>
+		      <td><%=user.last_sign_in_ip rescue nil%></td>
+		      <td><%=user.created_at rescue nil%></td>
+		      <td><%=user.reviews.count rescue nil%></td>
+		      <td><%=user.comments.count rescue nil%></td>
 		    </tr>
-		  <% end %>
+		   <% end %>
 		</tbody>
 	</table>
 <br/><br/>
@@ -56,47 +77,70 @@
 	<table id="customers">
 		<thead>
 		  <tr>
+		    <th>Sr. No. </th>
 		    <th width="15%">First Name</th>
 		    <th width="15%">Last Name</th>
+		    <th width="20%">Preferred Alias</th>
+			<th width="20%">Gender</th>
+		    <th width="20%">Age</th>
+		    <th width="20%">DOB</th>
 		    <th width="30%">Email</th>
 		    <th width="20%">Email Confirmation</th>
-		    <th width="20%">Preferred Alias</th>
-		    <th width="20%">Age</th>
-		    <th width="20%">Gender</th>
 		    <th width="20%">Address line 1</th>
 		    <th width="20%">Address line 2</th>
 		    <th width="20%">Town</th>
+		    <th width="20%">Code</th>
 		    <th width="20%">country</th>
 		    <th width="20%">Lives in</th>
-		    <th width="20%">Code</th>
+		    <th width="20%">Secret Question</th>
+		    <th width="20%">Answer</th>
+		    <th width="20%">Image</th>
+		    <th width="20%">Subscribed</th>
+		    <th width="20%">Last Sign In Time</th>
+		    <th width="20%">Current Sign In IP</th>
+		    <th width="20%">Last Sign In IP</th>
+		    <th width="20%">Date of Registeration</th>
+		    <th width="20%">Total Reviews</th>
+		    <th width="20%">Total Comments</th>
 		  </tr>
 		</thead>
 
 		<tbody>
-		  <% @users.each do |user| %>
+		 	<% @users.each.each_with_index do |user,i| %>
 		    <% user = User.find(user)%>
 		    <tr>
-		      <td><%=user.first_name%></td>
-		      <td><%=user.last_name%></td>
-		      <td><%=user.email%></td>
-		      <td><%=user.confirmed_at.present? ? 'Confirmed' : 'Pending'%></td>
-		      <td><%=user.preferred_alias%></td>
-		      <td><%=user.age%></td>
-		      <td><% if user.gender == '1' %>
-				    <%="Male"%>
-				    <%elsif user.gender == '0'%>
-				    <%="Female"%>
+		      <td><%= i+1%></td>
+		      <td><%=user.first_name rescue nil%></td>
+		      <td><%=user.last_name rescue nil%></td>
+		      <td><%=user.preferred_alias rescue nil%></td>
+		        <td><% if user.gender == '1' %>
+				      Male
 				    <%else%>
+				     Female
 				    <%end%>
 			  </td>
-		      <td><%=user.address_line1%></td>
-		      <td><%=user.address_line2%></td>
-		      <td><%=user.town%></td>
-		      <td><%=user.country%></td>
-		      <td><%=user.lives_in%></td>
-		      <td><%=user.postal_code%></td>
+			  <td><%= user.age %></td>
+			  <td><%= user.dob %></td>
+		      <td><%=user.email rescue nil%></td>
+		      <td><%=user.confirmed_at.present? ? 'Confirmed' : 'Pending'%></td>
+		      <td><%=user.address_line1 rescue nil%></td>
+		      <td><%=user.address_line2 rescue nil%></td>
+		      <td><%=user.town rescue nil%></td>
+		      <td><%=user.postal_code rescue nil%></td>
+		      <td><%=user.country rescue nil%></td>
+		      <td><%=user.lives_in rescue nil%></td>
+		      <td><%=user.secret_question rescue nil%></td>
+		      <td><%=user.answer rescue nil%></td>
+		      <td><%=user.avatar.blank? ? "No" : "Yes" rescue nil%></td>
+		      <td><%=user.is_subscribe rescue nil%></td>
+		      <td><%=user.last_sign_in_at rescue nil%></td>
+		      <td><%=user.current_sign_in_ip rescue nil%></td>
+		      <td><%=user.last_sign_in_ip rescue nil%></td>
+		      <td><%=user.created_at rescue nil%></td>
+		      <td><%=user.reviews.count rescue nil%></td>
+		      <td><%=user.comments.count rescue nil%></td>
 		    </tr>
-		  <% end %>
+		   <% end %>
 		</tbody>
 	</table>
 <br/><br/>

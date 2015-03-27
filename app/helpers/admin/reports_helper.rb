@@ -208,6 +208,8 @@ module Admin::ReportsHelper
 
    def customer_record
    	  if params[:subaction] == "customer_record"
+   	  	preferredalias = params[:report2][:customer]
+   	  	user = User.find_by_preferred_alias(preferredalias)
    	  	@start_from = params[:report2][:start_date] rescue ""
    	  	@start_to = params[:report2][:end_date] rescue ""
    	  
@@ -224,8 +226,12 @@ module Admin::ReportsHelper
    	  	  @start_to =  Date.today 
       end
       unless params[:id] == "data_dump"
-   	    @users = Review.select(:id,:user_id).where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null', @start_from, @start_to).map(&:user_id).uniq rescue nil
-        send_data(render_to_string(:template=>"admin/reports/customer_record.html.erb" ) , :type=>"text/xls",:filename => "customer_summary.xls")
+   	    if user.nil?
+   	      redirect_to :back, :notice => "Customer Not Present"
+   	    else
+   	      @users = Review.select(:id,:user_id).where('Date(created_at) >= ? and Date(created_at) <= ? and user_id = ?', @start_from, @start_to,user.id).map(&:user_id).uniq rescue nil
+          send_data(render_to_string(:template=>"admin/reports/customer_record.html.erb" ) , :type=>"text/xls",:filename => "customer_summary.xls")
+        end
       end
    end
 

@@ -51,12 +51,12 @@ layout :custom_layout
    	  	@review_type = params[:report][:review_type] rescue ""
    	  	@nature_of_review = params[:report][:nature_of_review_eq] rescue ""
        
-        @reviews = Review.where('Date(created_at) >= ? and Date(Date(created_at)) <= ? and industry_id = ? and user_id is not null ',1.year.ago, Date.today,@industry)  if @industry.present? rescue nil
-        @reviews = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and company_id = ? and user_id is not null ',1.year.ago, Date.today,@company)  if @company.present? rescue nil
-        @reviews = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and town_id = ? and user_id is not null ',1.year.ago, Date.today,@town)  if @town.present? rescue nil
-        @reviews = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and location_id = ? and user_id is not null ',1.year.ago, Date.today,@location)  if @location.present? rescue nil
-        @reviews = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and review_type = ? and user_id is not null ',1.year.ago, Date.today,@review_type) if @review_type.present? rescue nil
-        @reviews = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and nature_of_review = ? and user_id is not null ',1.year.ago, Date.today,@nature_of_review)  if @nature_of_review.present? rescue nil
+        @reviews = Review.includes(:comments).where('Date(created_at) >= ? and Date(Date(created_at)) <= ? and industry_id = ? and user_id is not null ',1.year.ago, Date.today,@industry)  if @industry.present? rescue nil
+        @reviews = Review.includes(:comments).where('Date(created_at) >= ? and Date(created_at) <= ? and company_id = ? and user_id is not null ',1.year.ago, Date.today,@company)  if @company.present? rescue nil
+        @reviews = Review.includes(:comments).where('Date(created_at) >= ? and Date(created_at) <= ? and town_id = ? and user_id is not null ',1.year.ago, Date.today,@town)  if @town.present? rescue nil
+        @reviews = Review.includes(:comments).where('Date(created_at) >= ? and Date(created_at) <= ? and location_id = ? and user_id is not null ',1.year.ago, Date.today,@location)  if @location.present? rescue nil
+        @reviews = Review.includes(:comments).where('Date(created_at) >= ? and Date(created_at) <= ? and review_type = ? and user_id is not null ',1.year.ago, Date.today,@review_type) if @review_type.present? rescue nil
+        @reviews = Review.includes(:comments).where('Date(created_at) >= ? and Date(created_at) <= ? and nature_of_review = ? and user_id is not null ',1.year.ago, Date.today,@nature_of_review)  if @nature_of_review.present? rescue nil
          #raise @reviews.inspect   
       else
 
@@ -118,6 +118,7 @@ layout :custom_layout
 
    def user_profile
       if params[:subaction] == "customer"
+      
    	  	start_from = params[:report][:start_date] rescue ""
    	  	start_to = params[:report][:end_date] rescue ""
    	  

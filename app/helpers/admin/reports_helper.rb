@@ -82,7 +82,6 @@ module Admin::ReportsHelper
 	end
 
 	def industry_level #industries
-		#raise params[:industry].inspect
 		@industry = Industry.where('id = ?', params[:industry]).first
 		
 		#total number of complaints/compliments according to each industry
@@ -122,6 +121,7 @@ module Admin::ReportsHelper
 		@repairs_servicing = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@industry.id,'Repairs/servicing', 'complaint').count rescue nil
 		@spam = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@industry.id,'Spam', 'complaint').count rescue nil
 		@others_c = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@industry.id,'Other', 'complaint').count rescue nil
+        send_data(render_to_string(:template=>"admin/reports/industry_level.html.erb" ) , :type=>"text/xls",:filename => "customer_summary.xls")
 	end
 
    def supplier_level #company/suppliers
@@ -238,13 +238,15 @@ module Admin::ReportsHelper
 
    def industry_xls
    	  if params[:subaction] == "industry_total"
+   	  	 industry = Industry.find(params[:report][:industry])
+
    	  	@start_from = params[:report][:start_date] rescue ""
    	  	@start_to = params[:report][:end_date] rescue ""
    	  
         if @start_from > @start_to
           flash[:notice] = "Start date cannot be greater than End date."
         else
-          @industries = Industry.all rescue nil
+          @industries = Industry.where('Date(created_at) >= ? and Date(created_at) <= ? and id = ?', @start_from, @start_to,industry.id) rescue nil
           send_data(render_to_string(:template=>"admin/reports/industry_xls.html.erb" ) , :type=>"text/xls",:filename => "industries.xls")
         end
       elsif params[:id] == "data_dump"

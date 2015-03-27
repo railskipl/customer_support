@@ -407,6 +407,8 @@ layout :custom_layout
             "no_layout"
          when "total_xls"
          	 "no_layout"
+         when "industry_level"
+          "no_layout"
          when "company_xls"
          	"no_layout"
          when "customer_record"

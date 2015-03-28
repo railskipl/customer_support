@@ -86,7 +86,7 @@ layout :custom_layout
 	end 
 
 	def company
-		@companies = Company.all  rescue nil
+		@companies = Supplier.all  rescue nil
         @suppliers = Supplier.all rescue nil
         if params[:subaction] == "company_stat_record"
 	   	  	@start_from = params[:report6][:start_date] rescue ""

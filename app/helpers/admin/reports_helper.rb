@@ -246,6 +246,7 @@ module Admin::ReportsHelper
         if @start_from > @start_to
           flash[:notice] = "Start date cannot be greater than End date."
         else
+        	raise industry.inspect
           @industries = Industry.where('Date(created_at) >= ? and Date(created_at) <= ? and id = ?', @start_from, @start_to,industry.id) rescue nil
           send_data(render_to_string(:template=>"admin/reports/industry_xls.html.erb" ) , :type=>"text/xls",:filename => "industries.xls")
         end
@@ -258,6 +259,10 @@ module Admin::ReportsHelper
       	  @industries = Industry.all rescue nil
       	  send_data(render_to_string(:template=>"admin/reports/industry_xls.html.erb" ) , :type=>"text/xls",:filename => "industries.xls")
       end
+   end
+
+   def get_company_from_supplier(company)
+   	  Company.find_by_title(company.supplier_name)
    end
 
    def company_xls

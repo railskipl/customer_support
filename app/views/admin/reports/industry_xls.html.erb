@@ -1,6 +1,6 @@
 <br/>
 <%if params[:subaction] == "industry_total" %>
-  <strong>Displaying data for duration <%= params[:report][:start_date] rescue nil%> to <%= params[:report][:end_date] rescue nil%>
+  <strong>Displaying data for duration <%= params[:report][:start_date].strftime("%d/%m%y") rescue nil%> to <%= params[:report][:end_date].strftime("%d/%m%y") rescue nil%>
 <%elsif params[:id] == "data_dump"%>
   Industry 
 <%else%>

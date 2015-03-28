@@ -24,6 +24,7 @@
       <th width="15%">Personal Responsible</th>
       <th width="15%">Message</th>
       <th width="15%">Desired Outcome</th>
+      <th width="15%">Customer Name</th>
       <th width="15%">Account Details</th>
       <th width="15%">File Uploaded</th>
       <th width="15%">Review IP</th>
@@ -54,6 +55,7 @@
         <td><%=review.personal_responsible rescue nil %></td>
         <td><%=review.message rescue nil %></td>
         <td><%=review.desired_outcome.nil? ? "N/A" : review.desired_outcome %></td>
+        <td><%=review.user.first_name rescue nil%><%=review.user.last_name rescue nil%></td>
         <td><%=review.account_details rescue nil %></td>
           <td><%=review.file.blank? ? "No" : "Yes" %></td>
           <td><%=review.try(:user).try(:last_sign_in_ip) rescue nil%></td>

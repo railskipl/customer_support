@@ -1,63 +1,11 @@
 <%if @bad_attitude.present?%>
 <h4>Bad attitude</h4>
 <table id="admin_review_xls" >
-	<thead>
-		  <tr>
-	        <th>Sr. No. </th>
-			<th width="10%">Date</th>
-			<th width="10%">Time</th>
-			<th width="15%">Ticket Number</th>
-			<th width="10%">Review</th>
-			<th width="15%">Title</th>
-			<th width="15%">Nature of Review</th>
-			<th width="15%">Incident Date</th>
-			<th width="15%">Incident Time</th>
-			<th width="15%">Industry</th>
-			<th width="15%">Company</th>
-			<th width="15%">Town</th>
-			<th width="15%">Location</th>
-			<th width="15%">Personal Responsible</th>
-			<th width="15%">Message</th>
-			<th width="15%">Desired Outcome</th>
-			<th width="15%">Account Details</th>
-			<th width="15%">File Uploaded</th>
-			<th width="15%">Review IP</th>
-			<th width="15%">Comments</th>
-	   </tr>
-	</thead>
+	<%= render 'common_header_reviews'%>
 
 	<tbody>
 	  <% @bad_attitude.each_with_index.each do |review,i| %>
-	  <tr>
-	            <td><%= i+1%></td>
-				<td><%=review.created_at.strftime("%d/%m/%Y") rescue nil %></td>
-				<td><%=review.created_at.strftime("%H:%M") rescue nil %></td>
-				<td><%=review.ticket_number rescue nil %></td>
-				<td><%=review.review_type.titleize rescue nil %></td>
-				<td><%=review.title.titleize rescue nil %></td>
-				<td><%=review.nature_of_review rescue nil %></td>
-				<td><%=review.date.strftime("%d/%m/%Y") rescue nil %></td>
-				<td><%= DateTime.parse(review.date_time).strftime("%H:%M") rescue nil %></td>
-				<td><%=review.industry.title.titleize rescue nil %></td>
-				<td><%=review.company.title.titleize rescue nil %></td>
-				<td><%=review.town.title.titleize rescue nil %></td>
-				<td><%=review.location.title.titleize rescue nil %></td>
-				<td><%=review.personal_responsible rescue nil %></td>
-				<td><%=review.message rescue nil %></td>
-				<td><%=review.desired_outcome.nil? ? "N/A" : review.desired_outcome %></td>
-				<td><%=review.account_details rescue nil %></td>
-			    <td><%=review.file.blank? ? "No" : "Yes" %></td>
-			    <td><%=review.try(:user).try(:last_sign_in_ip) rescue nil%></td>
-			    <td>
-			    	<% if review.comments.where("user_id is not null").count >= 1 %>
-			    		Supplier
-			    	<% elsif review.comments.where("name is not null").count >= 1%>
-			    		Yes
-			    	<% else %>
-			    	   No
-			    	<% end%>
-			    </td>
-	    </tr>
+		<%= render 'common_reviews', :review => review, :i => i %>
 	  <% end %>
 	</tbody>	
 </table>
@@ -66,63 +14,11 @@
 <%if @billing_account.present?%>
 <h4>Billing/Accounts</h4>
 <table id="admin_review_xls" >
-	<thead>
-	 	  <tr>
-	        <th>Sr. No. </th>
-			<th width="10%">Date</th>
-			<th width="10%">Time</th>
-			<th width="15%">Ticket Number</th>
-			<th width="10%">Review</th>
-			<th width="15%">Title</th>
-			<th width="15%">Nature of Review</th>
-			<th width="15%">Incident Date</th>
-			<th width="15%">Incident Time</th>
-			<th width="15%">Industry</th>
-			<th width="15%">Company</th>
-			<th width="15%">Town</th>
-			<th width="15%">Location</th>
-			<th width="15%">Personal Responsible</th>
-			<th width="15%">Message</th>
-			<th width="15%">Desired Outcome</th>
-			<th width="15%">Account Details</th>
-			<th width="15%">File Uploaded</th>
-			<th width="15%">Review IP</th>
-			<th width="15%">Comments</th>
-	   </tr>
-	</thead>
+	<%= render 'common_header_reviews'%>
 
 	<tbody>
 	  <% @billing_account.each_with_index.each do |review,i| %>
-	   <tr>
-	            <td><%= i+1%></td>
-				<td><%=review.created_at.strftime("%d/%m/%Y") rescue nil %></td>
-				<td><%=review.created_at.strftime("%H:%M") rescue nil %></td>
-				<td><%=review.ticket_number rescue nil %></td>
-				<td><%=review.review_type.titleize rescue nil %></td>
-				<td><%=review.title.titleize rescue nil %></td>
-				<td><%=review.nature_of_review rescue nil %></td>
-				<td><%=review.date.strftime("%d/%m/%Y") rescue nil %></td>
-				<td><%= DateTime.parse(review.date_time).strftime("%H:%M") rescue nil %></td>
-				<td><%=review.industry.title.titleize rescue nil %></td>
-				<td><%=review.company.title.titleize rescue nil %></td>
-				<td><%=review.town.title.titleize rescue nil %></td>
-				<td><%=review.location.title.titleize rescue nil %></td>
-				<td><%=review.personal_responsible rescue nil %></td>
-				<td><%=review.message rescue nil %></td>
-				<td><%=review.desired_outcome.nil? ? "N/A" : review.desired_outcome %></td>
-				<td><%=review.account_details rescue nil %></td>
-			    <td><%=review.file.blank? ? "No" : "Yes" %></td>
-			    <td><%=review.try(:user).try(:last_sign_in_ip) rescue nil%></td>
-			    <td>
-			    	<% if review.comments.where("user_id is not null").count >= 1 %>
-			    		Supplier
-			    	<% elsif review.comments.where("name is not null").count >= 1%>
-			    		Yes
-			    	<% else %>
-			    	   No
-			    	<% end%>
-			    </td>
-	    </tr>
+	     <%= render 'common_reviews', :review => review, :i => i %>
 	  <% end %>
 	</tbody>	
 </table>
@@ -131,63 +27,11 @@
 <%if @booking_query.present?%>
 <h4>Booking query</h4>
 <table id="admin_review_xls" >
-	<thead>
-	  <tr>
-	        <th>Sr. No. </th>
-			<th width="10%">Date</th>
-			<th width="10%">Time</th>
-			<th width="15%">Ticket Number</th>
-			<th width="10%">Review</th>
-			<th width="15%">Title</th>
-			<th width="15%">Nature of Review</th>
-			<th width="15%">Incident Date</th>
-			<th width="15%">Incident Time</th>
-			<th width="15%">Industry</th>
-			<th width="15%">Company</th>
-			<th width="15%">Town</th>
-			<th width="15%">Location</th>
-			<th width="15%">Personal Responsible</th>
-			<th width="15%">Message</th>
-			<th width="15%">Desired Outcome</th>
-			<th width="15%">Account Details</th>
-			<th width="15%">File Uploaded</th>
-			<th width="15%">Review IP</th>
-			<th width="15%">Comments</th>
-	   </tr>
-	</thead>
+	<%= render 'common_header_reviews'%>
 
 	<tbody>
 	  <% @booking_query.each_with_index.each do |review,i| %>
-	   <tr>
-	            <td><%= i+1%></td>
-				<td><%=review.created_at.strftime("%d/%m/%Y") rescue nil %></td>
-				<td><%=review.created_at.strftime("%H:%M") rescue nil %></td>
-				<td><%=review.ticket_number rescue nil %></td>
-				<td><%=review.review_type.titleize rescue nil %></td>
-				<td><%=review.title.titleize rescue nil %></td>
-				<td><%=review.nature_of_review rescue nil %></td>
-				<td><%=review.date.strftime("%d/%m/%Y") rescue nil %></td>
-				<td><%= DateTime.parse(review.date_time).strftime("%H:%M") rescue nil %></td>
-				<td><%=review.industry.title.titleize rescue nil %></td>
-				<td><%=review.company.title.titleize rescue nil %></td>
-				<td><%=review.town.title.titleize rescue nil %></td>
-				<td><%=review.location.title.titleize rescue nil %></td>
-				<td><%=review.personal_responsible rescue nil %></td>
-				<td><%=review.message rescue nil %></td>
-				<td><%=review.desired_outcome.nil? ? "N/A" : review.desired_outcome %></td>
-				<td><%=review.account_details rescue nil %></td>
-			    <td><%=review.file.blank? ? "No" : "Yes" %></td>
-			    <td><%=review.try(:user).try(:last_sign_in_ip) rescue nil%></td>
-			    <td>
-			    	<% if review.comments.where("user_id is not null").count >= 1 %>
-			    		Supplier
-			    	<% elsif review.comments.where("name is not null").count >= 1%>
-			    		Yes
-			    	<% else %>
-			    	   No
-			    	<% end%>
-			    </td>
-	    </tr>
+	    <%= render 'common_reviews', :review => review, :i => i %>
 	  <% end %>
 	</tbody>	
 </table>
@@ -196,63 +40,11 @@
 <%if @breach_of_contract.present?%>
 <h4>Breach of contract</h4>
 <table id="admin_review_xls" >
-	<thead>
-	 	  <tr>
-	        <th>Sr. No. </th>
-			<th width="10%">Date</th>
-			<th width="10%">Time</th>
-			<th width="15%">Ticket Number</th>
-			<th width="10%">Review</th>
-			<th width="15%">Title</th>
-			<th width="15%">Nature of Review</th>
-			<th width="15%">Incident Date</th>
-			<th width="15%">Incident Time</th>
-			<th width="15%">Industry</th>
-			<th width="15%">Company</th>
-			<th width="15%">Town</th>
-			<th width="15%">Location</th>
-			<th width="15%">Personal Responsible</th>
-			<th width="15%">Message</th>
-			<th width="15%">Desired Outcome</th>
-			<th width="15%">Account Details</th>
-			<th width="15%">File Uploaded</th>
-			<th width="15%">Review IP</th>
-			<th width="15%">Comments</th>
-	   </tr>
-	</thead>
+	<%= render 'common_header_reviews'%>
 
 	<tbody>
 	  <% @breach_of_contract.each_with_index.each do |review,i| %>
-	   <tr>
-	            <td><%= i+1%></td>
-				<td><%=review.created_at.strftime("%d/%m/%Y") rescue nil %></td>
-				<td><%=review.created_at.strftime("%H:%M") rescue nil %></td>
-				<td><%=review.ticket_number rescue nil %></td>
-				<td><%=review.review_type.titleize rescue nil %></td>
-				<td><%=review.title.titleize rescue nil %></td>
-				<td><%=review.nature_of_review rescue nil %></td>
-				<td><%=review.date.strftime("%d/%m/%Y") rescue nil %></td>
-				<td><%= DateTime.parse(review.date_time).strftime("%H:%M") rescue nil %></td>
-				<td><%=review.industry.title.titleize rescue nil %></td>
-				<td><%=review.company.title.titleize rescue nil %></td>
-				<td><%=review.town.title.titleize rescue nil %></td>
-				<td><%=review.location.title.titleize rescue nil %></td>
-				<td><%=review.personal_responsible rescue nil %></td>
-				<td><%=review.message rescue nil %></td>
-				<td><%=review.desired_outcome.nil? ? "N/A" : review.desired_outcome %></td>
-				<td><%=review.account_details rescue nil %></td>
-			    <td><%=review.file.blank? ? "No" : "Yes" %></td>
-			    <td><%=review.try(:user).try(:last_sign_in_ip) rescue nil%></td>
-			    <td>
-			    	<% if review.comments.where("user_id is not null").count >= 1 %>
-			    		Supplier
-			    	<% elsif review.comments.where("name is not null").count >= 1%>
-			    		Yes
-			    	<% else %>
-			    	   No
-			    	<% end%>
-			    </td>
-	    </tr>
+	   <%= render 'common_reviews', :review => review, :i => i %>
 	  <% end %>
 	</tbody>	
 </table>
@@ -261,63 +53,11 @@
 <%if @call_centre_c.present?%>
 <h4>Call centre</h4>
 <table id="admin_review_xls" >
-	<thead>
-	 	  <tr>
-	        <th>Sr. No. </th>
-			<th width="10%">Date</th>
-			<th width="10%">Time</th>
-			<th width="15%">Ticket Number</th>
-			<th width="10%">Review</th>
-			<th width="15%">Title</th>
-			<th width="15%">Nature of Review</th>
-			<th width="15%">Incident Date</th>
-			<th width="15%">Incident Time</th>
-			<th width="15%">Industry</th>
-			<th width="15%">Company</th>
-			<th width="15%">Town</th>
-			<th width="15%">Location</th>
-			<th width="15%">Personal Responsible</th>
-			<th width="15%">Message</th>
-			<th width="15%">Desired Outcome</th>
-			<th width="15%">Account Details</th>
-			<th width="15%">File Uploaded</th>
-			<th width="15%">Review IP</th>
-			<th width="15%">Comments</th>
-	   </tr>
-	</thead>
+	<%= render 'common_header_reviews'%>
 
 	<tbody>
 	  <% @call_centre_c.each_with_index.each do |review,i| %>
-	   <tr>
-	            <td><%= i+1%></td>
-				<td><%=review.created_at.strftime("%d/%m/%Y") rescue nil %></td>
-				<td><%=review.created_at.strftime("%H:%M") rescue nil %></td>
-				<td><%=review.ticket_number rescue nil %></td>
-				<td><%=review.review_type.titleize rescue nil %></td>
-				<td><%=review.title.titleize rescue nil %></td>
-				<td><%=review.nature_of_review rescue nil %></td>
-				<td><%=review.date.strftime("%d/%m/%Y") rescue nil %></td>
-				<td><%= DateTime.parse(review.date_time).strftime("%H:%M") rescue nil %></td>
-				<td><%=review.industry.title.titleize rescue nil %></td>
-				<td><%=review.company.title.titleize rescue nil %></td>
-				<td><%=review.town.title.titleize rescue nil %></td>
-				<td><%=review.location.title.titleize rescue nil %></td>
-				<td><%=review.personal_responsible rescue nil %></td>
-				<td><%=review.message rescue nil %></td>
-				<td><%=review.desired_outcome.nil? ? "N/A" : review.desired_outcome %></td>
-				<td><%=review.account_details rescue nil %></td>
-			    <td><%=review.file.blank? ? "No" : "Yes" %></td>
-			    <td><%=review.try(:user).try(:last_sign_in_ip) rescue nil%></td>
-			    <td>
-			    	<% if review.comments.where("user_id is not null").count >= 1 %>
-			    		Supplier
-			    	<% elsif review.comments.where("name is not null").count >= 1%>
-			    		Yes
-			    	<% else %>
-			    	   No
-			    	<% end%>
-			    </td>
-	    </tr>
+	     <%= render 'common_reviews', :review => review, :i => i %>
 	  <% end %>
 	</tbody>	
 </table>
@@ -326,63 +66,11 @@
 <%if @damaged_goods.present?%>
 <h4>Damaged goods</h4>
 <table id="admin_review_xls" >
-	<thead>
-	 	  <tr>
-	        <th>Sr. No. </th>
-			<th width="10%">Date</th>
-			<th width="10%">Time</th>
-			<th width="15%">Ticket Number</th>
-			<th width="10%">Review</th>
-			<th width="15%">Title</th>
-			<th width="15%">Nature of Review</th>
-			<th width="15%">Incident Date</th>
-			<th width="15%">Incident Time</th>
-			<th width="15%">Industry</th>
-			<th width="15%">Company</th>
-			<th width="15%">Town</th>
-			<th width="15%">Location</th>
-			<th width="15%">Personal Responsible</th>
-			<th width="15%">Message</th>
-			<th width="15%">Desired Outcome</th>
-			<th width="15%">Account Details</th>
-			<th width="15%">File Uploaded</th>
-			<th width="15%">Review IP</th>
-			<th width="15%">Comments</th>
-	   </tr>
-	</thead>
+	<%= render 'common_header_reviews'%>
 
 	<tbody>
 	  <% @damaged_goods.each_with_index.each do |review,i| %>
-	   <tr>
-	            <td><%= i+1%></td>
-				<td><%=review.created_at.strftime("%d/%m/%Y") rescue nil %></td>
-				<td><%=review.created_at.strftime("%H:%M") rescue nil %></td>
-				<td><%=review.ticket_number rescue nil %></td>
-				<td><%=review.review_type.titleize rescue nil %></td>
-				<td><%=review.title.titleize rescue nil %></td>
-				<td><%=review.nature_of_review rescue nil %></td>
-				<td><%=review.date.strftime("%d/%m/%Y") rescue nil %></td>
-				<td><%= DateTime.parse(review.date_time).strftime("%H:%M") rescue nil %></td>
-				<td><%=review.industry.title.titleize rescue nil %></td>
-				<td><%=review.company.title.titleize rescue nil %></td>
-				<td><%=review.town.title.titleize rescue nil %></td>
-				<td><%=review.location.title.titleize rescue nil %></td>
-				<td><%=review.personal_responsible rescue nil %></td>
-				<td><%=review.message rescue nil %></td>
-				<td><%=review.desired_outcome.nil? ? "N/A" : review.desired_outcome %></td>
-				<td><%=review.account_details rescue nil %></td>
-			    <td><%=review.file.blank? ? "No" : "Yes" %></td>
-			    <td><%=review.try(:user).try(:last_sign_in_ip) rescue nil%></td>
-			    <td>
-			    	<% if review.comments.where("user_id is not null").count >= 1 %>
-			    		Supplier
-			    	<% elsif review.comments.where("name is not null").count >= 1%>
-			    		Yes
-			    	<% else %>
-			    	   No
-			    	<% end%>
-			    </td>
-	    </tr>
+	     <%= render 'common_reviews', :review => review, :i => i %>
 	  <% end %>
 	</tbody>	
 </table>
@@ -391,63 +79,11 @@
 <%if @expiry.present?%>
 <h4>Expiry date</h4>
 <table id="admin_review_xls" >
-	<thead>
-		  <tr>
-	        <th>Sr. No. </th>
-			<th width="10%">Date</th>
-			<th width="10%">Time</th>
-			<th width="15%">Ticket Number</th>
-			<th width="10%">Review</th>
-			<th width="15%">Title</th>
-			<th width="15%">Nature of Review</th>
-			<th width="15%">Incident Date</th>
-			<th width="15%">Incident Time</th>
-			<th width="15%">Industry</th>
-			<th width="15%">Company</th>
-			<th width="15%">Town</th>
-			<th width="15%">Location</th>
-			<th width="15%">Personal Responsible</th>
-			<th width="15%">Message</th>
-			<th width="15%">Desired Outcome</th>
-			<th width="15%">Account Details</th>
-			<th width="15%">File Uploaded</th>
-			<th width="15%">Review IP</th>
-			<th width="15%">Comments</th>
-	   </tr>
-	</thead>
+	<%= render 'common_header_reviews'%>
 
 	<tbody>
 	  <% @expiry.each_with_index.each do |review,i| %>
-	   <tr>
-	            <td><%= i+1%></td>
-				<td><%=review.created_at.strftime("%d/%m/%Y") rescue nil %></td>
-				<td><%=review.created_at.strftime("%H:%M") rescue nil %></td>
-				<td><%=review.ticket_number rescue nil %></td>
-				<td><%=review.review_type.titleize rescue nil %></td>
-				<td><%=review.title.titleize rescue nil %></td>
-				<td><%=review.nature_of_review rescue nil %></td>
-				<td><%=review.date.strftime("%d/%m/%Y") rescue nil %></td>
-				<td><%= DateTime.parse(review.date_time).strftime("%H:%M") rescue nil %></td>
-				<td><%=review.industry.title.titleize rescue nil %></td>
-				<td><%=review.company.title.titleize rescue nil %></td>
-				<td><%=review.town.title.titleize rescue nil %></td>
-				<td><%=review.location.title.titleize rescue nil %></td>
-				<td><%=review.personal_responsible rescue nil %></td>
-				<td><%=review.message rescue nil %></td>
-				<td><%=review.desired_outcome.nil? ? "N/A" : review.desired_outcome %></td>
-				<td><%=review.account_details rescue nil %></td>
-			    <td><%=review.file.blank? ? "No" : "Yes" %></td>
-			    <td><%=review.try(:user).try(:last_sign_in_ip) rescue nil%></td>
-			    <td>
-			    	<% if review.comments.where("user_id is not null").count >= 1 %>
-			    		Supplier
-			    	<% elsif review.comments.where("name is not null").count >= 1%>
-			    		Yes
-			    	<% else %>
-			    	   No
-			    	<% end%>
-			    </td>
-	    </tr>
+	    <%= render 'common_reviews', :review => review, :i => i %>
 	  <% end %>
 	</tbody>	
 </table>
@@ -456,63 +92,11 @@
 <%if @feedback_response.present?%>
 <h4>Feedback/response</h4>
 <table id="admin_review_xls" >
-	<thead>
-	 	  <tr>
-	        <th>Sr. No. </th>
-			<th width="10%">Date</th>
-			<th width="10%">Time</th>
-			<th width="15%">Ticket Number</th>
-			<th width="10%">Review</th>
-			<th width="15%">Title</th>
-			<th width="15%">Nature of Review</th>
-			<th width="15%">Incident Date</th>
-			<th width="15%">Incident Time</th>
-			<th width="15%">Industry</th>
-			<th width="15%">Company</th>
-			<th width="15%">Town</th>
-			<th width="15%">Location</th>
-			<th width="15%">Personal Responsible</th>
-			<th width="15%">Message</th>
-			<th width="15%">Desired Outcome</th>
-			<th width="15%">Account Details</th>
-			<th width="15%">File Uploaded</th>
-			<th width="15%">Review IP</th>
-			<th width="15%">Comments</th>
-	   </tr>
-	</thead>
+	<%= render 'common_header_reviews'%>
 
 	<tbody>
 	  <% @feedback_response.each_with_index.each do |review,i| %>
-	   <tr>
-	            <td><%= i+1%></td>
-				<td><%=review.created_at.strftime("%d/%m/%Y") rescue nil %></td>
-				<td><%=review.created_at.strftime("%H:%M") rescue nil %></td>
-				<td><%=review.ticket_number rescue nil %></td>
-				<td><%=review.review_type.titleize rescue nil %></td>
-				<td><%=review.title.titleize rescue nil %></td>
-				<td><%=review.nature_of_review rescue nil %></td>
-				<td><%=review.date.strftime("%d/%m/%Y") rescue nil %></td>
-				<td><%= DateTime.parse(review.date_time).strftime("%H:%M") rescue nil %></td>
-				<td><%=review.industry.title.titleize rescue nil %></td>
-				<td><%=review.company.title.titleize rescue nil %></td>
-				<td><%=review.town.title.titleize rescue nil %></td>
-				<td><%=review.location.title.titleize rescue nil %></td>
-				<td><%=review.personal_responsible rescue nil %></td>
-				<td><%=review.message rescue nil %></td>
-				<td><%=review.desired_outcome.nil? ? "N/A" : review.desired_outcome %></td>
-				<td><%=review.account_details rescue nil %></td>
-			    <td><%=review.file.blank? ? "No" : "Yes" %></td>
-			    <td><%=review.try(:user).try(:last_sign_in_ip) rescue nil%></td>
-			    <td>
-			    	<% if review.comments.where("user_id is not null").count >= 1 %>
-			    		Supplier
-			    	<% elsif review.comments.where("name is not null").count >= 1%>
-			    		Yes
-			    	<% else %>
-			    	   No
-			    	<% end%>
-			    </td>
-	    </tr>
+	     <%= render 'common_reviews', :review => review, :i => i %>
 	  <% end %>
 	</tbody>	
 </table>
@@ -521,63 +105,11 @@
 <%if @hygiene.present?%>
 <h4>Hygiene</h4>
 <table id="admin_review_xls" >
-	<thead>
-		  <tr>
-	        <th>Sr. No. </th>
-			<th width="10%">Date</th>
-			<th width="10%">Time</th>
-			<th width="15%">Ticket Number</th>
-			<th width="10%">Review</th>
-			<th width="15%">Title</th>
-			<th width="15%">Nature of Review</th>
-			<th width="15%">Incident Date</th>
-			<th width="15%">Incident Time</th>
-			<th width="15%">Industry</th>
-			<th width="15%">Company</th>
-			<th width="15%">Town</th>
-			<th width="15%">Location</th>
-			<th width="15%">Personal Responsible</th>
-			<th width="15%">Message</th>
-			<th width="15%">Desired Outcome</th>
-			<th width="15%">Account Details</th>
-			<th width="15%">File Uploaded</th>
-			<th width="15%">Review IP</th>
-			<th width="15%">Comments</th>
-	   </tr>
-	</thead>
+	<%= render 'common_header_reviews'%>
 
 	<tbody>
 	  <% @hygiene.each_with_index.each do |review,i| %>
-	   <tr>
-	            <td><%= i+1%></td>
-				<td><%=review.created_at.strftime("%d/%m/%Y") rescue nil %></td>
-				<td><%=review.created_at.strftime("%H:%M") rescue nil %></td>
-				<td><%=review.ticket_number rescue nil %></td>
-				<td><%=review.review_type.titleize rescue nil %></td>
-				<td><%=review.title.titleize rescue nil %></td>
-				<td><%=review.nature_of_review rescue nil %></td>
-				<td><%=review.date.strftime("%d/%m/%Y") rescue nil %></td>
-				<td><%= DateTime.parse(review.date_time).strftime("%H:%M") rescue nil %></td>
-				<td><%=review.industry.title.titleize rescue nil %></td>
-				<td><%=review.company.title.titleize rescue nil %></td>
-				<td><%=review.town.title.titleize rescue nil %></td>
-				<td><%=review.location.title.titleize rescue nil %></td>
-				<td><%=review.personal_responsible rescue nil %></td>
-				<td><%=review.message rescue nil %></td>
-				<td><%=review.desired_outcome.nil? ? "N/A" : review.desired_outcome %></td>
-				<td><%=review.account_details rescue nil %></td>
-			    <td><%=review.file.blank? ? "No" : "Yes" %></td>
-			    <td><%=review.try(:user).try(:last_sign_in_ip) rescue nil%></td>
-			    <td>
-			    	<% if review.comments.where("user_id is not null").count >= 1 %>
-			    		Supplier
-			    	<% elsif review.comments.where("name is not null").count >= 1%>
-			    		Yes
-			    	<% else %>
-			    	   No
-			    	<% end%>
-			    </td>
-	    </tr>
+	   <%= render 'common_reviews', :review => review, :i => i %>
 	  <% end %>
 	</tbody>	
 </table>
@@ -586,63 +118,11 @@
 <%if @Late_no_delivery.present?%>
 <h4>Late/no delivery</h4>
 <table id="admin_review_xls" >
-	<thead>
-	  <tr>
-	        <th>Sr. No. </th>
-			<th width="10%">Date</th>
-			<th width="10%">Time</th>
-			<th width="15%">Ticket Number</th>
-			<th width="10%">Review</th>
-			<th width="15%">Title</th>
-			<th width="15%">Nature of Review</th>
-			<th width="15%">Incident Date</th>
-			<th width="15%">Incident Time</th>
-			<th width="15%">Industry</th>
-			<th width="15%">Company</th>
-			<th width="15%">Town</th>
-			<th width="15%">Location</th>
-			<th width="15%">Personal Responsible</th>
-			<th width="15%">Message</th>
-			<th width="15%">Desired Outcome</th>
-			<th width="15%">Account Details</th>
-			<th width="15%">File Uploaded</th>
-			<th width="15%">Review IP</th>
-			<th width="15%">Comments</th>
-	   </tr>
-	</thead>
+	<%= render 'common_header_reviews'%>
 
 	<tbody>
 	  <% @Late_no_delivery.each_with_index.each do |review,i| %>
-	   <tr>
-	            <td><%= i+1%></td>
-				<td><%=review.created_at.strftime("%d/%m/%Y") rescue nil %></td>
-				<td><%=review.created_at.strftime("%H:%M") rescue nil %></td>
-				<td><%=review.ticket_number rescue nil %></td>
-				<td><%=review.review_type.titleize rescue nil %></td>
-				<td><%=review.title.titleize rescue nil %></td>
-				<td><%=review.nature_of_review rescue nil %></td>
-				<td><%=review.date.strftime("%d/%m/%Y") rescue nil %></td>
-				<td><%= DateTime.parse(review.date_time).strftime("%H:%M") rescue nil %></td>
-				<td><%=review.industry.title.titleize rescue nil %></td>
-				<td><%=review.company.title.titleize rescue nil %></td>
-				<td><%=review.town.title.titleize rescue nil %></td>
-				<td><%=review.location.title.titleize rescue nil %></td>
-				<td><%=review.personal_responsible rescue nil %></td>
-				<td><%=review.message rescue nil %></td>
-				<td><%=review.desired_outcome.nil? ? "N/A" : review.desired_outcome %></td>
-				<td><%=review.account_details rescue nil %></td>
-			    <td><%=review.file.blank? ? "No" : "Yes" %></td>
-			    <td><%=review.try(:user).try(:last_sign_in_ip) rescue nil%></td>
-			    <td>
-			    	<% if review.comments.where("user_id is not null").count >= 1 %>
-			    		Supplier
-			    	<% elsif review.comments.where("name is not null").count >= 1%>
-			    		Yes
-			    	<% else %>
-			    	   No
-			    	<% end%>
-			    </td>
-	    </tr>
+	   <%= render 'common_reviews', :review => review, :i => i %>
 	  <% end %>
 	</tbody>	
 </table>
@@ -651,64 +131,11 @@
 <%if @out_of_stock.present?%>
 <h4>Out of stock</h4>
 <table id="admin_review_xls" >
-	<thead>
-	  <tr>
-	 	  <tr>
-	        <th>Sr. No. </th>
-			<th width="10%">Date</th>
-			<th width="10%">Time</th>
-			<th width="15%">Ticket Number</th>
-			<th width="10%">Review</th>
-			<th width="15%">Title</th>
-			<th width="15%">Nature of Review</th>
-			<th width="15%">Incident Date</th>
-			<th width="15%">Incident Time</th>
-			<th width="15%">Industry</th>
-			<th width="15%">Company</th>
-			<th width="15%">Town</th>
-			<th width="15%">Location</th>
-			<th width="15%">Personal Responsible</th>
-			<th width="15%">Message</th>
-			<th width="15%">Desired Outcome</th>
-			<th width="15%">Account Details</th>
-			<th width="15%">File Uploaded</th>
-			<th width="15%">Review IP</th>
-			<th width="15%">Comments</th>
-	   </tr>
-	</thead>
+	<%= render 'common_header_reviews'%>
 
 	<tbody>
 	  <% @out_of_stock.each_with_index.each do |review,i| %>
-	   <tr>
-	            <td><%= i+1%></td>
-				<td><%=review.created_at.strftime("%d/%m/%Y") rescue nil %></td>
-				<td><%=review.created_at.strftime("%H:%M") rescue nil %></td>
-				<td><%=review.ticket_number rescue nil %></td>
-				<td><%=review.review_type.titleize rescue nil %></td>
-				<td><%=review.title.titleize rescue nil %></td>
-				<td><%=review.nature_of_review rescue nil %></td>
-				<td><%=review.date.strftime("%d/%m/%Y") rescue nil %></td>
-				<td><%= DateTime.parse(review.date_time).strftime("%H:%M") rescue nil %></td>
-				<td><%=review.industry.title.titleize rescue nil %></td>
-				<td><%=review.company.title.titleize rescue nil %></td>
-				<td><%=review.town.title.titleize rescue nil %></td>
-				<td><%=review.location.title.titleize rescue nil %></td>
-				<td><%=review.personal_responsible rescue nil %></td>
-				<td><%=review.message rescue nil %></td>
-				<td><%=review.desired_outcome.nil? ? "N/A" : review.desired_outcome %></td>
-				<td><%=review.account_details rescue nil %></td>
-			    <td><%=review.file.blank? ? "No" : "Yes" %></td>
-			    <td><%=review.try(:user).try(:last_sign_in_ip) rescue nil%></td>
-			    <td>
-			    	<% if review.comments.where("user_id is not null").count >= 1 %>
-			    		Supplier
-			    	<% elsif review.comments.where("name is not null").count >= 1%>
-			    		Yes
-			    	<% else %>
-			    	   No
-			    	<% end%>
-			    </td>
-	    </tr>
+	   <%= render 'common_reviews', :review => review, :i => i %>
 	  <% end %>
 	</tbody>	
 </table>
@@ -717,63 +144,11 @@
 <%if @pricing_bar_codes.present?%>
 <h4>Pricing/bar codes</h4>
 <table id="admin_review_xls" >
-	<thead>
-	 	  <tr>
-	        <th>Sr. No. </th>
-			<th width="10%">Date</th>
-			<th width="10%">Time</th>
-			<th width="15%">Ticket Number</th>
-			<th width="10%">Review</th>
-			<th width="15%">Title</th>
-			<th width="15%">Nature of Review</th>
-			<th width="15%">Incident Date</th>
-			<th width="15%">Incident Time</th>
-			<th width="15%">Industry</th>
-			<th width="15%">Company</th>
-			<th width="15%">Town</th>
-			<th width="15%">Location</th>
-			<th width="15%">Personal Responsible</th>
-			<th width="15%">Message</th>
-			<th width="15%">Desired Outcome</th>
-			<th width="15%">Account Details</th>
-			<th width="15%">File Uploaded</th>
-			<th width="15%">Review IP</th>
-			<th width="15%">Comments</th>
-	   </tr>
-	</thead>
+	<%= render 'common_header_reviews'%>
 
 	<tbody>
 	  <% @pricing_bar_codes.each_with_index.each do |review,i| %>
-	   <tr>
-	            <td><%= i+1%></td>
-				<td><%=review.created_at.strftime("%d/%m/%Y") rescue nil %></td>
-				<td><%=review.created_at.strftime("%H:%M") rescue nil %></td>
-				<td><%=review.ticket_number rescue nil %></td>
-				<td><%=review.review_type.titleize rescue nil %></td>
-				<td><%=review.title.titleize rescue nil %></td>
-				<td><%=review.nature_of_review rescue nil %></td>
-				<td><%=review.date.strftime("%d/%m/%Y") rescue nil %></td>
-				<td><%= DateTime.parse(review.date_time).strftime("%H:%M") rescue nil %></td>
-				<td><%=review.industry.title.titleize rescue nil %></td>
-				<td><%=review.company.title.titleize rescue nil %></td>
-				<td><%=review.town.title.titleize rescue nil %></td>
-				<td><%=review.location.title.titleize rescue nil %></td>
-				<td><%=review.personal_responsible rescue nil %></td>
-				<td><%=review.message rescue nil %></td>
-				<td><%=review.desired_outcome.nil? ? "N/A" : review.desired_outcome %></td>
-				<td><%=review.account_details rescue nil %></td>
-			    <td><%=review.file.blank? ? "No" : "Yes" %></td>
-			    <td><%=review.try(:user).try(:last_sign_in_ip) rescue nil%></td>
-			    <td>
-			    	<% if review.comments.where("user_id is not null").count >= 1 %>
-			    		Supplier
-			    	<% elsif review.comments.where("name is not null").count >= 1%>
-			    		Yes
-			    	<% else %>
-			    	   No
-			    	<% end%>
-			    </td>
-	    </tr>
+	     <%= render 'common_reviews', :review => review, :i => i %>
 	  <% end %>
 	</tbody>	
 </table>
@@ -782,63 +157,11 @@
 <%if @repairs_servicing.present?%>
 <h4>Repairs/servicing</h4>
 <table id="admin_review_xls" >
-	<thead>
-		  <tr>
-	        <th>Sr. No. </th>
-			<th width="10%">Date</th>
-			<th width="10%">Time</th>
-			<th width="15%">Ticket Number</th>
-			<th width="10%">Review</th>
-			<th width="15%">Title</th>
-			<th width="15%">Nature of Review</th>
-			<th width="15%">Incident Date</th>
-			<th width="15%">Incident Time</th>
-			<th width="15%">Industry</th>
-			<th width="15%">Company</th>
-			<th width="15%">Town</th>
-			<th width="15%">Location</th>
-			<th width="15%">Personal Responsible</th>
-			<th width="15%">Message</th>
-			<th width="15%">Desired Outcome</th>
-			<th width="15%">Account Details</th>
-			<th width="15%">File Uploaded</th>
-			<th width="15%">Review IP</th>
-			<th width="15%">Comments</th>
-	   </tr>
-	</thead>
+	<%= render 'common_header_reviews'%>
 
 	<tbody>
 	  <% @repairs_servicing.each_with_index.each do |review,i| %>
-	   <tr>
-	            <td><%= i+1%></td>
-				<td><%=review.created_at.strftime("%d/%m/%Y") rescue nil %></td>
-				<td><%=review.created_at.strftime("%H:%M") rescue nil %></td>
-				<td><%=review.ticket_number rescue nil %></td>
-				<td><%=review.review_type.titleize rescue nil %></td>
-				<td><%=review.title.titleize rescue nil %></td>
-				<td><%=review.nature_of_review rescue nil %></td>
-				<td><%=review.date.strftime("%d/%m/%Y") rescue nil %></td>
-				<td><%= DateTime.parse(review.date_time).strftime("%H:%M") rescue nil %></td>
-				<td><%=review.industry.title.titleize rescue nil %></td>
-				<td><%=review.company.title.titleize rescue nil %></td>
-				<td><%=review.town.title.titleize rescue nil %></td>
-				<td><%=review.location.title.titleize rescue nil %></td>
-				<td><%=review.personal_responsible rescue nil %></td>
-				<td><%=review.message rescue nil %></td>
-				<td><%=review.desired_outcome.nil? ? "N/A" : review.desired_outcome %></td>
-				<td><%=review.account_details rescue nil %></td>
-			    <td><%=review.file.blank? ? "No" : "Yes" %></td>
-			    <td><%=review.try(:user).try(:last_sign_in_ip) rescue nil%></td>
-			    <td>
-			    	<% if review.comments.where("user_id is not null").count >= 1 %>
-			    		Supplier
-			    	<% elsif review.comments.where("name is not null").count >= 1%>
-			    		Yes
-			    	<% else %>
-			    	   No
-			    	<% end%>
-			    </td>
-	    </tr>
+	   <%= render 'common_reviews', :review => review, :i => i %>
 	  <% end %>
 	</tbody>	
 </table>
@@ -847,63 +170,11 @@
 <%if @spam.present?%>
 <h4>Spam</h4>
 <table id="admin_review_xls" >
-	<thead>
-	  	<tr>
-	        <th>Sr. No. </th>
-			<th width="10%">Date</th>
-			<th width="10%">Time</th>
-			<th width="15%">Ticket Number</th>
-			<th width="10%">Review</th>
-			<th width="15%">Title</th>
-			<th width="15%">Nature of Review</th>
-			<th width="15%">Incident Date</th>
-			<th width="15%">Incident Time</th>
-			<th width="15%">Industry</th>
-			<th width="15%">Company</th>
-			<th width="15%">Town</th>
-			<th width="15%">Location</th>
-			<th width="15%">Personal Responsible</th>
-			<th width="15%">Message</th>
-			<th width="15%">Desired Outcome</th>
-			<th width="15%">Account Details</th>
-			<th width="15%">File Uploaded</th>
-			<th width="15%">Review IP</th>
-			<th width="15%">Comments</th>
-	   </tr>
-	</thead>
+	<%= render 'common_header_reviews'%>
 
 	<tbody>
 	  <% @spam.each_with_index.each do |review,i| %>
-	   <tr>
-	            <td><%= i+1%></td>
-				<td><%=review.created_at.strftime("%d/%m/%Y") rescue nil %></td>
-				<td><%=review.created_at.strftime("%H:%M") rescue nil %></td>
-				<td><%=review.ticket_number rescue nil %></td>
-				<td><%=review.review_type.titleize rescue nil %></td>
-				<td><%=review.title.titleize rescue nil %></td>
-				<td><%=review.nature_of_review rescue nil %></td>
-				<td><%=review.date.strftime("%d/%m/%Y") rescue nil %></td>
-				<td><%= DateTime.parse(review.date_time).strftime("%H:%M") rescue nil %></td>
-				<td><%=review.industry.title.titleize rescue nil %></td>
-				<td><%=review.company.title.titleize rescue nil %></td>
-				<td><%=review.town.title.titleize rescue nil %></td>
-				<td><%=review.location.title.titleize rescue nil %></td>
-				<td><%=review.personal_responsible rescue nil %></td>
-				<td><%=review.message rescue nil %></td>
-				<td><%=review.desired_outcome.nil? ? "N/A" : review.desired_outcome %></td>
-				<td><%=review.account_details rescue nil %></td>
-			    <td><%=review.file.blank? ? "No" : "Yes" %></td>
-			    <td><%=review.try(:user).try(:last_sign_in_ip) rescue nil%></td>
-			    <td>
-			    	<% if review.comments.where("user_id is not null").count >= 1 %>
-			    		Supplier
-			    	<% elsif review.comments.where("name is not null").count >= 1%>
-			    		Yes
-			    	<% else %>
-			    	   No
-			    	<% end%>
-			    </td>
-	    </tr>
+	   <%= render 'common_reviews', :review => review, :i => i %>
 	  <% end %>
 	</tbody>	
 </table>
@@ -912,63 +183,10 @@
 <%if @others_c.present?%>
 <h4>Other</h4>
 <table id="admin_review_xls" >
-	<thead>
-	  <tr>
-	        <th>Sr. No. </th>
-			<th width="10%">Date</th>
-			<th width="10%">Time</th>
-			<th width="15%">Ticket Number</th>
-			<th width="10%">Review</th>
-			<th width="15%">Title</th>
-			<th width="15%">Nature of Review</th>
-			<th width="15%">Incident Date</th>
-			<th width="15%">Incident Time</th>
-			<th width="15%">Industry</th>
-			<th width="15%">Company</th>
-			<th width="15%">Town</th>
-			<th width="15%">Location</th>
-			<th width="15%">Personal Responsible</th>
-			<th width="15%">Message</th>
-			<th width="15%">Desired Outcome</th>
-			<th width="15%">Account Details</th>
-			<th width="15%">File Uploaded</th>
-			<th width="15%">Review IP</th>
-			<th width="15%">Comments</th>
-	   </tr>
-	</thead>
-
+	<%= render 'common_header_reviews'%>
 	<tbody>
 	  <% @others_c.each_with_index.each do |review,i| %>
-	   <tr>
-	            <td><%= i+1%></td>
-				<td><%=review.created_at.strftime("%d/%m/%Y") rescue nil %></td>
-				<td><%=review.created_at.strftime("%H:%M") rescue nil %></td>
-				<td><%=review.ticket_number rescue nil %></td>
-				<td><%=review.review_type.titleize rescue nil %></td>
-				<td><%=review.title.titleize rescue nil %></td>
-				<td><%=review.nature_of_review rescue nil %></td>
-				<td><%=review.date.strftime("%d/%m/%Y") rescue nil %></td>
-				<td><%= DateTime.parse(review.date_time).strftime("%H:%M") rescue nil %></td>
-				<td><%=review.industry.title.titleize rescue nil %></td>
-				<td><%=review.company.title.titleize rescue nil %></td>
-				<td><%=review.town.title.titleize rescue nil %></td>
-				<td><%=review.location.title.titleize rescue nil %></td>
-				<td><%=review.personal_responsible rescue nil %></td>
-				<td><%=review.message rescue nil %></td>
-				<td><%=review.desired_outcome.nil? ? "N/A" : review.desired_outcome %></td>
-				<td><%=review.account_details rescue nil %></td>
-			    <td><%=review.file.blank? ? "No" : "Yes" %></td>
-			    <td><%=review.try(:user).try(:last_sign_in_ip) rescue nil%></td>
-			    <td>
-			    	<% if review.comments.where("user_id is not null").count >= 1 %>
-			    		Supplier
-			    	<% elsif review.comments.where("name is not null").count >= 1%>
-			    		Yes
-			    	<% else %>
-			    	   No
-			    	<% end%>
-			    </td>
-	    </tr>
+	   <%= render 'common_reviews', :review => review, :i => i %>
 	  <% end %>
 	</tbody>	
   </table>

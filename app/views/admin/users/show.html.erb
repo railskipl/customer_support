@@ -58,7 +58,7 @@
 </p>
 <p>
   <strong>Last Sign In Time:</strong>
-    <%= @user.last_sign_in_at.strftime("%d/%m/%y | %H:%M") %>
+    <%= @user.last_sign_in_at.strftime("%d/%m/%y | %H:%M") rescue nil %>
 </p>
 <p>
   <strong>Last Sign In IP:</strong>

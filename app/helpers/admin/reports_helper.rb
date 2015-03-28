@@ -308,7 +308,7 @@ module Admin::ReportsHelper
       if params[:subaction] == "most_company"
    	  	@start_from = params[:report5][:start_date] rescue ""
    	  	@start_to = params[:report5][:end_date] rescue ""
-   	  
+   	  	company = Company.find_by_title(params[:report5][:company])
         if @start_from > @start_to
           flash[:notice] = "Start date cannot be greater than End date."
         else
@@ -334,18 +334,33 @@ module Admin::ReportsHelper
    	  	  @start_to =  Date.today 
       end
         unless params[:id] == "data_dump"
-        @most_compliment = Review.select(:company_id).where('Date(created_at) >= ? and Date(created_at) <= ? and review_type = ? and user_id is not null',@start_from, @start_to, 'compliment').map(&:company_id) rescue nil
-   	    freq = @most_compliment.inject(Hash.new(0)) { |h,v| h[v] += 1; h }
-   	    @value_compliments = @most_compliment.max_by { |v| freq[v] }
-   	    @max_compliment = freq.values.max
-   	    @compliments = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and company_id = ? and review_type = ?',@start_from, @start_to,@value_compliments, 'compliment') rescue nil
-        # Most complaints for supplier
-   	    @most_complaint = Review.select(:company_id).where('Date(created_at) >= ? and Date(created_at) <= ? and review_type = ? and user_id is not null',@start_from, @start_to, 'complaint').map(&:company_id) rescue nil
-   	    freq = @most_complaint.inject(Hash.new(0)) { |h,v| h[v] += 1; h }
-   	    @value_complaints = @most_complaint.max_by { |v| freq[v] }
-   	    @max_complaint = freq.values.max
-   	    @complaints = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and company_id = ? and review_type = ?',@start_from, @start_to,@value_complaints, 'complaint') rescue nil
-   	    send_data(render_to_string(:template=>"admin/reports/most_company_xls.html.erb" ) , :type=>"text/xls",:filename => "most_compliments_complaints.xls")
+          if company.nil? 
+	        @most_compliment = Review.select(:company_id).where('Date(created_at) >= ? and Date(created_at) <= ? and review_type = ? and user_id is not null',@start_from, @start_to, 'compliment').map(&:company_id) rescue nil
+	   	    freq = @most_compliment.inject(Hash.new(0)) { |h,v| h[v] += 1; h }
+	   	    @value_compliments = @most_compliment.max_by { |v| freq[v] }
+	   	    @max_compliment = freq.values.max
+	   	    @compliments = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and company_id = ? and review_type = ?',@start_from, @start_to,@value_compliments, 'compliment') rescue nil
+	        # Most complaints for supplier
+	   	    @most_complaint = Review.select(:company_id).where('company_id = ? and Date(created_at) >= ? and Date(created_at) <= ? and review_type = ? and user_id is not null',company.id,@start_from, @start_to, 'complaint').map(&:company_id) rescue nil
+	   	    freq = @most_complaint.inject(Hash.new(0)) { |h,v| h[v] += 1; h }
+	   	    @value_complaints = @most_complaint.max_by { |v| freq[v] }
+	   	    @max_complaint = freq.values.max
+	   	    @complaints = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and company_id = ? and review_type = ?',@start_from, @start_to,@value_complaints, 'complaint') rescue nil
+	   	    send_data(render_to_string(:template=>"admin/reports/most_company_xls.html.erb" ) , :type=>"text/xls",:filename => "most_compliments_complaints.xls")
+	   	  else
+	   		@most_compliment = Review.select(:company_id).where('company_id = ? and Date(created_at) >= ? and Date(created_at) <= ? and review_type = ? and user_id is not null',company.id,@start_from, @start_to, 'compliment').map(&:company_id) rescue nil
+	   	    freq = @most_compliment.inject(Hash.new(0)) { |h,v| h[v] += 1; h }
+	   	    @value_compliments = @most_compliment.max_by { |v| freq[v] }
+	   	    @max_compliment = freq.values.max
+	   	    @compliments = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and company_id = ? and review_type = ?',@start_from, @start_to,@value_compliments, 'compliment') rescue nil
+	        # Most complaints for supplier
+	   	    @most_complaint = Review.select(:company_id).where('company_id = ? and Date(created_at) >= ? and Date(created_at) <= ? and review_type = ? and user_id is not null',company.id,@start_from, @start_to, 'complaint').map(&:company_id) rescue nil
+	   	    freq = @most_complaint.inject(Hash.new(0)) { |h,v| h[v] += 1; h }
+	   	    @value_complaints = @most_complaint.max_by { |v| freq[v] }
+	   	    @max_complaint = freq.values.max
+	   	    @complaints = Review.where('company_id = ? and Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and company_id = ? and review_type = ?',company.id,@start_from, @start_to,@value_complaints, 'complaint') rescue nil
+	   	    send_data(render_to_string(:template=>"admin/reports/most_company_xls.html.erb" ) , :type=>"text/xls",:filename => "most_compliments_complaints.xls")
+          end
         end
    end
 

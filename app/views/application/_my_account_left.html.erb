@@ -1,24 +1,31 @@
-<div class="sectionLeft">
-  <ul class="sectionLeftTop">
-    <%if user_signed_in?%>
-		  <li><h3><a href="#" class="ribbon">My Account</a></h3></li>
-		  <li>
-		    <%=link_to "My Profile", profile_path, :class=>(@sub_action == "show_profile" ? "active":'') %>
-		  </li>
-		  <li>
-		    <%=link_to "Update Profile", edit_profile_path, :class=>(@sub_action == "update_profile" ? "active":'') %>
-		  </li>
-		  <li><%=link_to "My Reviews", reviews_path, :class=>(@sub_action == "my_reviews" ? "active":'') %></li>
-		  <li><%=link_to "Add Reviews", root_path , :class=>(@sub_action == "review" ? "active":'') %></li>
-	<%else%>
-		<li><h3><a href="#" class="ribbon">View Report</a></h3></li>
-		<li><%= link_to 'Review', user_review_path, :class=>(@active_tab == "review" ? "active":'') %></li>
-		<li><%= link_to 'Polls', polls_bloopers_path, :class=>(@sub_action == "polls-bloopers" ? "active":'') %></li>
-		<li><%= link_to 'Registered Companies', registered_path, :class=>(@active_tab == "registered" ? "active":'') %></li>
-		<li><%= link_to 'Unregistered Companies', unregistered_path , :class=>(@active_tab == "unregistered" ? "active":'') %></li>
-<%end%>
-  </ul>
-  <%unless @performance.blank?%>
+  <div class="section-one">
+          <div class="reports">
+              <div class="heading1">View Reports</div>
+                <!--<ul>
+                  <li class="current"><a href="#" class="current">Reviews</a></li>
+                    <li><a href="#">Conversations</a></li>
+                    <li><a href="#">Registered Companies</a></li>
+                    <li><a href="#">Unregistered Companies</a></li>
+                    <li><a href="#">Polls &amp; Bloppers</a></li>
+                </ul>-->
+                <%if user_signed_in?%>
+                 <a href="<%= user_review_path %>"><div class="reports2">Reviews</div></a>
+                <a href="#"><div class="reports2">Conversations</div></a>
+                <a href="<%= registered_path %>"><div class="reports2">Registered Companies</div></a>
+                <a href="<%= unregistered_path %>"><div class="reports2">Unregistered Companies</div></a>
+                <a href="<%= polls_bloopers_path %>"><div class="reports2">Polls &amp; Bloppers</div></a>
+                <% else %>
+                <a href="<%= user_review_path %>"><div class="reports2">Reviews</div></a>
+                <a href="#"><div class="reports2">Conversations</div></a>
+                <a href="<%= registered_path %>"><div class="reports2">Registered Companies</div></a>
+                <a href="<%= unregistered_path %>"><div class="reports2">Unregistered Companies</div></a>
+                <a href="<%= polls_bloopers_path %>"><div class="reports2">Polls &amp; Bloppers</div></a>
+                <% end %>
+                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+            <div class="polls">
+            <%unless @performance.blank?%>
       <%unless @performance.performance_img.blank?%>
 	      <div class="sectionLeftBot">
 			 <%= link_to (image_tag @performance.performance_img),@performance.worst_performance  rescue nil%>
@@ -36,4 +43,6 @@
 		Some stats e.g worst performing companies and best performing or quotes (flash or updated every week)
 	</div>
   <%end%>
-</div>
+            </div>
+        </div>
+ 

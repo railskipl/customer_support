@@ -9,10 +9,36 @@
     <meta name="description" content="<%= @meta_description %>" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0,user-scalable=0" />
 	<meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE" />
-  <%= stylesheet_link_tag    "application", media: "all"%>
+  <%= stylesheet_link_tag    "style", "responsive-nav","jquery.mCustomScrollbar" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  
+  <!-- custom scrollbar plugin -->
+  <script src="/assets/jquery.mCustomScrollbar.concat.min.js"></script>
+  
+  <script>
+    (function($){
+      $(window).load(function(){
+        
+        $("a[rel='load-content']").click(function(e){
+          e.preventDefault();
+          var url=$(this).attr("href");
+          $.get(url,function(data){
+            $(".content .mCSB_container").append(data); //load new content inside .mCSB_container
+            //scroll-to appended content 
+            $(".content").mCustomScrollbar("scrollTo","h2:last");
+          });
+        });
+        
+        $(".content").delegate("a[href='top']","click",function(e){
+          e.preventDefault();
+          $(".content").mCustomScrollbar("scrollTo",$(this).attr("href"));
+        });
+        
+      });
+    })(jQuery);
+  </script>
 	<!-- html5.js for IE less than 9 -->
 	<!--[if lt IE 9]>
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -23,19 +49,53 @@
 	<![endif]-->
 </head>
 <body>
-	<%=render :partial => 'header' %>
-	<%=render :partial => 'navigation'%>
 
-	<div class="container">
-    <div class="row">
-  		<%=yield :left%>
+
+<div id="main-wrapper">
+  <%=render :partial => 'header' %>
+  
+    <div class="clear"></div>
+  <%=render :partial => 'navigation'%>  
+
+    
+    <div class="clear"></div>
+    <div id="content-area">
+        <%= yield :left %>
+      
+        <%= yield %>
+        <div class="section-third">
+          <div class="first-right-one">
+              <h3>POLLS Favourite TV Show? </h3>
+                <div class="right-link"><a href="#" class="active">GOT</a></div>
+                <div class="right-link"><a href="#" class="link1">House of Cards</a></div>
+                <div class="right-link"><a href="#" class="link1">Suits</a></div>
+                <div class="right-link-last"><a href="#" class="link1">Breaking Bad</a></div>
+                <a href="#" class="btn1">Xema</a>
+            </div>
+            <div class="first-right-second"></div>
+          <div class="clear"></div>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="footer-area">
+    <div class="copy">Copyright &copy; Xemaxema 2015</div>
+        <div class="design">Site Designed By:<a href="#">kipl</a></div>
+        <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+</div>
+
+
+	<!-- <div class="container"> -->
+    <!-- <div class="row"> -->
+  		<%#=yield :left%>
 			<!--Center page-->
-			<%= yield %>
+			<%#= yield %>
 			<!--center page -->
-  		<%=yield :right%>
+  		<%#=yield :right%>
 
- 	  </div>
-	</div>
+ 	  <!-- </div> -->
+	<!-- </div> -->
 	<script>
 
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

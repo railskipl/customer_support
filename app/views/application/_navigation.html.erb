@@ -1,49 +1,29 @@
-<div class="container">
-  <div class="navbar ">
-    <div class="navbar-inner">
-	    <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> 					<span class="icon-bar"></span>
-		    <span class="icon-bar"></span>
-		    <span class="icon-bar"></span>
-      </button>
+    <div id="response-menu">
+      <nav id="nav" role="navigation">
+            <div id='cssmenu'>
+                <ul>
+          <li class="active"><a href='<%= root_path %>' class="active"><span>Home</span></a></li>
+          <%if generate_path('About us') %>
+            <li><a href='<%= generate_path('About us') %>'><span>About Us</span></a></li>
+          <% end %>
+          <li><a href='<%= user_review_path %>'><span>Reviews</span></a></li>
+          <% if generate_path('csr')  %>
+            <li><a href='<%= generate_path('csr') %>'><span>CSR</span></a></li>
+          <% end %>
+          <% if @resource_types%>
+            <li><a href='<%= resource_path(@resource_types.first) %>'><span>Resources</span></a></li>
+          <% end %>
 
-      <div class="nav-collapse collapse">
-        <ul class="nav">
-          <li>
-          	<%= link_to image_tag("home.png"), root_path, :class=>"homeIcon"%>
-        	</li>
-
-          <li>
-          	<%= account_link %>
+          <li><a href='<%= faqs_url %>'><span>FAQ</span></a></li>
+          <% if user_signed_in? %>
+           <li> <a href='<%= profile_path %>'><span>My Account</span></a></li>
+          <% else %>
+           <li> <a href='<%= new_user_session_path %>'><span>My Account</span></a></li>
+          <% end%>
           </li>
-          
-         
-
-					<%if generate_path('About us') %>
-          	<li>
-          		<%= link_to "About Us", generate_path('About us') , :class=>(@action == "About us" ? "active":'') %>
-          	</li>
-         	<%end%>
-          
-           <li>
-            <%= link_to "Reviews", user_review_path, :class=>(@active_tab == "review" ? "active":'')%>
-          </li>
-
-          <%if generate_path('csr')  %>
-          	<li><%= link_to "CSR", generate_path('csr') , :class=>(@action == "csr" ? "active":'') %></li>
-          <%end%>
-
-					<% if @resource_types%>
-          <li>
-          	<%= link_to "Resources", resource_path(@resource_types.first), :class=>(@action == "resources" ? "active":'')%>
-        	</li>
-        	<%end%>
-
-          <li><%= link_to "FAQ", faqs_url, :class=>(@action == "faqs" ? "active":'')%></li>
-					<li>
-						<%= link_to "Contact Us", contact_us_url, :class=>(@action == "contact_us" ? "active":'')%>  						</li>
-        </ul>
-      </div>
-      <!--/.nav-collapse -->
+          <li><a href='<%= contact_us_url %>' class="last"><span>Contact Us</span></a></li>
+          </ul>
+            </div>
+            
+        </nav>
     </div>
-  </div>
-</div>

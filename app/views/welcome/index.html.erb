@@ -4,27 +4,24 @@
 	</span>
 <%end%>
 
-<span class="span6">
-    <div class="sectionMid">
-        <div class="sectionLeftBottom">
-          <p>I want to make a</p>
-					<ul>
-						<li>
-							<a href="<%=new_review_url(:review_type=>'compliment')%>">
-								<%= image_tag "thumbsU.png", alt: "", height: "100", width: "100"%>
-							</a>
-						</li>
-						<li class = 'txt_lf'>
-							<a href="<%=new_review_url(:review_type=>'complaint')%>">
-								<%= image_tag "thumbsD.png", alt: "", height: "85", width: "100"%>
-							</a>
-						</li>
-					</ul>
+<div class="section-two">
+          <div class="img-section">
+              <h1>I want to make a</h1>
+                <ul>
+                  <li class="grow"><a href="<%=new_review_url(:review_type=>'compliment')%>"><img src="/assets/compliment.png" alt=""></a></li>
+                    <li class="last grow"><a href="<%=new_review_url(:review_type=>'complaint')%>"><img src="/assets/complaint.png" alt=""></a></li>
+                </ul>
+            </div>
+            <%= render :partial =>'reviews/reviews'%>
+      
         </div>
-				<%= render :partial =>'reviews/reviews'%>
-  </div>
 
-</span>
+
+
+				<%#= render :partial =>'reviews/reviews'%>
+
+
+
 <!---ad section -->
 	<%= render :partial =>'ads_and_poll'%>
 <!-- ad section -->

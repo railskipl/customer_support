@@ -10,16 +10,16 @@
                 </ul>-->
                 <%if user_signed_in?%>
                  <a href="<%= user_review_path %>"><div class="reports2">Reviews</div></a>
-                <a href="#"><div class="reports2">Conversations</div></a>
+                <a href="#"><div class="reports2">Conversions</div></a>
                 <a href="<%= registered_path %>"><div class="reports2">Registered Companies</div></a>
                 <a href="<%= unregistered_path %>"><div class="reports2">Unregistered Companies</div></a>
                 <a href="<%= polls_bloopers_path %>"><div class="reports2">Polls &amp; Bloppers</div></a>
                 <% else %>
                 <a href="<%= user_review_path %>"><div class="reports2">Reviews</div></a>
-                <a href="#"><div class="reports2">Conversations</div></a>
+                <a href="#"><div class="reports2">Conversions</div></a>
                 <a href="<%= registered_path %>"><div class="reports2">Registered Companies</div></a>
                 <a href="<%= unregistered_path %>"><div class="reports2">Unregistered Companies</div></a>
-                <a href="<%= polls_bloopers_path %>"><div class="reports2">Polls &amp; Bloppers</div></a>
+                <a href="<%= polls_bloopers_path %>"><div class="reports2">Polls &amp; Bloopers</div></a>
                 <% end %>
                 <div class="clear"></div>
             </div>

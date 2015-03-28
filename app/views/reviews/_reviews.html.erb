@@ -28,7 +28,7 @@
                                 <%if review.comments.published.count > 0 and review.comments.published.last.user.present? and ['admin','agent'].include? review.comments.published.last.user.role %>
                                 <td><img src="/assets/fill.png" alt=""> <%=review.comments.published.count%><br><span>Company Response</span></td>
                                 <% else %>
-                                <td><img src="/assets/blank.png" alt=""> <%=review.comments.published.count%><br><span>Company Response</span></td>
+                                <td><img src="/assets/blank.png" alt=""> <%=review.comments.published.count%><br><span></span></td>
                                 <% end %>
                                 <td></td>
                                 </tr>

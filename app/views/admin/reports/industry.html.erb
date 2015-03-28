@@ -93,7 +93,7 @@
 	  <%@industries.each do |industry|%>
       <tr>
       	<td><%= industry.title %></td>
-      	<td><%= link_to "View Review", industry_level_admin_reports_path(:industry => industry.id)%></td>
+      	<td><%= link_to "Download", industry_level_admin_reports_path(:industry => industry.id)%></td>
       </tr>
       <%end%>
 	</tbody>

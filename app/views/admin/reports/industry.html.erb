@@ -194,7 +194,7 @@
         <td><%=@complaint_conversion + @compliments rescue nil %></td>
         <td><%=@compliments rescue nil %></td>
         <% @a = @complaint_conversion + @compliments %>
-        <%= @percentage =  ((@compliments.to_f / @a) * 100).round(2) %>
+        <% @percentage =  ((@compliments.to_f / @a) * 100).round(2) %>
         <% if !@percentage.present? || @percentage.nan? %>
           <td>0</td>
         <%else%>

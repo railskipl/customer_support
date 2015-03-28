@@ -238,7 +238,7 @@ module Admin::ReportsHelper
 
    def industry_xls
    	  if params[:subaction] == "industry_total"
-   	  	 industry = Industry.find(params[:report][:industry])
+   	  	 industry = Industry.find(params[:report][:industry]) unless params[:report][:industry].blank?
 
    	  	@start_from = params[:report][:start_date] rescue ""
    	  	@start_to = params[:report][:end_date] rescue ""
@@ -246,7 +246,11 @@ module Admin::ReportsHelper
         if @start_from > @start_to
           flash[:notice] = "Start date cannot be greater than End date."
         else
-          @industries = Industry.where('id = ?', industry.id) rescue nil
+          if industry.nil?	
+            @industries = Industry.all
+          else
+            @industries = Industry.where('id = ?', industry.id) rescue nil
+          end
           send_data(render_to_string(:template=>"admin/reports/industry_xls.html.erb" ) , :type=>"text/xls",:filename => "industries.xls")
         end
       elsif params[:id] == "data_dump"

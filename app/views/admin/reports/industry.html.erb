@@ -64,7 +64,7 @@
         <tr>
           <td>Industry</td>
           <td><span >
-            <%= f.collection_select :industry, @industries, :id,:title %>
+            <%= f.collection_select :industry, @industries, :id,:title,:prompt => true %>
           </span></td>
           <td>From Date </td>
           <td><span >

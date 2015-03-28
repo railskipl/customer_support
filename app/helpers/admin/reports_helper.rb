@@ -163,7 +163,8 @@ module Admin::ReportsHelper
 		@repairs_servicing = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and company_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id,'Repairs/servicing', 'complaint').count rescue nil
 		@spam = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and company_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id,'Spam', 'complaint').count rescue nil
 		@others_c = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and company_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id,'Other', 'complaint').count rescue nil
-   end
+        send_data(render_to_string(:template=>"admin/reports/supplier_level.html.erb" ) , :type=>"text/xls",:filename => "supplier_info.xls")
+    end
 
    def most_compliments
    	    @most_compliment = Review.select(:company_id).where('Date(created_at) >= ? and Date(created_at) <= ? and review_type = ? and user_id is not null',1.year.ago, Date.today, 'compliment').map(&:company_id) rescue nil

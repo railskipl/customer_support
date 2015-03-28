@@ -114,6 +114,7 @@ layout :custom_layout
 
    def supplier_profiles
    	  @supplier = Supplier.find(params[:supplier])
+      send_data(render_to_string(:template=>"admin/reports/supplier_profiles.html.erb" ) , :type=>"text/xls",:filename => "supplier_profile.xls")
    end
 
    def user_profile
@@ -405,9 +406,13 @@ layout :custom_layout
         case action_name
          when "industry_xls"
             "no_layout"
+         when "supplier_profiles"
+            "no_layout"
          when "total_xls"
          	 "no_layout"
          when "industry_level"
+          "no_layout"
+        when "supplier_level"
           "no_layout"
          when "company_xls"
          	"no_layout"

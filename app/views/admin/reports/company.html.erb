@@ -223,7 +223,7 @@
       <% c = get_company_from_supplier(company)%>
       <tr>
       	<td><%= c.title %></td>
-      	<td><%= link_to "View reviews", supplier_level_admin_reports_path(:company => c.id)%></td>
+      	<td><%= link_to "Download reviews", supplier_level_admin_reports_path(:company => c.id)%></td>
       </tr>
       <%end%>
 	</tbody>
@@ -261,7 +261,7 @@
     <%@suppliers.each do |supplier|%>
       <tr>
         <td><%= supplier.supplier_name rescue nil%></td>
-        <td><%= link_to "View Profile", supplier_profiles_admin_reports_path(:supplier => supplier.id)%></td>
+        <td><%= link_to "Download Profile", supplier_profiles_admin_reports_path(:supplier => supplier.id)%></td>
       </tr>
       <%end%>
   </tbody>

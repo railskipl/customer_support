@@ -2,10 +2,11 @@
 <div class="home-grid">
     <table cellpadding="0" cellspacing="0" class="grid-head-tbl">
         <tr>
-            <td width="14%" align="left">Date</td>
+            <td width="14%" align="center">Date</td>
             <td width="09%" align="center">Review</td>
-            <td width="18%" align="center">Company</td>
-            <td width="34%" align="center">Subject</td>
+            <td width="2%">&nbsp;</td>
+            <td width="18%" align="left">Company</td>
+            <td width="33%" align="center">Subject</td>
             <td width="19%" align="right">Comments</td>
             <td width="6%"></td>
         </tr>
@@ -20,8 +21,9 @@
                             <% else %>
                             <td width="10%" align="center"><img src="/assets/green_star.png" alt=""></td>
                             <% end %>
+                            <td width="2%">&nbsp;</td>
                             <td width="20%"><%= review.try(:company).try(:title) %></td>
-                            <td width="35%"><%= review.title %></td>
+                            <td width="33%"><%= review.title %></td>
                             <td width="20%">
                               <table class="comment-tbl">
                                 <tr>

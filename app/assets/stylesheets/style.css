@@ -234,7 +234,7 @@ body
 	font-family:'andlso';
 	font-size:20px;
 	color:#ffffff;
-	text-shadow: 1px 1px 2px #898989;
+	/*text-shadow: 1px 1px 2px #898989;*/
 	-webkit-box-shadow: 0px 4px 2px -1px #989898;
 	-moz-box-shadow: 0px 4px 2px -1px #989898;
 	box-shadow: 0px 4px 2px -1px #989898;
@@ -287,7 +287,7 @@ body
 .reports2
 {
 	margin:8px 0px 0px;
-	padding:8px 0px 5px 10px;
+	padding:8px 0px 6px 10px;
 	width:232px;
 	font-family:'andlso';
 	font-size:15px;

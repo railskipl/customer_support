@@ -24,25 +24,24 @@
                 <div class="clear"></div>
             </div>
             <div class="clear"></div>
-            <div class="polls">
+           
             <%unless @performance.blank?%>
+             <div class="polls">
       <%unless @performance.performance_img.blank?%>
-	      <div class="sectionLeftBot">
-			 <%= link_to (image_tag @performance.performance_img),@performance.worst_performance  rescue nil%>
-		  </div>
+	   
+			 <%= link_to (image_tag @performance.performance_img, :style => ""),@performance.worst_performance  rescue nil%>
+	
       <%end%>
-      <%unless @performance.best_performance.blank?%>
-		  <div class="sectionLeftBot">
+      <%#unless @performance.best_performance.blank?%>
+		  <!-- <div class="sectionLeftBot"> -->
 		   
-			 <%=@performance.best_performance.html_safe rescue nil%>
-		  </div>
-	  <%end%>
-	  
-  <%else%>
-    <div class="sectionLeftBot">
-		Some stats e.g worst performing companies and best performing or quotes (flash or updated every week)
-	</div>
+			 <%#=@performance.best_performance.html_safe rescue nil%>
+		  <!-- </div> -->
+	  <%#end%>
+    </div>
+	<%else%>
+
   <%end%>
-            </div>
+            
         </div>
  

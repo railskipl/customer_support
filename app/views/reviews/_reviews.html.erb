@@ -4,11 +4,12 @@
         <tr>
             <td width="14%" align="center">Date</td>
             <td width="09%" align="center">Review</td>
-            <td width="2%">&nbsp;</td>
+            <td width="3%">&nbsp;</td>
             <td width="18%" align="left">Company</td>
-            <td width="33%" align="center">Subject</td>
+            <td width="3%">&nbsp;</td>
+            <td width="30%" align="center">Subject</td>
             <td width="19%" align="right">Comments</td>
-            <td width="6%"></td>
+            <td width="5%"></td>
         </tr>
     </table>
       <div class="content mCustomScrollbar">
@@ -23,8 +24,9 @@
                             <% end %>
                             <td width="2%">&nbsp;</td>
                             <td width="20%"><%= review.try(:company).try(:title) %></td>
-                            <td width="33%"><%= review.title %></td>
-                            <td width="20%">
+                            <td width="2%">&nbsp;</td>
+                            <td width="30%"><%= review.title.truncate(23) %></td>
+                            <td width="19%">
                               <table class="comment-tbl">
                                 <tr>
                                 <%if review.comments.published.count > 0 and review.comments.published.last.user.present? and ['admin','agent'].include? review.comments.published.last.user.role %>
@@ -36,7 +38,7 @@
                                 </tr>
                                 </table>
                             </td>
-    </td>
+    
                         </tr>
                                         
                       <% end %>

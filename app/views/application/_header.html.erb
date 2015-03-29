@@ -7,7 +7,7 @@
               <div class="user">Hello <%= current_user.preferred_alias %></div>
               <div class="logout"><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'signin-link'  %></div>
             <% else %>
-              <div class="logout"> <%= link_to "Login", new_user_session_path %></div>
+               <div class="user2"> <%= link_to "Login", new_user_session_path %> / <%= link_to "Register", new_user_registration_path %></div>
             <% end %>
               <div class="social">
                   <ul>

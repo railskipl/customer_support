@@ -1,35 +1,34 @@
 
 <div class="home-grid">
-      <table cellpadding="0" cellspacing="0" class="grid-head-tbl">
-                    <tr>
-                        <td width="14%">Date</td>
-                        <td width="09%">Review</td>
-                        <td width="17%">Company</td>
-                        <td width="35%">Subject</td>
-                        <td width="19%">Comments</td>
-                        <td width="6%"></td>
-                    </tr>
-                    </table>
+    <table cellpadding="0" cellspacing="0" class="grid-head-tbl">
+        <tr>
+            <td width="14%" align="left">Date</td>
+            <td width="09%" align="center">Review</td>
+            <td width="18%" align="center">Company</td>
+            <td width="34%" align="center">Subject</td>
+            <td width="19%" align="right">Comments</td>
+            <td width="6%"></td>
+        </tr>
+    </table>
       <div class="content mCustomScrollbar">
                 <table cellpadding="0" cellspacing="0" class="grid-tbl">
-                    <%= @reviews.count%>
                   <%@reviews.each do |review| %>
                         <tr>
                             <td width="15%"><%=review.created_at.strftime("%d %b %Y")%></td>
                             <% if review.review_type == 'compliment'%>
-                            <td width="10%"><img src="/assets/red_star.png" alt=""></td>
+                            <td width="10%" align="center" ><img src="/assets/red_star.png" alt=""></td>
                             <% else %>
-                            <td width="10%"><img src="/assets/green_star.png" alt=""></td>
+                            <td width="10%" align="center"><img src="/assets/green_star.png" alt=""></td>
                             <% end %>
-                            <td width="18%"><%= review.try(:company).try(:title) %></td>
-                            <td width="37%"><%= review.title %></td>
+                            <td width="20%"><%= review.try(:company).try(:title) %></td>
+                            <td width="35%"><%= review.title %></td>
                             <td width="20%">
                               <table class="comment-tbl">
                                 <tr>
                                 <%if review.comments.published.count > 0 and review.comments.published.last.user.present? and ['admin','agent'].include? review.comments.published.last.user.role %>
-                                <td><img src="/assets/fill.png" alt=""> <%=review.comments.published.count%><br><span>Company Response</span></td>
+                                <td><img src="/assets/fill.png" alt=""><%=review.comments.published.count%><br><span>Company Response</span></td>
                                 <% else %>
-                                <td><img src="/assets/blank.png" alt=""> <%=review.comments.published.count%><br><span></span></td>
+                                <td><img src="/assets/blank.png" alt=""> <%=review.comments.published.count%><br><br><span></span></td>
                                 <% end %>
                                 <td></td>
                                 </tr>

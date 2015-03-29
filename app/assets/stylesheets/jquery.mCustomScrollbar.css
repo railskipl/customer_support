@@ -113,7 +113,7 @@ y-axis
 		width: 4px;
 		height: 100%;
 		margin: 0 auto;
-		-webkit-border-radius: 16px; -moz-border-radius: 16px; border-radius: 16px;
+		-webkit-border-radius: 25px; -moz-border-radius: 16px; border-radius: 16px;
 		text-align: center;
 	}
 	
@@ -366,7 +366,7 @@ yx-axis
 	}
 	.mCSB_scrollTools .mCSB_dragger:active .mCSB_dragger_bar,
 	.mCSB_scrollTools .mCSB_dragger.mCSB_dragger_onDrag .mCSB_dragger_bar{
-		background-color: #f2a229; background-color: #f2a229;
+		background-color: #f2a229; background-color: #f2a229);
 		filter: "alpha(opacity=90)"; -ms-filter: "alpha(opacity=90)"; 
 	}
 

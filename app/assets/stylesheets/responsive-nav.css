@@ -48,22 +48,23 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#feb713', end
 #cssmenu span
 {
 	color:#fff;
-	font-size:16px !important;
+	font-size:17px !important;
 }
 #cssmenu li :hover > span
 {
 	color:#696969;
-	font-size:16px !important;
+	font-size:17px !important;
 }
 #cssmenu li .active > span
 {
 	color:#696969;
-	font-size:16px !important;
+	font-size:17px !important;
 }
 #cssmenu > ul {
-  background: url('images/bg.png');
-  box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.05);
+  /*background: url('images/bg.png');
+  box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.05);*/
   z-index:500;
+  width:110%;
 }
 #cssmenu.align-right > ul > li {
   float: right;
@@ -83,7 +84,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#feb713', end
   text-align: left;
 }
 #cssmenu > ul > li > a {
-  padding: 11px 33px 10px;
+  padding: 10px 33px 10px;
   background:url(/assets/border-right.png) no-repeat right center;
   text-decoration: none;
   font-size: 13px !important;
@@ -91,7 +92,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#feb713', end
   letter-spacing: 1px;
 }
 #cssmenu > ul > li > a.last {
-  padding: 11px 33px 10px 33px;
+  padding: 10px 34px 10px 33px;
   background:none;
   text-decoration: none;
   font-size: 13px !important;

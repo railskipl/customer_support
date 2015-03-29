@@ -17,24 +17,44 @@
    <%=link_to (image_tag @bottom_advertise.image.url ,:class=>"sectionRightAd", :style=>"width: 300px;"), @bottom_advertise.link  if @bottom_advertise%>
   <%end%>
  <%end%>
+
+ </span>
   <%if @poll.present?%>
-  <div class="sectionRightPoll">
-    <p>Poll</p>
-		   <%= form_for(@result) do |f| %>
-		    <span class="title"> <%= f.label @poll.title %></span>
-				<ul>
+  <div class="section-third">
+    <div class="first-right-one">
+    		   <%= form_for(@result) do |f| %>
+		    <h3> <%= f.label @poll.title %></h3>
+				
+               
+                
 	        <% @poll.options.each do |option| %>
-			      <li>
-				      <%= f.radio_button :option_id, option.id %>
-				      <%= option.answer %>
+          <% if @poll.options.last.id == option.id %>
+			       <div class="right-link-last">
+              <%= f.radio_button :option_id, option.id, :class => "radio" %>
+              <p style="margin-top:-1px">
+              <%= option.answer %>
+              </p>
 				      <%= f.hidden_field :poll_id,value: option.poll_id%>
-			      </li>
+			      </div>
+            <% else %>
+             <div class="right-link">
+              <%= f.radio_button :option_id, option.id,  :class => "radio"  %>
+              <p style="margin-top:-1px">
+              <%= option.answer %>
+              </p>
+              <%= f.hidden_field :poll_id,value: option.poll_id%>
+            </div>
+            <% end %>
 			    <% end %>
-				</ul>
-				<br/>
-		    <%= f.submit "Vote" ,:class=>"butn"%>
-		    <br/>
+				
+				
+		    <%= f.submit "Xema" ,:class=>"btn1" %>
+		    
 		   <% end %>
   </div>
+   <div class="first-right-second"></div>
+          <div class="clear"></div>
 	<% end %>
-</span>
+
+
+

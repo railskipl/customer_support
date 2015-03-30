@@ -3,39 +3,56 @@
 		 <%=render :partial=> "application/my_account_left"%>
 	</span>
 <%end%>
-<span class="span9">
-    <div class="sectionMid">
-		 <div class="date_outer">
-          <div class="date_inner">
-                <div class="box_1">Date</div>
-                <div class="box_2">Review</div>
-                <div class="box_3">Company</div>
-                <div class="box_4">Title</div>
-                <div class="box_5"></div>
-          </div>
-          <div class="scroll-pane">
-				<%@reviews.each do |review|%>
-					<div class="date_section">
-						<div class="box_1_in"><%=review.created_at.strftime("%d %b %Y")%></div>
-						<div class="box_2_in">
-							<span class="<%=review.review_type == 'compliment' ? 'green' : 'red'%>"></span>
-						</div>
-						<div class="box_3_in"><%= link_to review.try(:company).try(:title), search_reviews_path(company_id: review.company_id) %></div>
-						<div class="box_4_in"><%=link_to review.title, review_path(review)%></div>
-						<div class="box_5_in">
-                        <%if review.comments.where("ispublished = ? and supplier_id is not null",true).present? %>
-  							<%=link_to image_tag("supplier-response.png", :size=>"25x25"), review_path(review)%> 
-						<%else%>
-  							<%=link_to image_tag("comment.png"), review_path(review)%>
-  						<%end%>
-							<%=review.comments.published.count%>
-							<%if review.comments.where("ispublished = ? and supplier_id is not null",true).present? %>&nbsp;
-  							    <span style="font-size: 11px;">Supplier's response</span>
-  						    <%end%>
-						</div>
-					</div>
-				<%end%>
-           </div>
-        </div>
-    </div>
-</span>
+	<div class="reviews-box">
+            	<div class="review-center">
+      
+<div class="home-grid">
+    <table cellpadding="0" cellspacing="0" class="grid-head-tbl">
+        <tr>
+            <td width="14%" align="center">Date</td>
+            <td width="09%" align="center">Review</td>
+            <td width="3%">&nbsp;</td>
+            <td width="18%" align="left">Company</td>
+            <td width="3%">&nbsp;</td>
+            <td width="30%" align="center">Subject</td>
+            <td width="19%" align="right">Comments</td>
+            <td width="5%"></td>
+        </tr>
+    </table>
+      <div class="content mCustomScrollbar">
+                <table cellpadding="0" cellspacing="0" class="grid-tbl">
+                  <%@reviews.each do |review| %>
+                        <tr>
+                            <td width="15%"><%=review.created_at.strftime("%d %b %Y")%></td>
+                            <% if review.review_type == 'compliment'%>
+                            <td width="10%" align="center" ><img src="/assets/red_star.png" alt=""></td>
+                            <% else %>
+                            <td width="10%" align="center"><img src="/assets/green_star.png" alt=""></td>
+                            <% end %>
+                            <td width="2%">&nbsp;</td>
+                            <td width="20%"><%= review.try(:company).try(:title) %></td>
+                            <td width="2%">&nbsp;</td>
+                            <td width="30%"><%= review.title.truncate(23) %></td>
+                            <td width="19%">
+                              <table class="comment-tbl">
+                                <tr>
+                                <%if review.comments.published.count > 0 and review.comments.published.last.user.present? and ['admin','agent'].include? review.comments.published.last.user.role %>
+                                <td><img src="/assets/fill.png" alt=""><%=review.comments.published.count%><br><span>Company Response</span></td>
+                                <% else %>
+                                <td><img src="/assets/blank.png" alt=""> <%=review.comments.published.count%><br><br><span></span></td>
+                                <% end %>
+                                <td></td>
+                                </tr>
+                                </table>
+                            </td>
+    
+                        </tr>
+                                        
+                      <% end %>
+                        </table>
+            </div>
+      </div>
+
+
+</div></div>
+

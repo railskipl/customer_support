@@ -1,3 +1,205 @@
+<div class="page-link">
+        	<ul>
+            	<li><a href="#">Home</a></li>
+                <li><span>&raquo;</span></li>
+                <li><a href="#">Review</a></li>
+                <li><span>&raquo;</span></li>
+                <li><a href="#" class="selected">Complaint</a></li>
+            </ul>
+        </div>
+        <div class="clear"></div>
+<%unless params[:id].present?%>
+<%= form_for(@review) do |f|%>
+        <div class="cmp-section">
+			<img src="/assets/compliment_small.png" alt="" title="Xema Xema" class="left-align">
+            <div class="cmp-head">Please give details of your <span style="color:#008000;">Compliment</span></div>
+		</div>
+        
+        <div class="clear"></div>
+        <div class="max-box">
+        	
+            <div class="join-form-box">
+            
+				<div class="login-field-box4">
+                	<div class="text-box1">Subject*</div>
+                    <input type="text" class="field4" name="">
+                </div>
+                <div class="clear"></div>
+        		<div class="form-box1 fr-bt">
+            	<div class="login-field-box">
+                	<div class="text-box1">Nature Of Review*</div>
+                    <select class="drp-select1 pages"  name="pages" >
+                      <option value="" selected="selected">Select Nature Of Review</option>
+                      <option value="">fdfsdfdsfs</option>
+                      <option value="">fsfsdfdf</option>
+                    </select>
+                </div>
+                <div class="clear"></div>
+                
+                <div class="login-field-box">
+                	<div class="text-box1">Incident Date*</div>
+                    <select class="drp-select1 pages"  name="pages" >
+                      <option value="" selected="selected">Select Incident Date</option>
+                      <option value="">fdfsdfdsfs</option>
+                      <option value="">fsfsdfdf</option>
+                    </select>
+                </div>
+                <div class="clear"></div>
+                
+                <div class="login-field-box">
+                	<div class="text-box1">Industry*</div>
+                    <select class="drp-select1 pages"  name="pages" >
+                      <option value="" selected="selected">Select Industry</option>
+                      <option value="">fdfsdfdsfs</option>
+                      <option value="">fsfsdfdf</option>
+                    </select>
+                </div>
+                <div class="clear"></div>
+                
+                <div class="login-field-box">
+                	<div class="text-box1">Company*</div>
+                    <select class="drp-select1 pages"  name="pages" >
+                      <option value="" selected="selected">Select Company</option>
+                      <option value="">fdfsdfdsfs</option>
+                      <option value="">fsfsdfdf</option>
+                    </select>
+                </div>
+                <div class="clear"></div>
+                
+                <div class="login-field-box">
+                	<div class="text-box1">Town*</div>
+                    <select class="drp-select1 pages"  name="pages" >
+                      <option value="" selected="selected">Select Town</option>
+                      <option value="">fdfsdfdsfs</option>
+                      <option value="">fsfsdfdf</option>
+                    </select>
+                </div>
+                <div class="clear"></div>
+                
+                <div class="login-field-box">
+                	<div class="text-box1">Location*</div>
+                    <select class="drp-select1 pages"  name="pages" >
+                      <option value="" selected="selected">Select Location</option>
+                      <option value="">fdfsdfdsfs</option>
+                      <option value="">fsfsdfdf</option>
+                    </select>
+                </div>
+                <div class="clear"></div>
+                
+                <div class="login-field-box">
+                	<div class="text-box1">Person Responsible</div>
+                    <input type="text" class="field1" name="">
+                </div>
+                <div class="clear"></div>
+                
+            </div>
+            
+            	<div class="form-box2 fr-bt">
+            	<div class="login-field-box">
+                	<div class="text-box1">&nbsp;</div>
+                    <input type="text" class="field1" name="">
+                </div>
+                <div class="clear"></div>
+                
+                <div class="login-field-box">
+                	<div class="text-box12">Incident Time</div>
+                    <select class="drp-select3 pages"  name="pages" >
+                      <option value="" selected="selected">00</option>
+                      <option value="">00</option>
+                      <option value="">00</option>
+                    </select>
+                    <select class="drp-select3 pages"  name="pages" style="float:right;" >
+                      <option value="" selected="selected">00</option>
+                      <option value="">00</option>
+                      <option value="">00</option>
+                    </select>
+                    
+                </div>
+                <div class="clear"></div>
+                
+                <div class="login-field-box">
+                	<div class="text-box1">&nbsp;</div>
+                    <input type="text" class="field1" name="" placeholder="Other">
+                </div>
+                <div class="clear"></div>
+                
+                <div class="login-field-box">
+                	<div class="text-box1">&nbsp;</div>
+                    <input type="password" class="field1" name="" placeholder="Other">
+                </div>
+                <div class="clear"></div>
+                
+                <div class="login-field-box">
+                	<div class="text-box1">&nbsp;</div>
+                    <input type="password" class="field1" name="" placeholder="Other">
+                </div>
+                <div class="clear"></div>
+                
+                <div class="login-field-box">
+                	<div class="text-box1">&nbsp;</div>
+                    <input type="text" class="field1" name="" placeholder="Other">
+                </div>
+                <div class="clear"></div>
+                
+                <div class="login-field-box">
+                	<div class="text-box12">Account Details</div>
+                    <input type="text" class="field1" name="">
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+            	<div class="login-field-box4">
+                	<div class="text-box1">Your Experience*</div>
+                    <textarea class="text-area4 fr-bt" name="" placeholder="Your review will be vetted before being published"></textarea>
+                    	
+                </div>
+               	<div class="clear"></div>
+                <span style="float:right;">300 Characters</span>
+                <div class="clear"></div>
+                <div class="login-field-box4">
+                	<div class="text-box1">Upload File</div>
+                    <!--<div id='file_browse_wrapper'>
+                    <input type='file' id='file_browse' />
+                    </div>-->
+                    <input type="file" />
+                </div>
+                <div class="clear"></div>
+                <div class="login-field-box">
+                	<div class="text-box1">&nbsp;</div>
+                    
+                </div>
+                <div class="clear"></div>
+                <div class="check-one">
+                <input type="checkbox" name="" class="ch-box"> I Agree to the Terms &amp; Conditions
+                </div>
+                <div class="captcha-box2">
+                	Captcha
+                </div>
+                <input type="button" class="btn2 left-align" value="Xema">
+            	<div class="clear"></div>
+                <br><br>
+                <div class="clear"></div>
+            
+            </div>
+            <% end %>
+            <% end %>
+            <div class="form-box3">
+            	<div class="log-head2">Writing a good review </div>
+                <p>"You most unhappy customers are your greatest source of learning"</p>
+                <p>"You most unhappy customers are your greatest source of learning"</p>
+                <p>"You most unhappy customers are your greatest source of learning"</p>
+                <p>"You most unhappy customers are your greatest source of learning"</p>
+                <p>"You most unhappy customers are your greatest source of learning"</p>
+            	<div class="clear"></div>
+            </div>
+            
+            <div class="clear"></div>
+        </div>
+
+
+
+
+
 
 <%unless params[:id].present?%>
 <div class="review">

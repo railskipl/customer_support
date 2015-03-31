@@ -1,5 +1,6 @@
 class Admin::ReportsController < ApplicationController
 before_filter :authenticate_user!
+before_filter :correct_user
 include Admin::ReportsHelper
 layout "admin", :except => :industry_xls
 before_filter :get_default_for_reviews
@@ -50,7 +51,7 @@ layout :custom_layout
    	  	
    	  	@review_type = params[:report][:review_type] rescue ""
    	  	@nature_of_review = params[:report][:nature_of_review_eq] rescue ""
-       
+
         @reviews = Review.includes(:comments).where('Date(created_at) >= ? and Date(Date(created_at)) <= ? and industry_id = ? and user_id is not null ',1.year.ago, Date.today,@industry)  if @industry.present? rescue nil
         @reviews = Review.includes(:comments).where('Date(created_at) >= ? and Date(created_at) <= ? and company_id = ? and user_id is not null ',1.year.ago, Date.today,@company)  if @company.present? rescue nil
         @reviews = Review.includes(:comments).where('Date(created_at) >= ? and Date(created_at) <= ? and town_id = ? and user_id is not null ',1.year.ago, Date.today,@town)  if @town.present? rescue nil
@@ -122,7 +123,7 @@ layout :custom_layout
       
    	  	start_from = params[:report][:start_date] rescue ""
    	  	start_to = params[:report][:end_date] rescue ""
-   	  
+   	    
         if start_from > start_to
         	flash[:notice] = "Start date cannot be greater than End date."
         else
@@ -135,7 +136,7 @@ layout :custom_layout
       if params[:subaction] == "active_customer"
    	  	start_from = params[:report1][:start_date] rescue ""
    	  	start_to = params[:report1][:end_date] rescue ""
-   	  
+   	    
         if start_from > start_to
         	flash[:notice] = "Start date cannot be greater than End date."
         else
@@ -171,13 +172,14 @@ layout :custom_layout
         if start_from > start_to
         	flash[:notice] = "Start date cannot be greater than End date."
         else
-           @reviews = Review.where('Date(created_at) >= ? and Date(Date(created_at)) <= ? and user_id is not null ',start_from, start_to) rescue nil
-           @reviews = Review.where('Date(created_at) >= ? and Date(Date(created_at)) <= ? and industry_id = ? and user_id is not null ',start_from, start_to,@industry)  if @industry.present? rescue nil
-           @reviews = Review.where('Date(created_at) >= ? and Date(Date(created_at)) <= ? and company_id = ? and user_id is not null ',start_from, start_to,@company)  if @company.present?  rescue nil
-           @reviews = Review.where('Date(created_at) >= ? and Date(Date(created_at)) <= ? and town_id = ? and user_id is not null ',start_from, start_to,@town)  if @town.present? rescue nil
-           @reviews = Review.where('Date(created_at) >= ? and Date(Date(created_at)) <= ? and location_id = ? and user_id is not null ',start_from, start_to,@location)  if @location.present? rescue nil
-           @reviews = Review.where('Date(created_at) >= ? and Date(Date(created_at)) <= ? and review_type = ? and user_id is not null ',start_from, start_to,@review_type) if @review_type.present? rescue nil
-           @reviews = Review.where('Date(created_at) >= ? and Date(Date(created_at)) <= ? and nature_of_review = ? and user_id is not null ',start_from, start_to,@nature_of_review)  if @nature_of_review.present? rescue nil
+           @reviews = Review.all
+           @reviews = @reviews.where('Date(created_at) >= ? and Date(Date(created_at)) <= ? and user_id is not null ',start_from, start_to) rescue nil
+           @reviews = @reviews.where('Date(created_at) >= ? and Date(Date(created_at)) <= ? and industry_id = ? and user_id is not null ',start_from, start_to,@industry)  if @industry.present? rescue nil
+           @reviews = @reviews.where('Date(created_at) >= ? and Date(Date(created_at)) <= ? and company_id = ? and user_id is not null ',start_from, start_to,@company)  if @company.present?  rescue nil
+           @reviews = @reviews.where('Date(created_at) >= ? and Date(Date(created_at)) <= ? and town_id = ? and user_id is not null ',start_from, start_to,@town)  if @town.present? rescue nil
+           @reviews = @reviews.where('Date(created_at) >= ? and Date(Date(created_at)) <= ? and location_id = ? and user_id is not null ',start_from, start_to,@location)  if @location.present? rescue nil
+           @reviews = @reviews.where('Date(created_at) >= ? and Date(Date(created_at)) <= ? and review_type = ? and user_id is not null ',start_from, start_to,@review_type) if @review_type.present? rescue nil
+           @reviews = @reviews.where('Date(created_at) >= ? and Date(Date(created_at)) <= ? and nature_of_review = ? and user_id is not null ',start_from, start_to,@nature_of_review)  if @nature_of_review.present? rescue nil
         end
         #send_data(render_to_string(:template=>"admin/reports/archive_xls.html.erb" ) , :type=>"text/xls",:filename => "archive_data.xls")
       else
@@ -400,6 +402,14 @@ layout :custom_layout
 	def default_tab
 	  	@active_tab = 'reports'
 	end
+
+  def correct_user
+    user = current_user.is? :admin
+    unless user
+        flash[:notice] = "Access denied, there is no such page available."
+        redirect_to admin_index_path
+    end
+  end
 
 	#method for allowing to user to use differnt layout to individual page.
       def custom_layout

@@ -1,4 +1,18 @@
-
+<style>
+.newdropdown
+{
+font-family:corbel;
+font-size:13px;
+padding:0; 
+position:relative;
+ display:inline-block;
+  width:100%;
+background-color:#e2e2e4;
+-webkit-box-shadow: 0px 4px 2px -1px #dadada;
+    -moz-box-shadow: 0px 4px 2px -1px #dadada;
+    box-shadow: 0px 4px 2px -1px #dadada;
+}
+</style>
 <div class="page-link">
         	<ul>
             	<li><a href="#">Home</a></li>
@@ -49,7 +63,7 @@
         		<div class="form-box1 fr-bt">
             	<div class="login-field-box">
                 	<div class="text-box1">Nature Of Review*</div>
-                   <%= f.select :nature_of_review, @nature_of_reviews.map { |nr| [nr.title]}, {},:include_blank=>false, onchange: "CheckOther2()" %>
+                   <%= f.select :nature_of_review, @nature_of_reviews.map { |nr| [nr.title]}, {},:include_blank=>false,:class=>"field11", onchange: "CheckOther2()" %>
 			
                 </div>
                 <div class="clear"></div>
@@ -62,27 +76,27 @@
                 
                 <div class="login-field-box">
                 	<div class="text-box1">Industry*</div>
-                   <%= f.collection_select :industry_id, Industry.order(:title) + [Industry.new(:id => Industry.last.id,:title => "Other")], :id,:title,{:include_blank=>"Select Industry"},:rel => "/industry/companies_by_industry",  required: true, onchange: 'CheckOther();'%>
+                   <%= f.collection_select :industry_id, Industry.order(:title) + [Industry.new(:id => Industry.last.id,:title => "Other")], :id,:title,{:include_blank=>"Select Industry"},:rel => "/industry/companies_by_industry",:class=>"field11",  required: true, onchange: 'CheckOther();'%>
 			  
                 </div>
                 <div class="clear"></div>
                 
                 <div class="login-field-box">
                 	<div class="text-box1">Company*</div>
-                    <%= f.collection_select :company_id, @companies, :id, :title,  {:include_blank=>"Select Company"}, :rel => "/company/towns_by_company", required: true%>
+                    <%= f.collection_select :company_id, @companies, :id, :title,  {:include_blank=>"Select Company"}, :rel => "/company/towns_by_company",:class=>"field11", required: true%>
 		    
                 </div>
                 <div class="clear"></div>
                 
                 <div class="login-field-box">
                 	<div class="text-box1">Town*</div>
-                   <%= f.collection_select :town_id, @towns+ [Town.new(:id => Town.last.id + 1,:title => "Others")], :id, :title, {:include_blank=>"Select Town"}, :rel => "/town/locations_by_town_and_company",  required: true,:onchange=> "CheckOther_town()"%>
+                   <%= f.collection_select :town_id, @towns+ [Town.new(:id => Town.last.id + 1,:title => "Others")], :id, :title, {:include_blank=>"Select Town"}, :rel => "/town/locations_by_town_and_company",:class=>"field11",  required: true,:onchange=> "CheckOther_town()"%>
                 </div>
                 <div class="clear"></div>
                 
                 <div class="login-field-box">
                 	<div class="text-box1">Location*</div>
-                  <%= f.collection_select :location_id, @locations ,:id ,:title, {:include_blank=>"Select Location"},  required: true%>
+                  <%= f.collection_select :location_id, @locations ,:id ,:title, {:include_blank=>"Select Location"},:class=>"field11",  required: true%>
                 </div>
                 <div class="clear"></div>
                 
@@ -103,7 +117,7 @@
                 
                 <div class="login-field-box">
                 	<div class="text-box12">Incident Time</div>
-                 <%= f.time_select :datetime%>
+                 <%= f.time_select :datetime,{},:class=>"field12"%>
                     
                 </div>
                 <div class="clear"></div>

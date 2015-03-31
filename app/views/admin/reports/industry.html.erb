@@ -139,7 +139,7 @@
     <% @industries.each do |industry| %>
     <% @compliment = Review.where('Date(created_at) >= ? and Date(Date(created_at)) <= ? and industry_id = ? and user_id is not null', @start_from, @start_to, industry.id) rescue nil%>
      
-    <% @compliments = @compliment.where('change_date is not null') %> 
+    <% @compliments = @compliment.where('change_date is not null') rescue nil%> 
       <% @compliments.each do |compliment|%>
         <tr>
           <td><%= compliment.created_at.strftime("%d/%m/%y | %H:%M")  rescue nil%></td>

@@ -18,7 +18,7 @@ $(function() {
 
 		$("#user_email").bind( "change", function() {validateEmail();});
 		$("#email_confirmation").bind( "change", function() {validateEmail();});
-		$("#save1").bind( "click", function() {calculateAge();});
+		$("#save").bind( "click", function() {calculateAge();});
 		$("#user_alias").bind( "blur", function() {
 			checkAvailiblity();
 		});
@@ -80,13 +80,11 @@ function validateEmail(){
 }
 
 function calculateAge(){
-	
   var user_birth_year = $(".dob select").last().val();
   var currentYear = (new Date).getFullYear();
   var age  = currentYear - user_birth_year;
   var data = document.getElementById("user_age").options[document.getElementById("user_age").selectedIndex].value;
    if (user_birth_year){
-   	alert("hi...")
    	  check_range(age,data)
 
 	//   if (data == "18-25"){

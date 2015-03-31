@@ -13,7 +13,7 @@ class ContactUsController < ApplicationController
 
       if verify_recaptcha
         if @contact_u.save
-          Notifier.contact(@contact_u).deliver!
+          Notifier.contact(@contact_u).deliver
           redirect_to contact_us_url, notice: 'Your Contact info has been sent successfully.'
         else
           render action: 'new' 

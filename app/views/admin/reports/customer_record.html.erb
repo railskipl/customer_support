@@ -16,17 +16,28 @@
 		    <th>Sr. No. </th>
 		    <th width="15%">First Name</th>
 		    <th width="15%">Last Name</th>
+		    <th width="20%">Preferred Alias</th>
+			<th width="20%">Gender</th>
+		    <th width="20%">Age</th>
+		    <th width="20%">DOB</th>
 		    <th width="30%">Email</th>
 		    <th width="20%">Email Confirmation</th>
-		    <th width="20%">Preferred Alias</th>
-		    <th width="20%">Age</th>
-		    <th width="20%">Gender</th>
 		    <th width="20%">Address line 1</th>
 		    <th width="20%">Address line 2</th>
 		    <th width="20%">Town</th>
+		    <th width="20%">Code</th>
 		    <th width="20%">country</th>
 		    <th width="20%">Lives in</th>
-		    <th width="20%">Code</th>
+		    <th width="20%">Secret Question</th>
+		    <th width="20%">Answer</th>
+		    <th width="20%">Image</th>
+		    <th width="20%">Subscribed</th>
+		    <th width="20%">Last Sign In Time</th>
+		    <th width="20%">Current Sign In IP</th>
+		    <th width="20%">Last Sign In IP</th>
+		    <th width="20%">Date of Registeration</th>
+		    <th width="20%">Total Reviews</th>
+		    <th width="20%">Total Comments</th>
 		  </tr>
 		</thead>
 
@@ -36,22 +47,33 @@
 		      <td><%= i+1%></td>
 		      <td><%=@user.first_name rescue nil%></td>
 		      <td><%=@user.last_name rescue nil%></td>
-		      <td><%=@user.email rescue nil%></td>
-		      <td><%=@user.confirmed_at.present? ? 'Confirmed' : 'Pending'%></td>
 		      <td><%=@user.preferred_alias rescue nil%></td>
-		      <td><%=@user.age rescue nil%></td>
-		      <td><% if @user.gender == '1' %>
-				    <%="Male"%>
+		        <td><% if @user.gender == '1' %>
+				      Male
 				    <%else%>
-				    <%="Female"%>
+				     Female
 				    <%end%>
 			  </td>
+			  <td><%= @user.age %></td>
+			  <td><%= @user.dob %></td>
+		      <td><%=@user.email rescue nil%></td>
+		      <td><%=@user.confirmed_at.present? ? 'Confirmed' : 'Pending'%></td>
 		      <td><%=@user.address_line1 rescue nil%></td>
 		      <td><%=@user.address_line2 rescue nil%></td>
 		      <td><%=@user.town rescue nil%></td>
+		      <td><%=@user.postal_code rescue nil%></td>
 		      <td><%=@user.country rescue nil%></td>
 		      <td><%=@user.lives_in rescue nil%></td>
-		      <td><%=@user.postal_code rescue nil%></td>
+		      <td><%=@user.secret_question rescue nil%></td>
+		      <td><%=@user.answer rescue nil%></td>
+		      <td><%=@user.avatar.blank? ? "No" : "Yes" rescue nil%></td>
+		      <td><%=@user.is_subscribe rescue nil%></td>
+		      <td><%=@user.last_sign_in_at rescue nil%></td>
+		      <td><%=@user.current_sign_in_ip rescue nil%></td>
+		      <td><%=@user.last_sign_in_ip rescue nil%></td>
+		      <td><%=@user.created_at rescue nil%></td>
+		      <td><%=@user.reviews.count rescue nil%></td>
+		      <td><%=@user.comments.count rescue nil%></td>
 		    </tr>
 		 
 		</tbody>
@@ -69,6 +91,9 @@
 	  <%@user_compliment = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and review_type = ?  and user_id = ? ',1.year.ago, Date.today,'compliment',@user.id) rescue nil%>
 
 	  <%@user_complaint = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and review_type = ?  and user_id = ? ',1.year.ago, Date.today,'complaint',@user.id) rescue nil %>
+
+	  <%@user_comments = @user.comments.where('Date(created_at) >= ? and Date(created_at) <= ?',1.year.ago, Date.today) rescue nil %>
+	  
 	<%end%>
     <br/>
     
@@ -77,40 +102,59 @@
 	<table id="admin_review_xls" >
 		<thead>
 		  <tr>
-		        <th>Sr. No</th>
-				<th width="10%">Date</th>
-				<th width="15%">Ticket Number</th>
-				<th width="10%">Review</th>
-				<th width="15%">Industry</th>
-				<th width="15%">Company</th>
-				<th width="15%">Town</th>
-				<th width="15%">Location</th>
-				<th width="15%">Personal Responsible</th>
-				<th width="15%">Nature of Review</th>
-				<th width="15%">Message</th>
-				<th width="15%">Title</th>
-		        <th width="15%">Customer Name</th>
+		    <th>Sr. No. </th>
+			<th width="10%">Date</th>
+			<th width="10%">Time</th>
+			<th width="15%">Ticket Number</th>
+			<th width="10%">Review</th>
+			<th width="15%">Title</th>
+			<th width="15%">Nature of Review</th>
+			<th width="15%">Incident Date</th>
+			<th width="15%">Incident Time</th>
+			<th width="15%">Industry</th>
+			<th width="15%">Company</th>
+			<th width="15%">Town</th>
+			<th width="15%">Location</th>
+			<th width="15%">Personal Responsible</th>
+			<th width="15%">Message</th>
+			<th width="15%">Account Details</th>
+			<th width="15%">File Uploaded</th>
+			<th width="15%">Review IP</th>
+			<th width="15%">Comments</th>
 		  </tr>
 		</thead>
 
 		<tbody>
 		  <% @user_compliment.each_with_index.each do |review,i| %>
-		    <tr>
-		    <td><%= i+1%></td>
-					<td><%=review.date_time rescue nil %></td>
-					<td><%=review.ticket_number rescue nil %></td>
-					<td><%=review.review_type.titleize rescue nil %></td>
-					<td><%=review.industry.title.titleize rescue nil %></td>
-					<td><%=review.company.title.titleize rescue nil %></td>
-					<td><%=review.town.title.titleize rescue nil %></td>
-					<td><%=review.location.title.titleize rescue nil %></td>
-					<td><%=review.personal_responsible rescue nil %></td>
-					<td><%=review.nature_of_review rescue nil %></td>
-					<td><%=review.message rescue nil %></td>
-					<td><%=review.title.titleize rescue nil %></td>
-				    <td><%=review.try(:user).try(:full_name) rescue nil%></td>
-
-		    </tr>
+		 	    <tr>
+	            <td><%= i+1%></td>
+				<td><%=review.created_at.strftime("%d/%m/%Y") rescue nil %></td>
+				<td><%=review.created_at.strftime("%H:%M") rescue nil %></td>
+				<td><%=review.ticket_number rescue nil %></td>
+				<td><%=review.review_type.titleize rescue nil %></td>
+				<td><%=review.title.titleize rescue nil %></td>
+				<td><%=review.nature_of_review rescue nil %></td>
+				<td><%=review.date.strftime("%d/%m/%Y") rescue nil %></td>
+				<td><%= DateTime.parse(review.date_time).strftime("%H:%M") rescue nil %></td>
+				<td><%=review.industry.title.titleize rescue nil %></td>
+				<td><%=review.company.title.titleize rescue nil %></td>
+				<td><%=review.town.title.titleize rescue nil %></td>
+				<td><%=review.location.title.titleize rescue nil %></td>
+				<td><%=review.personal_responsible rescue nil %></td>
+				<td><%=review.message rescue nil %></td>
+				<td><%=review.account_details rescue nil %></td>
+			    <td><%=review.file.blank? ? "No" : "Yes" %></td>
+			    <td><%=review.try(:user).try(:last_sign_in_ip) rescue nil%></td>
+			    <td>
+			    	<% if review.comments.where("user_id is not null").count >= 1 %>
+			    		Supplier
+			    	<% elsif review.comments.where("name is not null").count >= 1%>
+			    		Yes
+			    	<% else %>
+			    	   No
+			    	<% end%>
+			    </td>
+	    </tr>
 		  <% end %>
 		</tbody>
     </table>
@@ -122,44 +166,88 @@
     <table id="admin_review_xls" >
 		<thead>
 		  <tr>
-		    <th>Sr. No</th>
-				<th width="10%">Date</th>
-				<th width="15%">Ticket Number</th>
-				<th width="10%">Review</th>
-				<th width="15%">Industry</th>
-				<th width="15%">Company</th>
-				<th width="15%">Town</th>
-				<th width="15%">Location</th>
-				<th width="15%">Personal Responsible</th>
-				<th width="15%">Nature of Review</th>
-				<th width="15%">Message</th>
-				<th width="15%">Title</th>
-		        <th width="15%">Customer Name</th>
+			  <tr>
+		    <th>Sr. No. </th>
+			<th width="10%">Date</th>
+			<th width="10%">Time</th>
+			<th width="15%">Ticket Number</th>
+			<th width="10%">Review</th>
+			<th width="15%">Title</th>
+			<th width="15%">Nature of Review</th>
+			<th width="15%">Incident Date</th>
+			<th width="15%">Incident Time</th>
+			<th width="15%">Industry</th>
+			<th width="15%">Company</th>
+			<th width="15%">Town</th>
+			<th width="15%">Location</th>
+			<th width="15%">Personal Responsible</th>
+			<th width="15%">Message</th>
+			<th width="15%">Desired Outcome</th>
+			<th width="15%">Account Details</th>
+			<th width="15%">File Uploaded</th>
+			<th width="15%">Review IP</th>
+			<th width="15%">Comments</th>
 		  </tr>
 		</thead>
 
 		<tbody>
 		  <% @user_complaint.each_with_index.each do |review,i| %>
 		    <tr>
-		    <td><%= i+1%></td>
-					<td><%=review.date_time rescue nil %></td>
-					<td><%=review.ticket_number rescue nil %></td>
-					<td><%=review.review_type.titleize rescue nil %></td>
-					<td><%=review.industry.title.titleize rescue nil %></td>
-					<td><%=review.company.title.titleize rescue nil %></td>
-					<td><%=review.town.title.titleize rescue nil %></td>
-					<td><%=review.location.title.titleize rescue nil %></td>
-					<td><%=review.personal_responsible rescue nil %></td>
-					<td><%=review.nature_of_review rescue nil %></td>
-					<td><%=review.message rescue nil %></td>
-					<td><%=review.title.titleize rescue nil %></td>
-				    <td><%=review.try(:user).try(:full_name) rescue nil%></td>
-
-		    </tr>
+	            <td><%= i+1%></td>
+				<td><%=review.created_at.strftime("%d/%m/%Y") rescue nil %></td>
+				<td><%=review.created_at.strftime("%H:%M") rescue nil %></td>
+				<td><%=review.ticket_number rescue nil %></td>
+				<td><%=review.review_type.titleize rescue nil %></td>
+				<td><%=review.title.titleize rescue nil %></td>
+				<td><%=review.nature_of_review rescue nil %></td>
+				<td><%=review.date.strftime("%d/%m/%Y") rescue nil %></td>
+				<td><%= DateTime.parse(review.date_time).strftime("%H:%M") rescue nil %></td>
+				<td><%=review.industry.title.titleize rescue nil %></td>
+				<td><%=review.company.title.titleize rescue nil %></td>
+				<td><%=review.town.title.titleize rescue nil %></td>
+				<td><%=review.location.title.titleize rescue nil %></td>
+				<td><%=review.personal_responsible rescue nil %></td>
+				<td><%=review.message rescue nil %></td>
+				<td><%=review.desired_outcome.nil? ? "N/A" : review.desired_outcome %></td>
+				<td><%=review.account_details rescue nil %></td>
+			    <td><%=review.file.blank? ? "No" : "Yes" %></td>
+			    <td><%=review.try(:user).try(:last_sign_in_ip) rescue nil%></td>
+			    <td>
+			    	<% if review.comments.where("user_id is not null").count >= 1 %>
+			    		Supplier
+			    	<% elsif review.comments.where("name is not null").count >= 1%>
+			    		Yes
+			    	<% else %>
+			    	   No
+			    	<% end%>
+			    </td>
+	    </tr>
 		  <% end %>
 		</tbody>
     </table>
     <br/>
     <%end%>
+
+    <% unless @user_comments.blank?%>
+    <h4>Comments By <%=@user.first_name rescue nil%> <%=@user.last_name rescue nil%></h4>
+    <table>
+    	<tr>
+    		<th>Sr. No.</th> 
+    		<th>Date</th>
+    		<th>Ticket Number</th> 
+    		<th>Review</th> 
+    		<th>Comment</th> 
+    	</tr> 
+    	<% @user_comments.each.with_index(1) do |uc,i| %>
+    	<tr>
+    		<td><%= i %></td>
+    		<td><%= uc.created_at %></td>
+    		<td><%= uc.review.ticket_number %></td>
+    		<td><%= uc.review.review_type %></td>
+    		<td><%= uc.title.html_safe%></td>
+    	</tr>
+    	<% end %>
+    </table>
+    <% end %>
 
 <% end %>

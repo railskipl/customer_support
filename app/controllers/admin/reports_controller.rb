@@ -6,7 +6,21 @@ layout "admin", :except => :industry_xls
 before_filter :get_default_for_reviews
 before_action :default_tab
 layout :custom_layout
-	def index
+	
+  def totalreviews
+    total_reviews
+  end
+
+  def nature_of_complaints2
+    nature_of_complaints
+  end
+
+
+  def nature_of_compliments
+    nature_of_complaints
+  end
+
+  def index
    	    total_reviews
    	    nature_of_complaints
    	    
@@ -37,13 +51,13 @@ layout :custom_layout
    	  	
    	  	@review_type = params[:report][:review_type] rescue ""
    	  	@nature_of_review = params[:report][:nature_of_review_eq] rescue ""
-        @reviews = Review.all
-        @reviews = @reviews.where('Date(created_at) >= ? and Date(Date(created_at)) <= ? and industry_id = ? and user_id is not null ',1.year.ago, Date.today,@industry)  if @industry.present? rescue nil
-        @reviews = @reviews.where('Date(created_at) >= ? and Date(created_at) <= ? and company_id = ? and user_id is not null ',1.year.ago, Date.today,@company)  if @company.present? rescue nil
-        @reviews = @reviews.where('Date(created_at) >= ? and Date(created_at) <= ? and town_id = ? and user_id is not null ',1.year.ago, Date.today,@town)  if @town.present? rescue nil
-        @reviews = @reviews.where('Date(created_at) >= ? and Date(created_at) <= ? and location_id = ? and user_id is not null ',1.year.ago, Date.today,@location)  if @location.present? rescue nil
-        @reviews = @reviews.where('Date(created_at) >= ? and Date(created_at) <= ? and review_type = ? and user_id is not null ',1.year.ago, Date.today,@review_type) if @review_type.present? rescue nil
-        @reviews = @reviews.where('Date(created_at) >= ? and Date(created_at) <= ? and nature_of_review = ? and user_id is not null ',1.year.ago, Date.today,@nature_of_review)  if @nature_of_review.present? rescue nil
+
+        @reviews = Review.includes(:comments).where('Date(created_at) >= ? and Date(Date(created_at)) <= ? and industry_id = ? and user_id is not null ',1.year.ago, Date.today,@industry)  if @industry.present? rescue nil
+        @reviews = Review.includes(:comments).where('Date(created_at) >= ? and Date(created_at) <= ? and company_id = ? and user_id is not null ',1.year.ago, Date.today,@company)  if @company.present? rescue nil
+        @reviews = Review.includes(:comments).where('Date(created_at) >= ? and Date(created_at) <= ? and town_id = ? and user_id is not null ',1.year.ago, Date.today,@town)  if @town.present? rescue nil
+        @reviews = Review.includes(:comments).where('Date(created_at) >= ? and Date(created_at) <= ? and location_id = ? and user_id is not null ',1.year.ago, Date.today,@location)  if @location.present? rescue nil
+        @reviews = Review.includes(:comments).where('Date(created_at) >= ? and Date(created_at) <= ? and review_type = ? and user_id is not null ',1.year.ago, Date.today,@review_type) if @review_type.present? rescue nil
+        @reviews = Review.includes(:comments).where('Date(created_at) >= ? and Date(created_at) <= ? and nature_of_review = ? and user_id is not null ',1.year.ago, Date.today,@nature_of_review)  if @nature_of_review.present? rescue nil
          #raise @reviews.inspect   
       else
 
@@ -73,7 +87,7 @@ layout :custom_layout
 	end 
 
 	def company
-		@companies = Company.all  rescue nil
+		@companies = Supplier.all  rescue nil
         @suppliers = Supplier.all rescue nil
         if params[:subaction] == "company_stat_record"
 	   	  	@start_from = params[:report6][:start_date] rescue ""
@@ -101,10 +115,12 @@ layout :custom_layout
 
    def supplier_profiles
    	  @supplier = Supplier.find(params[:supplier])
+      send_data(render_to_string(:template=>"admin/reports/supplier_profiles.html.erb" ) , :type=>"text/xls",:filename => "supplier_profile.xls")
    end
 
    def user_profile
       if params[:subaction] == "customer"
+      
    	  	start_from = params[:report][:start_date] rescue ""
    	  	start_to = params[:report][:end_date] rescue ""
    	    
@@ -400,8 +416,14 @@ layout :custom_layout
         case action_name
          when "industry_xls"
             "no_layout"
+         when "supplier_profiles"
+            "no_layout"
          when "total_xls"
          	 "no_layout"
+         when "industry_level"
+          "no_layout"
+        when "supplier_level"
+          "no_layout"
          when "company_xls"
          	"no_layout"
          when "customer_record"

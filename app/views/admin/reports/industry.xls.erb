@@ -7,32 +7,68 @@
 <%end%>
 <table id="admin_review_xls" >
   <thead>
-    <tr>
+  <tr>
       <th>Sr. No. </th>
       <th width="10%">Date</th>
+      <th width="10%">Time</th>
       <th width="15%">Ticket Number</th>
-      <th width="15%">Industry</th>
-      <th width="15%">Nature of Review</th>
+      <th width="10%">Review</th>
       <th width="15%">Title</th>
+      <th width="15%">Nature of Review</th>
+      <th width="15%">Incident Date</th>
+      <th width="15%">Incident Time</th>
+      <th width="15%">Industry</th>
+      <th width="15%">Company</th>
+      <th width="15%">Town</th>
+      <th width="15%">Location</th>
+      <th width="15%">Personal Responsible</th>
+      <th width="15%">Message</th>
+      <th width="15%">Desired Outcome</th>
       <th width="15%">Customer Name</th>
-    </tr>
+      <th width="15%">Account Details</th>
+      <th width="15%">File Uploaded</th>
+      <th width="15%">Review IP</th>
+      <th width="15%">Comments</th>
+     </tr>
   </thead>
 
   <tbody>
     <% @industries.each do |industry| %>
-    <% @compliment = Review.where('Date(created_at) >= ? and Date(Date(created_at)) <= ? and company_id = ? and user_id is not null', @start_from, @start_to, industry.id) rescue nil%>
+    <% @compliment = Review.where('Date(created_at) >= ? and Date(Date(created_at)) <= ? and industry_id = ? and user_id is not null', @start_from, @start_to, industry.id) rescue nil%>
      
     <% @compliments = @compliment.where('change_date is not null') %> 
-      <% @compliments.each_with_index.each do |compliment,i|%>
-        <tr>
-          <td><%= i+1%></td>
-          <td><%= compliment.date_time  rescue nil%></td>
-          <td><%= compliment.ticket_number  rescue nil%></td>
-          <td><%= compliment.industry.title.titleize  rescue nil%></td>
-          <td><%= compliment.nature_of_review  rescue nil%></td>
-          <td><%= compliment.title.titleize  rescue nil%></td>
-          <td><%= compliment.try(:user).try(:full_name) rescue nil%></td>
-        </tr>
+      <% @compliments.each_with_index.each do |review,i|%>
+         <tr>
+              <td><%= i+1%></td>
+        <td><%=review.created_at.strftime("%d/%m/%Y") rescue nil %></td>
+        <td><%=review.created_at.strftime("%H:%M") rescue nil %></td>
+        <td><%=review.ticket_number rescue nil %></td>
+        <td><%=review.review_type.titleize rescue nil %></td>
+        <td><%=review.title.titleize rescue nil %></td>
+        <td><%=review.nature_of_review rescue nil %></td>
+        <td><%=review.date.strftime("%d/%m/%Y") rescue nil %></td>
+        <td><%= DateTime.parse(review.date_time).strftime("%H:%M") rescue nil %></td>
+        <td><%=review.industry.title.titleize rescue nil %></td>
+        <td><%=review.company.title.titleize rescue nil %></td>
+        <td><%=review.town.title.titleize rescue nil %></td>
+        <td><%=review.location.title.titleize rescue nil %></td>
+        <td><%=review.personal_responsible rescue nil %></td>
+        <td><%=review.message rescue nil %></td>
+        <td><%=review.desired_outcome.nil? ? "N/A" : review.desired_outcome %></td>
+        <td><%=review.user.first_name rescue nil%><%=review.user.last_name rescue nil%></td>
+        <td><%=review.account_details rescue nil %></td>
+          <td><%=review.file.blank? ? "No" : "Yes" %></td>
+          <td><%=review.try(:user).try(:last_sign_in_ip) rescue nil%></td>
+          <td>
+            <% if review.comments.where("user_id is not null").count >= 1 %>
+              Supplier
+            <% elsif review.comments.where("name is not null").count >= 1%>
+              Yes
+            <% else %>
+               No
+            <% end%>
+          </td>
+      </tr>
       <%end%>
     <% end %>
   </tbody>  

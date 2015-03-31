@@ -62,6 +62,10 @@
       <%= form_for :report, :url=> industry_xls_admin_reports_path, :method => :get do |f| %>
         <h4>Filter Industry Data</h4>
         <tr>
+          <td>Industry</td>
+          <td><span >
+            <%= f.collection_select :industry, @industries, :id,:title,:prompt => true %>
+          </span></td>
           <td>From Date </td>
           <td><span >
             <%= f.text_field :start_date, :required => :true%>
@@ -88,8 +92,8 @@
 	<tbody>
 	  <%@industries.each do |industry|%>
       <tr>
-      	<td><%= industry.title rescue nil%></td>
-      	<td><%= link_to "View Review", industry_level_admin_reports_path(:industry => industry.id)%></td>
+      	<td><%= industry.title %></td>
+      	<td><%= link_to "Download", industry_level_admin_reports_path(:industry => industry.id)%></td>
       </tr>
       <%end%>
 	</tbody>
@@ -138,7 +142,7 @@
     <% @compliments = @compliment.where('change_date is not null') rescue nil%> 
       <% @compliments.each do |compliment|%>
         <tr>
-          <td><%= compliment.date_time  rescue nil%></td>
+          <td><%= compliment.created_at.strftime("%d/%m/%y | %H:%M")  rescue nil%></td>
           <td><%= compliment.ticket_number  rescue nil%></td>
           <td><%= compliment.industry.title.titleize  rescue nil%></td>
           <td><%= compliment.nature_of_review  rescue nil%></td>
@@ -190,8 +194,8 @@
         <td><%=@complaint_conversion + @compliments rescue nil %></td>
         <td><%=@compliments rescue nil %></td>
         <% @a = @complaint_conversion + @compliments %>
-        <% @percentage =  @compliments / @a * 100 rescue nil%>
-        <%unless @percentage.present?%>
+        <% @percentage =  ((@compliments.to_f / @a) * 100).round(2) %>
+        <% if !@percentage.present? || @percentage.nan? %>
           <td>0</td>
         <%else%>
           <td><%= @percentage rescue nil%>%</td>

@@ -44,16 +44,16 @@
   <h2>Filter Data</h2>
     <tr>
     <div class="review_form">
-			<div class="name_lft">Industry: *</div>
+			<div class="name_lft">Industry: </div>
 			<div class="small-input2">
-			  <%= f.collection_select :industry_id, Industry.order(:title) + [Industry.new(:id => Industry.last.id,:title => "Other")], :id,:title,{:include_blank=>"Select Industry"},:rel => "/admin/industry/companies_by_industry",  required: true, onchange: 'CheckOther();'%>
+			  <%= f.collection_select :industry_id, Industry.order(:title) + [Industry.new(:id => Industry.last.id,:title => "Other")], :id,:title,{:include_blank=>"Select Industry"},:rel => "/admin/industry/companies_by_industry",   onchange: 'CheckOther();'%>
 			  <input type="text" id="other_type" name="other_type"><br/>
 			</div>
 
 		</div>
 
 		<div class="review_form">
-			<div class="name_lft">Company: *</div>
+			<div class="name_lft">Company: </div>
 			<div class="small-input2">
 			    <%= f.collection_select :company_id, @companies, :id, :title,  {:include_blank=>"Select Company"}, :rel => "/admin/company/towns_by_company"%>
 		    <input type="text" id="txt_report_company_id" name="txt_report_company_id"><br>
@@ -62,7 +62,7 @@
 		</div>
 
 		<div class="review_form">
-			<div class="name_lft">Town: *</div>
+			<div class="name_lft">Town: </div>
 			<div class="small-input2">
 			   <%= f.collection_select :town_id, @towns+ [Industry.new(:id => Town.last.id + 1,:title => "Other")], :id, :title, {:include_blank=>"Select Town"}, :rel => "/admin/town/locations_by_town_and_company"%>
 			   <!-- <input type="text" id="txt_review_town_id" name="txt_review_town_id"><br> -->
@@ -72,7 +72,7 @@
 		</div>
 
 		<div class="review_form">
-			<div class="name_lft">Location: *</div>
+			<div class="name_lft">Location: </div>
 			<div class="small-input2">
 			   <%= f.collection_select :location_id, @locations ,:id ,:title, {:include_blank=>"Select Location"}%>
 			   	<input type="text" id="txt_report_location_id" name="txt_report_location_id"><br>
@@ -120,7 +120,7 @@
 	<tbody>
 	  <% @reviews.each do |review| %>
 	    <tr>
-				<td><%=review.date_time rescue nil %></td>
+				<td><%=review.created_at.strftime("%d/%m/%Y | %H:%M") rescue nil %></td>
 				<td><%=review.ticket_number rescue nil %></td>
 				<td><%=review.review_type.titleize rescue nil %></td>
 				<td><%=review.company.title.titleize rescue nil %></td>
@@ -135,6 +135,7 @@
 
 
 <h1>Totals – over a 12 month period</h1>
+<%= link_to "Download Excel",admin_total_reviews_path(params.merge(format: "xls")), :method=> :get, :class=>"btn btn-secondary"  %>
 <table id="total_compliment">
 
 	<thead>
@@ -164,6 +165,7 @@
 
 <br/><br/>
 <div>
+<%= link_to "Download Excel",admin_nature_of_compliments_path(params.merge(format: "xls")), :method=> :get, :class=>"btn btn-secondary"  %>
 <table id="compliments">
 	<thead>
 		<tr>
@@ -232,6 +234,7 @@
 </div>
 <br/><br/>
 <div>
+	<%= link_to "Download Excel",admin_nature_of_complaints2_path(params.merge(format: "xls")), :method=> :get, :class=>"btn btn-secondary"  %>
 <table id="complaints">
 	<thead>
 		<tr>

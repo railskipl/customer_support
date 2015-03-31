@@ -29,8 +29,11 @@
   <div class="field">
     <%= f.label :description %>
     <%= f.text_area :description , :class => 'ckeditor' %>
+  </div><br/>
+  <div class="field">
+    <%= f.label :quote %>
+    <%= f.text_area :quote , :class => 'ckeditor' %>
   </div>
-
   <br/>
   <%unless params[:id] == "5"%>
     <div class="field">

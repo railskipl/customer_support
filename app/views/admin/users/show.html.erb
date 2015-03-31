@@ -51,8 +51,38 @@
   <strong>Code:</strong>
     <%= @user.postal_code %>
 </p>
-<div class="rgh">
-	<div class="image"><%=image_tag @user.avatar.url(:thumb) if @user.avatar.present? %>
-</div>
+
+<p>
+  <strong>Sign In Count:</strong>
+    <%= @user.sign_in_count %>
+</p>
+<p>
+  <strong>Last Sign In Time:</strong>
+    <%= @user.last_sign_in_at.strftime("%d/%m/%y | %H:%M") rescue nil %>
+</p>
+<p>
+  <strong>Last Sign In IP:</strong>
+    <%= @user.last_sign_in_ip %>
+</p>
+<p>
+  <strong>Secret Question:</strong>
+    <%= @user.secret_question %>
+  </p>
+<p>
+    <strong>Secret Answer:</strong>
+    <%= @user.answer %>
+</p>
+<p>
+    <strong>Subscribed:</strong>
+    <%= @user.is_subscribe.nil? ? "No" : "Yes" %>
+</p>
+<p>
+    <strong>Profile Pic:</strong>
+    <%= @user.avatar.blank? ? "No" : (image_tag @user.avatar.url(:thumb)) %>
+</p>
+<p>
+    <strong>Date of registration:</strong>
+    <%= @user.created_at.strftime("%d-%m-%y") %>
+</p>
 
 <%= link_to 'Back', admin_index_path %>

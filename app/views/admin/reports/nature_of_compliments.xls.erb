@@ -1,0 +1,65 @@
+<table id="compliments">
+	<thead>
+		<tr>
+			<th>Nature of Compliment</th>
+			<th>Total</th>
+		</tr>
+
+	</thead>
+
+	<tbody>
+		<tr>
+			<td>Billing/accounts</td>
+			<td><%= @billing.count rescue nil%></td>
+		</tr>
+		<tr>
+			<td>Booking</td>
+			<td><%= @booking.count rescue nil%></td>
+		</tr>
+		<tr>
+			<td>Call centre efficiency</td>
+			<td><%= @call_center.count rescue nil%></td>
+		</tr>
+		<tr>
+			<td>Contract</td>
+			<td><%= @contract.count rescue nil%></td>
+		</tr>
+		<tr>
+			<td>Delivery on time</td>
+			<td><%= @delivery.count rescue nil%></td>
+		</tr>
+		<tr>
+			<td>Feedback</td>
+			<td><%= @feedback.count rescue nil%></td>
+		</tr>
+		<tr>
+			<td>Going the extra mile</td>
+			<td><%= @going_extra.count rescue nil%></td>
+		</tr>
+		<tr>
+			<td>Great attitude</td>
+			<td><%= @great_attitude.count rescue nil%></td>
+		</tr>
+		<tr>
+			<td>Pricing</td>
+			<td><%= @pricing.count rescue nil%></td>
+		</tr>
+		<tr>
+			<td>Refund</td>
+			<td><%= @refund.count rescue nil%></td>
+		</tr>
+		<tr>
+			<td>Repairs</td>
+			<td><%= @repairs.count rescue nil%></td>
+		</tr>
+		<tr>
+			<td>Stock</td>
+			<td><%= @stock.count rescue nil%></td>
+		</tr>
+		<tr>
+			<td>Other</td>
+			<td><%= @others.count rescue nil%></td>
+		</tr>
+
+	</tbody>
+</table>

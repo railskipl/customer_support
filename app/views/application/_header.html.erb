@@ -1,29 +1,27 @@
-<div class="container mrg">
-  <div class="row">
-  	<span class="span3 lg">
-			<span class="span3 lg">
-				<%= link_to image_tag('logo.png'),root_path%>
-		  </span>
-    </span>
+<div id="header-area">
+      <div id="logo"><a href="<%= root_path %>"><img src="/assets/xema-logo.png" alt="" title="Xema Xema"></a></div>
+        <div id="right-head">
+          <div class="join-us">Join us on</div>
+            <div class="user-box">
+            <% if user_signed_in? %>
+              <div class="user">Hello <%= current_user.preferred_alias %></div>
+              <div class="logout"><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'signin-link'  %></div>
+            <% else %>
+               <div class="user2"> <%= link_to "Login", new_user_session_path %> / <%= link_to "Register", new_user_registration_path %></div>
+            <% end %>
+              <div class="social">
+                  <ul>
+                      <li style="margin-left:0px;"><a href="https://www.facebook.com/xemaxemaKenya" target="_blank"><img src="/assets/icon-fb.png" alt="" title="Facebook"></a></li>
+                        <li><a href="https://plus.google.com/u/0/+Xemaxema"><img src="/assets/icon-tw.png" alt="" title="Twitter" target="_blank"></a></li>
+                        <li><a href="https://twitter.com/xemaxemaKenya" target="_blank"><img src="/assets/icon-gp.png" alt="" title="Google Plus"></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="search-box">
+           <form action="/search" method="get">
+              <input type="text" class="search-in" placeholder="SEARCH" name="" id="searchh"><a href="#"><img src="/assets/search.jpg" alt=""></a>
+          </form>
+            </div>
+        </div>
+    </div>
 
-  	<span class="span9">
-		  <div class="headerRightTop">
-        <form action="/search" method="get">
-  		    <input type="text" class="searchBox" placeholder="search" name="search" id="search">
-  		  </form>
-				  <ul class="mgt">
-		 				<li class="join_con"> Join US on</li>
-				    <li> <%= link_to image_tag('fbicon.png'),"https://www.facebook.com/xemaxemaKenya", :target => "_blank" %> </li>
-				  	<li> <%= link_to image_tag('g_icon.gif'),"https://plus.google.com/u/0/+Xemaxema", :target => "_blank" %> </li>
-				    <li> <%= link_to image_tag('twicon.png'),"https://twitter.com/xemaxemaKenya",  :target => "_blank" %> </li>
-				  </ul>
-					<% if user_signed_in? %>
-						<p class="logout"><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'signin-link'  %></p>
-						<p>Hello <%= current_user.preferred_alias %></p>
-					<% else %>
-						<p class="logout"><%= link_to "Login", new_user_session_path %></p>
-					<% end %>
-		  </div>
-	  </span>
-  </div>
-</div>

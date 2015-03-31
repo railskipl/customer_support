@@ -26,6 +26,7 @@ $(document).ready(function() {
  	  $('#published_review').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [6] }] });
     $('#archived_review').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [6] }] });
     $('#admin_review').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [6] }] });
+    $('#review_notes').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [1] }] });
     $('#customers').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [4] }] });
     $('#nature_of_reviews').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [2] }] } );
 	  $('#industries').dataTable({"aoColumnDefs": [ { 'bSortable': false, 'aTargets': [1]}] } );

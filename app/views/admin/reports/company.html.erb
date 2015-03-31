@@ -137,6 +137,10 @@
   <%= form_for :report5, :url=> most_company_xls_admin_reports_path, :method => :get do |f| %>
     <h4>Filter most complaints/compliments</h4>
     <tr>
+      <td>Company </td>
+      <td><span >
+        <%= f.text_field :company %>
+      </span></td>
       <td>From Date </td>
       <td><span >
         <%= f.text_field :start_date, :required => :true%>
@@ -216,9 +220,10 @@
 		
 	<tbody>
 	  <%@companies.each do |company|%>
+      <% c = get_company_from_supplier(company)%>
       <tr>
-      	<td><%= company.title %></td>
-      	<td><%= link_to "View reviews", supplier_level_admin_reports_path(:company => company.id)%></td>
+      	<td><%= c.title %></td>
+      	<td><%= link_to "Download reviews", supplier_level_admin_reports_path(:company => c.id)%></td>
       </tr>
       <%end%>
 	</tbody>
@@ -256,7 +261,7 @@
     <%@suppliers.each do |supplier|%>
       <tr>
         <td><%= supplier.supplier_name rescue nil%></td>
-        <td><%= link_to "View Profile", supplier_profiles_admin_reports_path(:supplier => supplier.id)%></td>
+        <td><%= link_to "Download Profile", supplier_profiles_admin_reports_path(:supplier => supplier.id)%></td>
       </tr>
       <%end%>
   </tbody>
@@ -388,7 +393,8 @@
 
   <tbody>
     <% @companies.each do |company| %>
-    <% @compliment = Review.where('Date(created_at) >= ? and Date(Date(created_at)) <= ? and company_id = ? and user_id is not null', @start_from, @start_to, company.id) %>
+    <% c = get_company_from_supplier(company)%>
+    <% @compliment = Review.where('Date(created_at) >= ? and Date(Date(created_at)) <= ? and company_id = ? and user_id is not null', @start_from, @start_to, c.id) %>
      
     <% @compliments = @compliment.where('change_date is not null') %> 
       <% @compliments.each do |compliment|%>
@@ -436,13 +442,14 @@
 
   <tbody>
     <% @companies.each do |company| %>
-    <% @compliment = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and company_id = ? and user_id is not null', 1.year.ago, Date.today, company.id) rescue nil%>
+    <% c = get_company_from_supplier(company)%>
+    <% @compliment = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and company_id = ? and user_id is not null', 1.year.ago, Date.today, c.id) rescue nil%>
     
     <% @complaint_conversion = @compliment.where('review_type = ?', 'complaint').count rescue nil%>
       
     <% @compliments = @compliment.where('change_date is not null').count rescue nil%> 
       <tr>
-        <td><%=company.title rescue nil %></td>
+        <td><%=c.title rescue nil %></td>
         <td><%=@complaint_conversion + @compliments rescue nil %></td>
         <td><%=@compliments rescue nil %></td>
         <% @a = @complaint_conversion + @compliments %>

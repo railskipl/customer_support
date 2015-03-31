@@ -73,7 +73,7 @@ jQuery(document).ready(function() {
 
 
 <h1>Assigned Reviews (Reviews which are assigned)</h1>
-
+<%= form_tag admin_assign_reviews_path ,:method => :put do %>
 <table id="reviews3"  >
   <thead>
     <tr>
@@ -106,6 +106,13 @@ jQuery(document).ready(function() {
   </tbody>
 </table>
 <br/>
+ <label>Enter date, till what date reviews should be processed</label>
+    <%= text_field_tag :date1,nil,:placeholder => "Enter Date"%><br/>
+   <%= hidden_field_tag 'reassign', "yes"%>
+    <%= hidden_field_tag 'agent_id', current_user.id %>
+    <%= select_tag 'user_id', options_for_select(@users.collect{ |u| [u.preferred_alias, u.id] }) %><br/>
+   <%= submit_tag "Assign Reviews", :confirm => "Please check and confirm to assign reviews and proposed date to finish." %>
+    <% end %>
 <% else %>
 <table id="reviews" >
   <thead>

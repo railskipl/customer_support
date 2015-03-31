@@ -57,7 +57,7 @@
 		<%end%>
 
 		<% if current_user.is? :admin  %>
-		  <li class="<%=(@active_tab == 'pages') ? 'active' : ''%>">
+		  <li class="<%=(@active_tab == 'customers') ? 'active' : ''%>">
 					<%=link_to raw(action_button_helper('Customers','icon-edit')),admin_customers_path%>
 		  </li>
 		<%end%>
@@ -119,7 +119,7 @@
 		<%end%>
 
 		<% if (current_user.is? :admin) || current_user.is_agent? %>
-		  <li class="<%=(@active_tab == 'pages') ? 'active' : ''%>">
+		  <li class="<%=(@active_tab == 'archive_reviews') ? 'active' : ''%>">
 					<%=link_to raw(action_button_helper('Archive Reviews','icon-edit')), archive_reviews_admin_reviews_path %>
 		  </li>
 		<%end%>
@@ -167,11 +167,7 @@
   	  </li>
   	<%end%>
 
-  	<% if can? :manage, AbuseReport%>
-	    <li class="<%=(@active_tab == 'abuse_report') ? 'active' : ''%>">
-					<%=link_to raw(action_button_helper('Abuse Reports','icon-list-alt')),admin_abuse_reports_path%>
-  	  </li>
-  	<%end%>
+  	
 
   	<% if current_user.is_admin?%>
 	    <li class="<%=(@active_tab == 'reports') ? 'active' : ''%>">

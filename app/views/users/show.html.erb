@@ -4,228 +4,159 @@
 	</span>
 <%end%>
 
-<%= form_for(@user) do |f|%>
-		<span class="span6">
-			<div class="registerSectionForm">
-				<div class="fom_con">
-				  <div class="form_lft">
-				    <div class="name_lft">First Name: *</div>
-				    <div>
-						<%= f.text_field :first_name, disabled: true %>
-				    </div>
-				  </div>
-				  <div class="form_lft">
-				    <div class="name_lft">Last Name: *</div>
-				    <div>
-				      <%= f.text_field :last_name, disabled: true%>
-				    </div>
-				  </div>
-				</div>
-				<div class="fom_con">
-				  <div class="form_lft">
-				    <div class="name_lft">Preferred Alias: *</div>
-				    <div>
-				      <%= f.text_field :preferred_alias, disabled: true%>
-				    </div>
-				  </div>
-				</div>
-				<div class="fom_con">
-				  <div class="form_lft">
-				    <div class="name_lft">Gender: *</div>
-				    <div>
-							<%= f.select :gender, [["Male", 1], ["Female", 2]], disabled: true %>
-						</div>
-				  </div>
-				  <div class="form_lft">
-				    <div class="name_lft"> Age: *</div>
-				    <div>
-							<%= f.text_field :age ,:disabled=>true%>
-				    </div>
-				  </div>
-				</div>
-				<div class="fom_con">
-				  <div class="dob">
-				    <div class="name_lft">DOB:*</div>
-				    <div>
-				      <%= f.date_select :dob, :start_year =>  (Time.now.year - 100),:end_year=>(Time.now.year - 18), order: [:month,:day, :year], prompt: { day: 'Select day', month: 'Select month', year: 'Select year'}, disabled: true%>
-				    </div>
-				  </div>
-				</div>
-				<div class="fom_con">
-				  <div class="form_lft"> &nbsp; </div>
-				  <div class="form_lft">
-				    <div class="name_lft"> Email: *</div>
-				    <div>
-				      <%= f.email_field :email, disabled: true%>
-				    </div>
-				  </div>
-				</div>
-				<div class="fom_con">
-				  <div class="form_lft">
-				    <div class="name_lft">Address Line 1:</div>
-				    <div>
-				      <%= f.text_field :address_line1, disabled: true %>
-				    </div>
-				  </div>
-				  <div class="form_lft">
-				    <div class="name_lft">Secret Question: *</div>
-				    <div>
-							<select name="user[secret_question]" disabled="true">
-									<option value="What was your childhood nickname?">What was your childhood nickname?</option>
-									<option value="what city did you meet your spouse/significant other?">what city did you meet your spouse/significant other?</option>
-									<option value="What is the name of your favorite childhood friend?">What is the name of your favorite childhood friend?</option>
-									<option value="What street did you live on in third grade?">What street did you live on in third grade?</option>
-									<option value="What is your oldest sibling’s birthday month and year? (e.g., January 1900)">What is your oldest sibling’s birthday month and year? (e.g., January 1900)</option>
-									<option value="What is the middle name of your oldest child?">What is the middle name of your oldest child?</option>
-									<option value="What is your oldest sibling's middle name?">What is your oldest sibling's middle name?</option>
-									<option value="What school did you attend for sixth grade?">What school did you attend for sixth grade?</option>
-									<option value="What was your childhood phone number including area code? (e.g., 000-000-0000)">What was your childhood phone number including area code? (e.g., 000-000-0000)</option>
-									<option value="What is your oldest cousin's first and last name?">What is your oldest cousin's first and last name?</option>
-									<option value="What was the name of your first stuffed animal?">What was the name of your first stuffed animal?</option>
-									<option value="In what city or town did your mother and father meet?">In what city or town did your mother and father meet?</option>
-									<option value="Where were you when you had your first kiss?">Where were you when you had your first kiss?</option>
-									<option value="What is the first name of the boy or girl that you first kissed?">What is the first name of the boy or girl that you first kissed?</option>
-									<option value="What was the last name of your third grade teacher?">What was the last name of your third grade teacher?</option>
-									<option value="In what city does your nearest sibling live?">In what city does your nearest sibling live?</option>
-									<option value="What is your oldest brother’s birthday month and year? (e.g., January 1900)">What is your oldest brother’s birthday month and year? (e.g., January 1900)</option>
-									<option value="What is your maternal grandmother's maiden name?">What is your maternal grandmother's maiden name?</option>
-									<option value="In what city or town was your first job?">In what city or town was your first job?</option>
-									<option value="What is the name of the place your wedding reception was held?">What is the name of the place your wedding reception was held?</option>
-									<option value="What is the name of a college you applied to but didn't attend?">What is the name of a college you applied to but didn't attend?</option>
-									<option value="Where were you when you first heard about 9/11?">Where were you when you first heard about 9/11?</option>
-								</select>
-				    </div>
-				  </div>
-				</div>
+        <div class="max-box">
+        
+     
+        	<div class="form-box4">
+            	<div class="login-field-box3">
+                	<div class="text-box3">First Name*</div>
+                    <p class="auto-field3"><%= @user.first_name %></p>
+                </div>
+                <div class="clear"></div>
+                
+                <div class="login-field-box3">
+                	<div class="text-box3">Preferred Alias*</div>
+                    <p class="auto-field3"><%= @user.preferred_alias %></p>
+                </div>
+                <div class="clear"></div>
+                
+                <div class="login-field-box3">
+                	<div class="text-box3">Email*</div>
+                    <p class="auto-field3"><%= @user.email %></p>
+                </div>
+                <div class="clear"></div>
+                
+                <div class="login-field-box3">
+                	<div class="text-box3">Password*</div>
+                    <!--<select class="select1">
+                    	<option>Select 1</option>
+                        <option>Select 1</option>
+                        <option>Select 1</option>
+                    </select>-->
+                    <input type="password" class="auto-field3" name="">
+                </div>
+                <div class="clear"></div>
+                
+                <div class="login-field-box3">
+                	<div class="text-box3">Gender*</div>
+                    <p class="auto-field3"><%= @user.gender %></p>
+                </div>
+                <div class="clear"></div>
+                
+                <div class="login-field-box3">
+                	<div class="text-box3">Age*</div>
+                    <p class="auto-field3"><%= @user.age %></p>
+                </div>
+                <div class="clear"></div>
+                
+                <div class="login-field-box3">
+                	<div class="text-box3">Address Line1</div>
+                    <p class="auto-field3"><%= @user.address_line1 %></p>
+                </div>
+                <div class="clear"></div>
+                
+                <div class="login-field-box3">
+                	<div class="text-box3">Town</div>
+                    <p class="auto-field3"><%= @user.town %></p>
+                </div>
+                <div class="clear"></div>
+                
+                <div class="login-field-box3">
+                	<div class="text-box3">Country*</div>
+                    <p class="auto-field3"><%= @user.country %></p>
+                </div>
+                <div class="clear"></div>
+                
+                <div class="login-field-box3">
+                	<div class="text-box3">Security Question*</div>
+                    <p class="auto-field3"><%= @user.secret_question %></p>
+                </div>
+                <div class="clear"></div>
+                
+                <div class="login-field-box3">
+                	<div class="text-box3">Answer*</div>
+                    <p class="auto-field3"><%= @user.answer %></p>
+                </div>
+                <div class="clear"></div>
+                
+            </div>
+            
+            <div class="form-box4">
+            	<div class="login-field-box3">
+                	<div class="text-box3">Last Name*</div>
+                    <p class="auto-field3"><%= @user.last_name %></p>
+                </div>
+                <div class="clear"></div>
+                
+                <div class="login-field-box3">
+                	<div class="text-box3">&nbsp;</div>
+                    
+                </div>
+                <div class="clear"></div>
+                
+                <div class="login-field-box3">
+                	<div class="text-box3">Confirm Email*</div>
+                    <p class="auto-field3"><%= @user.email %></p>
+                </div>
+                <div class="clear"></div>
+                
+                <div class="login-field-box3">
+                	<div class="text-box3">Confirm Password*</div>
+                    <input type="password" class="auto-field3" name="">
+                </div>
+                <div class="clear"></div>
+                
+                <div class="login-field-box3">
+                	<div class="text-box3">&nbsp;</div>
+                    
+                </div>
+                <div class="clear"></div>
+                
+                <div class="login-field-box3">
+                	<div class="text-box3">DOB</div>
+                    <p class="auto-field3"><%= @user.dob %></p>
+                </div>
+                <div class="clear"></div>
+                
+                <div class="login-field-box3">
+                	<div class="text-box3">Address Line2</div>
+                    <p class="auto-field3"><%= @user.address_line2 %></p>
+                </div>
+                <div class="clear"></div>
+                
+                <div class="login-field-box3">
+                	<div class="text-box3">Code</div>
+                    <p class="auto-field3"><%= @user.postal_code %></p>
+                </div>
+                <div class="clear"></div>
+                
+                <div class="login-field-box3">
+                	<div class="text-box3">I Live*</div>
+                    <p class="auto-field3"><%= @user.lives_in %></p>
+                </div>
+                <div class="clear"></div>
+                
+                <div class="login-field-box3">
+                	<div class="text-box3">&nbsp;</div>
+                    <p class="auto-field3"><%= @user.lives_in %></p>
+                </div>
+                <div class="clear"></div>
+                
+                <div class="login-field-box3">
+                	
+                </div>
+                <div class="clear"></div>
+                
+            </div>
+            
+            <div class="form-box6">
+            	<div class="up-photo"><img src="/assets/dummy-photo.jpg" alt=""></div>
+                
+            	<div class="clear"></div>
+            </div>
+            
+            <div class="clear"></div>
+        </div>
 
-				<div class="fom_con">
-				  <div class="form_lft">
-				    <div class="name_lft">Address Line 2:</div>
-				    <div>
-				      <%= f.text_field :address_line2, disabled: true %>
-				    </div>
-				  </div>
-				  <div class="form_lft">
-				    <div class="name_lft"> Answer: *</div>
-				    <div>
-				      <%= f.text_field :answer, disabled: true%>
-				    </div>
-				  </div>
-				</div>
-
-
-				<div class="fom_con">
-						<div class="form_lft">
-						  <div class="name_lft">Town:</div>
-						  <div>
-			          <%= f.text_field :town, disabled: true%>
-						  </div>
-						</div>
-				</div>
-
-				<div class="fom_con">
-				  <div class="form_lft">
-				    <div class="name_lft">Code:</div>
-				    <div>
-				      <%= f.text_field :postal_code , disabled: true%>
-				    </div>
-				  </div>
-				</div>
-
-				<div class="fom_con">
-				  <div class="form_lft">
-				    <div class="name_lft">Country: *</div>
-				    <div>
-					    <%=country_select("user", "country",{ "Kenya" => "Kenya"}, disabled: true)%>
-				    </div>
-				  </div>
-				</div>
-				<div class="fom_con">
-				  <div class="form_lft">
-				    <div class="name_lft">I Live: *</div>
-				    <div>
-							<select name="user[lives_in]" id="user_i_live">
-							<option selected="">Select</option>
-							<optgroup label="Nairobi">
-								<option>Arboretum</option>
-								<option>Buruburu</option>
-								<option>CBD</option>
-								<option>Dagoretti</option>
-								<option>Donholm</option>
-								<option>Eastleigh</option>
-								<option>Embakasi</option>
-								<option>Garden Estate</option>
-								<option>Gigiri</option>
-								<option>Highridge</option>
-								<option>Hurlingham</option>
-								<option>Industrial Area</option>
-								<option>Jamhuri</option>
-								<option>JKIA</option>
-								<option>Kahawa</option>
-								<option>Karen</option>
-								<option>Kasarani</option>
-								<option>Kiambu Road</option>
-								<option>Kileleshwa</option>
-								<option>Kilimani</option>
-								<option>Kitengela</option>
-								<option>Komarock</option>
-								<option>Langata</option>
-								<option>Lavington</option>
-								<option>Loresho</option>
-								<option>Lower Kabete</option>
-								<option>Madaraka</option>
-								<option>Milimani</option>
-								<option>Mombasa Road</option>
-								<option>Museum Hill</option>
-								<option>Muthiaga</option>
-								<option>Nairobi West</option>
-								<option>New Mathaiga</option>
-								<option>Ngara</option>
-								<option>Ngong Road</option>
-								<option>Ngumo</option>
-								<option>Parklands</option>
-								<option>Ridgeways</option>
-								<option>Riruta Satelite</option>
-								<option>Riverside</option>
-								<option>Rongal</option>
-								<option>Rosslyn</option>
-								<option>Roysambu</option>
-								<option>Ruaka</option>
-								<option>Runda</option>
-								<option>South B</option>
-								<option>South C</option>
-								<option>Spring Valley</option>
-								<option>State House Crescent</option>
-								<option>Thigiri</option>
-								<option>Thika Road</option>
-								<option>Umoja</option>
-								<option>Upper Hill</option>
-								<option>Valley Road</option>
-								<option>Westlands</option>
-							</optgroup>
-
-							<optgroup label="Coast">
-								<option>Bamburi</option>
-								<option>CBD</option>
-								<option>Diani</option>
-								<option>Kilifi</option>
-								<option>Lamu</option>
-								<option>Malindi</option>
-								<option>Mombasa</option>
-								<option>Nyali</option>
-								<option>Voi</option>
-								<option>Watamu</option>
-							</optgroup>
-							<optgroup label="Kisumu">
-							</select>
-				    </div>
-				  </div>
-				</div>
-			</div>
-			</span> <span class="span3">
-			<div class="rgh">
-				<div class="image"><%=image_tag @user.avatar.url, :style =>"height:150px;width:120px;margin:-50px;" if @user.avatar.present? %>
-				</div>
-			</div>
-		</span>
-<%end%>
+<!--         		<div class="image"><%#=image_tag @user.avatar.url, :style =>"height:150px;width:120px;margin:-50px;" if @user.avatar.present? %>
+ -->	

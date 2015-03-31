@@ -51,6 +51,10 @@ Jmd::Application.routes.draw do
     get '/company/towns_by_company' => "reports#towns_by_company"
     get '/town/locations_by_town_and_company' => "reports#locations_by_town_and_company"
 
+    get '/total_reviews' => "reports#totalreviews"
+    get '/nature_of_compliments' => "reports#nature_of_compliments"
+    get '/nature_of_complaints2' => "reports#nature_of_complaints2"
+
     resources :monitor_jagents ,:only => [:index]
     resources :notifications ,:only => [:index]
     resources :customers ,:only => [:index]
@@ -61,6 +65,7 @@ Jmd::Application.routes.draw do
   	resources :industries
   	resources :nature_of_reviews
   	resources :reviews do
+      resources :review_notes
       collection do 
         get :archive_reviews
       end

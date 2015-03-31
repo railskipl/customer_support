@@ -12,17 +12,19 @@ class Admin::ReviewsController < AdminController
     if current_user.is? :jagent
 		  @reviews = Review.where("jagent_id = ? or old_jagent_id = ?",current_user.id,current_user.id).unarchived.where("user_id is not null").order("id desc")
     else
-      @reviews = []
+      @reviews = Review.where("agent_id = ?",current_user.id)
     end
     @areviews = Review.where("published_date is null and jagent_id is null and user_id is not null").order("id desc")
     @reareviews = Review.where("published_date is null and jagent_id is not null and user_id is not null").order("id desc")
 	end
 
   def show
-
+    @review_note = ReviewNote.new
+    @review_notes = @review.review_notes
   end
 
   def archive_reviews
+    @active_tab = "archive_reviews"
     @archived_reviews = Review.archived.where('user_id is not null').order("created_at desc")
     @archived_attachments ||= Review.where('archive_attachment = ? and user_id is not null',true)
   end
@@ -112,22 +114,24 @@ class Admin::ReviewsController < AdminController
         end
       end
     elsif params[:commit] == 'Archive-Attachment'
-      @review.archive_attachment = true
+      @review.archive_attachment = true unless current_user.role == "jagent"
       respond_to do |format|
         if @review.update(review_params)
-          ReviewMailer.archive_adminmail(@review, current_user).deliver!  
+          # ReviewMailer.archive_adminmail(@review, current_user).deliver!  
           format.html { redirect_to edit_admin_review_path(@review.id), notice: 'Attachment was successfully Archived.' }
         else
           format.html { render action: 'edit' }
         end
       end
     elsif params[:commit] == 'Archive'
-      @review.archive = true
-      @review.ispublished = false
+      unless current_user.role == "jagent"
+        @review.archive = true 
+        @review.ispublished = false
+      end
       respond_to do |format|
         if @review.update(review_params)
-          ReviewMailer.archive_mail(@review).deliver!
-          ReviewMailer.archive_adminmail(@review, current_user).deliver!
+          # ReviewMailer.archive_mail(@review).deliver!
+          # ReviewMailer.archive_adminmail(@review, current_user).deliver!
           format.html { redirect_to [:admin,@review], notice: 'Review was successfully Archived.' }
         else
           format.html { render action: 'edit' }

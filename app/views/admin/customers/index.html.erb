@@ -2,12 +2,10 @@
 	<table id="customers">
 		<thead>
 		  <tr>
-		    <th>First Name</th>
-		    <th>Last Name</th>
+		    <th>Alias</th>
 		    <th>Email</th>
 		    <th>Email Confirmation</th>
 		    <th>Last Sign In Time</th>
-		    <th>Current Sign In IP</th>
 		    <th>Last Sign In IP</th>
 		    <th>Action</th>
 		  </tr>
@@ -16,12 +14,10 @@
 		<tbody>
 		  <% @customers.each do |user| %>
 		    <tr>
-		      <td><%= user.first_name%></td>
-		      <td><%= user.last_name%></td>
+		      <td><%= user.preferred_alias %></td>
 		      <td><%= user.email%></td>
 		      <td><%= user.confirmed_at.present? ? 'Confirmed' : 'Pending'%></td>
 		      <td><%= user.last_sign_in_at.strftime("%d %b %y %H:%M") rescue nil %></td>
-		      <td><%= user.current_sign_in_ip %></td>
 		      <td><%= user.last_sign_in_ip %></td>
 		      <td>
 		        <%= link_to 'Show', admin_user_path(user), class: "btn btn-primary" if can? :show, User, :role => 'user' %>

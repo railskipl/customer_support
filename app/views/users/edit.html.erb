@@ -3,6 +3,65 @@
 		 <%=render :partial=> "application/my_account_left"%>
 	</span>
 <%end%>
+
+<% @city_group =
+                 [
+                 ["Nairobi", [["Arboretum","Arboretum"],["Buruburu","Buruburu"],
+                                                                ["CBD","CBD"],
+                                                                ["Dagoretti","Dagoretti"],
+                                                                ["Donholm","Donholm"],
+                                                                ["Eastleigh","Eastleigh"],
+                                                                ["Embakasi","Embakasi"],
+                                                                ["Garden Estate","Garden Estate"],
+                                                                ["Gigiri","Gigiri"],
+                                                                ["Highridge","Highridge"],
+                                                                ["Hurlingham","Hurlingham"],
+                                                                ["Industrial Area","Industrial Area"],
+                                                                ["Jamhuri","Jamhuri"],
+                                                                ["JKIA","JKIA"],
+                                                                ["Kahawa","Kahawa"],
+                                                                ["Karen","Karen"],
+                                                                ["Kasarani","Kasarani"],
+                                                                ["Kiambu Road","Kiambu Road"],
+                                                                ["Kileleshwa","Kileleshwa"],
+                                                                ["Kilimani","Kilimani"],
+                                                                ["Kitengela","Kitengela"],
+                                                                ["Komarock","Komarock"],
+                                                                ["Langata","Langata"],
+                                                                ["Lavington","Lavington"],
+                                                                ["Loresho","Loresho"],
+                                                                ["Lower Kabete","Lower Kabete"],
+                                                                ["Madaraka","Madaraka"],
+                                                                ["Milimani","Milimani"],
+                                                                ["Mombasa Road","Mombasa Road"],
+                                                                ["Museum Hill","Museum Hill"],
+                                                                ["Muthiaga","Muthiaga"],
+                                                                ["Nairobi West","Nairobi West"],
+                                                                ["New Mathaiga","New Mathaiga"],
+                                                                ["Ngara","Ngara"],
+                                                                ["Ngong Road","Ngong Road"],
+                                                                ["Ngumo","Ngumo"],
+                                                                ["Parklands","Parklands"],
+                                                                ["Ridgeways","Ridgeways"],
+                                                                ["Riruta Satelite","Riruta Satelite"],
+                                                                ["Riverside","Riverside"],
+                                                                ["Rongal","Rongal"],
+                                                                ["Rosslyn","Rosslyn"],
+                                                                ["Roysambu","Roysambu"],
+                                                                ["Ruaka","Ruaka"],
+                                                                ["Runda","Runda"],
+                                                                ["South B","South B"],
+                                                                ["South C","South C"],
+                                                                ["Spring Valley","Spring Valley"],
+                                                                ["State House Crescent","State House Crescent"],
+                                                                ["Thigiri","Thigiri"],
+                                                                ["Thika Road","Thika Road"],
+                                                                ["Umoja","Umoja"],
+                                                                ["Upper Hill","Upper Hill"],
+                                                                ["Valley Road","Valley Road"],
+                                                                ["Westlands","Westlands"]]],
+                 ["Coast", [["Bamburi","Bamburi"],["CBD","CBD"],["Diani","Diani"],["Kilifi","Kilifi"],["Lamu","Lamu"],["Malindi","Malindi"],["Mombasa","Mombasa"],["Nyali","Nyali"],["Voi","Voi"],["Watamu","Watamu"]]],
+                 ["Kisumu", [["Kisumu", "Kisumu"]]],["Other",[["Other","Other"]]],]%>
 <%= form_for(@user) do |f|%>
 		<% if @user.present? && @user.errors.any? %>
 					<div class="fom_con" style="color:red;">
@@ -42,52 +101,54 @@
                 <div class="login-field-box3">
                 	<div class="text-box3">Gender*</div>
                     
-							<%= f.select :gender, [["Male", 1], ["Female", 2]] %>
+							<%= f.select :gender, [["Male", 1], ["Female", 2]],{},:class => "field3" %>
                 </div>
                 <div class="clear"></div>
                 
                 <div class="login-field-box3">
                 	<div class="text-box3">Age*</div>
-                    <%= text_field_tag :disabled ,nil ,:disabled=>true,:class=>"user_age", value: f.object.age%>
+                    <%= text_field_tag :disabled ,nil ,:disabled=>true,:class=>"user_age", value: f.object.age, :class => "field3" %>
 					<%=f.hidden_field :age, :class=>"user_age" %>
                 </div>
                 <div class="clear"></div>
                 
                 <div class="login-field-box3">
                 	<div class="text-box3">Address Line1*</div>
-                    <input type="text" class="field3" name="">
+                    <%= f.text_field :address_line1, "maxlength"=>"50", "min" => "1","max" => "50", :class => "field3" %>
                 </div>
                 <div class="clear"></div>
                 
                 <div class="login-field-box3">
                 	<div class="text-box3">Town</div>
-                    <input type="text" class="field3" name="">
+                    <%= f.text_field :town, "maxlength"=>"50", "min" => "1","max" => "50", :class => "field3" %>
                 </div>
                 <div class="clear"></div>
                 
                 <div class="login-field-box3">
                 	<div class="text-box3">Country*</div>
-                    <select class="drp-select2 pages"  name="pages" style="height:25px;">
-                      <option value="" selected="selected">Select Country</option>
-                      <option value="">fsfsdf</option>
-                      <option value="">ssfsfd</option>
-                    </select>
+                    <%=country_select("user", "country",{ "Kenya" => "Kenya"},{},:class => "field3" )%>
                 </div>
                 <div class="clear"></div>
                 
                 <div class="login-field-box3">
                 	<div class="text-box3">Security Question*</div>
-                    <select class="drp-select2 pages"  name="pages" style="height:25px;">
-                      <option value="" selected="selected">Select Question</option>
-                      <option value="">fsfsdf</option>
-                      <option value="">ssfsfd</option>
-                    </select>
+                   	<select name="user[secret_question]" required = true class="field3">
+									<option value="What was your childhood nickname?">
+									  What was your childhood nickname?
+									</option>
+									<option value="In what city or town was your first job?">
+									  In what city or town was your first job?
+									</option>
+									<option value="What is your mother's maiden name?">
+									  What is your mother's maiden name?
+									</option>
+								</select>
                 </div>
                 <div class="clear"></div>
                 
                 <div class="login-field-box3">
                 	<div class="text-box3">Answer*</div>
-                    <input type="text" class="field3" name="">
+                    <%= f.text_field :answer, required: true, "maxlength"=>"50", "min" => "1","max" => "50",:class => "field3" %>
                 </div>
                 <div class="clear"></div>
                 
@@ -96,7 +157,7 @@
             <div class="form-box4">
             	<div class="login-field-box3">
                 	<div class="text-box3">Last Name*</div>
-                    <%= f.text_field :last_name, required: true, "maxlength"=>"35", "min" => "1","max" => "35"%>
+                    <%= f.text_field :last_name, required: true, "maxlength"=>"35", "min" => "1","max" => "35",:class => "field3" %>
                 </div>
                 <div class="clear"></div>
                 
@@ -108,13 +169,13 @@
                 
                 <div class="login-field-box3">
                 	<div class="text-box3">Confirm Email*</div>
-                    <input type="text" class="field3" name="">
+                     <%= f.email_field :email, required: true , "maxlength"=>"70", "min" => "1","max" => "70", "autocomplete" => "off",:id=>"user_email", :disabled=>true, :class => "field3" %>
                 </div>
                 <div class="clear"></div>
                 
                 <div class="login-field-box3">
                 	<div class="text-box3">Confirm Password*</div>
-                    <input type="password" class="field3" name="">
+                      <%= f.password_field :password_confirmation , "maxlength"=>"8", "min" => "4","max" => "8",:id=>"password2",:class => "field3" %>
                 </div>
                 <div class="clear"></div>
                 
@@ -126,13 +187,13 @@
                 
                 <div class="login-field-box3">
                 	<div class="text-box3">DOB</div>
-                    <input type="text" class="field3" name="">
+                     <%= f.text_field :dob ,:class => "field3",:id => "datepicker1" %>
                 </div>
                 <div class="clear"></div>
                 
                 <div class="login-field-box3">
                 	<div class="text-box3">Address Line2*</div>
-                    <input type="text" class="field3" name="">
+                    <%= f.text_field :address_line2, required: true, "maxlength"=>"50", "min" => "1","max" => "50",:class => "field3" %>
                 </div>
                 <div class="clear"></div>
                 
@@ -144,18 +205,14 @@
                 
                 <div class="login-field-box3">
                 	<div class="text-box3">I Live*</div>
-                    <select class="drp-select2 pages"  name="pages" style="height:25px;">
-                      <option value="" selected="selected">Select Question</option>
-                      <option value="">fsfsdf</option>
-                      <option value="">ssfsfd</option>
-                    </select>
+                    	<%= select_tag("user[lives_in]", grouped_options_for_select(@city_group, selected_key = @user.lives_in, prompt = nil), :id=> 'user_i_live' ,:onchange => 'CheckOther();',:class => "field3") %>
                 </div>
                 <div class="clear"></div>
                 
-                <div class="login-field-box3">
+              <!--   <div class="login-field-box3">
                 	<div class="text-box3">&nbsp;</div>
                     <input type="text" class="field3" name="">
-                </div>
+                </div> -->
                 <div class="clear"></div>
                 
                 <div class="login-field-box3">
@@ -174,7 +231,7 @@
             <div class="clear"></div>
         </div>
         <% end %>
-
+**************************************************************************************
 
 <%= form_for(@user) do |f|%>
 		<span class="span6">

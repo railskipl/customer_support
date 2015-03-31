@@ -43,7 +43,7 @@
 
 .select_box_custom
 {
-    font-size: 13px; font-family: corbel; width: 200px;
+    font-size: 13px; font-family: corbel; width: 200px;height: 29px;
 }
 select.select_box_custom option:hover {
        box-shadow: 0 0 10px 100px #fbaf3d inset;
@@ -181,7 +181,7 @@ background-color:#FC0; font-size: 33px;
                 
                 <div class="login-field-box">
                 	<div class="text-box1">Age*</div>
-                   <%= f.select :age, [["18-25", "18-25"],["26-35", "26-35"],["36-45", "36-45"],["46-55", "46-55"],["55+", "55+"]], {},:class=>"field1 select_box_custom"%>
+                   <%= f.select :age, [["18-25", "18-25"],["26-35", "26-35"],["36-45", "36-45"],["46-55", "46-55"],["55+", "55+"]], {:prompt => "Age"},:class=>"field1 select_box_custom"%>
                 </div>
                 <div class="clear"></div>
                 
@@ -205,17 +205,8 @@ background-color:#FC0; font-size: 33px;
                 
                 <div class="login-field-box">
                 	<div class="text-box1">Security Question*</div>
-                     <select class="field1 select_box_custom" name="user[secret_question]" required = true>
-                    				<option value="What was your childhood nickname?">
-									  What was your childhood nickname?
-									</option>
-									<option value="In what city or town was your first job?">
-									  In what city or town was your first job?
-									</option>
-									<option value="What is your mother's maiden name?">
-									  What is your mother's maiden name?
-									</option>
-								</select>
+                    <%= f.select :secret_question, [ ["What was your childhood nickname?", "What was your childhood nickname?"], ["In what city or town was your first job?", "In what city or town was your first job?"],["What is your mother's maiden name?" , "What is your mother's maiden name?"] ], {},:class=>"field1" %>
+         
                 </div>
                 <div class="clear"></div>
                 
@@ -287,7 +278,7 @@ background-color:#FC0; font-size: 33px;
                 
                 <div class="login-field-box">
                 	<div class="text-box1">&nbsp;</div>
-                    <input type="text" class="field1" name="" id="other_type">
+                    <input type="text" class="field1" name="" id="other_type", placeholder ="Other">
                 </div>
                 <div class="clear"></div>
                 

@@ -52,10 +52,10 @@ select.field12 option:hover {
       
         	<%if  @review.review_type == 'complaint' || params[:review_type] == 'complaint'%>
         	<img src="/assets/complaint-small.png" alt="" title="Xema Xema" class="left-align">
-            <div class="cmp-head">Please give details of your <span>Complaint</span></div>
+            <div class="cmp-head"><b>Please give details of your <span>Complaint</b></span></div>
         	<% else %>
 			<img src="/assets/compliment_small.png" alt="" title="Xema Xema" class="left-align">
-            <div class="cmp-head">Please give details of your <span style="color:#008000;">Compliment</span></div>
+            <div class="cmp-head"><b>Please give details of your <span style="color:#008000;">Compliment</b></span></div>
             <% end %>
 		</div>
         

@@ -2,9 +2,43 @@
 <!-- 	<span class="span1">
 	</span> -->
 <%#end%>
+  <%= stylesheet_link_tag    "jquery.ui.datepicker" %>
+
 <style type="text/css">
-#ui-datepicker-div{
-background-color: #ccc
+.image {
+    background-color: #e1e1e1;
+    border: 1px solid #f05a28;
+    color: #fbaf3f;
+    display: block;
+    height: 100px;
+    padding-top: 50px;
+    text-align: center;
+    width: 120px;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-file:hover {
+  text-decoration: underline;
+  cursor:pointer;
+}
+
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 999px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    cursor: inherit;
+    display: block;
 }
 
 .select_box_custom
@@ -81,54 +115,7 @@ background-color:#FC0; font-size: 33px;
 				    
 
 
-  <%#= stylesheet_link_tag    "dd" %>
 
-<!-- <script src="/assets/jquery.dd.js"></script> -->
-<script>
-// function createByJson() {
-// 	var jsonData = [					
-// 					{description:'Choos your payment gateway', value:'', text:'Payment Gateway'},					
-// 					{image:'images/msdropdown/icons/Amex-56.png', description:'My life. My card...', value:'amex', text:'Amex'},
-// 					{image:'images/msdropdown/icons/Discover-56.png', description:'It pays to Discover...', value:'Discover', text:'Discover'},
-// 					{image:'images/msdropdown/icons/Mastercard-56.png', title:'For everything else...', description:'For everything else...', value:'Mastercard', text:'Mastercard'},
-// 					{image:'images/msdropdown/icons/Cash-56.png', description:'Sorry not available...', value:'cash', text:'Cash on devlivery', disabled:true},
-// 					{image:'images/msdropdown/icons/Visa-56.png', description:'All you need...', value:'Visa', text:'Visa'},
-// 					{image:'images/msdropdown/icons/Paypal-56.png', description:'Pay and get paid...', value:'Paypal', text:'Paypal'}
-// 					];
-// 	$("#byjson").msDropDown({byJson:{data:jsonData, name:'payments2'}}).data("dd");
-// }
-// $(document).ready(function(e) {		
-// 	//no use
-// 	try {
-// 		// var pages = $(".pages").msDropdown({on:{change:function(data, ui) {
-// 		// 										var val = data.value;
-// 		// 										if(val!="")
-// 		// 											window.location = val;
-// 		// 									}}}).data("dd");
-
-// 		// var pagename = document.location.pathname.toString();
-// 		pagename = pagename.split("/");
-// 		pages.setIndexByValue(pagename[pagename.length-1]);
-// 		$("#ver").html(msBeautify.version.msDropdown);
-// 	} catch(e) {
-// 		//console.log(e);	
-// 	}
-	
-// 	$("#ver").html(msBeautify.version.msDropdown);
-		
-// 	//convert
-// 	$("select").msDropdown({roundedBorder:false});
-// 	createByJson();
-// 	$("#tech").data("dd");
-// });
-// function showValue(h) {
-// 	console.log(h.name, h.value);
-// }
-// $("#tech").change(function() {
-// 	console.log("by jquery: ", this.value);
-// })
-// //
-</script>
 
 <div class="page-link">
         	<ul>
@@ -219,8 +206,7 @@ background-color:#FC0; font-size: 33px;
                 <div class="login-field-box">
                 	<div class="text-box1">Security Question*</div>
                      <select class="field1 select_box_custom" name="user[secret_question]" required = true>
-                     	    <option>Select Question</option>
-									<option value="What was your childhood nickname?">
+                    				<option value="What was your childhood nickname?">
 									  What was your childhood nickname?
 									</option>
 									<option value="In what city or town was your first job?">
@@ -313,8 +299,11 @@ background-color:#FC0; font-size: 33px;
             </div>
             
             <div class="form-box3">
-            	<div class="up-photo"><img src="/assets/dummy-photo.jpg" alt=""></div>
-
+            	<div class="up-photo">
+                        <div class="image btn-file" id="avatar_image"> Upload<br>
+                  Photo <%=f.file_field :avatar,:id=>'user_avatar' ,:onchange=>"readImage( this )"%>
+                  </div>
+                </div>
 
                 <div class="check-one">
                 <%=f.check_box :is_subscribe ,:class=> "ch-box"%> <span style = "color:#696969">Subscribe to receive Promotional Materials from our partners</span>

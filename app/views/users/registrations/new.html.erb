@@ -7,6 +7,13 @@
 {
     font-size: 13px; font-family: corbel; width: 200px;
 }
+select.select_box_custom option:hover {
+       box-shadow: 0 0 10px 100px #fbaf3d inset;
+   }
+/*.select_box_custom :hover option
+{
+background-color:#FC0; font-size: 33px;
+ }*/
 </style>
 
 <% @city_group =
@@ -306,7 +313,7 @@
 
 
                 <div class="check-one">
-                <%=f.check_box :is_subscribe ,:class=> "ch-box"%> Subscribe to receive Promotional Materials from our partners
+                <%=f.check_box :is_subscribe ,:class=> "ch-box"%> <span style = "color:#696969">Subscribe to receive Promotional Materials from our partners</span>
                 </div>
                 <div class="check-one">
                 <%=f.check_box :accept_t_and_c , id: "field_terms", required: true, value: true,:class=> "ch-box"%><%=link_to "I Agree to the Term and Conditions. *", "/terms-of-use",:style => "color:#fbaf3d" ,:target => "new" %>

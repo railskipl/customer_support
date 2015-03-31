@@ -3,11 +3,8 @@
 		 <%=render :partial=> "application/my_account_left"%>
 	</span>
 <%end%>
-
 <%= form_for(@user) do |f|%>
-		<span class="span6">
-			<div class="registerSectionForm">
-				<% if @user.present? && @user.errors.any? %>
+		<% if @user.present? && @user.errors.any? %>
 					<div class="fom_con" style="color:red;">
 						<h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 						<ul>
@@ -17,20 +14,173 @@
 						</ul>
 					</div>
 				<% end %>
-				<div class="fom_con">
-				  <div class="form_lft">
-				    <div class="name_lft">First Name: *</div>
-				    <div>
-						<%= f.text_field :first_name, required: true, "maxlength"=>"35", "min" => "1","max" => "35" %>
-				    </div>
-				  </div>
-				  <div class="form_lft">
-				    <div class="name_lft">Last Name: *</div>
-				    <div>
-				      <%= f.text_field :last_name, required: true, "maxlength"=>"35", "min" => "1","max" => "35"%>
-				    </div>
-				  </div>
-				</div>
+<div class="form-box4">
+            	<div class="login-field-box3">
+                	<div class="text-box3">First Name*</div>
+                   <%= f.text_field :first_name, required: true, "maxlength"=>"35", "min" => "1","max" => "35" ,:class => "field3" %>
+                </div>
+                <div class="clear"></div>
+                
+                <div class="login-field-box3">
+                	<div class="text-box3">Preferred Alias*</div>
+                      <%= f.text_field :preferred_alias,:disabled=>true ,"maxlength"=>"20", "min" => "1","max" => "20","id" =>"user_alias",:class => "field3" %>
+                </div>
+                <div class="clear"></div>
+                
+                <div class="login-field-box3">
+                	<div class="text-box3">Email*</div>
+                      <%= f.email_field :email, required: true , "maxlength"=>"70", "min" => "1","max" => "70", "autocomplete" => "off",:id=>"user_email", :disabled=>true, :class => "field3" %>
+                </div>
+                <div class="clear"></div>
+                
+                <div class="login-field-box3">
+                	<div class="text-box3">Password*</div>
+                    <%= f.password_field :password , "maxlength"=>"8", "min" => "4","max" => "8",:id=>"password1",:class => "field3" %>
+                </div>
+                <div class="clear"></div>
+                
+                <div class="login-field-box3">
+                	<div class="text-box3">Gender*</div>
+                    
+							<%= f.select :gender, [["Male", 1], ["Female", 2]] %>
+                </div>
+                <div class="clear"></div>
+                
+                <div class="login-field-box3">
+                	<div class="text-box3">Age*</div>
+                    <%= text_field_tag :disabled ,nil ,:disabled=>true,:class=>"user_age", value: f.object.age%>
+					<%=f.hidden_field :age, :class=>"user_age" %>
+                </div>
+                <div class="clear"></div>
+                
+                <div class="login-field-box3">
+                	<div class="text-box3">Address Line1*</div>
+                    <input type="text" class="field3" name="">
+                </div>
+                <div class="clear"></div>
+                
+                <div class="login-field-box3">
+                	<div class="text-box3">Town</div>
+                    <input type="text" class="field3" name="">
+                </div>
+                <div class="clear"></div>
+                
+                <div class="login-field-box3">
+                	<div class="text-box3">Country*</div>
+                    <select class="drp-select2 pages"  name="pages" style="height:25px;">
+                      <option value="" selected="selected">Select Country</option>
+                      <option value="">fsfsdf</option>
+                      <option value="">ssfsfd</option>
+                    </select>
+                </div>
+                <div class="clear"></div>
+                
+                <div class="login-field-box3">
+                	<div class="text-box3">Security Question*</div>
+                    <select class="drp-select2 pages"  name="pages" style="height:25px;">
+                      <option value="" selected="selected">Select Question</option>
+                      <option value="">fsfsdf</option>
+                      <option value="">ssfsfd</option>
+                    </select>
+                </div>
+                <div class="clear"></div>
+                
+                <div class="login-field-box3">
+                	<div class="text-box3">Answer*</div>
+                    <input type="text" class="field3" name="">
+                </div>
+                <div class="clear"></div>
+                
+            </div>
+            
+            <div class="form-box4">
+            	<div class="login-field-box3">
+                	<div class="text-box3">Last Name*</div>
+                    <%= f.text_field :last_name, required: true, "maxlength"=>"35", "min" => "1","max" => "35"%>
+                </div>
+                <div class="clear"></div>
+                
+                <div class="login-field-box3">
+                	<div class="text-box3">&nbsp;</div>
+                    
+                </div>
+                <div class="clear"></div>
+                
+                <div class="login-field-box3">
+                	<div class="text-box3">Confirm Email*</div>
+                    <input type="text" class="field3" name="">
+                </div>
+                <div class="clear"></div>
+                
+                <div class="login-field-box3">
+                	<div class="text-box3">Confirm Password*</div>
+                    <input type="password" class="field3" name="">
+                </div>
+                <div class="clear"></div>
+                
+                <div class="login-field-box3">
+                	<div class="text-box3">&nbsp;</div>
+                    
+                </div>
+                <div class="clear"></div>
+                
+                <div class="login-field-box3">
+                	<div class="text-box3">DOB</div>
+                    <input type="text" class="field3" name="">
+                </div>
+                <div class="clear"></div>
+                
+                <div class="login-field-box3">
+                	<div class="text-box3">Address Line2*</div>
+                    <input type="text" class="field3" name="">
+                </div>
+                <div class="clear"></div>
+                
+                <div class="login-field-box3">
+                	<div class="text-box3">Code</div>
+                   <%= f.text_field :postal_code , "maxlength"=>"50", "min" => "1","max" => "50", :class => "field3" %>
+                </div>
+                <div class="clear"></div>
+                
+                <div class="login-field-box3">
+                	<div class="text-box3">I Live*</div>
+                    <select class="drp-select2 pages"  name="pages" style="height:25px;">
+                      <option value="" selected="selected">Select Question</option>
+                      <option value="">fsfsdf</option>
+                      <option value="">ssfsfd</option>
+                    </select>
+                </div>
+                <div class="clear"></div>
+                
+                <div class="login-field-box3">
+                	<div class="text-box3">&nbsp;</div>
+                    <input type="text" class="field3" name="">
+                </div>
+                <div class="clear"></div>
+                
+                <div class="login-field-box3">
+                	
+                </div>
+                <div class="clear"></div>
+                
+            </div>
+            
+            <div class="form-box6">
+            	<div class="up-photo"><img src="images/dummy-photo.jpg" alt=""></div>
+                
+            	<div class="clear"></div>
+            </div>
+            
+            <div class="clear"></div>
+        </div>
+        <% end %>
+
+
+<%= form_for(@user) do |f|%>
+		<span class="span6">
+			<div class="registerSectionForm">
+		
+				
 				<div class="fom_con">
 				  <div class="form_lft">
 				    <div class="name_lft">Preferred Alias: *</div>
@@ -84,7 +234,7 @@
 				  </div>
 				  <div class="name_lft"> Password: *</div>
 				    <div>
-				      <%= f.password_field :password , "maxlength"=>"8", "min" => "4","max" => "8",:id=>"password1"%>
+				     
 				    </div>
 				  </div>
 				</div>

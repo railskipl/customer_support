@@ -1,31 +1,31 @@
   <%if @sub_action == "show_profile" %>
   <div class="page-link">
           <ul>
-              <li><a href="#">Home</a></li>
+              <li><a href="<%= root_path %>">Home</a></li>
                 <li><span>&raquo;</span></li>
-                <li><a href="#">My Account</a></li>
+                <li><a href="<%= profile_path %>">My Account</a></li>
                 <li><span>&raquo;</span></li>
-                <li><a href="#" class="selected">My Profile</a></li>
+                <li><a href="<%= profile_path %>" class="selected">My Profile</a></li>
             </ul>
         </div>
   <% elsif @sub_action == "update_profile" %>
   <div class="page-link">
           <ul>
-              <li><a href="#">Home</a></li>
+                <li><a href="<%= root_path %>">Home</a></li>
                 <li><span>&raquo;</span></li>
-                <li><a href="#">My Account</a></li>
+                <li><a href="<%= profile_path %>">My Account</a></li>
                 <li><span>&raquo;</span></li>
-                <li><a href="#" class="selected">Update Profile</a></li>
+                <li><a href="<%= edit_profile_path %>" class="selected">Update Profile</a></li>
             </ul>
         </div>
 <% elsif  @sub_action == "my_reviews" %>
   <div class="page-link">
           <ul>
-              <li><a href="#">Home</a></li>
+                <li><a href="<%= root_path %>">Home</a></li>
                 <li><span>&raquo;</span></li>
-                <li><a href="#">My Account</a></li>
+                <li><a href="<%= profile_path %>">My Account</a></li>
                 <li><span>&raquo;</span></li>
-                <li><a href="#" class="selected">My Reviews</a></li>
+                <li><a href="<%= reviews_path %>" class="selected">My Reviews</a></li>
             </ul>
         </div>
 <% end %>

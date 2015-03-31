@@ -119,11 +119,11 @@ background-color:#FC0; font-size: 33px;
 
 <div class="page-link">
         	<ul>
-            	<li><a href="#">Home</a></li>
+            	<li><a href="<%= root_path %>">Home</a></li>
                 <li><span>&raquo;</span></li>
-                <li><a href="#">My Account</a></li>
+                <li><a href="<%= profile_path %>">My Account</a></li>
                 <li><span>&raquo;</span></li>
-                <li><a href="#" class="selected">Register</a></li>
+                <li><a href="<%= new_user_registration_path %>" class="selected">Register</a></li>
             </ul>
         </div>
         <div class="clear"></div>

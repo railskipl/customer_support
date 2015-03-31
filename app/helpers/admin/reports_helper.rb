@@ -210,23 +210,22 @@ module Admin::ReportsHelper
    	  if params[:subaction] == "customer_record"
    	  	@start_from = params[:report2][:start_date] rescue ""
    	  	@start_to = params[:report2][:end_date] rescue ""
-   	  
+        # @first_name = "%" + params[:report2][:first_name] + "%" rescue ""
+        # @last_name = "%" + params[:report2][:last_name] + "%" rescue ""
         if @start_from > @start_to
           flash[:notice] = "Start date cannot be greater than End date."
         else
-          
+          @users = Review.select(:id,:user_id).where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null', @start_from, @start_to).map(&:user_id).uniq  rescue nil
+          send_data(render_to_string(:template=>"admin/reports/customer_record.html.erb" ) , :type=>"text/xls",:filename => "customer_summary.xls")
         end
       elsif params[:id] == "data_dump"
-      	@users = Review.select(:id,:user_id).where('user_id is not null').map(&:user_id).uniq rescue nil
-        send_data(render_to_string(:template=>"admin/reports/customer_record.html.erb" ) , :type=>"text/xls",:filename => "all_customer_summary.xls")
+      	  @users = Review.select(:id,:user_id).where('user_id is not null').map(&:user_id).uniq rescue nil
+          send_data(render_to_string(:template=>"admin/reports/customer_record.html.erb" ) , :type=>"text/xls",:filename => "all_customer_summary.xls")
       else
       	  @start_from = 1.year.ago 
    	  	  @start_to =  Date.today 
-      end
-      @start_date
-      unless params[:id] == "data_dump"
-   	    @users = Review.select(:id,:user_id).where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null', @start_from, @start_to).map(&:user_id).uniq rescue nil
-        send_data(render_to_string(:template=>"admin/reports/customer_record.html.erb" ) , :type=>"text/xls",:filename => "customer_summary.xls")
+   	  	  @users = Review.select(:id,:user_id).where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null', @start_from, @start_to).map(&:user_id).uniq rescue nil
+          send_data(render_to_string(:template=>"admin/reports/customer_record.html.erb" ) , :type=>"text/xls",:filename => "customer_summary.xls")
       end
    end
 

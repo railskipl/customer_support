@@ -115,6 +115,19 @@ jQuery(document).ready(function(){
 			      <%= f.text_field :end_date,:required => :true %>
 			       </span>
 			    </td>
+
+			  </tr>
+			  <tr>
+			  	 <td>First Name</td>
+			     <td><span >
+			      <%= f.text_field :first_name %>
+			       </span>
+			     </td>
+			     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<td>Last Name</td>
+			     <td><span >
+			      <%= f.text_field :last_name %>
+			       </span>
+			     </td>
 			  </tr>
 			  <td><%= button_tag  :submit ,name:"subaction",value: "customer_record",:class => "btn btn btn-primary" %></td>
 			   

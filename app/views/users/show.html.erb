@@ -10,7 +10,7 @@
         	<div class="form-box4">
             	<div class="login-field-box3">
                 	<div class="text-box3">First Name*</div>
-                    <p class="auto-field3"><%= @user.first_name %></p>
+                    <%= text_field_tag @user.first_name, @user.first_name,:class =>"field3",:disabled => true %>
                 </div>
                 <div class="clear"></div>
                 
@@ -22,7 +22,7 @@
                 
                 <div class="login-field-box3">
                 	<div class="text-box3">Email*</div>
-                    <p class="auto-field3"><%= @user.email %></p>
+                    <%= text_field_tag @user.email, @user.email,:class =>"field3",:disabled => true %>
                 </div>
                 <div class="clear"></div>
                 
@@ -39,43 +39,43 @@
                 
                 <div class="login-field-box3">
                 	<div class="text-box3">Gender*</div>
-                    <p class="auto-field3"><%= @user.gender %></p>
+                    <%= text_field_tag @user.gender, @user.gender,:class =>"field3",:disabled => true %>
                 </div>
                 <div class="clear"></div>
                 
                 <div class="login-field-box3">
                 	<div class="text-box3">Age*</div>
-                    <p class="auto-field3"><%= @user.age %></p>
+                    <%= text_field_tag @user.age, @user.age,:class =>"field3",:disabled => true %>
                 </div>
                 <div class="clear"></div>
                 
                 <div class="login-field-box3">
                 	<div class="text-box3">Address Line1</div>
-                    <p class="auto-field3"><%= @user.address_line1 %></p>
+                  <%= text_field_tag @user.address_line1, @user.address_line1,:class =>"field3",:disabled => true %>
                 </div>
                 <div class="clear"></div>
                 
                 <div class="login-field-box3">
                 	<div class="text-box3">Town</div>
-                    <p class="auto-field3"><%= @user.town %></p>
+                    <%= text_field_tag @user.town, @user.town,:class =>"field3",:disabled => true %>
                 </div>
                 <div class="clear"></div>
                 
                 <div class="login-field-box3">
                 	<div class="text-box3">Country*</div>
-                    <p class="auto-field3"><%= @user.country %></p>
+                    <%= text_field_tag @user.country, @user.country,:class =>"field3",:disabled => true %>
                 </div>
                 <div class="clear"></div>
                 
                 <div class="login-field-box3">
                 	<div class="text-box3">Security Question*</div>
-                    <p class="auto-field3"><%= @user.secret_question %></p>
+                    <%= text_field_tag @user.secret_question, @user.secret_question,:class =>"field3",:disabled => true %>
                 </div>
                 <div class="clear"></div>
                 
                 <div class="login-field-box3">
                 	<div class="text-box3">Answer*</div>
-                    <p class="auto-field3"><%= @user.answer %></p>
+                    <%= text_field_tag @user.answer, @user.answer,:class =>"field3",:disabled => true %>
                 </div>
                 <div class="clear"></div>
                 
@@ -84,7 +84,7 @@
             <div class="form-box4">
             	<div class="login-field-box3">
                 	<div class="text-box3">Last Name*</div>
-                    <p class="auto-field3"><%= @user.last_name %></p>
+                      <%= text_field_tag @user.last_name, @user.last_name,:class =>"field3",:disabled => true %>
                 </div>
                 <div class="clear"></div>
                 
@@ -96,7 +96,7 @@
                 
                 <div class="login-field-box3">
                 	<div class="text-box3">Confirm Email*</div>
-                    <p class="auto-field3"><%= @user.email %></p>
+                      <%= text_field_tag @user.email, @user.email,:class =>"field3",:disabled => true %>
                 </div>
                 <div class="clear"></div>
                 
@@ -114,32 +114,33 @@
                 
                 <div class="login-field-box3">
                 	<div class="text-box3">DOB</div>
-                    <p class="auto-field3"><%= @user.dob %></p>
+                      <%= text_field_tag @user.dob, @user.dob.strftime("%d/%m/%Y"),:class =>"field3",:disabled => true  rescue nil %>
                 </div>
                 <div class="clear"></div>
                 
                 <div class="login-field-box3">
                 	<div class="text-box3">Address Line2</div>
-                    <p class="auto-field3"><%= @user.address_line2 %></p>
+              <%= text_field_tag @user.address_line2, @user.address_line2,:class =>"field3",:disabled => true %>
+                    
                 </div>
                 <div class="clear"></div>
                 
                 <div class="login-field-box3">
                 	<div class="text-box3">Code</div>
-                    <p class="auto-field3"><%= @user.postal_code %></p>
+                      <%= text_field_tag @user.postal_code, @user.postal_code,:class =>"field3",:disabled => true %>
                 </div>
                 <div class="clear"></div>
                 
                 <div class="login-field-box3">
                 	<div class="text-box3">I Live*</div>
-                    <p class="auto-field3"><%= @user.lives_in %></p>
+                    <%= text_field_tag @user.lives_in, @user.lives_in,:class =>"field3",:disabled => true %>
                 </div>
                 <div class="clear"></div>
-                
+                <!-- 
                 <div class="login-field-box3">
                 	<div class="text-box3">&nbsp;</div>
-                    <p class="auto-field3"><%= @user.lives_in %></p>
-                </div>
+                    <p class="auto-field3"><%#= @user.lives_in %></p>
+                </div> -->
                 <div class="clear"></div>
                 
                 <div class="login-field-box3">

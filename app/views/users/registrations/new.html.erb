@@ -205,7 +205,7 @@ background-color:#FC0; font-size: 33px;
                 
                 <div class="login-field-box">
                 	<div class="text-box1">Security Question*</div>
-                    <%= f.select :secret_question, [ ["What was your childhood nickname?", "What was your childhood nickname?"], ["In what city or town was your first job?", "In what city or town was your first job?"],["What is your mother's maiden name?" , "What is your mother's maiden name?"] ], {},:class=>"field1" %>
+                    <%= f.select :secret_question, [ ["What was your childhood nickname?", "What was your childhood nickname?"], ["In what city or town was your first job?", "In what city or town was your first job?"],["What is your mother's maiden name?" , "What is your mother's maiden name?"] ], {:prompt => "Select Question"},:class=>"field1 select_box_custom" %>
          
                 </div>
                 <div class="clear"></div>
@@ -251,7 +251,7 @@ background-color:#FC0; font-size: 33px;
                 
                 <div class="login-field-box">
                 	<div class="text-box1">DOB</div>
-                    <%= f.text_field :dob , :id => "datepicker1",required: true ,:class => "field1" %>
+                    <%= f.text_field :dob , :id => "datepicker1",:class => "field1" %>
                     <%#= f.date_select :dob, :start_year =>  (Time.now.year - 100),:end_year=>(Time.now.year - 18), order: [:day,:month, :year], prompt: { day: 'Day', month: 'Month', year: 'Year'}%>
                 </div>
                 <div class="clear"></div>
@@ -271,7 +271,7 @@ background-color:#FC0; font-size: 33px;
                 <div class="login-field-box">
                 	<div class="text-box1">I Live*</div>
                 	<span id="hide">
-                		<%= select_tag("user[lives_in]", grouped_options_for_select(@city_group, selected_key = @user.lives_in, prompt = nil), :id=> 'user_i_live' ,:onchange => 'CheckOther();',:class => "field1 select_box_custom") %>
+                		<%= select_tag("user[lives_in]", grouped_options_for_select(@city_group, selected_key = @user.lives_in, prompt = nil), :id=> 'user_i_live',:prompt => "Select Location" ,:onchange => 'CheckOther();',:class => "field1 select_box_custom") %>
                 	</span>
                     </div>
                 <div class="clear"></div>
@@ -297,13 +297,13 @@ background-color:#FC0; font-size: 33px;
                 </div>
 
                 <div class="check-one">
-                <%=f.check_box :is_subscribe ,:class=> "ch-box"%> <span style = "color:#696969">Subscribe to receive Promotional Materials from our partners</span>
+                <%=f.check_box :is_subscribe ,:class=> "ch-box"%> <span style = "font-weight: lighter;color:#696969">Subscribe to receive Promotional Materials from our partners</span>
                 </div>
                 <div class="check-one">
-                <%=f.check_box :accept_t_and_c , id: "field_terms", required: true, value: true,:class=> "ch-box"%><%=link_to "I Agree to the Term and Conditions. *", "/terms-of-use",:style => "color:#fbaf3d" ,:target => "new" %>
+                <%=f.check_box :accept_t_and_c , id: "field_terms", required: true, value: true,:class=> "ch-box"%><%=link_to "I agree to the Term and Conditions. *", "/terms-of-use",:style => "color:#fbaf3d" ,:target => "new" %>
                 </div>
                 <div>
-                	 <%= recaptcha_tags %>
+                	 <%= recaptcha_tags %><br/>
                 </div>
                  <input type="submit" class="btn2 left-align" value="Register" id="save">
            

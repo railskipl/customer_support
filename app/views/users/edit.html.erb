@@ -114,7 +114,7 @@ background-color:#FC0; font-size: 33px;
                 <div class="login-field-box3">
                 	<div class="text-box3">Gender*</div>
                     
-							<%= f.select :gender, [["Male", 1], ["Female", 2]],{},:class => "field3 select_box_custom" %>
+							<%= f.select :gender, [["Male", 1], ["Female", 2]],{:prompt => "Select Gender"},:class => "field3 select_box_custom" %>
                 </div>
                 <div class="clear"></div>
                 
@@ -145,17 +145,8 @@ background-color:#FC0; font-size: 33px;
                 
                 <div class="login-field-box3">
                 	<div class="text-box3">Security Question*</div>
-                   	<select name="user[secret_question]" required = true class="field3 select_box_custom">
-									<option value="What was your childhood nickname?">
-									  What was your childhood nickname?
-									</option>
-									<option value="In what city or town was your first job?">
-									  In what city or town was your first job?
-									</option>
-									<option value="What is your mother's maiden name?">
-									  What is your mother's maiden name?
-									</option>
-								</select>
+                          <%= f.select :secret_question, [ ["What was your childhood nickname?", "What was your childhood nickname?"], ["In what city or town was your first job?", "In what city or town was your first job?"],["What is your mother's maiden name?" , "What is your mother's maiden name?"] ], {:prompt => "Select Question"},:class=>"field1 select_box_custom" %>
+                   	
                 </div>
                 <div class="clear"></div>
                 
@@ -218,7 +209,7 @@ background-color:#FC0; font-size: 33px;
                 
                 <div class="login-field-box3">
                 	<div class="text-box3">I Live*</div>
-                    	<%= select_tag("user[lives_in]", grouped_options_for_select(@city_group, selected_key = @user.lives_in, prompt = nil), :id=> 'user_i_live' ,:onchange => 'CheckOther();',:class => "field3 select_box_custom") %>
+                    	<%= select_tag("user[lives_in]", grouped_options_for_select(@city_group, selected_key = @user.lives_in, prompt = nil), :id=> 'user_i_live' ,:onchange => 'CheckOther();',:prompt => "Select Location",:class => "field3 select_box_custom") %>
                 </div>
                 <div class="clear"></div>
                 

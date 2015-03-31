@@ -2,6 +2,20 @@
 <!-- 	<span class="span1">
 	</span> -->
 <%#end%>
+<style type="text/css">
+.select_box_custom
+{
+    font-size: 13px; font-family: corbel; width: 200px;
+}
+select.select_box_custom option:hover {
+       box-shadow: 0 0 10px 100px #fbaf3d inset;
+   }
+/*.select_box_custom :hover option
+{
+background-color:#FC0; font-size: 33px;
+ }*/
+</style>
+
 <% @city_group =
                  [
                  ["Nairobi", [["Arboretum","Arboretum"],["Buruburu","Buruburu"],
@@ -63,53 +77,53 @@
 				    
 
 
-  <%= stylesheet_link_tag    "dd" %>
+  <%#= stylesheet_link_tag    "dd" %>
 
-<script src="/assets/jquery.dd.js"></script>
+<!-- <script src="/assets/jquery.dd.js"></script> -->
 <script>
-function createByJson() {
-	var jsonData = [					
-					{description:'Choos your payment gateway', value:'', text:'Payment Gateway'},					
-					{image:'images/msdropdown/icons/Amex-56.png', description:'My life. My card...', value:'amex', text:'Amex'},
-					{image:'images/msdropdown/icons/Discover-56.png', description:'It pays to Discover...', value:'Discover', text:'Discover'},
-					{image:'images/msdropdown/icons/Mastercard-56.png', title:'For everything else...', description:'For everything else...', value:'Mastercard', text:'Mastercard'},
-					{image:'images/msdropdown/icons/Cash-56.png', description:'Sorry not available...', value:'cash', text:'Cash on devlivery', disabled:true},
-					{image:'images/msdropdown/icons/Visa-56.png', description:'All you need...', value:'Visa', text:'Visa'},
-					{image:'images/msdropdown/icons/Paypal-56.png', description:'Pay and get paid...', value:'Paypal', text:'Paypal'}
-					];
-	$("#byjson").msDropDown({byJson:{data:jsonData, name:'payments2'}}).data("dd");
-}
-$(document).ready(function(e) {		
-	//no use
-	try {
-		// var pages = $(".pages").msDropdown({on:{change:function(data, ui) {
-		// 										var val = data.value;
-		// 										if(val!="")
-		// 											window.location = val;
-		// 									}}}).data("dd");
+// function createByJson() {
+// 	var jsonData = [					
+// 					{description:'Choos your payment gateway', value:'', text:'Payment Gateway'},					
+// 					{image:'images/msdropdown/icons/Amex-56.png', description:'My life. My card...', value:'amex', text:'Amex'},
+// 					{image:'images/msdropdown/icons/Discover-56.png', description:'It pays to Discover...', value:'Discover', text:'Discover'},
+// 					{image:'images/msdropdown/icons/Mastercard-56.png', title:'For everything else...', description:'For everything else...', value:'Mastercard', text:'Mastercard'},
+// 					{image:'images/msdropdown/icons/Cash-56.png', description:'Sorry not available...', value:'cash', text:'Cash on devlivery', disabled:true},
+// 					{image:'images/msdropdown/icons/Visa-56.png', description:'All you need...', value:'Visa', text:'Visa'},
+// 					{image:'images/msdropdown/icons/Paypal-56.png', description:'Pay and get paid...', value:'Paypal', text:'Paypal'}
+// 					];
+// 	$("#byjson").msDropDown({byJson:{data:jsonData, name:'payments2'}}).data("dd");
+// }
+// $(document).ready(function(e) {		
+// 	//no use
+// 	try {
+// 		// var pages = $(".pages").msDropdown({on:{change:function(data, ui) {
+// 		// 										var val = data.value;
+// 		// 										if(val!="")
+// 		// 											window.location = val;
+// 		// 									}}}).data("dd");
 
-		// var pagename = document.location.pathname.toString();
-		pagename = pagename.split("/");
-		pages.setIndexByValue(pagename[pagename.length-1]);
-		$("#ver").html(msBeautify.version.msDropdown);
-	} catch(e) {
-		//console.log(e);	
-	}
+// 		// var pagename = document.location.pathname.toString();
+// 		pagename = pagename.split("/");
+// 		pages.setIndexByValue(pagename[pagename.length-1]);
+// 		$("#ver").html(msBeautify.version.msDropdown);
+// 	} catch(e) {
+// 		//console.log(e);	
+// 	}
 	
-	$("#ver").html(msBeautify.version.msDropdown);
+// 	$("#ver").html(msBeautify.version.msDropdown);
 		
-	//convert
-	$("select").msDropdown({roundedBorder:false});
-	createByJson();
-	$("#tech").data("dd");
-});
-function showValue(h) {
-	console.log(h.name, h.value);
-}
-$("#tech").change(function() {
-	console.log("by jquery: ", this.value);
-})
-//
+// 	//convert
+// 	$("select").msDropdown({roundedBorder:false});
+// 	createByJson();
+// 	$("#tech").data("dd");
+// });
+// function showValue(h) {
+// 	console.log(h.name, h.value);
+// }
+// $("#tech").change(function() {
+// 	console.log("by jquery: ", this.value);
+// })
+// //
 </script>
 
 <div class="page-link">
@@ -166,7 +180,7 @@ $("#tech").change(function() {
                 
                 <div class="login-field-box">
                 	<div class="text-box1">Gender*</div>
-                	  <select class="drp-select1 pages"  name="user['gender']" >
+                	  <select class="field1 select_box_custom"  name="user['gender']" >
                       <option>Select Gender</option>
                       <option value="1">Male</option>
                       <option value="2">Female</option>
@@ -176,7 +190,7 @@ $("#tech").change(function() {
                 
                 <div class="login-field-box">
                 	<div class="text-box1">Age*</div>
-                   <%= f.select :age, [["18-25", "18-25"],["26-35", "26-35"],["36-45", "36-45"],["46-55", "46-55"],["55+", "55+"]], :class=>"drp-select1 pages"%>
+                   <%= f.select :age, [["18-25", "18-25"],["26-35", "26-35"],["36-45", "36-45"],["46-55", "46-55"],["55+", "55+"]], {},:class=>"field1 select_box_custom"%>
                 </div>
                 <div class="clear"></div>
                 
@@ -194,13 +208,13 @@ $("#tech").change(function() {
                 
                 <div class="login-field-box">
                 	<div class="text-box1">Country*</div>
-                    <%=country_select("user", "country",{ "Kenya" => "Kenya"} ,:class =>"drp-select1 pages")%>
+                    <%=country_select("user", "country",{ "Kenya" => "Kenya"} ,{},:class =>"field1 select_box_custom")%>
                 </div>
                 <div class="clear"></div>
                 
                 <div class="login-field-box">
                 	<div class="text-box1">Security Question*</div>
-                     <select class="drp-select1 pages" name="user[secret_question]" required = true>
+                     <select class="field1 select_box_custom" name="user[secret_question]" required = true>
                      	    <option>Select Question</option>
 									<option value="What was your childhood nickname?">
 									  What was your childhood nickname?
@@ -256,7 +270,8 @@ $("#tech").change(function() {
                 
                 <div class="login-field-box">
                 	<div class="text-box1">DOB</div>
-                    <%= f.date_select :dob, :start_year =>  (Time.now.year - 100),:end_year=>(Time.now.year - 18), order: [:day,:month, :year], prompt: { day: 'Day', month: 'Month', year: 'Year'}%>
+                    <%= f.text_field :dob , :id => "datepicker1",required: true ,:class => "field1" %>
+                    <%#= f.date_select :dob, :start_year =>  (Time.now.year - 100),:end_year=>(Time.now.year - 18), order: [:day,:month, :year], prompt: { day: 'Day', month: 'Month', year: 'Year'}%>
                 </div>
                 <div class="clear"></div>
                 
@@ -275,7 +290,7 @@ $("#tech").change(function() {
                 <div class="login-field-box">
                 	<div class="text-box1">I Live*</div>
                 	<span id="hide">
-                		<%= select_tag("user[lives_in]", grouped_options_for_select(@city_group, selected_key = @user.lives_in, prompt = nil), :id=> 'user_i_live' ,:onchange => 'CheckOther();') %>
+                		<%= select_tag("user[lives_in]", grouped_options_for_select(@city_group, selected_key = @user.lives_in, prompt = nil), :id=> 'user_i_live' ,:onchange => 'CheckOther();',:class => "field1 select_box_custom") %>
                 	</span>
                     </div>
                 <div class="clear"></div>
@@ -298,7 +313,7 @@ $("#tech").change(function() {
 
 
                 <div class="check-one">
-                <%=f.check_box :is_subscribe ,:class=> "ch-box"%> Subscribe to receive Promotional Materials from our partners
+                <%=f.check_box :is_subscribe ,:class=> "ch-box"%> <span style = "color:#696969">Subscribe to receive Promotional Materials from our partners</span>
                 </div>
                 <div class="check-one">
                 <%=f.check_box :accept_t_and_c , id: "field_terms", required: true, value: true,:class=> "ch-box"%><%=link_to "I Agree to the Term and Conditions. *", "/terms-of-use",:style => "color:#fbaf3d" ,:target => "new" %>

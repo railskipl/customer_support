@@ -223,10 +223,19 @@
             </div>
             
             <div class="form-box6">
-            	<div class="up-photo"><img src="images/dummy-photo.jpg" alt=""></div>
+            	<div class="up-photo"><img src="/assets/dummy-photo.jpg" alt=""></div>
                 
             	<div class="clear"></div>
             </div>
+
+              <div class="check-one">
+                <%=f.check_box :accept_t_and_c , id: "field_terms", required: true, value: true,:class=> "ch-box"%><%=link_to "I Agree to the Term and Conditions. *", "/terms-of-use",:style => "color:#fbaf3d" ,:target => "new" %>
+                </div>
+                <div>
+                	 <%= recaptcha_tags %>
+                </div>
+                 <input type="submit" class="btn2 left-align" value="Save" id="save">
+           
             
             <div class="clear"></div>
         </div>

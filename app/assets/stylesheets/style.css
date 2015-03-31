@@ -1043,3 +1043,19 @@ textarea, input,select { outline: none; }
 
 
 
+.text-box2 a
+{
+    margin:0px;
+ padding:0px;
+ width:250px;
+ float:left;
+ line-height:30px;
+ color:#696969;
+ font-size:12px;
+ 
+}
+.text-box2 a:hover
+{
+font-size:13px;    
+font-weight:bold;
+}

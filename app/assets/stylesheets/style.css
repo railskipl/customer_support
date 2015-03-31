@@ -829,8 +829,9 @@ textarea, input,select { outline: none; }
 	float:right;
 	border:#dddcdc 0px solid;
 	background:#e6e6e6;
+	color: #696969;
 	font-family:corbel;
-	font-size:14px;
+	font-size:13px;
 	-webkit-box-shadow: 0px 4px 2px -1px #dadada;
 	-moz-box-shadow: 0px 4px 2px -1px #dadada;
 	box-shadow: 0px 4px 2px -1px #dadada;
@@ -845,7 +846,7 @@ textarea, input,select { outline: none; }
 	border:#dddcdc 0px solid;
 	background:#e6e6e6;
 	font-family:corbel;
-	font-size:14px;
+	font-size:13px;
 	color:#696969;
 	-webkit-box-shadow: 0px 4px 2px -1px #dadada;
 	-moz-box-shadow: 0px 4px 2px -1px #dadada;
@@ -862,7 +863,8 @@ textarea, input,select { outline: none; }
 	border:#dddcdc 0px solid;
 	background:#e6e6e6;
 	font-family:corbel;
-	font-size:14px;
+	font-size:13px;
+	color: #696969;
 	-webkit-box-shadow: 0px 4px 2px -1px #dadada;
 	-moz-box-shadow: 0px 4px 2px -1px #dadada;
 	box-shadow: 0px 4px 2px -1px #dadada;

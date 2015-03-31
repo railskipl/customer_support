@@ -734,6 +734,40 @@ body
 	-moz-box-shadow: 0px 4px 2px -1px #dadada;
 	box-shadow: 0px 4px 2px -1px #dadada;
 }*/
+.field11
+{
+	margin:0px;
+	padding:2px 5px;
+	width:190px;
+	height:25px;
+	float:left;
+	border:#dddcdc 0px solid;
+	background:#e6e6e6;
+	font-family:corbel;
+	font-size:13px;
+	width:200px;
+	-webkit-box-shadow: 0px 4px 2px -1px #dadada;
+	-moz-box-shadow: 0px 4px 2px -1px #dadada;
+	box-shadow: 0px 4px 2px -1px #dadada;
+}
+
+.field12
+{
+	margin:0px;
+	padding:2px 5px;
+	width:190px;
+	height:25px;
+	float:unset;
+	border:#dddcdc 0px solid;
+	background:#e6e6e6;
+	font-family:corbel;
+	font-size:13px;
+	width:50px;
+	-webkit-box-shadow: 0px 4px 2px -1px #dadada;
+	-moz-box-shadow: 0px 4px 2px -1px #dadada;
+	box-shadow: 0px 4px 2px -1px #dadada;
+}
+
 .field1
 {
 	margin:0px;

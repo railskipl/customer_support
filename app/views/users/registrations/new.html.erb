@@ -153,7 +153,7 @@ background-color:#FC0; font-size: 33px;
                 
                 <div class="login-field-box">
                 	<div class="text-box1">Preferred Alias *</div>
-                    <%= f.text_field :preferred_alias, required: true, "maxlength"=>"20", "min" => "1","max" => "20","id" =>"user_alias",:class => "field1"%>
+                    <%= f.text_field :preferred_alias, required: true, "maxlength"=>"20", "min" => "1","max" => "12","id" =>"user_alias",:class => "field1"%>
                 </div>
                 <div class="clear"></div>
                 
@@ -269,7 +269,7 @@ background-color:#FC0; font-size: 33px;
                 <div class="clear"></div>
                 
                 <div class="login-field-box">
-                	<div class="text-box1">I Live *</div>
+                	<div class="text-box1">I Live In *</div>
                 	<span id="hide">
                 		<%= select_tag("user[lives_in]", grouped_options_for_select(@city_group, selected_key = @user.lives_in, prompt = nil), :id=> 'user_i_live',:prompt => "Select Location",:required => true ,:onchange => 'CheckOther();',:class => "field1 select_box_custom") %>
                 	</span>

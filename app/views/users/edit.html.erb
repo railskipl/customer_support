@@ -251,7 +251,7 @@ background-color:#FC0; font-size: 33px;
                 <div class="clear"></div>
                 
                 <div class="login-field-box3">
-                	<div class="text-box3">I Live *</div>
+                	<div class="text-box3">I Live In *</div>
                     	<%= select_tag("user[lives_in]", grouped_options_for_select(@city_group, selected_key = @user.lives_in, prompt = nil), :id=> 'user_i_live' ,:onchange => 'CheckOther();',:prompt => "Select Location",:class => "field3 select_box_custom") %>
                 </div>
                 <div class="clear"></div>

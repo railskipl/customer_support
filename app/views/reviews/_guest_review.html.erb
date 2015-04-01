@@ -15,11 +15,13 @@ background-color:#e2e2e4;
 }
 
 select.field11 option:hover {
-       box-shadow: 0 0 10px 100px #fbaf3d inset;
+     box-shadow: 0 0 10px 100px #fbaf3d inset;
+    -webkit-box-shadow: 0 0 10px 100px #fbaf3d inset;
 }
 
 select.field12 option:hover {
        box-shadow: 0 0 10px 100px #fbaf3d inset;
+       -webkit-box-shadow: 0 0 10px 100px #fbaf3d inset;
 }
 </style>
 <%= form_for(@review) do |f|%>
@@ -96,7 +98,7 @@ select.field12 option:hover {
                 
                 <div class="login-field-box">
                     <div class="text-box1">Person Responsible</div>
-                   <%= f.text_field :personal_responsible, "maxlength"=>"60", "min" => "1","max" => "60" ,:class => "field1", :placeholder => "State the name of the person for better follow-up." %>
+                   <%= f.text_field :personal_responsible, "maxlength"=>"60", "min" => "1","max" => "60" ,:class => "field1", :placeholder => "For better follow-up." %>
                 </div>
                 <div class="clear"></div>
                 
@@ -143,7 +145,7 @@ select.field12 option:hover {
                 
                 <div class="login-field-box">
                     <div class="text-box12" style="font-family:andlso;font-size:15px;">Account Details</div>
-                    <%= f.text_field :account_details ,"maxlength"=>"20", "min" => "1","max" => "20" ,:class => "field1",:placeholder => "This will not be published and only used to ensure fast resolution."%>
+                    <%= f.text_field :account_details ,"maxlength"=>"20", "min" => "1","max" => "20" ,:class => "field1",:placeholder => "This will not be published."%>
                 </div>
                 <div class="clear"></div>
             </div>

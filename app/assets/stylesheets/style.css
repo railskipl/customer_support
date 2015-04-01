@@ -457,8 +457,8 @@ body
 {
 	margin:0px 0px 20px;
 	padding:0px;
-	font-size:14px;
-	color:#fbab32;
+	font-size:13px;
+	color:#fbaf3d;
 }
 .right-link
 {
@@ -991,7 +991,7 @@ textarea, input,select { outline: none; }
 	margin:0px 0px 10px;
 	padding:0px;
 	font-size:24px;
-	color:#faae3d;
+	color:#fbaf3d;
 	font-family:andlso;
 }
 .left-align{float:left;}

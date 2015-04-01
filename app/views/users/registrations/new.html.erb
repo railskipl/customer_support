@@ -205,7 +205,7 @@ background-color:#FC0; font-size: 33px;
                 
                 <div class="login-field-box">
                 	<div class="text-box1">Security Question *</div>
-                    <%= f.select :secret_question, [ ["What was your childhood nickname?", "What was your childhood nickname?"], ["In what city or town was your first job?", "In what city or town was your first job?"],["What is your mother's maiden name?" , "What is your mother's maiden name?"] ], {:prompt => "Select Question"},:class=>"field1 select_box_custom" %>
+                    <%= f.select :secret_question, [ ["What was your childhood nickname?", "What was your childhood nickname?"], ["In what city or town was your first job?", "In what city or town was your first job?"],["What is your mother's maiden name?" , "What is your mother's maiden name?"] ], {:prompt => "Select Question"},:required => true,:class=>"field1 select_box_custom" %>
          
                 </div>
                 <div class="clear"></div>
@@ -271,7 +271,7 @@ background-color:#FC0; font-size: 33px;
                 <div class="login-field-box">
                 	<div class="text-box1">I Live *</div>
                 	<span id="hide">
-                		<%= select_tag("user[lives_in]", grouped_options_for_select(@city_group, selected_key = @user.lives_in, prompt = nil), :id=> 'user_i_live',:prompt => "Select Location" ,:onchange => 'CheckOther();',:class => "field1 select_box_custom") %>
+                		<%= select_tag("user[lives_in]", grouped_options_for_select(@city_group, selected_key = @user.lives_in, prompt = nil), :id=> 'user_i_live',:prompt => "Select Location",:required => true ,:onchange => 'CheckOther();',:class => "field1 select_box_custom") %>
                 	</span>
                     </div>
                 <div class="clear"></div>

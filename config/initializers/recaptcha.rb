@@ -10,8 +10,8 @@ elsif Rails.env == "production"
 	  #config.public_key  = '6LdeoAMTAAAAAD6RFowAvp9Ok89MfdOlhlLdlBPx'
 	  #config.private_key = '6LdeoAMTAAAAAF3MxT2JPO3lsG1NtkCPEDgRDkbZ'
 	  #heroku
-	  config.public_key = '6LeEnwQTAAAAAILSL4lNgbYl-1FZo4nXUO3xKCj1'
-      config.private_key = '6LeEnwQTAAAAAFBkJYnu6H4whEeFxCyUJ19HL_Tu'
+	  config.public_key = '6LdxGfsSAAAAAGqbURclTwDO_JZnquS0VQQ3HX56'
+      config.private_key = '6LdxGfsSAAAAADYUG2YkJfW1oKK6YbjSm1DV_RuL'
 	  #config.proxy = 'http://0.0.0.0.3000'
 	end
 else

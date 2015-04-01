@@ -151,7 +151,7 @@
             </div>
             
             <div class="form-box6">
-            	<div class="up-photo"><img src="/assets/dummy-photo.jpg" alt=""></div>
+            	<div class="up-photo"><%=image_tag @user.avatar.url, :style =>"height:150px;width:120px;" if @user.avatar.present? %></div>
                 
             	<div class="clear"></div>
             </div>

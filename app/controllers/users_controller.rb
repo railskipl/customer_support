@@ -9,10 +9,12 @@ class UsersController < ApplicationController
 	end
 
   def show
+    @active_tab = 'my_account'
   	@sub_action = 'show_profile'
   end
 
   def edit
+     @active_tab = 'my_account'
   	@sub_action = 'update_profile'
   end
 

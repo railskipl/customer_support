@@ -1060,3 +1060,15 @@ textarea, input,select { outline: none; }
 font-size:13px;    
 font-weight:bold;
 }
+
+.new-captcha
+{
+width:551px;
+height:100px; 
+margin: 0 ;
+position: relative;
+bottom: 10px;
+ 
+/*padding-left:60px; */
+
+}

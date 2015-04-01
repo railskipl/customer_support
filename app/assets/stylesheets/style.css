@@ -548,14 +548,15 @@ body
 }
 .design
 {
-	float:right;
+	/*float:right;*/
 	color:#696969;
 }
 .design a
 {color:#696969;}
+
 .design a:hover
 {
-	color:#f59910;
+	color:gold;
 }
 
 

@@ -21,17 +21,17 @@
           <div class="login-box">
               <div class="log-head">Login</div>
                 <div class="login-field-box">
-                  <div class="text-box1">Email*</div>
+                  <div class="text-box1">Email *</div>
                     <%= f.email_field :email, :autofocus => true ,:required => true, :class => "field1"%>
                 </div>
                 <div class="clear"></div>
                 <div class="login-field-box">
-                  <div class="text-box1">Password*</div>
+                  <div class="text-box1">Password *</div>
                     <%= f.password_field :password  ,:required => true, :class => "field1" %>
                 </div>
                 <div class="clear"></div>
                 <div class="login-field-box2">
-                  <div class="text-box2"><%= link_to "Forgotten your password?", new_password_path(resource_name), :style => "color:#696969" %></div>
+                  <div class="text-box2 design"><%= link_to "Forgotten your password?", new_password_path(resource_name), :style => "font-family:andlso;font-size:15px;" %></div>
                    <%= f.submit "Login", :class => "btn2" %>
                 </div>
             </div>
@@ -43,7 +43,7 @@
                 New to Xemaxema
                 </div>
                 <div class="login-field-box">
-                  <div class="text-box1">Email*</div>
+                  <div class="text-box1">Email *</div>
                    <%= email_field_tag :email, nil, required: true ,:class=> "field1" %>
                 </div>
                 <div class="clear"></div>

@@ -50,7 +50,7 @@ select.field12 option:hover {
             <div class="join-form-box">
             
                 <div class="login-field-box4">
-                    <div class="text-box1">Subject*</div>
+                    <div class="text-box1">Subject *</div>
                     <%= f.text_field :title, required: true, "maxlength"=>"60", "min" => "1","max" => "35", :autofocus=>true, :class => "field4",:placeholder => "Short, direct, informative, impactful."%>
                 </div>
                 <div class="clear"></div>
@@ -63,33 +63,33 @@ select.field12 option:hover {
                 <div class="clear"></div>
                 
                 <div class="login-field-box">
-                    <div class="text-box1">Incident Date*</div>
+                    <div class="text-box1">Incident Date *</div>
                     <%= f.text_field :date , :id => "datepicker1",required: true ,:class => "field1" ,:placeholder => "Incident Date"%>
                 </div>
                 <div class="clear"></div>
                 
                 <div class="login-field-box">
-                    <div class="text-box1">Industry*</div>
+                    <div class="text-box1">Industry *</div>
                    <%= f.collection_select :industry_id, Industry.order(:title) + [Industry.new(:id => Industry.last.id,:title => "Other")], :id,:title,{:include_blank=>"Select Industry"},:rel => "/industry/companies_by_industry",:class=>"field11",  required: true, onchange: 'CheckOther();'%>
               
                 </div>
                 <div class="clear"></div>
                 
                 <div class="login-field-box">
-                    <div class="text-box1">Company*</div>
+                    <div class="text-box1">Company *</div>
                     <%= f.collection_select :company_id, @companies, :id, :title,  {:include_blank=>"Select Company"}, :rel => "/company/towns_by_company",:class=>"field11", required: true%>
             
                 </div>
                 <div class="clear"></div>
                 
                 <div class="login-field-box">
-                    <div class="text-box1">Town*</div>
+                    <div class="text-box1">Town *</div>
                    <%= f.collection_select :town_id, @towns+ [Town.new(:id => Town.last.id + 1,:title => "Other")], :id, :title, {:include_blank=>"Select Town"}, :rel => "/town/locations_by_town_and_company",:class=>"field11",  required: true,:onchange=> "CheckOther_town()"%>
                 </div>
                 <div class="clear"></div>
                 
                 <div class="login-field-box">
-                    <div class="text-box1">Location*</div>
+                    <div class="text-box1">Location *</div>
                   <%= f.collection_select :location_id, @locations ,:id ,:title, {:include_blank=>"Select Location"},:class=>"field11",  required: true%>
                 </div>
                 <div class="clear"></div>
@@ -110,7 +110,7 @@ select.field12 option:hover {
                 <div class="clear"></div>
                 
                 <div class="login-field-box">
-                    <div class="text-box12">Incident Time</div>
+                    <div class="text-box12" style="font-family:andlso;font-size:15px;">Incident Time</div>
                  <%= f.time_select :datetime,{},:class=>"field12"%>
                     
                 </div>
@@ -142,14 +142,14 @@ select.field12 option:hover {
                 <div class="clear"></div>
                 
                 <div class="login-field-box">
-                    <div class="text-box12">Account Details</div>
+                    <div class="text-box12" style="font-family:andlso;font-size:15px;">Account Details</div>
                     <%= f.text_field :account_details ,"maxlength"=>"20", "min" => "1","max" => "20" ,:class => "field1",:placeholder => "This will not be published and only used to ensure fast resolution."%>
                 </div>
                 <div class="clear"></div>
             </div>
             <div class="clear"></div>
                 <div class="login-field-box4">
-                    <div class="text-box1">Your &nbsp;Experience*</div>
+                    <div class="text-box1">Your &nbsp;Experience *</div>
                
                     <%= f.text_area :message, "min" => "1","max" => "300",:rows=>"5",:class=>"text-area4 fr-bt",:placeholder=>"Your review will be vetted before being published." %>
                         
@@ -162,7 +162,7 @@ select.field12 option:hover {
         <% if params[:review_type] == "complaint" %>
         <div class="clear"></div>
         <div class="login-field-box4">
-                    <div class="text-box1">Desired Outcome*</div>
+                    <div class="text-box1">Desired Outcome *</div>
                       <%= f.text_area :desired_outcome, "maxlength"=>"1200", "min" => "1","max" => "200", :class=> "text-area4 fr-bt", :placeholder=>"What action would you like from the company?"%>
                     
                 </div>
@@ -187,7 +187,7 @@ select.field12 option:hover {
                 <div class="clear"></div>
                 <div class="check-one">
                     <input type="checkbox" name="checkbox" value="check" id="ab" class="ch-box" />
-                  <label for="field_terms"> <%=link_to " I agree to the Terms & Conditions*", "/terms-of-use" ,:target => "new", :style => "color:#fbaf3d" %></label>
+                  <label for="field_terms"> <%=link_to " I agree to the Terms & Conditions *", "/terms-of-use" ,:target => "new", :style => "color:#fbaf3d;font-family:andlso;font-size:15px;" %></label>
                 </div>
                         <%= recaptcha_tags %>
                         <%= f.hidden_field :review_type ,:value=>(params[:review_type] ? params[:review_type] :  @review.review_type ) %>

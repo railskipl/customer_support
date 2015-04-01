@@ -124,45 +124,45 @@ background-color:#FC0; font-size: 33px;
 				<% end %>
             <div class="form-box4">
             	<div class="login-field-box3">
-                	<div class="text-box3">First Name*</div>
+                	<div class="text-box3">First Name *</div>
                    <%= f.text_field :first_name, required: true, "maxlength"=>"35", "min" => "1","max" => "35" ,:class => "field3" %>
                 </div>
                 <div class="clear"></div>
                 
                 <div class="login-field-box3">
-                	<div class="text-box3">Preferred Alias*</div>
+                	<div class="text-box3">Preferred Alias *</div>
                       <%= f.text_field :preferred_alias,:disabled=>true ,"maxlength"=>"20", "min" => "1","max" => "20","id" =>"user_alias",:class => "field3" %>
                 </div>
                 <div class="clear"></div>
                 
                 <div class="login-field-box3">
-                	<div class="text-box3">Email*</div>
+                	<div class="text-box3">Email *</div>
                       <%= f.email_field :email, required: true , "maxlength"=>"70", "min" => "1","max" => "70", "autocomplete" => "off",:id=>"user_email", :disabled=>true, :class => "field3" %>
                 </div>
                 <div class="clear"></div>
                 
                 <div class="login-field-box3">
-                	<div class="text-box3">Password*</div>
+                	<div class="text-box3">Password *</div>
                     <%= f.password_field :password , "maxlength"=>"8", "min" => "4","max" => "8",:id=>"password1",:class => "field3" %>
                 </div>
                 <div class="clear"></div>
                 
                 <div class="login-field-box3">
-                	<div class="text-box3">Gender*</div>
+                	<div class="text-box3">Gender *</div>
                     
 							<%= f.select :gender, [["Male", 1], ["Female", 2]],{:prompt => "Select Gender"},:class => "field3 select_box_custom" %>
                 </div>
                 <div class="clear"></div>
                 
                 <div class="login-field-box3">
-                	<div class="text-box3">Age*</div>
+                	<div class="text-box3">Age *</div>
                     <%= text_field_tag :disabled ,nil ,:disabled=>true,:class=>"user_age", value: f.object.age, :class => "field3" %>
 					<%=f.hidden_field :age, :class=>"user_age" %>
                 </div>
                 <div class="clear"></div>
                 
                 <div class="login-field-box3">
-                	<div class="text-box3">Address Line1*</div>
+                	<div class="text-box3">Address Line1 *</div>
                     <%= f.text_field :address_line1, "maxlength"=>"50", "min" => "1","max" => "50", :class => "field3" %>
                 </div>
                 <div class="clear"></div>
@@ -174,7 +174,7 @@ background-color:#FC0; font-size: 33px;
                 <div class="clear"></div>
                 
                 <div class="login-field-box3">
-                	<div class="text-box3">Country*</div>
+                	<div class="text-box3">Country *</div>
                     <%=country_select("user", "country",{ "Kenya" => "Kenya"},{},:class => "field3 select_box_custom" )%>
                 </div>
                 <div class="clear"></div>
@@ -203,7 +203,7 @@ background-color:#FC0; font-size: 33px;
             
             <div class="form-box4">
             	<div class="login-field-box3">
-                	<div class="text-box3">Last Name*</div>
+                	<div class="text-box3">Last Name *</div>
                     <%= f.text_field :last_name, required: true, "maxlength"=>"35", "min" => "1","max" => "35",:class => "field3" %>
                 </div>
                 <div class="clear"></div>
@@ -215,13 +215,13 @@ background-color:#FC0; font-size: 33px;
                 <div class="clear"></div>
                 
                 <div class="login-field-box3">
-                	<div class="text-box3">Confirm Email*</div>
+                	<div class="text-box3">Confirm Email *</div>
                      <%= f.email_field :email, required: true , "maxlength"=>"70", "min" => "1","max" => "70", "autocomplete" => "off",:id=>"user_email", :disabled=>true, :class => "field3" %>
                 </div>
                 <div class="clear"></div>
                 
                 <div class="login-field-box3">
-                	<div class="text-box3">Confirm Password*</div>
+                	<div class="text-box3">Confirm Password *</div>
                       <%= f.password_field :password_confirmation , "maxlength"=>"8", "min" => "4","max" => "8",:id=>"password2",:class => "field3" %>
                 </div>
                 <div class="clear"></div>
@@ -251,7 +251,7 @@ background-color:#FC0; font-size: 33px;
                 <div class="clear"></div>
                 
                 <div class="login-field-box3">
-                	<div class="text-box3">I Live*</div>
+                	<div class="text-box3">I Live *</div>
                     	<%= select_tag("user[lives_in]", grouped_options_for_select(@city_group, selected_key = @user.lives_in, prompt = nil), :id=> 'user_i_live' ,:onchange => 'CheckOther();',:prompt => "Select Location",:class => "field3 select_box_custom") %>
                 </div>
                 <div class="clear"></div>

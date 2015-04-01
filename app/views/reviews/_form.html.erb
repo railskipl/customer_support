@@ -25,9 +25,9 @@ select.field12 option:hover {
 </style>
 <div class="page-link">
         	<ul>
-            	<li><a href="#">Home</a></li>
+            	<li><a href="<%= root_path %>">Home</a></li>
                 <li><span>&raquo;</span></li>
-                <li><a href="#">Review</a></li>
+                <li><a href="<%= root_path %>">Review</a></li>
                 <li><span>&raquo;</span></li>
                 <%if @review.review_type == 'complaint' || params[:review_type] == 'complaint' %>
                 <li><a href="#" class="selected">Complaint</a></li>

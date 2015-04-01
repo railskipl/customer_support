@@ -1072,3 +1072,13 @@ bottom: 10px;
 /*padding-left:60px; */
 
 }
+
+.new-captcha2
+{
+width:520px;
+height:100px; 
+margin: 0; 
+position: relative;
+left:268px;
+bottom: 10px;
+}

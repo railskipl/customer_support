@@ -88,6 +88,7 @@ Jmd::Application.configure do
             :authentication => :login,
             :user_name => "rubyrails9@gmail.com",
             :password => "kiplutmeter"
+  }
 
  config.action_mailer.default_url_options = { :host => 'http://www.xemaxema.com/' }
 

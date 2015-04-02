@@ -90,7 +90,7 @@ Jmd::Application.configure do
             :password => "aHXRe3yUpI44ANqH9B8ekg"
   }
 
- config.action_mailer.default_url_options = { :host => 'http://customer-support-demo.herokuapp.com' }
+ config.action_mailer.default_url_options = { :host => 'http://www.xemaxema.com/' }
 
   config.action_mailer.raise_delivery_errors = true
 end

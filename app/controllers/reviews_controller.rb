@@ -84,9 +84,9 @@ class ReviewsController < ApplicationController
       if verify_recaptcha
         if @review.update_attributes(review_params)
           if current_user
-            ReviewMailer.user_mail(@review).deliver!
-            ReviewMailer.admin_mail(@review).deliver!
-            ReviewMailer.agent_mail(@review).deliver!
+            ReviewMailer.delay.user_mail(@review)
+            ReviewMailer.delay.admin_mail(@review)
+            ReviewMailer.delay.agent_mail(@review)
             user = User.find(current_user.id) rescue nil
             user.update_column(:guest_token, nil) rescue nil
             flash[:notice] = "Your Review Successfully submitted."
@@ -151,9 +151,9 @@ class ReviewsController < ApplicationController
   	  if verify_recaptcha
         if @review.save
           if current_user
-            ReviewMailer.user_mail(@review).deliver!
-            ReviewMailer.admin_mail(@review).deliver!
-            ReviewMailer.agent_mail(@review).deliver!
+            ReviewMailer.delay.user_mail(@review)
+            ReviewMailer.delay.admin_mail(@review)
+            ReviewMailer.delay.agent_mail(@review)
             flash[:notice] = "Your Review Successfully submitted."
             redirect_to reviews_url
           else

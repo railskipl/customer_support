@@ -7,7 +7,7 @@ class Admin::CommentsController < AdminController
       @comment.user_id = current_user.id
       if current_user.role == "jagent"
         m = MonitorJagent.find_or_create_by_review_id(@review.id)
-        ReviewMailer.assignee_mail(@review,@comment).deliver!
+        ReviewMailer.delay.assignee_mail(@review,@comment)
         m.s_comment = true
       else
         @comment.ispublished = true
@@ -15,7 +15,7 @@ class Admin::CommentsController < AdminController
     
       if @comment.save && !params["comment"]["supplier_id"].nil?
         unless current_user.role == "jagent"
-          ReviewMailer.comment_mail(@review,@comment).deliver!
+          ReviewMailer.delay.comment_mail(@review,@comment)
         end
         redirect_to [:admin, @review], :notice => 'Thanks for your comment'
       else
@@ -31,7 +31,7 @@ class Admin::CommentsController < AdminController
     @comment =  @review.comments.find(params[:id])
     if current_user.role == "jagent"
       m = MonitorJagent.find_or_create_by_review_id(@review.id)
-      ReviewMailer.review_comment_mail(@review.jagent, @review.agent, @review.ticket_number).deliver!
+      ReviewMailer.delay.review_comment_mail(@review.jagent, @review.agent, @review.ticket_number)
       m.c_comment = true
       m.comment_status = "Waiting for approval"
       m.save
@@ -65,7 +65,7 @@ class Admin::CommentsController < AdminController
     end
     if @comment.save
        unless current_user.role == "jagent"
-          ReviewMailer.comment_mail(@review,@comment).deliver!
+          ReviewMailer.delay.comment_mail(@review,@comment)
         end
       redirect_to [:admin,@review], :notice => 'Comment has sucessfully Saved.'
     else

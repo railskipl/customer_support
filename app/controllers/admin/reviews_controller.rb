@@ -77,7 +77,7 @@ class Admin::ReviewsController < AdminController
     if current_user.role == "admin" || current_user.role == "agent"
       review.is_ticket_open = false
       review.save
-      ReviewMailer.ticket_closed_notification(review).deliver
+      ReviewMailer.delay.ticket_closed_notification(review)
       redirect_to :back, :notice => "Ticket closed successfully"
     else
       redirect_to :back, :notice => "Send Ticket For Review"
@@ -106,8 +106,8 @@ class Admin::ReviewsController < AdminController
 
       respond_to do |format|
         if @review.update(review_params)
-          ReviewMailer.publish_mail(@review).deliver!
-          ReviewMailer.publish_adminmail(@review, current_user).deliver!
+          ReviewMailer.delay.publish_mail(@review)
+          ReviewMailer.delay.publish_adminmail(@review, current_user)
           format.html { redirect_to [:admin,@review], notice: 'Review was successfully published.' }
         else
           format.html { render action: 'edit' }

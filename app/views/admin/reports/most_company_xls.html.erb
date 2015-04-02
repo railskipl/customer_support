@@ -62,7 +62,7 @@
   <%= render 'common_header_reviews' %>
   <tbody>
     <% @compliments.each_with_index.each do |review,i| %>
-      <%= render 'common_reviews' %>
+      <%= render 'common_reviews', :review => review, :i => i %>
     <% end %>
   </tbody>  
 </table>

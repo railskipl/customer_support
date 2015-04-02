@@ -82,13 +82,12 @@ Jmd::Application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
             :enable_starttls_auto => true,
-            :address => "smtp.mandrillapp.com",
-            :port => 25,
-            :domain => "xemaxema.com",
+            :address => "smtp.gmail.com",
+            :port => 587,
+            :domain => "imap.gmail.com",
             :authentication => :login,
-            :user_name => "xemaxema.kenya@gmail.com",
-            :password => "aHXRe3yUpI44ANqH9B8ekg"
-  }
+            :user_name => "rubyrails9@gmail.com",
+            :password => "kiplutmeter"
 
  config.action_mailer.default_url_options = { :host => 'http://www.xemaxema.com/' }
 

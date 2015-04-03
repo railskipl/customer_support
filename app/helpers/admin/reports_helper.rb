@@ -223,6 +223,7 @@ module Admin::ReportsHelper
         end
       elsif params[:id] == "data_dump"
       	  @users = Review.select(:id,:user_id).where('user_id is not null').map(&:user_id).uniq rescue nil
+          raise @users.inspect
           puts @users.inspect
           send_data(render_to_string(:template=>"admin/reports/customer_record.html.erb" ) , :type=>"text/xls",:filename => "all_customer_summary.xls")
       else

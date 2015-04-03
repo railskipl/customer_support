@@ -22,7 +22,8 @@
 			<th width="15%">File Uploaded</th>
 			<th width="15%">Review IP</th>
 			<th width="15%">Comments</th>
-	   </tr>
+			<th width="15%">Notes</th>
+		</tr>
 	</thead>
 
 	<tbody>
@@ -55,6 +56,11 @@
 			    	<% else %>
 			    	   No
 			    	<% end%>
+			    </td>
+			    <td>
+			    	<% review.review_notes.each do |r| %>
+			    	<%= review.name %> <%= review.notes%>;
+			    	<% end %>
 			    </td>
 	    </tr>
 	  <% end %>

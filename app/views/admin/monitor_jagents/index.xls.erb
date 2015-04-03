@@ -12,6 +12,9 @@
 		<th>Status</th>
 		<th>Comment Status</th>
 		<th>Date</th>
+		<th>Time</th>
+		<th>Date Proposed</th>
+		<th>Date Completed</th>
 	</tr>
 	</thead>
 	<tbody>
@@ -26,9 +29,11 @@
 		<td><%= mon.review.ispublished? ? mon.review.last_published_agent.preferred_alias : "No" rescue nil%></td>
 		<td><%= mon.status %></td>
 		<td><%= mon.comment_status %></td>
-		<td><%= mon.review.created_at.strftime("%d/%m/%Y | %H:%M") %></td>
-
+		<td><%= mon.review.created_at.strftime("%d/%m/%Y") %></td>
+		<td><%= mon.review.created_at.strftime("%H:%M") %></td>
+		<td><%= mon.review.track_times.first.date_proposed.to_date.strftime("%d/%m/%Y") rescue nil %></td>
+		<td><%= mon.review.track_times.first.date_complete.to_date.strftime("%d/%m/%Y") rescue nil %></td>
 	</tr>
 	<% end %>
 </tbody>
-</tab
+</table>

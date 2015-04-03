@@ -121,6 +121,9 @@
 			<th width="15%">File Uploaded</th>
 			<th width="15%">Review IP</th>
 			<th width="15%">Comments</th>
+			<th width="15%">Review Status</th>
+			<th width="15%">Comment Status</th>
+			<th width="15%">Notes</th>
 		  </tr>
 		</thead>
 
@@ -153,6 +156,13 @@
 			    	<% else %>
 			    	   No
 			    	<% end%>
+			    </td>
+			    <td><%=review.monitor_jagent.status rescue nil %></td>
+			    <td><%=review.monitor_jagent.comment_status rescue nil  %></td>
+			    <td>
+			    	<% review.review_notes.each do |r| %>
+			    	<%= review.name %> <%= review.notes%>;
+			    	<% end %>
 			    </td>
 	    </tr>
 		  <% end %>
@@ -187,6 +197,9 @@
 			<th width="15%">File Uploaded</th>
 			<th width="15%">Review IP</th>
 			<th width="15%">Comments</th>
+			<th width="15%">Review Status</th>
+			<th width="15%">Comment Status</th>
+			<th width="15%">Notes</th>
 		  </tr>
 		</thead>
 
@@ -221,6 +234,14 @@
 			    	   No
 			    	<% end%>
 			    </td>
+			    <td><%=review.monitor_jagent.status rescue nil %></td>
+			    <td><%=review.monitor_jagent.comment_status rescue nil  %></td>
+			     <td>$
+			    	<% review.review_notes.each do |r| %>
+			    	<%= r.name  rescue nil %> <%= r.note rescue nil %>;
+			    	<% end %>
+			    $</td>
+
 	    </tr>
 		  <% end %>
 		</tbody>

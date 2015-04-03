@@ -1,14 +1,4 @@
-<table>
-	<tr>
-		<td><%= link_to "Customer details", user_profile_admin_reports_path,:class=> "btn", :style=>"padding: 0 7px 1px;"%></td>
-		<td><%= link_to "Industry Level Totals", industry_admin_reports_path,:class=> "btn",:style=>"padding: 0 7px 1px;"%></td>
-		<td><%= link_to "Company/Supplier Level Totals", company_admin_reports_path,:class=> "btn",:style=>"padding: 0 7px 1px;"%></td>
-		<td><%= link_to "Download Archive Data",archive_data_admin_reports_path,:class=> "btn",:style=>"padding: 0 7px 1px;"%></td>
-		<td><%= link_to "Download Polls Data",polls_admin_reports_path,:class=> "btn",:style=>"padding: 0 7px 1px;"%></td>
-		<td><%= link_to "Data Dump",data_dump_admin_reports_path,:class=> "btn",:style=>"padding: 0 7px 1px;"%></td>
-		<td><%= link_to "Agents",agent_admin_reports_path,:class=> "btn",:style=>"padding: 0 7px 1px;"%></td>
-	</tr>
-</table>
+<%= render 'tab' %>
 </br>
 <strong>Download Data for 12 Months period</strong></br></br>
 <%= link_to image_tag('/assets/excel.png', :border=>"0", :align=>"absmiddle") + "Summary of reviews Excel", customer_record_admin_reports_path%><br/>
@@ -101,7 +91,7 @@
 <%if params[:subaction] == "update"%>
 
 <%unless @reviews.blank?%>
-   <%= link_to "Download Filter Data", admin_reports_path(params.merge(format: "xls")), :method=> :get, :class=>"btn btn-secondary" %>
+   <%= link_to "Download Filter Data", admin_reports_path(params.merge(format: "xls")), :method=> :get, :class => "btn btn-primary" %>
 <%end%>
 <h4>Reviews</h4>
 
@@ -135,7 +125,7 @@
 
 
 <h1>Totals – over a 12 month period</h1>
-<%= link_to "Download Excel",admin_total_reviews_path(params.merge(format: "xls")), :method=> :get, :class=>"btn btn-secondary"  %>
+<%= link_to "Download Excel",admin_total_reviews_path(params.merge(format: "xls")), :method=> :get, :class => "btn btn-primary"  %>
 <table id="total_compliment">
 
 	<thead>
@@ -165,7 +155,7 @@
 
 <br/><br/>
 <div>
-<%= link_to "Download Excel",admin_nature_of_compliments_path(params.merge(format: "xls")), :method=> :get, :class=>"btn btn-secondary"  %>
+<%= link_to "Download Excel",admin_nature_of_compliments_path(params.merge(format: "xls")), :method=> :get, :class => "btn btn-primary"  %>
 <table id="compliments">
 	<thead>
 		<tr>
@@ -234,7 +224,7 @@
 </div>
 <br/><br/>
 <div>
-	<%= link_to "Download Excel",admin_nature_of_complaints2_path(params.merge(format: "xls")), :method=> :get, :class=>"btn btn-secondary"  %>
+	<%= link_to "Download Excel",admin_nature_of_complaints2_path(params.merge(format: "xls")), :method=> :get, :class => "btn btn-primary"  %>
 <table id="complaints">
 	<thead>
 		<tr>

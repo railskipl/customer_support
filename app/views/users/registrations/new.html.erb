@@ -171,17 +171,13 @@ background-color:#FC0; font-size: 33px;
                 
                 <div class="login-field-box">
                 	<div class="text-box1">Gender *</div>
-                	  <select class="field1 select_box_custom"  name="user['gender']" >
-                      <option>Select Gender</option>
-                      <option value="1">Male</option>
-                      <option value="2">Female</option>
-                    </select>
+                	     <%= f.select :age, [["Male", "1"],["Female", "2"]], {:prompt => "Select Gender"},:required => true,:class=>"field1 select_box_custom"%>
                 </div>
                 <div class="clear"></div>
                 
                 <div class="login-field-box">
                 	<div class="text-box1">Age *</div>
-                   <%= f.select :age, [["18-25", "18-25"],["26-35", "26-35"],["36-45", "36-45"],["46-55", "46-55"],["55+", "55+"]], {:prompt => "Select Age"},:class=>"field1 select_box_custom"%>
+                   <%= f.select :age, [["18-25", "18-25"],["26-35", "26-35"],["36-45", "36-45"],["46-55", "46-55"],["55+", "55+"]], {:prompt => "Select Age"},:required => true,:class=>"field1 select_box_custom"%>
                 </div>
                 <div class="clear"></div>
                 

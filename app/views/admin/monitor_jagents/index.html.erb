@@ -1,3 +1,4 @@
+<%= link_to "Download", admin_monitor_jagents_path(params.merge(format: "xls")),:class => "btn btn-primary"%><br/><br/>
 <h2>All Reviews</h2>
 <table id="monitor" cellpadding=10>
 	<thead>
@@ -12,6 +13,7 @@
 		<th>Status</th>
 		<th>Comment Status</th>
 		<th>Date</th>
+		<th>Time</th>
 	</tr>
 	</thead>
 	<tbody>
@@ -26,8 +28,8 @@
 		<td><%= mon.review.ispublished? ? mon.review.last_published_agent.preferred_alias : "No" rescue nil%></td>
 		<td><%= mon.status %></td>
 		<td><%= mon.comment_status %></td>
-		<td><%= mon.review.created_at.strftime("%d/%m/%Y | %H:%M") %></td>
-
+		<td><%= mon.review.created_at.strftime("%d/%m/%Y") %></td>
+		<td><%= mon.review.created_at.strftime("%H:%M") %></td>
 	</tr>
 	<% end %>
 </tbody>

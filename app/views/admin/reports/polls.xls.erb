@@ -9,10 +9,16 @@
 	  <tr>
 	        <th>Sr. No. </th>
 			<th width="10%">Title</th>
+			<th width="10%">Date Started</th>
+			<th width="10%">Date Ended</th>
 			<th width="15%">Option 1</th>
-			<th width="10%">Option 2</th>
+			<th width="10%">Option 1-count</th>
+			<th width="15%">Option 2</th>
+			<th width="15%">Option 2-count</th>
 			<th width="15%">Option 3</th>
+			<th width="10%">Option 3-count</th>
 			<th width="15%">Option 4</th>
+			<th width="15%">Option 4-count</th>
 			
 	  </tr>
 	</thead>
@@ -21,11 +27,13 @@
 	  <% @polls.each_with_index.each do |poll,i| %>
 	     <td><%= i+1%></td>
 	     <td><%=poll.title rescue nil %></td>
+	     <td><%=poll.start_date rescue nil %></td>
+	     <td><%=poll.end_date rescue nil %></td>
 	     <% poll.options.each do |option| %>
-		  <td><%=option.answer rescue nil %>
-		     <%@result = Result.where('option_id = ?',option.id).count rescue nil%>
-		     :&nbsp;<%= @result rescue nil%>&nbsp;vote 
-	     <% end %></td>
+		  <td><%=option.answer rescue nil %></td>
+		   <td><%@result = Result.where('option_id = ?',option.id).count rescue nil%>
+		     <%= @result rescue nil%> </td>
+	     <% end %>
 	  <% end %>
 	</tbody>	
 </table>

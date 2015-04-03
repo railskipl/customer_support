@@ -28,4 +28,11 @@
 			    	   No
 			    	<% end%>
 			    </td>
+			    <td><%=review.monitor_jagent.status rescue nil %></td>
+			    <td><%=review.monitor_jagent.comment_status rescue nil  %></td>
+			     <td>$
+			    	<% review.review_notes.each do |r| %>
+			    	<%= r.name  rescue nil %> <%= r.note rescue nil %>;
+			    	<% end %>
+			    $</td>
 	    </tr>

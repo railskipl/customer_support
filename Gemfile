@@ -31,4 +31,5 @@ gem 'friendly_id'
 gem 'execjs'
 gem 'therubyracer'
 gem 'delayed_job_active_record'
+gem "daemons"
 # gem "bullet", :group => "development"

@@ -313,6 +313,7 @@ layout :custom_layout
   end
 
   def agent  
+    @users = User.where("role != ?","user")
     @start_from = 1.year.ago 
     @start_to =  Date.today 
     @jagentid_reviews = Review.select(:id,:jagent_id).where('Date(created_at) >= ? and Date(Date(created_at)) <= ? and user_id is not null and jagent_id is not null ',@start_from, @start_to).pluck(:jagent_id).uniq rescue nil #Quantity 
@@ -321,6 +322,7 @@ layout :custom_layout
 
  def reviews_processed
     if params[:subaction] == "reviews_processed"
+      user = User.find(params[:report][:agent]) rescue ""
       @start_from = params[:report][:start_date] rescue ""
       @start_to = params[:report][:end_date] rescue ""
       if @start_from > @start_to
@@ -337,7 +339,11 @@ layout :custom_layout
       @start_to =  Date.today 
     end
     unless params[:id] == "data_dump" 
-    @track_times = TrackTime.select(:id,:user_id).where('Date(created_at) >= ? and Date(Date(created_at)) <= ? and user_id is not null ',@start_from, @start_to).pluck(:user_id).uniq rescue nil
+    if user && user.present?
+      @track_times = TrackTime.select(:id,:user_id).where('Date(created_at) >= ? and Date(Date(created_at)) <= ? and user_id = ? ',@start_from, @start_to,user.id).pluck(:user_id).uniq rescue nil
+    else
+      @track_times = TrackTime.select(:id,:user_id).where('Date(created_at) >= ? and Date(Date(created_at)) <= ? and user_id is not null ',@start_from, @start_to).pluck(:user_id).uniq rescue nil
+    end
     send_data(render_to_string(:template=>"admin/reports/reviews_processed.html.erb" ) , :type=>"text/xls",:filename => "total_reviews_processed.xls")
     end
  end

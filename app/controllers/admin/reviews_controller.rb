@@ -29,6 +29,10 @@ class Admin::ReviewsController < AdminController
     @archived_attachments ||= Review.where('archive_attachment = ? and user_id is not null',true)
   end
 
+  def archive_files
+    @archived_attachments ||= Review.where('archive_attachment = ? and user_id is not null',true)
+  end
+
   def assign_reviews
     if params["review_ids"].nil? || params["user_id"].nil?
       redirect_to admin_reviews_url, :notice => "Unable to assign"

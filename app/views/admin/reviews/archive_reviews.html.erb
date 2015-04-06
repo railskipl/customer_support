@@ -1,6 +1,6 @@
-<%= link_to "Download Data",  archive_reviews_admin_reviews_path(params.merge(format: "xls")),:class => "btn btn-primary"%><br/><br/>
-<h4>Archived Reviews</h4>
 
+<h4>Archived Reviews</h4>
+<%= link_to "Download Data",  archive_reviews_admin_reviews_path(params.merge(format: "xls")),:class => "btn btn-primary"%><br/><br/>
 <table id="archived_review" >
   <thead>
     <tr>
@@ -31,8 +31,10 @@
   </tbody>
 </table>
 
-<h4>Archived Files</h4>
+<br/>
 
+<h4>Archived Files</h4>
+<%= link_to "Download Data",  archive_files_admin_reviews_path(params.merge(format: "xls")),:class => "btn btn-primary"%><br/><br/>
 <table id="arfiles" >
   <thead>
     <tr>

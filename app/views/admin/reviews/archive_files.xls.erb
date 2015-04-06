@@ -1,0 +1,23 @@
+<table id="arfiles" >
+  <thead>
+    <tr>
+       <th>Sr. No.</th>
+       <th>Date</th>
+       <th>Ticket No</th>
+       <th>File Name</th>
+       <th>Reason</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @archived_attachments.each.with_index(1) do |ar,index| %>
+      <tr>
+        <td><%= index %></td>
+        <td><%= ar.created_at.strftime("%d/%m/%Y") rescue nil %></td>
+        <td><%= ar.ticket_number %></td>
+        <td><%= File.basename(ar.file.path)  %>&nbsp;</td>
+        <td><%= ar.notes.html_safe %>&nbsp;</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

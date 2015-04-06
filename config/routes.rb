@@ -68,6 +68,7 @@ Jmd::Application.routes.draw do
       resources :review_notes
       collection do 
         get :archive_reviews
+        get :archive_files
       end
       put 'unpublished' => "reviews#unpublished"
   	  resources :comments do

@@ -10,6 +10,10 @@ module Admin::ReportsHelper
 		@reviews = Review.where("user_id is not null")
 	end
 
+	def all_comments_xls
+		@comments = Comment.all
+	end
+
 	def nature_of_complaints
 		#nature of review for compliments
 		@billing = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and nature_of_review = ?  ',1.year.ago, Date.today,'Billing/accounts') rescue nil

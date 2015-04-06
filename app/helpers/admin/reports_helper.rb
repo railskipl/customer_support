@@ -352,7 +352,7 @@ module Admin::ReportsHelper
 	   	    @max_compliment = freq.values.max
 	   	    @compliments = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and company_id = ? and review_type = ?',@start_from, @start_to,@value_compliments, 'compliment') rescue nil
 	        # Most complaints for supplier
-	   	    @most_complaint = Review.select(:company_id).where('company_id = ? and Date(created_at) >= ? and Date(created_at) <= ? and review_type = ? and user_id is not null',company.id,@start_from, @start_to, 'complaint').map(&:company_id) rescue nil
+	   	    @most_complaint = Review.select(:company_id).where('Date(created_at) >= ? and Date(created_at) <= ? and review_type = ? and user_id is not null',@start_from, @start_to, 'complaint').map(&:company_id) rescue nil
 	   	    freq = @most_complaint.inject(Hash.new(0)) { |h,v| h[v] += 1; h }
 	   	    @value_complaints = @most_complaint.max_by { |v| freq[v] }
 	   	    @max_complaint = freq.values.max

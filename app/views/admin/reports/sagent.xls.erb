@@ -9,6 +9,7 @@
 		    <th width="20%">Email Confirmation</th>
 		    <th width="20%">Preferred Alias</th>
 		    <th width="20%">Role</th>
+		    <th width="20%">Date Created</th>
 		  </tr>
 		</thead>
 
@@ -23,6 +24,7 @@
 		      <td><%=user.preferred_alias rescue nil%></td>
 		    
 		      <td><%=user.role rescue nil%></td>
+		      <td><%=user.created_at.strftime("%d/%m/%y") %></td>
 		    </tr>
 		  <% end %>
 		</tbody>

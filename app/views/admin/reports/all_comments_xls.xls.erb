@@ -11,7 +11,7 @@
 	<% @comments.each.with_index(1) do |comment,index| %>
 	<tr>
 		<td><%= index %></td>
-		<td><%= comment.created_at.strftime("%d/%m/%y") %></td>
+		<td><%= comment.created_at.strftime("%d/%m/%Y") %></td>
 		<td><%= comment.review.ticket_number %></td>
 		<td><%= comment.title.html_safe %></td>
 		<td><%= comment.name %></td>

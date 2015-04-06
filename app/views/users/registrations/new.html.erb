@@ -274,7 +274,7 @@ background-color:#FC0; font-size: 33px;
                 
                 <div class="login-field-box">
                 	<div class="text-box1">&nbsp;</div>
-                    <input type="text" class="field1" name="" id="other_type", placeholder ="Other">
+                    <input type="text" class="field1" name="other_type" id="other_type", placeholder ="Other" value="<%= @user.lives_in %>">
                 </div>
                 <div class="clear"></div>
                 
@@ -322,7 +322,11 @@ background-color:#FC0; font-size: 33px;
 
 <script type="text/javascript">
 $( document ).ready(function() {
-	$("#other_type").hide();
+    if $("#other_type").val(){
+      $("#other_type").show();
+    }
+    else
+	  $("#other_type").hide();
 });
 
 function CheckOther()

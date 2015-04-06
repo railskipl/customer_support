@@ -102,6 +102,11 @@ class Admin::ReviewsController < AdminController
         if @review.modified_review.blank? and params[:review][:modified_review].present?
           @review.admin_sagent_modified = true
         end
+      else
+         m = MonitorJagent.find_or_create_by_review_id(@review.id)
+         m.status = "Published"
+         m.modified_review = (m.modified_review.nil? ? true : m.modified_review)
+         m.save
       end
 
       respond_to do |format|

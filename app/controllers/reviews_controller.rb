@@ -121,6 +121,12 @@ class ReviewsController < ApplicationController
     current_user.present? ? @review.user_id = current_user.id : @review.guest_token = generate_token
 
     if t > kenyan_time
+      @companies = Industry.find(@review.industry_id).companies.order(:title)
+      @towns = Company.find(@review.company_id).towns.order(:title).uniq!
+      addresses = Address.find_all_by_town_id_and_company_id(@review.town_id,@review.company_id)
+      @locations = addresses.map {|a| a.location}
+      @locations.sort_by { |k| k["value"] }
+      @locations.uniq!
       flash[:notice] = "Please select past date"
       render :new
     else
@@ -164,6 +170,12 @@ class ReviewsController < ApplicationController
           render :new
         end
       else
+      @companies = Industry.find(@review.industry_id).companies.order(:title)
+      @towns = Company.find(@review.company_id).towns.order(:title).uniq!
+      addresses = Address.find_all_by_town_id_and_company_id(@review.town_id,@review.company_id)
+      @locations = addresses.map {|a| a.location}
+      @locations.sort_by { |k| k["value"] }
+      @locations.uniq!
         flash.now[:alert] = "There was an error with the recaptcha code below. Please re-enter the code."      
         flash.delete :recaptcha_error
         render :new

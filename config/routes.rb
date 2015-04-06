@@ -98,6 +98,7 @@ Jmd::Application.routes.draw do
         get :industry_xls
         get :company_xls
         get :total_xls
+        get :all_reviews_xls
         get :most_company_xls
         get :registered_company_xls
         get :unregistered_company_xls

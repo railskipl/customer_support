@@ -6,6 +6,10 @@ module Admin::ReportsHelper
 		@total_converted = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and review_type = ? and change_date is not null', 1.year.ago, Date.today,'compliment')  rescue nil
 	end
 
+	def all_reviews_xls
+		@reviews = Review.where("user_id is not null")
+	end
+
 	def nature_of_complaints
 		#nature of review for compliments
 		@billing = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and nature_of_review = ?  ',1.year.ago, Date.today,'Billing/accounts') rescue nil

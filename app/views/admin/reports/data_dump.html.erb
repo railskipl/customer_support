@@ -19,7 +19,7 @@
 
 <%= link_to "Company/Supplier xls", company_xls_admin_reports_path(:id => "data_dump"),:class => "btn btn-primary"%><br/><br/>
 
-<%= link_to "Total reviews", total_xls_admin_reports_path(:id => "data_dump"),:class => "btn btn-primary"%><br/><br/>
+<%= link_to "Total reviews", all_reviews_xls_admin_reports_path(params.merge(format: "xls")),:class => "btn btn-primary"%><br/><br/>
 
 <%= link_to "Most complaints/compliments",most_company_xls_admin_reports_path(:id => "data_dump"),:class => "btn btn-primary"%><br/><br/>
 

@@ -35,6 +35,6 @@
 			    	<%= r.name  rescue nil %> <%= r.note rescue nil %>;
 			    	<% end %>
 			    $</td>
-			    <td><%= review.comments.where("supplier_id is null").count %></td>
-			    <td><%= review.comments.where("supplier_id is not null").count %></td>
+			    <td><%= review.customer_count %></td>
+			    <td><%= review.supplier_count %></td>
 	    </tr>

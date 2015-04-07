@@ -62,4 +62,13 @@ class Review < ActiveRecord::Base
   		self.change_date = DateTime.now
   	end
   end
+
+  def customer_count
+    self.comments.where("supplier_id is null").count
+  end
+  
+  def supplier_count
+    self.comments.where("supplier_id is not null").count
+  end
+
 end

@@ -10,7 +10,9 @@
 	<thead>
 		<tr>
 		    <th>Sr. No</th>
-			<th>Agent Name</th>
+			<th>Role</th>
+			<th>First Name</th>
+			<th>Last Name</th>
 			<th>Preferred Alias</th>
 			<th>Total Reviews Processed</th>
 			<th>Accurate Reviews</th>
@@ -42,7 +44,9 @@
 	    
         <tr>
         	<td><%= i+1%></td>
-        	<td><%= @user.first_name rescue nil%> <%= @user.last_name rescue nil%></td>
+        	<td><%= @user.role rescue nil%></td>
+        	<td><%= @user.first_name rescue nil%></td>
+        	<td><%= @user.last_name rescue nil%></td>
         	<td><%= @user.preferred_alias rescue nil%></td>
         	<td><%= @reviews.count rescue nil%></td>
         	<td><%= @accurate_review rescue nil%></td>

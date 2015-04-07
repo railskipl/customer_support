@@ -35,6 +35,8 @@ jQuery(document).ready(function() {
     <tr>
       <th></th>
 		  <th>Ticket Number</th>
+      <th>Date</th>
+      <th>Industry</th>
 		  <th>Company</th>
 		  <th>Title</th>
       <th>Customer Name</th>
@@ -48,6 +50,8 @@ jQuery(document).ready(function() {
       <tr>
         <td><%= check_box_tag "review_ids[]", review.id, false,:style => "opacity:0.67" %></td>
 				<td><%=review.ticket_number rescue nil %></td>
+        <td><%=review.created_at.strftime("%d/%m/%Y") rescue nil %></td>
+        <td><%=review.industry.title rescue nil %></td>
 				<td><%=review.company.title rescue nil %></td>
 				<td><%=review.title rescue nil %></td>
 		    <td><%=review.try(:user).try(:full_name)%></td>

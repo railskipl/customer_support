@@ -1,0 +1,9 @@
+<table id="admin_review_xls" >
+	<%= render '/admin/reports/common_header_reviews.html.erb'%>
+
+	<tbody>
+	  <% @areviews.each_with_index.each do |review,i| %>
+	   <%= render '/admin/reports/common_reviews.html.erb', :review => review, :i => i %>
+	  <% end %>
+	</tbody>	
+</table>

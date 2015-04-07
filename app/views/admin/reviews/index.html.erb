@@ -29,6 +29,7 @@ jQuery(document).ready(function() {
 
 <% if (current_user.is? :admin) || (current_user.is? :agent) %>
 <h1>Assign reviews to agents (Reviews which are not yet assigned)</h1>
+<%= link_to "Download Data",  admin_reviews_path(params.merge(format: "xls")),:class => "btn btn-primary"%>
     <%= form_tag admin_assign_reviews_path ,:method => :put do |f|%>
 <table id="reviews1" >
   <thead>

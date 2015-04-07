@@ -46,6 +46,7 @@
         <th>Start Date</th>
         <th>End Date</th>
         <th>Notes</th>
+        <th>Supplier Comments Count</th>
       </tr>
   </thead>
     
@@ -89,6 +90,7 @@
         <td><%= supplier.start_date rescue nil%></td>
         <td><%= supplier.end_date rescue nil%></td>
         <td><%= supplier.notes rescue nil%></td>
+        <td><%= supplier.comments.count rescue nil %></td>
       </tr>
       <%end%>
   </tbody>

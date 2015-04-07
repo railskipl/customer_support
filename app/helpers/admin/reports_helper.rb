@@ -1,8 +1,8 @@
 module Admin::ReportsHelper
     def total_reviews
 		#total reviews according to compliment and complaints
-		@compliments = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and review_type = ?', 1.year.ago, Date.today,'compliment')  rescue nil
-		@complaints = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and review_type = ?', 1.year.ago, Date.today,'complaint')  rescue nil
+		@compliments = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and review_type = ? and ispublished = ? and archive = ?', 1.year.ago, Date.today,'compliment',true,false)  rescue nil
+		@complaints = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and review_type = ? and ispublished = ? and archive = ?', 1.year.ago, Date.today,'complaint',true,false)  rescue nil
 		@total_converted = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and review_type = ? and change_date is not null', 1.year.ago, Date.today,'compliment')  rescue nil
 	end
 

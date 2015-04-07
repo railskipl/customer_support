@@ -2,7 +2,7 @@ module Admin::ReportsHelper
     def total_reviews
 		#total reviews according to compliment and complaints
 		@compliments = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and review_type = ? and ispublished = ? and archive = ?', 1.year.ago, Date.today,'compliment',true,false)  rescue nil
-		@complaints = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and review_type = ? and ispublished = ? and archive = ?', 1.year.ago, Date.today,'complaint',true,false)  rescue nil
+		@complaints = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and review_type = ? and ispublished = ? and archive = ?', 1.year.ago, Date.today,'complaint',true,false	)  rescue nil
 		@total_converted = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and review_type = ? and change_date is not null', 1.year.ago, Date.today,'compliment')  rescue nil
 	end
 
@@ -16,36 +16,36 @@ module Admin::ReportsHelper
 
 	def nature_of_complaints
 		#nature of review for compliments
-		@billing = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and nature_of_review = ?  ',1.year.ago, Date.today,'Billing/accounts') rescue nil
-		@booking = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and nature_of_review = ?  ',1.year.ago, Date.today,'Booking') rescue nil
-		@call_center = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and nature_of_review = ?  ',1.year.ago, Date.today,'Call centre efficiency') rescue nil
-		@contract = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and nature_of_review = ?  ',1.year.ago, Date.today,'Contract') rescue nil
-		@delivery = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and nature_of_review = ?  ',1.year.ago, Date.today,'Delivery on time') rescue nil
-		@feedback = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and nature_of_review = ? ',1.year.ago, Date.today,'Feedback') rescue nil
-		@going_extra = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and nature_of_review = ?  ',1.year.ago, Date.today,'Going the extra mile') rescue nil
-		@great_attitude = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and nature_of_review = ?  ',1.year.ago, Date.today,'Great attitude') rescue nil
-		@pricing = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and nature_of_review = ?  ',1.year.ago, Date.today,'Pricing') rescue nil
-		@refund = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and nature_of_review = ?  ',1.year.ago, Date.today,'Refund') rescue nil
-		@repairs = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and nature_of_review = ?  ',1.year.ago, Date.today,'Repairs') rescue nil
-		@stock = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and nature_of_review = ?  ',1.year.ago, Date.today,'Stock') rescue nil
-		@others = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and nature_of_review = ?  ',1.year.ago, Date.today,'Other') rescue nil
+		@billing =        Review.nature_count('Billing/accounts') rescue nil
+		@booking =        Review.nature_count('Booking') rescue nil
+		@call_center    = Review.nature_count('Call centre efficiency') rescue nil
+		@contract =       Review.nature_count('Contract') rescue nil
+		@delivery =       Review.nature_count('Delivery on time') rescue nil
+		@feedback =       Review.nature_count('Feedback') rescue nil
+		@going_extra =    Review.nature_count('Going the extra mile') rescue nil
+		@great_attitude = Review.nature_count('Great attitude') rescue nil
+		@pricing =        Review.nature_count('Pricing') rescue nil
+		@refund =         Review.nature_count('Refund') rescue nil
+		@repairs =        Review.nature_count('Repairs') rescue nil
+		@stock =          Review.nature_count('Stock') rescue nil
+		@others =         Review.nature_count('Other') rescue nil
 
 		#nature of review for complaints
-		@bad_attitude = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and nature_of_review = ? ',1.year.ago, Date.today,'Bad attitude') rescue nil
-		@billing_account = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and nature_of_review = ?  ',1.year.ago, Date.today,'Billing/Accounts') rescue nil
-		@booking_query = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and nature_of_review = ?  ',1.year.ago, Date.today,'Booking query') rescue nil
-		@breach_of_contract = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and nature_of_review = ?  ',1.year.ago, Date.today,'Breach of contract') rescue nil
-		@call_centre_c = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and nature_of_review = ?  ',1.year.ago, Date.today,'Call centre') rescue nil
-		@damaged_goods = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and nature_of_review = ?  ',1.year.ago, Date.today,'Damaged goods') rescue nil
-		@expiry = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and nature_of_review = ?  ',1.year.ago, Date.today,'Expiry date') rescue nil
-		@feedback_response = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and nature_of_review = ?  ',1.year.ago, Date.today,'Feedback/response') rescue nil
-		@hygiene = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and nature_of_review = ? ',1.year.ago, Date.today,'Hygiene') rescue nil
-		@Late_no_delivery = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and nature_of_review = ? ',1.year.ago, Date.today,'Late/no delivery') rescue nil
-		@out_of_stock = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and nature_of_review = ?  ',1.year.ago, Date.today,'Out of stock') rescue nil
-		@pricing_bar_codes = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and nature_of_review = ?  ',1.year.ago, Date.today,'Pricing/bar codes') rescue nil
-		@repairs_servicing = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and nature_of_review = ?  ',1.year.ago, Date.today,'Repairs/servicing') rescue nil
-		@spam = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and nature_of_review = ?  ',1.year.ago, Date.today,'Spam') rescue nil
-		@others_c = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and nature_of_review = ?  ',1.year.ago, Date.today,'Other') rescue nil
+		@bad_attitude = Review.nature_count('Bad attitude') rescue nil
+		@billing_account = Review.nature_count('Billing/Accounts') rescue nil
+		@booking_query = Review.nature_count('Booking query') rescue nil
+		@breach_of_contract = Review.nature_count('Breach of contract') rescue nil
+		@call_centre_c = Review.nature_count('Call centre') rescue nil
+		@damaged_goods = Review.nature_count('Damaged goods') rescue nil
+		@expiry = Review.nature_count('Expiry date') rescue nil
+		@feedback_response = Review.nature_count('Feedback/response') rescue nil
+		@hygiene = Review.nature_count('Hygiene') rescue nil
+		@Late_no_delivery = Review.nature_count('Late/no delivery') rescue nil
+		@out_of_stock = Review.nature_count('Out of stock') rescue nil
+		@pricing_bar_codes = Review.nature_count('Pricing/bar codes') rescue nil
+		@repairs_servicing = Review.nature_count('Repairs/servicing') rescue nil
+		@spam = Review.nature_count('Spam') rescue nil
+		@others_c = Review.nature_count('Other') rescue nil
 	end
 
 	def total_reviews_dump

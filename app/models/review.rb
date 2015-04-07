@@ -71,4 +71,8 @@ class Review < ActiveRecord::Base
     self.comments.where("supplier_id is not null").count
   end
 
+  def self.nature_count(nature_type)
+    where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and nature_of_review = ?  and ispublished = ? and archive = ? ',1.year.ago, Date.today,nature_type,true,false)
+  end
+
 end

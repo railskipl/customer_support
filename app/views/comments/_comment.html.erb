@@ -1,19 +1,16 @@
 <%= div_for comment do %>
-		<div style="background-color:#FBAF3F;border:1px solid grey;margin-bottom:10px;padding:5px;height:20px;color:white;">
-				<span class="pull-left">
+		      <div class="row1">
+				 <div class="commentsr">
 				<%if comment.user_id  && ['agent', 'admin','jagent'].include?(comment.user.role) %>
-				 <strong>Company's Response:</strong> <%= comment.supplier.supplier_name%>
+ 				<p class="names"><img src="/assets/fill.png" alt=""><%= comment.supplier.supplier_name%></p>
 				<%elsif comment.user_id && comment.user_id == @review.user_id %>
-				 <strong>Customer's Response:</strong> <%= comment.name%>
+				 <p class="names"><img src="/assets/blank.png" alt=""><%= comment.name%></p>
 				<%else%>
-				 <strong><%= comment.name%></strong>
+				 <p class="names"><img src="/assets/blank.png" alt=""><%= comment.name%></p>
 				<%end%>
-				</span>
-				<span class="pull-right">
-					<strong>Time and Date:</strong>
-			  	<%= comment.updated_at.strftime("%H:%M | %d %h %y") %>
-			  </span>
-	 	</div>
-	  <p><%= raw (comment.modified_comment ? comment.modified_comment : comment.title) %>
-</p>
+			 <p class="dates"> <%= comment.updated_at.strftime("%H:%M | %d %h %y") %></p>
+			   <div class="clear"></div>
+                <p class="textnew" style="text-align: justify !important;"><%= raw (comment.modified_comment ? comment.modified_comment : comment.title) %> </p>
+                </div>
+	  			</div>
 <% end %>

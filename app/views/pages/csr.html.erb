@@ -1,31 +1,43 @@
-<%content_for :left do%>
-	<span class="span3">
-		  <%unless @performance.blank?%>
-      <%unless @performance.performance_img.blank?%>
-	      <div class="sectionLeftBot">
-			 <%= link_to (image_tag @performance.performance_img),@performance.worst_performance  rescue nil%>
-		  </div>
-      <%end%>
-      <%unless @performance.best_performance.blank?%>
-		  <div class="sectionLeftBot">
-		   
-			 <%=@performance.best_performance.html_safe rescue nil%>
-		  </div>
-	  <%end%>
-	  
-  <%else%>
-    <div class="sectionLeftBot">
-		Some stats e.g worst performing companies and best performing or quotes (flash or updated every week)
-	</div>
-  <%end%>
-	</span>
-<%end%>
 
-<!--Center page-->
-<span class="span8">
-<div class="sectionMidA">
-  <div class="sectionCsr">
-    <p><%= raw(@page.try(:description)) %></p>
-  </div>
-</div>
-</span>
+
+<div class="max-box">
+
+    <div class="section-one">
+     	<div class="clear"></div>
+      
+        	<%#content_for :left do%>
+	
+		<%unless @performance.blank?%>
+
+		    <div class="polls">
+            <%#unless @performance.performance_img.blank?%>
+	      	 <%#= link_to (image_tag @performance.performance_img),@performance.worst_performance  rescue nil%>
+	        <%#end%>
+            <%unless @performance.best_performance.blank?%>
+
+		     <%= image_tag @performance.best_performance.url, :style => "width:236px;height:230px;" %>
+           <%end%>
+            </div>
+	    <%end%>
+	
+	<%#end%>
+       
+    </div>
+
+
+        
+        	<div class="form-box21">
+            	<div class="information-new">
+                  <div class="heading2">CSR</div>
+                 <p><%= raw(@page.try(:description)) %></p>
+                </div>
+              <div class="clear"></div>
+  
+              <div class="clear"></div> 
+                
+            </div>
+            
+               <div class="clear"></div>
+        </div>
+        
+

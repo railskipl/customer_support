@@ -39,7 +39,8 @@
                     <li><a href="#">Unregistered Companies</a></li>
                     <li><a href="#">Polls &amp; Bloppers</a></li>
                 </ul>-->
-                <%if user_signed_in?%>
+                
+                <%if user_signed_in? && params["controller"] == "users" %>
                 <div class="heading1">My Accounts</div>
                  <a href="<%= profile_path %>">
                   <div class='<%=(@sub_action == "show_profile" ? "reports2 act" : "reports2")%>' >My Profile</div>
@@ -56,7 +57,7 @@
                 <% else %>
                 <div class="heading1">View Reports</div>
                 <a href="<%= user_review_path %>"><div class="reports2">Reviews</div></a>
-                <a href="#"><div class="reports2">Conversions</div></a>
+                <a href="<%= conversions_path %>"><div class="reports2">Conversions</div></a>
                 <a href="<%= registered_path %>"><div class="reports2">Registered Companies</div></a>
                 <a href="<%= unregistered_path %>"><div class="reports2">Unregistered Companies</div></a>
                 <a href="<%= polls_bloopers_path %>"><div class="reports2">Polls &amp; Bloopers</div></a>
@@ -66,19 +67,21 @@
             <div class="clear"></div>
            
             <%unless @performance.blank?%>
-             <div class="polls">
+             
       <%unless @performance.performance_img.blank?%>
-	   
+	   <div class="polls">
 			 <%= link_to (image_tag @performance.performance_img, :style => "width:236px;height:230px;"),@performance.worst_performance  rescue nil%>
 	
       <%end%>
-      <%#unless @performance.best_performance.blank?%>
+       </div>
+       <div class="polls">
+      <%unless @performance.best_performance.blank?%>
 		  <!-- <div class="sectionLeftBot"> -->
-		   
-			 <%#=@performance.best_performance.html_safe rescue nil%>
+		   <%= link_to (image_tag @performance.best_performance, :style => "width:236px;height:230px;"),@performance.worst_performance  rescue nil%>
 		  <!-- </div> -->
-	  <%#end%>
-    </div>
+	  <%end%>
+       </div>
+            
 	<%else%>
 
   <%end%>

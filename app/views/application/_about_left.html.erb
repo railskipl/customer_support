@@ -1,16 +1,16 @@
-<div class="sectionLeft">
-  <ul class="sectionLeftTop">
-    <li>
-      <h3><a href="#" class="ribbon">About Us</a></h3>
-    </li>
-		<% @pages.each do |page| %>
-	    <li>
-  		  <%= link_to page.title.titlecase, page_url(page.slug) ,:class=>(@sub_action == page.slug ? "active":'')%>
-  		</li>
-    <%end%>
-  </ul>
 
- <%unless @performance.blank?%>
+          <div class="section-one">
+          <div class="reports">
+              <div class="heading1">About us</div>
+               <% @pages.each do |page| %>
+                <a href="<%= page_url(page.slug) %>"><div class="<%= (@sub_action == page.slug ? 'reports2 act' : 'reports2') %>"><%= page.title.titlecase %></div></a>
+                <% end %>
+                
+                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+            <div class="polls">
+               <%unless @performance.blank?%>
       <%unless @performance.performance_img.blank?%>
   
         <div class="sectionLeftBot">
@@ -29,4 +29,21 @@
     Some stats e.g worst performing companies and best performing or quotes (flash or updated every week)
   </div>
   <%end%>
-</div>
+
+             </div>
+            <div class="clear"></div>
+         </div>
+        
+          
+            
+      
+            
+           
+            
+            
+            
+            
+   
+
+
+

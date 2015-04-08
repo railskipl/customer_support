@@ -1,125 +1,204 @@
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  
+  <!-- custom scrollbar plugin -->
+  <script src="/assets/jquery.mCustomScrollbar.concat.min.js"></script>
+  
+  <script>
+    (function($){
+      $(window).load(function(){
+        
+        $("a[rel='load-content']").click(function(e){
+          e.preventDefault();
+          var url=$(this).attr("href");
+          $.get(url,function(data){
+            $(".content .mCSB_container").append(data); //load new content inside .mCSB_container
+            //scroll-to appended content 
+            $(".content").mCustomScrollbar("scrollTo","h2:last");
+          });
+        });
+        
+        $(".content").delegate("a[href='top']","click",function(e){
+          e.preventDefault();
+          $(".content").mCustomScrollbar("scrollTo",$(this).attr("href"));
+        });
+        
+      });
+    })(jQuery);
+  </script>
 <%content_for :left do%>
 	<span class="span3">
 		 <%=render :partial=> "application/my_account_left"%>
 	</span>
 <%end%>
-<span class="span7">
-  <p id="notice"><%#= notice %></p>
-  <%= form_for(@review) do |f|%>
-    <div style="background-color:#FBAF3F;margin-bottom:2px;padding:5px;height:20px;color:white;"><%=@review.user.preferred_alias rescue nil %>'s <%=@review.review_type%> &nbsp;Ticket No: <%=@review.ticket_number %></div>
-			<div style="background-color:#E1E1E1;padding:5px;margin-bottom:10px;">    
-				<div>
-					<div class="form_lft">
-						<div class="name_lft">Company: </div>
-						<div>
-							<%=@review.company.title  rescue nil %>
-						</div>
-					</div>
-					<div class="form_lft">
-						<div class="name_lft">Industry: </div>
-						<div>
-							<%=@review.industry.title  rescue nil %>
-						</div>
-					</div>
-				</div>
-				<div>
-					<div class="form_lft">
-						<div class="name_lft">Town: </div>
-						<div>
-				    <%=@review.town.title rescue nil %>
-						</div>
-					</div>
-					<div class="form_lft">
-						<div class="name_lft">Location: </div>
-						<div>
-					    <%=@review.location.title rescue nil %>
-						</div>
-					</div>
-				</div>
-				<div>
-					<div class="form_lft">
-						<div class="name_lft">Date/Time: </div>
-						<div>
-				     <%=@review.updated_at.strftime("%d %b %Y" " %H:%M")%>
-						</div>
-					</div>
-				</div>
-
-				<div>
-					<div class="form_lft">
-						<div class="name_lft">Nature of Review: </div>
-						<div>
-						<%= @review.nature_of_review %>
-						</div>
-					</div>
-				    
-					<div class="form_lft">
-						<div class="name_lft">Incident Date: </div>
-						<div>
-							<%= @review.created_at.strftime("%d %b %Y")%> <%=@review.created_at.strftime("%H:%M")%>
-						</div>
-				</div>
-
-			
-				  <div class="name_lft">Title: </div>
-				  <div>
-				  <%= @review.title%>
-				  </div>
-
-				  <div class="name_lft">Conversion: </div>
-				  <div>
-				  <% if @review.change_date %>
-				  	Yes
-				  <% else %>
-				  No
-				  <% end %>
-				  </div>
-			
-				
-			</div>
-  	</div>
-    <div>
-      <%= raw (@review.is_modified ? @review.modified_review : @review.message) %>
-    </div>
-  <%end%>
+ <p id="notice"><%#= notice %></p>
+      <div class="max-box">
+        
+         
+        	<div class="form-box21bank">
+             <div class="information-new22" style="border:none;">
+                  <div class="log-head">ABC Bank's Complaint</div>
+                  <div class="tablenew">
+                   	<div class="deatail">
+                     	 <table cellpadding="0" cellspacing="0" class="grid-tbl3">
+                        <tr>
+                            <td width="20%" class="head"> Company</td>
+                            <td width="20%"><%= @review.company.title rescue nil %></td> 
   
-  <h3>Comments</h3>
-  <div>
-    <%= render @review.comments.published %>
-  </div>
-  
-  <%= render :file => 'comments/new' %>
-  
-  <%if current_user && current_user == @review.user && @review.comments.supplier_comments.count > 0%>
+                          </td>
+                        </tr>
+                        <tr>
+                            <td width="20%" class="head">Town</td>
+                            <td width="20%"><%=@review.town.title rescue nil %></td>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="20%" class="head">Customer</td>
 
-  		<% if @review.is_ticket_open == false %>
+                            <td width="20%"><%=@review.user.first_name rescue nil %><%=@review.user.last_name rescue nil %></td>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="20%" class="head">Nature of Review</td>
+
+                            <td width="20%"><%= @review.nature_of_review %></td>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="20%" class="head">Incident Date/Time</td>
+
+                            <td width="20%"><%= @review.created_at.strftime("%d %b %Y")%> <%=@review.created_at.strftime("%H:%M")%></td>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="20%" class="head">Subject</td>
+
+                            <td width="20%"> <%= @review.title%></td>
+
+                            </td>
+                        </tr>
+                         </table>
+                    </div>
+                    <div class="deatail1">
+                     	 <table cellpadding="0" cellspacing="0" class="grid-tbl3">
+                        <tr>
+                            <td width="20%" class="head"> Industry</td>
+
+                            <td width="20%">	<%=@review.industry.title  rescue nil %></td> 
+
+  
+                          </td>
+                        </tr>
+                        <tr>
+                            <td width="20%" class="head">Location</td>
+
+                            <td width="20%"><%=@review.location.title rescue nil %></td>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="20%" class="head">Ticket No.</td>
+
+
+                            <td width="20%"> <%=@review.ticket_number %></td>
+
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="20%" class="head">Date/Time</td>
+
+
+                            <td width="20%"> <%=@review.updated_at.strftime("%d %b %Y" " %H:%M")%></td>
+
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="20%" class="head2">Conversion</td> 
+                            <td width="20%">
+                            	<% if @review.change_date %>
+				  	                Yes
+				                <% else %>
+				                    No
+				                <% end %></td>
+                            </td>
+                        </tr>
+                        
+                         </table>
+                    </div>
+                   </div>
+                  <div class="clear"></div>
+                   <p>
+                       <%= raw (@review.is_modified ? @review.modified_review : @review.message) %>
+                   </p> 
+            </div>
+              <div class="clear"></div>
+              <div class="information-new22" style="border:none; margin-bottom:20px;">
+            <%if current_user && (current_user == @review.user) && @review.comments.supplier_comments.count > 0%>
+     		<% if @review.is_ticket_open == false %>
   		 	<%=form_for(@review) do |f| %>
+  		 	<%= @review.review_type %>
 				<% if @review.review_type == 'complaint' %>
-				Want to change your review?<br/>
+				
+					<div class="log-head">How do you feel after the Company's response?</div>
+				   <p>
+                      Would you like to change your review from a complaint to a compliment after the response you have received from the company? If yes, please select ‘Happy’. However, if you are still not satisfied with the service you have received, please select ‘Not Happy.
+                   </p>
 			  	<%=f.hidden_field "e" , :value=>''%>		
-			  	<div class="rgh_in">
-    	   		  <%= f.submit "",  :name => "happy",:class => "happy"%>
-	    		  <%= f.submit "" , :name => "sad",:class => "sad"%>
-	    		</div>
-		  <%#else%>
-			 <!--  <%#=f.hidden_field :review_type , :value=>'complaint'%>		
-			  <div class="rgh_in">
-	    		 <%#= f.submit "" ,:class => "sad"%>
-	    	</div> -->
-			  <%end%>
-			<%end%>
-    <%end%>
-  <%end%>
-  <br/>
-	
-</span>
+			  	<div class="tablenew">
+                       <div class="img-section1">
+    	   		 <ul> 
+    	   		 	<li class="grow"> 
+    	   		 		<%= f.submit "",  :name => "happy",:class => "happy"%></li>
+	    		  <li class="last grow"><%= f.submit "" , :name => "sad",:class => "sad"%></li>
+	    		  </ul>
+	    		</div></div>
+				  <%end%>
+				<%end%>
+	    <%end%>
+	  <%end%>
+           
+                     <div class="clear"></div> 
+                        
+                   <div class="log-head">Comments</div>
+                   <div class="content4 mCustomScrollbar">
+                   <%= render @review.comments.published %>
+                          
+                <div class="clear"></div>
+             </div>
+             </div>
+
+                  <div class="clear"></div> 
+             <div class="information-new22" style="border:none;">
+                  <div class="log-head">Add a Comment</div>
+
+                  <%= render :file => 'comments/new' %>
+                    
+               </div>
+                   
+            </div>  
+
+			</div>
+
+
+    
+
+  
+ 
+
+
 
 <style type="text/css">
 .rgh_in{
 padding: 15px;	
 }
 .sad{
-    background-image:url("/assets/Not Satisfied_PNG.PNG");
+    background-image:url("/assets/not-happy.png");
+      background-color: Transparent;
+      border: 0;
     font-size:0;
     width:160px !important;
     min-width: 155px;
@@ -129,7 +208,9 @@ padding: 15px;
 <style type="text/css">
 
 .happy{
-    background-image:url("/assets/Satisfied_PNG.PNG");
+    background-image:url("/assets/happy.png");
+        background-color: Transparent;
+      border: 0;
     font-size:0;
     width:160px !important;
     min-width: 153px;

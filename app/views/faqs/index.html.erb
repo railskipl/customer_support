@@ -1,19 +1,56 @@
-<span class="span1">
-</span>
-<span class="span10 faqs">
-	<h3>List of FAQs</h3>
-		<ul id="expList">
-			<% @faqs.each do |faq| %>
-		    <li>
-			        <%=faq.displayable_question%>
-		        <ul>
-		            <li>
-		                <span><%=faq.answer%></span>
-		            </li>
-		        </ul>
-		    </li>
-		  <%end%>
-  </ul>
+<script type="text/javascript" src="/assets/ddaccordion.js"></script> 
+<div class="max-box">
+        
+          <div class="form-box21faq">
+            	<div class="information-new1">
+                <div class="heading2">Frequently Asked Questions</div>
+                <% @faqs.each do |faq| %>
+                  <div class="technology"><%=faq.displayable_question%></div>
+                  <p class="thelanguage bg-col"><%=faq.answer%></p>
+                <div class="clear"></div>
+                 <% end %>
+                 
+                 
+                </div>
+                <div class="clear"></div>
+                
+                <div class="clear"></div>
+                
+                
+                
+                
+                
+                
+            <div class="clear"></div>
+         </div>
+              <div class="clear"></div>
+        </div>
+        
+        
+    </div>
 
-</span>
-<%= javascript_include_tag "faqs.js" %>
+<script type="text/javascript">
+//Initialize 2nd demo:
+ddaccordion.init({
+	headerclass: "technology", //Shared CSS class name of headers group
+	contentclass: "thelanguage", //Shared CSS class name of contents group
+	revealtype: "click", //Reveal content when user clicks or onmouseover the header? Valid value: "click", "clickgo", or "mouseover"
+	mouseoverdelay: 200, //if revealtype="mouseover", set delay in milliseconds before header expands onMouseover
+	collapseprev: true, //Collapse previous content (so only one open at any time)? true/false 
+	defaultexpanded: [], //index of content(s) open by default [index1, index2, etc]. [] denotes no content.
+	onemustopen: false, //Specify whether at least one header should be open always (so never all headers closed)
+	animatedefault: true, //Should contents open by default be animated into view?
+	scrolltoheader: true, //scroll to header each time after it's been expanded by the user?
+	persiststate: false, //persist state of opened contents within browser session?
+	toggleclass: ["closedlanguage", "openlanguage"], //Two CSS classes to be applied to the header when it's collapsed and expanded, respectively ["class1", "class2"]
+	togglehtml: ["prefix", "<img src='/assets/arrow.png' style='width:13px;  float:left; margin:3px 10px 0px 0px' /> ", "<img src='/assets/arrow -up.png' style='width:13px; float:left; margin:3px 10px 0px 0px' /> "], //Additional HTML added to the header when it's collapsed and expanded, respectively  ["position", "html1", "html2"] (see docs)
+	animatespeed: "fast", //speed of animation: integer in milliseconds (ie: 200), or keywords "fast", "normal", or "slow"
+	oninit:function(expandedindices){ //custom code to run when headers have initalized
+		//do nothing
+	},
+	onopenclose:function(header, index, state, isuseractivated){ //custom code to run whenever a header is opened or closed
+		//do nothing
+	}
+})
+
+</script>

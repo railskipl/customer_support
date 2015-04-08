@@ -1,28 +1,29 @@
- <%if !current_user || (current_user.is_customer?)%>
-	<%=form_for([@review, @review.comments.new]) do |f| %>
-		<h3>Add Comment<h3/>
-			<%= f.hidden_field :user_id, :value=>(current_user.id if current_user)%>
-		<div>
-			<div class="field">
-				<%= f.label :name %>
-				<%= f.text_field  :name ,:value=>(current_user.first_name if current_user), :required=>true%>
-			</div>
-		</div>
+<div class="tablenew">
+    <%if !current_user || (current_user.is_customer?)%>
+	    <%=form_for([@review, @review.comments.new]) do |f| %>   
+	    <%= f.hidden_field :user_id, :value=>(current_user.id if current_user)%>  
+            <div class="login-box" style="width:100%;">
+                <div class="login-field-boxp" >
+                    <div class="text-box12p">Name*</div>
+                    <%= f.text_field  :name ,:value=>(current_user.first_name if current_user), :required=>true, :class =>"field1" %>
+                    <div class="clear"></div>
+                </div>
+                 
+                <div class="login-field-boxpp" >
+                    <div class="text-box12p">Email*</div>
+                    <%= f.email_field  :email ,:value=>(current_user.email if current_user), :required=>true, :class=> "field1" %>
+                    <div class="clear"></div>
+                </div>
+                   
+                <div class="clear"></div>
+                <div class="text-box1new">Your Comment*</div>
+                <%= f.text_area  :title  , :class => 'text-area4new1 fr-bt' %>
+                </div>
+                 <%= f.submit 'Post Comment', :confirm => "Are you sure..?",:class => "btn2" %>
+           	<%end%>
+    <%end%>
 
-		<div>
-			<div class="field">
-				<%= f.label :email %>
-				<%= f.email_field  :email ,:value=>(current_user.email if current_user), :required=>true%>
-			</div>
-		</div>
-		<div>
-			<div class="field">
-			  <%= f.label :title, 'Message' %>
-			  <%= f.text_area  :title  , :class => 'ckeditor' %>
-			</div>
-		</div>
-		<div class="actions rgh_in">
-			  <%= f.submit 'Post Comment', :confirm => "Are you sure..?" %><br/>
-		</div>
-	<%end%>
-<%end%>
+</div>
+
+
+		

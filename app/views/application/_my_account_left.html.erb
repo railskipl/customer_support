@@ -18,14 +18,14 @@
                 <li><a href="<%= edit_profile_path %>" class="selected">Update Profile</a></li>
             </ul>
         </div>
-<% elsif  @sub_action == "my_reviews" %>
+<% elsif  @sub_action == "my_reviews" || @active_tab != "home" %>
   <div class="page-link">
           <ul>
                 <li><a href="<%= root_path %>">Home</a></li>
                 <li><span>&raquo;</span></li>
                 <li><a href="<%= profile_path %>">My Account</a></li>
                 <li><span>&raquo;</span></li>
-                <li><a href="<%= reviews_path %>" class="selected">My Reviews</a></li>
+                <li><a href="<%= reviews_path %>" class="selected"><%= @active_tab.try(:titlecase) || "My Reviews" %></a></li>
             </ul>
         </div>
 <% end %>

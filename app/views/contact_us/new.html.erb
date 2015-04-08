@@ -2,7 +2,13 @@
 	<span class="span3">
 	</span>
 <%end%>
-
+  <div class="page-link">
+          <ul>
+                <li><a href="<%= root_path %>">Home</a></li>
+                <li><span>&raquo;</span></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </div>  
 <div class="min-box">
 	<%= form_for(@contact_u) do |f| %>
 		<% if @contact_u.errors.any? %>

@@ -1,30 +1,33 @@
-<div class="sectionLeft">
-  <ul class="sectionLeftTop">
-    <li>
-      <h3><a href="#" class="ribbon">Resources</a></h3>
-    </li>
-		<% @resource_types.each do |resource_type| %>
-	    <li>
-  		  <%= link_to resource_type.name.titlecase, resource_path(resource_type.slug) ,:class=>(@resource_type.slug == resource_type.slug ? "active":'')if resource_type.resources.count > 0%>
-  		</li>
-    <%end%>
-  </ul>
-</div>
+ <div class="section-one">
+         <div class="reports">
+              <div class="heading1">Resources</div>
+              <% @resource_types.each do |resource_type| %>
+                <a href="<%= resource_path(resource_type.slug) %>">
+                  <div class="<%= (@resource_type.slug == resource_type.slug ? "reports2 act" : 'reports2') if resource_type.resources.count > 0 %>">
+                    <%= resource_type.name.titlecase %>
+                  </div></a>
+              <% end %>
+
+
+                <div class="clear"></div>
+            </div>
+          <div class="clear"></div>
+       
+        
+
   <%unless @performance.blank?%>
       <%unless @performance.performance_img.blank?%>
-        <div class="sectionLeftBot">
+           <div class="polls"> 
        <%= link_to (image_tag @performance.performance_img),@performance.worst_performance  rescue nil%>
       </div>
       <%end%>
       <%unless @performance.best_performance.blank?%>
-      <div class="sectionLeftBot">
-       
-       <%=@performance.best_performance.html_safe rescue nil%>
+        <div class="polls">
+          <%=@performance.best_performance.html_safe rescue nil%>
       </div>
     <%end%>
     
   <%else%>
-    <div class="sectionLeftBot">
-    Some stats e.g worst performing companies and best performing or quotes (flash or updated every week)
-  </div>
-  <%end%>
+
+  <%end%> 
+</div>

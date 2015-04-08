@@ -1,19 +1,27 @@
-<%content_for :left do%>
+<div class="max-box">
+        
+        <%content_for :left do%>
 	<span class="span3">
 		 <%=render :partial=> "application/resource_left"%>
 	</span>
 <%end%>
 
-<!--Center page-->
-<span class="span7">
-<div class="sectionMidA">
-  <div class="sectionMidTop">
-		<% @resources.each do |resource| %>
-			<div class="sectionResource">
-				<h3><%=resource.title.titlecase%></h3>
-				<%=raw(resource.description)%>
-			</div>
-		<%end%>
-  </div>
-</div>
-</span>
+        
+        	<div class="form-box21">
+            <% @resources.each do |resource| %>
+           <div class="information-new22">
+
+                  <div class="heading2"><%=resource.resource_type.slug.titlecase %></div>
+                   <div class="technology"><%=resource.title.titlecase%></div>
+                    <p><%=raw(resource.description)%><span class="read-more"><a href="#"> Read more...</a></span>
+                    </p>
+             </div>
+              <% end %>
+              <div class="clear"></div>
+  
+                
+            </div>
+            
+
+        </div>
+

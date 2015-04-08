@@ -3,7 +3,7 @@
 	</span>
 <%end%>
 
-<span class="span6">
+<div class="min-box">
 	<%= form_for(@contact_u) do |f| %>
 		<% if @contact_u.errors.any? %>
 		  <div id="error_explanation">
@@ -16,57 +16,61 @@
 		    </ul>
 		  </div>
 		<% end %>
+        	<div class="login-box" style="min-height:135px;height:135px">
+            	
+                <div class="login-field-box">
+                	<div class="text-box1">First Name*</div>
+                    	<%= f.text_field :first_name, :value => "#{current_user.try(:first_name)}" ,:pattern => '[A-Za-z]+',"maxlength"=>"35", "min" => "1","max" => "35", :class => "field1" %>
+                </div>
+                <div class="clear"></div>
+                <div class="login-field-box">
+                	<div class="text-box1">Email*</div>
+                  <%= f.email_field :email, :value => "#{current_user.try(:email)}",required: true, "maxlength"=>"35", "min" => "1","max" => "35" , :class => "field1"%>
+                </div>
+                <div class="clear"></div>
+                
+                <div class="login-field-box">
+                	<div class="text-box1">Message Type*</div>
+                   <%= f.select :message_type, [ ["How to improve our site", "How to improve our site"], [" Technical assistance", "Technical assistance"],["User registration" , "User registration"],["General enquiries", "General enquiries"],["Give us Feedback", "Give us Feedback"],["Report inappropriate content","Report inappropriate content"],["Other", "Other"] ], {},:onchange => 'CheckOther();', :class=> "field1", :style => "width:200px;"%>
+				<input type="text" id="other_type" name="other_type" class="field1">
+                </div>
+            </div>
+            <div class="register-box" style="min-height:135px;height:135px">
+            	
+                <div class="login-field-box">
+                	<div class="text-box1">Last Name*</div>
+                    <%= f.text_field :last_name, :value => "#{current_user.try(:last_name)}",:pattern => '[A-Za-z]+',"maxlength"=>"35", "min" => "1","max" => "35", :class => "field1" %>
+                </div>
+                
+                <div class="clear"></div>
+                
+                 <div class="login-field-box">
+                	<div class="text-box1">Telephone</div>
+                      <%= f.text_field :telephone, :pattern => '[0-9]+',"maxlength"=>"10", "min" => "1","max" => "10", :class => "field1" %>
+                </div>
+                
+                <div class="clear"></div>
+                
+                <div class="clear"></div>
+                <div class="login-field-box2">
+                    
+                </div>
+            </div>
+            
+             <div class="login-field-boxnew">
+                	<div class="text-box1">Message*</div>
+                	<%= f.text_area :message, :rows=>"5",:class =>"text-area4new fr-bt","maxlength"=>"1200"%>
+                   
+                   </div>
+                  <div class="clear"></div><br/>
+                  <div class="new-captcha">
+                 <%= recaptcha_tags %><br/>
+                 <%=f.submit "xema", :class=> "btn2 left-align" %>
+                 </div> 
+           <% end %>    
+        </div>
 
-		<div class="fom_con">
-		  <div class="form_lft">
-		    <div class="name_lft">First Name: </div>
-		    <div>
-				<%= f.text_field :first_name, :value => "#{current_user.try(:first_name)}" ,:pattern => '[A-Za-z]+',"maxlength"=>"35", "min" => "1","max" => "35" %>
-		    </div>
-		  </div>
-		  <div class="form_lft">
-		    <div class="name_lft">Last Name: </div>
-		    <div>
-		      <%= f.text_field :last_name, :value => "#{current_user.try(:last_name)}",:pattern => '[A-Za-z]+',"maxlength"=>"35", "min" => "1","max" => "35"%>
-		    </div>
-		  </div>
-		</div>
-		<div class="fom_con">
-		  <div class="form_lft">
-		    <div class="name_lft">Email: *</div>
-		    <div>
-				<%= f.email_field :email, :value => "#{current_user.try(:email)}",required: true, "maxlength"=>"35", "min" => "1","max" => "35" %>
-		    </div>
-		  </div>
-		  <div class="form_lft">
-		    <div class="name_lft">Telephone: </div>
-		    <div>
-		      <%= f.text_field :telephone, :pattern => '[0-9]+',"maxlength"=>"10", "min" => "1","max" => "10"%>
-		    </div>
-		  </div>
-		</div>
-    <div class="contact_form">
-	    <div class="name_lft">Message Type: </div>
-			<div><%= f.select :message_type, [ ["How to improve our site", "How to improve our site"], [" Technical assistance", "Technical assistance"],["User registration" , "User registration"],["General enquiries", "General enquiries"],["Give us Feedback", "Give us Feedback"],["Report inappropriate content","Report inappropriate content"],["Other", "Other"] ], {},:onchange => 'CheckOther();'%>
-				<input type="text" id="other_type" name="other_type"></div>
 
-		</div>
-		<div class="fom_con">
-		  <div class="form_lft">
-		    <div class="name_lft">Message : </div>
-		  </div>
-	    <div class="contact-textarea">
-					<%= f.text_area :message, :rows=>"5",:class =>"wdh","maxlength"=>"1200"%>
-			</div>
-		</div>
-		<div class="fom_con">
-				<div class="name_lft">Are you human?:</div> <%= recaptcha_tags %>
-		</div>
-		<div class="contact_form pull-right">
-				<%=f.submit "xema"%>
-		</div>
-	<% end %>
-</div>
 
 <script type="text/javascript">
 $( document ).ready(function() {

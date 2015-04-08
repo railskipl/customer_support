@@ -5,18 +5,18 @@
 
           <li class='<%= @active_tab == "home" ? "active" : "" %>'><a href='<%= root_path %>' class='<%= @active_tab == "home" ? "active" : "" %>'><span>Home</span></a></li>
           <%if generate_path('About us') %>
-            <li><a href='<%= generate_path('About us') %>'><span>About Us</span></a></li>
+            <li  class='<%= @action == "About us" ? "active" : "" %>' ><a href='<%= generate_path('About us') %>'  class='<%= @action == "About us" ? "active" : "" %>' ><span>About Us</span></a></li>
           <% end %>
-          <% active_tab = @sub_action == "my_reviews" %>
+          <% active_tab = @sub_action == "my_reviews" ||  @nav_tab == "reviews"%>
           <li class='<%= active_tab ? "active" : "" %>' ><a href='<%= user_review_path %>' class='<%= active_tab ? "active" : "" %>' ><span>Reviews</span></a></li>
           <% if generate_path('csr')  %>
-            <li><a href='<%= generate_path('csr') %>'><span>CSR</span></a></li>
+            <li class='<%= @action == "csr" ? "active" : "" %>' ><a href='<%= generate_path('csr') %>' class='<%= @action == "csr" ? "active" : "" %>'><span>CSR</span></a></li>
           <% end %>
           <% if @resource_types%>
-            <li><a href='<%= resource_path(@resource_types.first) %>'><span>Resources</span></a></li>
+            <li class='<%= @action == "resources" ? "active" : "" %>'> <a href='<%= resource_path(@resource_types.first) %>' class='<%= @action == "resources" ? "active" : "" %>'><span>Resources</span></a></li>
           <% end %>
 
-          <li><a href='<%= faqs_url %>'><span>FAQ</span></a></li>
+          <li class='<%= @action == "faqs" ? "active" : "" %>' ><a href='<%= faqs_url %>' class='<%= @action == "faqs" ? "active" : "" %>' ><span>FAQ</span></a></li>
           <% if user_signed_in? %>
            <li class='<%= @active_tab == "my_account" ? "active" : "" %>'> <a href='<%= profile_path %>' class='<%= @active_tab == "my_account" ? "active" : "" %>'><span>My Account</span></a></li>
           <% else %>
@@ -24,7 +24,7 @@
            <li class='<%= active_tab ? "active" : "" %>'><a href='<%= new_user_session_path %>' class='<%= active_tab ? "active" : "" %>'><span>My Account</span></a></li>
           <% end%>
           </li>
-          <li><a href='<%= contact_us_url %>' class="last"><span>Contact Us</span></a></li>
+          <li class='<%= @action == "contact_us" ? "active" : "" %>'><a href='<%= contact_us_url %>'  class='<%= @action == "contact_us" ? "active last" : "last" %>'><span>Contact Us</span></a></li>
           </ul>
             </div>
             

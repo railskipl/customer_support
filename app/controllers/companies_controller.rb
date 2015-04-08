@@ -7,6 +7,7 @@ class CompaniesController < ApplicationController
 	end
 
         def user_review
+          @nav_tab = "reviews"
   	  @active_tab = "review"
 	  @reviews ||= Review.published.order("date")
           review = Review.new(review_params)
@@ -34,6 +35,7 @@ class CompaniesController < ApplicationController
   end
 
   def conversions
+    @nav_tab = "reviews"
 		@active_tab = "conversions"
     review = Review.new(review_params)
     @review_filter = review
@@ -59,6 +61,7 @@ class CompaniesController < ApplicationController
 
 
   def registered
+    @nav_tab = "reviews"
 		@active_tab = "registered"
 		review = Review.new(review_params)
     @review_filter = review
@@ -82,6 +85,7 @@ class CompaniesController < ApplicationController
   end
 
   def unregistered
+    @nav_tab = "reviews"
 		@active_tab = "unregistered"
     review = Review.new(review_params)
     @review_filter = review

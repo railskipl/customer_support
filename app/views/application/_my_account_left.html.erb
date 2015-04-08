@@ -56,11 +56,11 @@
                 </a>
                 <% else %>
                 <div class="heading1">View Reports</div>
-                <a href="<%= user_review_path %>"><div class="reports2">Reviews</div></a>
-                <a href="<%= conversions_path %>"><div class="reports2">Conversions</div></a>
-                <a href="<%= registered_path %>"><div class="reports2">Registered Companies</div></a>
-                <a href="<%= unregistered_path %>"><div class="reports2">Unregistered Companies</div></a>
-                <a href="<%= polls_bloopers_path %>"><div class="reports2">Polls &amp; Bloopers</div></a>
+                <a href="<%= user_review_path %>"><div class="<%=(@active_tab == "review" ? "reports2 act" : "reports2")%>">Reviews</div></a>
+                <a href="<%= conversions_path %>"><div class="<%=(@active_tab == "conversions" ? "reports2 act" : "reports2")%>">Conversions</div></a>
+                <a href="<%= registered_path %>"><div class="<%=(@active_tab == "registered" ? "reports2 act" : "reports2")%>">Registered Companies</div></a>
+                <a href="<%= unregistered_path %>"><div class="<%=(@active_tab == "unregistered" ? "reports2 act" : "reports2")%>">Unregistered Companies</div></a>
+                <a href="<%= polls_bloopers_path %>"><div class="<%=(@active_tab == "polls-bloopers" ? "reports2 act" : "reports2")%>">Polls &amp; Bloopers</div></a>
                 <% end %>
                 <div class="clear"></div>
             </div>

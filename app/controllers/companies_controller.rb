@@ -6,13 +6,12 @@ class CompaniesController < ApplicationController
   	@action = "my_account"
 	end
 
-  def user_review
-    @bread_crumb = "Reviews"
-    @nav_tab = "reviews"
-    @active_tab = "review"
+        def user_review
+          @nav_tab = "reviews"
+  	  @active_tab = "review"
 	  @reviews ||= Review.published.order("date")
-    review = Review.new(review_params)
-    @review_filter = review
+          review = Review.new(review_params)
+          @review_filter = review
 
 	  if review.review_type
 	    @reviews = @reviews.by_review_type review.review_type
@@ -36,7 +35,6 @@ class CompaniesController < ApplicationController
   end
 
   def conversions
-    @bread_crumb = "Reviews"
     @nav_tab = "reviews"
 		@active_tab = "conversions"
     review = Review.new(review_params)
@@ -63,7 +61,6 @@ class CompaniesController < ApplicationController
 
 
   def registered
-    @bread_crumb = "Reviews"
     @nav_tab = "reviews"
 		@active_tab = "registered"
 		review = Review.new(review_params)
@@ -88,7 +85,6 @@ class CompaniesController < ApplicationController
   end
 
   def unregistered
-    @bread_crumb = "Reviews"
     @nav_tab = "reviews"
 		@active_tab = "unregistered"
     review = Review.new(review_params)
@@ -113,7 +109,6 @@ class CompaniesController < ApplicationController
   end
 
   def polls_bloopers
-    @bread_crumb = "Polls-Bloopers"
 		@active_tab = "polls-bloopers"
 		@section = 'polls-bloopers'
 		@sub_action = 'polls-bloopers'

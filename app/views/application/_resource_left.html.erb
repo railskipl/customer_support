@@ -4,7 +4,7 @@
               <% @resource_types.each do |resource_type| %>
                 <a href="<%= resource_path(resource_type.slug) %>">
                   <div class="<%= (@resource_type.slug == resource_type.slug ? "reports2 act" : 'reports2') if resource_type.resources.count > 0 %>">
-                    <%= resource_type.name.titlecase %>
+                    <%= resource_type.name.titlecase if resource_type.resources.count > 0 %>
                   </div></a>
               <% end %>
 

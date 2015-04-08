@@ -28,14 +28,14 @@
   <%unless @performance.blank?%>
       <%unless @performance.performance_img.blank?%>
            <div class="polls"> 
-       <%= link_to (image_tag @performance.performance_img),@performance.worst_performance  rescue nil%>
+       <%= link_to (image_tag @performance.performance_img,:style => "width:236px;height:230px;" ),@performance.worst_performance  rescue nil%>
       </div>
       <%end%>
-      <%unless @performance.best_performance.blank?%>
-        <div class="polls">
-          <%=@performance.best_performance.html_safe rescue nil%>
-      </div>
-    <%end%>
+      <%#unless @performance.best_performance.blank?%>
+        <!-- <div class="polls"> -->
+          <%#=@performance.best_performance.html_safe rescue nil%>
+      <!-- </div> -->
+    <%#end%>
     
   <%else%>
 

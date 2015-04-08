@@ -38,7 +38,7 @@
                 <div class="login-field-box">
                 	<div class="text-box1">Message Type*</div>
                    <%= f.select :message_type, [ ["How to improve our site", "How to improve our site"], [" Technical assistance", "Technical assistance"],["User registration" , "User registration"],["General enquiries", "General enquiries"],["Give us Feedback", "Give us Feedback"],["Report inappropriate content","Report inappropriate content"],["Other", "Other"] ], {},:onchange => 'CheckOther();', :class=> "field1", :style => "width:200px;"%>
-				<input type="text" id="other_type" name="other_type" class="field1">
+				
                 </div>
             </div>
             <div class="register-box" style="min-height:135px;height:135px">
@@ -54,6 +54,15 @@
                 	<div class="text-box1">Telephone</div>
                       <%= f.text_field :telephone, :pattern => '[0-9]+',"maxlength"=>"10", "min" => "1","max" => "10", :class => "field1" %>
                 </div>
+                <div class="clear"></div>
+
+                   <div class="login-field-box">
+                  <div class="text-box1">&nbsp;</div>
+                     <input type="text" id="other_type" name="other_type" class="field1" placeholder="Other - Please Specify">
+                </div>
+
+                
+                
                 
                 <div class="clear"></div>
                 

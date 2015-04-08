@@ -1,5 +1,25 @@
-<div class="span3">&nbsp;</div>
-<div id="container" class="span6" style="width:500px;height:400px;"></div>
+      <%content_for :left do%>
+    <span class="span3">
+         <%=render :partial=> "application/my_account_left"%>
+    </span>
+<%end%>
+
+      <div class="poll-big">
+            <div class="poll-box">
+           <div class="information-new">
+                  <div class="heading2poll">Poll Results</div>
+                  <p>Make provision to add some text here, an introduction to the poll.</p>
+                  <div id="container" class="polls"></div>
+           </div>
+              <div class="clear"></div>
+           
+                
+            </div>
+       </div>
+
+
+
+
 <script>
 $(function () {
         $('#container').highcharts({
@@ -9,12 +29,17 @@ $(function () {
             title: {
                 text: '<%=@poll.title%>'
             },
+            plotOptions: {
+            series: {
+                color: '#fbaf3d'
+            }
+        },
             xAxis: {
                 type: 'category',
                 labels: {
                     style: {
                         fontSize: '13px',
-                        fontFamily: 'Verdana, sans-serif'
+                        fontFamily: 'andlso'
                     }
                 }
             },
@@ -22,14 +47,18 @@ $(function () {
                 allowDecimals:false,
                 min: 0,
                 title: {
-                    text: 'Polls'
+                    text: 'No. of Votes'
                 }
             },
+             credits: {
+      enabled: false
+  },exporting: { enabled: false },
             legend: {
                 enabled: false
             },
             series: [{
                 name: 'Polls',
+                fill: '#fbaf3d',
                 data: [
 						   <%@poll.options.each do |option|%>
 						     ['<%=option.answer%>',<%= option.results.count %>]

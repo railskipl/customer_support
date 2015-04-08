@@ -1,5 +1,6 @@
 class PollsController < ApplicationController
 	def show
+		@active_tab = "polls-bloopers"
 		@poll = Poll.find(params[:id])
    respond_to do |format|
       format.html # show.html.erb

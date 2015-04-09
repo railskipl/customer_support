@@ -6,12 +6,13 @@ class CompaniesController < ApplicationController
   	@action = "my_account"
 	end
 
-        def user_review
-          @nav_tab = "reviews"
-  	  @active_tab = "reviews"
+  def user_review
+    @nav_tab = "reviews"
+    @active_tab = "reviews"
+    @active_title = "reviews"
 	  @reviews ||= Review.published.order("date")
-          review = Review.new(review_params)
-          @review_filter = review
+    review = Review.new(review_params)
+    @review_filter = review
 
 	  if review.review_type
 	    @reviews = @reviews.by_review_type review.review_type

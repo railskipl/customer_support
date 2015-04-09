@@ -35,6 +35,7 @@ class ReviewsController < ApplicationController
 	end
 
 	def new
+    @active_title = params["review_type"]
     if current_user.try(:role) == "admin" ||  current_user.try(:role) == 'agent' || current_user.try(:role) == 'jagent' 
       redirect_to admin_index_path
     else
@@ -55,6 +56,8 @@ class ReviewsController < ApplicationController
 	end
 
 	def show
+    @active_title = "Review Details"
+    @active_tab = "Detailed Review"
     @review = Review.find(params[:id])
   end
 

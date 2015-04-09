@@ -1,4 +1,12 @@
-
+  <div class="page-link">
+          <ul>
+              <li><a href="<%= root_path %>">Home</a></li>
+                <li><span>&raquo;</span></li>
+                <li><a href="<%= page_url(Page.first.slug) %>">About Us</a></li>
+                <li><span>&raquo;</span></li>
+                <li><a href="<%= profile_path %>" class="selected"><%= @sub_action %></a></li>
+            </ul>
+        </div>
           <div class="section-one">
           <div class="reports">
               <div class="heading1">About us</div>

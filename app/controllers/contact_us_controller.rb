@@ -32,6 +32,7 @@ class ContactUsController < ApplicationController
     end
 
 		def default_action_tab
+      @active_title = "contact_us"
 	  	@action = "contact_us"
 		end
 

@@ -1,26 +1,28 @@
-<span class="span3">
+  <div class="section-third">
  <%unless @top_advertise.blank?%>
   <%if @top_advertise.text_msg.present? %>
-    <div class="sectionRightAd" style="word-wrap: break-word; width: 300px;">
-      <%= @top_advertise.text_msg.html_safe rescue nil%>
+    <div class="polls" >
+      <%#= @top_advertise.image rescue nil%>
+      <%=link_to (image_tag @top_advertise.image.url ,:class=>"sectionRightAd",:style => "width:236px;height:230px;" ) , @top_advertise.link if @top_advertise%>
+ 
     </div>
   <%else%>
-    <%=link_to (image_tag @top_advertise.image.url ,:class=>"sectionRightAd",:style=>"width: 300px;") , @top_advertise.link if @top_advertise%>
+    <%#=link_to (image_tag @top_advertise.image.url ,:class=>"sectionRightAd",:style=>"width: 300px;") , @top_advertise.link if @top_advertise%>
   <%end%>
  <%end%>
  <%unless @bottom_advertise.blank?%>
   <%if @bottom_advertise.text_msg.present?%>
-    <div class="sectionRightAd" style="word-wrap: break-word; width: 300px;" >
-      <%= @bottom_advertise.text_msg.html_safe rescue nil%>
+    <div class="polls" >
+        <%=link_to (image_tag @bottom_advertise.image.url ,:class=>"sectionRightAd", :style => "width:236px;height:230px;" ), @bottom_advertise.link  if @bottom_advertise%>
     </div>
   <%else%>
-   <%=link_to (image_tag @bottom_advertise.image.url ,:class=>"sectionRightAd", :style=>"width: 300px;"), @bottom_advertise.link  if @bottom_advertise%>
+   <%#=link_to (image_tag @bottom_advertise.image.url ,:class=>"sectionRightAd", :style=>"width: 300px;"), @bottom_advertise.link  if @bottom_advertise%>
   <%end%>
  <%end%>
 
- </span>
+
   <%if @poll.present?%>
-  <div class="section-third">
+
     <div class="first-right-one">
     		   <%= form_for(@result) do |f| %>
 		    <h3> <%= f.label @poll.title %></h3>
@@ -58,3 +60,4 @@
 
 
 
+</div>

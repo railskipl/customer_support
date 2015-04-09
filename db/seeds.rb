@@ -2519,49 +2519,51 @@
 
 
 
+page = Page.new(:name=>"About us", :title=> "About Xemaxema",
+             :description => "Lorem ipsum", :slug => "about-xemaxema")
+puts page.save!(:validates=>false)
 
 
+page = Page.new(:name=>"About us", :title=> "Importance of feedback",
+            :description => "Genuine customer feedback provides extremely valuable insight for businesses. Both good and bad feedback is essential. It facilitates companies to correct errors, better the good and keep up with the consumer trends. More often than not it is an all-round value adding process.
 
-# page = Page.new(:name=>"About us", :title=> "Importance of feedback",
-#             :description => "Genuine customer feedback provides extremely valuable insight for businesses. Both good and bad feedback is essential. It facilitates companies to correct errors, better the good and keep up with the consumer trends. More often than not it is an all-round value adding process.
+However research shows that for every customer complaint there are 26 other unhappy customers who remained silent. This proves that little feedback is given by customers. Frustrating process, distrust for follow up on feedback given, lengthy … , are among other challenges faced by customers giving feedback.
 
-# However research shows that for every customer complaint there are 26 other unhappy customers who remained silent. This proves that little feedback is given by customers. Frustrating process, distrust for follow up on feedback given, lengthy … , are among other challenges faced by customers giving feedback.
+A public feedback platform will eliminate some of the problems in that it is independent, less biased, allows sharing, transparent and possibly faster against one on one feedback. This will better the overall effect on customer service and value creation.
 
-# A public feedback platform will eliminate some of the problems in that it is independent, less biased, allows sharing, transparent and possibly faster against one on one feedback. This will better the overall effect on customer service and value creation.
+Kenya does not have a forum like this, leaving companies not accountable and paying less attention on customer service. We would like to challenge and change this. {Name} is the platform that will give the customer in Kenya the chance to give ratings, Kudos and also challenge those that do not deliver. Customers are therefore encouraged … Come all let's give a ranking. We deserve better!",:slug=>"importance-of-feedback")
 
-# Kenya does not have a forum like this, leaving companies not accountable and paying less attention on customer service. We would like to challenge and change this. {Name} is the platform that will give the customer in Kenya the chance to give ratings, Kudos and also challenge those that do not deliver. Customers are therefore encouraged … Come all let's give a ranking. We deserve better!",:slug=>"importance-of-feedback")
+page.save(:validates=>false)
 
-# page.save(:validates=>false)
+page = Page.new(:name=>"About us", :title=> "How we work",
+            :description => "Genuine customer feedback provides extremely valuable insight for businesses. Both good and bad feedback is essential. It facilitates companies to correct errors, better the good and keep up with the consumer trends. More often than not it is an all-round value adding process.
 
-# page = Page.new(:name=>"About us", :title=> "How we work",
-#             :description => "Genuine customer feedback provides extremely valuable insight for businesses. Both good and bad feedback is essential. It facilitates companies to correct errors, better the good and keep up with the consumer trends. More often than not it is an all-round value adding process.
+However research shows that for every customer complaint there are 26 other unhappy customers who remained silent. This proves that little feedback is given by customers. Frustrating process, distrust for follow up on feedback given, lengthy … , are among other challenges faced by customers giving feedback.
 
-# However research shows that for every customer complaint there are 26 other unhappy customers who remained silent. This proves that little feedback is given by customers. Frustrating process, distrust for follow up on feedback given, lengthy … , are among other challenges faced by customers giving feedback.
+A public feedback platform will eliminate some of the problems in that it is independent, less biased, allows sharing, transparent and possibly faster against one on one feedback. This will better the overall effect on customer service and value creation.
 
-# A public feedback platform will eliminate some of the problems in that it is independent, less biased, allows sharing, transparent and possibly faster against one on one feedback. This will better the overall effect on customer service and value creation.
+Kenya does not have a forum like this, leaving companies not accountable and paying less attention on customer service. We would like to challenge and change this. {Name} is the platform that will give the customer in Kenya the chance to give ratings, Kudos and also challenge those that do not deliver. Customers are therefore encouraged … Come all let's give a ranking. We deserve better!",:slug=>"how-we-work")
+page.save(:validates=>false)
 
-# Kenya does not have a forum like this, leaving companies not accountable and paying less attention on customer service. We would like to challenge and change this. {Name} is the platform that will give the customer in Kenya the chance to give ratings, Kudos and also challenge those that do not deliver. Customers are therefore encouraged … Come all let's give a ranking. We deserve better!",:slug=>"how-we-work")
-# page.save(:validates=>false)
+page = Page.new(:name=>"About us", :title=> "Terms of use",
+            :description => "Genuine customer feedback provides extremely valuable insight for businesses. Both good and bad feedback is essential. It facilitates companies to correct errors, better the good and keep up with the consumer trends. More often than not it is an all-round value adding process.
 
-# page = Page.new(:name=>"About us", :title=> "Terms of use",
-#             :description => "Genuine customer feedback provides extremely valuable insight for businesses. Both good and bad feedback is essential. It facilitates companies to correct errors, better the good and keep up with the consumer trends. More often than not it is an all-round value adding process.
+However research shows that for every customer complaint there are 26 other unhappy customers who remained silent. This proves that little feedback is given by customers. Frustrating process, distrust for follow up on feedback given, lengthy … , are among other challenges faced by customers giving feedback.
 
-# However research shows that for every customer complaint there are 26 other unhappy customers who remained silent. This proves that little feedback is given by customers. Frustrating process, distrust for follow up on feedback given, lengthy … , are among other challenges faced by customers giving feedback.
+A public feedback platform will eliminate some of the problems in that it is independent, less biased, allows sharing, transparent and possibly faster against one on one feedback. This will better the overall effect on customer service and value creation.
 
-# A public feedback platform will eliminate some of the problems in that it is independent, less biased, allows sharing, transparent and possibly faster against one on one feedback. This will better the overall effect on customer service and value creation.
-
-# Kenya does not have a forum like this, leaving companies not accountable and paying less attention on customer service. We would like to challenge and change this. {Name} is the platform that will give the customer in Kenya the chance to give ratings, Kudos and also challenge those that do not deliver. Customers are therefore encouraged … Come all let's give a ranking. We deserve better!",:slug=>"terms-of-use")
-# page.save(:validates=>false)
+Kenya does not have a forum like this, leaving companies not accountable and paying less attention on customer service. We would like to challenge and change this. {Name} is the platform that will give the customer in Kenya the chance to give ratings, Kudos and also challenge those that do not deliver. Customers are therefore encouraged … Come all let's give a ranking. We deserve better!",:slug=>"terms-of-use")
+page.save(:validates=>false)
 
 
-# page = Page.new(:name=>"How to write a good review:", :title=> "How to write a good review",
-#             :description => "",:slug=>"how-to-write-good-review")
-# page.save(:validates=>false)
+page = Page.new(:name=>"How to write a good review:", :title=> "How to write a good review",
+            :description => "",:slug=>"how-to-write-good-review")
+page.save(:validates=>false)
 
-# page = Page.new(:name=>"csr",  :title=>"CSR", :slug=>"csr",:template_name=>'csr')
-# page.save(:validates=>false)
-# ResourceType.create(:name=>"Jobs")
-# ResourceType.create(:name=>"Articles")
+page = Page.new(:name=>"csr",  :title=>"CSR", :slug=>"csr",:template_name=>'csr')
+page.save(:validates=>false)
+ResourceType.create(:name=>"Jobs")
+ResourceType.create(:name=>"Articles")
 
 
 # Seo.create(
@@ -2575,8 +2577,5 @@
 # Kenya does not have a forum like this, leaving companies not accountable and paying less attention on customer service. We would like to challenge and change this. {Name} is the platform that will give the customer in Kenya the chance to give ratings, Kudos and also challenge those that do not deliver. Customers are therefore encouraged … Come all let's give a ranking. We deserve better!", 
 # 	:meta_keyword => "Customer support, xema, xemasupport")
 
-page = Page.new(:name=>"About us", :title=> "About Xemaxema",
-             :description => "Lorem ipsum", :slug => "about-xemaxema")
-puts page.save!(:validates=>false)
 
 puts Maintainence.first_or_create

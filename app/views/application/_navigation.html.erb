@@ -13,7 +13,7 @@
             <li class='<%= @action == "csr" ? "active" : "" %>' ><a href='<%= generate_path('csr') %>' class='<%= @action == "csr" ? "active" : "" %>'><span>CSR</span></a></li>
           <% end %>
           <% if @resource_types%>
-            <li class='<%= @action == "resources" ? "active" : "" %>'> <a href='<%= resource_path(@resource_types.first) %>' class='<%= @action == "resources" ? "active" : "" %>'><span>Resources</span></a></li>
+            <li class='<%= @action == "resources" ? "active" : "" %>'> <a href='<%= resource_path(@resource_types.last) %>' class='<%= @action == "resources" ? "active" : "" %>'><span>Resources</span></a></li>
           <% end %>
 
           <li class='<%= @action == "faqs" ? "active" : "" %>' ><a href='<%= faqs_url %>' class='<%= @action == "faqs" ? "active" : "" %>' ><span>FAQ</span></a></li>

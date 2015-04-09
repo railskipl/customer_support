@@ -79,4 +79,8 @@ class Review < ActiveRecord::Base
     where('Date(created_at) >= ? and Date(created_at) <= ? and industry_id = ? and user_id is not null and nature_of_review = ?  and ispublished = ? and archive = ? ',1.year.ago, Date.today,industry_id,nature_type,true,false)
   end
 
+  def self.nature_count3(company_id,nature_type)
+    where('Date(created_at) >= ? and Date(created_at) <= ? and company_id = ? and user_id is not null and nature_of_review = ?  and ispublished = ? and archive = ? ',1.year.ago, Date.today,company_id,nature_type,true,false)
+  end
+
 end

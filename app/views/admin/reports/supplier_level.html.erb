@@ -36,59 +36,13 @@
 	</thead>
 
 	<tbody>
+		<% @n.each do |r| %>
 		<tr>
-			<td>Billing/accounts</td>
-			<td><%= @billing rescue nil%></td>
+			<td><%= r[0] %></td>
+			<td><%= r[1] %></td>
 		</tr>
-		<tr>
-			<td>Booking</td>
-			<td><%= @booking rescue nil%></td>
-		</tr>
-		<tr>
-			<td>Call centre efficiency</td>
-			<td><%= @call_center rescue nil%></td>
-		</tr>
-		<tr>
-			<td>Contract</td>
-			<td><%= @contract rescue nil%></td>
-		</tr>
-		<tr>
-			<td>Delivery on time</td>
-			<td><%= @delivery rescue nil%></td>
-		</tr>
-		<tr>
-			<td>Feedback</td>
-			<td><%= @feedback rescue nil%></td>
-		</tr>
-		<tr>
-			<td>Going the extra mile</td>
-			<td><%= @going_extra rescue nil%></td>
-		</tr>
-		<tr>
-			<td>Great attitude</td>
-			<td><%= @great_attitude rescue nil%></td>
-		</tr>
-		<tr>
-			<td>Pricing</td>
-			<td><%= @pricing rescue nil%></td>
-		</tr>
-		<tr>
-			<td>Refund</td>
-			<td><%= @refund rescue nil%></td>
-		</tr>
-		<tr>
-			<td>Repairs</td>
-			<td><%= @repairs rescue nil%></td>
-		</tr>
-		<tr>
-			<td>Stock</td>
-			<td><%= @stock rescue nil%></td>
-		</tr>
-		<tr>
-			<td>Other</td>
-			<td><%= @others rescue nil%></td>
-		</tr>
-
+		<% end %>
+		
 	</tbody>
 </table>
 <br/><br/>
@@ -104,65 +58,11 @@
 	</thead>
 
 	<tbody>
+			<% @n1.each do |r| %>
 		<tr>
-			<td>Bad attitude</td>
-			<td><%= @bad_attitude rescue nil%></td>
+			<td><%= r[0] %></td>
+			<td><%= r[1] %></td>
 		</tr>
-		<tr>
-			<td>Billing/Accounts</td>
-			<td><%= @billing_account %></td>
-		</tr>
-		<tr>
-			<td>Booking query</td>
-			<td><%= @booking_query rescue nil%></td>
-		</tr>
-		<tr>
-			<td>Breach of contract</td>
-			<td><%= @breach_of_contract rescue nil%></td>
-		</tr>
-		<tr>
-			<td>Call centre</td>
-			<td><%= @call_centre_c rescue nil%></td>
-		</tr>
-		<tr>
-			<td>Damaged goods</td>
-			<td><%= @damaged_goods rescue nil%></td>
-		</tr>
-		<tr>
-			<td>Expiry date</td>
-			<td><%= @expiry rescue nil%></td>
-		</tr>
-		<tr>
-			<td>Feedback/response</td>
-			<td><%= @feedback_response rescue nil%></td>
-		</tr>
-		<tr>
-			<td>Hygiene</td>
-			<td><%= @hygiene rescue nil%></td>
-		</tr>
-		<tr>
-			<td>Late/no delivery</td>
-			<td><%= @Late_no_delivery rescue nil%></td>
-		</tr>
-		<tr>
-			<td>Out of stock</td>
-			<td><%= @out_of_stock rescue nil%></td>
-		</tr>
-		<tr>
-			<td>Pricing/bar codes</td>
-			<td><%= @pricing_bar_codes rescue nil%></td>
-		</tr>
-		<tr>
-			<td>Repairs/servicing</td>
-			<td><%= @repairs_servicing rescue nil%></td>
-		</tr>
-		<tr>
-			<td>Spam</td>
-			<td><%= @spam rescue nil%></td>
-		</tr>
-		<tr>
-			<td>Other</td>
-			<td><%= @others_c rescue nil%></td>
-		</tr>
+		<% end %>
 	</tbody>
 </table>

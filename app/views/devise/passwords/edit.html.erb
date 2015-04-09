@@ -1,37 +1,39 @@
 <%content_for :left do%>
-	<span class="span1">
-	</span>
+<div class="page-link">
+          <ul>
+              <li><a href="<%= root_path %>">Home</a></li>
+                <li><span>&raquo;</span></li>
+                <li><a href="#" class="selected">My Account</a></li>
+            </ul>
+        </div>
 <%end%>
-
-<span class="span6">
-	<div class="registerSectionForm">
-		<h2>Change your password</h2>
-
-		<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
+ <div class="max-box">
+        	<div class="login-box1">
+        	<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
 
 			<%= devise_error_messages! %>
-				<div class="fom_con">
-				  <div class="form_lft">
-				    <div class="name_lft"><%= f.label :password, "New password" %></div>
-				    <div>
-							<%= f.password_field :password, :autofocus => true  ,:required => true%>
-				    </div>
-				  </div>
-				</div>
-				<div class="fom_con">
-				  <div class="form_lft">
-				    <div class="name_lft"><%= f.label :password_confirmation, "Confirm new password" %></div>
-				    <div>
-						<%= f.password_field :password_confirmation  ,:required => true%></div>
-				    </div>
-				  </div>
-			 </div>
+            	<div class="log-headac" style="color:#696969;">Change your password</div>
+                    <div class="login-field-box">
+                	<div class="text-box1">Password*</div>
+                   <%= f.password_field :password, :autofocus => true ,:class => "field1" ,:required => true%>
+                    </div>
+                    
+                     <div class="login-field-box">
+                	<div class="text-box1">Confirm Password*</div>
+                   <%= f.password_field :password_confirmation ,:class => "field1" ,:required => true%>
+                    </div>
+                   <%= f.hidden_field :reset_password_token %>
+                <div class="clear"></div>
 
-			<%= f.hidden_field :reset_password_token %>
-			<div class="rgh_in">
-				<%= f.submit "Reset Password" %>
-			</div>
+                   <div class="login-field-box2">
+                   	<%= f.submit "Reset Password" ,:class=>"btn2" %>
+                  </div>
+                  <% end %>
+              </div>
+            <div class="clear"></div>
+            	
+        </div>
 
-		<% end %>
-	</div>
-</span>
+
+
+	

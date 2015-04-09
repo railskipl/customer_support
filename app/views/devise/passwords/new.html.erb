@@ -1,18 +1,28 @@
-<%content_for :left do%>
-	<span class="span1">
-	</span>
-<%end%>
-
-<span class="span6">
-	<div class="registerSectionForm">
-		<h2>Forgot your password?</h2>
-
-		<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
+<div class="page-link">
+        	<ul>
+            	<li><a href="#">Home</a></li>
+                <li><span>&raquo;</span></li>
+                <li><a href="#" class="selected">My Account</a></li>
+            </ul>
+        </div>
+        <div class="clear"></div>
+        <div class="max-box">
+<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
 			<%= devise_error_messages! %>
+        	<div class="login-box1">
+            	<div class="log-headac" style="color:#696969;">Forgot your password?</div>
+                    <div class="login-field-box">
+                	<div class="text-box1">Email*</div>
+                     <%= f.email_field :email, :autofocus => true  ,:required => true, :class => "field1" %>
+                </div>
+                <div class="clear"></div>
+                   <div class="login-field-box2">
+                	     <%= f.submit "Reset Password" , :class=> "btn2"%> 
+                  </div>
+              </div>
+        <% end %>
+            <div class="clear"></div>
+   </div>
 
-			<div><%= f.label :email %><br />
-			<%= f.email_field :email, :autofocus => true  ,:required => true%></div>
-			<div class="rgh_in"><%= f.submit "Reset Password"%></div>
-		<% end %>
-	</div>
-</span>
+
+

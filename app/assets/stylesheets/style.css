@@ -784,7 +784,7 @@ textarea, input,select { outline: none; }
 	padding:2px 5px;
 	width:190px;
 	height:25px;
-	float:left;
+	/*float:left;*/
 	border:#dddcdc 0px solid;
 	background:#e6e6e6;
 	font-family:corbel;
@@ -1697,9 +1697,44 @@ margin:20px 0 20px 0px;
 width:160px;
 	
 }
+.signin a{color:#696969; font-family:andlso; font-size:18px;}
+.align{float:right;}
+/*-----------error pop up-------*/
+.alert-box {
+		color:#fff;
+		border-radius:10px;
+	    padding:5px 5px 12px;
+		margin:10px;
+		width:300px;
+		margin:auto;
+		text-align:center;
+		font-size:20px;
+		font-family:andlso;
+	}
 
-
-
+	.success {
+		background: #9fe484; /* Old browsers */
+background: -moz-linear-gradient(top, #9fe484 0%, #9ae313 26%, #94dc09 34%, #296104 81%, #347906 93%, #296104 99%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#9fe484), color-stop(26%,#9ae313), color-stop(34%,#94dc09), color-stop(81%,#296104), color-stop(93%,#347906), color-stop(99%,#296104)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, #9fe484 0%,#9ae313 26%,#94dc09 34%,#296104 81%,#347906 93%,#296104 99%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, #9fe484 0%,#9ae313 26%,#94dc09 34%,#296104 81%,#347906 93%,#296104 99%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top, #9fe484 0%,#9ae313 26%,#94dc09 34%,#296104 81%,#347906 93%,#296104 99%); /* IE10+ */
+background: linear-gradient(to bottom, #9fe484 0%,#9ae313 26%,#94dc09 34%,#296104 81%,#347906 93%,#296104 99%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9fe484', endColorstr='#296104',GradientType=0 ); /* IE6-9 */
+	
+	}
+	.error 
+	 {
+		background: #eddabf; /* Old browsers */
+background: -moz-linear-gradient(top, #eddabf 0%, #ed6a13 26%, #ed2e00 34%, #b91200 82%, #e93f08 93%, #b71200 99%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#eddabf), color-stop(26%,#ed6a13), color-stop(34%,#ed2e00), color-stop(82%,#b91200), color-stop(93%,#e93f08), color-stop(99%,#b71200)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top, #eddabf 0%,#ed6a13 26%,#ed2e00 34%,#b91200 82%,#e93f08 93%,#b71200 99%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top, #eddabf 0%,#ed6a13 26%,#ed2e00 34%,#b91200 82%,#e93f08 93%,#b71200 99%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top, #eddabf 0%,#ed6a13 26%,#ed2e00 34%,#b91200 82%,#e93f08 93%,#b71200 99%); /* IE10+ */
+background: linear-gradient(to bottom, #eddabf 0%,#ed6a13 26%,#ed2e00 34%,#b91200 82%,#e93f08 93%,#b71200 99%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eddabf', endColorstr='#b71200',GradientType=0 ); /* IE6-9 */
+	
+	}
 
 
 
@@ -1741,6 +1776,7 @@ width:160px;
 /*----------bank complaint page start--*/
 .form-box21bank{width:600px;}
 .img-section1{width:500px;}	
+
 /*----------bank complaint page start--*/
 /*------contact us/ login start--------*/
 .min-box{margin:0px auto;padding:0px;width:700px;min-height:380px;}
@@ -1759,8 +1795,12 @@ width:160px;
 /*-----complaint start-----------*/
 .join-form-box{width:700px;}
 .form-box1{width:300px;}
-.field4{width:531px; float:left;}
+.field4{width:628px; float:left;}
 .text-area4{width:531px; float:left;}
+.align{float:left;}
+.text-box1{width:384px;}
+.login-field-box{ width:300px;}
+.text-box12{width:100px;}
 /*-----complaint end-----------*/
 /*------edit profile start------------*/
 .form-box4{margin:0px; padding:0px; width:347px;min-height:800px;float:left;}
@@ -1787,10 +1827,10 @@ width:160px;
 .field1{width:660px;}
 .polls{margin:10px 0 10px 0;}
 .content2{width:auto; background-color:#FFF;}
-.text-box1{ width:700px;}
+.text-box1{ width:384px;}
 /*--------my review end--------------*/
 /*--------polls & bloopers start------*/
-.box1{width:100px;height:100px;float:left;margin: 0 32px 0px 0;background-color:#f8f8f8;}
+.box1{width:100px;height:100px;float:left;margin: 0 32px 32px 0;background-color:#f8f8f8;}
 
 /*--------polls & bloopers start------*/
 /*-yogesh----*/
@@ -1813,13 +1853,10 @@ width:160px;
 /*-----FAQ start-----------*/
 .technology{ width:700px;}
 .form-box21faq p{width:680px;}
-
-/*----------poll bloggers-------------*/
-.content2{overflow: auto;position: relative;padding: 0px;margin: 0px;width: 700px;max-width: 100%;height: 700px;}
-.log-head2new{margin:0px 0px 10px;padding:0px 0px 5px 0px;font-size:24px;width:193px;float:left;}
-.form-box3new{float: left;margin: 0 0 20px;min-height: 300px;padding: 0;width: 193px;background-color:#f8f8f8;}
-.grid-head-tb2{margin:0px 0px 7px;padding:0px;width:100%;height:auto;}
-.review-center{margin:0px!important;width:530px;}
+/*-----review------*/
+.max-box{width:700px;}
+.field1{width:290px;}
+.drp-select1{width:300px;}
 /*--yogesh---*/
 }
 @media (min-width:480px) and (max-width:719px)
@@ -1887,6 +1924,7 @@ width:160px;
 .drp-select3{width:180px; }
 .text-box12{float:none; text-align:left;}
 .login-field-box{width:460px;}
+.align{float:left;}
 /*-----complaint end-----------*/
 /*------edit profile start------------*/
 .form-box4{margin:0px; padding:0px; width:460px;min-height:800px;float:left;}
@@ -1934,6 +1972,8 @@ width:160px;
 /*-----FAQ start-----------*/
 .technology{ width:460px;}
 .form-box21faq p{width:430px;}
+/*-----review------*/
+.drp-select1{width:430px;}
 /*--yogesh---*/
 }
 
@@ -2003,14 +2043,15 @@ width:160px;
 /*-----complaint start-----------*/
 .join-form-box{width:300px;}
 .form-box1{width:150px;}
-.field4{width:290px; float:left;}
-.text-area4{width:290px; float:left;}
+.field4{width:170px; float:left;}
+.text-area4{width:166px; float:left;}
 .text-box1{width:130px; float:none;}
 .drp-select1{width:300px;}
 .field1{width:290px;}
 .drp-select3{width:130px; }
 .text-box12{float:none; text-align:left;}
 .login-field-box{width:300px;}
+.align{float:left;}
 /*-----complaint end-----------*/
 /*-----edit profile start-----------*/
 .form-box6{width:250px; float:left; margin:0px;}
@@ -2028,9 +2069,11 @@ width:160px;
 /*--------my review end--------------*/
 /*--------polls & bloopers start------*/
 .box1{float:left;margin: 0 32px 32px 0;background-color:#f8f8f8;}
-.content2{height:200px; width:300px;}
+.content2.newsize{height:200px; width:300px !important;}
 .reviews-box1{width:300px;}
-.review-center{width:300px;}
+.newsize{width:300px !important;}
+.field1{width:269px;}
+
 /*--------polls & bloopers start------*/
 /*---yogesh---*/
 /*----------login-------------*/
@@ -2057,6 +2100,8 @@ width:160px;
 /*-----FAQ -----------*/
 .technology{ width:300px;}
 .form-box21faq p{width:250px;}
+/*-----review------*/
+.drp-select1{width:180px;}
 }
 
 

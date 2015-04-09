@@ -1,23 +1,14 @@
-  <%if @sub_action == "show_profile" %>
+  <%if params["controller"] == "users" %>
   <div class="page-link">
           <ul>
               <li><a href="<%= root_path %>">Home</a></li>
                 <li><span>&raquo;</span></li>
                 <li><a href="<%= profile_path %>">My Account</a></li>
                 <li><span>&raquo;</span></li>
-                <li><a href="<%= profile_path %>" class="selected">My Profile</a></li>
+                <li><a href="#" class="selected"><%= params["action"] == "edit" ? "Update Profile" : "My Profile"%></a></li>
             </ul>
         </div>
-  <% elsif @sub_action == "update_profile" %>
-  <div class="page-link">
-          <ul>
-                <li><a href="<%= root_path %>">Home</a></li>
-                <li><span>&raquo;</span></li>
-                <li><a href="<%= profile_path %>">My Account</a></li>
-                <li><span>&raquo;</span></li>
-                <li><a href="<%= edit_profile_path %>" class="selected">Update Profile</a></li>
-            </ul>
-        </div>
+
 <% elsif  params["my"] == "mr" %>
   <div class="page-link">
           <ul>
@@ -28,6 +19,18 @@
                 <li><a href="<%= reviews_path %>" class="selected"> My Reviews</a></li>
             </ul>
 </div>
+<% elsif params["company_id"] %>
+  <div class="page-link">
+          <ul>
+                <li><a href="<%= root_path %>">Home</a></li>
+                <li><span>&raquo;</span></li>
+                <% unless params["action"] == "user_review" %>
+                  <li><a href="<%= user_review_path %>">Reviews</a></li>
+                  <li><span>&raquo;</span></li>
+                <% end %>
+                <li><a href="#" class="selected"><%= Company.find(params["company_id"]).title  %></a></li>
+            </ul>
+        </div>
 <% elsif  @sub_action == "my_reviews" || @active_tab != "home" %>
   <div class="page-link">
           <ul>

@@ -2574,4 +2574,9 @@
 
 # Kenya does not have a forum like this, leaving companies not accountable and paying less attention on customer service. We would like to challenge and change this. {Name} is the platform that will give the customer in Kenya the chance to give ratings, Kudos and also challenge those that do not deliver. Customers are therefore encouraged … Come all let's give a ranking. We deserve better!", 
 # 	:meta_keyword => "Customer support, xema, xemasupport")
+
+page = Page.new(:name=>"About us", :title=> "About Xemaxema",
+             :description => "Lorem ipsum", :slug => "about-xemaxema")
+puts page.save!(:validates=>false)
+
 puts Maintainence.first_or_create

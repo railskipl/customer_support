@@ -15,37 +15,20 @@ module Admin::ReportsHelper
 	end
 
 	def nature_of_complaints
-		#nature of review for compliments
-		@billing =        Review.nature_count('Billing/accounts') rescue nil
-		@booking =        Review.nature_count('Booking') rescue nil
-		@call_center    = Review.nature_count('Call centre efficiency') rescue nil
-		@contract =       Review.nature_count('Contract') rescue nil
-		@delivery =       Review.nature_count('Delivery on time') rescue nil
-		@feedback =       Review.nature_count('Feedback') rescue nil
-		@going_extra =    Review.nature_count('Going the extra mile') rescue nil
-		@great_attitude = Review.nature_count('Great attitude') rescue nil
-		@pricing =        Review.nature_count('Pricing') rescue nil
-		@refund =         Review.nature_count('Refund') rescue nil
-		@repairs =        Review.nature_count('Repairs') rescue nil
-		@stock =          Review.nature_count('Stock') rescue nil
-		@others =         Review.nature_count('Other') rescue nil
+		@nature_of_compliments = []
+		NatureOfReview.where("review_type = ?","compliment").pluck(:title).each do |r|
+			@nature_of_compliments << [r,Review.nature_count(r).count]
+		end
+		@n = @nature_of_compliments
+		@n = Hash[*@n.flatten]
 
-		#nature of review for complaints
-		@bad_attitude = Review.nature_count('Bad attitude') rescue nil
-		@billing_account = Review.nature_count('Billing/Accounts') rescue nil
-		@booking_query = Review.nature_count('Booking query') rescue nil
-		@breach_of_contract = Review.nature_count('Breach of contract') rescue nil
-		@call_centre_c = Review.nature_count('Call centre') rescue nil
-		@damaged_goods = Review.nature_count('Damaged goods') rescue nil
-		@expiry = Review.nature_count('Expiry date') rescue nil
-		@feedback_response = Review.nature_count('Feedback/response') rescue nil
-		@hygiene = Review.nature_count('Hygiene') rescue nil
-		@Late_no_delivery = Review.nature_count('Late/no delivery') rescue nil
-		@out_of_stock = Review.nature_count('Out of stock') rescue nil
-		@pricing_bar_codes = Review.nature_count('Pricing/bar codes') rescue nil
-		@repairs_servicing = Review.nature_count('Repairs/servicing') rescue nil
-		@spam = Review.nature_count('Spam') rescue nil
-		@others_c = Review.nature_count('Other') rescue nil
+		@nature_of_complaints = []
+		NatureOfReview.where("review_type = ?","complaint").pluck(:title).each do |r|
+			@nature_of_complaints << [r,Review.nature_count(r).count]
+		end
+		@n1 = @nature_of_complaints
+		@n1 = Hash[*@n1.flatten]
+
 	end
 
 	def total_reviews_dump

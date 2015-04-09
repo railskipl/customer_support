@@ -8,7 +8,7 @@ class CompaniesController < ApplicationController
 
         def user_review
           @nav_tab = "reviews"
-  	  @active_tab = "review"
+  	  @active_tab = "reviews"
 	  @reviews ||= Review.published.order("date")
           review = Review.new(review_params)
           @review_filter = review
@@ -62,7 +62,7 @@ class CompaniesController < ApplicationController
 
   def registered
     @nav_tab = "reviews"
-		@active_tab = "registered"
+		@active_tab = "registered_companies"
 		review = Review.new(review_params)
     @review_filter = review
     @rcompanies ||= Supplier.registered
@@ -86,7 +86,7 @@ class CompaniesController < ApplicationController
 
   def unregistered
     @nav_tab = "reviews"
-		@active_tab = "unregistered"
+		@active_tab = "unregistered_companies"
     review = Review.new(review_params)
     @review_filter = review
     @rcompanies ||= Supplier.un_registered
@@ -109,7 +109,8 @@ class CompaniesController < ApplicationController
   end
 
   def polls_bloopers
-		@active_tab = "polls-bloopers"
+     @nav_tab = "reviews"
+		@active_tab = "polls & bloopers"
 		@section = 'polls-bloopers'
 		@sub_action = 'polls-bloopers'
 		@polls = Poll.all

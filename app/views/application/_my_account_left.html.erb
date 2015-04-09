@@ -18,14 +18,26 @@
                 <li><a href="<%= edit_profile_path %>" class="selected">Update Profile</a></li>
             </ul>
         </div>
-<% elsif  @sub_action == "my_reviews" || @active_tab != "home" %>
+<% elsif  params["my"] == "mr" %>
   <div class="page-link">
           <ul>
                 <li><a href="<%= root_path %>">Home</a></li>
                 <li><span>&raquo;</span></li>
                 <li><a href="<%= profile_path %>">My Account</a></li>
                 <li><span>&raquo;</span></li>
-                <li><a href="<%= reviews_path %>" class="selected"><%= @active_tab.try(:titlecase) || "My Reviews" %></a></li>
+                <li><a href="<%= reviews_path %>" class="selected"> My Reviews</a></li>
+            </ul>
+</div>
+<% elsif  @sub_action == "my_reviews" || @active_tab != "home" %>
+  <div class="page-link">
+          <ul>
+                <li><a href="<%= root_path %>">Home</a></li>
+                <li><span>&raquo;</span></li>
+                <% unless params["action"] == "user_review" %>
+                  <li><a href="<%= user_review_path %>">Reviews</a></li>
+                  <li><span>&raquo;</span></li>
+                <% end %>
+                <li><a href="#" class="selected"><%= @active_tab.try(:titlecase)  %></a></li>
             </ul>
         </div>
 <% end %>
@@ -40,7 +52,7 @@
                     <li><a href="#">Polls &amp; Bloppers</a></li>
                 </ul>-->
                 
-                <%if user_signed_in? && params["controller"] == "users" %>
+                <%if user_signed_in? && params["controller"] == "users" || params["my"] %>
                 <div class="heading1">My Accounts</div>
                  <a href="<%= profile_path %>">
                   <div class='<%=(@sub_action == "show_profile" ? "reports2 act" : "reports2")%>' >My Profile</div>
@@ -48,7 +60,7 @@
                <a href="<%= edit_profile_path %>">
                 <div class='<%=(@sub_action == "update_profile" ? "reports2 act" : "reports2")%>'>Update Profile</div>
               </a>
-               <a href="<%= reviews_path %>">
+               <a href="<%= reviews_path %>?my=mr">
                 <div class='<%=(@sub_action == "my_reviews" ? "reports2 act" : "reports2")%>'>My Reviews</div>
                </a>
                <a href="<%= root_path %>">
@@ -56,11 +68,11 @@
                 </a>
                 <% else %>
                 <div class="heading1">View Reports</div>
-                <a href="<%= user_review_path %>"><div class="<%=(@active_tab == "review" ? "reports2 act" : "reports2")%>">Reviews</div></a>
+                <a href="<%= user_review_path %>"><div class="<%=(@active_tab == "reviews" ? "reports2 act" : "reports2")%>">Reviews</div></a>
                 <a href="<%= conversions_path %>"><div class="<%=(@active_tab == "conversions" ? "reports2 act" : "reports2")%>">Conversions</div></a>
-                <a href="<%= registered_path %>"><div class="<%=(@active_tab == "registered" ? "reports2 act" : "reports2")%>">Registered Companies</div></a>
-                <a href="<%= unregistered_path %>"><div class="<%=(@active_tab == "unregistered" ? "reports2 act" : "reports2")%>">Unregistered Companies</div></a>
-                <a href="<%= polls_bloopers_path %>"><div class="<%=(@active_tab == "polls-bloopers" ? "reports2 act" : "reports2")%>">Polls &amp; Bloopers</div></a>
+                <a href="<%= registered_path %>"><div class="<%=(@active_tab == "registered_companies" ? "reports2 act" : "reports2")%>">Registered Companies</div></a>
+                <a href="<%= unregistered_path %>"><div class="<%=(@active_tab == "unregistered_companies" ? "reports2 act" : "reports2")%>">Unregistered Companies</div></a>
+                <a href="<%= polls_bloopers_path %>"><div class="<%=(@active_tab == "polls & bloopers" ? "reports2 act" : "reports2")%>">Polls &amp; Bloopers</div></a>
                 <% end %>
                 <div class="clear"></div>
             </div>

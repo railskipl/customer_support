@@ -1,36 +1,70 @@
+<div class="max-box">
+        
+         <div class="section-one">
 <%content_for :left do%>
 	<span class="span3">
 		 <%=render :partial=> "application/my_account_left"%>
 	</span>
 <%end%>
-<span class="span6">
-  <div class="sectionMid">
-    <h2>Search Result: </h2>
-    <ul>
-      <% @review_results.each do |review| %>
-        <li><%=link_to review.title.html_safe, review_path(review)%></li>
-      <% end %>
-      
-      <% @comment_results.each do |comment| %>
-        <li><%=link_to comment.title.html_safe, review_path(comment.review)%></li>
-      <% end %>
-      
-      <% @company_results.each do |company| %>
-        <li><%=link_to company.title.html_safe, search_reviews_path(company_id: company.id)%></li>
-      <% end %>
 
-      <% @town_results.each do |town| %>
-        <li><%=link_to town.title.html_safe, search_reviews_path(town_id: town.id)%></li>
-      <% end %>
-
-      <% @location_results.each do |location| %>
-        <li><%=link_to location.title.html_safe, search_reviews_path(location_id: location.id)%></li>
-      <% end %>
-
-      <% @supplier_results.each do |supplier| %>
-        <li><%=link_to supplier.title.html_safe, search_reviews_path(supplier_id: supplier.id)%></li>
-      <% end %>
-
-    </ul>
-  </div>
-</span>
+<div class="form-box21">
+           
+  <div class="form-box21faq1">
+    <div class="information-new1">
+      <div class="heading2">Search Results</div>
+        <% if @comment_results.present? %>
+          <div class="technology user2" style="text-align: left">
+            <% @comment_results.each do |comment| %>
+              <%=link_to comment.title.html_safe, review_path(comment.review)%><br/>
+            <% end %>
+          </div>
+        <% end %>
+       
+       <% if @company_results.present?  %>
+         <div class="technology user2" style="text-align: left">
+            <% @company_results.each do |company| %>
+             <%=link_to company.title.html_safe, search_reviews_path(company_id: company.id)%><br/>
+            <% end %>
+         </div>
+        <% end %>
+        
+        <% if @town_results.present? %>
+        <div class="technology user2" style="text-align: left">
+           <% @town_results.each do |town| %>
+             <%=link_to town.title.html_safe, search_reviews_path(town_id: town.id)%><br/>
+           <% end %>
+        </div>
+         <% end %>
+        
+         <% if @location_results.present? %>
+        <div class="technology user2" style="text-align: left">
+          <% @location_results.each do |location| %>
+            <%=link_to location.title.html_safe, search_reviews_path(location_id: location.id)%><br/>
+          <% end %>
+        </div>
+        <% end %>
+        
+        <% if @supplier_results.present? %>
+        <div class="technology user2" style="text-align: left">
+           <% @supplier_results.each do |supplier| %>
+            <%=link_to supplier.title.html_safe, search_reviews_path(supplier_id: supplier.id)%><br/>
+            <% end %>
+        </div>
+       <% end %>
+        
+        <div class="clear"></div>
+                
+                
+                
+                
+                
+                
+            <div class="clear"></div>
+         </div>
+              
+            
+                
+            </div>
+            
+               <div class="clear"></div>
+        </div>

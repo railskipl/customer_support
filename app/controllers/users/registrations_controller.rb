@@ -2,6 +2,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_filter :authenticate_user!, :only => :token
   helper_method :resource, :resource_name, :devise_mapping
 
+  def new
+    @active_title = "Sign Up"
+    super   
+  end
+
   def create
     @user = User.new(user_params)
     if params["other_type"].present?

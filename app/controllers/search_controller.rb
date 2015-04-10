@@ -1,6 +1,7 @@
 class SearchController < ApplicationController
 
   def index
+  	  @active_title = "Search"
       @review_results = Review.search params[:search]
       @comment_results = Comment.search params[:search]
       @company_results = Company.search params[:search]

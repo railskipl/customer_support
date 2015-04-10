@@ -19,6 +19,14 @@
                 <li><a href="<%= reviews_path %>" class="selected"> My Reviews</a></li>
             </ul>
 </div>
+<% elsif  params["search"]  %>
+  <div class="page-link">
+          <ul>
+                <li><a href="<%= root_path %>">Home</a></li>
+                <li><span>&raquo;</span></li>
+                <li><a href="#" class="selected">Search Results</a></li>
+            </ul>
+</div>
 <% elsif params["company_id"] %>
   <div class="page-link">
           <ul>

@@ -1,4 +1,10 @@
 class Users::SessionsController < Devise::SessionsController
+
+  def new
+  	@active_title = "Sign In"
+	super		
+  end
+  
   def create
 	  user = User.find_by_email(params[:user][:email])
 		if user.present? and user.valid_password?(params[:user][:password])

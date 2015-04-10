@@ -78,7 +78,7 @@ class ReviewsController < ApplicationController
         @review.review_type = "compliment"
       end
       if @review.update_attributes(review_params)
-          flash[:notice] = "Your Review Successfully changed."
+          flash[:notice] = "Rating revised. Your revised rating has been successfully updated. Thank you for your contribution."
           redirect_to @review
       else
           render  :edit
@@ -163,7 +163,7 @@ class ReviewsController < ApplicationController
             ReviewMailer.delay.user_mail(@review)
             ReviewMailer.delay.admin_mail(@review)
             ReviewMailer.delay.agent_mail(@review)
-            flash[:notice] = "Your Review Successfully submitted."
+            flash[:notice] = "Review submitted. Your review has been successfully submitted and assigned a ticket number. However, it will only be published once it has been vetted by our team against our terms and conditions.You will receive an email confirming your ticket number."
             redirect_to reviews_url
           else
             flash[:notice] = "Please LOGIN or REGISTER to submit your review."

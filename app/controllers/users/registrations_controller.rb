@@ -18,11 +18,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
           if review.present?
             review.user_id = @user.id
             review.save
-            redirect_to root_url(:guest_token => review.guest_token),:notice => 'You have signed up successfully.A confirmation email is sent to your e-mail.\n Please verify your email address.\n Your review has been saved.'
+            redirect_to root_url(:guest_token => review.guest_token),:notice => 'You have signed up successfully.A confirmation email is sent to your e-mail. Please verify your email address.Your review has been saved.'
             return
           end
         end
-        redirect_to root_url,:notice => 'Thank you for registering with Xemaxema.com.\nYou will shortly receive a confirmation email. Kindly verify your email address to submit your review.\nIf you have not received this confirmation email please check your junk mail folder and add noreply@xemaxema.com to your contact list.'
+        redirect_to root_url,:notice => 'Thank you for registering with Xemaxema.com.You will shortly receive a confirmation email. Kindly verify your email address to submit your review.If you have not received this confirmation email please check your junk mail folder and add noreply@xemaxema.com to your contact list.'
       else
         render :action => :new
       end

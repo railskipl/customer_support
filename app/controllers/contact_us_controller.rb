@@ -14,7 +14,7 @@ class ContactUsController < ApplicationController
       if verify_recaptcha
         if @contact_u.save
           Notifier.contact(@contact_u).deliver
-          redirect_to contact_us_url, notice: 'Your Contact info has been sent successfully.'
+          redirect_to contact_us_url, notice: 'Query submitted. Your query has been submitted successfully and we will be in touch shortly. Thank you..'
         else
           render action: 'new' 
         end

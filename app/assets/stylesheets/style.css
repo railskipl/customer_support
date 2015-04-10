@@ -1663,6 +1663,20 @@ border-bottom:1px #dadada solid;
 	float:right;
 	
 }
+
+.search-btn
+{
+ margin:0px;
+ padding:6px 15px 3px 10px;
+ background:url(/assets/search.jpg) no-repeat ;
+ border:none;
+ cursor:pointer;
+} 
+.search-btn:hover
+{
+ trasition:0.3s ease all;
+}
+
 .text-area4new1
 {
 	margin:0px 0px 5px;

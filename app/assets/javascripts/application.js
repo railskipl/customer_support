@@ -17,7 +17,6 @@
 //= require bootstrap-transition
 //= require bootstrap-dropdown
 //= require bootstrap-collapse
-//= require notify.min
 //= require jquery.jscrollpane.min
 //= require reviews
 //= require ckeditor/init

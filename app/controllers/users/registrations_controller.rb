@@ -22,7 +22,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
             return
           end
         end
-        redirect_to root_url,:notice => 'You have signed up successfully.A confirmation email is sent to your e-mail.\n Please verify your email address.'
+        redirect_to root_url,:notice => 'Thank you for registering with Xemaxema.com.\nYou will shortly receive a confirmation email. Kindly verify your email address to submit your review.\nIf you have not received this confirmation email please check your junk mail folder and add noreply@xemaxema.com to your contact list.'
       else
         render :action => :new
       end

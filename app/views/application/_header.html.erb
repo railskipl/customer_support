@@ -4,6 +4,17 @@
  };
  </script>
 <div id="header-area">
+  <% flash.each do |key, value| %>
+     <div class="alert-box <%= key %>">
+      <% if key == :alert %>
+        <img src="/assets/wrong.png" style="float:left;margin:-2px 5px 0px -19px;">
+      <% else %>
+        <img src="/assets/right.png" style="float:left;margin:-2px 5px 0px -19px;">
+      <% end %>
+      <div> <%= value %></div></div>
+  <% end %>
+  
+
       <div id="logo"><a href="<%= root_path %>"><img src="/assets/xema-logo.png" alt="" title="Xema Xema"></a></div>
         <div id="right-head">
           <div class="join-us">Join us on</div>

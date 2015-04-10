@@ -166,7 +166,7 @@ class ReviewsController < ApplicationController
             flash[:notice] = "Your Review Successfully submitted."
             redirect_to reviews_url
           else
-            flash[:notice] = "You need to login to submit your reviews."
+            flash[:notice] = "Please LOGIN or REGISTER to submit your review."
             redirect_to new_user_session_url(:guest_token => @review.guest_token)
           end
         else

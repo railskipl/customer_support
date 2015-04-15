@@ -167,7 +167,7 @@ select.field12 option:hover {
             	<div class="login-field-box4">
                 	<div class="text-box1">Your &nbsp;Experience *</div>
                
-                    <%= f.text_area :message, "min" => "1","max" => "1200",:rows=>"5",:class=>"text-area4 fr-bt",:placeholder=>"Your review will be vetted before being published." %>
+                    <%= f.text_area :message, "min" => "1","max" => "1200",:rows=>"5",:class=>"text-area4 fr-bt", :required => true ,:placeholder=>"Your review will be vetted before being published." %>
                     	
                 </div>
                	<div class="clear"></div>
@@ -175,11 +175,11 @@ select.field12 option:hover {
                 
 
 
-		<% if params[:review_type] == "complaint" %>
+		<% if params[:review_type] == "complaint" || @review.review_type == 'complaint'%>
 		<div class="clear"></div>
 		<div class="login-field-box4">
                 	<div class="text-box1">Desired Outcome*</div>
-                	  <%= f.text_area :desired_outcome, "maxlength"=>"1200", "min" => "1","max" => "200", :class=> "text-area4 fr-bt", :placeholder=>"What action would you like from the company?"%>
+                	  <%= f.text_area :desired_outcome, "maxlength"=>"1200", "min" => "1","max" => "200", :class=> "text-area4 fr-bt",:required => true, :placeholder=>"What action would you like from the company?"%>
                     
                 </div>
                    <div class="clear"></div>

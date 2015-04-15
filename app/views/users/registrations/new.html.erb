@@ -135,7 +135,6 @@ background-color:#FC0; font-size: 33px;
 <%= hidden_field_tag :guest_token ,params[:guest_token].present? ? params[:guest_token] : @user.guest_token %>
 	<% if @user.present? && @user.errors.any? %>
 					<div class="fom_con" style="color:red;">
-						<h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 						<ul>
 						<% @user.errors.full_messages.each do |msg| %>
 							<li><%= msg %></li>

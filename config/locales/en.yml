@@ -27,3 +27,17 @@ en:
     message:
       default: "Secret Code did not match with the Image"
       user: "The secret Image and code were different"
+
+  activerecord:
+    attributes:
+      user:
+        preferred_alias: "Alias name"
+        email: ""
+    errors:
+      models:
+        user:
+          attributes:
+            preferred_alias:
+              blank: "is already taken. Please input another alias name.."
+            email:
+              taken: "A user with this email address is already registered on Xemaxema.com. Please verify if you are the account holder. If not, Please contact us with from our Contact Us page."

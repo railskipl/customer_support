@@ -24,7 +24,7 @@ class ReviewMailer < ActionMailer::Base
 
   def publish_mail(review)
     @review = review
-    mail(:to => @review.user.email, :subject => "A message from Customer Support")
+    mail(:to => @review.user.email, :subject => "Your review has been published")
   end
 
   def publish_adminmail(review, current_user)

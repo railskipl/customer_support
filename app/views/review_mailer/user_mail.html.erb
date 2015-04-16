@@ -1,3 +1,18 @@
-<h4>Hello <%= @review.user.preferred_alias%>, </h4>
+Hello <%= @review.user.first_name %> ,
 
-  Your review has been submited and will be will reviewed by our customer support soon. Your ticket number is <%= @review.ticket_number %>
+<p>A ticket has been created for your review and will be posted once it has been successfully vetted by our team against our terms and conditions.</p>
+
+
+Your ticket number is  <%= @review.ticket_number %><br/>
+Review type: <%= @review.review_type %><br/>
+Subject: <%= @review.title %><br/>
+Company Name: <%= @review.company.title %><br/>
+
+<p>You will receive an email confirmation when your ticket has been published online.</p>
+<p>&nbsp;</p>
+
+<p>
+Thank you for sharing your experience. Your feedback is highly valuable and much appreciate and will go a long way in helping others make a decision on this company/institution.</p>
+
+Thanks!<br/>
+The Xemaxema Team

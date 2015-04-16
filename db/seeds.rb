@@ -3754,3 +3754,71 @@
 #    school_id = @school.id    	
 #   puts Company.create(:title=>company,:industry_id=> school_id)
 #  end
+
+
+["Baringo",
+"Bomet",
+"Bungoma",
+"Busia",
+"Elgeyo-Marakwet",
+"Embu",
+"Garissa",
+"Homa Bay",
+"Isiolo",
+"Kajiado",
+"Kakamega",
+"Kericho",
+"Kiambu",
+"Kilifi",
+"Kirinyaga",
+"Kisii",
+"Kisumu",
+"Kitui",
+"Kwale",
+"Laikipia",
+"Lamu",
+"Machakos",
+"Makueni",
+"Mandera",
+"Marsabit",
+"Meru",
+"Migori",
+"Mombasa",
+"Murang’a",
+"Nairobi",
+"Nakuru",
+"Nandi",
+"Narok",
+"Nyamira",
+"Nyandarua",
+"Nyeri",
+"Samburu",
+"Siaya",
+"Taita-Taveta",
+"Tana River",
+"Tharaka-Nithi",
+"Trans Nzoia",
+"Turkana",
+"Uasin Gishu",
+"Vihiga",
+"Wajir",
+"West Pokot"].each do |company|
+  
+  @county = Industry.find_by_title("County Head Offices")
+   county = @county.id    	
+  puts Company.create(:title=>company,:industry_id=> county)
+ end 
+
+
+["Rift Valley",
+"Western",
+"Eastern",
+"North Eastern",
+"Nyanza",
+"Central",
+"Coast",
+"North Eastern"].each do |town|
+	Town.create(:title=>town)
+end
+
+

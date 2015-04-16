@@ -1,8 +1,14 @@
-<p>Welcome <%= @email %>!</p>
+<p>Hello <%= @resource.first_name %>!</p>
 
-<p>You can confirm your account email through the link below:</p>
+Welcome to Xemaxema.com.
+
+<p>We just need to verify your email address before you can post your reviews.</p>
 <%if @resource.guest_token.present?%>
 <p><%= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @token, :guest_token => @resource.guest_token) %></p>
 <%else%>
 <p><%= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @token) %></p>
 <%end%>
+
+
+Thanks!<br/>
+The Xemaxema Team

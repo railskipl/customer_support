@@ -1,3 +1,16 @@
-<h4>Hi <%= @review.user.preferred_alias%>, </h4>
-Your review has been published
-<p>Title of your review was <strong><%=@review.title%></strong> and your ticket number is <%= @review.ticket_number %></p>
+Hello <%= @review.user.first_name %> ,
+
+<p>Congrats! Your review has been published online on Xemaxema.com and can now be seen by all.</p>
+<p>Here is the link: <%= link_to 'Click Here', review_url(@review)%> </p>
+
+<p>Your review will be sent to the company/institution for comment. Please look out for a response from them and also see the comments others have to make.</p>
+
+Your ticket number is  <%= @review.ticket_number %><br/>
+Review type: <%= @review.review_type %><br/>
+Subject: <%= @review.title %><br/>
+Company Name: <%= @review.company.title %><br/>
+<p>&nbsp;</p>
+
+Thanks!<br/>
+The Xemaxema Team
+

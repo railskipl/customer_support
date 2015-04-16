@@ -14,7 +14,7 @@ background-color:#e2e2e4;
     box-shadow: 0px 4px 2px -1px #dadada;
 }
 
-select.field11 option:hover {
+select.drp-select1 option:hover {
        box-shadow: 0 0 10px 100px #fbaf3d inset;
        -webkit-box-shadow: 0 0 10px 100px #fbaf3d inset;
 }
@@ -73,46 +73,46 @@ select.field12 option:hover {
         		<div class="form-box1 fr-bt">
             	<div class="login-field-box">
                 	<div class="text-box1">Nature Of Review *</div>
-                   <%= f.select :nature_of_review, @nature_of_reviews.map { |nr| [nr.title]}, {:prompt =>"Select Nature of Review"},:include_blank=>false,:class=>"field11", onchange: "CheckOther2()" %>
+                   <%= f.select :nature_of_review, @nature_of_reviews.map { |nr| [nr.title]}, {:prompt =>"Select Nature of Review"},:include_blank=>false,:class=>"drp-select1", onchange: "CheckOther2()" %>
 			
                 </div>
                 <div class="clear"></div>
                 
                 <div class="login-field-box">
                 	<div class="text-box1">Incident Date *</div>
-                  	<%= f.text_field :date , :id => "datepicker1",required: true ,:class => "field1" ,:placeholder => "Incident Date"%>
+                  	<%= f.text_field :date , :id => "datepicker1",required: true ,:class => "drp-select1" ,:placeholder => "Incident Date"%>
                 </div>
                 <div class="clear"></div>
                 
                 <div class="login-field-box">
                 	<div class="text-box1">Industry *</div>
-                   <%= f.collection_select :industry_id, Industry.order(:title) + [Industry.new(:id => Industry.last.id,:title => "Other")], :id,:title,{:include_blank=>"Select Industry"},:rel => "/industry/companies_by_industry",:class=>"field11",  required: true, onchange: 'CheckOther();'%>
+                   <%= f.collection_select :industry_id, Industry.order(:title) + [Industry.new(:id => Industry.last.id,:title => "Other")], :id,:title,{:include_blank=>"Select Industry"},:rel => "/industry/companies_by_industry",:class=>"drp-select1",  required: true, onchange: 'CheckOther();'%>
 			  
                 </div>
                 <div class="clear"></div>
                 
                 <div class="login-field-box">
                 	<div class="text-box1">Company *</div>
-                    <%= f.collection_select :company_id, @companies, :id, :title,  {:include_blank=>"Select Company"}, :rel => "/company/towns_by_company",:class=>"field11", required: true%>
+                    <%= f.collection_select :company_id, @companies, :id, :title,  {:include_blank=>"Select Company"}, :rel => "/company/towns_by_company",:class=>"drp-select1", required: true%>
 		    
                 </div>
                 <div class="clear"></div>
                 
                 <div class="login-field-box">
                 	<div class="text-box1">Town *</div>
-                   <%= f.collection_select :town_id, @towns+ [Town.new(:id => Town.last.id + 1,:title => "Other")], :id, :title, {:include_blank=>"Select Town"}, :rel => "/town/locations_by_town_and_company",:class=>"field11",  required: true,:onchange=> "CheckOther_town()"%>
+                   <%= f.collection_select :town_id, @towns+ [Town.new(:id => Town.last.id + 1,:title => "Other")], :id, :title, {:include_blank=>"Select Town"}, :rel => "/town/locations_by_town_and_company",:class=>"drp-select1",  required: true,:onchange=> "CheckOther_town()"%>
                 </div>
                 <div class="clear"></div>
                 
                 <div class="login-field-box">
                 	<div class="text-box1">Location *</div>
-                  <%= f.collection_select :location_id, @locations ,:id ,:title, {:include_blank=>"Select Location"},:class=>"field11",  required: true%>
+                  <%= f.collection_select :location_id, @locations ,:id ,:title, {:include_blank=>"Select Location"},:class=>"drp-select1",  required: true%>
                 </div>
                 <div class="clear"></div>
                 
                 <div class="login-field-box">
                 	<div class="text-box1">Person Responsible</div>
-                   <%= f.text_field :personal_responsible, "maxlength"=>"60", "min" => "1","max" => "60" ,:class => "field1", :placeholder => "For better follow-up."%>
+                   <%= f.text_field :personal_responsible, "maxlength"=>"60", "min" => "1","max" => "60" ,:class => "drp-select1", :placeholder => "For better follow-up."%>
                 </div>
                 <div class="clear"></div>
                 
@@ -121,7 +121,7 @@ select.field12 option:hover {
             	<div class="form-box2 fr-bt">
             	<div class="login-field-box">
                 	<div class="text-box1">&nbsp;</div>
-                      	<input type="text" id="nature" name="nature" class="field1" placeholder="Other">
+                      	<input type="text" id="nature" name="nature" class="drp-select1" placeholder="Other">
                 </div>
                 <div class="clear"></div>
                 
@@ -134,32 +134,32 @@ select.field12 option:hover {
                 
                 <div class="login-field-box">
                 	<div class="text-box1">&nbsp;</div>
-                	<input type="text" id="other_type" name="other_type" class="field1" placeholder="Other">
+                	<input type="text" id="other_type" name="other_type" class="drp-select1" placeholder="Other">
                 
                 </div>
                 <div class="clear"></div>
                 
                 <div class="login-field-box">
                 	<div class="text-box1">&nbsp;</div>
-                	<input type="text" id="txt_review_company_id" name="txt_review_company_id" class="field1" placeholder="Other">
+                	<input type="text" id="txt_review_company_id" name="txt_review_company_id" class="drp-select1" placeholder="Other">
                 </div>
                 <div class="clear"></div>
                 
                 <div class="login-field-box">
                 	<div class="text-box1">&nbsp;</div>
-                	<input type="text" id="other_town" name="txt_review_town_id" class="field1"  placeholder="Other">
+                	<input type="text" id="other_town" name="txt_review_town_id" class="drp-select1"  placeholder="Other">
                 </div>
                 <div class="clear"></div>
                 
                 <div class="login-field-box">
                 	<div class="text-box1">&nbsp;</div>
-                    	<input type="text" id="txt_review_location_id" name="txt_review_location_id" class="field1" placeholder="Other">
+                    	<input type="text" id="txt_review_location_id" name="txt_review_location_id" class="drp-select1" placeholder="Other">
                 </div>
                 <div class="clear"></div>
                 
                 <div class="login-field-box">
                 	<div class="text-box12" style="font-family:andlso;font-size:15px;">Account Details</div>
-                    <%= f.text_field :account_details ,"maxlength"=>"20", "min" => "1","max" => "20" ,:class => "field1", :placeholder => "This will not be published." %>
+                    <%= f.text_field :account_details ,"maxlength"=>"20", "min" => "1","max" => "20" ,:class => "drp-select1", :placeholder => "This will not be published." %>
                 </div>
                 <div class="clear"></div>
             </div>

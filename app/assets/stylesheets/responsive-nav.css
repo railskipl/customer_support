@@ -260,6 +260,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#feb713', end
 }
 @media all and (max-width: 720px), only screen and (-webkit-min-device-pixel-ratio: 2) and (max-width: 1024px), only screen and (min--moz-device-pixel-ratio: 2) and (max-width: 1024px), only screen and (-o-min-device-pixel-ratio: 2/1) and (max-width: 1024px), only screen and (min-device-pixel-ratio: 2) and (max-width: 1024px), only screen and (min-resolution: 192dpi) and (max-width: 1024px), only screen and (min-resolution: 2dppx) and (max-width: 1024px) {
   
+  #cssmenu > ul > li > a.last {
+  padding: 10px 34px 10px 23px;
+ 
+}
   
   
   #cssmenu ul ul { display:none;}

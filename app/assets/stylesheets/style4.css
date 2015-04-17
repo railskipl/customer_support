@@ -2049,7 +2049,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9bc38', end
 .min-box{margin:0px auto;padding:0px;width:320px;min-height:380px;}
 .text-area4new{width:280px;}
 .captcha-box{ width:30%;}
-.new-captcha {width:551px;height:100px; margin:0; padding:0px;}
+.new-captcha {width:300px;height:100px; margin:0; padding:0px;}
 .login-box{margin:0px auto 20px;padding:0px;width:300px;min-height:135px;}
 .register-box{margin:0px auto 20px;padding:0px;width:300px;min-height:135px;float:left;}
 .text-box1{width:120px;float:left;} 

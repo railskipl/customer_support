@@ -76,8 +76,6 @@ GEM
       railties (>= 3.2.6, < 5)
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
-    devise-async (0.9.0)
-      devise (~> 3.2)
     erubis (2.7.0)
     excon (0.40.0)
     execjs (2.0.2)
@@ -239,7 +237,6 @@ DEPENDENCIES
   country_select
   delayed_job_active_record
   devise
-  devise-async
   execjs
   fog
   friendly_id

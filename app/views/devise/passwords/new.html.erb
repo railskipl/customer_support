@@ -10,9 +10,9 @@
 <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
 			<%= devise_error_messages! %>
         	<div class="login-box1">
-            	<div class="log-headac" style="color:#696969;">Forgot your password?</div>
+            	<div class="log-headac" style="color:#696969;">Forgotten your password?</div>
                     <div class="login-field-box">
-                	<div class="text-box1">Email*</div>
+                	<div class="text-box1">Email *</div>
                      <%= f.email_field :email, :autofocus => true  ,:required => true, :class => "field1" %>
                 </div>
                 <div class="clear"></div>

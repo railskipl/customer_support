@@ -7,7 +7,7 @@ class Admin::CommentsController < AdminController
       @comment.user_id = current_user.id
       if current_user.role == "jagent"
         m = MonitorJagent.find_or_create_by_review_id(@review.id)
-        ReviewMailer.delay.assignee_mail(@review,@comment)
+        # ReviewMailer.delay.assignee_mail(@review,@comment)
         m.s_comment = true
       else
         @comment.ispublished = true

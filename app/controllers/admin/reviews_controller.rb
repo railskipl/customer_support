@@ -116,7 +116,7 @@ class Admin::ReviewsController < AdminController
       respond_to do |format|
         if @review.update(review_params)
           ReviewMailer.delay.publish_mail(@review)
-          ReviewMailer.delay.publish_adminmail(@review, current_user)
+          # ReviewMailer.delay.publish_adminmail(@review, current_user)
           format.html { redirect_to [:admin,@review], notice: 'Review was successfully published.' }
         else
           format.html { render action: 'edit' }

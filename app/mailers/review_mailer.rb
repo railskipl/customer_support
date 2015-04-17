@@ -61,11 +61,8 @@ class ReviewMailer < ActionMailer::Base
 
   def agent_mail(review)
     @review = review
-    agents = User.agents
-    emails = agents.collect(&:email).join(",")
-    if emails.present?
-      mail(:to => emails, :subject => "New Review is Submitted")
-    end
+    agent = "agent@xemaxema.com"
+    mail(:to => agent, :subject => "New Review is Submitted")
   end
 
   def admin_mail(review)
@@ -84,7 +81,8 @@ class ReviewMailer < ActionMailer::Base
 
   def ticket_closed_notification(review)
     @review = review
-    mail(:to => @review.user.email, :subject => "Ticket Closed")
+    emails = @review.user.email + ",agent@xemaxema.com"
+    mail(:to => emails, :subject => "Ticket Closed")
   end
 
   def assignee_mail(review, comment)

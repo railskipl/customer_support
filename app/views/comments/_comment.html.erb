@@ -2,11 +2,11 @@
 		      <div class="row1">
 				 <div class="commentsr">
 				<%if comment.user_id  && ['agent', 'admin','jagent'].include?(comment.user.role) %>
- 				<p class="names"><img src="/assets/fill.png" alt=""><%= comment.supplier.supplier_name%></p>
+ 				<p class="names"><img src="/assets/fill.png" alt=""><strong><%= comment.supplier.supplier_name%></strong></p>
 				<%elsif comment.user_id && comment.user_id == @review.user_id %>
-				 <p class="names"><img src="/assets/blank.png" alt=""><%= comment.name%></p>
+				 <p class="names"><img src="/assets/blank.png" alt=""><strong><%= comment.name%></strong></p>
 				<%else%>
-				 <p class="names"><img src="/assets/blank.png" alt=""><%= comment.name%></p>
+				 <p class="names"><img src="/assets/blank.png" alt=""><strong><%= comment.name%></strong></p>
 				<%end%>
 			 <p class="dates"> <%= comment.updated_at.strftime("%H:%M | %d %h %y") %></p>
 			   <div class="clear"></div>

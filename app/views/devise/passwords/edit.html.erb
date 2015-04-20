@@ -14,12 +14,12 @@
 			<%= devise_error_messages! %>
             	<div class="log-headac" style="color:#696969;">Change your password</div>
                     <div class="login-field-box">
-                	<div class="text-box1">Password*</div>
+                	<div class="text-box1">Password *</div>
                    <%= f.password_field :password, :autofocus => true ,:class => "field1" ,:required => true%>
                     </div>
                     
                      <div class="login-field-box">
-                	<div class="text-box1">Confirm Password*</div>
+                	<div class="text-box1">Confirm Password *</div>
                    <%= f.password_field :password_confirmation ,:class => "field1" ,:required => true%>
                     </div>
                    <%= f.hidden_field :reset_password_token %>

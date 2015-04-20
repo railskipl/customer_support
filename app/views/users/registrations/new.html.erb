@@ -19,6 +19,7 @@
 .btn-file {
     position: relative;
     overflow: hidden;
+    font-family: andlso;
 }
 
 .btn-file:hover {
@@ -164,7 +165,7 @@ background-color:#FC0; font-size: 33px;
                 
                 <div class="login-field-box">
                 	<div class="text-box1">Password *</div>
-                     <%= f.password_field :password, required: true , "maxlength"=>"15", "min" => "8","max" => "15",:id=>"password1", :class => "field1" %>
+                     <%= f.password_field :password, required: true , "maxlength"=>"15", "min" => "8","max" => "15",:id=>"password1", :class => "field1", :placeholder=>"Minimum 8 characters" %>
                 </div>
                 <div class="clear"></div>
                 

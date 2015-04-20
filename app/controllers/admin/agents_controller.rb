@@ -33,7 +33,7 @@ class Admin::AgentsController < AdminController
     @agent.password = rand(36**10).to_s(36)
     password = @agent.password
     if @agent.save
-       AgentMailer.agent_mail(@agent,password).deliver!
+       AgentMailer.delay.agent_mail(@agent,password)
        redirect_to admin_agent_path(@agent), notice: 'Agent was successfully created.'
     else
        render :new

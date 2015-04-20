@@ -1,9 +1,8 @@
 class AgentMailer < ActionMailer::Base
   default from: "admin@xemaxema.com"
 
-  def agent_mail(agent,password)
+  def agent_mail(agent)
     @agent = agent
-    @password = password
     mail(:to => @agent.email,
          :subject => "A message from Customer Support"
     )

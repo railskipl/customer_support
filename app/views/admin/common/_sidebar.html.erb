@@ -62,6 +62,12 @@
 		  </li>
 		<%end%>
 
+		<% if current_user.is? :admin  %>
+		  <li class="<%=(@active_tab == 'contactus') ? 'active' : ''%>">
+					<%=link_to raw(action_button_helper('Contact Us','icon-edit')),admin_contact_us_path%>
+		  </li>
+		<%end%>
+
 		
 		<%  if can? :read, MonitorJagent %>
 		  <li class="<%=(@active_tab == 'Monitor Agents') ? 'active' : ''%>">

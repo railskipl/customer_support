@@ -1,0 +1,26 @@
+	  <h4>List of Contacts</h4>
+		<table id="supplier_registration">
+			<thead>
+			  <tr>
+			    <th width="15%">First Name</th>
+			    <th width="15%">Last Name</th>
+			    <th width="15%">Email</th>
+			    <th width="15%">Telephone</th>
+			    <th width="15%">Message Type</th>
+			    <th width="15%">Message</th>
+			  </tr>
+			</thead>
+
+			<tbody>
+			  <% @contacts.each do |contact| %>
+			    <tr>
+			      <td><%= contact.try(:first_name) %></td>
+                  <td><%= contact.try(:last_name) %></td>
+			      <td><%= contact.try(:email) %></td>
+			      <td><%= contact.try(:telephone) %></td>
+                  <td><%= contact.try(:message_type) %></td>
+                  <td><%= contact.try(:message) %></td>
+			    </tr>
+			  <% end %>
+			</tbody>
+		</table>

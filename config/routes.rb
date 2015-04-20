@@ -76,6 +76,7 @@ Jmd::Application.routes.draw do
       end
   	end
   	resources :addresses
+    resources :contact_us, :only => [:index]
   	resources :polls
   	resources :faqs
   	resources :pages, :only => [:index, :edit, :update]

@@ -1,9 +1,14 @@
 class Notifier < ActionMailer::Base
-  default from: "support@xemaxema.com"
+  default from: "noreply@xemaxema.com"
 
   def contact(contact)
     @contact = contact
-    mail(:to=>"anlayst4@viciconsulting.co.ke",:subject=>"#{@contact.email} contacted you.")
+    mail(:to=>"info@xemaxema.com",:subject=>"#{@contact.email} contacted you.")
+  end
+
+   def contact_user(contact)
+    @contact = contact
+    mail(:to=> contact.email ,:subject=>"Thank You for contacting")
   end
 
 end

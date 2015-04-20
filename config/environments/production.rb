@@ -83,7 +83,7 @@ Jmd::Application.configure do
   config.action_mailer.smtp_settings = {
             :enable_starttls_auto => true,
             :address => "smtp.mandrillapp.com",
-            :port => 25,
+            :port => 587,
             :domain => "xemaxema.com",
             :authentication => :login,
             :user_name => "xemaxema.kenya@gmail.com",

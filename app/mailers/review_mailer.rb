@@ -1,5 +1,5 @@
 class ReviewMailer < ActionMailer::Base
-  default from: "admin@xemaxema.com"
+  default from: "noreply@xemaxema.com"
 
   def archive_mail(review)
     begin
@@ -61,18 +61,17 @@ class ReviewMailer < ActionMailer::Base
 
   def agent_mail(review)
     @review = review
-    agent = "agent@xemaxema.com"
-    mail(:to => agent, :subject => "New Review is Submitted")
+    mail(:to =>  "agent@xemaxema.com", :subject => "New Review is Submitted.")
   end
 
-  def admin_mail(review)
-    @review = review
-    admins = User.admins
-    emails = admins.collect(&:email).join(",")
-    if emails.present?    
-      mail(:to => emails,:subject => "New Review is Submitted")
-    end
-  end
+  # def admin_mail(review)
+  #   @review = review
+  #   admins = User.admins
+  #   emails = admins.collect(&:email).join(",")
+  #   if emails.present?    
+  #     mail(:to => emails,:subject => "New Review is Submitted")
+  #   end
+  # end
 
   def abuse_report_mail(abuse_report)
     @abuse_report = abuse_report

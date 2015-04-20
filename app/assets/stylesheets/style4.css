@@ -7,6 +7,12 @@
     src: url(../assets/fonts/andalus1.ttf);
 }
 
+@font-face {
+    font-family:gothic;
+    src: url(../assets/fonts/GOTHIC.TTF);
+}
+
+
 
 
 *

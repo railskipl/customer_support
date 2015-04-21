@@ -1767,6 +1767,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9bc38', end
 	}
 
 .slt{ height:28px !important;}
+
+.text-area4new2{margin:0px 0px 5px;padding:5px 5px 0px;width:594px;height:70px;border:#dddcdc 0px solid;background:#ffffff;font-family:corbel;
+	color:#696969;font-size:13px;-webkit-box-shadow: 0px 4px 2px -1px #dadada;-moz-box-shadow: 0px 4px 2px -1px #dadada;box-shadow: 0px 4px 2px -1px #dadada;}
+.login-box2{margin:0px;padding:10px;width:604px;min-height:135px !important;background:#e6e6e6; border:#cccccc 1px solid;}	
+.bgn{background:#ffffff;width:200px !important;}
+
+
 /*---------------ABC bank end----------*/
 @media (min-width: 720px) and (max-width: 990px)
 {
@@ -2008,6 +2015,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9bc38', end
 /*-----review------*/
 .drp-select1{width:458px;}
 /*--yogesh---*/
+.login-box2{margin:0px;padding:10px;width:378px;min-height:135px !important;background:#e6e6e6; border:#cccccc 1px solid;}
+.bgn{background:#ffffff;width:368px !important;}
+.text-area4new2{margin:0px 0px 5px;	padding:5px 5px 0px;width:368px;height:70px;}
+
 }
 
 @media (min-width:320px) and (max-width:479px)
@@ -2145,6 +2156,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9bc38', end
 .drp-select1{width:180px;}
 
 .log-headac{font-size:21px;}
+.login-box2{margin:0px;padding:5px;width:290px;min-height:135px !important;background:#e6e6e6; border:#cccccc 1px solid;}
+.bgn{background:#ffffff;width:194px !important;}
+.text-area4new2{margin:0px 0px 5px;	padding:5px 5px 0px;width:280px;height:70px;}
 }
 
 
@@ -2282,6 +2296,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9bc38', end
 /*-----review------*/
 .drp-select1{width:180px;}
 
-.log-headac{font-size:21px;}	
+.log-headac{font-size:21px;}
+.login-box2{margin:0px;padding:5px;width:290px;min-height:135px !important;background:#e6e6e6; border:#cccccc 1px solid;}
+.bgn{background:#ffffff;width:194px !important;}
+.text-area4new2{margin:0px 0px 5px;	padding:5px 5px 0px;width:280px;height:70px;}	
 
 }

@@ -2,24 +2,28 @@
     <%if !current_user || (current_user.is_customer?)%>
 	    <%=form_for([@review, @review.comments.new]) do |f| %>   
 	    <%= f.hidden_field :user_id, :value=>(current_user.id if current_user)%>  
-            <div class="login-box" style="width:100%;">
+            <div class="login-box2" style="width:100%;">
                 <div class="login-field-boxp" >
                     <div class="text-box12p">Name *</div>
-                    <%= f.text_field  :name ,:value=>(current_user.first_name if current_user), :required=>true, :class =>"field1" %>
+                    <%= f.text_field  :name ,:value=>(current_user.first_name if current_user), :required=>true, :class =>"field1 bgn" %>
                     <div class="clear"></div>
                 </div>
                  
                 <div class="login-field-boxpp" >
                     <div class="text-box12p">Email *</div>
-                    <%= f.email_field  :email ,:value=>(current_user.email if current_user), :required=>true, :class=> "field1", :placeholder => "Please enter your email." %>
+                    <%= f.email_field  :email ,:value=>(current_user.email if current_user), :required=>true, :class=> "field1 bgn", :placeholder => "Please enter your email." %>
                     <div class="clear"></div>
                 </div>
                    
                 <div class="clear"></div>
                 <div class="text-box1new">Your Comment *</div>
-                <%= f.text_area  :title  , :class => 'text-area4new1 fr-bt',:placeholder => "Add your comment" %>
-                </div>
+                <%= f.text_area  :title  , :class => 'text-area4new2 fr-bt',:placeholder => "Add your comment" %>
+
                  <%= f.submit 'Xema', :confirm => "Submit your Comment?\nClick OK to submit or CANCEL to continue writing your comment.",:class => "btn2" %>
+                    <div class="clear"></div>
+                </div>
+
+                
            	<%end%>
     <%end%>
 

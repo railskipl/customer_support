@@ -6,12 +6,10 @@
     font-family:andlso;
     src: url(../assets/fonts/andalus1.ttf);
 }
-
 @font-face {
     font-family:gothic;
     src: url(../assets/fonts/GOTHIC.TTF);
 }
-
 
 
 
@@ -99,7 +97,7 @@ body
 	padding:2px 0px 0px 23px;
 	float:left;
 	width:115px;
-	color:#fbaf3d;
+	color:#fbaf3f;
 	font-family:'corbel';
 }
 .logout
@@ -112,11 +110,11 @@ body
 .logout a
 {
 	margin:0px 0px 0px 0px;
-	padding:0px 23px 0px;
+	padding:1px 23px 0px;
 	color:#ffffff;
 	font-family:'andlso';
 	font-size:15px;
-	background:url(../assets/logout-bg.jpg) repeat-x;
+	background:#e6971b url(../assets/logout-bg.jpg) repeat-x;
 	-webkit-box-shadow: 0px 3px 5px 0px #dadada;
 	-moz-box-shadow: 0px 3px 5px 0px #dadada;
 	box-shadow: 0px 3px 5px 0px #dadada;
@@ -124,7 +122,7 @@ body
 }
 .logout a:hover
 {
-	background:url(../assets/logout-bg1.jpg) repeat-x 0px 0px;
+	background:#edb35b url(../assets/logout-bg1.jpg) repeat-x 0px 0px;
 	color:#696969;
 }
 
@@ -134,13 +132,13 @@ body
 	padding:2px 0px 0px 23px;
 	float:left;
 	width:200px;
-	color:#fbaf3d;
+	color:#fbaf3f;
 	font-family:'corbel';
 	text-align:right
 }
 .user2 a
 {
-	color:#fbaf3d;
+	color:#fbaf3f;
 }
 .user2 a:hover
 {
@@ -179,11 +177,11 @@ body
 	float:right;
 	height:25px;
 }
-.search-box a
+search-btn
 {
 	transition:0.3s ease all;	
 }
-.search-box a:hover
+.search-btn:hover
 {
 	opacity:0.5;
 }
@@ -364,7 +362,7 @@ body
 	margin:0px 0px 0px;
 	padding:0px;
 	font-size:34px;
-	color:#fbaf3d;
+	color:#fbaf3f;
 	font-family:'andlso';
 	text-align:center;
 	font-weight:bold;
@@ -373,7 +371,7 @@ body
 {
 	margin:0px;
 	padding:0px 0px;
-	width:530px;
+	width:533px;
 	height:230px;
 }
 .grid-head-tbl
@@ -433,7 +431,7 @@ body
 .comment-tbl span
 {
 	font-size:8px;
-	color:#fbaf3d;
+	color:#fbaf3f;
 }
 .content{
 	overflow: auto;
@@ -467,7 +465,7 @@ body
 	margin:0px 0px 20px;
 	padding:0px;
 	font-size:13px;
-	color:#fbaf3d;
+	color:#fbaf3f;
 }
 .right-link
 {
@@ -546,7 +544,7 @@ body
 {
 	margin:1px 0px 0px;
 	padding:5px 0px 20px;
-	border-top:#fbaf3d 2px solid;
+	border-top:#fbaf3f 2px solid;
 	width:1024px;
 	font-size:13px;
 }
@@ -565,7 +563,7 @@ body
 
 .design a:hover
 {
-	color:#fbaf3d;
+	color:#fbaf3f;
 }
 .design1
 {
@@ -602,13 +600,13 @@ body
 }
 .page-link ul li span
 {
-  color:#696969;
+	color:#696969;
 }
 .page-link ul li a
 {
 	margin:0px;
 	padding:0px;
-	color:#fbaf3d;
+	color:#fbaf3f;
 }
 .page-link ul li a:hover
 {
@@ -706,7 +704,7 @@ body
 	width:100px;
 	float:left;
 	line-height:30px;
-	color:#fbaf3d;
+	color:#fbaf3f;
 	font-weight:bold;
 }*/
 .text-box1
@@ -716,7 +714,7 @@ body
 	width:150px;
 	float:left;
 	line-height:30px;
-	color:#fbaf3d;
+	color:#fbaf3f;
 	font-weight:bold;
 	font-family: andlso;
 	font-size: 15px;
@@ -740,7 +738,7 @@ body
 	width:125px;
 	float:left;
 	line-height:30px;
-	color:#fbaf3d;
+	color:#fbaf3f;
 	font-weight:bold;
 	font-family: andlso;
 	font-size: 13px;
@@ -1006,7 +1004,7 @@ textarea, input,select { outline: none; }
 	margin:0px 0px 20px;
 	padding:0px;
 	font-weight:bold;
-	color:#FBAF3D;
+	color:#fbaf3f;
 }
 .ch-box{float:left;margin:4px 10px 20px 0px;}
 .captcha-box{margin:0px 0px 20px;padding:20px 0px 0px;width:100%;height:40px;border:#e5e5e5 1px solid;text-align:center;}
@@ -1014,7 +1012,7 @@ textarea, input,select { outline: none; }
 
 .left-align{float:left;}
 .cmp-section{margin:0px;padding:0px;width:100%;}
-.cmp-head{font-size:24px;color:#fbaf3d;font-family:andalus;float:left;padding:0px;margin:32px 0px 0px 20px;}
+.cmp-head{font-size:24px;color:#fbaf3f;font-family:andalus;float:left;padding:0px;margin:32px 0px 0px 20px;}
 .cmp-head span{color:#ff0000;}
 
 .drp-select1{width:198px;color:#696969 !important; height:29px; background:#e6e6e6; border:none; box-shadow: 0 3px 2px -1px #dadada;}
@@ -1032,7 +1030,7 @@ textarea, input,select { outline: none; }
 	width:150px;
 	float:left;
 	line-height:30px;
-	color:#fbaf3d;
+	color:#fbaf3f;
 	font-weight:bold;
 	text-align:center;
 }
@@ -1102,7 +1100,7 @@ bottom: 10px;
 	width:150px;
 	float:left;
 	line-height:30px;
-	color:#fbaf3d;
+	color:#fbaf3f;
 	font-weight:bold;
 	text-align:center;
 }
@@ -1133,7 +1131,7 @@ bottom: 10px;
 
 .information
 {
-width:500px;
+width:450px;
 min-height:92px;	
 	
 }
@@ -1274,13 +1272,13 @@ padding-left:0px;
 	margin:0px 0px 10px;
 	padding:0px;
 	font-size:24px;
-	color:#faae3f;
+	color:#fbaf3f;
 	font-family:andlso;
 	font-weight:bold;
 }
 .technology
 {
-	color:#fbaf3d;
+	color:#fbaf3f;
 	font-weight:bold;
 	cursor:pointer;
 	margin-bottom:10px;
@@ -1297,7 +1295,7 @@ min-height:70px;
 /*----------------resources start----------*/
 .read-more a
 {
-color:#fbaf3d;	
+color:#fbaf3f;	
 }
 .information-new22
 {
@@ -1491,7 +1489,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7edde', end
 	margin:0px 0px 10px;
 	padding:0px;
 	font-size:24px;
-	color:#faae3f;
+	color:#fbaf3f;
 	font-family:andlso;
 
 	
@@ -1558,13 +1556,13 @@ float:right;
 }
 .head
 {
-background-color:#fbaf3d;
+background-color:#fbaf3f;
 color:#FFF !important;	
 font-family:andlso !important; 
 }
 .head2
 {
-background-color:#fbaf3d !important;
+background-color:#fbaf3f !important;
 color:#FFF !important;	
 background:url(../assets/two-arrowsnew.png) no-repeat 14px bottom ;
 font-family:andlso !important;
@@ -1658,7 +1656,7 @@ border-bottom:1px #dadada solid;
 	width:86px;
 	float:left;
 	line-height:30px;
-	color:#fbaf3d;
+	color:#fbaf3f;
 	font-weight:bold;
 	text-align:left;
 	
@@ -1716,7 +1714,7 @@ border-bottom:1px #dadada solid;
 	width:150px;
 	float:left;
 	line-height:61px;
-	color:#fbaf3d;
+	color:#fbaf3f;
 	font-weight:bold;
 }
 .fleft
@@ -2062,7 +2060,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9bc38', end
 .new-captcha {width:300px;height:100px; margin:0; padding:0px;}
 .login-box{margin:0px auto 20px;padding:0px;width:300px;min-height:135px;}
 .register-box{margin:0px auto 20px;padding:0px;width:300px;min-height:135px;float:left;}
-.text-box1{width:120px;float:left;} 
+.text-box1{width:200px;float:left;} 
 .text-box2 a{width:200px;float:left;}
 .field1{width:170px;height:25px;}
 .login-field-box2{margin:25px 0px 0px;width:300px;}
@@ -2081,7 +2079,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9bc38', end
 .form-box1{width:150px;}
 .field4{width:170px; float:left;}
 .text-area4{width:166px; float:left;}
-.text-box1{width:130px; float:none;}
+.text-box1{width:200px; float:none;}
 .drp-select1{width:300px;}
 .field1{width:290px;}
 .drp-select3{width:130px; }

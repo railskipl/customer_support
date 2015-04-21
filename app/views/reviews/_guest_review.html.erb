@@ -72,14 +72,14 @@ select.field12 option:hover {
                 
                 <div class="login-field-box">
                     <div class="text-box1">Industry *</div>
-                   <%= f.collection_select :industry_id, Industry.order(:title) + [Industry.new(:id => Industry.last.id,:title => "Other")], :id,:title,{:include_blank=>"Select Industry"},:rel => "/industry/companies_by_industry",:class=>"drp-select1",  required: true, onchange: 'CheckOther();'%>
+                   <%= f.collection_select :industry_id, Industry.order(:title) + [Industry.new(:id => Industry.last.id+1,:title => "Other")], :id,:title,{:include_blank=>"Select Industry"},:rel => "/industry/companies_by_industry",:class=>"drp-select1",  required: true, onchange: 'CheckOther();'%>
               
                 </div>
                 <div class="clear"></div>
                 
                 <div class="login-field-box">
                     <div class="text-box1">Company *</div>
-                    <%= f.collection_select :company_id, @companies, :id, :title,  {:include_blank=>"Select Company"}, :rel => "/company/towns_by_company",:class=>"drp-select1", required: true%>
+                    <%= f.collection_select :company_id, @companies+  [Company.new(:id => Company.last.id + 1,:title => "Other")], :id, :title,  {:include_blank=>"Select Company"}, :rel => "/company/towns_by_company",:class=>"drp-select1", required: true, :onchange=> "CheckOther_company()" %>
             
                 </div>
                 <div class="clear"></div>
@@ -211,37 +211,34 @@ select.field12 option:hover {
 
 
 
-
-
-
-
 <script type="text/javascript">
 
 $('#check_checkbox').click(function (e) {
-	var a = document.getElementById("ab")
-	if (!a.checked){
-		alert("Select Checkbox");
-		return false;
-	}
-	else{
-	 var con = confirm("Submit your Review?\nClick OK to submit or CANCEL to continue writing your review.");
-	 if (con == false){
-	 	 e.preventDefault();
-	 }
+    var a = document.getElementById("ab")
+    if (!a.checked){
+        alert("Select Checkbox");
+        return false;
+    }
+    else{
+     var con = confirm("Submit your Review?\nClick OK to submit or CANCEL to continue writing your review.");
+     if (con == false){
+         e.preventDefault();
+     }
 
-	}
+    }
 
 });
 
 $( document ).ready(function() {
-	$("#other_type").hide();
-	$("#nature").hide();
-	$("#other_town").hide();
+    $("#other_type").hide();
+    $("#nature").hide();
+    $("#other_town").hide();
+    $("#other_company").hide();
 });
 
 function CheckOther()
 {
-  if (document.getElementById("review_industry_id").value == <%= Industry.last.id %>){
+  if (document.getElementById("review_industry_id").value == <%= Industry.last.id+1 %>){
         $("#other_type").show();
     }     
     else{
@@ -258,6 +255,16 @@ function CheckOther2()
     }     
     else{
        $("#nature").hide();
+    }     
+}
+
+function CheckOther_company()
+{
+  if (document.getElementById("review_company_id").value == <%= Company.last.id + 1 %>){
+        $("#other_company").show();
+    }     
+    else{
+       $("#other_company").hide();
     }     
 }
 

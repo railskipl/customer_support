@@ -86,21 +86,21 @@ select.field12 option:hover {
                 
                 <div class="login-field-box">
                 	<div class="text-box1">Industry *</div>
-                   <%= f.collection_select :industry_id, Industry.order(:title) + [Industry.new(:id => Industry.last.id,:title => "Other")], :id,:title,{:include_blank=>"Select Industry"},:rel => "/industry/companies_by_industry",:class=>"drp-select1",  required: true, onchange: 'CheckOther();'%>
+                   <%= f.collection_select :industry_id, Industry.order(:title) + [Industry.new(:id => Industry.last.id + 1,:title => "Other - please specify")], :id,:title,{:include_blank=>"Select Industry"},:rel => "/industry/companies_by_industry",:class=>"drp-select1",  required: true, onchange: 'CheckOther();'%>
 			  
                 </div>
                 <div class="clear"></div>
                 
                 <div class="login-field-box">
                 	<div class="text-box1">Company *</div>
-                    <%= f.collection_select :company_id, @companies, :id, :title,  {:include_blank=>"Select Company"}, :rel => "/company/towns_by_company",:class=>"drp-select1", required: true%>
+                    <%= f.collection_select :company_id, @companies+  [Company.new(:id => Company.last.id + 1,:title => "Other - please specify")], :id, :title,  {:include_blank=>"Select Company"}, :rel => "/company/towns_by_company",:class=>"drp-select1", required: true, :onchange=> "CheckOther_company()" %>
 		    
                 </div>
                 <div class="clear"></div>
                 
                 <div class="login-field-box">
                 	<div class="text-box1">Town *</div>
-                   <%= f.collection_select :town_id, @towns+ [Town.new(:id => Town.last.id + 1,:title => "Other")], :id, :title, {:include_blank=>"Select Town"}, :rel => "/town/locations_by_town_and_company",:class=>"drp-select1",  required: true,:onchange=> "CheckOther_town()"%>
+                   <%= f.collection_select :town_id, @towns+ [Town.new(:id => Town.last.id + 1,:title => "Other - please specify")], :id, :title, {:include_blank=>"Select Town"}, :rel => "/town/locations_by_town_and_company",:class=>"drp-select1",  required: true,:onchange=> "CheckOther_town()"%>
                 </div>
                 <div class="clear"></div>
                 
@@ -141,7 +141,7 @@ select.field12 option:hover {
                 
                 <div class="login-field-box">
                 	<div class="text-box1">&nbsp;</div>
-                	<input type="text" id="txt_review_company_id" name="txt_review_company_id" class="drp-select1" placeholder="Other">
+                	<input type="text" id="other_company" name="txt_review_company_id" class="drp-select1" placeholder="Other">
                 </div>
                 <div class="clear"></div>
                 
@@ -240,11 +240,12 @@ $( document ).ready(function() {
 	$("#other_type").hide();
 	$("#nature").hide();
 	$("#other_town").hide();
+    $("#other_company").hide();
 });
 
 function CheckOther()
 {
-  if (document.getElementById("review_industry_id").value == <%= Industry.last.id %>){
+  if (document.getElementById("review_industry_id").value == <%= Industry.last.id+1 %>){
         $("#other_type").show();
     }     
     else{
@@ -261,6 +262,16 @@ function CheckOther2()
     }     
     else{
        $("#nature").hide();
+    }     
+}
+
+function CheckOther_company()
+{
+  if (document.getElementById("review_company_id").value == <%= Company.last.id + 1 %>){
+        $("#other_company").show();
+    }     
+    else{
+       $("#other_company").hide();
     }     
 }
 

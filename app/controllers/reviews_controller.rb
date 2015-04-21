@@ -114,7 +114,7 @@ class ReviewsController < ApplicationController
     
     t = DateTime.new(dt.year, dt.month, dt.day, hr.to_i, min.to_i,0)
     kenyan_time = Time.now.utc + 3.hour
-    industry = params[:txt_review_industry_id].to_s
+    industry = params[:other_type].to_s
     company  = params[:txt_review_company_id].to_s
     town     = params[:txt_review_town_id].to_s
     location = params[:txt_review_location_id].to_s

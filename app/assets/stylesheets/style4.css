@@ -81,8 +81,8 @@ body
 	padding:0px;
 	text-align:right;
 	font-family:'andlso';
-	color:#7b7b7b;
-	font-size:16px;
+	color:#696969;
+	font-size:15px;
 }
 .user-box
 {
@@ -1131,7 +1131,7 @@ bottom: 10px;
 
 .information
 {
-width:450px;
+width:501px;
 min-height:92px;	
 	
 }
@@ -1807,7 +1807,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9bc38', end
 .form-box20{ margin:0px 0px 0px 0px;	padding:0px; width:705px; min-height:92px; margin:15px 0px 15px 0px;}
 .content1{overflow:auto; padding: 0px;margin:0px;width:700px ;height: 190px;
 	-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
-.information{width:700px;}
+.information{width:680px;}
 .form-box3{width:700px;}
 /*----------about page end-------------*/
 /*----------bank complaint page start--*/
@@ -1925,7 +1925,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9bc38', end
 .form-box20{ margin:0px 0px 0px 0px;	padding:0px; width:500px; min-height:92px; margin:15px 0px 15px 0px;}
 .content1{overflow:auto; padding: 0px;margin:0px;width:464px ;height: 190px;
 	-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
-.information{width:400px;}
+.information{width:448px;}
 .form-box3{width:460px; float:left;}
 /*----------bank complaint page start--*/
 .form-box21bank{width:400px;}
@@ -2052,7 +2052,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9bc38', end
 .form-box20{ margin:0px 0px 0px 0px;	padding:0px; width:300px; min-height:92px; margin:15px 0px 15px 0px;}
 .content1{overflow:auto; padding: 0px;margin:0px;width:300px ;height: 190px;
 	-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
-.information{width:300px;}
+.information{width:286px;}
 .form-box3{width:300px; float:left;}
 /*----------about page end----------------*/
 /*----------bank complaint page start--*/
@@ -2193,7 +2193,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9bc38', end
 .form-box20{ margin:0px 0px 0px 0px;	padding:0px; width:300px; min-height:92px; margin:15px 0px 15px 0px;}
 .content1{overflow:auto; padding: 0px;margin:0px;width:300px ;height: 190px;
 	-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
-.information{width:300px;}
+.information{width:286px;}
 .form-box3{width:300px; float:left;}
 /*----------about page end----------------*/
 /*----------bank complaint page start--*/

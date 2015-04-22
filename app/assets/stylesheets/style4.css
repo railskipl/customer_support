@@ -442,7 +442,7 @@ search-btn
 	margin: 0px;
 	width: 530px;
 	max-width: 100%;
-	height: 440px;
+	height: 428px;
 	-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;
 }
 .section-third
@@ -576,6 +576,7 @@ search-btn
 .design1 img{
 	margin-top: -15px;
 	vertical-align:top;
+	height: 32px;
 }
 
 

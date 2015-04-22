@@ -30,11 +30,16 @@ $(function () {
                 type: 'column'
             },
             title: {
-                text: '<%=@poll.title%>'
+                text: '<%=@poll.title%>',
+                 style: {
+                        color: '#696969',
+                        fontSize: '20px',
+                        fontFamily: 'andlso'
+                    }
             },
             plotOptions: {
             series: {
-                color: '#fbaf3d'
+                color: '#3d89fb'
             }
         },
             xAxis: {
@@ -50,7 +55,12 @@ $(function () {
                 allowDecimals:false,
                 min: 0,
                 title: {
-                    text: 'No. of Votes'
+                    text: 'No. of Votes',
+                    style: {
+                        color: '#696969',
+                        fontSize: '13px',
+                        fontFamily: 'andlso'
+                    }
                 }
             },
              credits: {

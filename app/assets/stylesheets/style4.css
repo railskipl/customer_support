@@ -521,7 +521,7 @@ search-btn
 	color:#ffffff;
 	font-family:'andlso';
 	font-size:15px;
-	height:23px !important;
+	height:24px !important;
 	background:#e6971b url(../assets/logout-bg.jpg) repeat-x 0px 0px;
 	-webkit-box-shadow: 0px 3px 5px 0px #dadada;
 	-moz-box-shadow: 0px 3px 5px 0px #dadada;
@@ -908,7 +908,7 @@ textarea, input,select { outline: none; }
 	font-family:'andlso';
 	font-size:15px;
 	float:right;
-	height:23px !important;
+	height:24px !important;
 	background:url(../assets/logout-bg2.jpg) repeat-x 0px 0px;
 	-webkit-box-shadow: 0px 3px 5px 0px #dadada;
 	-moz-box-shadow: 0px 3px 5px 0px #dadada;

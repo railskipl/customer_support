@@ -79,7 +79,11 @@ CKEDITOR.editorConfig = function( config )
             ['PasteText','PasteFromWord','RemoveFormat'],
             ['SpecialChar'],
             ['Outdent','Indent'],
-            ['Undo','Redo']
+            ['Undo','Redo'],
+            {
+      name: 'insert',
+      items: ['Image', 'Table', 'HorizontalRule', 'PageBreak']
+    }
         ];
 
   config.addQueryString = function( url, params ){

@@ -1897,6 +1897,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9bc38', end
 .field1{width:290px;}
 .fieldlg{width:340px;}
 .drp-select1{width:300px;}
+.newwid{ width:700px !important;}
 /*--yogesh---*/
 }
 @media (min-width:480px) and (max-width:719px)
@@ -2020,6 +2021,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9bc38', end
 .login-box2{margin:0px;padding:10px;width:378px;min-height:135px !important;background:#e6e6e6; border:#cccccc 1px solid;}
 .bgn{background:#ffffff;width:368px !important;}
 .text-area4new2{margin:0px 0px 5px;	padding:5px 5px 0px;width:368px;height:70px;}
+.newwid{ width:460px !important;}
 
 }
 

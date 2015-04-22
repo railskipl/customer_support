@@ -1690,6 +1690,7 @@ border-bottom:1px #dadada solid;
  background:url(../assets/search.jpg) no-repeat ;
  border:none;
  cursor:pointer;
+ width:30px !important;
 } 
 .search-btn:hover
 {

@@ -38,7 +38,7 @@
               <div class="content1 mCustomScrollbar">
               <div class="information">
                   <div class="heading2"><%= @page.try(:title) %></div>
-                 <p><%= raw(@page.try(:description)) %></p>
+                 <%= raw(@page.try(:description)) %>
                 </div>
               <div class="clear"></div>
               
@@ -50,7 +50,7 @@
 
 
      <div class="form-box3">
-              <div class="log-head2">Quote or Ads? </div>
+              <div class="log-head2">Quotes</div>
                 <p><%= raw(@page.try(:quote)) %><br><!-- span style="color:#faae3d">~Bill Gates</span> --></p>
        
 

@@ -8,13 +8,13 @@
 
         
         	<div class="form-box21">
+            <div class="heading2"><%= @resource_type.slug.titlecase %></div>
             <% @resources.each do |resource| %>
            <div class="information-new22">
 
-                  <div class="heading2"><%=resource.resource_type.slug.titlecase %></div>
+                  
                    <div class="technology"><%=resource.title.titlecase%></div>
-                    <p><%=raw(resource.description)%><span class="read-more"><a href="#"> Read more...</a></span>
-                    </p>
+                    <p><%=raw(resource.description)%></p>
              </div>
               <% end %>
               <div class="clear"></div>

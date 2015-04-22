@@ -25,26 +25,26 @@
         	<div class="login-box" style="min-height:135px;height:135px">
             	
                 <div class="login-field-box">
-                	<div class="text-box1">First Name*</div>
+                	<div class="text-box1">First Name *</div>
                     	<%= f.text_field :first_name, :value => "#{current_user.try(:first_name)}" ,:pattern => '[A-Za-z]+',"maxlength"=>"35", "min" => "1","max" => "35", :class => "field1" %>
                 </div>
                 <div class="clear"></div>
                 <div class="login-field-box">
-                	<div class="text-box1">Email*</div>
+                	<div class="text-box1">Email *</div>
                   <%= f.email_field :email, :value => "#{current_user.try(:email)}",required: true, "maxlength"=>"35", "min" => "1","max" => "35" , :class => "field1"%>
                 </div>
                 <div class="clear"></div>
                 
                 <div class="login-field-box">
-                	<div class="text-box1">Message Type*</div>
-                   <%= f.select :message_type, [ ["General Enquiries", "General Enquiries"],["Give us Feedback", "Give us Feedback"],["Manage my Ticket" , "Manage my Ticket"],["My Account" , "My Account"],["Report Abuse","Report Abuse"],[" Technical Assistance", "Technical Assistance"],["Other - Please Specify", "Other"] ], {},:onchange => 'CheckOther();', :class=> "field1 slt", :style => "width:200px;"%>
+                	<div class="text-box1">Message Type *</div>
+                   <%= f.select :message_type, [ ["General Enquiries", "General Enquiries"],["Give us Feedback", "Give us Feedback"],["Manage my Ticket" , "Manage my Ticket"],["My Account" , "My Account"],["Report Abuse","Report Abuse"],[" Technical Assistance", "Technical Assistance"],["Other - Please Specify", "Other"] ],  {:prompt => "Select Message Type"},:onchange => 'CheckOther();', :class=> "field1 slt", :style => "width:200px;"%>
 				
                 </div>
             </div>
             <div class="register-box" style="min-height:135px;height:135px">
             	
                 <div class="login-field-box">
-                	<div class="text-box1">Last Name*</div>
+                	<div class="text-box1">Last Name *</div>
                     <%= f.text_field :last_name, :value => "#{current_user.try(:last_name)}",:pattern => '[A-Za-z]+',"maxlength"=>"35", "min" => "1","max" => "35", :class => "field1" %>
                 </div>
                 
@@ -52,7 +52,7 @@
                 
                  <div class="login-field-box">
                 	<div class="text-box1">Telephone</div>
-                      <%= f.text_field :telephone, :pattern => '[0-9]+',"maxlength"=>"10", "min" => "1","max" => "10", :class => "field1" %>
+                      <%= f.text_field :telephone, :pattern => '[0-9]+',"maxlength"=>"10", "min" => "1","max" => "10", :class => "field1", :placeholder => "070712345678" %>
                 </div>
                 <div class="clear"></div>
 
@@ -73,7 +73,7 @@
             </div>
             
              <div class="login-field-boxnew">
-                	<div class="text-box1">Message*</div>
+                	<div class="text-box1">Message *</div>
                 	<%= f.text_area :message, :rows=>"5",:class =>"text-area4new fr-bt","maxlength"=>"1200"%>
                    
                    </div>

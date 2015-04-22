@@ -112,7 +112,7 @@ $(document).ready(function(){
   </div>
   <div id="agent_modified_review" class="field">
 		<strong>Modified Review:</strong><br/>
-    <%= f.text_area :modified_review , :value=>(@review.is_modified ? @review.modified_review : @review.message) ,:class=>"ckeditor"%>
+    <%= f.text_area :modified_review , :value=>(@review.is_modified ? @review.modified_review : @review.message) %>
   </div>
   <br/>
   <%if params[:type] == "archive" || params[:type] == "archive_attachment" %>

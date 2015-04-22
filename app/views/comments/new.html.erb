@@ -5,7 +5,7 @@
             <div class="login-box2">
                 <div class="login-field-boxp" >
                     <div class="text-box12p">Name *</div>
-                    <%= f.text_field  :name ,:value=>(current_user.first_name if current_user), :required=>true, :class =>"field1 bgn" %>
+                    <%= f.text_field  :name ,:value=>(current_user.first_name if current_user), :required=>true, :class =>"field1 bgn", :placeholder => "Please enter your name." %>
                     <div class="clear"></div>
                 </div>
                  

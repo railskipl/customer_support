@@ -108,7 +108,7 @@ $(document).ready(function(){
   <% end %>
   <div>
 		<strong>Edit Review:</strong>
-		<input type="checkbox" name="review[is_modified]" id="review_is_modified" value="true" style="opacity:1;" checked="<%@review.is_modified ? 'checked' : '' %>">
+		<input type="checkbox" name="review[is_modified]" id="review_is_modified" value="true" style="opacity:1;" <%= @review.is_modified ? 'checked' : '' %>>
   </div>
   <div id="agent_modified_review" class="field">
 		<strong>Modified Review:</strong><br/>

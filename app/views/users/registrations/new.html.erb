@@ -302,7 +302,7 @@ background-color:#FC0; font-size: 33px;
                 <%=f.check_box :is_subscribe ,:class=> "ch-box"%> <span style = "font-weight: lighter;color:#696969;font-family:andlso;font-size:15px;">Subscribe to receive promotional materials from our partners</span>
                 </div>
                 <div class="check-one">
-                <%=f.check_box :accept_t_and_c , id: "field_terms", required: true, value: true,:class=> "ch-box"%><%=link_to "I agree to the Term and Conditions *", "/terms-of-use",:style => "color:#fbaf3d;font-family:andlso;font-size:15px;" ,:target => "new" %>
+                <%=f.check_box :accept_t_and_c , id: "field_terms", required: true, value: true,:class=> "ch-box"%><%=link_to "I agree to the Term and Conditions *", "/terms-of-use",:style => "color:#fbaf3d;font-family:andlso;font-size:15px;" ,:target => "_blank" %>
                 </div>
                 <div>
                      <%= recaptcha_tags %><br/>
@@ -322,7 +322,7 @@ background-color:#FC0; font-size: 33px;
 
 <script type="text/javascript">
 $( document ).ready(function() {
-    if $("#other_type").val(){
+    if ($("#other_type").val()){
       $("#other_type").show();
     }
     else

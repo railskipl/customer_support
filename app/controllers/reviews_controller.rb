@@ -92,7 +92,7 @@ class ReviewsController < ApplicationController
             user = User.find(current_user.id) rescue nil
             user.update_column(:guest_token, nil) rescue nil
             flash[:notice] = "Your Review Successfully submitted."
-            redirect_to reviews_url
+            redirect_to root_path
           else
             render :new
           end
@@ -162,7 +162,7 @@ class ReviewsController < ApplicationController
             ReviewMailer.delay.user_mail(@review)
             ReviewMailer.delay.agent_mail(@review)
             flash[:notice] = "Review submitted. Your review has been successfully submitted and assigned a ticket number. However, it will only be published once it has been vetted by our team against our terms and conditions.You will receive an email confirming your ticket number."
-            redirect_to reviews_url
+            redirect_to root_path
           else
             flash[:notice] = "Please LOGIN or REGISTER to submit your review."
             redirect_to new_user_session_url(:guest_token => @review.guest_token)

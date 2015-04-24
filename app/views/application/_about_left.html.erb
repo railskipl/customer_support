@@ -21,7 +21,7 @@
                <%unless @performance.blank?%>
       <%unless @performance.performance_img.blank?%>
   
-         <div class="polls">
+         <div class="polls newpolls">
        <%= link_to (image_tag @performance.performance_img,:style => "width:236px;height:230px;" ),@performance.worst_performance rescue nil%>
       </div>
       <%end%>

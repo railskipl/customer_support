@@ -3,7 +3,7 @@
             <div id='cssmenu'>
                 <ul>
 
-          <li class='<%= @active_tab == "home" ? "active" : "" %>'><a href='<%= root_path %>' class='<%= @active_tab == "home" ? "active" : "" %>'><span>Home</span></a></li>
+          <li class='<%= @active_tab == "Home" ? "active" : "" %>'><a href='<%= root_path %>' class='<%= @active_tab == "Home" ? "active" : "" %>'><span>Home</span></a></li>
           <%if generate_path('About us') %>
             <li  class='<%= @action == "About us" ? "active" : "" %>' ><a href='<%= generate_path('About us') %>'  class='<%= @action == "About us" ? "active" : "" %>' ><span>About Us</span></a></li>
           <% end %>

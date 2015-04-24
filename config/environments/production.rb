@@ -84,7 +84,7 @@ Jmd::Application.configure do
             :enable_starttls_auto => true,
             :address => "smtp.mandrillapp.com",
             :ssl => true,
-            :port => 587,
+            :port => 465,
             :domain => "xemaxema.com",
             :authentication => :login,
             :user_name => "xemaxema.kenya@gmail.com",

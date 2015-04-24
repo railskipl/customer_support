@@ -19,9 +19,9 @@
             <%#unless @performance.performance_img.blank?%>
 	      	 <%#= link_to (image_tag @performance.performance_img),@performance.worst_performance  rescue nil%>
 	        <%#end%>
-            <%unless @performance.best_performance.blank?%>
+            <%unless @performance.performance_img.blank?%>
 
-		     <%= image_tag @performance.best_performance.url, :style => "width:236px;height:230px;" %>
+		     <%= image_tag @performance.performance_img, :style => "width:236px;height:230px;" %>
            <%end%>
             </div>
 	    <%end%>

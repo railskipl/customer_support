@@ -115,9 +115,7 @@ class Ability
       can    :update, User, :id => user.id
       can    :manage, Comment
       can    :destroy, Review, :jagent_id => user.id
-      can    :read, Supplier
-      cannot :edit,Supplier
-      cannot :destroy, Supplier
+      cannot :manage 
     else
       can    :read,   User, :id => user.id
       can    :edit,   User, :id => user.id

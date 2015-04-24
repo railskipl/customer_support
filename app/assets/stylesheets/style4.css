@@ -1086,11 +1086,11 @@ font-weight:bold;
 {
 width:551px;
 height:100px; 
-margin: 0 ;
+margin: 0 auto ;
 position: relative;
 bottom: 10px;
  
-/*padding-left:60px; */
+padding-left:65px; 
 
 }
 
@@ -1245,14 +1245,14 @@ font-weight:bold;
 }
 /*----login page hover effect end----*/
 /*-----------new-captcha add-------------------------*/
-.new-captcha
+/*.new-captcha
 {
 width:551px;
 height:100px; 
 margin: 0; 
 padding-left:0px;	
 
-}
+}*/
 /*-----------new-captcha add-------------------------*/
 /*----------------faq start------------------*/
 .form-box21faq

@@ -55,7 +55,7 @@ jQuery(document).ready(function() {
         <td><%=review.industry.title rescue nil %></td>
 				<td><%=review.company.title rescue nil %></td>
 				<td><%=review.title rescue nil %></td>
-		    <td><%=review.try(:user).try(:full_name)%></td>
+		    <td><%=review.try(:user).try(:preferred_alias)%></td>
 		    <td>
           <%unless review.ispublished || review.archive %>
             <%= link_to 'Edit', edit_admin_review_path(review) , class: "btn btn-primary" if can? :edit, Review%>
@@ -142,7 +142,7 @@ jQuery(document).ready(function() {
         <td><%=review.company.title rescue nil %></td>
         <td><%=review.title rescue nil %></td>
         <td><%=review.created_at.strftime("%d/%m/%y | %H:%M") rescue nil %></td>
-        <td><%=review.try(:user).try(:full_name)%></td>
+        <td><%=review.try(:user).try(:preferred_alias)%></td>
         <td>
           <% unless review.ispublished || review.archive || review.is_modified %>
             <%= link_to 'Edit', edit_admin_review_path(review) , class: "btn btn-primary" if can? :edit, Review%>

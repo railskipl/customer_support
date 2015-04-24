@@ -106,7 +106,7 @@
 			<td><%= review.review_type.titleize rescue nil %></td>
 			<td><%= review.company.title.titleize rescue nil %></td>
 			<td><%= review.title.titleize rescue nil %></td>
-			<td><%= review.try(:user).try(:full_name) %></td>
+			<td><%= review.try(:user).try(:preferred_alias) %></td>
 			<td>
 				<% if review.archive?  %>
 				 Archived
@@ -147,7 +147,7 @@
 			<td><%=review.review_type rescue nil %></td>
 			<td><%=review.company.title rescue nil %></td>
 			<td><%=review.title rescue nil %></td>
-			<td><%=review.try(:user).try(:full_name)%></td>
+			<td><%=review.try(:user).try(:preferred_alias)%></td>
       </tr>
 	  <% end %>
 	</tbody>
@@ -178,7 +178,7 @@
 			<td><%=review.review_type rescue nil %></td>
 			<td><%=review.company.title rescue nil %></td>
 			<td><%=review.title rescue nil %></td>
-			<td><%=review.try(:user).try(:full_name)%></td>
+			<td><%=review.try(:user).try(:preferred_alias)%></td>
 		</tr>
 	  <% end %>
 	</tbody>
@@ -207,7 +207,7 @@
 		<td><%=review.review_type rescue nil %></td>
 		<td><%=review.company.title rescue nil %></td>
 		<td><%=review.title rescue nil %></td>
-        <td><%=review.try(:user).try(:full_name)%></td>
+        <td><%=review.try(:user).try(:preferred_alias)%></td>
         <td>
         <%= link_to 'Show', admin_review_path(review) , class: "btn btn-primary" if can? :show, Review%>
         <%#= link_to 'Destroy', admin_review_path(review), class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %>

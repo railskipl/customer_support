@@ -13,6 +13,11 @@ class ApplicationController < ActionController::Base
   private
 
 	def get_defaults
+   if params["controller"] =="devise/passwords" && params["action"] == "new"
+     @active_title = "Forgotten your password"
+   elsif params["controller"] =="devise/passwords" && params["action"] == "edit"
+     @active_title = "Change your password"
+   end
   	@resource_types = ResourceType.all
 	end
 

@@ -18,6 +18,7 @@
         <div class="min-box">
           <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
     <%= hidden_field_tag :guest_token ,params[:guest_token] if params[:guest_token]%>
+     <%= hidden_field_tag :review_id ,params[:review_id] if params[:review_id]%>
           <div class="login-box">
               <div class="log-head">Login</div>
                 <div class="login-field-box">
@@ -38,6 +39,7 @@
           <% end %>
             <form action="/users/sign_up" method="get">
             <%= hidden_field_tag :guest_token ,params[:guest_token] if params[:guest_token]%>
+
             <div class="register-box">
               <div class="log-head">
                 New to Xemaxema

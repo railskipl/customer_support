@@ -4,7 +4,7 @@ class PagesController < ApplicationController
   		
 		@page = Page.find_by_slug(params[:slug])
 		if @page.present?
-			@active_title = @page.slug
+			@active_title = @page.slug == 'csr' ? "CSR" : @page.slug.titlecase
 			@action = @page.name
 			@sub_action = @page.slug
 			@pages = Page.find_all_by_name(@page.name)

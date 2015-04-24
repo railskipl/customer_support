@@ -9,7 +9,7 @@ class CompaniesController < ApplicationController
   def user_review
     @nav_tab = "reviews"
     @active_tab = "reviews"
-    @active_title = "reviews"
+    @active_title = "Reviews"
 	  @reviews ||= Review.published.order("date")
     review = Review.new(review_params)
     @review_filter = review

@@ -1,1 +1,2 @@
-Your ticket <%= @review.ticket_number %> is closed now. If you are satisfied with our service please provide us your valuable feedback <%= link_to 'Here', review_url(@review)%>.
+Your ticket <%= @review.ticket_number %> is closed now. If you are satisfied with our service please provide us your valuable feedback 
+<%= link_to 'Here', new_user_session_url(:review_id => @review.id) %>.

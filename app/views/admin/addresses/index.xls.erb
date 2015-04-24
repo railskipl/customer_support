@@ -1,25 +1,23 @@
-<%= link_to "Download Data", admin_addresses_path(params.merge(format: "xls")),:class => "btn btn-primary"%><br/><br/>
+
 <h1>Addresses</h1>
 
 <table id="addresses" >
   <thead>
     <tr>
+      <th>Sr. No.</th>
       <th>Company</th>
       <th>Town</th>
       <th>Location</th>
-      <th>Actions</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @addresses.each do |address| %>
+    <% @addresses.each.with_index(1) do |address,index| %>
       <tr>
+        <td><%= index %></td>
         <td><%= address.company.title rescue nil %></td>
         <td><%= address.town.try(:title) rescue nil %></td>
         <td><%= address.try(:location).try(:title) rescue nil %></td>
-
-        <td><%= link_to 'Edit', edit_admin_address_path(address) if can? :edit, Address%>
-        <%= link_to 'Destroy', [:admin,address], method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, Address%></td>
       </tr>
     <% end %>
   </tbody>

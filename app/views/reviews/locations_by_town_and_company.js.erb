@@ -1,1 +1,1 @@
-$("#review_location_id").html('<%= raw("<option>Select Location</option>" +  options_for_select(@locations.map {|l| [l.title, l.id]}).gsub(/\n/, '') + "<option>Other</option>" ) %>');
+$("#review_location_id").html('<%= raw("<option>Select Location</option>" +  options_for_select(@locations.map {|l| [l.title, l.id]}).gsub(/\n/, '') + "<option>Other - please specify</option>" ) %>');

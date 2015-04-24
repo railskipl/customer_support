@@ -1,1 +1,1 @@
-$("#review_company_id").html('<%= raw("<option>Select Company</option>" +  options_for_select(@companies.map {|c| [c.title, c.id]}).gsub(/\n/, '') + "<option>Other</option>" ) %>');
+$("#review_company_id").html('<%= raw("<option>Select Company</option>" +  options_for_select(@companies.map {|c| [c.title, c.id]}).gsub(/\n/, '') + "<option value=#{Company.last.id + 1}>Other - please specify</option>" ) %>');

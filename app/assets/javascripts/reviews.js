@@ -30,7 +30,7 @@ $.fn.hide_show_field = function() {
   this.change(function() {
     var txt_id ="#txt_" + that.attr('id');
 
-     if ('Other' == that.val()){
+     if ('Other - please specify' == that.val()){
        $(txt_id).show();
 		 }
 		  else{

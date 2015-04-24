@@ -933,7 +933,7 @@ textarea, input,select { outline: none; }
 }
 .form-box1
 {
-	margin:0px 40px 20px 0px;
+	margin:0px 95px 20px 0px;
 	padding:0px;
 	width:350px;
 	min-height:250px;
@@ -951,7 +951,7 @@ textarea, input,select { outline: none; }
 {
 	margin:0px 0px 20px;
 	padding:0px;
-	width:240px;
+	width:200px;
 	min-height:300px;
 	float:right;
 }
@@ -1313,7 +1313,7 @@ border-bottom:1px #ccc solid;
 
 .log-headac
 {
-	margin:0px 0px 10px;
+	margin:0px 0px 20px;
 	padding:0px 0px 5px 0px;
 	color:#faae3d;
 	font-family:andlso;
@@ -1395,7 +1395,7 @@ color:#696969 !important;
 }
 .grid-tbl1 td
 {
-	padding:5px 0px 5px 22px;
+	padding:5px 0px 5px 5px;
 	font-family:corbel;
 	font-size:13px;
 	color:#696969;
@@ -1545,7 +1545,7 @@ float:right;
 	text-align:justify;
 	padding-bottom:5px;
 	line-height:21px;
-	padding-bottom:20px;
+	padding-bottom:15px;
 	
 }
 .deatail
@@ -1570,7 +1570,7 @@ font-family:andlso !important;
 {
 background-color:#fbaf3f !important;
 color:#FFF !important;	
-background:url(../assets/two-arrowsnew.png) no-repeat 14px bottom ;
+background:url(../assets/two-arrowsnew.png) no-repeat 14px 15px ;
 font-family:andlso !important;
 padding-bottom:10px !important;
 }
@@ -1637,7 +1637,8 @@ height:100px;
 .row1 .names
 {
 float:left !important;
-padding:0px	
+padding:0px;
+margin-top: 3px;
 }
 .row1 strong{color:#fbaf3f;}
 .row1 .dates
@@ -1663,6 +1664,8 @@ border-bottom:1px #dadada solid;
 	color:#fbaf3f;
 	font-weight:bold;
 	text-align:left;
+	font-family:andlso;
+	font-size:15px;
 	
 }
 .login-field-boxp
@@ -1721,6 +1724,8 @@ border-bottom:1px #dadada solid;
 	line-height:61px;
 	color:#fbaf3f;
 	font-weight:bold;
+	font-family:andlso;
+	font-size:15px;
 }
 .fleft
 {
@@ -1771,7 +1776,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9bc38', end
 	
 	}
 
-.slt{ height:28px !important;}
+.slt{ height:29px !important;}
 
 .text-area4new2{margin:0px 0px 5px;padding:5px 5px 0px;width:594px;height:70px;border:#dddcdc 0px solid;background:#ffffff;font-family:corbel;
 	color:#696969;font-size:13px;-webkit-box-shadow: 0px 4px 2px -1px #dadada;-moz-box-shadow: 0px 4px 2px -1px #dadada;box-shadow: 0px 4px 2px -1px #dadada;}

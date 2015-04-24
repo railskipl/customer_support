@@ -5,19 +5,19 @@
             <div class="login-box2">
                 <div class="login-field-boxp" >
                     <div class="text-box12p">Name *</div>
-                    <%= f.text_field  :name ,:value=>(current_user.first_name if current_user), :required=>true, :class =>"field1 bgn", :placeholder => "Please enter your name." %>
+                    <%= f.text_field  :name ,:value=>(current_user.first_name if current_user), :required=>true, :class =>"field1 bgn", :placeholder => "This will be published." %>
                     <div class="clear"></div>
                 </div>
                  
                 <div class="login-field-boxpp" >
                     <div class="text-box12p">Email *</div>
-                    <%= f.email_field  :email ,:value=>(current_user.email if current_user), :required=>true, :class=> "field1 bgn", :placeholder => "Please enter your email." %>
+                    <%= f.email_field  :email ,:value=>(current_user.email if current_user), :required=>true, :class=> "field1 bgn", :placeholder => "This will not be published." %>
                     <div class="clear"></div>
                 </div>
                    
                 <div class="clear"></div>
                 <div class="text-box1new">Your Comment *</div>
-                <%= f.text_area  :title  , :class => 'text-area4new2 fr-bt',:placeholder => "Add your comment" %>
+                <%= f.text_area  :title  , :class => 'text-area4new2 fr-bt',:placeholder => "This will be vetted before being published." %>
 
                  <%= f.submit 'Xema', :confirm => "Submit your Comment?\nClick OK to submit or CANCEL to continue writing your comment.",:class => "btn2" %>
                     <div class="clear"></div>

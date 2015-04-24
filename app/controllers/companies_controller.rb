@@ -31,8 +31,9 @@ class CompaniesController < ApplicationController
 	  end
 	  
 	  if review.from_date && review.to_date
-		@reviews = @reviews.within_range(review.from_date,review.to_date)
-  	  end
+
+		  @reviews = @reviews.within_range(review.from_date.to_date,review.to_date.to_date)
+  	end
   end
 
   def conversions
@@ -55,7 +56,7 @@ class CompaniesController < ApplicationController
 #    end
     
     if review.from_date && review.to_date
-			@rcompanies = @rcompanies.within_range(review.from_date,review.to_date)
+			@rcompanies = @rcompanies.within_range(review.from_date.to_date,review.to_date.to_date)
 		end
 			
   end
@@ -81,7 +82,7 @@ class CompaniesController < ApplicationController
 #    end
     
     if review.from_date && review.to_date
-			@rcompanies = @rcompanies.within_range(review.from_date,review.to_date)
+			@rcompanies = @rcompanies.within_range(review.from_date.to_date,review.to_date.to_date)
 		end
   end
 
@@ -105,7 +106,7 @@ class CompaniesController < ApplicationController
 #   	end
    	
     if review.from_date && review.to_date
-			@rcompanies = @rcompanies.within_range(review.from_date,review.to_date)
+			@rcompanies = @rcompanies.within_range(review.from_date.to_date,review.to_date.to_date)
 		end
   end
 

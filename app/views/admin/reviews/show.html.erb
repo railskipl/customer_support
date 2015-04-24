@@ -31,6 +31,7 @@ $(document).ready(function(){
   Yes
 </p>
 <% end %>
+
 <p>
   <strong>Ticket Number:</strong>
   <%= @review.ticket_number %>
@@ -39,6 +40,19 @@ $(document).ready(function(){
   <strong>Review Type:</strong>
   <%= @review.review_type %>
 </p>
+  <% unless current_user.is_jagent? %>
+      <p class="field">
+         <strong>Customer Name: </strong><%= @review.user.try(:full_name) %>
+      </p>
+      <p class="field">
+         <strong>Customer Email: </strong><%= @review.user.email %>
+      </p>
+      <% if @review.review_type == "complaint" %>
+        <p class="field">
+           <strong>Desired Outcome: </strong><%= @review.desired_outcome %>
+        </p>
+      <% end %>
+      <% end %>
 <p>
   <strong>Title:</strong>
   <%= @review.title %>
@@ -92,9 +106,22 @@ $(document).ready(function(){
 <%end%>
 
 <p>
-  <strong>Date:</strong>
+  <strong>Incident Date:</strong>
+  <%= @review.date.strftime("%d %b %Y")  %>
+</p>
+<p>
+  <strong>Incident Time:</strong>
+  <%= @review.datetime.strftime("%H:%M")  %>
+</p>
+<p>
+  <strong>Created Date:</strong>
+  <%= @review.created_at.strftime("%d %b %Y %H:%M") %>
+</p>
+<p>
+  <strong>Published Date:</strong>
   <%= @review.published_date.strftime("%d %b %Y %H:%M") if @review.ispublished %>
 </p>
+
 
 <%unless @review.ispublished || @review.archive || @review.is_modified %>
 	<%= link_to 'Edit', edit_admin_review_path(@review), class: "btn btn-primary" if can? :edit, Review %>

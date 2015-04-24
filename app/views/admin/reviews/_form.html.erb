@@ -49,7 +49,7 @@ $(document).ready(function(){
       </div><br/>
       <% unless current_user.is_jagent? %>
       <div class="field">
-         <strong>Customer Name: </strong><%= @review.user.preferred_alias %>
+         <strong>Customer Name: </strong><%= @review.user.try(:full_name) %>
       </div><br/>
       <div class="field">
          <strong>Customer Email: </strong><%= @review.user.email %>
@@ -96,13 +96,27 @@ $(document).ready(function(){
     <div class="field">
       <strong>Nature of Review:</strong>
       <%= @review.nature_of_review %>
-    </div>
+    </div><br/>
 
-    <div class="field">
-      <strong>Image:</strong>
-      <%= image_tag(@review.file) %>
-    </div>
+    <div>
+  <strong>Incident Date:</strong>
+  <%= @review.date.strftime("%d %b %Y")  %>
+</div><br/>
+<div>
+  <strong>Incident Time:</strong>
+  <%= @review.datetime.strftime("%H:%M")  %>
+</div><br/>
+<div>
+  <strong>Created Date:</strong>
+  <%= @review.created_at.strftime("%d %b %Y %H:%M") %>
+</div><br/>
+<div>
+  <strong>Published Date:</strong>
+  <%= @review.published_date.strftime("%d %b %Y %H:%M") if @review.ispublished %>
+</div>
   </div><br/>
+
+
   <% unless @review.file.file.nil? %>
   Attached File: <%= link_to image_tag(@review.file.url),@review.file.url %>
   <% end %>

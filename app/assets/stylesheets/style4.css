@@ -933,7 +933,7 @@ textarea, input,select { outline: none; }
 }
 .form-box1
 {
-	margin:0px 95px 20px 0px;
+	margin:0px 100px 20px 0px;
 	padding:0px;
 	width:350px;
 	min-height:250px;
@@ -986,6 +986,10 @@ textarea, input,select { outline: none; }
 	min-height:300px;
 	float:right;
 }
+
+.captcha-reg{margin: 0 !important;padding-left: 152px !important;}
+
+
 .reviews-box
 {
 	margin:0px auto 0px;

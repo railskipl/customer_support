@@ -81,10 +81,9 @@ Jmd::Application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-            :enable_starttls_auto => true,
-            :address => "vps.kunaalshousing.com",
-            :ssl => true, 
-            :port => 465,
+    
+            :address => "mail.kunalinfotech.net",
+            :port => 25,
             :domain => "kunalinfotech.net",
             :authentication => :login,
             :user_name => "sachin.kalaskar@kunalinfotech.net",

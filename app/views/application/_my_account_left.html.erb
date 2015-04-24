@@ -39,7 +39,7 @@
                 <li><a href="#" class="selected"><%= Company.find(params["company_id"]).title  %></a></li>
             </ul>
         </div>
-<% elsif  @sub_action == "my_reviews" || @active_tab != "home" %>
+<% elsif  @sub_action == "my_reviews" || @active_tab != "Home" %>
   <div class="page-link">
           <ul>
                 <li><a href="<%= root_path %>">Home</a></li>

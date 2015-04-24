@@ -4,6 +4,7 @@ class ReviewsController < ApplicationController
 	before_action :default_action_tab
 
 	def index
+    @active_title ="My Reviews"
   	@sub_action = 'my_reviews'
 		@reviews = current_user ? current_user.reviews.published : []
 	end

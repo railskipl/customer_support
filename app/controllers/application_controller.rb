@@ -43,19 +43,14 @@ class ApplicationController < ActionController::Base
   def new_poll
     @top_advertise = Advertise.where('position=0 and start_date<=? and end_date>=?',Date.today,Date.today).sample
 		@bottom_advertise = Advertise.where('position=1 and start_date<=? and end_date>=?',Date.today,Date.today).sample
-		if params["slug"]
-      if params["controller"] == "resources"
-        @performance = CompanyPerformance.where('start_date <= ? and end_date >= ? and box_type = ?', Date.today, Date.today, "resources").sample  
+      if params["controller"] == "pages"
+        @performance = CompanyPerformance.where('start_date <= ? and end_date >= ? and box_type = ?', Date.today, Date.today, 'About Us').sample  
+      elsif params["controller"] == "reviews" && params[:id]
+        @performance = CompanyPerformance.where('start_date <= ? and end_date >= ? and box_type = ?', Date.today, Date.today, "show_review").sample  
       else
-        @performance = CompanyPerformance.where('start_date <= ? and end_date >= ? and box_type = ?', Date.today, Date.today, params["slug"]).sample  
+        @performance = CompanyPerformance.where('start_date <= ? and end_date >= ? and box_type = ?', Date.today, Date.today, params["controller"]).sample  
       end
-    else
-      if params["controller"] == "companies"
-        @performance = CompanyPerformance.where('start_date <= ? and end_date >= ? and box_type = ?', Date.today, Date.today, 'user_review').sample  
-      else
-        @performance = CompanyPerformance.where('start_date <= ? and end_date >= ? and box_type = ?', Date.today, Date.today, params["action"]).sample  
-       end
-    end
+   
     polls = Poll.all(:include=>'options',
     								  :conditions => ["start_date <= ? and end_date>=? and published=?", Date.today,Date.today,true])
     if polls.count > 0

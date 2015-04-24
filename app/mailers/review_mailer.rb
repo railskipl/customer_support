@@ -80,7 +80,7 @@ class ReviewMailer < ActionMailer::Base
 
   def ticket_closed_notification(review)
     @review = review
-    emails = "ankit@kunalinfotech.net" + ",agent@xemaxema.com"
+    emails = review.user.email + ",agent@xemaxema.com"
     mail(:to => emails, :subject => "Ticket Closed")
   end
 

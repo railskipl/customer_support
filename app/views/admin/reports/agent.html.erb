@@ -207,7 +207,6 @@
 
 	<tbody>
     <% @track_times.each_with_index.each do |track,i|%>
-      <%= raise "#{track} #{User.find(track)}"%>
       <%@user = User.find(track) rescue nil%>
       <%@tracks = @user.track_times.where('Date(created_at) >= ? and Date(Date(created_at)) <= ?',@start_from, @start_to) rescue nil%>
     

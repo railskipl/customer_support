@@ -47,6 +47,8 @@ class ApplicationController < ActionController::Base
         @performance = CompanyPerformance.where('start_date <= ? and end_date >= ? and box_type = ?', Date.today, Date.today, 'About Us').sample  
       elsif params["controller"] == "reviews" && params[:id]
         @performance = CompanyPerformance.where('start_date <= ? and end_date >= ? and box_type = ?', Date.today, Date.today, "show_review").sample  
+      elsif params["controller"] == "reviews" && params[:company_id]
+       @performance = CompanyPerformance.where('start_date <= ? and end_date >= ? and box_type = ?', Date.today, Date.today, "search_reviews").sample  
       else
         @performance = CompanyPerformance.where('start_date <= ? and end_date >= ? and box_type = ?', Date.today, Date.today, params["controller"]).sample  
       end

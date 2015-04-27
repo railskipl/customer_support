@@ -140,7 +140,7 @@
             <%if current_user && (current_user == @review.user) && @review.comments.supplier_comments.count > 0%>
      		<% if @review.is_ticket_open == false %>
   		 	<%=form_for(@review) do |f| %>
-  		 	<%= @review.review_type %>
+  		 
 				<% if @review.review_type == 'complaint' %>
 				
 					<div class="log-head">How do you feel after the Company's response?</div>

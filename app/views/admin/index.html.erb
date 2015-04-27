@@ -80,6 +80,36 @@
 	</table>
 
 <% end %>
+
+<h4>Reviews To Action</h4>
+
+<table id="recently_added_review" >
+	<thead>
+	  <tr>
+	  	<th>Sr. No.</th>
+		<th>Date</th>
+		<th>Ticket Number</th>
+		<th>Review</th>
+		<th>Company</th>
+		<th>Title</th>
+		<th>Customer Name</th>
+	  </tr>
+	</thead>
+
+	<tbody>
+	  <% @recent_reviews.each.with_index(1) do |review,index| %>
+	    <tr>
+	    	<td><%= index %></td>
+			<td><%=review.created_at.strftime("%d/%m/%Y | %H:%M") rescue nil %></td>
+			<td><%=review.ticket_number rescue nil %></td>
+			<td><%=review.review_type rescue nil %></td>
+			<td><%=review.company.title rescue nil %></td>
+			<td><%=review.title rescue nil %></td>
+			<td><%=review.try(:user).try(:preferred_alias)%></td>
+      </tr>
+	  <% end %>
+	</tbody>
+</table>
 <h4>All Reviews</h4>
 
 <table id="admin_review" >
@@ -123,35 +153,6 @@
 </table>
 
 
-<h4>Reviews To Action</h4>
-
-<table id="recently_added_review" >
-	<thead>
-	  <tr>
-	  	<th>Sr. No.</th>
-		<th>Date</th>
-		<th>Ticket Number</th>
-		<th>Review</th>
-		<th>Company</th>
-		<th>Title</th>
-		<th>Customer Name</th>
-	  </tr>
-	</thead>
-
-	<tbody>
-	  <% @recent_reviews.each.with_index(1) do |review,index| %>
-	    <tr>
-	    	<td><%= index %></td>
-			<td><%=review.created_at.strftime("%d/%m/%Y | %H:%M") rescue nil %></td>
-			<td><%=review.ticket_number rescue nil %></td>
-			<td><%=review.review_type rescue nil %></td>
-			<td><%=review.company.title rescue nil %></td>
-			<td><%=review.title rescue nil %></td>
-			<td><%=review.try(:user).try(:preferred_alias)%></td>
-      </tr>
-	  <% end %>
-	</tbody>
-</table>
 
 <h4>Published Reviews</h4>
 

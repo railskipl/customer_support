@@ -7,12 +7,13 @@
   Email: <%= comment.email %><br/>
   <% end %>
   Posted On: <%= comment.updated_at.strftime("%Y-%m-%d") %> <br/>
-  Customer Message: <%= raw(comment.title) %>
+  Customer Message: <%= raw(comment.title) %><br/>
   Modified Message: <%= comment.modified_comment.present? ? raw(comment.modified_comment) : "Not Modified" %>
   <% if comment.ispublished == false%>
     <%= form_for([:admin, @review, comment]) do |f| %>
       <% if current_user.role == "jagent" %>
-        <% unless comment.modified_comment %>      
+        <% unless @review.monitor_jagent.comment_status %>
+          <%= f.submit 'Save', class: "btn btn-primary" %>    
           <%= link_to "Modify Comment" ,edit_admin_review_comment_path(:review_id => @review.id, :id => comment.id ) , :class => "btn btn-primary" %>
         <% end %>
       <% else %>

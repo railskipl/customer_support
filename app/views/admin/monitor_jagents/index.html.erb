@@ -21,7 +21,7 @@
 		<td><%= review.jagent.preferred_alias rescue nil%></td>
 		<td><%= review.agent == current_user ? "You" : mon.review.agent.try(:preferred_alias) %></td>
 		<td><%= review.monitor_jagent.ticked_closed_by_jagent? ? "Yes" : "No" rescue nil%></td>
-		<td><%= review.monitor_jagent.modified_review? ? "Yes" : "No" rescue nil%></td>
+		<td><%= review.is_modified? ? "Yes" : "No" rescue nil%></td>
 		<td><%= review.ispublished? ? mon.review.last_published_agent.preferred_alias : "No" rescue nil%></td>
 		<td><%= review.monitor_jagent.try(:status) %></td>
 	</tr>
@@ -55,7 +55,7 @@
 		<td><%= mon.review.agent.try(:preferred_alias) %></td>
 		<td><%= mon.review.jagent.try(:preferred_alias) %></td>
 		<td><%= mon.ticked_closed_by_jagent? ? "Yes" : "No" rescue nil%></td>
-		<td><%= mon.is_modified? ? "Yes" : "No" rescue nil%></td>
+		<td><%= mon.review.is_modified? ? "Yes" : "No" rescue nil%></td>
 		<td><%= mon.review.ispublished? ? mon.review.last_published_agent.preferred_alias : "No" rescue nil%></td>
 		<td><%= mon.status %></td>
 		<td><%= mon.comment_status %></td>

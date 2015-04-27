@@ -57,6 +57,27 @@ select.select_box_custom option:hover {
 background-color:#FC0; font-size: 33px;
  }*/
 </style>
+<script type="text/javascript">
+$( document ).ready(function() {
+    if ($("#other_type").val()){
+      $("#other_type").show();
+    }
+    else
+      $("#other_type").hide();
+});
+
+function CheckOther()
+{
+  if (document.getElementById("user_i_live").value == "Other"){
+        $("#other_type").show();
+    }     
+    else{
+       $("#other_type").hide();
+    }     
+}
+
+</script>
+
 <% @city_group =
                  [
                  ["Nairobi", [["Arboretum","Arboretum"],["Buruburu","Buruburu"],
@@ -114,7 +135,7 @@ background-color:#FC0; font-size: 33px;
                                                                 ["Valley Road","Valley Road"],
                                                                 ["Westlands","Westlands"]]],
                  ["Coast", [["Bamburi","Bamburi"],["CBD","CBD"],["Diani","Diani"],["Kilifi","Kilifi"],["Lamu","Lamu"],["Malindi","Malindi"],["Mombasa","Mombasa"],["Nyali","Nyali"],["Voi","Voi"],["Watamu","Watamu"]]],
-                 ["Kisumu", [["Kisumu", "Kisumu"]]],["Other",[["Other","Other"]]],]%>
+                 ["Kisumu", [["Kisumu", "Kisumu"]]],["Other - please specify",[["Other","Other"]]],]%>
         <%= form_for(@user) do |f|%>
 		<% if @user.present? && @user.errors.any? %>
 					<div class="fom_con" style="color:red;">
@@ -259,7 +280,10 @@ background-color:#FC0; font-size: 33px;
                     	<%= select_tag("user[lives_in]", grouped_options_for_select(@city_group, selected_key = @user.lives_in, prompt = nil), :id=> 'user_i_live' ,:onchange => 'CheckOther();',:prompt => "Select Location",:class => "field3 select_box_custom") %>
                 </div>
                 <div class="clear"></div>
-                
+                        <div class="login-field-box3">
+                    <div class="text-box3">&nbsp;</div>
+                    <input type="text" class="field3" name="other_type" id="other_type", placeholder ="Other" >
+                </div>
               <!--   <div class="login-field-box3">
                 	<div class="text-box3">&nbsp;</div>
                     <input type="text" class="field3" name="">

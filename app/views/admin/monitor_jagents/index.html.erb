@@ -42,6 +42,7 @@
 		<th>Published By</th>
 		<th>Status</th>
 		<th>Comment Status</th>
+		<th>Conversion</th>
 		<th>Date</th>
 		<th>Time</th>
 	</tr>
@@ -58,6 +59,7 @@
 		<td><%= mon.review.ispublished? ? mon.review.last_published_agent.preferred_alias : "No" rescue nil%></td>
 		<td><%= mon.status %></td>
 		<td><%= mon.comment_status %></td>
+		<td><%= mon.review.change_date? ? "Yes" : "No" %></td>
 		<td><%= mon.review.created_at.strftime("%d/%m/%Y") %></td>
 		<td><%= mon.review.created_at.strftime("%H:%M") %></td>
 	</tr>

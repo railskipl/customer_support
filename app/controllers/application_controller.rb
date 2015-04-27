@@ -67,7 +67,7 @@ class ApplicationController < ActionController::Base
   	if current_user.role == 'admin' ||  current_user.role == 'agent' || current_user.role == 'jagent'
   		admin_index_path
   	else
-	    reviews_path
+	    profile_path
 	  end
   end
 

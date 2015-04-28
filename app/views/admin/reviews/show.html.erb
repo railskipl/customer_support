@@ -123,8 +123,12 @@ $(document).ready(function(){
 </p>
 
 
-<%unless @review.ispublished || @review.archive || @review.is_modified %>
+<% if @review.ispublished || @review.archive || @review.is_modified %>
+<% else %>
+  <% if (current_user.is? :jagent) && @review.monitor_jagent.modified_review %>
+  <% elsif !(current_user.is? :jagent) %>
 	<%= link_to 'Edit', edit_admin_review_path(@review), class: "btn btn-primary" if can? :edit, Review %>
+  <% end %>
 <%end%>
 <% if @review.is_ticket_open &&  @review.comments.supplier_comments.count > 0  %>
   <% if current_user.role =="jagent" %>

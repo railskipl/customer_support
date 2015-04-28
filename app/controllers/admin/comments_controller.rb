@@ -38,7 +38,7 @@ class Admin::CommentsController < AdminController
       n = @comment.notification
       n.comment_status = "Waiting for approval"
       n.save
-      @comment.modified_comment = params["comment"]["modified_comment"]
+      @comment.modified_comment = params["comment"]["modified_comment"] if params["comment"]
     else
       if @comment.user_id
         uid = @comment.user_id

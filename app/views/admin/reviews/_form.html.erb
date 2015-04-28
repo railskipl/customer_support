@@ -150,10 +150,14 @@ $(document).ready(function(){
         <% end %>
       <%end%>
       <%unless params[:type] == "archive" || params[:type] == "archive_attachment" %>
+        <% if !(current_user.is? :jagent) %>
         <%= link_to 'Archive', edit_admin_review_path(params[:id],:type => "archive"), class: "btn" ,style: "line-height: 18px;"if can? :edit, Review%>
+        <% end %>
         <% unless @review.archive_attachment %>
          <% unless  @review.file.file.nil? %>
-          <%= link_to 'Archive Attachment', edit_admin_review_path(params[:id],:type => "archive_attachment"), class: "btn",style: "line-height: 18px;" if can? :edit, Review%>
+           <% if !(current_user.is? :jagent) %>
+            <%= link_to 'Archive Attachment', edit_admin_review_path(params[:id],:type => "archive_attachment"), class: "btn",style: "line-height: 18px;" if can? :edit, Review%>
+           <% end %>
         <% end %>
         <% end %>
       <%else%>

@@ -140,7 +140,7 @@
             <%if current_user && (current_user == @review.user) && @review.comments.supplier_comments.count > 0%>
      		<% if @review.is_ticket_open == false %>
   		 	<%=form_for(@review) do |f| %>
-  		 	<%= @review.review_type %>
+  		 
 				<% if @review.review_type == 'complaint' %>
 				
 					<div class="log-head">How do you feel after the Company's response?</div>
@@ -202,7 +202,7 @@ padding: 15px;
     font-size:0;
     width:160px !important;
     min-width: 155px;
-    height:150px !important;
+    height:161px !important;
 }​
 </style>
 <style type="text/css">
@@ -214,6 +214,6 @@ padding: 15px;
     font-size:0;
     width:160px !important;
     min-width: 153px;
-    height:150px !important;
+    height:161px !important;
 }​
 </style>

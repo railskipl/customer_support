@@ -4,3 +4,228 @@ Email <%=@contact.email%><br/>
 Phone Number: <%=@contact.telephone%><br/>
 Message Type; <%=@contact.message_type%>
 Message: <%=@contact.message%><br/>
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" style="background:#dadada">
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=400, initial-scale=0.5">
+	<meta content="telephone=no" name="format-detection">	
+	<title>Email Template</title>
+	
+
+	
+<style type="text/css">
+		p{
+			padding:0 !important;
+			margin:0 !important;
+		}
+</style></head>
+<body class="body" style="padding:0 !important; margin:0 !important; display:block !important; background:#dadada; -webkit-text-size-adjust:none">
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#dadada">
+	<tr>
+		<td align="center" valign="top">
+			<table width="624" border="0" cellspacing="0" cellpadding="0">
+				<!-- Top -->
+				<tr>
+					<td class="top" style="color:#4a5461; font-family:corbel; font-size:13px; line-height:15px; text-align:center">
+						<div style="font-size:0pt; line-height:0pt; height:15px"><img src="http://www.xemaxema.com/assets/empty.gif" width="1" height="15" style="height:15px" alt=""></div>
+						<div style="font-size:0pt; line-height:0pt; height:15px"><img src="http://www.xemaxema.com/assets/empty.gif" width="1" height="15" style="height:15px" alt=""></div>
+						<div style="font-size:0pt; line-height:0pt; height:15px"><img src="http://www.xemaxema.com/assets/empty.gif" width="1" height="15" style="height:15px" alt=""></div>
+
+					</td>
+				</tr>
+				<!-- END Top -->
+				<!-- Header -->
+				<tr>
+					<td>
+					<div style="border: 1px solid #cdcdcd;
+			width: 625px;">
+
+						<!-- <div class="img" style="font-size:0pt; line-height:0pt; text-align:left"><img src="http://www.xemaxema.com/assets/header_top.jpg" alt="" border="0" width="624" height="12" /></div> -->
+						 					
+				<!-- END Header -->
+				<!-- Content -->
+				</div></td></tr><tr>
+					<td>
+						<table width="100%" border="0" cellspacing="0" cellpadding="0">
+							<tr>
+								<td class="img" style="font-size:0pt; line-height:0pt; text-align:left" width="1" bgcolor="#dfdfdf"></td>
+								<td class="img" style="font-size:0pt; line-height:0pt; text-align:left" width="1" bgcolor="#c1c1c1"></td>
+								<td bgcolor="#ffffff">
+									<!-- Hero -->
+									
+									<!-- END Hero -->
+									<!-- Main Content -->
+									<!-- <div class="img" style="font-size:0pt; line-height:0pt; text-align:left"><img src="http://www.xemaxema.com/assets/content_top.jpg" alt="" border="0" width="620" height="20" /></div> -->
+									<table width="100%" border="0" cellspacing="0" cellpadding="0">
+										<tr>
+											<td class="img" style="font-size:0pt; line-height:0pt; text-align:left" width="20"></td>
+											<td>
+												<br>
+
+												<div style="text-align:left"><img src="http://www.xemaxema.com/assets/logo_mail.png" alt="" border="0" width="180" height="90"></div>
+												<hr style="background-color:#inherit;
+												border-color:#fbaf3f; display: block; height: 1px;border: 0; border-top: 1px solid #fbaf3f;
+  												margin: 1em 0; padding: 0;
+												color: #fbaf3f;
+												margin-left: 0px;
+												margin-right: 18px">
+													<table width="100%" border="0" cellspacing="0" cellpadding="0">
+														<tr>
+															
+ 																<div style="font-family: 'corbel'; color: #696969; margin-right:3px; font-size:13px;">
+																<p>Hi admin,</p>
+																<br>
+
+																Xemaxema.com has received a new query via the contact us form. 																																																																							
+																<br><br>
+																
+																<strong>Date:</Strong> <%=@contact.created_at.strftime('%d %b %Y') rescue nil%><br>
+																<strong>First Name:</Strong> <%=@contact.first_name rescue nil%><br>
+																<strong>Last Name:</Strong> <%=@contact.last_name rescue nil%><br>
+																<strong>Email Address:</Strong> <%=@contact.email rescue nil%><br>
+																<strong>Telephone:</Strong> <%=@contact.telephone rescue nil%><br>
+																<strong>Message Type:</Strong> <%=@contact.message_type rescue nil%><br>
+																<strong>Message:</Strong> <%=@contact.message rescue nil%><br>
+																
+																	<div style="font-size:0pt; line-height:0pt; height:25px"><img src="http://www.xemaxema.com/assets/empty.gif" width="1" height="35" alt=""></div>												
+																	                                                               
+																	<div style="font-family: 'corbel'; color: #696969; font-size:13px;">
+																<p>Thanks you!</p>
+																<br>
+																<Strong>The Xemaxema Team</Strong>
+																</div>
+																	
+
+ 
+
+
+
+
+
+
+
+
+
+																	<div style="font-size:0pt; line-height:0pt; height:25px"><img src="http://www.xemaxema.com/assets/empty.gif" width="1" height="35" style="height:35px" alt=""></div>
+																	<div style="font-size:0pt; line-height:0pt; height:25px"><img src="http://www.xemaxema.com/assets/empty.gif" width="1" height="35" style="height:35px" alt=""></div>
+																	<div style="font-size:0pt; line-height:0pt; height:25px"><img src="http://www.xemaxema.com/assets/empty.gif" width="1" height="35" style="height:35px" alt=""></div>
+
+																	<div style="font-family: 'corbel'; color: #696969; font-size:13px;">
+																	<strong>Note:</strong> Please do not reply to this email. It has been sent from an email account that is not monitored.
+																	</div>
+																	<br><br>
+																	<a href="#" class="link-u" style=" text-decoration:underline" target="_blank"><span class="link-u" style=" text-decoration:underline"></span></a>
+
+																	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+										<tr>
+											<!--<td class="img" style="font-size:0pt; line-height:0pt; text-align:left" width="15"></td>-->
+											
+											<td align="right">
+											<span style="margin-right:120px; margin-left:30px">
+											<span style="font-family:'andalus'; margin-bottom:3px;  color:#696969; font-size:15px">Join us on</span>
+											&nbsp;&nbsp;&nbsp;<a href="https://www.facebook.com/xemaxemaKenya" target="_blank"><img src="http://www.xemaxema.com/assets/facebook.png" alt="" class="social"></a>&nbsp;<a style="font-family:'andalus'; text-decoration:none; color:#696969; font-size:15px" href="https://www.facebook.com/xemaxemaKenya">Facebook</a>&nbsp;&nbsp;&nbsp;
+
+    							<a href="https://twitter.com/xemaxemaKenya" target="_blank"><img src="http://www.xemaxema.com/assets/tweet.png" alt="" class="social"></a>&nbsp;<a style="font-family:'andalus'; text-decoration:none;  color:#696969; font-size:15px" href="https://twitter.com/xemaxemaKenya">Twitter</a>&nbsp;&nbsp;&nbsp;
+
+    							<a href="https://plus.google.com/102653929712987892138/posts" target="_blank"><img src="http://www.xemaxema.com/assets/plus.png" alt="" class="social"></a>&nbsp;<a style="font-family:'andalus'; text-decoration:none; color:#696969; font-size:15px" href="https://plus.google.com/102653929712987892138/posts">Google+</a>&nbsp;&nbsp;&nbsp;
+    							</span>												
+												<hr style="background-color:#inherit;
+												border-color:#fbaf3f; display: block; height: 1px;border: 0; border-top: 1px solid #fbaf3f;
+  												margin: 1em 0; padding: 0;
+												color: #fbaf3f;
+												margin-left: 0px;
+                                               
+												margin-right: 5px">
+												<div class="bottom" style="color:#696969; font-family:'corbel'; font-size:13px; line-height:2px; margin-left:0px; margin-right:7px; margin-top:-7px; text-align:left">							
+						
+						 Copyright &copy; <span><a href="http://xemaxema.com/" style="color:#696969; text-decoration:none">Xemaxema</a> 2015. All Rights Reserved</span>. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<!-- <div style="font-size:0pt; line-height:0pt; height:50px"><img src="http://www.xemaxema.com/assets/empty.gif" width="1" height="50" style="height:50px" alt="" /></div> -->
+						 <span><a href="https://www.xemaxema.com/" style="color:#fbaf3f; text-decoration:none"><strong>Home</Strong></a> </span>&nbsp;|   <span><a href="https://www.xemaxema.com/about-xemaxema" style="color:#fbaf3f; text-decoration:none"><Strong>About Us</Strong></a></span>&nbsp;|  <span><a href="https://www.xemaxema.com/contact_us" style="color:#fbaf3f; text-decoration:none"><Strong>Contact Us</Strong></a></span>
+						<div style="font-size:0pt; line-height:0pt; height:25px"><img src="http://www.xemaxema.com/assets/empty.gif" width="1" height="35" style="height:35px" alt=""></div>						
+
+					</div>
+											</td>
+											<td class="img" style="font-size:0pt; line-height:0pt; text-align:left" width="15"></td>
+										</tr>
+									</table>
+									<div style="font-size:0pt; line-height:0pt; height:10px"><img src="http://www.xemaxema.com/assets/empty.gif" width="1" height="10" style="height:10px" alt=""></div>
+
+								</tr></table></td>
+								<td class="img" style="font-size:0pt; line-height:0pt; text-align:left" width="1" bgcolor="#dfdfdf"></td>
+								<td class="img" style="font-size:0pt; line-height:0pt; text-align:left" width="1" bgcolor="#c1c1c1"></td>
+
+
+							</tr>
+                                
+						</table>
+						<div style="border: 1px solid #c1c1c1;			
+						
+			color:#dadada;
+			background-color:#dadada">
+</div>
+						
+					</td>
+				</tr>
+																
+															</table></td></tr></table></td>
+														</tr>
+													</table>
+
+													<div style="font-size:0pt; line-height:0pt; height:30px"></div>
+
+													<div class="img" style="font-size:0pt; line-height:0pt; text-align:left"></div>
+													<div style="font-size:0pt; line-height:0pt; height:30px"></div>
+
+												<!-- </div> -->
+												<div>									
+												</div>
+												<div>
+												</div>
+											
+											
+										
+									
+									<div class="img" style="font-size:0pt; line-height:0pt; text-align:left"></div>
+									<!-- END Main Content -->
+
+								
+								<td class="img" style="font-size:0pt; line-height:0pt; text-align:left" width="1" bgcolor="#dfdfdf"></td>
+								<td class="img" style="font-size:0pt; line-height:0pt; text-align:left" width="1" bgcolor="#c1c1c1"></td>
+							
+						
+					
+				
+				
+				<!-- END Content -->
+				<!-- Footer -->
+				<tr>
+					<td>
+						
+						<table width="100%" border="0" cellspacing="0" cellpadding="0">
+							<tr>
+								<td class="img" style="font-size:0pt; line-height:0pt; text-align:left" width="1" bgcolor="#dfdfdf"></td>
+								<td class="img" style="font-size:0pt; line-height:0pt; text-align:left" width="1" bgcolor="#c1c1c1"></td>
+								<td class="img" style="font-size:0pt; line-height:0pt; text-align:left" width="1" bgcolor="#dfdfdf"></td>
+								<!--<td class="img" style="font-size:0pt; line-height:0pt; text-align:left" width="1" bgcolor="#dfdfdf"></td> -->
+								<td bgcolor="#fff">
+								
+									
+				<!-- END Footer -->
+				<!-- Bottom -->
+				</td></tr><tr>
+					
+				</tr>
+				<!-- END Bottom -->
+			</table>
+		
+	
+
+
+
+</td></tr></body>
+</html>
+

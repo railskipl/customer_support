@@ -79,7 +79,8 @@ Comment: <%= @comment.title %>
 																<p>Hi <%= @review.user.preferred_alias rescue nil%>,</p>
 																<br>																
 																
-																Your review has received a new comment from <%= @comment.user.preferred_alias rescue nil %>.
+																Your review has received a new comment from <%= @comment.name rescue nil %>.
+																    
 
 																<br><br>
 

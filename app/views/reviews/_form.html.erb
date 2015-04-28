@@ -70,7 +70,7 @@ select.field12 option:hover {
                     <%= f.text_field :title, required: true, "maxlength"=>"60", "min" => "1","max" => "35", :autofocus=>true, :class => "field4", :placeholder => "Short, direct, informative, impactful." %>
                 </div>
                 <div class="clear"></div>
-        		<div class="form-box1 fr-bt">
+        		<div class="form-box1 fr-bt no-space">
             	<div class="login-field-box">
                 	<div class="text-box1">Nature Of Review *</div>
                    <%= f.select :nature_of_review, @nature_of_reviews.map { |nr| [nr.title]}, {:prompt =>"Select Nature of Review"},:include_blank=>false,:class=>"drp-select1", onchange: "CheckOther2()" %>

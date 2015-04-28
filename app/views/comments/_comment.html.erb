@@ -4,7 +4,7 @@
 				<%if comment.user_id  && ['agent', 'admin','jagent'].include?(comment.user.role) %>
  				<p class="names"><img src="/assets/fill.png" alt=""><strong> Company Response: <%= comment.supplier.supplier_name%></strong></p>
 				<%elsif comment.user_id && comment.user_id == @review.user_id %>
-				 <p class="names"><img src="/assets/blank.png" alt=""><strong style="color:#f15829"> <%= comment.name%></strong></p>
+				 <p class="names"><img src="/assets/blank.png" alt=""><strong style="color:#3d3d3d"> <%= comment.name%></strong></p>
 				<%else%>
 				 <p class="names"><img src="/assets/blank.png" alt=""><strong style="color:#f15829"> <%= comment.name%></strong></p>
 				<%end%>

@@ -1,13 +1,3 @@
-<!-- <p>Hello <%#= @resource.email %>!</p>
-
-<p>Someone has requested a link to change your password. You can do this through the link below.</p>
-
-<p><%#= link_to 'Change my password', edit_password_url(@resource, :reset_password_token => @token) %></p>
-
-<p>If you didn't request this, please ignore this email.</p>
-<p>Your password won't change until you access the link above and create a new one.</p> -->
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" style="background:#dadada">
 <head>
@@ -79,28 +69,34 @@
 														<tr>
 															
  																<div style="font-family: 'corbel'; color: #696969; margin-right:3px; font-size:13px;">
-																<p>Hi <%= @resource.preferred_alias rescue nil %>,</p>
+																<p>Hi <%= @comment.name rescue nil %>,</p>
+																<br>																
+																Congrats! Your comment has been published online on Xemaxema.com and can now be seen by all.
+																<br><br>
+																																
+																<Strong>Ticket Number:</Strong> <%= @review.ticket_number rescue nil%>
 																<br>
-																You recently initiated a password reset for your Xemaxema.com account. To complete the process, click the<br> link below.
-																												
-																<div style="font-size:0pt; line-height:0pt; height:25px"><img src="http://www.xemaxema.com/assets/empty.gif" width="1" height="35" style="height:35px" alt=""></div>
-																</div>
-                                                                    
-																<%= edit_password_url(@resource, :reset_password_token => @token) do%><img style="margin-left:200px" src="http://www.xemaxema.com/assets/Reset Password.png" height="37px" width="">
-																<%end%>															
-																	
-																<div style="font-size:0pt; line-height:0pt; height:25px"><img src="http://www.xemaxema.com/assets/empty.gif" width="1" height="35" style="height:35px" alt=""></div>
+																<Strong>Review Type:</Strong> <%= @review.review_type rescue nil%>
+																<br>
+																<Strong>Subject:</Strong> <%= @review.title rescue nil%>
+																<br>
+																<Strong>Company Name:</Strong> <%= @review.company.title rescue nil%>
+																<br><br>	
+																Click on the link below to view your comment.
+																<div style="font-size:0pt; line-height:0pt; height:25px"><img src="http://www.xemaxema.com/assets/empty.gif" width="1" height="35" style="height:35px" alt=""></div>											
+																																																																	
+																<%= review_url(@review) do %>
+																   <img style="margin-left:200px" src="http://www.xemaxema.com/assets/View your Comment.png" height="37px" width="">
+																<%end%> 
 																
-																<div style="font-family: 'corbel'; color: #696969; font-size:13px;">
-																If you don't want to change your password or didn't request this, just ignore and delete this message.
-																</div>
-																<br>																		
+																<div style="font-size:0pt; line-height:0pt; height:25px"><img src="http://www.xemaxema.com/assets/empty.gif" width="1" height="35" style="height:35px" alt=""></div>
 																<div style="font-family: 'corbel'; color: #696969; font-size:13px;">
 																<p>Thanks!</p>
 																<br>
 																<Strong>The Xemaxema Team</Strong>
 																</div>
 																	
+
 																	<div style="font-size:0pt; line-height:0pt; height:25px"><img src="http://www.xemaxema.com/assets/empty.gif" width="1" height="35" style="height:35px" alt=""></div>
 																	<div style="font-size:0pt; line-height:0pt; height:25px"><img src="http://www.xemaxema.com/assets/empty.gif" width="1" height="35" style="height:35px" alt=""></div>
 																	<div style="font-size:0pt; line-height:0pt; height:25px"><img src="http://www.xemaxema.com/assets/empty.gif" width="1" height="35" style="height:35px" alt=""></div>
@@ -219,4 +215,3 @@
 
 </td></tr></body>
 </html>
-

@@ -54,7 +54,7 @@
                 <table cellpadding="0" cellspacing="0" class="grid-tbl">
                   <%@reviews.each do |review| %>
                         <tr>
-                            <td width="15%"><%=review.created_at.strftime("%d %b %Y")%></td>
+                            <td width="17%"><%=review.created_at.strftime("%d %b %Y")%></td>
                             <% if review.review_type == 'complaint'%>
                             <td width="10%" align="center" ><img src="/assets/red_star.png" alt=""></td>
                             <% else %>

@@ -121,8 +121,7 @@ $(document).ready(function(){
   <strong>Published Date:</strong>
   <%= @review.published_date.strftime("%d %b %Y %H:%M") if @review.ispublished %>
 </p>
-
-
+ 
 <% if @review.ispublished || @review.archive || @review.is_modified %>
 <% else %>
   <% if (current_user.is? :jagent) && @review.monitor_jagent.modified_review %>

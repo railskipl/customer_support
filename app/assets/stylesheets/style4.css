@@ -374,7 +374,7 @@ search-btn
 	width:533px;
 	height:100%;
 }
-.newwid{width:530px !important;}
+.newwid{width:485px !important; margin: 0 auto;}
 
 .grid-head-tbl
 {
@@ -547,9 +547,10 @@ search-btn
 {
 	margin:0px 0px 0px;
 	padding:5px 0px 20px;
-	border-top:#fbaf3f 2px solid;
+	/*border-top:#fbaf3f 2px solid;*/
 	width:1024px;
 	font-size:13px;
+	background:url(/assets/log-head.png) repeat-x top;
 }
 .copy
 {
@@ -644,7 +645,7 @@ search-btn
 	margin:0px;
 	padding:10px;
 	width:350px;
-	min-height:180px;
+	min-height:122px;
 	float:left;
 }
 .log-head
@@ -698,7 +699,7 @@ search-btn
 	margin:0px;
 	padding:10px;
 	width:350px;
-	height:230px;
+	height:122px;
 	float:right;
 }
 /*.text-box1
@@ -1147,7 +1148,7 @@ min-height:92px;
 }
 .form-box20
 {
-	margin:0px 0px 9px 5px;
+	margin:0px 0px 9px 26px;
 	padding:0px;
 	width:530px;
 	min-height:92px;
@@ -1787,6 +1788,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9bc38', end
 .login-box2{margin:0px;padding:10px;width:604px;min-height:135px !important;background:#e6e6e6; border:#cccccc 1px solid;}	
 .bgn{background:#ffffff;width:200px !important;}
 
+.no-space{margin:0px 40px 20px 0px !important;}
+.wr-first{width:250px; !important;}
 
 /*---------------ABC bank end----------*/
 @media (min-width: 720px) and (max-width: 990px)
@@ -1810,9 +1813,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9bc38', end
 .content{overflow: auto;position: relative;padding: 0px;margin:0px;width:700px;max-width: 100%;height: 190px;
 	-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
 .section-third{margin:0px;padding:0px;width:700px;min-height:400px;float:right;}
-.first-right-one{margin:0px 0px 5px;padding:12px 7px 0px;width:676px;height:255px;border:#e5e5e5 2px solid;background:#f8f8f8;}
-.right-link{margin:0px;padding:14px 0px 0px 18px;width:656px;height:30px;border:#e5e5e5 1px solid;border-bottom:0px;}
-.right-link-last{margin:0px 0px 10px;padding:14px 0px 0px 18px;width:656px;height:30px;border:#e5e5e5 1px solid;}
+.first-right-one{margin:0px 0px 5px;padding:12px 7px 0px;width:682px;height:255px;border:#e5e5e5 2px solid;background:#f8f8f8;}
+.right-link{margin:0px;padding:14px 0px 0px 18px;width:662px;height:30px;border:#e5e5e5 1px solid;border-bottom:0px;}
+.right-link-last{margin:0px 0px 10px;padding:14px 0px 0px 18px;width:662px;height:30px;border:#e5e5e5 1px solid;}
 .first-right-second{margin:0px 0px 0px;padding:0px;width:690px;height:229px;border:#e5e5e5 2px solid;}
 #footer-area{margin:3px 0px 0px;padding:5px 0px 20px;border-top:#fbb243 2px solid;width:694px;}	
 /*----------home page end----------------*/
@@ -1833,7 +1836,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9bc38', end
 .min-box{margin:0px auto;padding:0px;width:700px;min-height:380px;}
 
 .login-box{margin:0px 160px 20px;padding:10px;width:350px;min-height:135px;}
-.register-box{margin:0px 160px 20px;padding:10px;width:350px;min-height:135px;}
+.register-box{margin:0px 160px 20px;padding:10px;width:360px;min-height:200px;}
 /*-----contact us/ login end-----------*/
 /*-----CSR start-----------*/
 .form-box21{width:700px; margin:0px;}
@@ -1845,7 +1848,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9bc38', end
 /*-----FAQ end-----------*/
 /*-----complaint start-----------*/
 .join-form-box{width:700px;}
-.form-box1{width:300px;}
+.form-box1{width:300px;margin: 0px 40px 20px 0px !important;}
 .field4{width:628px; float:left;}
 .text-area4{width:630px; float:left;}
 .align{float:left;}
@@ -1910,6 +1913,23 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9bc38', end
 .fieldlg{width:340px;}
 .drp-select1{width:300px;}
 .newwid{ width:700px !important;}
+
+.select_box_custom{width: 300px !important;}
+.newsize1{width:300px !important;}
+.reviews-box{width:700px;}
+.review-center{margin:0px;width:700px;}
+.slt{ height:29px !important;width:440px !important;}
+.newfield{width:430px !important;}
+
+
+/*new resister page 27.04.2015*/
+.reg-box1{margin:0px 0px 20px 0px;width:700px;float:left;}
+.row-reg{width:700px;}
+.row-left{float:left;}
+.row-right{float:right;}
+.profile-box1{margin:0px 0px 20px 0px;padding:0px;width:700px;min-height:300px;float:left;}
+.row-profile{width:700px;}
+/*end new resister page*/
 /*--yogesh---*/
 }
 @media (min-width:480px) and (max-width:719px)
@@ -1929,9 +1949,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9bc38', end
 .content{overflow: auto;position: relative;padding: 0px;margin:0px;width:456px;max-width: 100%;height: 190px;
 	-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
 .section-third{margin:0px;padding:0px;width:456px;min-height:400px;float:right;}
-.first-right-one{margin:0px 0px 5px;padding:12px 7px 0px;width:427px;height:255px;border:#e5e5e5 2px solid;background:#f8f8f8;}
-.right-link{margin:0px;padding:14px 0px 0px 18px;width:407px;height:30px;border:#e5e5e5 1px solid;border-bottom:0px;}
-.right-link-last{margin:0px 0px 10px;padding:14px 0px 0px 18px;width:407px;height:30px;border:#e5e5e5 1px solid;}
+.first-right-one{margin:0px 0px 5px;padding:12px 7px 0px;width:442px;height:255px;border:#e5e5e5 2px solid;background:#f8f8f8;}
+.right-link{margin:0px;padding:14px 0px 0px 18px;width:422px;height:30px;border:#e5e5e5 1px solid;border-bottom:0px;}
+.right-link-last{margin:0px 0px 10px;padding:14px 0px 0px 18px;width:422px;height:30px;border:#e5e5e5 1px solid;}
 .first-right-second{margin:0px 0px 0px;padding:0px;width:441px;height:229px;border:#e5e5e5 2px solid;}
 #footer-area{margin:3px 0px 0px;padding:5px 0px 5px 0px;border-top:#fbb243 2px solid;width:460px;}	
 /*----------home page end----------------*/
@@ -1956,7 +1976,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9bc38', end
 .text-area4new{width:450px;}
 .captcha-box{ width:50%;}
 .login-box{margin:0px 55px 20px;padding:0px;width:350px;min-height:135px;}
-.register-box{margin:0px 55px 20px;padding:0px;width:350px;min-height:135px;float:left;}
+.register-box{margin:0px 55px 20px;padding:0px;width:350px;min-height:200px;float:left;}
 /*------contact us/ login end--------*/
 /*-----CSR start-----------*/
 .form-box21{width:460px; margin:0px;}
@@ -2035,6 +2055,26 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9bc38', end
 .text-area4new2{margin:0px 0px 5px;	padding:5px 5px 0px;width:368px;height:70px;}
 .newwid{ width:460px !important;}
 
+.copy{float:left;color:#696969;height:40px;}
+.design1{float:left;color:#696969;padding-bottom:5px;}
+.captcha-reg{margin: 0 !important;padding-left: 0px !important;}
+.select_box_custom{width: 460px !important;}
+.up-photo{margin:0px auto 20px;padding:0px;width:122px;float:left;}
+.newsize1{width:460px !important;}
+.review-center{width:460px;}
+.reviews-box {width: 460px;}
+.slt{ height:29px !important;width:440px !important;}
+.newfield{width:430px !important;}
+
+/*new resister page 27.04.2015*/
+.reg-box1{margin:0px 0px 20px 0px;width:460px;float:left;}
+.row-reg{width:460px;}
+.row-left{float:left;}
+.row-right{float:left;}
+.profile-box1{margin:0px 0px 20px 0px;padding:0px;width:460px;min-height:300px;float:left;}
+.row-profile{width:460px;}
+/*end new resister page*/
+
 }
 
 @media (min-width:320px) and (max-width:479px)
@@ -2057,9 +2097,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9bc38', end
 .content{overflow: auto; padding: 0px;margin:0px;max-width: 100%;height: 190px;
 	-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
 .section-third{margin:0px;padding:0px;width:300px;min-height:400px;float:right;}
-.first-right-one{margin:0px 0px 5px;padding:12px 7px 0px;width:266px;height:255px;border:#e5e5e5 2px solid;background:#f8f8f8;}
-.right-link{margin:0px;padding:14px 0px 0px 18px;width:246px;height:30px;border:#e5e5e5 1px solid;border-bottom:0px;}
-.right-link-last{margin:0px 0px 10px;padding:14px 0px 0px 18px;width:246px;height:30px;border:#e5e5e5 1px solid;}
+.first-right-one{margin:0px 0px 5px;padding:12px 7px 0px;width:278px;height:255px;border:#e5e5e5 2px solid;background:#f8f8f8;}
+.right-link{margin:0px;padding:14px 0px 0px 18px;width:258px;height:30px;border:#e5e5e5 1px solid;border-bottom:0px;}
+.right-link-last{margin:0px 0px 10px;padding:14px 0px 0px 18px;width:258px;height:30px;border:#e5e5e5 1px solid;}
 .first-right-second{margin:0px 0px 0px;padding:0px;width:280px;height:229px;border:#e5e5e5 2px solid;}
 #footer-area{margin:6px 0px 12px;padding:5px 0px 5px 0px;border-top:#fbb243 2px solid;width:300px;}
 /*----------home page end----------------*/	
@@ -2086,12 +2126,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9bc38', end
 .captcha-box{ width:30%;}
 .new-captcha {width:300px;height:100px; margin:0; padding:0px;}
 .login-box{margin:0px auto 20px;padding:0px;width:300px;min-height:135px;}
-.register-box{margin:0px auto 20px;padding:0px;width:300px;min-height:135px;float:left;}
+.register-box{margin:0px auto 20px;padding:0px;width:300px;min-height:200px;float:left;}
 .text-box1{width:200px;float:left;} 
 .text-box2 a{width:200px;float:left;}
 .field1{width:170px;height:25px;}
 .login-field-box2{margin:25px 0px 0px;width:300px;}
-.btn2{margin:0px 0px 0px 0px;padding:0px 12px 0px;}
+.btn2{margin:20px 0px 0px 0px;padding:0px 12px 0px;}
 /*------contact us/ login end--------*/
 /*-----CSR start-----------*/
 .form-box21{width:300px; margin:0px;}
@@ -2122,8 +2162,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9bc38', end
 .form-box4{margin:0px 0px 20px 0px;padding:0px;width:300px;min-height:300px;float:left;}
 /*-----edit profile end-----------*/
 /*--------my review start--------------*/
-.overflow12{width:300px; overflow:scroll; min-height:400px;}
-.content2{max-width:400%;}
+.overflow12{width:300px; overflow:scroll; min-height:255px;}
+.content2{max-width:400%;height:590px;margin-bottom:10px;}
 .home-grid{width:auto;}
 .log-head2new{width:300px; float:none;}
 .form-box3new{width:300px;  float:none;}
@@ -2175,6 +2215,25 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9bc38', end
 .login-box2{margin:0px;padding:5px;width:290px;min-height:135px !important;background:#e6e6e6; border:#cccccc 1px solid;}
 .bgn{background:#ffffff;width:194px !important;}
 .text-area4new2{margin:0px 0px 5px;	padding:5px 5px 0px;width:280px;height:70px;}
+
+.reviews-box {width:300px;overflow: scroll;}
+.captcha-reg{margin: 0 !important;padding-left: 0px !important;}
+.copy{float:left;color:#696969;height:40px;}
+.design1{float:left;color:#696969;padding-bottom:5px;}
+.select_box_custom{width: 300px !important;}
+.up-photo{margin:0px auto 20px;padding:0px;width:122px;float:left !important;}
+.newsize1{width:300px !important;}
+.slt{ height:29px !important;width:280px !important;}
+.newfield{width:270px !important;}
+
+/*new resister page 27.04.2015*/
+.reg-box1{margin:0px 0px 20px 0px;width:300px;float:left;}
+.row-reg{width:300px;}
+.row-left{float:left;}
+.row-right{float:left;}
+.profile-box1{margin:0px 0px 20px 0px;padding:0px;width:300px;min-height:300px;float:left;}
+.row-profile{width:300px;}
+/*end new resister page*/
 }
 
 
@@ -2198,9 +2257,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9bc38', end
 .content{overflow: auto; padding: 0px;margin:0px;max-width: 100%;height: 190px;
 	-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
 .section-third{margin:0px;padding:0px;width:300px;min-height:400px;float:right;}
-.first-right-one{margin:0px 0px 5px;padding:12px 7px 0px;width:266px;height:255px;border:#e5e5e5 2px solid;background:#f8f8f8;}
-.right-link{margin:0px;padding:14px 0px 0px 18px;width:246px;height:30px;border:#e5e5e5 1px solid;border-bottom:0px;}
-.right-link-last{margin:0px 0px 10px;padding:14px 0px 0px 18px;width:246px;height:30px;border:#e5e5e5 1px solid;}
+.first-right-one{margin:0px 0px 5px;padding:12px 7px 0px;width:278px;height:255px;border:#e5e5e5 2px solid;background:#f8f8f8;}
+.right-link{margin:0px;padding:14px 0px 0px 18px;width:258px;height:30px;border:#e5e5e5 1px solid;border-bottom:0px;}
+.right-link-last{margin:0px 0px 10px;padding:14px 0px 0px 18px;width:258px;height:30px;border:#e5e5e5 1px solid;}
 .first-right-second{margin:0px 0px 0px;padding:0px;width:280px;height:229px;border:#e5e5e5 2px solid;}
 #footer-area{margin:6px 0px 12px;padding:5px 0px 5px 0px;border-top:#fbb243 2px solid;width:300px;}
 /*----------home page end----------------*/	
@@ -2227,12 +2286,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9bc38', end
 .captcha-box{ width:30%;}
 .new-captcha {width:551px;height:100px; margin:0; padding:0px;}
 .login-box{margin:0px auto 20px;padding:0px;width:300px;min-height:135px;}
-.register-box{margin:0px auto 20px;padding:0px;width:300px;min-height:135px;float:left;}
+.register-box{margin:0px auto 20px;padding:0px;width:300px;min-height:200px;float:left;}
 .text-box1{width:120px;float:left;} 
 .text-box2 a{width:200px;float:left;}
 .field1{width:170px;height:25px;}
 .login-field-box2{margin:25px 0px 0px;width:300px;}
-.btn2{margin:0px 0px 0px 0px;padding:0px 12px 0px;}
+.btn2{margin:20px 0px 0px 0px;padding:0px 12px 0px;}
 /*------contact us/ login end--------*/
 /*-----CSR start-----------*/
 .form-box21{width:300px; margin:0px;}
@@ -2264,7 +2323,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9bc38', end
 /*-----edit profile end-----------*/
 /*--------my review start--------------*/
 .overflow12{width:300px; overflow:scroll; min-height:400px;}
-.content2{max-width:400%;}
+.content2{max-width:400%;height:590px;margin-bottom:10px;}
 .home-grid{width:auto;}
 .log-head2new{width:300px; float:none;}
 .form-box3new{width:300px;  float:none;}
@@ -2315,6 +2374,25 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9bc38', end
 .log-headac{font-size:21px;}
 .login-box2{margin:0px;padding:5px;width:290px;min-height:135px !important;background:#e6e6e6; border:#cccccc 1px solid;}
 .bgn{background:#ffffff;width:194px !important;}
-.text-area4new2{margin:0px 0px 5px;	padding:5px 5px 0px;width:280px;height:70px;}	
+.text-area4new2{margin:0px 0px 5px;	padding:5px 5px 0px;width:280px;height:70px;}
+
+.reviews-box {width:300px;overflow: scroll;}
+.captcha-reg{margin: 0 !important;padding-left: 0px !important;}
+.copy{float:left;color:#696969;height:40px;}
+.design1{float:left;color:#696969;padding-bottom:5px;}
+.select_box_custom{width: 300px !important;}
+.up-photo{margin:0px auto 20px;padding:0px;width:122px;}
+.newsize1{width:300px !important;}
+.slt{ height:29px !important;width:280px !important;}
+.newfield{width:270px !important;}
+
+/*new resister page 27.04.2015*/
+.reg-box1{margin:0px 0px 20px 0px;width:300px;float:left;}
+.row-reg{width:300px;}
+.row-left{float:left;}
+.row-right{float:left;}
+.profile-box1{margin:0px 0px 20px 0px;padding:0px;width:300px;min-height:300px;float:left;}
+.row-profile{width:300px;}
+/*end new resister page*/
 
 }

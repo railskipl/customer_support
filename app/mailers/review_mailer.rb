@@ -47,6 +47,29 @@ class ReviewMailer < ActionMailer::Base
     @comment = comment
     mail(:to => @review.user.email, :subject => "Your review has received a new comment.")
   end
+  
+  def other_comment_mail(review, comment)
+    @review = review
+    @comment = comment
+    mail(:to => @comment.email, :subject => "Your comment has been published.")
+  end
+
+  def company_comment_mail(review, comment)
+    @review = review
+    @comment = comment
+    mail(:to => @review.user.email, :subject => "The Company has responded to your review.")
+  end
+
+  def comment_unpublish_mail(review, comment)
+    @review = review
+    @comment = comment
+    mail(:to => @comment.email, :subject => "Your comment has been unpublished.")
+  end
+
+  def review_unpublish_mail(review)
+    @review = review
+    mail(:to => @review.user.email, :subject => "Your review has been unpublished.")
+  end
 
   def comment_agent_mail(review,comment,current_user)
     @review = review

@@ -194,6 +194,7 @@ class Admin::ReviewsController < AdminController
     @review.ispublished = false
     @review.archive = true
     @review.save
+    ReviewMailer.delay.review_unpublish_mail(@review)
     redirect_to :back
   end
 

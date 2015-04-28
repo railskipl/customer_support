@@ -22,7 +22,7 @@
 		    </ul>
 		  </div>
 		<% end %>
-        	<div class="login-box" style="min-height:135px;height:135px">
+        	<div class="login-box">
             	
                 <div class="login-field-box">
                 	<div class="text-box1">First Name *</div>
@@ -37,11 +37,11 @@
                 
                 <div class="login-field-box">
                 	<div class="text-box1">Message Type *</div>
-                   <%= f.select :message_type, [ ["General Enquiries", "General Enquiries"],["Give us Feedback", "Give us Feedback"],["Manage my Ticket" , "Manage my Ticket"],["My Account" , "My Account"],["Report Abuse","Report Abuse"],[" Technical Assistance", "Technical Assistance"],["Other - Please Specify", "Other"] ],  {:prompt => "Select Message Type"},:onchange => 'CheckOther();', :class=> "field1 slt", :style => "width:200px;"%>
+                   <%= f.select :message_type, [ ["General Enquiries", "General Enquiries"],["Give us Feedback", "Give us Feedback"],["Manage my Ticket" , "Manage my Ticket"],["My Account" , "My Account"],["Report Abuse","Report Abuse"],[" Technical Assistance", "Technical Assistance"],["Other - Please Specify", "Other"] ],  {:prompt => "Select Message Type"},:onchange => 'CheckOther();', :class=> "field1 slt newsize1", :style => "width:200px;"%>
 				
                 </div>
             </div>
-            <div class="register-box" style="min-height:135px;height:135px">
+            <div class="register-box">
             	
                 <div class="login-field-box">
                 	<div class="text-box1">Last Name *</div>

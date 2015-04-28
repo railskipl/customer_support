@@ -89,8 +89,11 @@ The Xemaxema Team -->
 
 																Welcome to Xemaxema.com.
 																<br><br>
-
-																We just need to verify your email address before you can post your reviews.
+                                                                <%if @resource.is? :jagent%>
+																  We just need to verify your email address before you can access the site.
+																<%else%>
+																  We just need to verify your email address before you can post your reviews.
+																<%end%>
 																<br><br>
 																Click on the link below to verify your account.
 																<br>

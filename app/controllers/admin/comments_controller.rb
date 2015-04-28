@@ -15,7 +15,7 @@ class Admin::CommentsController < AdminController
     
       if @comment.save && !params["comment"]["supplier_id"].nil?
         unless current_user.role == "jagent"
-          ReviewMailer.delay.comment_mail(@review,@comment)
+          ReviewMailer.delay.company_comment_mail(@review,@comment)
         end
         redirect_to [:admin, @review], :notice => 'Thanks for your comment'
       else
@@ -64,8 +64,9 @@ class Admin::CommentsController < AdminController
       end
     end
     if @comment.save
-       unless current_user.role == "jagent"
+        unless current_user.role == "jagent"
           ReviewMailer.delay.comment_mail(@review,@comment)
+          ReviewMailer.delay.other_comment_mail(@review,@comment)
         end
       redirect_to [:admin,@review], :notice => 'Comment has sucessfully Saved.'
     else
@@ -77,6 +78,7 @@ class Admin::CommentsController < AdminController
     comment = Comment.find(params[:comment_id])
     comment.ispublished = false
     comment.save
+    ReviewMailer.delay.comment_unpublish_mail(@review,comment)
     redirect_to :back
   end
 

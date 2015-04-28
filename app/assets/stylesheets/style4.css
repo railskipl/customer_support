@@ -1789,7 +1789,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9bc38', end
 .bgn{background:#ffffff;width:200px !important;}
 
 .no-space{margin:0px 40px 20px 0px !important;}
-.wr-first{width:250px; !important;}
+.wr-first{width:250px !important;}
 
 /*---------------ABC bank end----------*/
 @media (min-width: 720px) and (max-width: 990px)

@@ -149,13 +149,14 @@ $(document).ready(function(){
 <div id="comments"> 
   <%= render @review.comments.order("id desc").limit(2) %>
 </div>
-<%unless @review.comments.count < 2%>
+
+<% if @review.comments.count > 2%>
   <input type="button" id="hide" class="btn btn-primary" value="Hide Comments">
   <input type="button" id="show" class="btn btn-primary" value="Show More Comments">
 <%end%>
 <div id="more_details">
   <div id="comments"> 
-    <%= render @review.comments%>
+    <%= render @review.comments.drop(2) %>
   </div>
   <input type="button" id="hidden" class="btn btn-primary" value="Hide Comments">
 </div>

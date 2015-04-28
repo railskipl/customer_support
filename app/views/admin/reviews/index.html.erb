@@ -77,7 +77,7 @@ jQuery(document).ready(function() {
 <br>
 
 
-<h1>Assigned Reviews (Reviews which are assigned)</h1>
+<h1>ReAssign Reviews (Reviews which are already assigned)</h1>
 <%= form_tag admin_assign_reviews_path ,:method => :put do %>
 <table id="reviews3"  >
   <thead>
@@ -92,7 +92,7 @@ jQuery(document).ready(function() {
   </thead>
 
   <tbody>
-    <% @reviews.each do |review| %>
+    <% @reareviews.each do |review| %>
       <tr>
         <td><%= check_box_tag "review_ids[]", review.id, false,:style => "opacity:0.67" %></td>
         <td><%=review.ticket_number rescue nil %></td>
@@ -119,6 +119,7 @@ jQuery(document).ready(function() {
    <%= submit_tag "Assign Reviews", :confirm => "Please check and confirm to assign reviews and proposed date to finish." %>
     <% end %>
 <% else %>
+<h1>My Reviews to action</h1>
 <table id="reviews" >
   <thead>
     <tr>

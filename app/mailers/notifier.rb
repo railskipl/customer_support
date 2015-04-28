@@ -8,7 +8,7 @@ class Notifier < ActionMailer::Base
 
    def contact_user(contact)
     @contact = contact
-    mail(:to=> contact.email ,:subject=>"Thank You for contacting")
+    mail(:to=> contact.email ,:subject=>"Your query was successfully submitted")
   end
 
 end

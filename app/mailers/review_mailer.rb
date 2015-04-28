@@ -45,7 +45,7 @@ class ReviewMailer < ActionMailer::Base
   def comment_mail(review, comment)
     @review = review
     @comment = comment
-    mail(:to => @review.user.email, :subject => "Customer Support comment on your review")
+    mail(:to => @review.user.email, :subject => "Your review has received a new comment.")
   end
 
   def comment_agent_mail(review,comment,current_user)

@@ -15,7 +15,7 @@ Jmd::Application.routes.draw do
   match '/registered'=> 'companies#registered', as: :registered, via: [:get, :post]
   match '/unregistered'=> 'companies#unregistered', as: :unregistered, via: [:get, :post]
   match '/user-review'=> 'companies#user_review', as: :user_review, via: [:get, :post]
-  match '/polls-bloppers'=> 'companies#polls_bloopers', as: :polls_bloopers, via: [:get, :post]
+  match '/polls-bloopers'=> 'companies#polls_bloopers', as: :polls_bloopers, via: [:get, :post]
 
 	get '/contact_us'=> 'contact_us#new', as: :contact_us
 

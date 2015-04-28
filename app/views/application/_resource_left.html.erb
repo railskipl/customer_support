@@ -4,14 +4,14 @@
                 <li><span>&raquo;</span></li>
                 <li><a href="#">Resources</a></li>
                 <li><span>&raquo;</span></li>
-                <li><a href="#"><%= @resource_type.name %></a></li>
+                <li><a href="#" class="selected"><%= @resource_type.name %></a></li>
                 
             </ul>
         </div>  
  <div class="section-one">
          <div class="reports">
               <div class="heading1">Resources</div>
-              <% @resource_types.each do |resource_type| %>
+              <% @resource_types.reverse.each do |resource_type| %>
                 <a href="<%= resource_path(resource_type.slug) %>">
                   <div class="<%= (@resource_type.slug == resource_type.slug ? "reports2 act" : 'reports2') if resource_type.resources.count > 0 %>">
                     <%= resource_type.name.titlecase if resource_type.resources.count > 0 %>

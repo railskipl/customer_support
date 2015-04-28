@@ -18,7 +18,7 @@
   <tbody>
     <% @suppliers.each do |supplier| %>
       <tr>
-        <td><%= supplier.supplier_name %></td>
+        <td><%= link_to supplier.supplier_name, admin_supplier_path(supplier) %></td>
         <td><%= supplier.industry %></td>
         <td><%= supplier.authorised_responder %></td>
         <td><%= supplier.email %></td>

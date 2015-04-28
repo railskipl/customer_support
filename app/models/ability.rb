@@ -108,8 +108,8 @@ class Ability
       end 
       can :manage, User, :id=> user.id
       can    :read,   Review, :jagent_id => user.id
-      can    :edit,   Review, :published_date => nil, :jagent_id => user.id
-      can    :update, Review, :published_date => nil, :jagent_id => user.id
+      can    :edit,   Review, :published_date => nil, :jagent_id => user.id, :modified_review => nil
+      can    :update, Review, :published_date => nil, :jagent_id => user.id, :modified_review => nil
       can    :read,   User, :id => user.id
       can    :edit,   User, :id => user.id
       can    :update, User, :id => user.id

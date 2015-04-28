@@ -64,7 +64,7 @@
                 </ul>-->
                 
                 <%if user_signed_in? && params["controller"] == "users" || params["my"] %>
-                <div class="heading1">My Accounts</div>
+                <div class="heading1">My Account</div>
                  <a href="<%= profile_path %>">
                   <div class='<%=(@sub_action == "show_profile" ? "reports2 act" : "reports2")%>' >My Profile</div>
                 </a>

@@ -13,7 +13,7 @@
     <% @locations.each do |location| %>
       <tr>
         <td><%= location.title %></td>
-        <td><%= location.town.title %></td>
+        <td><%= location.town.title rescue nil %></td>
 
         <td><%= link_to 'Edit', edit_admin_location_path(location)  if can? :edit, Location%>
         <%= link_to 'Destroy', [:admin,location], method: :delete, data: { confirm: 'Are you sure?' }  if can? :destroy, Location%></td>

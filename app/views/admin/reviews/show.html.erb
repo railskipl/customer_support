@@ -155,7 +155,7 @@ $(document).ready(function(){
 <%end%>
 <div id="more_details">
   <div id="comments"> 
-    <%= render @review.comments %>
+    <%= render @review.comments.order("id desc").drop(2) %>
   </div>
   <input type="button" id="hidden" class="btn btn-primary" value="Hide Comments">
 </div>

@@ -65,6 +65,9 @@ $(document).ready(function(){
       <% end %>
       <% end %>
       <div class="field">
+         <strong>Alias Name: </strong><%= @review.user.try(:preferred_alias) %>
+      </div><br/>
+      <div class="field">
     		<strong>Title:</strong><%= @review.title  rescue nil%>
       </div><br/>
       <div class="field">

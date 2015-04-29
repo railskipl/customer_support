@@ -25,6 +25,7 @@
 
 	<tbody>
 	  <% @polls.each_with_index.each do |poll,i| %>
+	  <tr>
 	     <td><%= i+1%></td>
 	     <td><%=poll.title rescue nil %></td>
 	     <td><%=poll.start_date rescue nil %></td>
@@ -34,6 +35,7 @@
 		   <td><%@result = Result.where('option_id = ?',option.id).count rescue nil%>
 		     <%= @result rescue nil%> </td>
 	     <% end %>
+	 </tr>
 	  <% end %>
 	</tbody>	
 </table>

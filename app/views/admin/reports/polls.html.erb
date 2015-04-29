@@ -40,7 +40,7 @@
 <%if params[:subaction] == "poll_vote" %>
    <%= link_to image_tag('/assets/excel.png', :border=>"0", :align=>"absmiddle") + "Download Poll Results", polls_admin_reports_path(params.merge(format: "xls")), :method=> :get %><br/>
 <%else%>
-  <%= link_to image_tag('/assets/excel.png', :border=>"0", :align=>"absmiddle") + "Download Poll Results(12 months)", polls_admin_reports_path, :method=> :get %><br/>
+  <%#= link_to image_tag('/assets/excel.png', :border=>"0", :align=>"absmiddle") + "Download Poll Results(12 months)", polls_admin_reports_path, :method=> :get %><br/>
 <%end%>
 <h4>Poll Results</h4>
 <table id="poll_id" >
@@ -56,14 +56,17 @@
 	</thead>
 
 	<tbody>
+    
 	  <% @polls.each do |poll| %>
-	     
+	     <tr>
 	     <td><%=poll.title rescue nil %></td>
 	     <% poll.options.each do |option| %>
 		  <td><%=option.answer rescue nil %>
 		     <%@result = Result.where('option_id = ?',option.id).count rescue nil%>
 		     :&nbsp;<%= @result rescue nil%>&nbsp;vote 
 	     <% end %></td>
+       </tr>
 	  <% end %>
+
 	</tbody>	
 </table>

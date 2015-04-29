@@ -103,11 +103,11 @@ The Xemaxema Team -->
 																	</div>
 																	<%if @resource.guest_token.present?%>
 	                                                                    <%= confirmation_url(@resource, :confirmation_token => @token, :guest_token => @resource.guest_token) do %>
-																		<img style="margin-left:200px" src="http://www.xemaxema.com/assets/Verify your Account.png" height="37px" width="">	
+																		<img style="margin-left:200px" src="http://www.xemaxema.com/assets/Verify_your_Account.png" height="37px" width="">	
 																		<%end%>	
 																	<%else%>
 																	    <%= confirmation_url(@resource, :confirmation_token => @token) do %>
-																		<img style="margin-left:200px" src="http://www.xemaxema.com/assets/Verify your Account.png" height="37px" width="">	
+																		<img style="margin-left:200px" src="http://www.xemaxema.com/assets/Verify_your_Account.png" height="37px" width="">	
 																		<%end%>	
 																	<%end%>													
 																	

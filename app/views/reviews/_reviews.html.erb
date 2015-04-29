@@ -4,7 +4,7 @@
   <table cellpadding="0" cellspacing="0" class="grid-head-tbl">
         <tr>
             <td width="14%" align="center">Date</td>
-            <td width="11%" align="center">Review</td>
+            <td width="11%" align="right">Review</td>
             <td width="3%">&nbsp;</td>
             <td width="24%" align="left">Company</td>
             <td width="3%">&nbsp;</td>
@@ -17,17 +17,17 @@
                 <table cellpadding="0" cellspacing="0" class="grid-tbl">
                   <%@reviews.each do |review| %>
                         <tr>
-                            <td width="18%"><%=review.created_at.strftime("%d %b %Y")%></td>
+                            <td width="15%"><%=review.created_at.strftime("%d %b %Y")%></td>
                             <% if review.review_type == 'complaint'%>
                             <td width="10%" align="center" ><img src="/assets/red_star.png" alt=""></td>
                             <% else %>
                             <td width="10%" align="center"><img src="/assets/green_star.png" alt=""></td>
                             <% end %>
                             <td width="2%">&nbsp;</td>
-                            <td width="17%" class="design"><%= link_to review.try(:company).try(:title),search_reviews_path(company_id: review.company_id) %></td>
+                            <td width="20%" class="design"><%= link_to review.try(:company).try(:title),search_reviews_path(company_id: review.company_id) %></td>
                             <td width="2%">&nbsp;</td>
                             <td width="30%" class="design"><%= link_to review.title.truncate(23),review_path(review)  %></td>
-                            <td width="19%">
+                            <td width="21%">
                               <table class="comment-tbl">
                                 <tr>
                                 <%if review.comments.published.count > 0 and review.comments.published.last.user.present? and ['admin','agent'].include? review.comments.published.last.user.role %>

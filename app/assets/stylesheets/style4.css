@@ -224,7 +224,7 @@ search-btn
 }
 .reports
 {
-	margin:0px 0px 7px;
+	margin:0px 0px 13px;
 	padding:0px;
 	width:245px;
 	min-height:200px;
@@ -323,7 +323,7 @@ search-btn
 	height:230px;
 	border:#e5e5e5 1px solid;
 }
-.newpolls{ margin:0px 8px 5px 0px;}
+.newpolls{ margin:0px 8px 10px 0px;}
 
 .section-two
 {
@@ -406,7 +406,7 @@ search-btn
 }
 .grid-tbl td
 {
-	padding:0px 0px 0px 0px;
+	padding:0px 0px 0px 5px;
 	font-family:corbel;
 	font-size:13px;
 	color:#696969;
@@ -455,7 +455,7 @@ search-btn
 }
 .first-right-one
 {
-	margin:0px 0px 5px;
+	margin:0px 0px 10px;
 	padding:12px 7px 0px;
 	width:223px;
 	height:248px;
@@ -1782,6 +1782,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9bc38', end
 	}
 
 .slt{ height:29px !important;}
+.slt2{ height:29px !important;}
 
 .text-area4new2{margin:0px 0px 5px;padding:5px 5px 0px;width:594px;height:70px;border:#dddcdc 0px solid;background:#ffffff;font-family:corbel;
 	color:#696969;font-size:13px;-webkit-box-shadow: 0px 4px 2px -1px #dadada;-moz-box-shadow: 0px 4px 2px -1px #dadada;box-shadow: 0px 4px 2px -1px #dadada;}
@@ -1919,6 +1920,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9bc38', end
 .reviews-box{width:700px;}
 .review-center{margin:0px;width:700px;}
 .slt{ height:29px !important;width:440px !important;}
+.slt2{ height:29px !important;width:300px !important;}
 .newfield{width:430px !important;}
 
 
@@ -1972,7 +1974,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9bc38', end
 .text-area4new1{width:388px;}
 /*----------bank complaint page end--*/
 /*------contact us/ login start--------*/
-.min-box{margin:0px auto;padding:0px;width:460px;min-height:380px;}
+.min-box{margin:0px auto;padding:0px;width:460px;min-height:440px;}
 .text-area4new{width:450px;}
 .captcha-box{ width:50%;}
 .login-box{margin:0px 55px 20px;padding:0px;width:350px;min-height:135px;}
@@ -2064,6 +2066,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9bc38', end
 .review-center{width:460px;}
 .reviews-box {width: 460px;}
 .slt{ height:29px !important;width:440px !important;}
+.slt2{ height:29px !important;width:460px !important;}
 .newfield{width:430px !important;}
 
 /*new resister page 27.04.2015*/
@@ -2121,8 +2124,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9bc38', end
 .text-area4new1{width:290px;}
 /*----------bank complaint page end--*/
 /*------contact us/ login start--------*/
-.min-box{margin:0px auto;padding:0px;width:320px;min-height:380px;}
-.text-area4new{width:280px;}
+.min-box{margin:0px auto;padding:0px;width:320px;min-height:440px;}
+.text-area4new{width:290px; float:left;}
 .captcha-box{ width:30%;}
 .new-captcha {width:300px;height:100px; margin:0; padding:0px;}
 .login-box{margin:0px auto 20px;padding:0px;width:300px;min-height:135px;}
@@ -2185,14 +2188,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9bc38', end
 /*--------polls & bloopers start------*/
 /*---yogesh---*/
 /*----------login-------------*/
-.min-box{margin:0px auto;padding:0px;width:300px;min-height:380px;}
 .login-box{margin:0px auto 20px;padding:0px;width:300px;min-height:135px;}
 .register-box{margin:0px auto 20px;padding:0px;width:300px;min-height:135px;float:left;}
 .text-box1{width:120px;float:left;}	
 .text-box2 a{width:200px;float:left;}
 /*.field1{width:170px;height:25px;}*/
 .login-field-box2{margin:25px 0px 0px;width:300px;}
-.btn2{margin:0px 0px 0px 0px;padding:0px 12px 0px;}
 .text-box2{width:218px;}
 
 /*----------my account-------------*/
@@ -2224,7 +2225,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9bc38', end
 .up-photo{margin:0px auto 20px;padding:0px;width:122px;float:left !important;}
 .newsize1{width:300px !important;}
 .slt{ height:29px !important;width:280px !important;}
+.slt2{ height:29px !important;width:300px !important;}
 .newfield{width:270px !important;}
+.login-field-boxnew{padding:0px;}
 
 /*new resister page 27.04.2015*/
 .reg-box1{margin:0px 0px 20px 0px;width:300px;float:left;}
@@ -2281,8 +2284,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9bc38', end
 .text-area4new1{width:290px;}
 /*----------bank complaint page end--*/
 /*------contact us/ login start--------*/
-.min-box{margin:0px auto;padding:0px;width:320px;min-height:380px;}
-.text-area4new{width:280px;}
+.min-box{margin:0px auto;padding:0px;width:320px;min-height:440px;}
+.text-area4new{width:280px; float:left;}
 .captcha-box{ width:30%;}
 .new-captcha {width:551px;height:100px; margin:0; padding:0px;}
 .login-box{margin:0px auto 20px;padding:0px;width:300px;min-height:135px;}
@@ -2345,14 +2348,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9bc38', end
 /*--------polls & bloopers start------*/
 /*---yogesh---*/
 /*----------login-------------*/
-.min-box{margin:0px auto;padding:0px;width:300px;min-height:380px;}
 .login-box{margin:0px auto 20px;padding:0px;width:300px;min-height:135px;}
 .register-box{margin:0px auto 20px;padding:0px;width:300px;min-height:135px;float:left;}
 .text-box1{width:120px;float:left;}	
 .text-box2 a{width:200px;float:left;}
 /*.field1{width:170px;height:25px;}*/
 .login-field-box2{margin:25px 0px 0px;width:300px;}
-.btn2{margin:0px 0px 0px 0px;padding:0px 12px 0px;}
 .text-box2{width:218px;}
 
 /*----------my account-------------*/
@@ -2384,7 +2385,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9bc38', end
 .up-photo{margin:0px auto 20px;padding:0px;width:122px;}
 .newsize1{width:300px !important;}
 .slt{ height:29px !important;width:280px !important;}
+.slt2{ height:29px !important;width:300px !important;}
 .newfield{width:270px !important;}
+.login-field-boxnew{padding:0px;}
 
 /*new resister page 27.04.2015*/
 .reg-box1{margin:0px 0px 20px 0px;width:300px;float:left;}

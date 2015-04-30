@@ -4,16 +4,12 @@ class Admin::ReviewsController < AdminController
 	load_and_authorize_resource :except => [:search_reviews,:ticket_closed,:assign_reviews]
   
 	def index
-    if current_user.is? :admin
-      @users = User.where("role = ? or role = ?","jagent","agent")
-    else
-      @users = User.where("role = ?","jagent")
-    end
-    if current_user.is? :jagent
-		  @reviews = Review.where("jagent_id = ? or old_jagent_id = ?",current_user.id,current_user.id).unarchived.where("user_id is not null").order("id desc")
-    else
-      @reviews = Review.where("agent_id = ?",current_user.id)
-    end
+     @users = User.where("role = ? or role = ?","jagent","agent")
+     if current_user.is? :jagent
+		  @reviews = Review.where("jagent_id  and published_date is null",current_user.id).unarchived.where("user_id is not null").order("id desc")
+     else
+       @reviews = Review.where("(jagent_id = ? or old_jagent_id = ?) and published_date is null",current_user.id,current_user.id).unarchived.where("user_id is not null").order("id desc")
+     end
     @areviews = Review.where("published_date is null and jagent_id is null and user_id is not null").order("id desc")
     @reareviews = Review.where("published_date is null and jagent_id is not null and user_id is not null").order("id desc")
 	end

@@ -141,6 +141,7 @@ class Admin::ReviewsController < AdminController
       unless current_user.role == "jagent"
         @review.archive = true 
         @review.ispublished = false
+        @review.published_date = nil
       end
       respond_to do |format|
         if @review.update(review_params)
@@ -199,6 +200,7 @@ class Admin::ReviewsController < AdminController
   def unpublished
     @review = Review.find(params[:review_id])
     @review.ispublished = false
+    @review.published_date = nil
     @review.archive = true
     @review.save
     ReviewMailer.delay.review_unpublish_mail(@review)

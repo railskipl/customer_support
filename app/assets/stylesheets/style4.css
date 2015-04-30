@@ -988,7 +988,7 @@ textarea, input,select { outline: none; }
 	float:right;
 }
 
-.captcha-reg{margin: 0 !important;padding-left: 152px !important;}
+.captcha-reg{margin: 0 !important;padding-left: 0px !important;}
 
 
 .reviews-box
@@ -1095,7 +1095,7 @@ margin: 0 auto ;
 position: relative;
 bottom: 10px;
  
-padding-left:65px; 
+padding-left:0px; 
 
 }
 

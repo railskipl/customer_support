@@ -1,25 +1,18 @@
 class ReviewMailer < ActionMailer::Base
   default from: "noreply@xemaxema.com"
 
-  def archive_mail(review)
+  def archive_mail(review,subject)
     begin
       @review = review
-      mail(:to => @review.user.email, :subject => "A message from Customer Support")
+      @subject = subject
+      mail(:to => @review.user.email, :subject => @subject)
     rescue
     end
   end
 
   def archive_adminmail(review, current_user)
-    begin
-      @review = review
-      @agent = current_user
-      admins = User.admins
-      emails = admins.collect(&:email).join(",")
-      if emails.present?    
-        mail(:to => emails, :subject => "Review is pushed into Archive")
-      end
-    rescue
-    end
+    @review = review
+    mail(:to => @review.user.email, :subject => "")
   end
 
   def publish_mail(review)

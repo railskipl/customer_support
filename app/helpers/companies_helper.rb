@@ -1,7 +1,7 @@
 module CompaniesHelper
 
   def review_count(company)
-    c = Company.includes(:reviews).find_by_title(company.company.title)
+    c = Company.includes(:reviews).find_by_title(company.supplier_name)
     c.reviews.count
   end
 
@@ -15,12 +15,12 @@ module CompaniesHelper
   end
 
   def review_complaint_count(company)
-    c = Company.includes(:reviews).find_by_title(company.company.title)
+    c = Company.includes(:reviews).find_by_title(company.supplier_name)
     c.reviews.by_review_type(:complaint).count
   end
 
   def review_compliment_count(company)
-    c = Company.includes(:reviews).find_by_title(company.company.title)
+    c = Company.includes(:reviews).find_by_title(company.supplier_name)
     c.reviews.by_review_type(:compliment).count
   end
 
@@ -32,8 +32,7 @@ module CompaniesHelper
   def pure_ratio_count(company)
     complaint = review_complaint_count(company).to_f
     compliment = review_compliment_count(company).to_f
-    total = complaint + compliment
-    (complaint / total.to_f) *100
+    (complaint / (compliment.nonzero? || 1)) 
   end
 
   def ratio_count(company)

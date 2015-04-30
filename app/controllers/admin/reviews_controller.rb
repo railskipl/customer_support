@@ -135,7 +135,7 @@ class Admin::ReviewsController < AdminController
         end
       end
     elsif params[:commit] == 'Archive'
-      m = MonitorJagent.find_by_review_id(@review.id)
+      m = MonitorJagent.find_or_create_by_review_id(@review.id)
       m.status = "archive"
       m.save
       unless current_user.role == "jagent"

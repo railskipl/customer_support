@@ -16,12 +16,12 @@ module CompaniesHelper
 
   def review_complaint_count(company)
     c = Company.includes(:reviews).find_by_title(company.supplier_name)
-    c.reviews.by_review_type(:complaint).count
+    c.reviews.where("published_date is not null").by_review_type(:complaint).count
   end
 
   def review_compliment_count(company)
     c = Company.includes(:reviews).find_by_title(company.supplier_name)
-    c.reviews.by_review_type(:compliment).count
+    c.reviews.where("published_date is not null").by_review_type(:compliment).count
   end
 
   def change_complaint_count(company)

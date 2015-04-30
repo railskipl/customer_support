@@ -5,6 +5,7 @@
   <thead>
     <tr>
       <th>Sr. No.</th>
+      <th>Industry</th>
       <th>Company</th>
       <th>Town</th>
       <th>Location</th>
@@ -15,6 +16,7 @@
     <% @addresses.each.with_index(1) do |address,index| %>
       <tr>
         <td><%= index %></td>
+        <td><%= address.company.industry.title rescue nil %></td>
         <td><%= address.company.title rescue nil %></td>
         <td><%= address.town.try(:title) rescue nil %></td>
         <td><%= address.try(:location).try(:title) rescue nil %></td>

@@ -6,7 +6,7 @@ class Admin::ReviewsController < AdminController
 	def index
      @users = User.where("role = ? or role = ?","jagent","agent")
      if current_user.is? :jagent
-		  @reviews = Review.where("jagent_id  and published_date is null",current_user.id).unarchived.where("user_id is not null").order("id desc")
+		  @reviews = Review.junior_agent(current_user.id)
      else
        @reviews = Review.where("(jagent_id = ? or old_jagent_id = ?) and published_date is null",current_user.id,current_user.id).unarchived.where("user_id is not null").order("id desc")
      end
@@ -91,9 +91,14 @@ class Admin::ReviewsController < AdminController
       @review.archive = false
       @review.last_published_agent_id = current_user.id
       if @review.jagent_id.present?
-         m = MonitorJagent.find_by_review_id(@review.id)
+         m = MonitorJagent.find_or_create_by_review_id(@review.id)
          m.status = "Published"
          m.modified_review = (m.modified_review.nil? ? true : m.modified_review)
+         if @review.jagent_id == current_user.id
+           m.assign_modified = @review.is_modified? ? true : false
+         else
+           m.assignee_modified = @review.is_modified? ? true : false
+         end
          m.save
         unless @review.modified_review == params[:review][:modified_review]
           @review.admin_sagent_modified = true
@@ -105,6 +110,7 @@ class Admin::ReviewsController < AdminController
       else
          m = MonitorJagent.find_or_create_by_review_id(@review.id)
          m.status = "Published"
+         m.assignee_modified = @review.is_modified? ? true : false
          m.modified_review = (m.modified_review.nil? ? true : m.modified_review)
          m.save
       end
@@ -150,8 +156,13 @@ class Admin::ReviewsController < AdminController
         if @review.update(review_params)
           @track_time = TrackTime.find(@review.track_times.first.id)
           @track_time.update(:date_complete => Date.today)
-          m = MonitorJagent.find_by_review_id(@review.id)
+          m = MonitorJagent.find_or_create_by_review_id(@review.id)
           m.modified_review = true
+          if @review.jagent_id == current_user.id
+           m.assign_modified = @review.is_modified? ? true : false
+          else
+           m.assignee_modified = @review.is_modified? ? true : false
+          end
           m.status = "Waiting for approval"
           m.save
           format.html { redirect_to [:admin,@review], notice: 'Review successfully updated.'}

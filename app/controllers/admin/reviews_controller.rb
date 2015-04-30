@@ -136,12 +136,13 @@ class Admin::ReviewsController < AdminController
         end
       end
     elsif params[:commit] == 'Archive'
-      m = MonitorJagent.find_by_review_id(@review.id)
+      m = MonitorJagent.find_or_create_by_review_id(@review.id)
       m.status = "archive"
       m.save
       unless current_user.role == "jagent"
         @review.archive = true 
         @review.ispublished = false
+        @review.published_date = nil
       end
       respond_to do |format|
         if @review.update(review_params)
@@ -165,7 +166,7 @@ class Admin::ReviewsController < AdminController
           else
            m.assignee_modified = @review.is_modified? ? true : false
           end
-          m.status = "Waiting for approval"
+          m.status = "Waiting for approval" if !(m.status == "Published")
           m.save
           format.html { redirect_to [:admin,@review], notice: 'Review successfully updated.'}
         else
@@ -201,6 +202,7 @@ class Admin::ReviewsController < AdminController
   def unpublished
     @review = Review.find(params[:review_id])
     @review.ispublished = false
+    @review.published_date = nil
     @review.archive = true
     @review.save
     ReviewMailer.delay.review_unpublish_mail(@review)

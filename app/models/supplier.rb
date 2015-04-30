@@ -1,7 +1,7 @@
 class Supplier < ActiveRecord::Base
 	has_many :comments
 
-   scope :registered, -> { where(subscription: "Registered") }
+   scope :registered, -> { where("subscription != ?","Not Registered") }
    scope :un_registered, -> { where(subscription: "Not Registered") }
    scope :by_industry, -> (industry) { where("industry = ?", industry)  unless industry.blank? }
    scope :by_company, -> (company) { where("supplier_name = ?", company) unless company.blank? }

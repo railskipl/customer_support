@@ -54,11 +54,11 @@
                 <table cellpadding="0" cellspacing="0" class="grid-tbl">
                   <%@reviews.each do |review| %>
                         <tr>
-                            <td width="17%"><%=review.created_at.strftime("%d %b %Y")%></td>
+                            <td width="16%"><%=review.created_at.strftime("%d %b %Y")%></td>
                             <% if review.review_type == 'complaint'%>
-                            <td width="10%" align="center" ><img src="/assets/red_star.png" alt=""></td>
+                            <td width="9%" align="center" ><img src="/assets/red_star.png" alt=""></td>
                             <% else %>
-                            <td width="10%" align="center"><img src="/assets/green_star.png" alt=""></td>
+                            <td width="9%" align="center"><img src="/assets/green_star.png" alt=""></td>
                             <% end %>
                             <td width="2%">&nbsp;</td>
                             <td width="20%" class="design"><%= link_to review.try(:company).try(:title),search_reviews_path(company_id: review.company_id) %></td>

@@ -81,7 +81,7 @@
 
 <% end %>
 
-<h4>Reviews To Action</h4>
+<h4>My Reviews To Action</h4>
 
 <table id="recently_added_review" >
 	<thead>
@@ -97,11 +97,11 @@
 	</thead>
 
 	<tbody>
-	  <% @recent_reviews.each.with_index(1) do |review,index| %>
+	  <% @reviews.each.with_index(1) do |review,index| %>
 	    <tr>
 	    	<td><%= index %></td>
 			<td><%=review.created_at.strftime("%d/%m/%Y | %H:%M") rescue nil %></td>
-			<td><%=review.ticket_number rescue nil %></td>
+			<td><%=link_to review.ticket_number,edit_admin_review_path(review) rescue nil %></td>
 			<td><%=review.review_type rescue nil %></td>
 			<td><%=review.company.title rescue nil %></td>
 			<td><%=review.title rescue nil %></td>
@@ -128,7 +128,7 @@
 	</thead>
 
 	<tbody>
-	  <% @reviews.each.with_index(1) do |review,index| %>
+	  <% @recent_reviews.each.with_index(1) do |review,index| %>
 	    <tr>
 			<td><%= index %></td>
 			<td><%= review.created_at.strftime("%d/%m/%Y | %H:%M") rescue nil %></td>

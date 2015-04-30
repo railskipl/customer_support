@@ -17,12 +17,12 @@ class AdminController < ActionController::Base
     @users ||= User.all
     @customers ||= User.all.customers
     if current_user.role == "jagent"
-      @reviews ||= Review.where('jagent_id = ? and user_id is not null',current_user.id).order("created_at desc")
-      @recent_reviews ||= Review.unpublished.where('jagent_id = ? and user_id is not null',current_user.id).order("created_at desc")
+      @recent_reviews ||= Review.where('jagent_id = ? and user_id is not null',current_user.id).order("created_at desc")
+      @reviews ||= Review.unpublished.where('jagent_id = ? and user_id is not null',current_user.id).order("created_at desc")
       @published_reviews ||= Review.published.where('jagent_id = ? and user_id is not null',current_user.id).order("created_at desc")
       @archived_reviews ||= Review.archived.where('jagent_id = ? and user_id is not null',current_user.id).order("created_at desc")
     else
-      @reviews ||= Review.where('user_id is not null').order("created_at desc")
+      @reviews = Review.unpublished.where('(jagent_id = ? or old_jagent_id = ?) and user_id is not null',current_user.id,current_user.id).order("created_at desc")
       @recent_reviews ||= Review.unpublished.where('user_id is not null').order("created_at desc")
       @published_reviews ||= Review.published.where('user_id is not null').order("created_at desc")
       @archived_reviews ||= Review.archived.where('user_id is not null').order("created_at desc")

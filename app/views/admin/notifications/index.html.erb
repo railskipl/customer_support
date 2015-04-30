@@ -1,4 +1,4 @@
-<%= link_to "Download Data", admin_notifications_path(params.merge(format: "xls")),:class => "btn btn-primary"%><br/><br/>
+<%= link_to "Download Data", admin_notifications_path(params.merge(format: "xls")),:class => "btn btn-primary" unless (current_user.is? :jagent )%><br/><br/>
 <b>My Comment Notifications</b>
 <table id="notification" cellpadding=10>
 	<thead>

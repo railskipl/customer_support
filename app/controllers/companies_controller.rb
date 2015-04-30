@@ -67,8 +67,14 @@ class CompaniesController < ApplicationController
 		@active_tab = "registered_companies"
 		review = Review.new(review_params)
     @review_filter = review
-    @rcompanies ||= Supplier.registered
+    suppliers = Supplier.registered.pluck(:supplier_name)
+    suppliers = suppliers.collect {|i| Company.find_by_title(i)}
+    @rcompanies ||= []
 
+    @rcompanies.each do |company|
+      @rcompanies << company.reviews.where("ispublished is null")
+    end
+    
     if review.industry_id  && review.industry_id !=0
     	@rcompanies = @rcompanies.by_industry(review.industry.title)
     end

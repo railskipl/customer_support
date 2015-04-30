@@ -2,7 +2,7 @@ class FaqsController < ApplicationController
 	before_action :default_action_tab
 
   def index
-	@active_title = "Faqs"  	
+	@active_title1 = "FAQ"  	
   	@faqs = Faq.all
   end
 

@@ -12,46 +12,43 @@
   <div class="form-box21faq1">
     <div class="information-new1">
       <div class="heading2">Search Results</div>
+       <div class="technology user2" style="text-align: left">
         <% if @comment_results.present? %>
-          <div class="technology user2" style="text-align: left">
+        
             <% @comment_results.each do |comment| %>
               <%=link_to comment.title.html_safe, review_path(comment.review)%><br/>
             <% end %>
-          </div>
+        
         <% end %>
        
        <% if @company_results.present?  %>
-         <div class="technology user2" style="text-align: left">
+        
             <% @company_results.each do |company| %>
              <%=link_to company.title.html_safe, search_reviews_path(company_id: company.id)%><br/>
             <% end %>
-         </div>
+       
         <% end %>
         
         <% if @town_results.present? %>
-        <div class="technology user2" style="text-align: left">
+        
            <% @town_results.each do |town| %>
              <%=link_to town.title.html_safe, search_reviews_path(town_id: town.id)%><br/>
            <% end %>
-        </div>
+       
          <% end %>
         
          <% if @location_results.present? %>
-        <div class="technology user2" style="text-align: left">
           <% @location_results.each do |location| %>
             <%=link_to location.title.html_safe, search_reviews_path(location_id: location.id)%><br/>
           <% end %>
-        </div>
         <% end %>
         
         <% if @supplier_results.present? %>
-        <div class="technology user2" style="text-align: left">
            <% @supplier_results.each do |supplier| %>
             <%=link_to supplier.title.html_safe, search_reviews_path(supplier_id: supplier.id)%><br/>
             <% end %>
-        </div>
        <% end %>
-        
+        </div>
         <div class="clear"></div>
                 
                 

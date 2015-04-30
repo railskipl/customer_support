@@ -70,7 +70,7 @@ class CompaniesController < ApplicationController
     suppliers = Supplier.registered.pluck(:supplier_name)
     s = suppliers.collect {|i| Company.find_by_title(i).id}
     
-    @rcompanies ||=  Review.where("company_id IN (?)",s).pluck(:company_id)
+    @rcompanies ||=  Review.where("company_id IN (?) and published_date is null",s)
     
 
     if review.industry_id  && review.industry_id !=0

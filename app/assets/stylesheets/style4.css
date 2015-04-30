@@ -1794,6 +1794,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9bc38', end
 
 .no-space{margin:0px 40px 20px 0px !important;}
 .wr-first{width:250px !important;}
+.cap-con{padding-left:68px;}
 
  /*new resister page 27.04.2015*/
 .reg-box1{margin:0px 0px 20px 0px;padding:0px;width:800px;min-height:250px;float:left;}
@@ -2080,6 +2081,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9bc38', end
 .slt{ height:29px !important;width:440px !important;}
 .slt2{ height:29px !important;width:460px !important;}
 .newfield{width:430px !important;}
+.cap-con{padding-left:0px;}
 
 /*new resister page 27.04.2015*/
 .reg-box1{margin:0px 0px 20px 0px;width:460px;float:left;}
@@ -2240,6 +2242,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9bc38', end
 .slt2{ height:29px !important;width:300px !important;}
 .newfield{width:270px !important;}
 .login-field-boxnew{padding:0px;}
+.cap-con{padding-left:0px;}
 
 /*new resister page 27.04.2015*/
 .reg-box1{margin:0px 0px 20px 0px;width:300px;float:left;}
@@ -2400,6 +2403,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9bc38', end
 .slt2{ height:29px !important;width:300px !important;}
 .newfield{width:270px !important;}
 .login-field-boxnew{padding:0px;}
+.cap-con{padding-left:0px;}
 
 /*new resister page 27.04.2015*/
 .reg-box1{margin:0px 0px 20px 0px;width:300px;float:left;}

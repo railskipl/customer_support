@@ -1793,6 +1793,15 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9bc38', end
 .no-space{margin:0px 40px 20px 0px !important;}
 .wr-first{width:250px !important;}
 
+ /*new resister page 27.04.2015*/
+.reg-box1{margin:0px 0px 20px 0px;padding:0px;width:800px;min-height:250px;float:left;}
+.row-reg{width:800px;}
+.row-left{float:left;}
+.row-right{float:right;}
+.profile-box1{margin:0px 0px 20px 25px;padding:0px;width:585px;min-height:300px;float:left;}
+.row-profile{width:585px;}
+/*end new resister page*/
+
 /*---------------ABC bank end----------*/
 @media (min-width: 720px) and (max-width: 990px)
 {

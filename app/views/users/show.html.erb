@@ -7,153 +7,130 @@
         <div class="max-box">
         
      
-        	<div class="form-box4">
-            	<div class="login-field-box3">
-                	<div class="text-box3">First Name *</div>
-                    <%= text_field_tag @user.first_name, @user.first_name,:class =>"field3",:disabled => true %>
+        	<div class="profile-box1">
+                <div class="row-profile">
+                    <div class="login-field-box3 row-left">
+                        <div class="text-box3">First Name *</div>
+                        <%= text_field_tag @user.first_name, @user.first_name,:class =>"field3",:disabled => true %>
+                    </div>
+                    <div class="login-field-box3 row-right">
+                        <div class="text-box3">Last Name *</div>
+                       <%= text_field_tag @user.last_name, @user.last_name,:class =>"field3",:disabled => true %>
+                    </div>
                 </div>
                 <div class="clear"></div>
-                
-                <div class="login-field-box3">
-                	<div class="text-box3">Preferred Alias *</div>
+                <div class="row-profile">
+                    <div class="login-field-box3 row-left">
+                        <div class="text-box3">Preferred Alias *</div>
                     <p class="auto-field3"><%= @user.preferred_alias %></p>
-                </div>
-                <div class="clear"></div>
-                
-                <div class="login-field-box3">
-                	<div class="text-box3">Email*</div>
-                    <%= text_field_tag @user.email, @user.email,:class =>"field3",:disabled => true %>
-                </div>
-                <div class="clear"></div>
-                
-                <div class="login-field-box3">
-                	<div class="text-box3">Password *</div>
-                    <!--<select class="select1">
-                    	<option>Select 1</option>
-                        <option>Select 1</option>
-                        <option>Select 1</option>
-                    </select>-->
-                    <input type="password" class="auto-field3" name="">
-                </div>
-                <div class="clear"></div>
-                
-                <div class="login-field-box3">
-                	<div class="text-box3">Gender *</div>
-                    <%= text_field_tag @user.gender, @user.gender,:class =>"field3",:disabled => true %>
-                </div>
-                <div class="clear"></div>
-                
-                <div class="login-field-box3">
-                	<div class="text-box3">Age *</div>
-                    <%= text_field_tag @user.age, @user.age,:class =>"field3",:disabled => true %>
-                </div>
-                <div class="clear"></div>
-                
-                <div class="login-field-box3">
-                	<div class="text-box3">Address Line1</div>
-                  <%= text_field_tag @user.address_line1, @user.address_line1,:class =>"field3",:disabled => true %>
-                </div>
-                <div class="clear"></div>
-                
-                <div class="login-field-box3">
-                	<div class="text-box3">Town</div>
-                    <%= text_field_tag @user.town, @user.town,:class =>"field3",:disabled => true %>
-                </div>
-                <div class="clear"></div>
-                
-                <div class="login-field-box3">
-                	<div class="text-box3">Country *</div>
-                    <%= text_field_tag @user.country, @user.country,:class =>"field3",:disabled => true %>
-                </div>
-                <div class="clear"></div>
-                
-                <div class="login-field-box3">
-                	<div class="text-box3">Security Question *</div>
-                    <%= text_field_tag @user.secret_question, @user.secret_question,:class =>"field3",:disabled => true %>
-                </div>
-                <div class="clear"></div>
-                
-                <div class="login-field-box3">
-                	<div class="text-box3">Answer *</div>
-                    <%= text_field_tag @user.answer, @user.answer,:class =>"field3",:disabled => true %>
-                </div>
-                <div class="clear"></div>
-                
-            </div>
-            
-            <div class="form-box4">
-            	<div class="login-field-box3">
-                	<div class="text-box3">Last Name *</div>
-                      <%= text_field_tag @user.last_name, @user.last_name,:class =>"field3",:disabled => true %>
-                </div>
-                <div class="clear"></div>
-                
-                <div class="login-field-box3">
-                	<div class="text-box3">&nbsp;</div>
+                    </div>
                     
                 </div>
                 <div class="clear"></div>
-                
-                <div class="login-field-box3">
-                	<div class="text-box3">Confirm Email *</div>
-                      <%= text_field_tag @user.email, @user.email,:class =>"field3",:disabled => true %>
+                <div class="row-profile">
+                    <div class="login-field-box3 row-left">
+                       <div class="text-box3">Email*</div>
+                       <%= text_field_tag @user.email, @user.email,:class =>"field3",:disabled => true %>
+                    </div>
+                    <div class="login-field-box3 row-right">
+                       <div class="text-box3">Confirm Email *</div>
+                       <%= text_field_tag @user.email, @user.email,:class =>"field3",:disabled => true %>
+                    </div>
                 </div>
                 <div class="clear"></div>
-                
-                <div class="login-field-box3">
-                	<div class="text-box3">Confirm Password*</div>
-                    <input type="password" class="auto-field3" name="">
+                <div class="row-profile">
+                    <div class="login-field-box3 row-left">
+                        <div class="text-box3">Password *</div>
+                        <!--<select class="select1">
+                            <option>Select 1</option>
+                            <option>Select 1</option>
+                            <option>Select 1</option>
+                        </select>-->
+                        <input type="password" class="auto-field3" name="">
+                    </div>
+                    <div class="login-field-box3 row-right">
+                        <div class="text-box3">Confirm Password*</div>
+                        <input type="password" class="auto-field3" name="">
+                    </div>
                 </div>
                 <div class="clear"></div>
-                
-                <div class="login-field-box3">
-                	<div class="text-box3">&nbsp;</div>
+                <div class="row-profile">
+                    <div class="login-field-box3 row-left">
+                        <div class="text-box3">Gender *</div>
+                        <%= text_field_tag @user.gender, @user.gender,:class =>"field3",:disabled => true %>
+                    </div>
                     
                 </div>
                 <div class="clear"></div>
-                
-                <div class="login-field-box3">
-                	<div class="text-box3">DOB</div>
-                      <%= text_field_tag @user.dob, @user.dob.strftime("%d/%m/%Y"),:class =>"field3",:disabled => true  rescue nil %>
+                <div class="row-profile">
+                    <div class="login-field-box3 row-left">
+                        <div class="text-box3">Age *</div>
+                        <%= text_field_tag @user.age, @user.age,:class =>"field3",:disabled => true %>
+                    </div>
+                    <div class="login-field-box3 row-right">
+                        <div class="text-box3">DOB</div>
+                        <%= text_field_tag @user.dob, @user.dob.strftime("%d/%m/%Y"),:class =>"field3",:disabled => true  rescue nil %>
+                    </div>
                 </div>
                 <div class="clear"></div>
-                
-                <div class="login-field-box3">
-                	<div class="text-box3">Address Line2</div>
-              <%= text_field_tag @user.address_line2, @user.address_line2,:class =>"field3",:disabled => true %>
+                <div class="row-profile">
+                    <div class="login-field-box3 row-left">
+                        <div class="text-box3">Address Line1</div>
+                        <%= text_field_tag @user.address_line1, @user.address_line1,:class =>"field3",:disabled => true %>
+                    </div>
+                    <div class="login-field-box3 row-right">
+                        <div class="text-box3">Address Line2</div>
+                        <%= text_field_tag @user.address_line2, @user.address_line2,:class =>"field3",:disabled => true %>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="row-profile">
+                    <div class="login-field-box3 row-left">
+                        <div class="text-box3">Town</div>
+                        <%= text_field_tag @user.town, @user.town,:class =>"field3",:disabled => true %>
+                    </div>
+                    <div class="login-field-box3 row-right">
+                        <div class="text-box3">Code</div>
+                        <%= text_field_tag @user.postal_code, @user.postal_code,:class =>"field3",:disabled => true %>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="row-profile">
+                    <div class="login-field-box3 row-left">
+                        <div class="text-box3">Country *</div>
+                        <%= text_field_tag @user.country, @user.country,:class =>"field3",:disabled => true %>
+                    </div>
+                    
+                    <div class="login-field-box3 row-right">
+                        <div class="text-box3">I Live In *</div>
+                        <%= text_field_tag @user.lives_in, @user.lives_in,:class =>"field3",:disabled => true %>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="row-profile">
+                    <div class="login-field-box3 row-left">
+                        <div class="text-box3">Security Question *</div>
+                        <%= text_field_tag @user.secret_question, @user.secret_question,:class =>"field3",:disabled => true %>
+                    </div>
                     
                 </div>
                 <div class="clear"></div>
-                
-                <div class="login-field-box3">
-                	<div class="text-box3">Code</div>
-                      <%= text_field_tag @user.postal_code, @user.postal_code,:class =>"field3",:disabled => true %>
+                <div class="row-profile">
+                    <div class="login-field-box3 row-left">
+                        <div class="text-box3">Answer *</div>
+                        <%= text_field_tag @user.answer, @user.answer,:class =>"field3",:disabled => true %>
+                    </div>
+                    
                 </div>
                 <div class="clear"></div>
-                
-                <div class="login-field-box3">
-                	<div class="text-box3">I Live In *</div>
-                    <%= text_field_tag @user.lives_in, @user.lives_in,:class =>"field3",:disabled => true %>
-                </div>
+               
                 <div class="clear"></div>
-                <!-- 
-                <div class="login-field-box3">
-                	<div class="text-box3">&nbsp;</div>
-                    <p class="auto-field3"><%#= @user.lives_in %></p>
-                </div> -->
-                <div class="clear"></div>
-                
-                <div class="login-field-box3">
-                	
-                </div>
-                <div class="clear"></div>
-                
             </div>
             
             <div class="form-box6">
-            	<div class="up-photo"><%=image_tag @user.avatar.url, :style =>"height:150px;width:120px;" if @user.avatar.present? %></div>
+                <div class="up-photo"><%=image_tag @user.avatar.url, :style =>"height:150px;width:120px;" if @user.avatar.present? %></div>
                 
-            	<div class="clear"></div>
+                <div class="clear"></div>
             </div>
             
             <div class="clear"></div>

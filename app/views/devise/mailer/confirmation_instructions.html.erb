@@ -89,7 +89,9 @@ The Xemaxema Team -->
 
 																Welcome to Xemaxema.com.
 																<br><br>
-                                                                <%if @resource.is? :jagent || @resource.is? :agent%>
+                                                                <%if @resource.is? :jagent %>
+                                                                  We just need to verify your email address before you can access the site.
+                                                                <%elsif @resource.is? :agent %>
 																  We just need to verify your email address before you can access the site.
 																<%else%>
 																  We just need to verify your email address before you can post your reviews.
@@ -102,11 +104,11 @@ The Xemaxema Team -->
 																	<div style="font-size:0pt; line-height:0pt; height:25px"><img src="https://www.xemaxema.com/assets/empty.gif" width="1" height="35" style="height:35px" alt=""></div>
 																	</div>
 																	<%if @resource.guest_token.present?%>
-	                                                                    <%= confirmation_url(@resource, :confirmation_token => @token, :guest_token => @resource.guest_token) do %>
+	                                                                    <%= link_to confirmation_url(@resource, :confirmation_token => @token, :guest_token => @resource.guest_token) do %>
 																		<img style="margin-left:200px" src="https://www.xemaxema.com/assets/Verify_your_Account.png" height="37px" width="">	
 																		<%end%>	
 																	<%else%>
-																	    <%= confirmation_url(@resource, :confirmation_token => @token) do %>
+																	    <%= link_to confirmation_url(@resource, :confirmation_token => @token) do %>
 																		<img style="margin-left:200px" src="https://www.xemaxema.com/assets/Verify_your_Account.png" height="37px" width="">	
 																		<%end%>	
 																	<%end%>													

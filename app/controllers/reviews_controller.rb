@@ -235,7 +235,7 @@ class ReviewsController < ApplicationController
 		@towns = []
 		@locations = []
 		@nature_of_reviews = NatureOfReview.all
-		@nature_of_reviews = NatureOfReview.where("review_type = ?",params[:review_type]).order(:title) if params[:review_type].present?
+		@nature_of_reviews = NatureOfReview.where("review_type = ?",params[:review_type]) if params[:review_type].present?
 	end
 
 	def review_params

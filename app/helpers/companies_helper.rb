@@ -33,7 +33,11 @@ module CompaniesHelper
     complaint = review_complaint_count(company).to_f
     compliment = review_compliment_count(company).to_f
     total = complaint + compliment
-    complaint / total.to_f * 100
+    if total.to_f == 0.0
+      '-'
+    else
+      complaint / total.to_f * 100
+    end
   end
 
   def ratio_count(company)

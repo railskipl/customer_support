@@ -128,7 +128,8 @@ class Admin::ReviewsController < AdminController
       @review.archive_attachment = true unless current_user.role == "jagent"
       respond_to do |format|
         if @review.update(review_params)
-          # ReviewMailer.archive_adminmail(@review, current_user).deliver!  
+          @subject = "Your attachment was not published"
+          ReviewMailer.archive_mail(@review,@subject).deliver!  
           format.html { redirect_to edit_admin_review_path(@review.id), notice: 'Attachment was successfully Archived.' }
         else
           format.html { render action: 'edit' }
@@ -145,7 +146,8 @@ class Admin::ReviewsController < AdminController
       end
       respond_to do |format|
         if @review.update(review_params)
-          # ReviewMailer.archive_mail(@review).deliver!
+           @subject = "Your review was not published"
+           ReviewMailer.archive_mail(@review,@subject).deliver!
           # ReviewMailer.archive_adminmail(@review, current_user).deliver!
           format.html { redirect_to [:admin,@review], notice: 'Review was successfully Archived.' }
         else

@@ -136,181 +136,142 @@ function CheckOther()
                                                                 ["Westlands","Westlands"]]],
                  ["Coast", [["Bamburi","Bamburi"],["CBD","CBD"],["Diani","Diani"],["Kilifi","Kilifi"],["Lamu","Lamu"],["Malindi","Malindi"],["Mombasa","Mombasa"],["Nyali","Nyali"],["Voi","Voi"],["Watamu","Watamu"]]],
                  ["Kisumu", [["Kisumu", "Kisumu"]]],["Other - please specify",[["Other","Other"]]],]%>
-        <%= form_for(@user) do |f|%>
-		<% if @user.present? && @user.errors.any? %>
-					<div class="fom_con" style="color:red;">
-						<h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-						<ul>
-						<% @user.errors.full_messages.each do |msg| %>
-							<li><%= msg %></li>
-						<% end %>
-						</ul>
-					</div>
-				<% end %>
-            <div class="form-box4">
-            	<div class="login-field-box3">
-                	<div class="text-box3">First Name *</div>
-                   <%= f.text_field :first_name, required: true, "maxlength"=>"35", "min" => "1","max" => "35" ,:class => "field3" %>
-                </div>
-                <div class="clear"></div>
-                
-                <div class="login-field-box3">
-                	<div class="text-box3">Preferred Alias *</div>
-                      <%= f.text_field :preferred_alias,:disabled=>true ,"maxlength"=>"20", "min" => "1","max" => "20","id" =>"user_alias",:class => "field3" %>
-                </div>
-                <div class="clear"></div>
-                
-                <div class="login-field-box3">
-                	<div class="text-box3">Email *</div>
-                      <%= f.email_field :email, required: true , "maxlength"=>"70", "min" => "1","max" => "70", "autocomplete" => "off",:id=>"user_email", :disabled=>true, :class => "field3" %>
-                </div>
-                <div class="clear"></div>
-                
-                <div class="login-field-box3">
-                	<div class="text-box3">Password *</div>
-                    <%= f.password_field :password , "maxlength"=>"8", "min" => "4","max" => "8",:id=>"password1",:class => "field3" %>
-                </div>
-                <div class="clear"></div>
-                
-                <div class="login-field-box3">
-                	<div class="text-box3">Gender *</div>
-                    
-							<%= f.select :gender, [["Male", 1], ["Female", 2]],{:prompt => "Select Gender"},:class => "field3 select_box_custom" %>
-                </div>
-                <div class="clear"></div>
-                
-                <div class="login-field-box3">
-                	<div class="text-box3">Age *</div>
-                    <%= text_field_tag :disabled ,nil ,:disabled=>true,:class=>"user_age", value: f.object.age, :class => "field3" %>
-					<%=f.hidden_field :age, :class=>"user_age" %>
-                </div>
-                <div class="clear"></div>
-                
-                <div class="login-field-box3">
-                	<div class="text-box3">Address Line1 *</div>
-                    <%= f.text_field :address_line1, "maxlength"=>"50", "min" => "1","max" => "50", :class => "field3" %>
-                </div>
-                <div class="clear"></div>
-                
-                <div class="login-field-box3">
-                	<div class="text-box3">Town</div>
-                    <%= f.text_field :town, "maxlength"=>"50", "min" => "1","max" => "50", :class => "field3" %>
-                </div>
-                <div class="clear"></div>
-                
-                <div class="login-field-box3">
-                	<div class="text-box3">Country *</div>
-                    <%=country_select("user", "country",{ "Kenya" => "Kenya"},{},:class => "field3 select_box_custom" )%>
-                </div>
-                <div class="clear"></div>
-                
-                <div class="login-field-box3">
-                	<div class="text-box3">Security Question *</div>
-                          <%= f.select :secret_question, [ ["What was your childhood nickname?", "What was your childhood nickname?"], ["In what city or town was your first job?", "In what city or town was your first job?"],["What is your mother's maiden name?" , "What is your mother's maiden name?"] ], {:prompt => "Select Question"},:class=>"field1 select_box_custom" %>
-                   	
-                </div>
-                <div class="clear"></div>
-                
-                <div class="login-field-box3">
-                	<div class="text-box3">Answer *</div>
-                    <%= f.text_field :answer, required: true, "maxlength"=>"50", "min" => "1","max" => "50",:class => "field3" %>
-                </div>
-                <div class="clear"></div>
-                <div class="check-one">
+<%= form_for(@user) do |f|%>
+	<% if @user.present? && @user.errors.any? %>
+		<div class="fom_con" style="color:red;">
+			<h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+			<ul>
+			<% @user.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+			<% end %>
+			</ul>
+		</div>
+	<% end %>
+    <div class="profile-box1">
+        <div class="row-profile">
+            <div class="login-field-box3 row-left">
+              <div class="text-box3">First Name *</div>
+              <%= f.text_field :first_name, required: true, "maxlength"=>"35", "min" => "1","max" => "35" ,:class => "field3" %>
+            </div>
+            <div class="login-field-box3 row-right">
+              <div class="text-box3">Last Name *</div>
+              <%= f.text_field :last_name, required: true, "maxlength"=>"35", "min" => "1","max" => "35",:class => "field3" %>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div class="row-profile">
+            <div class="login-field-box3 row-left">
+              <div class="text-box3">Preferred Alias *</div>
+              <%= f.text_field :preferred_alias,:disabled=>true ,"maxlength"=>"20", "min" => "1","max" => "20","id" =>"user_alias",:class => "field3" %>
+            </div> 
+        </div>
+        <div class="clear"></div>
+        <div class="row-profile">
+            <div class="login-field-box3 row-left">
+              <div class="text-box3">Email *</div>
+              <%= f.email_field :email, required: true , "maxlength"=>"70", "min" => "1","max" => "70", "autocomplete" => "off",:id=>"user_email", :disabled=>true, :class => "field3" %>
+            </div>
+            <div class="login-field-box3 row-right">
+                <div class="text-box3">Confirm Email *</div>
+                <%= f.email_field :email, required: true , "maxlength"=>"70", "min" => "1","max" => "70", "autocomplete" => "off",:id=>"user_email", :disabled=>true, :class => "field3" %>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div class="row-profile">
+            <div class="login-field-box3 row-left">
+              <div class="text-box3">Password *</div>
+              <%= f.password_field :password , "maxlength"=>"8", "min" => "4","max" => "8",:id=>"password1",:class => "field3" %>
+            </div>
+            <div class="login-field-box3 row-right">
+              <div class="text-box3">Confirm Password *</div>
+              <%= f.password_field :password_confirmation , "maxlength"=>"8", "min" => "4","max" => "8",:id=>"password2",:class => "field3" %>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div class="row-profile">
+            <div class="login-field-box3 row-left">
+            <div class="text-box3">Gender *</div>
+               <%= f.select :gender, [["Male", 1], ["Female", 2]],{:prompt => "Select Gender"},:class => "field3 select_box_custom" %>
+            </div>  
+        </div>
+        <div class="clear"></div>
+        <div class="row-profile">
+            <div class="login-field-box3 row-left">
+            <div class="text-box3">Age *</div>
+              <%= text_field_tag :disabled ,nil ,:disabled=>true,:class=>"user_age", value: f.object.age, :class => "field3" %>
+              <%=f.hidden_field :age, :class=>"user_age" %>
+            </div>
+            <div class="login-field-box3 row-right">
+                <div class="text-box3">DOB</div>
+                <%= f.text_field :dob ,:class => "field3",:id => "datepicker1" %>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div class="row-profile">
+            <div class="login-field-box3 row-left">
+                <div class="text-box3">Address Line1 *</div>
+                <%= f.text_field :address_line1, "maxlength"=>"50", "min" => "1","max" => "50", :class => "field3" %>
+            </div>
+            <div class="login-field-box3 row-right">
+                <div class="text-box3">Address Line2 *</div>
+                <%= f.text_field :address_line2, required: true, "maxlength"=>"50", "min" => "1","max" => "50",:class => "field3" %>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div class="row-profile">
+            <div class="login-field-box3 row-left">
+                <div class="text-box3">Town</div>
+                <%= f.text_field :town, "maxlength"=>"50", "min" => "1","max" => "50", :class => "field3" %>
+            </div>
+            <div class="login-field-box3 row-right">
+                <div class="text-box3">Code</div>
+                <%= f.text_field :postal_code , "maxlength"=>"50", "min" => "1","max" => "50", :class => "field3" %>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div class="row-profile">
+            <div class="login-field-box3 row-left">
+                <div class="text-box3">Country *</div>
+                <%=country_select("user", "country",{ "Kenya" => "Kenya"},{},:class => "field3 select_box_custom" )%>
+            </div>
+            <div class="login-field-box3 row-right">
+                <div class="text-box3">I Live In *</div>
+                <%= select_tag("user[lives_in]", grouped_options_for_select(@city_group, selected_key = @user.lives_in, prompt = nil), :id=> 'user_i_live' ,:onchange => 'CheckOther();',:prompt => "Select Location",:class => "field3 select_box_custom") %>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div class="row-profile">
+            <div class="login-field-box3 row-left">
+              <div class="text-box3">Security Question *</div>
+              <%= f.select :secret_question, [ ["What was your childhood nickname?", "What was your childhood nickname?"], ["In what city or town was your first job?", "In what city or town was your first job?"],["What is your mother's maiden name?" , "What is your mother's maiden name?"] ], {:prompt => "Select Question"},:class=>"field1 select_box_custom" %>
+            </div> 
+        </div>
+        <div class="clear"></div>
+        <div class="row-profile">
+            <div class="login-field-box3 row-left">
+              <div class="text-box3">Answer *</div>
+              <%= f.text_field :answer, required: true, "maxlength"=>"50", "min" => "1","max" => "50",:class => "field3" %>
+            </div>  
+        </div>
+        <div class="clear"></div>
+        <div class="row-profile">
+            <div class="check-one">
                 <%=f.check_box :accept_t_and_c , id: "field_terms", required: true, value: true,:class=> "ch-box"%><%=link_to "I agree to the Terms and Conditions *", "/terms-of-use",:style => "color:#fbaf3d;font-family:andlso;font-size:13px;" ,:target => "new" %>
-                </div>
-              
-                     <%= recaptcha_tags %><br/>
-          
-                 <input type="submit" class="btn2 left-align" value="Save" id="save">
-                
             </div>
-            
-            <div class="form-box4">
-            	<div class="login-field-box3">
-                	<div class="text-box3">Last Name *</div>
-                    <%= f.text_field :last_name, required: true, "maxlength"=>"35", "min" => "1","max" => "35",:class => "field3" %>
-                </div>
-                <div class="clear"></div>
-                
-                <div class="login-field-box3">
-                	<div class="text-box3">&nbsp;</div>
-                    
-                </div>
-                <div class="clear"></div>
-                
-                <div class="login-field-box3">
-                	<div class="text-box3">Confirm Email *</div>
-                     <%= f.email_field :email, required: true , "maxlength"=>"70", "min" => "1","max" => "70", "autocomplete" => "off",:id=>"user_email", :disabled=>true, :class => "field3" %>
-                </div>
-                <div class="clear"></div>
-                
-                <div class="login-field-box3">
-                	<div class="text-box3">Confirm Password *</div>
-                      <%= f.password_field :password_confirmation , "maxlength"=>"8", "min" => "4","max" => "8",:id=>"password2",:class => "field3" %>
-                </div>
-                <div class="clear"></div>
-                
-                <div class="login-field-box3">
-                	<div class="text-box3">&nbsp;</div>
-                    
-                </div>
-                <div class="clear"></div>
-                
-                <div class="login-field-box3">
-                	<div class="text-box3">DOB</div>
-                     <%= f.text_field :dob ,:class => "field3",:id => "datepicker1" %>
-                </div>
-                <div class="clear"></div>
-                
-                <div class="login-field-box3">
-                	<div class="text-box3">Address Line2 *</div>
-                    <%= f.text_field :address_line2, required: true, "maxlength"=>"50", "min" => "1","max" => "50",:class => "field3" %>
-                </div>
-                <div class="clear"></div>
-                
-                <div class="login-field-box3">
-                	<div class="text-box3">Code</div>
-                   <%= f.text_field :postal_code , "maxlength"=>"50", "min" => "1","max" => "50", :class => "field3" %>
-                </div>
-                <div class="clear"></div>
-                
-                <div class="login-field-box3">
-                	<div class="text-box3">I Live In *</div>
-                    	<%= select_tag("user[lives_in]", grouped_options_for_select(@city_group, selected_key = @user.lives_in, prompt = nil), :id=> 'user_i_live' ,:onchange => 'CheckOther();',:prompt => "Select Location",:class => "field3 select_box_custom") %>
-                </div>
-                <div class="clear"></div>
-                        <div class="login-field-box3">
-                    <div class="text-box3">&nbsp;</div>
-                    <input type="text" class="field3" name="other_type" id="other_type", placeholder ="Other" >
-                </div>
-              <!--   <div class="login-field-box3">
-                	<div class="text-box3">&nbsp;</div>
-                    <input type="text" class="field3" name="">
-                </div> -->
-                <div class="clear"></div>
-                
-                <div class="login-field-box3">
-                	
-                </div>
-                <div class="clear"></div>
-                
-            </div>
-            
-            <div class="form-box6">
-            	<div class="up-photo">
-                    <div class="up-photo">
-                        <div class="image btn-file" id="avatar_image"> Upload<br>
-                  Photo <%=f.file_field :avatar,:id=>'user_avatar' ,:onchange=>"readImage( this )"%>
-                  </div>
-                </div>
-                </div>
-            
-            </div>
-            
-
-            
-
-      
-    <% end %>
+            <%= recaptcha_tags %><br/>
+        </div>
+        <div class="clear"></div>
+        <input type="submit" class="btn2 left-align" value="Save" id="save">
+        <div class="clear"></div>
+    </div> 
+    <div class="form-box6">
+        <div class="up-photo">
+        <div class="up-photo">
+          <div class="image btn-file" id="avatar_image"> Upload<br>
+            Photo <%=f.file_field :avatar,:id=>'user_avatar' ,:onchange=>"readImage( this )"%>
+          </div>
+        </div>
+      </div>
+    </div>
+<% end %>
 <%= javascript_include_tag "registrations.js" %>

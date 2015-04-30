@@ -69,7 +69,11 @@
 														<tr>
 															
  																<div style="font-family: 'corbel'; color: #696969; margin-right:3px; font-size:13px;">
-																<p>Hi <%= @comment.name rescue nil %>,</p>
+ 																<%if @comment.user_id.present?%>
+                                                                  <p>Hi <%= @comment.user.preferred_alias rescue nil %>,</p>
+ 																<%else%>
+                                                                  <p>Hi <%= @comment.name rescue nil %>,</p>
+ 																<%end%>
 																<br>																
 																Congrats! Your comment has been published online on Xemaxema.com and can now be seen by all.
 																<br><br>

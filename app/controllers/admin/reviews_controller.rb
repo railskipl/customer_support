@@ -164,7 +164,7 @@ class Admin::ReviewsController < AdminController
           else
            m.assignee_modified = @review.is_modified? ? true : false
           end
-          m.status = "Waiting for approval"
+          m.status = "Waiting for approval" if !(m.status == "Published")
           m.save
           format.html { redirect_to [:admin,@review], notice: 'Review successfully updated.'}
         else

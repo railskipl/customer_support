@@ -39,7 +39,7 @@
                 
                 <div class="login-field-box3">
                 	<div class="text-box3">Gender *</div>
-                    <%= text_field_tag @user.gender, @user.gender,:class =>"field3",:disabled => true %>
+                    <%= text_field_tag @user.gender, (@user.gender == '1' ? "Male" : "Female"),:class =>"field3",:disabled => true %>
                 </div>
                 <div class="clear"></div>
                 

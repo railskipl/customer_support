@@ -162,13 +162,15 @@
 	  <%end%>
            
                      <div class="clear"></div> 
-                        
+                    <% if @review.comments.published.count > 0%>
                    <div class="log-head">Comments</div>
                    <div class="content4 mCustomScrollbar">
                    <%= render @review.comments.published %>
                           
                 <div class="clear"></div>
-             </div>
+                  </div>
+                  <% else %>
+                <% end %>
              </div>
 
                   <div class="clear"></div> 

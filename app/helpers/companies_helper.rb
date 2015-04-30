@@ -2,7 +2,7 @@ module CompaniesHelper
 
   def review_count(company)
     c = Company.includes(:reviews).find_by_title(company.supplier_name)
-    c.reviews.count
+    c.reviews.where("published_date is not null").count
   end
 
   def is_user_compliment(review)

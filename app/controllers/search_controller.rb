@@ -1,6 +1,9 @@
 class SearchController < ApplicationController
 
   def index
+  	 if params[:search].empty?
+  	 	redirect_to :back, :alert => "Search filter cannot be blank"
+  	 else
   	  @active_title = "Search"
       @review_results = Review.search params[:search]
       @comment_results = Comment.search params[:search]
@@ -8,5 +11,6 @@ class SearchController < ApplicationController
       @town_results = Town.search params[:search]
       @location_results = Location.search params[:search]
       @supplier_results = Supplier.search params[:search]
+    end
   end
 end

@@ -6,7 +6,7 @@ class Admin::ReviewsController < AdminController
 	def index
      @users = User.where("role = ? or role = ?","jagent","agent")
      if current_user.is? :jagent
-		  @reviews = Review.where("jagent_id  and published_date is null",current_user.id).unarchived.where("user_id is not null").order("id desc")
+		  @reviews = Review.junior_agent(current_user.id)
      else
        @reviews = Review.where("(jagent_id = ? or old_jagent_id = ?) and published_date is null",current_user.id,current_user.id).unarchived.where("user_id is not null").order("id desc")
      end

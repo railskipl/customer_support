@@ -33,6 +33,10 @@ class Review < ActiveRecord::Base
   before_create :generate_ticket_number
   before_update :update_conversion_date
 	
+  def self.junior_agent(id)
+    unpublished.unarchived.where("jagent_id = ? and modified_review is null and user_id is not null",id)
+  end
+
   def self.search(search)
     search_condition = "%" + search + "%"
     find(:all, :conditions => ['(title LIKE ? OR message LIKE ? OR review_type LIKE ? OR ticket_number LIKE ? ) and ispublished = ?', search_condition, search_condition,search_condition,search_condition,true])

@@ -18,7 +18,7 @@ class AdminController < ActionController::Base
     @customers ||= User.all.customers
     if current_user.role == "jagent"
       @recent_reviews ||= Review.where('jagent_id = ? and user_id is not null',current_user.id).order("created_at desc")
-      @reviews ||= Review.unpublished.where('jagent_id = ? and user_id is not null',current_user.id).order("created_at desc")
+      @reviews ||=  Review.junior_agent(current_user.id)
       @published_reviews ||= Review.published.where('jagent_id = ? and user_id is not null',current_user.id).order("created_at desc")
       @archived_reviews ||= Review.archived.where('jagent_id = ? and user_id is not null',current_user.id).order("created_at desc")
     else

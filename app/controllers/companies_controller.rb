@@ -68,7 +68,7 @@ class CompaniesController < ApplicationController
 		review = Review.new(review_params)
     @review_filter = review
     suppliers = Supplier.registered.pluck(:supplier_name)
-    s = suppliers.collect {|i| Company.find_by_title(i).id
+    s = suppliers.collect {|i| Company.find_by_title(i).id}
     
     @rcompanies ||=  Review.where("company_id IN (?)",s).pluck(:company_id)
     

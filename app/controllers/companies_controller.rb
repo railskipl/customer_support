@@ -71,10 +71,10 @@ class CompaniesController < ApplicationController
     suppliers = suppliers.collect {|i| Company.find_by_title(i)}
     @rcompanies ||= []
 
-    @rcompanies.each do |company|
-      @rcompanies << company.reviews.where("ispublished is null")
+    suppliers.each do |company|
+      @rcompanies << company.reviews.where("published_date is not null")
     end
-    
+
     if review.industry_id  && review.industry_id !=0
     	@rcompanies = @rcompanies.by_industry(review.industry.title)
     end

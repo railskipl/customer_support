@@ -32,12 +32,14 @@ module CompaniesHelper
   def pure_ratio_count(company)
     complaint = review_complaint_count(company).to_f
     compliment = review_compliment_count(company).to_f
-    (complaint / (compliment.nonzero? || 1)) 
+    total = complaint + compliment
+    complaint / total.to_f * 100
   end
 
   def ratio_count(company)
-    complaint = review_complaint_count(company)
+    complaint = review_complaint_count(company).to_f
     compliment = review_compliment_count(company).to_f
-    (complaint / (compliment.nonzero? || 1)) *100
+    total = complaint + compliment
+    complaint / total.to_f * 100
   end
 end

@@ -950,7 +950,7 @@ textarea, input,select { outline: none; }
 }
 .form-box3
 {
-	margin:0px 0px 20px;
+	margin:0px 0px 0px;
 	padding:0px;
 	width:200px;
 	min-height:300px;
@@ -1294,6 +1294,7 @@ padding-left:0px;
 	/*cursor:pointer;*/
 	margin-bottom:10px;
 	margin-top: 10px;
+	font-family: gothic;
 }
 .information-new1
 {

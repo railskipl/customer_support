@@ -68,12 +68,10 @@ class CompaniesController < ApplicationController
 		review = Review.new(review_params)
     @review_filter = review
     suppliers = Supplier.registered.pluck(:supplier_name)
-    suppliers = suppliers.collect {|i| Company.find_by_title(i)}
+    s = suppliers.collect {|i| Company.find_by_title(i).id
     @rcompanies ||= []
-
-    suppliers.each do |company|
-      @rcompanies << company.reviews.where("published_date is not null")
-    end
+    @rcompanies <<  Review.where("company_id IN (?)",s).pluck(:company_id)
+    
 
     if review.industry_id  && review.industry_id !=0
     	@rcompanies = @rcompanies.by_industry(review.industry.title)

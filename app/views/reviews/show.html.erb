@@ -68,7 +68,7 @@
                         <tr>
                             <td width="20%" class="head">Incident Date/Time</td>
 
-                            <td width="20%"><%= @review.created_at.strftime("%d %b %Y")%> <%=@review.created_at.strftime("%H:%M")%></td>
+                            <td width="20%"><%= @review.date.strftime("%d %b %Y")%> <%=@review.datetime.strftime("%H:%M")%></td>
 
                             </td>
                         </tr>
@@ -111,7 +111,7 @@
                             <td width="20%" class="head">Date/Time</td>
 
 
-                            <td width="20%"> <%=@review.updated_at.strftime("%d %b %Y" " %H:%M")%></td>
+                            <td width="20%"> <%=@review.created_at.strftime("%d %b %Y" " %H:%M")%></td>
 
 
                             </td>

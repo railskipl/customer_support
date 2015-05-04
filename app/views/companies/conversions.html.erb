@@ -62,8 +62,11 @@
                           <%@rcompanies.each do |company|%>
                         <tr>
                             <td width="20%"><%=company.supplier_name rescue nil%></td>
+                            <td width="7%">&nbsp;</td>
                             <td width="20%" align="center"><%=review_compliment_count(company) rescue nil%> </td>
+                            <td width="5%">&nbsp;</td>
                             <td width="20%" align="center"><%=review_complaint_count(company) rescue nil%></td>
+                            <td width="2%">&nbsp;</td>
                              <td width="20%" align="center"><%=change_complaint_count(company) rescue nil%> </td>
                            
                           </td>

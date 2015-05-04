@@ -200,12 +200,15 @@ class Admin::ReviewsController < AdminController
   end
 
   def unpublished
-    @review = Review.find(params[:review_id])
-    @review.ispublished = false
-    @review.published_date = nil
-    @review.archive = true
-    @review.save
-    ReviewMailer.delay.review_unpublish_mail(@review)
+    review = Review.find(params[:review_id])
+    review.ispublished = false
+    review.published_date = nil
+    review.archive = true
+    review.save
+    m = MonitorJagent.find_or_create_by_review_id(review.id)
+    m.status = "archive"
+    m.save
+    ReviewMailer.delay.review_unpublish_mail(review)
     redirect_to :back
   end
 

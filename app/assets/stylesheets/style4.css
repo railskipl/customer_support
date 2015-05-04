@@ -1812,7 +1812,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9bc38', end
 
 #main-wrapper{margin:0px auto;padding:0px;width:700px;}
 #header-area{padding:25px 0px 0px;width:700px;height:101px;}
-#response-menu{width:700px;height:37px;margin-bottom:60px;}
+#response-menu{width:700px;height:37px;margin-bottom:60px;overflow: visible !important;}
 #content-area{margin:0px;padding:0px;width:700px;min-height:300px;}
 .section-one{margin:0px;padding:0px;width:700px;min-height:400px;float:left;}
 .reports{margin:0px 0px 2px;padding:0px;width:700px;min-height:200px;}

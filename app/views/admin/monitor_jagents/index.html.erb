@@ -15,7 +15,7 @@
 	</tr>
 	</thead>
 	<tbody>
-	<% @reviews.each.with_index(1) do |review,index| %>
+	<% @myreviews.each.with_index(1) do |review,index| %>
 	<tr>
 		<td><%= index %></td>
 		<td><%= link_to review.ticket_number ,edit_admin_review_path(review.id) rescue nil%></td>

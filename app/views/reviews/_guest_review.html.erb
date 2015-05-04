@@ -10,7 +10,7 @@
       </ul>
     </div>
   <% end %>
-         <%= f.hidden_field :guest, :value => "guest_user" %>
+           <%= f.hidden_field :guest, :value => "guest_user" %>
             <%if  @review.review_type == 'complaint' || params[:review_type] == 'complaint'%>
             <img src="/assets/complaint-small.png" alt="" title="Xema Xema" class="left-align">
             <div class="cmp-head"><b>Please give details of your <span>Complaint</b></span></div>

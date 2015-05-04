@@ -8,6 +8,7 @@
 			    <th width="15%">Telephone</th>
 			    <th width="15%">Message Type</th>
 			    <th width="15%">Message</th>
+			    <th width="15%">Date</th>
 			  </tr>
 			</thead>
 
@@ -20,6 +21,7 @@
 			      <td><%= contact.try(:telephone) %></td>
                   <td><%= contact.try(:message_type) %></td>
                   <td><%= contact.try(:message) %></td>
+                  <td><%= contact.created_at.strftime("%d/%m/%y | %H:%M") rescue nil%></td>
 			    </tr>
 			  <% end %>
 			</tbody>

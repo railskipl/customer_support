@@ -36,7 +36,7 @@ module CompaniesHelper
     if total.to_f == 0.0
       '-'
     else
-      complaint / total.to_f * 100
+      (complaint / total.to_f * 100).round(2)
     end
   end
 

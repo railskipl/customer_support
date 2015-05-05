@@ -38,30 +38,33 @@ class ReviewMailer < ActionMailer::Base
   def comment_mail(review, comment)
     @review = review
     @comment = comment
-    mail(:to => @review.user.email, :subject => "Your review has received a new comment.")
+    emails = @review.user.email + ",agent@xemaxema.com"
+    mail(:to => emails, :subject => "Your review has received a new comment")
   end
   
   def other_comment_mail(review, comment)
     @review = review
     @comment = comment
-    mail(:to => @comment.email, :subject => "Your comment has been published.")
+    mail(:to => @comment.email, :subject => "Your comment has been published")
   end
 
   def company_comment_mail(review, comment)
     @review = review
     @comment = comment
-    mail(:to => @review.user.email, :subject => "The Company has responded to your review.")
+    emails = @review.user.email + ",agent@xemaxema.com"
+    mail(:to => emails, :subject => "The Company has responded to your review")
   end
 
   def comment_unpublish_mail(review, comment)
     @review = review
     @comment = comment
-    mail(:to => @comment.email, :subject => "Your comment has been unpublished.")
+    mail(:to => @comment.email, :subject => "Your comment has been unpublished")
   end
 
   def review_unpublish_mail(review)
     @review = review
-    mail(:to => @review.user.email, :subject => "Your review has been unpublished.")
+    emails = @review.user.email + ",agent@xemaxema.com"
+    mail(:to => emails, :subject => "Your review has been unpublished")
   end
 
   def comment_agent_mail(review,comment,current_user)
@@ -77,7 +80,7 @@ class ReviewMailer < ActionMailer::Base
 
   def agent_mail(review)
     @review = review
-    mail(:to =>  "agent@xemaxema.com", :subject => "New Review is Submitted.")
+    mail(:to =>  "agent@xemaxema.com", :subject => "New Review is Submitted")
   end
 
   # def admin_mail(review)
@@ -97,7 +100,7 @@ class ReviewMailer < ActionMailer::Base
   def ticket_closed_notification(review)
     @review = review
     emails = review.user.email + ",agent@xemaxema.com"
-    mail(:to => emails, :subject => "Ticket Closed")
+    mail(:to => emails, :subject => "Was your complaint resolved?")
   end
 
   def assignee_mail(review, comment)
@@ -106,10 +109,10 @@ class ReviewMailer < ActionMailer::Base
     mail(:to => @review.agent.email, :subject => "Junior Agent Has Commented Onbehalf Of Supplier")
   end
 
-  def review_comment_mail(jagent, agent, ticket_number)
-    @jagent = jagent
-    @agent = agent
-    @ticket_number = ticket_number
-    mail(:to => @agent.email, :subject => "Junior Agent Has Modifide Comment")
-  end
+  # def review_comment_mail(jagent, agent, ticket_number)
+  #   @jagent = jagent
+  #   @agent = agent
+  #   @ticket_number = ticket_number
+  #   mail(:to => @agent.email, :subject => "Junior Agent Has Modifide Comment")
+  # end
 end

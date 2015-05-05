@@ -3,7 +3,7 @@ class Notifier < ActionMailer::Base
 
   def contact(contact)
     @contact = contact
-    mail(:to=>"info@xemaxema.com",:subject=>"#{@contact.email} contacted you.")
+    mail(:to=>"info@xemaxema.com",:subject=>"A new query has been received")
   end
 
    def contact_user(contact)

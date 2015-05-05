@@ -31,7 +31,7 @@ class Admin::CommentsController < AdminController
     @comment =  @review.comments.find(params[:id])
     if current_user.role == "jagent"
       m = MonitorJagent.find_or_create_by_review_id(@review.id)
-      ReviewMailer.delay.review_comment_mail(@review.jagent, @review.agent, @review.ticket_number)
+      # ReviewMailer.delay.review_comment_mail(@review.jagent, @review.agent, @review.ticket_number)
       m.c_comment = true
       m.comment_status = "Waiting for approval"
       m.save

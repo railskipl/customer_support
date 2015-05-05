@@ -92,7 +92,7 @@ Your review has not been published, due to some inappropriate data. Our customer
 																
 																<Strong>Ticket Number:</Strong> <%= @review.ticket_number rescue nil%>
 																<br>
-																<Strong>Review Type:</Strong> <%= @review.review_type rescue nil%>
+																<Strong>Review Type:</Strong> <%= @review.review_type.capitalize rescue nil%>
 																<br>
 																<Strong>Subject:</Strong> <%= @review.title rescue nil%>
 																<br>

@@ -137,8 +137,11 @@ class ReviewsController < ApplicationController
       flash[:notice] = "Please select past date"
       render :new
     else
-      if nature.present?
-        @review.nature_of_review = nature
+      if params[:nature].present?
+        nature_of_review = NatureOfReview.find_or_create_by(:title => nature)
+        nature_of_review.review_type = @review.review_type
+        nature_of_review.save
+        @review.nature_of_review = nature_of_review.title
       end
       if (industry.present?)
         industry_db = Industry.find_or_create_by(:title => industry)
@@ -180,7 +183,7 @@ class ReviewsController < ApplicationController
           render :new
         end
       else
-      @nature = nature if params[:nature].present?
+      
       @companies = Industry.find(@review.industry_id).companies.order(:title)
       @towns = Company.find(@review.company_id).towns.order(:title).uniq!
       addresses = Address.find_all_by_town_id_and_company_id(@review.town_id,@review.company_id)

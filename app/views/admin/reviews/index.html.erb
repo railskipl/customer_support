@@ -25,6 +25,7 @@ jQuery(document).ready(function() {
 
 </script>
 
+<% if (current_user.is? :jagent) %>
 <h1>My Reviews to action</h1>
 <table id="reviews" >
   <thead>
@@ -61,7 +62,7 @@ jQuery(document).ready(function() {
     <% end %>
   </tbody>
 </table>
-
+<% end %>
 
 
 <% if (current_user.is? :admin) || (current_user.is? :agent) %>

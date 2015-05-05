@@ -1,29 +1,3 @@
-<%= stylesheet_link_tag    "jquery.ui.datepicker" %>
-<style>
-.newdropdown
-{
-font-family:corbel;
-font-size:13px;
-padding:0; 
-position:relative;
- display:inline-block;
-  width:100%;
-background-color:#e2e2e4;
--webkit-box-shadow: 0px 4px 2px -1px #dadada;
-    -moz-box-shadow: 0px 4px 2px -1px #dadada;
-    box-shadow: 0px 4px 2px -1px #dadada;
-}
-
-select.drp-select1 option:hover {
-     box-shadow: 0 0 10px 100px #fbaf3d inset;
-    -webkit-box-shadow: 0 0 10px 100px #fbaf3d inset;
-}
-
-select.field12 option:hover {
-       box-shadow: 0 0 10px 100px #fbaf3d inset;
-       -webkit-box-shadow: 0 0 10px 100px #fbaf3d inset;
-}
-</style>
 <%= form_for(@review) do |f|%>
 <% if @review.errors.any? %>
     <div id="error_explanation">
@@ -36,57 +10,57 @@ select.field12 option:hover {
       </ul>
     </div>
   <% end %>
-      
+           <%= f.hidden_field :guest, :value => "guest_user" %>
             <%if  @review.review_type == 'complaint' || params[:review_type] == 'complaint'%>
             <img src="/assets/complaint-small.png" alt="" title="Xema Xema" class="left-align">
-            <div class="cmp-head">Please give details of your <span>Complaint</span></div>
+            <div class="cmp-head"><b>Please give details of your <span>Complaint</b></span></div>
             <% else %>
             <img src="/assets/compliment_small.png" alt="" title="Xema Xema" class="left-align">
-            <div class="cmp-head">Please give details of your <span style="color:#008000;">Compliment</span></div>
+            <div class="cmp-head"><b>Please give details of your <span style="color:#008000;">Compliment</b></span></div>
             <% end %>
-      
+        
         
         <div class="clear"></div>
-        <div class="max-box">
+   
             
             <div class="join-form-box">
             
                 <div class="login-field-box4">
                     <div class="text-box1">Subject *</div>
-                    <%= f.text_field :title, required: true, "maxlength"=>"60", "min" => "1","max" => "35", :autofocus=>true, :class => "field4",:placeholder => "Short, direct, informative, impactful."%>
+                    <%= f.text_field :title, required: true, "maxlength"=>"60", "min" => "1","max" => "35", :autofocus=>true, :class => "field4", :placeholder => "Short, direct, informative, impactful." %>
                 </div>
                 <div class="clear"></div>
-                <div class="form-box1 fr-bt">
+                <div class="form-box1 fr-bt no-space">
                 <div class="login-field-box">
-                    <div class="text-box1">Nature Of Review*</div>
-                   <%= f.select :nature_of_review, @nature_of_reviews.map { |nr| [nr.title]}, {:prompt =>"Select Nature of Review"},:class=>"drp-select1", onchange: "CheckOther2()" %>
+                    <div class="text-box1">Nature Of Review *</div>
+                   <%= f.select :nature_of_review, @nature_of_reviews.map { |nr| [nr.title]}, {:prompt =>"Select Nature of Review"},:include_blank=>false,:class=>"drp-select1", onchange: "CheckOther2()" %>
             
                 </div>
                 <div class="clear"></div>
                 
                 <div class="login-field-box">
                     <div class="text-box1">Incident Date *</div>
-                    <%= f.text_field :date , :value => @review.date.strftime("%d-%m-%Y"), :id => "datepicker1",required: true ,:class => "drp-select1" ,:placeholder => "Incident Date"%>
+                    <%= f.text_field :date ,:value => @review.date.strftime("%d-%m-%Y") ,:id => "datepicker1",required: true ,:class => "drp-select1" ,:placeholder => "Incident Date"%>
                 </div>
                 <div class="clear"></div>
                 
                 <div class="login-field-box">
                     <div class="text-box1">Industry *</div>
-                   <%= f.collection_select :industry_id, Industry.order(:title) + [Industry.new(:id => Industry.last.id+1,:title => "Other")], :id,:title,{:include_blank=>"Select Industry"},:rel => "/industry/companies_by_industry",:class=>"drp-select1",  required: true, onchange: 'CheckOther();'%>
+                   <%= f.collection_select :industry_id, Industry.order(:title) + [Industry.new(:id => Industry.last.id + 1,:title => "Other - please specify")], :id,:title,{:include_blank=>"Select Industry"},:rel => "/industry/companies_by_industry",:class=>"drp-select1",  required: true, onchange: 'CheckOther();'%>
               
                 </div>
                 <div class="clear"></div>
                 
                 <div class="login-field-box">
                     <div class="text-box1">Company *</div>
-                    <%= f.collection_select :company_id, @companies+  [Company.new(:id => Company.last.id + 1,:title => "Other")], :id, :title,  {:include_blank=>"Select Company"}, :rel => "/company/towns_by_company",:class=>"drp-select1", required: true, :onchange=> "CheckOther_company()" %>
+                    <%= f.collection_select :company_id, @companies+  [Company.new(:id => Company.last.id + 1,:title => "Other - please specify")], :id, :title,  {:include_blank=>"Select Company"}, :rel => "/company/towns_by_company",:class=>"drp-select1", required: true, :onchange=> "CheckOther_company()" %>
             
                 </div>
                 <div class="clear"></div>
                 
                 <div class="login-field-box">
                     <div class="text-box1">Town *</div>
-                   <%= f.collection_select :town_id, @towns+ [Town.new(:id => Town.last.id + 1,:title => "Other")], :id, :title, {:include_blank=>"Select Town"}, :rel => "/town/locations_by_town_and_company",:class=>"drp-select1",  required: true,:onchange=> "CheckOther_town()"%>
+                   <%= f.collection_select :town_id, @towns+ [Town.new(:id => Town.last.id + 1,:title => "Other - please specify")], :id, :title, {:include_blank=>"Select Town"}, :rel => "/town/locations_by_town_and_company",:class=>"drp-select1",  required: true,:onchange=> "CheckOther_town()"%>
                 </div>
                 <div class="clear"></div>
                 
@@ -98,7 +72,7 @@ select.field12 option:hover {
                 
                 <div class="login-field-box">
                     <div class="text-box1">Person Responsible</div>
-                   <%= f.text_field :personal_responsible, "maxlength"=>"60", "min" => "1","max" => "60" ,:class => "drp-select1", :placeholder => "For better follow-up." %>
+                   <%= f.text_field :personal_responsible, "maxlength"=>"60", "min" => "1","max" => "60" ,:class => "drp-select1", :placeholder => "For better follow-up."%>
                 </div>
                 <div class="clear"></div>
                 
@@ -127,7 +101,7 @@ select.field12 option:hover {
                 
                 <div class="login-field-box">
                     <div class="text-box1">&nbsp;</div>
-                    <input type="text" id="txt_review_company_id" name="txt_review_company_id" class="drp-select1" placeholder="Other">
+                    <input type="text" id="other_company" name="txt_review_company_id" class="drp-select1" placeholder="Other">
                 </div>
                 <div class="clear"></div>
                 
@@ -145,7 +119,7 @@ select.field12 option:hover {
                 
                 <div class="login-field-box">
                     <div class="text-box12" style="font-family:andlso;font-size:15px;">Account Details</div>
-                    <%= f.text_field :account_details ,"maxlength"=>"20", "min" => "1","max" => "20" ,:class => "drp-select1",:placeholder => "This will not be published."%>
+                    <%= f.text_field :account_details ,"maxlength"=>"20", "min" => "1","max" => "20" ,:class => "drp-select1", :placeholder => "This will not be published." %>
                 </div>
                 <div class="clear"></div>
             </div>
@@ -153,19 +127,19 @@ select.field12 option:hover {
                 <div class="login-field-box4">
                     <div class="text-box1">Your &nbsp;Experience *</div>
                
-                    <%= f.text_area :message, "min" => "1","max" => "1200",:rows=>"5",:class=>"text-area4 fr-bt",:placeholder=>"Your review will be vetted before being published." %>
+                    <%= f.text_area :message, "min" => "1","max" => "1200",:rows=>"5",:class=>"text-area4 fr-bt", :required => true ,:placeholder=>"Your review will be vetted before being published." %>
                         
                 </div>
                 <div class="clear"></div>
                 <span style="float:right;">1200 Characters</span>
                 
-         <%= f.hidden_field :guest, :value => "guest_user" %>
 
-        <% if params[:review_type] == "complaint" %>
+
+        <% if params[:review_type] == "complaint" || @review.review_type == 'complaint'%>
         <div class="clear"></div>
         <div class="login-field-box4">
                     <div class="text-box1">Desired Outcome *</div>
-                      <%= f.text_area :desired_outcome, "maxlength"=>"1200", "min" => "1","max" => "200", :class=> "text-area4 fr-bt", :placeholder=>"What action would you like from the company?"%>
+                      <%= f.text_area :desired_outcome, "maxlength"=>"1200", "min" => "1","max" => "200", :class=> "text-area4 fr-bt",:required => true, :placeholder=>"What action would you like from the company?"%>
                     
                 </div>
                    <div class="clear"></div>
@@ -191,7 +165,10 @@ select.field12 option:hover {
                     <input type="checkbox" name="checkbox" value="check" id="ab" class="ch-box" />
                   <label for="field_terms"> <%=link_to " I agree to the Terms & Conditions *", "/terms-of-use" ,:target => "new", :style => "color:#fbaf3d;font-family:andlso;font-size:15px;" %></label>
                 </div>
-                        <%= recaptcha_tags %>
+                        
+                        <div>
+                     <%= recaptcha_tags %><br/>
+                </div>
                         <%= f.hidden_field :review_type ,:value=>(params[:review_type] ? params[:review_type] :  @review.review_type ) %>
                 <br/>
                 <%= f.submit "Xema" ,:id => "check_checkbox",:class=>"btn2 left-align"%>
@@ -199,16 +176,6 @@ select.field12 option:hover {
             
             </div>
             <% end %>
-           
-           
-          
-
-
-
-
-
-
-
 
 
 <script type="text/javascript">
@@ -250,7 +217,7 @@ function CheckOther()
 
 function CheckOther2()
 {
-  if (document.getElementById("review_nature_of_review").value == "Other"){
+  if (document.getElementById("review_nature_of_review").value == "Other - please specify"){
         $("#nature").show();
     }     
     else{

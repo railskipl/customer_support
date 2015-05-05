@@ -10,13 +10,13 @@
     <table cellpadding="0" cellspacing="0" class="grid-head-tbl">
         <tr>
             <td width="14%" align="center">Date</td>
-            <td width="09%" align="center">Review</td>
+            <td width="11%" align="center">Review</td>
             <td width="3%">&nbsp;</td>
-            <td width="18%" align="left">Company</td>
-            <td width="3%">&nbsp;</td>
-            <td width="30%" align="center">Subject</td>
+            <td width="18%" align="center">Company</td>
+            <td width="4%">&nbsp;</td>
+            <td width="29%" align="center">Subject</td>
             <td width="19%" align="right">Comments</td>
-            <td width="5%"></td>
+            <td width="5%">&nbsp;</td>
         </tr>
     </table>
       <div class="content mCustomScrollbar">
@@ -25,14 +25,14 @@
                         <tr>
                             <td width="15%"><%=review.created_at.strftime("%d %b %Y")%></td>
                             <% if review.review_type == 'complaint'%>
-                            <td width="7%" align="center" ><img src="/assets/red_star.png" alt=""></td>
+                            <td width="9%" align="center" ><img src="/assets/red_star.png" alt=""></td>
                             <% else %>
-                            <td width="8%" align="center"><img src="/assets/green_star.png" alt=""></td>
+                            <td width="9%" align="center"><img src="/assets/green_star.png" alt=""></td>
                             <% end %>
-                            <td width="3%">&nbsp;</td>
-                            <td width="24%" class="design"><%= link_to review.try(:company).try(:title),search_reviews_path(company_id: review.company_id) %></td>
                             <td width="2%">&nbsp;</td>
-                            <td width="28%" class="design"><%= link_to review.title.truncate(23),review_path(review)  %></td>
+                            <td width="21%" class="design"><%= link_to review.try(:company).try(:title),search_reviews_path(company_id: review.company_id) %></td>
+                            <td width="2%">&nbsp;</td>
+                            <td width="30%" class="design"><%= link_to review.title.truncate(23),review_path(review)  %></td>
                             <td width="19%">
                               <table class="comment-tbl">
                                 <tr>

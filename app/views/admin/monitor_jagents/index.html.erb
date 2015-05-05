@@ -15,12 +15,12 @@
 	</tr>
 	</thead>
 	<tbody>
-	<% @reviews.each.with_index(1) do |review,index| %>
+	<% @myreviews.each.with_index(1) do |review,index| %>
 	<tr>
 		<td><%= index %></td>
 		<td><%= link_to review.ticket_number ,edit_admin_review_path(review.id) rescue nil%></td>
 		<td><%= review.jagent.preferred_alias rescue nil%></td>
-		<td><%= review.agent == current_user ? "You" : mon.review.agent.try(:preferred_alias) %></td>
+		<td><%= review.agent == current_user ? "You" : review.agent.try(:preferred_alias) %></td>
 		<td><%= review.monitor_jagent.ticked_closed_by_jagent? ? "Yes" : "No" rescue nil%></td>
 		<td><%= review.monitor_jagent.assignee_modified? ? "Yes" : "No" rescue nil%></td>
 		<td><%= review.monitor_jagent.assign_modified? ? "Yes" : "No" rescue nil%></td>
@@ -45,7 +45,7 @@
 		<th>Published By</th>
 		<th>Status</th>
 		<th>Comment Status</th>
-		<th>Conversion</th>
+		<th>Conversion Voted</th>
 		<th>Date</th>
 		<th>Time</th>
 	</tr>

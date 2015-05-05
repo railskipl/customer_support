@@ -1027,7 +1027,7 @@ textarea, input,select { outline: none; }
 .cmp-head{font-size:24px;color:#fbaf3f;font-family:andalus;float:left;padding:0px;margin:32px 0px 0px 20px;}
 .cmp-head span{color:#ff0000;}
 
-.drp-select1{width:198px;color:#696969 !important; height:29px; background:#e6e6e6; border:none; box-shadow: 0 3px 2px -1px #dadada;}
+.drp-select1{font-family: corbel;font-size:13px;width:198px;color:#696969 !important; height:29px; background:#e6e6e6; border:none; box-shadow: 0 3px 2px -1px #dadada;}
 .drp-select2{width:139px;color:#696969 !important;}
 .drp-select3{width:90px;color:#696969 !important; height:29px; background:#dadada; border:none; box-shadow: 0 3px 2px -1px #dadada;}
 
@@ -1446,17 +1446,17 @@ background:url(../assets/two-arrows.png) no-repeat 15px bottom ;
 
 .bg-imagenew
 {
-background:url(../assets/small-green_star.png) no-repeat 60px bottom ; 
+background:url(../assets/small-green_star.png) no-repeat 70px bottom ; 
 	
 }
 .bg-image1new
 {
-background:url(../assets/small-red_star.png) no-repeat 60px bottom ; 
+background:url(../assets/small-red_star.png) no-repeat 70px bottom ; 
 	
 }
 .bg-image2new
 {
-background:url(../assets/two-arrows.png) no-repeat 25px bottom ; 
+background:url(../assets/two-arrows.png) no-repeat 30px bottom ; 
 	
 }
 /*----------------my review end----------*/
@@ -1812,7 +1812,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9bc38', end
 
 #main-wrapper{margin:0px auto;padding:0px;width:700px;}
 #header-area{padding:25px 0px 0px;width:700px;height:101px;}
-#response-menu{width:700px;height:37px;margin-bottom:60px;}
+#response-menu{width:700px;height:37px;margin-bottom:60px;overflow: visible !important;}
 #content-area{margin:0px;padding:0px;width:700px;min-height:300px;}
 .section-one{margin:0px;padding:0px;width:700px;min-height:400px;float:left;}
 .reports{margin:0px 0px 2px;padding:0px;width:700px;min-height:200px;}

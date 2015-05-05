@@ -29,7 +29,7 @@
                 <div class="clear"></div>
                 <div class="row-profile">
                     <div class="login-field-box3 row-left">
-                       <div class="text-box3">Email*</div>
+                       <div class="text-box3">Email *</div>
                        <%= text_field_tag @user.email, @user.email,:class =>"field3",:disabled => true %>
                     </div>
                     <div class="login-field-box3 row-right">
@@ -49,7 +49,7 @@
                         <input type="password" class="auto-field3" name="">
                     </div>
                     <div class="login-field-box3 row-right">
-                        <div class="text-box3">Confirm Password*</div>
+                        <div class="text-box3">Confirm Password *</div>
                         <input type="password" class="auto-field3" name="">
                     </div>
                 </div>
@@ -69,7 +69,11 @@
                     </div>
                     <div class="login-field-box3 row-right">
                         <div class="text-box3">DOB</div>
+                        <% if @user.dob.nil? %>
+                        <%= text_field_tag @user.dob,"",:class =>"field3",:disabled => true  rescue nil %>
+                        <% else %>
                         <%= text_field_tag @user.dob, @user.dob.strftime("%d/%m/%Y"),:class =>"field3",:disabled => true  rescue nil %>
+                        <% end %>
                     </div>
                 </div>
                 <div class="clear"></div>

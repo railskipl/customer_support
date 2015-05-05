@@ -12,7 +12,7 @@
   <% if comment.ispublished == false%>
     <%= form_for([:admin, @review, comment]) do |f| %>
       <% if current_user.role == "jagent" %>
-        <% if @review.monitor_jagent.comment_status == "Pending" %>
+        <% if comment.notification.comment_status == "Pending" %>
           <%= f.submit 'Save', class: "btn btn-primary" %>    
           <%= link_to "Modify Comment" ,edit_admin_review_comment_path(:review_id => @review.id, :id => comment.id ) , :class => "btn btn-primary" %>
         <% end %>

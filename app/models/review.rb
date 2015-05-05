@@ -19,7 +19,7 @@ class Review < ActiveRecord::Base
   scope :archived, -> { where(archive: true) }
   scope :unarchived, -> { where(archive: false).order(id: :desc) }
   scope :unpublished, -> { where(ispublished: false).order(id: :desc) }
-  scope :within_range, -> (start_date, end_date) { where("created_at >= ? AND created_at <= ?", start_date, end_date) unless start_date.blank? and end_date.blank? }
+  scope :within_range, -> (start_date, end_date) { where("Date(created_at) >= ? AND Date(created_at) <= ?", start_date, end_date) unless start_date.blank? and end_date.blank? }
   scope :by_industry, -> (industry_id) { where("industry_id = ?", industry_id)  unless industry_id.blank? }
   scope :by_town, -> (town_id) { where("town_id = ?", town_id) unless town_id.blank? }
   scope :by_company, -> (company_id) { where("company_id = ?", company_id) unless company_id.blank? }

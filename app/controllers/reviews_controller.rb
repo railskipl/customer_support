@@ -41,6 +41,7 @@ class ReviewsController < ApplicationController
       redirect_to admin_index_path
     else
       @page = Page.find_by_slug("how-to-write-good-review")
+      @nature_of_reviews = NatureOfReview.where("review_type = ?",params[:review_type]) if params[:review_type].present?
       if params[:id].present?
        @review = Review.find(params[:id])
        @companies = Industry.find(@review.industry_id).companies.order(:title)
@@ -114,6 +115,7 @@ class ReviewsController < ApplicationController
     min = params["review"]["datetime(5i)"]
     
     t = DateTime.new(dt.year, dt.month, dt.day, hr.to_i, min.to_i,0)
+    nature = params[:nature] if params[:nature].present?
     kenyan_time = Time.now.utc + 3.hour
     industry = params[:other_type].to_s
     company  = params[:txt_review_company_id].to_s
@@ -124,15 +126,20 @@ class ReviewsController < ApplicationController
     current_user.present? ? @review.user_id = current_user.id : @review.guest_token = generate_token
 
     if t > kenyan_time
+      @nature = nature if params[:nature].present?
       @companies = Industry.find(@review.industry_id).companies.order(:title)
       @towns = Company.find(@review.company_id).towns.order(:title).uniq!
       addresses = Address.find_all_by_town_id_and_company_id(@review.town_id,@review.company_id)
       @locations = addresses.map {|a| a.location}
-      @locations.sort_by { |k| k["value"] }
+      @locations = @locations.sort_by { |k| k["value"] }
       @locations.uniq!
+      @nature_of_reviews = NatureOfReview.where("review_type = ?",@review.review_type)
       flash[:notice] = "Please select past date"
       render :new
     else
+      if nature.present?
+        @review.nature_of_review = nature
+      end
       if (industry.present?)
         industry_db = Industry.find_or_create_by(:title => industry)
         @review.industry_id = industry_db.id
@@ -169,15 +176,18 @@ class ReviewsController < ApplicationController
             redirect_to new_user_session_url(:guest_token => @review.guest_token)
           end
         else
+          @nature_of_reviews = NatureOfReview.where("review_type = ?",@review.review_type)
           render :new
         end
       else
+      @nature = nature if params[:nature].present?
       @companies = Industry.find(@review.industry_id).companies.order(:title)
       @towns = Company.find(@review.company_id).towns.order(:title).uniq!
       addresses = Address.find_all_by_town_id_and_company_id(@review.town_id,@review.company_id)
       @locations = addresses.map {|a| a.location}
-      @locations.sort_by { |k| k["value"] }
+      @locations = @locations.sort_by { |k| k["value"] }
       @locations.uniq!
+       @nature_of_reviews = NatureOfReview.where("review_type = ?",@review.review_type)
         flash.now[:alert] = "There was an error with the recaptcha code below. Please re-enter the code."      
         flash.delete :recaptcha_error
         render :new
@@ -234,9 +244,7 @@ class ReviewsController < ApplicationController
 		@companies = []
 		@towns = []
 		@locations = []
-		@nature_of_reviews = NatureOfReview.all
-		@nature_of_reviews = NatureOfReview.where("review_type = ?",params[:review_type]) if params[:review_type].present?
-	end
+  end
 
 	def review_params
       params.require(:review).permit(:title, :industry_id, :company_id, :date, :town_id,:datetime, 

@@ -40,7 +40,7 @@
                 
                 <div class="login-field-box">
                     <div class="text-box1">Incident Date *</div>
-                    <%= f.text_field :date , :id => "datepicker1",required: true ,:class => "drp-select1" ,:placeholder => "Incident Date"%>
+                    <%= f.text_field :date ,:value => @review.date.strftime("%d-%m-%Y") ,:id => "datepicker1",required: true ,:class => "drp-select1" ,:placeholder => "Incident Date"%>
                 </div>
                 <div class="clear"></div>
                 

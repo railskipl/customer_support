@@ -70,7 +70,7 @@
                     <div class="login-field-box3 row-right">
                         <div class="text-box3">DOB</div>
                         <% if @user.dob.nil? %>
-                        <%= text_field_tag @user.dob,:class =>"field3",:disabled => true  rescue nil %>
+                        <%= text_field_tag @user.dob,"",:class =>"field3",:disabled => true  rescue nil %>
                         <% else %>
                         <%= text_field_tag @user.dob, @user.dob.strftime("%d/%m/%Y"),:class =>"field3",:disabled => true  rescue nil %>
                         <% end %>

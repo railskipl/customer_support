@@ -32,4 +32,5 @@ gem 'execjs'
 gem 'therubyracer'
 gem 'delayed_job_active_record'
 gem "devise-async"
+gem 'daemons'
 # gem "bullet", :group => "development"

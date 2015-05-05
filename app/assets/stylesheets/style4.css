@@ -1027,7 +1027,7 @@ textarea, input,select { outline: none; }
 .cmp-head{font-size:24px;color:#fbaf3f;font-family:andalus;float:left;padding:0px;margin:32px 0px 0px 20px;}
 .cmp-head span{color:#ff0000;}
 
-.drp-select1{width:198px;color:#696969 !important; height:29px; background:#e6e6e6; border:none; box-shadow: 0 3px 2px -1px #dadada;}
+.drp-select1{font-family: corbel;font-size:13px;width:198px;color:#696969 !important; height:29px; background:#e6e6e6; border:none; box-shadow: 0 3px 2px -1px #dadada;}
 .drp-select2{width:139px;color:#696969 !important;}
 .drp-select3{width:90px;color:#696969 !important; height:29px; background:#dadada; border:none; box-shadow: 0 3px 2px -1px #dadada;}
 

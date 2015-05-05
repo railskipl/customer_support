@@ -241,7 +241,7 @@ background-color:#FC0; font-size: 33px;
             <div class="row-reg">
               <div class="login-field-box row-left">
                 <div class="text-box1">Security Question *</div>
-                <%= f.select :secret_question, [ ["What was your childhood nickname?", "What was your childhood nickname?"], ["In what city or town was your first job?", "In what city or town was your first job?"],["What is your mother's maiden name?" , "What is your mother's maiden name?"] ], {:prompt => "Select Question"},:required => true,:class=>"field1 select_box_custom" %>
+                <%= f.select :secret_question, [ ["What is your favourite colour?", "What is your favourite colour?"],["What is your mother's maiden name?" , "What is your mother's maiden name?"], ["What is the name of the Hospital you were born in?", "What is the name of the Hospital you were born in?"] ], {:prompt => "Select Question"},:required => true,:class=>"field1 select_box_custom" %>
               </div>
               <div class="login-field-box row-right">
                 <div class="text-box1">&nbsp;</div>

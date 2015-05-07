@@ -49,7 +49,7 @@ class ReviewsController < ApplicationController
 
        addresses = Address.find_all_by_town_id_and_company_id(@review.town_id,@review.company_id)
        @locations = addresses.map {|a| a.location}
-       @locations.sort_by { |k| k["value"] }
+       @locations = @locations.sort_by { |k| k["value"] }
        @locations.uniq!
       else
   		 @review = Review.new
@@ -224,7 +224,7 @@ class ReviewsController < ApplicationController
     if params[:id].present? and params[:company_id].present?
       addresses = Address.find_all_by_town_id_and_company_id(params[:id],params[:company_id])
       @locations = addresses.map {|a| a.location}
-      @locations.sort_by { |k| k["value"] }
+      @locations = @locations.sort_by { |k| k["value"] }
       @locations.uniq!
     else
       @locations = []

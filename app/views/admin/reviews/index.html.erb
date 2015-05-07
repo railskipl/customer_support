@@ -125,6 +125,7 @@ jQuery(document).ready(function() {
       <th>Review Assigned</th>
       <th>Assignee</th>
       <th>Date</th>
+      <th>Status</th>
       <th>Action</th>
     </tr>
   </thead>
@@ -137,6 +138,7 @@ jQuery(document).ready(function() {
         <td><%=review.jagent.preferred_alias rescue nil %></td>
         <td><%=review.agent.preferred_alias rescue nil %></td>
         <td><%= review.created_at.strftime("%d %b %y %H:%M") %></td>
+        <td><%=review.monitor_jagent.status rescue nil %></td>
         <td>
           <%unless review.ispublished || review.archive %>
             <%= link_to 'Edit', edit_admin_review_path(review) , class: "btn btn-primary" if can? :edit, Review%>

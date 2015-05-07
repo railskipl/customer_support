@@ -49,7 +49,7 @@ class ReviewsController < ApplicationController
 
        addresses = Address.find_all_by_town_id_and_company_id(@review.town_id,@review.company_id)
        @locations = addresses.map {|a| a.location}
-       @locations = @locations.sort_by { |k| k["value"] }
+       @locations = @locations.sort_by { |k| k["title"] }
        @locations.uniq!
       else
   		 @review = Review.new
@@ -131,7 +131,7 @@ class ReviewsController < ApplicationController
       @towns = Company.find(@review.company_id).towns.order(:title).uniq!
       addresses = Address.find_all_by_town_id_and_company_id(@review.town_id,@review.company_id)
       @locations = addresses.map {|a| a.location}
-      @locations = @locations.sort_by { |k| k["value"] }
+      @locations = @locations.sort_by { |k| k["title"] }
       @locations.uniq!
       @nature_of_reviews = NatureOfReview.where("review_type = ?",@review.review_type)
       flash[:notice] = "Please select past date"
@@ -188,7 +188,7 @@ class ReviewsController < ApplicationController
       @towns = Company.find(@review.company_id).towns.order(:title).uniq!
       addresses = Address.find_all_by_town_id_and_company_id(@review.town_id,@review.company_id)
       @locations = addresses.map {|a| a.location}
-      @locations = @locations.sort_by { |k| k["value"] }
+      @locations = @locations.sort_by { |k| k["title"] }
       @locations.uniq!
        @nature_of_reviews = NatureOfReview.where("review_type = ?",@review.review_type)
         flash.now[:alert] = "There was an error with the recaptcha code below. Please re-enter the code."      
@@ -224,7 +224,7 @@ class ReviewsController < ApplicationController
     if params[:id].present? and params[:company_id].present?
       addresses = Address.find_all_by_town_id_and_company_id(params[:id],params[:company_id])
       @locations = addresses.map {|a| a.location}
-      @locations = @locations.sort_by { |k| k["value"] }
+      @locations = @locations.sort_by { |k| k["title"] }
       @locations.uniq!
     else
       @locations = []

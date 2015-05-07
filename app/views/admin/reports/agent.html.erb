@@ -104,7 +104,7 @@
 		<tr>
 			<td><%= i+1%></td>
       <td><%= @user.role rescue nil%></td>
-      <td><%= @user.created_at.strftime("%d/%m%y") rescue nil%></td>
+      <td><%= @user.created_at.strftime("%d/%m/%y") rescue nil%></td>
       <td><%= @user.email rescue nil%></td>
 			<td><%= @user.first_name rescue nil%></td>
 			<td><%= @user.last_name rescue nil%></td>

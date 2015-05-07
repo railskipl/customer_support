@@ -323,8 +323,8 @@ layout :custom_layout
  def reviews_processed
     if params[:subaction] == "reviews_processed"
       user = User.find(params[:report][:agent]) rescue ""
-      @start_from = params[:report][:start_date] rescue ""
-      @start_to = params[:report][:end_date] rescue ""
+      @start_from = Date.parse(params[:report][:start_date])
+      @start_to = Date.parse(params[:report][:end_date] )
       if @start_from > @start_to
         flash[:notice] = "Start date cannot be greater than End date."
       else

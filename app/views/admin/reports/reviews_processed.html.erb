@@ -42,7 +42,7 @@
       			Admin
       			<% end %>
       		</td>
-      		<td><%= @user.created_at.strftime("%d/%m%y") rescue nil%></td>
+      		<td><%= @user.created_at.strftime("%d/%m/%y") rescue nil%></td>
 			<td><%= @user.first_name rescue nil%></td>
 			<td><%= @user.last_name rescue nil%></td>
 			<td><%= @user.preferred_alias rescue nil%></td>

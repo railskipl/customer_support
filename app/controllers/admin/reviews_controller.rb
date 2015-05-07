@@ -90,6 +90,10 @@ class Admin::ReviewsController < AdminController
       @review.published_date = DateTime.now
       @review.archive = false
       @review.last_published_agent_id = current_user.id
+      t = TrackTime.find_by_review_id(@review.id)
+      if t.nil?
+        TrackTime.create(:review_id => @review.id,:date_proposed => Time.now ,:date_complete => Time.now,:user_id => current_user.id)
+      end
       if @review.jagent_id.present?
          m = MonitorJagent.find_or_create_by_review_id(@review.id)
          m.status = "Published"

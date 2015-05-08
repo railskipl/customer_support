@@ -6,6 +6,8 @@
 		<th>Review</th> 
 		<th>Assignee</th>
 		<th>Ticket assigned to</th> 
+		<th>Last Assignee</th>
+		<th>Last Ticket assigned to</th> 
 		<th>Ticket Closed By Agent</th>
 		<th>Modified Review By Assignee</th>
 		<th>Modified Review By Assigned Agent</th>
@@ -26,6 +28,8 @@
 		<td><%= link_to mon.review.ticket_number ,edit_admin_review_path(mon.review.id) rescue nil%></td>
 		<td><%= mon.review.agent.try(:preferred_alias) %></td>
 		<td><%= mon.review.jagent.try(:preferred_alias) %></td>
+		<td><%= mon.review.old_agent.try(:preferred_alias) %></td>
+		<td><%= mon.review.old_jagent.try(:preferred_alias) %></td>
 		<td><%= mon.ticked_closed_by_jagent? ? "Yes" : "No" rescue nil%></td>
 		<td><%= mon.assignee_modified? ? "Yes" : "No" rescue nil%></td>
 		<td><%= mon.assign_modified? ? "Yes" : "No" rescue nil%></td>

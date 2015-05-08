@@ -116,6 +116,10 @@ class CompaniesController < ApplicationController
 		@section = 'polls-bloopers'
 		@sub_action = 'polls-bloopers'
 		@polls = Poll.all
+    review = Review.new(review_params)
+    if review.from_date && review.to_date
+      @polls = Poll.where("Date(created_at) >= ? AND Date(created_at) <= ?",review.from_date.to_date,review.to_date.to_date)
+    end
 	end
 	
 	private

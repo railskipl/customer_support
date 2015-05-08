@@ -124,6 +124,8 @@ jQuery(document).ready(function() {
       <th>Ticket Number</th>
       <th>Review Assigned</th>
       <th>Assignee</th>
+      <th>Last Assignee</th>
+      <th>Last Ticket assigned to</th> 
       <th>Date</th>
       <th>Status</th>
       <th>Action</th>
@@ -134,9 +136,11 @@ jQuery(document).ready(function() {
     <% @reareviews.each do |review| %>
       <tr>
         <td><%= check_box_tag "review_ids[]", review.id, false,:style => "opacity:0.67" %></td>
-        <td><%=review.ticket_number rescue nil %></td>
-        <td><%=review.jagent.preferred_alias rescue nil %></td>
-        <td><%=review.agent.preferred_alias rescue nil %></td>
+        <td><%= review.ticket_number rescue nil %></td>
+        <td><%= review.jagent.preferred_alias rescue nil %></td>
+        <td><%= review.agent.preferred_alias rescue nil %></td>
+        <td><%= review.old_agent.try(:preferred_alias) %></td>
+        <td><%= review.old_jagent.try(:preferred_alias) %></td>
         <td><%= review.created_at.strftime("%d %b %y %H:%M") %></td>
         <td><%=review.monitor_jagent.status rescue nil %></td>
         <td>

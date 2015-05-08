@@ -1,0 +1,39 @@
+   <%= stylesheet_link_tag    "jquery.ui.datepicker" %>
+ <div class="log-head2new">Filter </div>
+               <div class="form-box3new">
+        <% @review = Review.new %>
+		<%= form_for(@review, :url => polls_bloopers_path(@review)) do |f|%>	
+              
+                <div class="login-field-box1">
+                         <div class="text-box1">Date – From</div>
+                  <%= f.text_field :from_date, :id => "datepicker1",:format => "dd-mm-yy" ,:class => "newfield field1 rew1" %>
+                <div class="text-box1">Date – To</div>
+                  <%= f.text_field :to_date, :id => "datepicker2", :class => "newfield field1 rew1" %>
+                      <%= f.submit "Search", :class => "fleft btn2"%>
+           
+                </div>
+                
+                
+                
+            	<div class="clear"></div>
+            	<% end %>
+            </div>
+
+
+<style type="text/css">
+.field2 {
+    background: none repeat scroll 0 0 #e6e6e6;
+    border: 0 solid #dddcdc;
+    box-shadow: 0 4px 2px -1px #dadada;
+    color: #696969;
+    float: left;
+    font-family: corbel;
+    font-size: 13px;
+    height: 25px;
+    margin: 0;
+    padding: 2px 5px;
+    width: 170px;
+}
+</style>
+
+

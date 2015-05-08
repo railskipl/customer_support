@@ -38,6 +38,7 @@ class Admin::ReviewsController < AdminController
         reviews.each do |r|
           a = Review.find(r)
           a.old_jagent_id = a.jagent_id
+          a.old_agent_id = a.agent_id
           @track_time = TrackTime.where('review_id = ?',r).first
           if @track_time.present?
             @track_time.update(:review_id => r,:date_proposed => params[:date1], :user_id => params[:user_id],:date_complete => nil)
@@ -226,7 +227,7 @@ class Admin::ReviewsController < AdminController
   end
 
   def review_params
-    params.require(:review).permit(:ispublished, :archive, :title, :industry_id, :company_id, :date, :town_id,:datetime, :location_id, :personal_responsible, :nature_of_review,:message,:account_details,:ticket_number,:user_id, :token_number,:review_type,:file,:is_modified, :modified_review,:notes)
+    params.require(:review).permit(:ispublished, :old_agent_id,:archive, :title, :industry_id, :company_id, :date, :town_id,:datetime, :location_id, :personal_responsible, :nature_of_review,:message,:account_details,:ticket_number,:user_id, :token_number,:review_type,:file,:is_modified, :modified_review,:notes)
   end
 
   def default_tab

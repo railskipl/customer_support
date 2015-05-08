@@ -17,7 +17,7 @@ class Admin::PollsController < AdminController
 
   def new
     @poll = Poll.new
-    4.times { @poll.options.build }
+    5.times { @poll.options.build }
   end
 
   def edit

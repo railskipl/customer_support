@@ -6,6 +6,7 @@ class Review < ActiveRecord::Base
   belongs_to :user
   belongs_to :jagent, :class_name => "User"
   belongs_to :agent, :class_name => "User"
+  belongs_to :old_agent, :class_name => "User"
   belongs_to :old_jagent, :class_name => "User"
   belongs_to :last_published_agent, :class_name => "User"
   has_many   :comments

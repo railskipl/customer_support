@@ -10,7 +10,7 @@ class Admin::ReviewsController < AdminController
      else
        # @reviews = Review.where("(jagent_id = ? or old_jagent_id = ?) and published_date is null",current_user.id,current_user.id).unarchived.where("user_id is not null").order("id desc")
      end
-    @areviews = Review.where("published_date is null and jagent_id is null and user_id is not null").order("id desc")
+    @areviews = Review.unarchived.where("published_date is null and jagent_id is null and user_id is not null").order("id desc")
     @reareviews = Review.unarchived.where("jagent_id is not null and user_id is not null").order("id desc")
 	end
 

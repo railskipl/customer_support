@@ -475,7 +475,7 @@ search-btn
 	margin:0px;
 	padding:9px 0px 2px 18px;
 	width:203px;
-	height:25px;
+	height:17.5px;
 	border:#e5e5e5 1px solid;
 	border-bottom:0px;
 	background:#ffffff;
@@ -483,10 +483,10 @@ search-btn
 }
 .right-link-last
 {
-	margin:0px 0px 20px;
+	margin:0px 0px 12px;
 	padding:9px 0px 2px 18px;
 	width:203px;
-	height:25px;
+	height:17.5px;
 	border:#e5e5e5 1px solid;
 	background:#ffffff;
 	color:#696969;

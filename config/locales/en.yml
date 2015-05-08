@@ -40,4 +40,4 @@ en:
             preferred_alias:
               blank: "is already taken. Please input another alias name.."
             email:
-              taken: "A user with this email address is already registered on Xemaxema.com. Please verify if you are the account holder. If not, Please contact us with from our Contact Us page."
+              taken: "A user with this email address is already registered on Xemaxema.com. Please verify if you are the account holder. If not, please contact us with from our Contact Us page."

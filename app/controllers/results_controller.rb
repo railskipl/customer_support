@@ -12,7 +12,7 @@ class ResultsController < ApplicationController
 		end
 		
     if cookies["#{poll_title}"].present?
-      redirect_to root_path, notice: 'You have Already Voted.'
+      redirect_to root_path, notice: 'You have already voted.'
       return
     end
 		
@@ -25,7 +25,7 @@ class ResultsController < ApplicationController
 
 		  if @result.save
 		      cookies["#{poll_title}"] = true
-		      redirect_to poll_path(@result.poll_id), notice: 'Your vote have successfully Submitted.'
+		      redirect_to poll_path(@result.poll_id), notice: 'Your vote has been successfully submitted.'
 		      return
 		  else
 		      redirect_to root_path, notice: 'Please select any option for survery.'

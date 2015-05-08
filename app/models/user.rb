@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   has_many :jagent_notifications, :class_name => "Notification", :foreign_key => 'receiver_jagent_id'
   
   before_save :title_case_name
-  validates :preferred_alias, uniqueness: {message: " is already taken. Please input another alias name", case_sensitive: false }
+  validates :preferred_alias, uniqueness: {message: " is already taken. Please input another alias name.", case_sensitive: false }
   validates :password, confirmation: true
   validates :first_name, :last_name, length: { maximum: 35 }
   validates :preferred_alias, length: { maximum: 20 }

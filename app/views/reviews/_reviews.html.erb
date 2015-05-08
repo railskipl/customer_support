@@ -24,7 +24,7 @@
                             <td width="9%" align="center"><img src="/assets/green_star.png" alt=""></td>
                             <% end %>
                             <td width="2%">&nbsp;</td>
-                            <td width="20%" class="design"><%= link_to review.try(:company).try(:title),search_reviews_path(company_id: review.company_id) %></td>
+                            <td width="20%" class="design"><%= link_to review.try(:company).try(:title).truncate(23),search_reviews_path(company_id: review.company_id) %></td>
                             <td width="2%">&nbsp;</td>
                             <td width="30%" class="design"><%= link_to review.title.truncate(23),review_path(review)  %></td>
                             <td width="21%">

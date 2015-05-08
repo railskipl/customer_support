@@ -13,7 +13,9 @@
                  <div class="text-box1">Company</div>
  			<%= f.collection_select :company_id, @companies, :id, :title,  {:include_blank=>"Select Company"}, :rel => "/company/towns_by_company","id"=>"review_company_id", :class=>"field2 slt"%>
                 </div>
-                 
+         
+               <div class="login-field-box1">
+                
                 	<%= f.submit "Search", :class => "fleft btn2"%>
            
                 </div>

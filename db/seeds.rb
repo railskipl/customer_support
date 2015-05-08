@@ -6,7 +6,7 @@
 # #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 # #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-# user = User.new(first_name: 'admin',last_name: 'admin',email: 'admin@xemasupport.com',password: 'password',role: 'admin',confirmed_at: '2014-04-10 10:19:33.008972')
+# user = User.new(first_name: 'admin',last_name: 'admin',email: 'agent@xemaxema.com',password: 'password',role: 'admin',confirmed_at: '2014-04-10 10:19:33.008972')
 # user.save(:validate=>false)
 
 # NatureOfReview.delete_all

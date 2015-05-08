@@ -13,21 +13,9 @@
                  <div class="text-box1">Company</div>
  			<%= f.collection_select :company_id, @companies, :id, :title,  {:include_blank=>"Select Company"}, :rel => "/company/towns_by_company","id"=>"review_company_id", :class=>"field2 slt"%>
                 </div>
-                 <div class="login-field-box1">
-                 <div class="text-box1">Town</div>
-
-                 <%= f.collection_select :town_id, @towns, :id, :title, {:include_blank=>"Select Town"}, :rel => "/town/locations_by_town_and_company","id"=>"review_town_id", :class=>"field2 slt"%>
-                </div>
-                 <div class="login-field-box1">
-                 <div class="text-box1">Location</div>
-
-               <%= f.collection_select :location_id, @locations ,:id ,:title, {:include_blank=>"Select Location"},:class=>"field2 slt" %>
-                </div>
+                 
                <div class="login-field-box1">
-                <div class="text-box1">Date – From</div>
-                	<%= f.text_field :from_date, :id => "datepicker1",:format => "dd-mm-yy" ,:class => "newfield field1" %>
-                <div class="text-box1">Date – To</div>
-                	<%= f.text_field :to_date, :id => "datepicker2", :class => "newfield field1" %>
+           
                 	<%= f.submit "Search", :class => "fleft btn2"%>
            
                 </div>

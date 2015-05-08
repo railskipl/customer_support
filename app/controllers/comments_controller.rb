@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
         @review.monitor_jagent.save
       end
       # ReviewMailer.delay.comment_mail(@review,@comment)
-      redirect_to [@review], :notice => 'Comment submitted.Your comment has been successfully submitted. However, it will only be published once it has been vetted by our team against our terms and conditions.You will receive an email confirming this.'
+      redirect_to [@review], :notice => 'Comment submitted.Your comment has been successfully submitted. However, it will only be published once it has been vetted by our team against our Terms and Conditions.You will receive an email confirming this.'
     else
       redirect_to [@review], :alert => 'Unable to add comment'
     end

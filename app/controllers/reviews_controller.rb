@@ -93,7 +93,7 @@ class ReviewsController < ApplicationController
             ReviewMailer.delay.agent_mail(@review)
             user = User.find(current_user.id) rescue nil
             user.update_column(:guest_token, nil) rescue nil
-            flash[:notice] = "Your review successfully submitted."
+            flash[:notice] = "Your review has been successfully submitted."
             redirect_to root_path
           else
             render :new

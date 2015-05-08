@@ -15,7 +15,7 @@ class ContactUsController < ApplicationController
         if @contact_u.save
           Notifier.delay.contact(@contact_u)
           Notifier.delay.contact_user(@contact_u)
-          redirect_to contact_us_url, notice: 'Query submitted. Your query has been submitted successfully and we will be in touch shortly. Thank you..'
+          redirect_to contact_us_url, notice: 'Your query has been submitted successfully and we will be in touch shortly. Thank you.'
         else
           render action: 'new' 
         end

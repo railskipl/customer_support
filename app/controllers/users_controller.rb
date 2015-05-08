@@ -24,7 +24,7 @@ class UsersController < ApplicationController
     end
     if verify_recaptcha
       if @user.update(user_params)
-        flash[:notice] = "Your account has sucessfully updated."
+        flash[:notice] = "Your account has been sucessfully updated."
         sign_in @user , :bypass => true
         redirect_to profile_url
       else

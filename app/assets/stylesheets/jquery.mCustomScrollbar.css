@@ -111,7 +111,7 @@ y-axis
 	.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar{ /* the dragger element */
 		position: relative;
 		width: 4px;
-		height: 20%;
+		height: 100%;
 		margin: 0 auto;
 		-webkit-border-radius: 25px; -moz-border-radius: 16px; border-radius: 16px;
 		text-align: center;

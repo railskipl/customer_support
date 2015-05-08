@@ -7,6 +7,7 @@ class PagesController < ApplicationController
 			@active_title1 = @page.slug == 'csr' ? "CSR" : @page.slug.titlecase
 			@action = @page.name
 			@sub_action = @page.slug
+		    @bc = @page.title
 			@pages = Page.find_all_by_name(@page.name)
 			render @page.template_name.present? ? @page.template_name : 'index'
 		else

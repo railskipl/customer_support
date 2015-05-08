@@ -35,6 +35,12 @@ class Admin::ResourcesController < AdminController
 		redirect_to admin_resources_path
 	end
 
+  def destroy
+    @resource.destroy
+    redirect_to admin_resources_path
+  end
+
+
   private
     # Never trust parameters from the scary internet, only allow the white list through.
     def resource_params

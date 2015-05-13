@@ -1,6 +1,6 @@
 <%= render 'tab' %>
 </br>
-<strong>Download Data for 12 Months period</strong></br></br>
+<strong>Download Data for 12 Months period (From <%= (1.year.ago).strftime('%d-%m-%Y')%>  to  <%= (Date.today).strftime('%d-%m-%Y')%>)</strong></br></br>
 <%= link_to image_tag('/assets/excel.png', :border=>"0", :align=>"absmiddle") + "Summary of reviews Excel", customer_record_admin_reports_path%><br/>
 <%= link_to image_tag('/assets/excel.png', :border=>"0", :align=>"absmiddle") + "Industry conversion stats", conversion_industry_admin_reports_path(params.merge(format: "xls")), :method=> :get%><br/>
 <%= link_to image_tag('/assets/excel.png', :border=>"0", :align=>"absmiddle") + "Supplier conversion stats", conversion_company_admin_reports_path(params.merge(format: "xls")), :method=> :get%><br/>
@@ -124,7 +124,7 @@
 
 
 
-<h1>Totals – over a 12 month period</h1>
+<h1>Totals – over a 12 month period (From <%= (1.year.ago).strftime('%d-%m-%Y')%>  to  <%= (Date.today).strftime('%d-%m-%Y')%>)</h1>
 <%= link_to "Download Excel",admin_total_reviews_path(params.merge(format: "xls")), :method=> :get, :class => "btn btn-primary"  %>
 <table id="total_compliment">
 

@@ -46,7 +46,7 @@ class ReviewsController < ApplicationController
        @review = Review.find(params[:id])
        @companies = Industry.find(@review.industry_id).companies.order(:title)
        @towns = Company.find(@review.company_id).towns.order(:title).uniq!
-
+       @file = @review.file rescue nil
        addresses = Address.find_all_by_town_id_and_company_id(@review.town_id,@review.company_id)
        @locations = addresses.map {|a| a.location}
        @locations = @locations.sort_by { |k| k["title"] }
@@ -72,7 +72,12 @@ class ReviewsController < ApplicationController
   end
 
   def update
+    # raise params[:review][:file].present?.inspect
     @review = Review.find(params[:id])
+    if params[:review][:file].present?
+      @review.file = params[:review][:file]
+    end
+    # raise @review.file.inspect
     unless params[:review][:guest] == "guest_user"
       if params[:sad]
         @review.review_type = "complaint"
@@ -253,7 +258,7 @@ class ReviewsController < ApplicationController
       params.require(:review).permit(:title, :industry_id, :company_id, :date, :town_id,:datetime, 
                                      :location_id, :personal_responsible, :nature_of_review,:message,
                                      :account_details,:ticket_number,:user_id, :token_number,:review_type,
-                                     :file,:nature,:desired_outcome)
+                                     :file,:nature,:desired_outcome,:file_cache)
   end
 
 	def default_action_tab

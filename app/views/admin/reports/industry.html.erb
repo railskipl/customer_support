@@ -80,7 +80,7 @@
       <%end%>
 </table>
 
-<h4>Industry Totals- 12 month period</h4>
+<h4>Industry Totals- 12 month period(From <%= (1.year.ago).strftime('%d-%m-%Y')%>  to  <%= (Date.today).strftime('%d-%m-%Y')%>)</h4>
 <table id="industry_xls">
 	<thead>
       <tr>
@@ -154,7 +154,7 @@
   </tbody>  
 </table>
 <br/><br/>
-<h2>Conversions – Industry conversion stats (12 Months)</h2>
+<h2>Conversions – Industry conversion stats (12 Months)(From <%= (1.year.ago).strftime('%d-%m-%Y')%>  to  <%= (Date.today).strftime('%d-%m-%Y')%>)</h2>
  <table>
       <%= form_for :report1, :url=> conversion_industry_admin_reports_path, :method => :get do |f| %>
         <h4>Filter Industry conversion Data</h4>

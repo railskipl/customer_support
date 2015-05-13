@@ -26,11 +26,25 @@
 	    <% @track_times.each_with_index.each do |jagent,i|%>
 	      <%@user = User.find(jagent) rescue nil%>
 	      <%if params[:id] == "data_dump"%>
-	         <%@tracks = @user.track_times rescue nil%>
+	         <% if @user.role == "jagent" %>
+	            <%@tracks = @user.track_times rescue nil%>
+	            <%@track_allocated = @tracks %>
+	         <%else%>
+	            <%@track_allocated = @user.track_times.where('date_complete is null') rescue nil%>
+
+                <%@tracks = TrackTime.where('user_id = ? OR direct_user_id = ?',@user.id,@user.id) rescue nil%>
+	         <%end%>
 	      <%else%>
-	        <%@tracks = @user.track_times.where('Date(created_at) >= ? and Date(Date(created_at)) <= ?',@start_from, @start_to) rescue nil%>
+	        <% if @user.role == "jagent" %>
+	          <%@tracks = @user.track_times.where('Date(created_at) >= ? and Date(Date(created_at)) <= ?',@start_from, @start_to) rescue nil%>
+	          <%@track_allocated = @tracks %>
+	        <%else%>
+	          <%@track_allocated = @user.track_times.where('Date(created_at) >= ? and Date(Date(created_at)) <= ? and date_complete is null',@start_from, @start_to) rescue nil%>
+
+	          <%@tracks = TrackTime.where('Date(created_at) >= ? and Date(Date(created_at)) <= ? and user_id = ? OR Date(created_at) >= ? and Date(Date(created_at)) <= ? and direct_user_id = ?',@start_from, @start_to,@user.id,@start_from, @start_to,@user.id) rescue nil%>
+	        <%end%>
 	      <%end%>
-	      <%@processed = @tracks.where('date_complete is not null').count rescue nil%>
+	      <%@processed = @tracks.where('date_complete is not null or direct_processed = ? and direct_user_id = ?',true,@user.id).count rescue nil%>
 		<tr>
 			<td><%= i+1%></td>
       		<td>
@@ -47,7 +61,7 @@
 			<td><%= @user.last_name rescue nil%></td>
 			<td><%= @user.preferred_alias rescue nil%></td>
 			<td><%= @user.email rescue nil%></td>
-			<td><%= @tracks.count rescue nil%></td>
+			<td><%= @track_allocated.count rescue nil%></td>
 			<td><%= @processed%></td>
 		</tr>
 		<%end%>

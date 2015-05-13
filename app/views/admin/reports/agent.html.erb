@@ -79,7 +79,7 @@
   <%end%>
 </table>
 
-<h4>Quantity – Number of reviews processed by each agent (12 months)</h4>
+<h4>Quantity – Number of reviews processed by each agent (12 months)(From <%= (1.year.ago).strftime('%d-%m-%Y')%>  to  <%= (Date.today).strftime('%d-%m-%Y')%>)</h4>
 
 <table id="reviews_processed">
 	<thead>
@@ -99,8 +99,15 @@
 	<tbody>
 	    <% @track_times.each_with_index.each do |jagent,i|%>
 	      <%@user = User.find(jagent) rescue nil%>
-	      <%@tracks = @user.track_times.where('Date(created_at) >= ? and Date(Date(created_at)) <= ?',@start_from, @start_to) rescue nil%>
-	      <%@processed = @tracks.where('date_complete is not null').count rescue nil%>
+	      <% if @user.role == "jagent" %>
+            <%@tracks = @user.track_times.where('Date(created_at) >= ? and Date(Date(created_at)) <= ?',@start_from, @start_to) rescue nil%>
+            <%@track_allocated = @tracks %>
+          <%else%>
+            <%@track_allocated = @user.track_times.where('Date(created_at) >= ? and Date(Date(created_at)) <= ? and date_complete is null',@start_from, @start_to) rescue nil%>
+
+            <%@tracks = TrackTime.where('Date(created_at) >= ? and Date(Date(created_at)) <= ? and user_id = ? OR Date(created_at) >= ? and Date(Date(created_at)) <= ? and direct_user_id = ?',@start_from, @start_to,@user.id,@start_from, @start_to,@user.id) rescue nil%>
+          <%end%>
+	      <%@processed = @tracks.where('date_complete is not null or direct_processed = ? and direct_user_id = ?',true,@user.id).count rescue nil%>
 		<tr>
 			<td><%= i+1%></td>
       <td><%= @user.role rescue nil%></td>
@@ -109,7 +116,7 @@
 			<td><%= @user.first_name rescue nil%></td>
 			<td><%= @user.last_name rescue nil%></td>
 			<td><%= @user.preferred_alias rescue nil%></td>
-			<td><%= @tracks.count rescue nil%></td>
+			<td><%= @track_allocated.count rescue nil%></td>
 			<td><%= @processed%></td>
 		</tr>
 		<%end%>
@@ -133,7 +140,7 @@
     <td><%= button_tag  :submit ,name:"subaction",value: "agent_output",:class => "btn btn btn-primary" %></td>    
   <%end%>
 </table>
-<h4>Accuracy of Agents Output On The Basis Of Reviews (12 months)</h4>
+<h4>Accuracy of Agents Output On The Basis Of Reviews (12 months)(From <%= (1.year.ago).strftime('%d-%m-%Y')%>  to  <%= (Date.today).strftime('%d-%m-%Y')%>)</h4>
 <table id="agent_output">
 	<thead>
 		<tr>
@@ -191,7 +198,7 @@
     <td><%= button_tag  :submit ,name:"subaction",value: "agent_performance",:class => "btn btn btn-primary" %></td>    
   <%end%>
 </table>
-<h4>Agents performance – how many queries they action in a given time (12 months)</h4>
+<h4>Agents performance – how many queries they action in a given time (12 months)(From <%= (1.year.ago).strftime('%d-%m-%Y')%>  to  <%= (Date.today).strftime('%d-%m-%Y')%>)</h4>
 <table id="agent_performance">
 	<thead>
 		<tr>

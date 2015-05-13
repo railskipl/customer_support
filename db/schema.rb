@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150508093805) do
+ActiveRecord::Schema.define(version: 20150512094617) do
 
   create_table "abuse_reports", force: true do |t|
     t.string   "user_email"
@@ -356,6 +356,8 @@ ActiveRecord::Schema.define(version: 20150508093805) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "direct_processed", default: false
+    t.integer  "direct_user_id"
   end
 
   create_table "users", force: true do |t|

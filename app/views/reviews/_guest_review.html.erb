@@ -1,4 +1,4 @@
-<%= form_for(@review) do |f|%>
+<%= form_for @review, :html => {:multipart => true} do |f| %>
 <% if @review.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
@@ -87,7 +87,7 @@
                 
                 <div class="login-field-box">
                     <div class="text-box12" style="font-family:andlso;font-size:15px;">Incident Time</div>
-                 <%= f.time_select :datetime,{},:class=>"field12"%>
+                 <%= f.time_select :datetime,{:default => {:hour => '00', :minute => '00'}},:class=>"field12"%>
                     
                 </div>
                 <div class="clear"></div>
@@ -139,7 +139,7 @@
         <div class="clear"></div>
         <div class="login-field-box4">
                     <div class="text-box1">Desired Outcome *</div>
-                      <%= f.text_area :desired_outcome, "maxlength"=>"1200", "min" => "1","max" => "200", :class=> "text-area4 fr-bt",:required => true, :placeholder=>"What action would you like from the company?"%>
+                      <%= f.text_area :desired_outcome, "maxlength"=>"200", "min" => "1","max" => "200", :class=> "text-area4 fr-bt",:required => true, :placeholder=>"What action would you like from the company?"%>
                     
                 </div>
                    <div class="clear"></div>
@@ -153,8 +153,10 @@
                     <!--<div id='file_browse_wrapper'>
                     <input type='file' id='file_browse' />
                     </div>-->
-                    <%= f.file_field :file %>
+                    <%= f.file_field :file,:value => @review.file_cache %>
+                    <%= f.hidden_field :file_cache %>
                 </div>
+                <strong><b><%if @file.present?%> <%= image_tag(@file, :size => "90x90") rescue nil%> <%end%></b></strong>
                 <div class="clear"></div>
                 <div class="login-field-box">
                     <div class="text-box1">&nbsp;</div>

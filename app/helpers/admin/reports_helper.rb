@@ -31,6 +31,23 @@ module Admin::ReportsHelper
 
 	end
 
+  def nature_of_complaint_common
+    @nature_of_compliments = []
+    NatureOfReview.where("review_type = ?","compliment").pluck(:title).each do |r|
+      @nature_of_compliments << Review.nature_count(r)
+    end
+    @reviews = @nature_of_compliments
+  
+    @nature_of_complaints = []
+    NatureOfReview.where("review_type = ?","complaint").pluck(:title).each do |r|
+      @nature_of_complaints << Review.nature_count(r)
+    end
+    @reviews1 = @nature_of_complaints
+  end 
+
+
+
+
 	def total_reviews_dump
 		#total reviews according to compliment and complaints
 		@compliments = Review.where('user_id is not null and review_type = ?','compliment')  rescue nil
@@ -212,11 +229,13 @@ module Admin::ReportsHelper
         end
       elsif params[:id] == "data_dump"
       	  @industries = Industry.all rescue nil
+          nature_of_complaint_common
           send_data(render_to_string(:template=>"admin/reports/industry_xls.html.erb" ) , :type=>"text/xls",:filename => "industries.xls")
       else
       	  @start_from = 1.year.ago 
    	  	  @start_to =  Date.today 
       	  @industries = Industry.all rescue nil
+          nature_of_complaint_common
       	  send_data(render_to_string(:template=>"admin/reports/industry_xls.html.erb" ) , :type=>"text/xls",:filename => "industries.xls")
       end
    end
@@ -238,11 +257,13 @@ module Admin::ReportsHelper
         end
       elsif params[:id] == "data_dump"
       	  @companies = Company.all rescue nil
+          #nature_of_complaint_common
           send_data(render_to_string(:template=>"admin/reports/company_xls.html.erb" ) , :type=>"text/xls",:filename => "companies.xls")
       else
       	  @companies = Company.all rescue nil
       	  @start_from = 1.year.ago 
    	  	  @start_to =  Date.today 
+          nature_of_complaint_common
       	  send_data(render_to_string(:template=>"admin/reports/company_xls.html.erb" ) , :type=>"text/xls",:filename => "companies.xls")
       end
    end
@@ -254,7 +275,8 @@ module Admin::ReportsHelper
           send_data(render_to_string(:template=>"admin/reports/total_xls.html.erb" ) , :type=>"text/xls",:filename => "total_reviews.xls")
       else
       	  total_reviews
-   	      nature_of_complaints
+          nature_of_complaints
+   	      nature_of_complaint_common
       	  send_data(render_to_string(:template=>"admin/reports/total_xls.html.erb" ) , :type=>"text/xls",:filename => "total_reviews.xls")
       end
    	 #send_data(render_to_string(:template=>"admin/reports/total_xls.html.erb" ) , :type=>"text/xls",:filename => "total_reviews.xls")

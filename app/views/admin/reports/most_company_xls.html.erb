@@ -1,6 +1,7 @@
 <h4>Suppliers that get most complaints/compliments</h4>
 <%if params[:subaction] == "most_company" %>
   <strong>Displaying data for duration <%= params[:report5][:start_date] rescue nil%> to <%= params[:report5][:end_date] rescue nil%>
+<%elsif params[:id] == "data_dump"%>
 <%else%>
   <strong>Displaying data for 12 Months
 <%end%>

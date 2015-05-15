@@ -11,12 +11,12 @@
 	<% @comments.each.with_index(1) do |comment,index| %>
 	<tr>
 		<td><%= index %></td>
-		<td><%= comment.created_at.strftime("%d/%m/%Y") %></td>
-		<td><%= comment.review.ticket_number %></td>
-		<td><%= comment.title.html_safe %></td>
-		<td><%= comment.name %></td>
-		<td><%= comment.email %></td>
-		<td><%= comment.review.company.title %></td>
+		<td><%= comment.created_at.strftime("%d/%m/%Y") rescue nil%></td>
+		<td><%= comment.review.ticket_number rescue nil%></td>
+		<td><%= comment.title.html_safe rescue nil%></td>
+		<td><%= comment.name rescue nil%></td>
+		<td><%= comment.email rescue nil%></td>
+		<td><%= comment.review.company.title rescue nil%></td>
 	</tr>
 	<% end %>
 	

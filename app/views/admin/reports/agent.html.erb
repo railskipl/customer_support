@@ -110,7 +110,7 @@
 	      <%@processed = @tracks.where('date_complete is not null or direct_processed = ? and direct_user_id = ?',true,@user.id).count rescue nil%>
 		<tr>
 			<td><%= i+1%></td>
-      <td><%= @user.role rescue nil%></td>
+      <td><% if @user.role == "jagent" %> JR Agent<%elsif @user.role == "agent"%>SR Agent<%else%>Admin <%end%></td>
       <td><%= @user.created_at.strftime("%d/%m/%y") rescue nil%></td>
       <td><%= @user.email rescue nil%></td>
 			<td><%= @user.first_name rescue nil%></td>

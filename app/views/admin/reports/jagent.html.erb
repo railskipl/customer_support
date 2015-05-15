@@ -23,7 +23,7 @@
 		      <td><%=user.confirmed_at.present? ? 'Confirmed' : 'Pending'%></td>
 		      <td><%=user.preferred_alias rescue nil%></td>
 		    
-		      <td><%=user.role rescue nil%></td>
+		      <td><% if user.role == "jagent" %> JR Agent <%end%></td>
 		       <td><%=user.created_at.strftime("%d/%m/%Y") %></td>
 		    </tr>
 		  <% end %>

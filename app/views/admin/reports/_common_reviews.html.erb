@@ -14,6 +14,7 @@
 				<td><%=review.location.title.titleize rescue nil %></td>
 				<td><%=review.personal_responsible rescue nil %></td>
 				<td><%=review.message rescue nil %></td>
+				<td><%=review.modified_review rescue nil %></td>
 				<td><%=review.desired_outcome.nil? ? "N/A" : review.desired_outcome %></td>
 				<td><%=review.user.first_name rescue nil %> <%=review.user.last_name rescue nil %></td>
 				<td><%=review.account_details rescue nil %></td>

@@ -34,72 +34,19 @@
 	</thead>
 
 	<tbody>
+		<% @nature_of_compliments = [] %>
+		<% NatureOfReview.where("review_type = ?","compliment").pluck(:title).each do |r| %>
+			<% @nature_of_compliments << [r,Review.nature_count(r).where("industry_id = ?",industry.id).count] %>
+		<% end %>
+		<% n = @nature_of_compliments %>
+		<% n = Hash[*n.flatten] %>
+		<% n.each do |r| %>
 		<tr>
-			<td>Billing/accounts</td>
-			<% @billing = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',@start_from,@start_to,  industry.id ,'Billing/accounts', 'compliment') rescue nil%>
-			<td><%= @billing.count rescue nil%></td>
+			<td><%= r[0] %></td>
+			<td><%= r[1] %></td>
 		</tr>
-		<tr>
-			<td>Booking</td>
-			<% @booking = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',@start_from,@start_to,industry.id , 'Booking', 'compliment') rescue nil%>
-		    <td><%= @booking.count rescue nil%></td>
-		</tr>
-		<tr>
-			<td>Call centre efficiency</td>
-			<% @call_center = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',@start_from,@start_to,industry.id,'Call centre efficiency', 'compliment') rescue nil%>
-			<td><%= @call_center.count rescue nil%></td>
-		</tr>
-		<tr>
+		<% end %>
 		
-			<td>Contract</td>
-			<%@contract = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',@start_from,@start_to,industry.id,'Contract', 'compliment') rescue nil%>
-			<td><%= @contract.count rescue nil%></td>
-		</tr>
-		<tr>
-			<td>Delivery on time</td>
-			<% @delivery = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',@start_from,@start_to,industry.id,'Delivery on time', 'compliment') rescue nil%>
-			<td><%= @delivery.count rescue nil%></td>
-		</tr>
-		<tr>
-			<td>Feedback</td>
-			<%@feedback =  Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',@start_from,@start_to,industry.id,'Feedback', 'compliment') rescue nil%>
-			<td><%= @feedback.count rescue nil%></td>
-		</tr>
-		<tr>
-			<td>Going the extra mile</td>
-			<% @going_extra = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',@start_from,@start_to,industry.id,'Going the extra mile', 'compliment') rescue nil%>
-			<td><%= @going_extra.count rescue nil%></td>
-		</tr>
-		<tr>
-			<td>Great attitude</td>
-			<% @great_attitude = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',@start_from,@start_to,industry.id,'Great attitude', 'compliment') rescue nil%>
-			<td><%= @great_attitude.count rescue nil%></td>
-		</tr>
-		<tr>
-			<td>Pricing</td>
-			<% @pricing = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',@start_from,@start_to,industry.id,'Pricing', 'compliment') rescue nil%>
-			<td><%= @pricing.count rescue nil%></td>
-		</tr>
-		<tr>
-			<td>Refund</td>
-			<% @refund = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',@start_from,@start_to,industry.id,'Refund', 'compliment') rescue nil%>
-			<td><%= @refund.count rescue nil%></td>
-		</tr>
-		<tr>
-			<td>Repairs</td>
-			<% @repairs = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',@start_from,@start_to,industry.id,'Repairs', 'compliment') rescue nil%>
-			<td><%= @repairs.count rescue nil%></td>
-		</tr>
-		<tr>
-			<td>Stock</td>
-			<% @stock = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',@start_from,@start_to,industry.id,'Stock', 'compliment') rescue nil%>
-			<td><%= @stock.count rescue nil%></td>
-		</tr>
-		<tr>
-			<td>Other</td>
-			<% @others = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',@start_from,@start_to,industry.id,'Other', 'compliment') rescue nil%>
-			<td><%= @others.count rescue nil%></td>
-		</tr>
 
 	</tbody>
 </table>
@@ -113,82 +60,25 @@
 	</thead>
 
 	<tbody>
+			<% @nature_of_complaints = [] %>
+		<% NatureOfReview.where("review_type = ?","complaint").pluck(:title).each do |r| %>
+			<% @nature_of_complaints << [r,Review.nature_count(r).where("industry_id = ?",industry.id).count] %>
+		<% end %>
+		<% n = @nature_of_complaints %>
+		<% n = Hash[*n.flatten] %>
+		<% n.each do |r| %>
 		<tr>
-			<td>Bad attitude</td>
-			<% @bad_attitude = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',@start_from,@start_to,  industry.id ,'Bad attitude', 'complaint') rescue nil%>
-			<td><%= @bad_attitude.count rescue nil%></td>
+			<td><%= r[0] %></td>
+			<td><%= r[1] %></td>
 		</tr>
-		<tr>
-			<td>Billing/Accounts</td>
-			<% @billing_account = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',@start_from,@start_to,industry.id , 'Billing/Accounts', 'complaint') rescue nil%>
-		    <td><%= @billing_account.count rescue nil%></td>
-		</tr>
-		<tr>
-			<td>Booking query</td>
-			<% @booking_query = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',@start_from,@start_to,industry.id,'Booking query', 'complaint') rescue nil%>
-			<td><%= @booking_query.count rescue nil%></td>
-		</tr>
-		<tr>
-		
-			<td>Breach of contract</td>
-			<%@breach_of_contract = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',@start_from,@start_to,industry.id,'Breach of contract', 'complaint') rescue nil%>
-			<td><%= @breach_of_contract.count rescue nil%></td>
-		</tr>
-		<tr>
-			<td>Call centre</td>
-			<% @call_centre_c = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',@start_from,@start_to,industry.id,'Call centre', 'complaint') rescue nil%>
-			<td><%= @call_centre_c.count rescue nil%></td>
-		</tr>
-		<tr>
-			<td>Damaged goods</td>
-			<%@damaged_goods =  Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',@start_from,@start_to,industry.id,'Damaged goods', 'complaint') rescue nil%>
-			<td><%= @damaged_goods.count rescue nil%></td>
-		</tr>
-		<tr>
-			<td>Expiry date</td>
-			<% @expiry = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',@start_from,@start_to,industry.id,'Expiry date', 'complaint') rescue nil%>
-			<td><%= @expiry.count rescue nil%></td>
-		</tr>
-		<tr>
-			<td>Feedback/response</td>
-			<% @feedback_response = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',@start_from,@start_to,industry.id,'Feedback/response', 'complaint') rescue nil%>
-			<td><%= @feedback_response.count rescue nil%></td>
-		</tr>
-		<tr>
-			<td>Hygiene</td>
-			<% @hygiene = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',@start_from,@start_to,industry.id,'Hygiene', 'complaint') rescue nil%>
-			<td><%= @hygiene.count rescue nil%></td>
-		</tr>
-		<tr>
-			<td>Late/no delivery</td>
-			<% @Late_no_delivery = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',@start_from,@start_to,industry.id,'Late/no delivery', 'complaint') rescue nil%>
-			<td><%= @Late_no_delivery.count rescue nil%></td>
-		</tr>
-		<tr>
-			<td>Out of stock</td>
-			<% @out_of_stock = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',@start_from,@start_to,industry.id,'Out of stock', 'complaint') rescue nil%>
-			<td><%= @out_of_stock.count rescue nil%></td>
-		</tr>
-		<tr>
-			<td>Pricing/bar codes</td>
-			<% @pricing_bar_codes = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',@start_from,@start_to,industry.id,'Pricing/bar codes', 'complaint') rescue nil%>
-			<td><%= @pricing_bar_codes.count rescue nil%></td>
-		</tr>
-		<tr>
-			<td>Repairs/servicing</td>
-			<% @repairs_servicing = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',@start_from,@start_to,industry.id,'Repairs/servicing', 'complaint') rescue nil%>
-			<td><%= @repairs_servicing.count rescue nil%></td>
-		</tr>
-		<tr>
-			<td>Spam</td>
-			<% @spam = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',@start_from,@start_to,industry.id,'Spam', 'complaint') rescue nil%>
-			<td><%= @spam.count rescue nil%></td>
-		</tr>
-		<tr>
-			<td>Other</td>
-			<% @others_c = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and industry_id = ? and nature_of_review = ? and review_type = ?',@start_from,@start_to,industry.id,'Other', 'complaint') rescue nil%>
-			<td><%= @others.count rescue nil%></td>
-		</tr>
-
+		<% end %>
 	</tbody>
 </table>
+<% @ncp = []%>
+<% NatureOfReview.where("review_type = ?","compliment").pluck(:title).each do |r| %>
+  <% @ncp << Review.nature_count(r).where("industry_id = ?",industry.id) %>
+<% end %>
+<% @ncs = []%>
+<% NatureOfReview.where("review_type = ?","complaint").pluck(:title).each do |r| %>
+  <% @ncs << Review.nature_count(r).where("industry_id = ?",industry.id) %>
+<% end %>

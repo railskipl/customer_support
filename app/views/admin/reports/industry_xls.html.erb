@@ -10,13 +10,13 @@
 <% @industries.each do |industry|%>
    
 	<%if params[:id] == "data_dump"%>
-	  <% @compliments = Review.where('user_id is not null and industry_id = ? and review_type = ?',industry.id, 'compliment') rescue nil%>
+	  <% @compliments = Review.where('user_id is not null and industry_id = ? and review_type = ? and ispublished = ? and archive = ?',industry.id, 'compliment',true,false) rescue nil%>
 
-	  <%  @complaints = Review.where('user_id is not null and industry_id = ? and review_type = ?',industry.id, 'complaint') rescue nil%>
+	  <%  @complaints = Review.where('user_id is not null and industry_id = ? and review_type = ? and ispublished = ? and archive = ?',industry.id, 'complaint',true,false) rescue nil%>
 	<%else%>
-	  <% @compliments = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and industry_id = ? and review_type = ?',@start_from,@start_to,industry.id, 'compliment') rescue nil%>
+	  <% @compliments = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and industry_id = ? and review_type = ? and ispublished = ? and archive = ?',@start_from,@start_to,industry.id, 'compliment',true,false) rescue nil%>
 
-	  <%  @complaints = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and industry_id = ? and review_type = ?',@start_from,@start_to,industry.id, 'complaint') rescue nil%>
+	  <%  @complaints = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and industry_id = ? and review_type = ? and ispublished = ? and archive = ?',@start_from,@start_to,industry.id, 'complaint',true,false) rescue nil%>
 	<%end%>
 
 	<%if @compliments.present? or  @complaints.present? %>
@@ -31,9 +31,10 @@
 
 	<br/><br/>
 
-	<h4>Total : Nature of Complaint</h4></br>
+	<h4>Total : Nature of Compliment</h4></br>
 	<%= render :partial=>"common_compliment_reviews_type"%>
-
+    
+    <h4>Total : Nature of Complaint</h4></br>
 	<h4>Industry <%= industry.title%> : Complaints</h4></br>
 	<%= render :partial=>"common_complaint_reviews_type"%>
 	<%end%> 

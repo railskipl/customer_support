@@ -1,193 +1,26 @@
-<%if @bad_attitude.present?%>
-<h4>Bad attitude</h4>
+<% if @ncs%>
 <table id="admin_review_xls" >
 	<%= render 'common_header_reviews'%>
 
 	<tbody>
-	  <% @bad_attitude.each_with_index.each do |review,i| %>
-		<%= render 'common_reviews', :review => review, :i => i %>
-	  <% end %>
-	</tbody>	
-</table>
-<%end%>
-<br/><br/>
-<%if @billing_account.present?%>
-<h4>Billing/Accounts</h4>
-<table id="admin_review_xls" >
-	<%= render 'common_header_reviews'%>
+	  <% @ncs.flatten.each_with_index.each do |review,i| %>
 
-	<tbody>
-	  <% @billing_account.each_with_index.each do |review,i| %>
 	     <%= render 'common_reviews', :review => review, :i => i %>
 	  <% end %>
 	</tbody>	
 </table>
-<br/><br/>
-<%end%>
-<%if @booking_query.present?%>
-<h4>Booking query</h4>
+
+
+<% else %>
 <table id="admin_review_xls" >
 	<%= render 'common_header_reviews'%>
 
 	<tbody>
-	  <% @booking_query.each_with_index.each do |review,i| %>
-	    <%= render 'common_reviews', :review => review, :i => i %>
-	  <% end %>
-	</tbody>	
-</table>
-<br/><br/>
-<%end%>
-<%if @breach_of_contract.present?%>
-<h4>Breach of contract</h4>
-<table id="admin_review_xls" >
-	<%= render 'common_header_reviews'%>
+	  <% @reviews1.flatten.each_with_index.each do |review,i| %>
 
-	<tbody>
-	  <% @breach_of_contract.each_with_index.each do |review,i| %>
-	   <%= render 'common_reviews', :review => review, :i => i %>
-	  <% end %>
-	</tbody>	
-</table>
-<br/><br/>
-<%end%>
-<%if @call_centre_c.present?%>
-<h4>Call centre</h4>
-<table id="admin_review_xls" >
-	<%= render 'common_header_reviews'%>
-
-	<tbody>
-	  <% @call_centre_c.each_with_index.each do |review,i| %>
 	     <%= render 'common_reviews', :review => review, :i => i %>
 	  <% end %>
 	</tbody>	
 </table>
-<br/><br/>
-<%end%>
-<%if @damaged_goods.present?%>
-<h4>Damaged goods</h4>
-<table id="admin_review_xls" >
-	<%= render 'common_header_reviews'%>
+<% end %>
 
-	<tbody>
-	  <% @damaged_goods.each_with_index.each do |review,i| %>
-	     <%= render 'common_reviews', :review => review, :i => i %>
-	  <% end %>
-	</tbody>	
-</table>
-<br/><br/>
-<%end%>
-<%if @expiry.present?%>
-<h4>Expiry date</h4>
-<table id="admin_review_xls" >
-	<%= render 'common_header_reviews'%>
-
-	<tbody>
-	  <% @expiry.each_with_index.each do |review,i| %>
-	    <%= render 'common_reviews', :review => review, :i => i %>
-	  <% end %>
-	</tbody>	
-</table>
-<br/><br/>
-<%end%>
-<%if @feedback_response.present?%>
-<h4>Feedback/response</h4>
-<table id="admin_review_xls" >
-	<%= render 'common_header_reviews'%>
-
-	<tbody>
-	  <% @feedback_response.each_with_index.each do |review,i| %>
-	     <%= render 'common_reviews', :review => review, :i => i %>
-	  <% end %>
-	</tbody>	
-</table>
-<br/><br/>
-<%end%>
-<%if @hygiene.present?%>
-<h4>Hygiene</h4>
-<table id="admin_review_xls" >
-	<%= render 'common_header_reviews'%>
-
-	<tbody>
-	  <% @hygiene.each_with_index.each do |review,i| %>
-	   <%= render 'common_reviews', :review => review, :i => i %>
-	  <% end %>
-	</tbody>	
-</table>
-<br/><br/>
-<%end%>
-<%if @Late_no_delivery.present?%>
-<h4>Late/no delivery</h4>
-<table id="admin_review_xls" >
-	<%= render 'common_header_reviews'%>
-
-	<tbody>
-	  <% @Late_no_delivery.each_with_index.each do |review,i| %>
-	   <%= render 'common_reviews', :review => review, :i => i %>
-	  <% end %>
-	</tbody>	
-</table>
-<br/><br/>
-<%end%>
-<%if @out_of_stock.present?%>
-<h4>Out of stock</h4>
-<table id="admin_review_xls" >
-	<%= render 'common_header_reviews'%>
-
-	<tbody>
-	  <% @out_of_stock.each_with_index.each do |review,i| %>
-	   <%= render 'common_reviews', :review => review, :i => i %>
-	  <% end %>
-	</tbody>	
-</table>
-<br/><br/>
-<%end%>
-<%if @pricing_bar_codes.present?%>
-<h4>Pricing/bar codes</h4>
-<table id="admin_review_xls" >
-	<%= render 'common_header_reviews'%>
-
-	<tbody>
-	  <% @pricing_bar_codes.each_with_index.each do |review,i| %>
-	     <%= render 'common_reviews', :review => review, :i => i %>
-	  <% end %>
-	</tbody>	
-</table>
-<br/><br/>
-<%end%>
-<%if @repairs_servicing.present?%>
-<h4>Repairs/servicing</h4>
-<table id="admin_review_xls" >
-	<%= render 'common_header_reviews'%>
-
-	<tbody>
-	  <% @repairs_servicing.each_with_index.each do |review,i| %>
-	   <%= render 'common_reviews', :review => review, :i => i %>
-	  <% end %>
-	</tbody>	
-</table>
-<br/><br/>
-<%end%>
-<%if @spam.present?%>
-<h4>Spam</h4>
-<table id="admin_review_xls" >
-	<%= render 'common_header_reviews'%>
-
-	<tbody>
-	  <% @spam.each_with_index.each do |review,i| %>
-	   <%= render 'common_reviews', :review => review, :i => i %>
-	  <% end %>
-	</tbody>	
-</table>
-<br/><br/>
-<%end%>
-<%if @others_c.present?%>
-<h4>Other</h4>
-<table id="admin_review_xls" >
-	<%= render 'common_header_reviews'%>
-	<tbody>
-	  <% @others_c.each_with_index.each do |review,i| %>
-	   <%= render 'common_reviews', :review => review, :i => i %>
-	  <% end %>
-	</tbody>	
-  </table>
-  <%end%>

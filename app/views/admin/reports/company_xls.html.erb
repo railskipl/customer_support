@@ -7,30 +7,45 @@
   <strong>Displaying data for 12 Months</strong>
 <%end%>
 <%@companies.each do |company|%>
-
     <% @company = Company.where('id = ?', company).first%>
+
       <%if params[:id] == "data_dump"%>
-       <% @compliments = Review.where('user_id is not null and company_id = ? and review_type = ?',@company.id, 'compliment') rescue nil%>
-       <% @complaints = Review.where('user_id is not null and company_id = ? and review_type = ?',@company.id, 'complaint') rescue nil%>
-	 <%else%>
+       <% @compliments = Review.where("company_id = ? and review_type = ? and user_id is not null and nature_of_review is not null",@company.id, "compliment") rescue nil%>
+
+       <% @complaints = Review.where("company_id = ? and review_type = ? and user_id is not null and nature_of_review is not null",@company.id, "complaint") rescue nil%>
+       <%#raise @complaints.inspect%>
+	    <%else%>
        <% @compliments = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and company_id = ? and review_type = ?',@start_from,@start_to,@company.id, 'compliment') rescue nil%>
        <% @complaints = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and company_id = ? and review_type = ?',@start_from,@start_to,@company.id, 'complaint') rescue nil%>
-	 <%end%>
+	    <%end%>
     
 	
   <%if @compliments.present? or  @complaints.present? %>
 	 <%if params[:id] == "data_dump"%>
-       <%= render :partial=>"company_xls"%>
+      <%= render :partial=>"company_xls"%>
+
+      <%@nature_of_compliments = []%>
+      <%NatureOfReview.where("review_type = ?","compliment").pluck(:title).each do |r|%>
+        <%@nature_of_compliments << Review.where("company_id = ? and nature_of_review = ? and user_id is not null",@company.id, r)%>
+      <%end%>
+      <%@reviews = @nature_of_compliments%>
+
+      <%@nature_of_complaints = []%>
+      <%NatureOfReview.where("review_type = ?","complaint").pluck(:title).each do |r|%>
+        <%@nature_of_complaints << Review.where("company_id = ? and nature_of_review = ? and user_id is not null",@company.id, r) %>
+        <%end%>
+      <%@reviews1 = @nature_of_complaints%>
+      <%#raise @reviews1.inspect%>
 	 <%else%>
        <%= render :partial=>"company_xls1"%>
 	 <%end%>
 
-	    <br/><br/>
-
+	 <br/><br/>
+    
 		<h4>Supplier <%= @company.title%> :Compliments</h4>
 		<%= render :partial=>"common_compliment_reviews_type"%>
 
 		<h4>Supplier <%= @company.title%> : Complaints</h4></br>
 		<%= render :partial=>"common_complaint_reviews_type"%>
-    <%end%>
+  <%end%>
 <%end%>

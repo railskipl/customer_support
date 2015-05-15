@@ -36,58 +36,12 @@
 	</thead>
 
 	<tbody>
+		<% @n.each do |r| %>
 		<tr>
-			<td>Billing/accounts</td>
-			<td><%= @billing.count rescue nil%></td>
+			<td><%= r[0] %></td>
+			<td><%= r[1] %></td>
 		</tr>
-		<tr>
-			<td>Booking</td>
-			<td><%= @booking.count rescue nil%></td>
-		</tr>
-		<tr>
-			<td>Call centre efficiency</td>
-			<td><%= @call_center.count rescue nil%></td>
-		</tr>
-		<tr>
-			<td>Contract</td>
-			<td><%= @contract.count rescue nil%></td>
-		</tr>
-		<tr>
-			<td>Delivery on time</td>
-			<td><%= @delivery.count rescue nil%></td>
-		</tr>
-		<tr>
-			<td>Feedback</td>
-			<td><%= @feedback.count rescue nil%></td>
-		</tr>
-		<tr>
-			<td>Going the extra mile</td>
-			<td><%= @going_extra.count rescue nil%></td>
-		</tr>
-		<tr>
-			<td>Great attitude</td>
-			<td><%= @great_attitude.count rescue nil%></td>
-		</tr>
-		<tr>
-			<td>Pricing</td>
-			<td><%= @pricing.count rescue nil%></td>
-		</tr>
-		<tr>
-			<td>Refund</td>
-			<td><%= @refund.count rescue nil%></td>
-		</tr>
-		<tr>
-			<td>Repairs</td>
-			<td><%= @repairs.count rescue nil%></td>
-		</tr>
-		<tr>
-			<td>Stock</td>
-			<td><%= @stock.count rescue nil%></td>
-		</tr>
-		<tr>
-			<td>Other</td>
-			<td><%= @others.count rescue nil%></td>
-		</tr>
+		<% end %>
 
 	</tbody>
 </table>
@@ -103,66 +57,12 @@
 	</thead>
 
 	<tbody>
+		<% @n1.each do |r| %>
 		<tr>
-			<td>Bad attitude</td>
-			<td><%= @bad_attitude.count%></td>
+			<td><%= r[0] %></td>
+			<td><%= r[1] %></td>
 		</tr>
-		<tr>
-			<td>Billing/Accounts</td>
-			<td><%= @billing_account.count %></td>
-		</tr>
-		<tr>
-			<td>Booking query</td>
-			<td><%= @booking_query.count%></td>
-		</tr>
-		<tr>
-			<td>Breach of contract</td>
-			<td><%= @breach_of_contract.count%></td>
-		</tr>
-		<tr>
-			<td>Call centre</td>
-			<td><%= @call_centre_c.count%></td>
-		</tr>
-		<tr>
-			<td>Damaged goods</td>
-			<td><%= @damaged_goods.count%></td>
-		</tr>
-		<tr>
-			<td>Expiry date</td>
-			<td><%= @expiry.count%></td>
-		</tr>
-		<tr>
-			<td>Feedback/response</td>
-			<td><%= @feedback_response.count%></td>
-		</tr>
-		<tr>
-			<td>Hygiene</td>
-			<td><%= @hygiene.count%></td>
-		</tr>
-		<tr>
-			<td>Late/no delivery</td>
-			<td><%= @Late_no_delivery.count%></td>
-		</tr>
-		<tr>
-			<td>Out of stock</td>
-			<td><%= @out_of_stock.count%></td>
-		</tr>
-		<tr>
-			<td>Pricing/bar codes</td>
-			<td><%= @pricing_bar_codes.count%></td>
-		</tr>
-		<tr>
-			<td>Repairs/servicing</td>
-			<td><%= @repairs_servicing.count%></td>
-		</tr>
-		<tr>
-			<td>Spam</td>
-			<td><%= @spam.count%></td>
-		</tr>
-		<tr>
-			<td>Other</td>
-			<td><%= @repairs_servicing.count%></td>
-		</tr>
+		<% end %>
 
 	</tbody>
 </table>
@@ -183,6 +83,7 @@
 				<th width="15%">Person Responsible</th>
 				<th width="15%">Nature of Review</th>
 				<th width="15%">Message</th>
+				<th width="15%">Modified Review</th>
 				<th width="15%">Title</th>
 		        <th width="15%">Customer Name</th>
 		  </tr>
@@ -202,6 +103,7 @@
 					<td><%=review.Person_responsible rescue nil %></td>
 					<td><%=review.nature_of_review rescue nil %></td>
 					<td><%=review.message rescue nil %></td>
+					<td><%=review.modified_review rescue nil %></td>
 					<td><%=review.title.titleize rescue nil %></td>
 				    <td><%=review.try(:user).try(:full_name)%></td>
 

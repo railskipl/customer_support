@@ -188,3 +188,4 @@
 			</tr>
 		</tbody>
 	</table>
+	<% @billing_account = Review.where('Date(created_at) >= ? and Date(created_at) <= ? and user_id is not null and company_id = ? and nature_of_review = ? and review_type = ?',1.year.ago, Date.today,@company.id , 'Billing/Accounts', 'complaint') rescue nil%>

@@ -5,8 +5,8 @@
   <title>Xemaxema.com | <%= @active_title1 || @active_title.try(:titlecase) || @active_tab.try(:titlecase) %></title>
 
     <title><%= @meta_title %></title>
-    <meta name="keyword" content="<%= raw(@meta_keyword)%>" />
-    <meta name="description" content="<%= raw(@meta_description)%>" />
+    <meta name="keyword" content="<%= @meta_keyword%>" />
+    <meta name="description" content="<%= @meta_description%>" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0,user-scalable=0" />
 	<meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE" />
   <%= stylesheet_link_tag    "style4", "responsive-nav","jquery.mCustomScrollbar" %>

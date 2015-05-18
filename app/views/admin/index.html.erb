@@ -106,7 +106,7 @@
 			<td><%=review.company.title rescue nil %></td>
 			<td><%=review.title rescue nil %></td>
 			<td><%=review.try(:user).try(:preferred_alias)%></td>
-      </tr>
+        </tr>
 	  <% end %>
 	</tbody>
 </table>
@@ -132,7 +132,11 @@
 	    <tr>
 			<td><%= index %></td>
 			<td><%= review.created_at.strftime("%d/%m/%Y | %H:%M") rescue nil %></td>
-			<td><%= link_to review.ticket_number, edit_admin_review_path(review) rescue nil %></td>
+			<%if review.user.confirmed_at.present?%>
+			  <td><%= link_to review.ticket_number, edit_admin_review_path(review) rescue nil %></td>
+			<%else%>
+			  <td><%= review.ticket_number rescue nil %></td>
+			<%end%>
 			<td><%= review.review_type.titleize rescue nil %></td>
 			<td><%= review.company.title.titleize rescue nil %></td>
 			<td><%= review.title.titleize rescue nil %></td>

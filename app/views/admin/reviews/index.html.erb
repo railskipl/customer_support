@@ -42,9 +42,9 @@ jQuery(document).ready(function() {
   </thead>
 
   <tbody>
-    <% @reviews.each.with_index(1) do |review,index| %>
+    <% @reviews.each_with_index do |review,i| %>
       <tr>
-        <td><%= index %></td>
+        <td><%= i + 1 %></td>
         <td><%=review.ticket_number rescue nil %></td>
         <td><%=review.review_type rescue nil %></td>
         <td><%=review.company.title rescue nil %></td>
@@ -84,8 +84,8 @@ jQuery(document).ready(function() {
   </thead>
 
   <tbody> 
-
     <% @areviews.each do |review| %>
+      <%if review.user.confirmed_at.present?%>
       <tr>
         <td><%= check_box_tag "review_ids[]", review.id, false,:style => "opacity:0.67" %></td>
 				<td><%=review.ticket_number rescue nil %></td>
@@ -102,8 +102,8 @@ jQuery(document).ready(function() {
           <%= link_to 'Comment', admin_review_path(review), class: "btn" if can? :edit, Review%> 
 		    </td>
       </tr>
+      <%end%>
     <% end %>
-    
   </tbody>
 </table><br/>
     <label>Enter date, till what date reviews should be processed</label>
@@ -134,6 +134,7 @@ jQuery(document).ready(function() {
 
   <tbody>
     <% @reareviews.each do |review| %>
+      <%if review.user.confirmed_at.present?%>
       <tr>
         <td><%= check_box_tag "review_ids[]", review.id, false,:style => "opacity:0.67" %></td>
         <td><%= review.ticket_number rescue nil %></td>
@@ -150,7 +151,8 @@ jQuery(document).ready(function() {
           <%#= link_to 'Destroy', admin_review_path(review), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
           <%= link_to 'Comment', admin_review_path(review), class: "btn" if can? :edit, Review%> 
         </td>
-       </tr>
+      </tr>
+      <%end%>
     <% end %>
   </tbody>
 </table>

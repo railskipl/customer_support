@@ -56,7 +56,11 @@
 	<% @monitors.each.with_index(1) do |mon,index| %>
 	<tr>
 		<td><%= index %></td>
-		<td><%= link_to mon.review.ticket_number ,edit_admin_review_path(mon.review.id) rescue nil%></td>
+		<%if mon.review.user.confirmed_at.present?%>
+		  <td><%= link_to mon.review.ticket_number ,edit_admin_review_path(mon.review.id) rescue nil%></td>
+		<%else%>
+		  <td><%= mon.review.ticket_number rescue nil%></td>
+		<%end%>
 		<td><%= mon.review.agent.try(:preferred_alias) %></td>
 		<td><%= mon.review.jagent.try(:preferred_alias) %></td>
 		<td><%= mon.review.old_agent.try(:preferred_alias) %></td>

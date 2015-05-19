@@ -1213,19 +1213,18 @@ min-height:92px;
 	padding-bottom:20px;
 	font-family:gothic;
 }
-.login-field-boxnew{padding:10px;}
+.login-field-boxnew{padding:0px;}
 
 .text-area4new
 {
-	margin:0px 0px 5px;
+	margin:10px 0px 5px;
 	padding:5px 5px 0px;
-	width:620px;
+	width:639px;
 	height:70px;
-	float:right;
+	float:left;
 	border:#dddcdc 0px solid;
 	background:#e6e6e6;
 	font-family:corbel;
-	color: #696969;
 	font-size:13px;
 	-webkit-box-shadow: 0px 4px 2px -1px #dadada;
 	-moz-box-shadow: 0px 4px 2px -1px #dadada;
@@ -1795,7 +1794,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9bc38', end
 
 .no-space{margin:0px 40px 20px 0px !important;}
 .wr-first{width:250px !important;}
-.cap-con{padding-left:68px;}
+.cap-con{padding-left:47px;}
 
  /*new resister page 27.04.2015*/
 .reg-box1{margin:0px 0px 20px 0px;padding:0px;width:800px;min-height:250px;float:left;}
@@ -2127,7 +2126,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9bc38', end
 .content1{overflow:auto; padding: 0px;margin:0px;width:300px ;height: 190px;
 	-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
 .information{width:286px;}
-.form-box3{width:300px; float:left;}
+.form-box3{width:300px; float:none; margin:auto;}
 /*----------about page end----------------*/
 /*----------bank complaint page start--*/
 .form-box21bank{width:300px; margin:0px;}
@@ -2149,7 +2148,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9bc38', end
 .text-box2 a{width:200px;float:left;}
 .field1{width:170px;height:25px;}
 .login-field-box2{margin:25px 0px 0px;width:300px;}
-.btn2{margin:20px 0px 0px 0px;padding:0px 12px 0px;}
+.btn2{margin:0px 0px 0px 0px;padding:0px 12px 0px;}
 /*------contact us/ login end--------*/
 /*-----CSR start-----------*/
 .form-box21{width:300px; margin:0px;}

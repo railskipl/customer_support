@@ -46,6 +46,9 @@ body
 	clear:both;
 }
 
+.left{float:none;}
+.right{float:right; }
+
 #main-wrapper
 {
 	margin:0px auto;
@@ -645,7 +648,7 @@ search-btn
 {
 	margin:0px;
 	padding:10px;
-	width:350px;
+	width:767px;
 	min-height:122px;
 	float:left;
 }
@@ -669,9 +672,9 @@ search-btn
 }
 .login-field-box
 {
-	margin:10px 0px 0px;
+	margin:0px 0px 10px;
 	padding:0px;
-	width:350px;
+	/*width:350px;*/
 	font-family:corbel;
 }
 .login-field-box2
@@ -2115,7 +2118,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9bc38', end
 .content{overflow: auto; padding: 0px;margin:0px;max-width: 100%;height: 190px;
 	-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
 .section-third{margin:0px;padding:0px;width:300px;min-height:400px;float:right;}
-.first-right-one{margin:0px 0px 5px;padding:12px 7px 0px;width:278px;height:255px;border:#e5e5e5 2px solid;background:#f8f8f8;}
+.first-right-one{margin:0px 0px 5px;padding:12px 7px 0px;width:278px;height:300px;border:#e5e5e5 2px solid;background:#f8f8f8;}
 .right-link{margin:0px;padding:14px 0px 0px 18px;width:258px;height:30px;border:#e5e5e5 1px solid;border-bottom:0px;}
 .right-link-last{margin:0px 0px 10px;padding:14px 0px 0px 18px;width:258px;height:30px;border:#e5e5e5 1px solid;}
 .first-right-second{margin:0px 0px 0px;padding:0px;width:280px;height:229px;border:#e5e5e5 2px solid;}
@@ -2225,7 +2228,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9bc38', end
 .technology{ width:300px;}
 .form-box21faq p{width:250px;}
 /*-----review------*/
-.drp-select1{width:180px;}
+/*.drp-select1{width:180px;}*/
 
 .log-headac{font-size:21px;}
 .login-box2{margin:0px;padding:5px;width:290px;min-height:135px !important;background:#e6e6e6; border:#cccccc 1px solid;}
@@ -2276,7 +2279,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9bc38', end
 .content{overflow: auto; padding: 0px;margin:0px;max-width: 100%;height: 190px;
 	-webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
 .section-third{margin:0px;padding:0px;width:300px;min-height:400px;float:right;}
-.first-right-one{margin:0px 0px 5px;padding:12px 7px 0px;width:278px;height:255px;border:#e5e5e5 2px solid;background:#f8f8f8;}
+.first-right-one{margin:0px 0px 5px;padding:12px 7px 0px;width:278px;height:300px;border:#e5e5e5 2px solid;background:#f8f8f8;}
 .right-link{margin:0px;padding:14px 0px 0px 18px;width:258px;height:30px;border:#e5e5e5 1px solid;border-bottom:0px;}
 .right-link-last{margin:0px 0px 10px;padding:14px 0px 0px 18px;width:258px;height:30px;border:#e5e5e5 1px solid;}
 .first-right-second{margin:0px 0px 0px;padding:0px;width:280px;height:229px;border:#e5e5e5 2px solid;}
@@ -2386,7 +2389,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9bc38', end
 .technology{ width:300px;}
 .form-box21faq p{width:250px;}
 /*-----review------*/
-.drp-select1{width:180px;}
+/*.drp-select1{width:180px;}*/
 
 .log-headac{font-size:21px;}
 .login-box2{margin:0px;padding:5px;width:290px;min-height:135px !important;background:#e6e6e6; border:#cccccc 1px solid;}

@@ -46,9 +46,6 @@ body
 	clear:both;
 }
 
-.left{float:none;}
-.right{float:right; }
-
 #main-wrapper
 {
 	margin:0px auto;
@@ -648,7 +645,7 @@ search-btn
 {
 	margin:0px;
 	padding:10px;
-	width:767px;
+	width:350px;
 	min-height:122px;
 	float:left;
 }
@@ -672,9 +669,9 @@ search-btn
 }
 .login-field-box
 {
-	margin:0px 0px 10px;
+	margin:10px 0px 0px;
 	padding:0px;
-	/*width:350px;*/
+	width:350px;
 	font-family:corbel;
 }
 .login-field-box2

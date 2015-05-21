@@ -28,7 +28,7 @@
 
  $(document).ready(function(ev){
       $('#datepicker1').datepicker({dateFormat: 'dd-mm-yy',changeYear: true,yearRange: '1900:' + new Date().getFullYear()});
-      $('#datepicker2').datepicker({dateFormat: 'dd-mm-yy'});
+      $('#datepicker2').datepicker({dateFormat: 'dd-mm-yy',changeYear: true,yearRange: '1900:' + new Date().getFullYear()});
       $('#datepicker3').datepicker({dateFormat: 'dd-mm-yy'});
       $('#datepicker4').datepicker({dateFormat: 'dd-mm-yy'});
 

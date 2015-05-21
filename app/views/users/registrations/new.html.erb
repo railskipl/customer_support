@@ -186,15 +186,15 @@ background-color:#FC0; font-size: 33px;
                     <%= f.password_field :password_confirmation, required: true , "maxlength"=>"15", "min" => "8","max" => "15",:id=>"password2", :class => "field1" %>
                 </div>
             </div>
-            <div class="clear"></div>
-            <div class="row-reg">
+            <!-- <div class="clear"></div> -->
+            <!-- <div class="row-reg">
                 <div class="login-field-box row-left">
                   <div class="text-box1">Gender *</div>
                   <%= f.select :gender, [["Female", "2"],["Male", "1"]], {:prompt => "Select Gender"},:required => true,:class=>"field1 select_box_custom"%>
                 </div>      
-            </div>
-            <div class="clear"></div>
-            <div class="row-reg">
+            </div> -->
+            <!-- <div class="clear"></div> -->
+            <!-- <div class="row-reg">
               <div class="login-field-box row-left">
                 <div class="text-box1">Age *</div>
                 <%= f.select :age, [["18-25", "18-25"],["26-35", "26-35"],["36-45", "36-45"],["46-55", "46-55"],["55+", "55+"]], {:prompt => "Select Age"},:required => true,:class=>"field1 select_box_custom"%>
@@ -203,9 +203,9 @@ background-color:#FC0; font-size: 33px;
                 <div class="text-box1">DOB</div>
                 <%= f.text_field :dob , :id => "datepicker1",:class => "field1" %>
               </div>
-            </div>
-            <div class="clear"></div>
-            <div class="row-reg">
+            </div> -->
+            <!-- <div class="clear"></div> -->
+            <!-- <div class="row-reg">
               <div class="login-field-box row-left">
                   <div class="text-box1">Address Line1</div>
                   <%= f.text_field :address_line1, "maxlength"=>"254", "min" => "1","max" => "254", :class => "field1" %>
@@ -214,9 +214,9 @@ background-color:#FC0; font-size: 33px;
                   <div class="text-box1">Address Line2</div>
                   <%= f.text_field :address_line2, "maxlength"=>"254", "min" => "1","max" => "254" ,:class => "field1" %>
               </div>
-            </div>
-            <div class="clear"></div>
-            <div class="row-reg">
+            </div> -->
+            <!-- <div class="clear"></div> -->
+            <!-- <div class="row-reg">
               <div class="login-field-box row-left">
                 <div class="text-box1">Town</div>
                 <%= f.text_field :town, "maxlength"=>"50", "min" => "1","max" => "50", :class => "field1" %>
@@ -225,9 +225,9 @@ background-color:#FC0; font-size: 33px;
                 <div class="text-box1">Code</div>
                 <%= f.text_field :postal_code , "maxlength"=>"50", "min" => "1","max" => "50", :class => "field1" %>
               </div>
-            </div>
-            <div class="clear"></div>
-            <div class="row-reg">
+            </div> -->
+            <!-- <div class="clear"></div> -->
+            <!-- <div class="row-reg">
               <div class="login-field-box row-left">
                 <div class="text-box1">Country *</div>
                 <%=country_select("user", "country",{ "Kenya" => "Kenya"} ,{},:class =>"field1 select_box_custom")%>
@@ -236,7 +236,7 @@ background-color:#FC0; font-size: 33px;
                 <div class="text-box1">I Live In *</div>
                 <%= select_tag("user[lives_in]", grouped_options_for_select(@city_group, selected_key = @user.lives_in, prompt = nil), :id=> 'user_i_live',:prompt => "Select Location",:required => true ,:onchange => 'CheckOther();',:class => "field1 select_box_custom") %>
               </div>
-            </div>
+            </div> -->
             <div class="clear"></div>
             <div class="row-reg">
               <div class="login-field-box row-left">

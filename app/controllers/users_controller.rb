@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     if params[:user][:password].blank?
       params[:user].delete(:password)
     end
-    if verify_recaptcha
+    #if verify_recaptcha
       if @user.update(user_params)
         flash[:notice] = "Your account has been sucessfully updated."
         sign_in @user , :bypass => true
@@ -31,11 +31,11 @@ class UsersController < ApplicationController
         flash[:alert] = @user.errors.full_messages.map { |msg| msg.html_safe }.join("<br/>")
         redirect_to edit_profile_path
       end
-    else
-      flash[:alert] = "There was an error with the recaptcha code below. Please re-enter the code."      
-      flash.delete :recaptcha_error
-      redirect_to edit_profile_path
-    end
+    # else
+    #   flash[:alert] = "There was an error with the recaptcha code below. Please re-enter the code."      
+    #   flash.delete :recaptcha_error
+    #   redirect_to edit_profile_path
+    # end
  end
   
   private

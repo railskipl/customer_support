@@ -62,7 +62,9 @@
                 <%= f.text_area :message, :rows=>"5",:class =>"text-area4new fr-bt","maxlength"=>"1200", :placeholder => "Please type your message here." %>
             </div>
             <div class="clear"></div><br/>
+        
             <div class="new-captcha cap-con">
+              <span style = "font-weight: lighter;color:#696969;font-family:andlso;font-size:15px;">Are you human? Please enter the values as shown in the box below.</span>
               <%= recaptcha_tags %><br/>
               <%=f.submit "xema", :class=> "btn2 left-align" %>
            </div> 

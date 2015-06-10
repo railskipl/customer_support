@@ -43,7 +43,7 @@
 			</table>
 			<div class="content2 newsize mCustomScrollbar">
                   <%@polls.each do |poll|%>
-                    <a href="<%= poll_path(poll) %>"> <div class="box1"><p><%= poll.title %></p></div></a>
+                    <a href="<%= poll_path(poll) %>"> <div class="box1"><p><%= poll.title.truncate(56) rescue nil%></p></div></a>
 					
 						<%end%>
 					

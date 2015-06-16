@@ -106,7 +106,8 @@ select.field12 option:hover {
                 
                 <div class="login-field-box">
                 	<div class="text-box1">Location *</div>
-                  <%= f.collection_select :location_id, @locations ,:id ,:title, {:include_blank=>"Select Location"},:class=>"drp-select1",  required: true%>
+                  <%= f.collection_select :location_id, @locations ,:id ,:title, {:include_blank=>"Select Location"},:class=>"drp-select1",required: true,
+                      :onchange=>"CheckOther_location()"%>
                 </div>
                 <div class="clear"></div>
                 
@@ -141,19 +142,19 @@ select.field12 option:hover {
                 
                 <div class="login-field-box">
                 	<div class="text-box1">&nbsp;</div>
-                	<input type="text" id="other_company" name="txt_review_company_id" class="drp-select1" placeholder="Other">
+                	<input type="text" id="other_company" name="txt_review_company_id" class="drp-select1" placeholder="Other" >
                 </div>
                 <div class="clear"></div>
                 
                 <div class="login-field-box">
                 	<div class="text-box1">&nbsp;</div>
-                	<input type="text" id="other_town" name="txt_review_town_id" class="drp-select1"  placeholder="Other">
+                	<input type="text" id="other_town" name="txt_review_town_id" class="drp-select1"  placeholder="Other" >
                 </div>
                 <div class="clear"></div>
                 
                 <div class="login-field-box">
                 	<div class="text-box1">&nbsp;</div>
-                    	<input type="text" id="txt_review_location_id" name="txt_review_location_id" class="drp-select1" placeholder="Other">
+                    	<input type="text" id="txt_review_location_id" name="txt_review_location_id" class="drp-select1" placeholder="Other" >
                 </div>
                 <div class="clear"></div>
                 
@@ -247,15 +248,18 @@ $( document ).ready(function() {
 	$("#nature").hide();
 	$("#other_town").hide();
     $("#other_company").hide();
+    $("#txt_review_location_id").hide();
 });
 
 function CheckOther()
 {
   if (document.getElementById("review_industry_id").value == <%= Industry.last.id+1 %>){
         $("#other_type").show();
+        $("#other_type").prop('required',true);
     }     
     else{
        $("#other_type").hide();
+       $("#other_type").prop('required',false);
     }     
 }
 
@@ -265,9 +269,23 @@ function CheckOther2()
 {
   if (document.getElementById("review_nature_of_review").value == "Other - please specify"){
         $("#nature").show();
+        $("#nature").prop('required',true);
     }     
     else{
        $("#nature").hide();
+       $("#nature").prop('required',false);
+    }     
+}
+
+function CheckOther_location()
+{
+  if (document.getElementById("review_location_id").value == "Other - please specify"){
+        $("#txt_review_location_id").show();
+        $("#txt_review_location_id").prop('required',true);
+    }     
+    else{
+       $("#txt_review_location_id").hide();
+       $("#txt_review_location_id").prop('required',false);
     }     
 }
 
@@ -275,9 +293,11 @@ function CheckOther_company()
 {
   if (document.getElementById("review_company_id").value == <%= Company.last.id + 1 %>){
         $("#other_company").show();
+        $("#other_company").prop('required',true);
     }     
     else{
        $("#other_company").hide();
+       $("#other_company").prop('required',false);
     }     
 }
 
@@ -285,9 +305,11 @@ function CheckOther_town()
 {
   if (document.getElementById("review_town_id").value == <%= Town.last.id + 1 %>){
         $("#other_town").show();
+        $("#other_town").prop('required',true);
     }     
     else{
        $("#other_town").hide();
+       $("#other_town").prop('required',false);
     }     
 }
 

@@ -61,6 +61,10 @@ class ReviewsController < ApplicationController
     @active_title = "Review Details"
     @active_tab = "Detailed Review"
     @review = Review.find(params[:id])
+    if @review.ispublished?
+    else
+      redirect_to reviews_path
+    end
   end
 
   def chang_review_status
@@ -135,9 +139,11 @@ class ReviewsController < ApplicationController
       @companies = Industry.find(@review.industry_id).companies.order(:title)
       @towns = Company.find(@review.company_id).towns.order(:title).uniq!
       addresses = Address.find_all_by_town_id_and_company_id(@review.town_id,@review.company_id)
-      @locations = addresses.map {|a| a.location}
-      @locations = @locations.sort_by { |k| k["title"] }
-      @locations.uniq!
+      if location.present?
+        @locations = addresses.map {|a| a.location}
+        @locations = @locations.sort_by { |k| k["title"] }
+        @locations.uniq!
+      end
       @nature_of_reviews = NatureOfReview.where("review_type = ?",@review.review_type)
       flash[:notice] = "Please select past date"
       render :new
@@ -192,9 +198,11 @@ class ReviewsController < ApplicationController
       @companies = Industry.find(@review.industry_id).companies.order(:title)
       @towns = Company.find(@review.company_id).towns.order(:title).uniq!
       addresses = Address.find_all_by_town_id_and_company_id(@review.town_id,@review.company_id)
-      @locations = addresses.map {|a| a.location}
-      @locations = @locations.sort_by { |k| k["title"] }
-      @locations.uniq!
+      if location.present?
+        @locations = addresses.map {|a| a.location}
+        @locations = @locations.sort_by { |k| k["title"] }
+        @locations.uniq!
+      end
        @nature_of_reviews = NatureOfReview.where("review_type = ?",@review.review_type)
         flash.now[:alert] = "There was an error with the recaptcha code below. Please re-enter the code."      
         flash.delete :recaptcha_error
